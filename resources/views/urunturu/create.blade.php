@@ -24,7 +24,7 @@
                     <div class="card-body">
 
                         <!--KAYIT FORMU BAŞ-->
-                        <form method="post" action="{{ route($controller.'.store') }}">
+                        <form method="post" action="{{ route($controller.'.store') }}" id="kayit">
                         @csrf
                         <!--BÖLÜM ADI BAŞ-->
                             <div class="form-group">
@@ -46,7 +46,6 @@
                     </div>
                     <!-- /.card-footer -->
                 </div>
-                <input type="hidden" value="{{Auth::user()->id}}" name="user_id">
                 </form>
                 <!-- KAYIT FORMU SON -->
             </div>
@@ -72,5 +71,34 @@
             });
         })
     </script>
+    <!--form doğrulama-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.validator.setDefaults({
+
+            });
+
+            $('#kayit').validate({
+                rules: {
+                    urun_turu_adi: {
+                        required: true,
+                    }
+                },
+                errorElement: 'span',
+                errorPlacement: function (error, element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('.form-group').append(error);
+                },
+                highlight: function (element, errorClass, validClass) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function (element, errorClass, validClass) {
+                    $(element).removeClass('is-invalid');
+                }
+
+            });
+        });
+    </script>
+
     <!--AYAR KODU SON-->
 @endsection

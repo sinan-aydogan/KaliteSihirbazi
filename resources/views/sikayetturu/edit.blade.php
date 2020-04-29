@@ -26,7 +26,7 @@
                     <div class="card-body">
 
                         <!--KAYIT FORMU BAŞ-->
-                        <form method="POST" action="{{ route($controller.'.update', $sikayet_turleri->id) }}">
+                        <form method="POST" action="{{ route($controller.'.update', $sikayet_turleri->id) }}" id="kayit">
                         @csrf
                         @method('PUT')
                             <!--BAYİ ADI BAŞ-->
@@ -171,6 +171,46 @@
                 }else{
                     $('#sikayet_turu_urunler').empty();
                 }
+            });
+        });
+    </script>
+
+    <!--form doğrulama-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.validator.setDefaults({
+
+            });
+
+            $('#kayit').validate({
+                rules: {
+                    sikayet_turu_adi: {
+                        required: true,
+                    },
+
+                    sikayet_turu_bolum: {
+                        required: true,
+                    },
+                    sikayet_turu_oneri: {
+                        maxlength:2000
+                    },
+                    sikayet_turu_kaynak: {
+                        maxlength:2000
+                    }
+
+                },
+                errorElement: 'span',
+                errorPlacement: function (error, element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('.form-group').append(error);
+                },
+                highlight: function (element, errorClass, validClass) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function (element, errorClass, validClass) {
+                    $(element).removeClass('is-invalid');
+                }
+
             });
         });
     </script>

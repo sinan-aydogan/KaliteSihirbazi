@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\BolumModel;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BolumController extends Controller
 {
@@ -50,9 +51,45 @@ class BolumController extends Controller
     /* MODELİN BAĞLI OLDUĞU TABLODAN TÜM VERİLERİ ÇEKİYORUZ, BURAYA VERİLER CREATE İLE ÇAĞIRILMIŞ BLADE ÜZERİNDEN GELİR*/
     public function store(Request $request)
     {
-        BolumModel::create($request->all());
+        /*VALIDATE: HATALI VERİ GİRİŞİNİ ENGELLEME*/
+        $rules = [
+            'bolum_adi'=>'required|unique:bolum',
+        ];
+
+        $messages = [
+            'bolum_adi.required'    => "Bölüm Adı alanını doldurmanız gereklidir",
+            'bolum_adi.unique'    => "Girdiğiniz Bölüm Adı mevcut, farklı bir tane giriniz",
+        ];
+
+        $this->validate($request, $rules,$messages);
+
+        /*SAVE: CREATE BLADE'İNDEN GELEN VERİYİ İŞLEME VE KAYDETME*/
+        $bolum = new BolumModel();
+        $bolum->bolum_adi = $request->bolum_adi ;
+        $bolum->bolum_yonetici = $request->bolum_yonetici ;
+        $bolum->bolum_sikayet_alabilirlik = $request->bolum_sikayet_alabilirlik ;
+        $bolum->bolum_urun_kaydedilebilirlik = $request->bolum_urun_kaydedilebilirlik ;
+        $bolum->bolum_rengi = $request->bolum_rengi ;
+        $bolum->user_id = Auth::user()->id ;
+        $bolum->save();
+
+        /*SESSION: BAŞARILI KAYIT MESAJINI OLUŞTURMA*/
+        if($request->bolum_yonetici != null ? $yonetici = User::find($request->bolum_yonetici)->name : $yonetici="Tanımsız");
+        $mesaj=[];
+        $mesaj['tur']="success";
+        $mesaj['title']="Yeni Kaydedilen Bölümün Bilgileri";
+        $mesaj['icerik']='<div class="container bg-gradient-light border border-info p-2">\'+
+                            \'<div class="row">\'+
+                                \'<div class="col text-bold text-right pr-2">Bölüm:</div>\'+
+                                \'<div class="col text-left pr-2">'.$bolum->bolum_adi.'</div>\'+
+                            \'<div class="w-100"></div>\'+
+                                \'<div class="col text-bold text-right pr-2">Yönetici:</div>\'+
+                                \'<div class="col text-left pr-2">'.$yonetici.'</div>\'+
+                            \'</div>\'+
+                        \'</div>';
+
         /* KAYIT SONRASI KULLANICIYI, GÖNDERMEK İSTEDİĞİMİZ BLADE E YÖNLENDİRİYORUZ, BAŞARI KAYIT MESAJINI KAYDEDİLEN KAYITTAN İSİM İLE YOLLUYORUZ */
-        return redirect('bolum/create',)->with('mesaj', $request->bolum_adi);
+        return redirect()->route('bolum.create')->with('mesaj',$mesaj);
     }
 
     /**
@@ -94,6 +131,18 @@ class BolumController extends Controller
     /* DÜZENLEME BLADE İNDEN GELEN VERİYİ TABLOMUZA İŞLİYORUZ, DEĞERLERİN GÜNCELLENMESİ KISMI BURADA OLUYOR */
     public function update(Request $request, $id)
     {
+        /*VALIDATE: HATALI VERİ GİRİŞİNİ ENGELLEME*/
+        $rules = [
+            'bolum_adi'=>'required|unique:bolum,bolum_adi,'.$id,
+        ];
+
+        $messages = [
+            'bolum_adi.required'    => "Bölüm Adı alanını doldurmanız gereklidir",
+            'bolum_adi.unique'    => "Girdiğiniz Bölüm Adı mevcut, farklı bir tane giriniz",
+        ];
+
+        $this->validate($request, $rules,$messages);
+
         /* DÜZENLE BLADE SİNDEN GELEN ID NIN SAHİP OLDUĞU TABLO SATIRI BULUNUR */
         $guncelle = BolumModel::find($id);
         /* UPDATE KOMUTU İLE DÜZENLE BLADE SİNDEKİ FORMUN YOLLADIĞI TÜM VERİLER TABLOYA İŞLENİR */
@@ -104,8 +153,24 @@ class BolumController extends Controller
             'bolum_urun_kaydedilebilirlik' => $request->get('bolum_urun_kaydedilebilirlik'),
             'bolum_rengi' => $request->get('bolum_rengi'),
         ]);
+
+        /*SESSION: BAŞARILI KAYIT MESAJINI OLUŞTURMA*/
+        if($request->get('bolum_yonetici') != null ? $yonetici = User::find($request->get('bolum_yonetici'))->name : $yonetici="Tanımsız");
+        $mesaj=[];
+        $mesaj['tur']="success";
+        $mesaj['title']="Güncellenen Bölümün Bilgileri";
+        $mesaj['icerik']='<div class="container bg-gradient-light border border-info p-2">\'+
+                            \'<div class="row">\'+
+                                \'<div class="col text-bold text-right pr-2">Bölüm:</div>\'+
+                                \'<div class="col text-left pr-2">'.$request->get('bolum_adi').'</div>\'+
+                            \'<div class="w-100"></div>\'+
+                                \'<div class="col text-bold text-right pr-2">Yönetici:</div>\'+
+                                \'<div class="col text-left pr-2">'.$yonetici.'</div>\'+
+                            \'</div>\'+
+                        \'</div>';
+
         /* DÜZENLEME TAMAMLANDIĞI KULLANICI YENİ BİR EKRANA YÖNLENDİRİLİR */
-        return redirect()->route('bolum.index');
+        return redirect()->route('bolum.index')->with('mesaj', $mesaj);
     }
 
     /**
@@ -118,9 +183,25 @@ class BolumController extends Controller
     /* KAYIT SİLMEK İÇİN KULLANILAN İŞLEM */
     public function destroy($id)
     {
+        $bolum = BolumModel::find($id);
+        /*SESSION: BAŞARILI KAYIT MESAJINI OLUŞTURMA*/
+        if($bolum->bolum_yonetici != null ? $yonetici = User::find($bolum->bolum_yonetici)->name : $yonetici="Tanımsız");
+        $mesaj=[];
+        $mesaj['tur']="warning";
+        $mesaj['title']="Silinen Bölümün Bilgileri";
+        $mesaj['icerik']='<div class="container bg-gradient-light border border-info p-2">\'+
+                            \'<div class="row">\'+
+                                \'<div class="col text-bold text-right pr-2">Bölüm:</div>\'+
+                                \'<div class="col text-left pr-2">'.$bolum->bolum_adi.'</div>\'+
+                            \'<div class="w-100"></div>\'+
+                                \'<div class="col text-bold text-right pr-2">Yönetici:</div>\'+
+                                \'<div class="col text-left pr-2">'.$yonetici.'</div>\'+
+                            \'</div>\'+
+                        \'</div>';
+
         /* SİLİNECEK KAYIDIN ID Sİ URL İLE ALNIR VE DELETE OPERATÖRÜ İLE SİLİNİR */
         BolumModel::find($id)->delete();
         /* SİLME İŞLEMİ SONRASI KULLANICI YÖNLENDİRİLİR */
-        return redirect('bolum',);
+        return redirect()->route('bolum.index')->with('mesaj',$mesaj);
     }
 }

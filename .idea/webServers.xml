@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="26f925ef-0768-4a53-9a09-305f5bd560c6" name="kalitesihirbazi" url="http://knauf.kalitesihirbazi.com">
+        <fileTransfer host="kalitesihirbazi.com" port="21" rootFolder="/knauf.kalitesihirbazi.com">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

@@ -39,7 +39,7 @@
             @foreach ($controller1 as $operator1)
     <tr>
         <td >{{$operator1->sikayet_durum_adi}}</td>
-        <td class="project-actions text-center"><i class="fas fa-circle fa-2x text-{!! $operator1->sikayet_durum_renk !!}"></i></td>
+        <td class="project-actions text-center">@if($operator1->sikayet_durum_renk != null)<i class="fas fa-circle fa-2x text-{!! $operator1->sikayet_durum_renk !!}">@else <span class="badge badge-warning">TANIMSIZ</span>  @endif</i></td>
         <td class="project-actions text-center">
 
             <form method="post" action="{{route($controller.'.destroy',$operator1->id)}}">
@@ -99,18 +99,7 @@
   });
 </script>
 
-@if(session('mesaj'))
-    <script type="text/javascript">
-        Swal.fire ({
-            type: '{{session('mesaj.tur')}}',
-            title: '{{session('mesaj.icerik')}}',
-            showConfirmButton: true,
-            onBeforeOpen: () => {
-            }
-        })
-    </script>
 
-@endif
 
 <!--{{$controller}} LİSTESİ DATATABLE AYAR SON-->
 @endsection

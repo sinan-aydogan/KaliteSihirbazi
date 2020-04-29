@@ -19,7 +19,7 @@
                     <div class="card-body">
 
                         <!--KAYIT FORMU BAŞ-->
-                        <form method="POST" action="{{ route($controller.'.update', $bayiler->id) }}">
+                        <form method="POST" action="{{ route($controller.'.update', $bayiler->id) }}" id="kayit">
                         @csrf
                         @method('PATCH')
                         <!--BAYİ ADI BAŞ-->
@@ -170,4 +170,39 @@
         })
     </script>
     <!--FORM SELECT2 STİLİ SON-->
+
+    <!--form doğrulama-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.validator.setDefaults({
+
+            });
+
+            $('#kayit').validate({
+                rules: {
+                    bayi_adi: {
+                        required: true,
+                    },
+
+                    bayi_kodu: {
+                        required: true,
+                        minlength: 3,
+                        maxlength: 5
+                    }
+                },
+                errorElement: 'span',
+                errorPlacement: function (error, element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('.form-group').append(error);
+                },
+                highlight: function (element, errorClass, validClass) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function (element, errorClass, validClass) {
+                    $(element).removeClass('is-invalid');
+                }
+
+            });
+        });
+    </script>
 @endsection

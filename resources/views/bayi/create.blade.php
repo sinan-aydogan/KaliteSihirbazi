@@ -19,7 +19,7 @@
         <div class="card-body">
 
             <!--KAYIT FORMU BAŞ-->
-<form method="post" action="{{ route($controller.'.store') }}">
+<form method="post" action="{{ route($controller.'.store') }}" id="yeni_kayit">
 @csrf
             <!--BAYİ ADI BAŞ-->
             <div class="form-group">
@@ -29,7 +29,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="far fa-id-card"></i></span>
                     </div>
-                    <input type="text" name="bayi_adi" id="bayi_adi"  class="form-control" placeholder="BAYİNİN KISA TİCARİ İSMİ">
+                    <input type="text" name="bayi_adi" id="bayi_adi"  class="form-control" placeholder="BAYİNİN KISA TİCARİ İSMİ" required>
                 </div>
                 <!-- /.input group -->
             </div>
@@ -43,7 +43,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-fingerprint"></i></span>
                     </div>
-                    <input type="text" name="bayi_kodu" id="bayi_kodu"  class="form-control" minlength="5" maxlength="5" placeholder="XYZDC (5 KARAKTERLİ)">
+                    <input type="text" name="bayi_kodu" id="bayi_kodu"  class="form-control" minlength="3" maxlength="5" placeholder="XYZDC (MİN:3 - MAX:5 KARAKTERLİ)" required>
                 </div>
                 <!-- /.input group -->
             </div>
@@ -147,7 +147,6 @@
           </div>
           <!-- /.card-footer -->
       </div>
-        <input type="hidden" value="{{Auth::user()->id}}" name="user_id">
         </form>
         <!-- KAYIT FORMU SON -->
     </div>
@@ -170,4 +169,38 @@
         })
     </script>
     <!--FORM SELECT2 STİLİ SON-->
+    <!--form doğrulama-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.validator.setDefaults({
+
+            });
+
+            $('#yeni_kayit').validate({
+                rules: {
+                    bayi_adi: {
+                        required: true,
+                    },
+
+                    bayi_kodu: {
+                        required: true,
+                        minlength: 3,
+                        maxlength: 5
+                    }
+                },
+                errorElement: 'span',
+                errorPlacement: function (error, element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('.form-group').append(error);
+                },
+                highlight: function (element, errorClass, validClass) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function (element, errorClass, validClass) {
+                    $(element).removeClass('is-invalid');
+                }
+
+            });
+        });
+    </script>
 @endsection

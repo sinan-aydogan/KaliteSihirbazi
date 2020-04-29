@@ -127,7 +127,7 @@
             @elseif($operator1->bayi_il==81)Düzce
             @endif</td>
         <td class="project-actions text-center">{{$operator1->bayi_kodu}}</td>
-        <td class="project-actions text-center"> 4</td>
+        <td class="project-actions text-center"> {{(count($musteri_sikayeti->where('sikayet_bayi',$operator1->id)) == 0 ? "" : count($musteri_sikayeti->where('sikayet_bayi',$operator1->id)))}}</td>
         <td class="project-actions text-center">
 
             <form method="post" id="{{$controller}}-sil" action="{{route($controller.'.destroy',$operator1->id)}}">

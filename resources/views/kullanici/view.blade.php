@@ -5,6 +5,11 @@
 @extends('anasablon')
 @section('baslik',$controller1->name)
 @section('anabaslik','Kullanıcı Yönetim Paneli')
+@section('csskodu')
+    <!--açılır takvim-->
+    <link href="{{asset('/plugins/datepicker/css/bootstrap-datepicker.min.css')}}" rel="stylesheet">
+
+@endsection
 @section('icerik')
 
   <div class="row">
@@ -31,7 +36,7 @@
 
                               <ul class="list-group list-group-unbordered mb-3">
                                   <li class="list-group-item">
-                                      <b>Bölüm</b> <a class="float-right">{{$bolumler->find($controller1->bolum)->bolum_adi}}</a>
+                                      <b>Bölüm</b> <a class="float-right">{{$controller1->bolum != null ? $bolumler->find($controller1->bolum)->bolum_adi : "Tanımsız"}}</a>
                                   </li>
                                   <li class="list-group-item">
                                       <b>İş Başlangıç</b> <a class="float-right">{{date('d.m.Y',strtotime($controller1->ise_giris) )}}</a>
@@ -57,15 +62,15 @@
                               <strong><i class="fas fa-book mr-1"></i> Eğitim</strong>
 
                               <p class="text-muted" style="margin-top: 10px">
-                                  @if($controller1->egitim != null)
-                                  @php
-                                  $egitimlerarray = explode(',', $controller1->egitim)
-                                  @endphp
-                                  @foreach($egitimlerarray as $egitim)
-                                  <span class="badge badge-danger">{{$egitim}}</span><br>
-                                      @endforeach
+                                  @if($controller1->egitim == null)
+                                      --YETERLİ BİLGİ YOK--
                                       @else
-                                  --YETERLİ BİLGİ YOK--
+                                      @php
+                                          $egitimlerarray = explode(',', $controller1->egitim)
+                                      @endphp
+                                      @foreach($egitimlerarray as $egitim)
+                                          <span class="badge badge-danger">{{$egitim}}</span><br>
+                                      @endforeach
                                       @endif
                               </p>
 
@@ -87,15 +92,15 @@
                               <strong><i class="fas fa-pencil-alt mr-1"></i> Yetenekler</strong>
 
                               <p class="text-muted" style="margin-top: 10px">
-                                  @if($controller1->yetenek != null)
+                                  @if($controller1->yetenek == null)
+                                      --YETERLİ BİLGİ YOK--
+                                  @else
                                       @php
                                           $yetenekarray = explode(',', $controller1->yetenek)
                                       @endphp
                                       @foreach($yetenekarray as $yetenek)
                                           <span class="badge badge-info text-nowrap">{{$yetenek}}</span>
                                       @endforeach
-                                  @else
-                                      --YETERLİ BİLGİ YOK--
                                   @endif
                               </p>
 
@@ -103,15 +108,15 @@
 
                               <strong><i class="far fa-file-alt mr-1"></i> Sorumluluklar</strong>
                               <p class="text-muted" style="margin-top: 10px">
-                              @if($controller1->gorev != null)
-                                  @php
-                                      $gorevarray = explode(',', $controller1->gorev);
-                                  @endphp
-                                  @foreach($gorevarray as $gorev)
-                                      <span class="badge badge-success text-nowrap">{{$gorev}}</span>
-                                  @endforeach
+                              @if($controller1->gorev == null)
+                                      -YETERLİ BİLGİ YOK-
                               @else
-                              -YETERLİ BİLGİ YOK-
+                                      @php
+                                          $gorevarray = explode(',', $controller1->gorev);
+                                      @endphp
+                                      @foreach($gorevarray as $gorev)
+                                          <span class="badge badge-success text-nowrap">{{$gorev}}</span>
+                                      @endforeach
                                   @endif
                               </p>
                           </div>
@@ -171,7 +176,7 @@
                                   <!-- /.tab-pane -->
 
                                   <div class="tab-pane" id="settings">
-                                          <form method="POST" class="form-horizontal" action="{{ route($controller.'.update', $controller1->id) }}">
+                                          <form method="POST" class="form-horizontal" action="{{ route($controller.'.update', $controller1->id) }}" id="kayit">
                                           @csrf
                                           @method('PUT')
                                          <!--KULLANICI DÜZENLEME FORMU BAŞ-->
@@ -217,7 +222,7 @@
 
                                                       </style>
                                                       <select class="form-control select2bs4" name="bolum" id="bolum">
-                                                          <option>--BÖLÜM SEÇİNİZ--</option>
+                                                          <option value="">--BÖLÜM SEÇİNİZ--</option>
                                                           @foreach($bolumler as $bolum)
                                                               <option value="{{$bolum->id}}" @if($controller1->bolum == $bolum->id) selected="selected"@endif>{{$bolum->bolum_adi}}</option>
                                                           @endforeach
@@ -253,14 +258,26 @@
 
                                               <!--ŞİFRE BAŞ-->
                                               <div class="form-group">
-                                                  <label>Şifre:</label>
-                                                  <div class="input-group">
+                                                  <label>Şifre Değiştirilsin mi ?:</label>
+                                                  &nbsp;
+                                                  <input type="checkbox" id="sifre_checkbox" name="sifre_checkbox"><span class="text-muted text-sm font-italic">  (Lütfen sadece şifreyi değiştirmek istiyorsanız seçiniz)</span>
+                                                  <div id="sifre_input">
+                                                      <label>Şifre:</label>
+                                                      <div class="input-group">
                                                       <div class="input-group-prepend">
                                                           <span class="input-group-text"><i class="fas fa-key"></i></span>
                                                       </div>
-                                                      <input type="text" name="password" id="password"  class="form-control text-bold text-primary">
+                                                      <input type="text" name="password" id="password"  class="form-control text-bold text-green">
+                                                      </div>
+                                                      <label>Şifre Tekrar:</label>
+                                                      <div class="input-group">
+                                                          <div class="input-group-prepend">
+                                                              <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                                          </div>
+                                                          <input type="text" name="password_tekrar" id="password_tekrar"  class="form-control text-bold text-green" placeholder="YUKARIYA YAZDIĞINIZ ŞİFRENİN AYNISI" VALUE="">
+                                                      </div>
+                                                      <span class="text-muted text-sm font-italic">Şifreyi doğru yazdığınız doğrulamak için iki kutuyada aynı şifreyi yazmalısınız.</span>
                                                   </div>
-                                                  <span class="text-muted font-italic text-sm">Şifreyi değiştirmek değiştirmek istemiyorsanız boş bırakınız.</span>
                                               </div>
                                               <!--ŞİFRE SON-->
 
@@ -278,7 +295,7 @@
                                                           <div class="col-10 align-self-center pr-2">
                                                           <div class="custom-file">
                                                               <input type="file" class="custom-file-input" name="avatar" id="exampleInputFile">
-                                                              <label class="custom-file-label" for="avatar">Fotoğrafı Seçiniz</label>
+                                                              <label class="custom-file-label" for="avatar">Fotoğrafı Seçiniz (JPG, JPEG,PNG VEYA BMP)</label>
                                                           </div>
                                                           </div>
                                                       </div>
@@ -306,12 +323,14 @@
                                       <div class="form-group">
                                           <label>BİTİRDİĞİ OKULLAR:</label>
                                           <div class="input-group">
-                                              <select class="form-control select2bs4" name="egitim[]" multiple="multiple">
-                                                  @if($controller1->egitim != null)
-
+                                              <select class="form-control select2bs4" name="egitim[]" id="egitim" multiple="multiple">
+                                                  @if($controller1->egitim == "")
+                                                  @else
                                                       @foreach(explode(',', $controller1->egitim) as $egitim)
                                                           <option value="{{$egitim}}" selected="selected">{{$egitim}}</option>
                                                           @endforeach
+
+
                                                       @endif
                                               </select>
                                           </div>
@@ -336,8 +355,9 @@
                                       <div class="form-group">
                                           <label>Yetenekler:</label>
                                           <div class="input-group">
-                                              <select class="form-control select2bs4" name="yetenek[]" multiple="multiple">
-                                                  @if($controller1->yetenek != null)
+                                              <select class="form-control select2bs4" name="yetenek[]" id="yetenek" multiple="multiple">
+                                                  @if($controller1->yetenek == null)
+                                                      @else
 
                                                       @foreach(explode(',', $controller1->yetenek) as $yetenek)
                                                           <option value="{{$yetenek}}" selected="selected">{{$yetenek}}</option>
@@ -354,9 +374,9 @@
                                       <div class="form-group">
                                           <label>Görevleri:</label>
                                           <div class="input-group">
-                                              <select class="form-control select2bs4" name="gorev[]" multiple="multiple">
-                                                  @if($controller1->gorev != null)
-
+                                              <select class="form-control select2bs4" name="gorev[]" id="gorev" multiple="multiple">
+                                                  @if($controller1->gorev == null)
+                                                      @else
                                                       @foreach(explode(',', $controller1->gorev) as $gorev)
                                                           <option value="{{$gorev}}" selected="selected">{{$gorev}}</option>
                                                       @endforeach
@@ -397,37 +417,21 @@
 @endsection
 
 @section('javakodu')
-<!--{{$controller}} LİSTESİ DATATABLE AYAR BAŞ-->
-<script>
-  $(function () {
-    $('#{{$controller}}').DataTable({
-      "paging": true,
-      "lengthChange": true,
-      "searching": true,
-      "ordering": true,
-      "info": true,
-      "autoWidth": true,
-      "language": {
-          "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Turkish.json"
-      }
+
+    <!--JAVASCRİPT IMPORT BAŞ-->
 
 
-    });
-  });
-</script>
-<!--{{$controller}} LİSTESİ DATATABLE AYAR SON-->
+    <script src="{{asset('plugins/summernote/summernote-bs4.min.js')}}"></script>
+    <!--fotoğraf yükleme-->
+    <script src="{{asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
+    <!--açılır takvim-->
+    <script src="{{asset('plugins/datepicker/js/bootstrap-datepicker.min.js')}}"></script>
+    <script src="{{asset('plugins/datepicker/js/bootstrap-datepicker.tr.min.js')}}"></script>
 
-@if(session('mesaj'))
-    <script type="text/javascript">
-        Swal.fire ({
-            type: '{{session('mesaj.tur')}}',
-            title: '{{session('mesaj.icerik')}}',
-            showConfirmButton: true,
-            onBeforeOpen: () => {
-            }
-        })
-    </script>
-@endif
+
+    <!--JAVASCRİPT IMPORT SON-->
+
+
 <!--otomatik tab seçici-->
 <script>
     $(function(){
@@ -441,20 +445,105 @@
     });
 </script>
 
-<script>
-    $(function () {
-        //Initialize Select2 Elements
-        $('.select2').select2()
+    <!--SELECT2-->
+    <script>
+        $(function () {
+            //Initialize Select2 Elements
+            $('.select2').select2()
 
-        //Initialize Select2 Elements
-        $('.select2bs4').select2({
-            theme: 'bootstrap4',
-            tags: true,
-            tokenSeparators: [','],
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+                theme: 'bootstrap4',
+                tags: true,
+                tokenSeparators: [',']
+            })
+            // Summernote
+            $('.textarea').summernote()
         })
-        // Summernote
-        $('.textarea').summernote()
-    })
+    </script>
+
+    <!--fotoğraf yükleme-->
+    <script>
+        $(document).ready(function () {
+            bsCustomFileInput.init();
+        });
+    </script>
+
+    <!--açılır takvim-->
+    <script>
+        $('.tarih').datepicker({
+            language: "tr"
+        });
+    </script>
+
+    <!--form doğrulama-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.validator.setDefaults({
+
+            });
+
+            $('#kayit').validate({
+                rules: {
+                    name: {
+                        required: true,
+                    },
+
+                    email: {
+                        required: true,
+                        email: true,
+                    },
+                    pozisyon: {
+                        required: true,
+                    },
+                    ise_giris: {
+                        required: true,
+                    },
+                    password: {
+                        required: true,
+                        minlength: 8
+                    },
+                    password_tekrar: {
+                        equalTo: "#password"
+                    },
+                    avatar: {
+                        extension: "png|jpg|jpeg|bmp|gif"
+                    }
+                },
+                errorElement: 'span',
+                errorPlacement: function (error, element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('.form-group').append(error);
+                },
+                highlight: function (element, errorClass, validClass) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function (element, errorClass, validClass) {
+                    $(element).removeClass('is-invalid');
+                }
+
+            });
+        });
+    </script>
+    <!--AYAR KODU SON-->
+
+<!--şifre alanı koşullu gösterme-->
+<script>
+    checkbox = $('#sifre_checkbox'),
+        chShipBlock = $('#sifre_input');
+
+    chShipBlock.hide();
+
+    checkbox.on('click', function() {
+        if($(this).is(':checked')) {
+            chShipBlock.show();
+            chShipBlock.find('input').attr('required', true);
+        } else {
+            chShipBlock.hide();
+            chShipBlock.find('input').attr('required', false);
+        }
+    });
 </script>
+
 
 @endsection

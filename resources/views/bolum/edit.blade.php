@@ -26,7 +26,7 @@
                     <div class="card-body">
 
                         <!--KAYIT FORMU BAŞ-->
-                        <form method="POST" action="{{ route($controller.'.update', $bolumler->id) }}">
+                        <form method="POST" action="{{ route($controller.'.update', $bolumler->id) }}" id="kayit">
                         @csrf
                         @method('PATCH')
                         <!--BÖLÜM ADI BAŞ-->
@@ -46,7 +46,7 @@
                                 <label>Bölüm Yöneticisi:</label>
                                 <div class="input-group">
                                     <select class="form-control select2bs4" name="bolum_yonetici">
-                                        <option>--YÖNETİCİ SEÇ--</option>
+                                        <option value="">--YÖNETİCİ SEÇ--</option>
                                         @foreach($kullanicilar as $kullanici)
                                             <option value="{{$kullanici->id}}" @if($kullanici->id == $bolumler->bolum_yonetici) selected="selected" @endif>{{$kullanici->name}}</option>
                                         @endforeach
@@ -174,5 +174,36 @@
             $('.textarea').summernote()
         })
     </script>
+
+    <!--form doğrulama-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.validator.setDefaults({
+
+            });
+
+            $('#kayit').validate({
+                rules: {
+                    bolum_adi: {
+                        required: true,
+                    }
+                },
+                errorElement: 'span',
+                errorPlacement: function (error, element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('.form-group').append(error);
+                },
+                highlight: function (element, errorClass, validClass) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function (element, errorClass, validClass) {
+                    $(element).removeClass('is-invalid');
+                }
+
+            });
+        });
+    </script>
     <!--AYAR KODU SON-->
+
+
 @endsection

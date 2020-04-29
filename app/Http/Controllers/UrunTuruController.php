@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\UrunTuruModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UrunTuruController extends Controller
 {
@@ -21,7 +22,7 @@ class UrunTuruController extends Controller
     public function index()
     {
         /* MODELİN BAĞLI OLDUĞU TABLODAN TÜM VERİLERİ ÇEKİYORUZ */
-        $urunturleri = UrunTuruModel::all();
+        $urunturleri = UrunTuruModel::all()->sortBy('urun_turu_adi');
         /* TÜM VERİLERİ LİSTELEMESİ İÇİN INDEX BLADE MİZİ ÇAĞIRIYORUZ VE İÇİNE TABLO VERİLERİ İÇİN ANA DEĞİŞKENLERİ YOLLUYORUZ */
         return view ('urunturu.index',compact('urunturleri'));
     }
@@ -46,9 +47,38 @@ class UrunTuruController extends Controller
      */
     public function store(Request $request)
     {
-        UrunTuruModel::create($request->all());
+        //
+        $rules = [
+            'urun_turu_adi'=>'required|unique:urunturu',
+        ];
+
+        $messages = [
+            'urun_turu_adi.required'    => "Ürün türü adı alanını doldurmanız gereklidir",
+            'urun_turu_adi.unique'    => "Girdiğiniz ürün türü mevcut, başka bir tane giriniz",
+        ];
+
+        $this->validate($request, $rules,$messages);
+
+        $urun_turu = new UrunTuruModel();
+        $urun_turu->urun_turu_adi = $request->urun_turu_adi;
+        $urun_turu->user_id = Auth::user()->id;
+        $urun_turu->save();
+
+        /**UrunTuruModel::create($request->all());**/
+
+        /*SESSION: BAŞARILI KAYIT MESAJINI OLUŞTURMA*/
+        $mesaj=[];
+        $mesaj['tur']="success";
+        $mesaj['title']="Yeni Kaydedilen Ürün Türü Bilgileri";
+        $mesaj['icerik']='<div class="container">\'+
+                                \'<div class="row border p-1 m-1 bg-gradient-light">\'+
+                                    \'<div class="col-4 text-bold mx-auto border-right align-self-center display-4" style="font-size: 16px">ÜRÜN TÜRÜ</div>\'+
+                                    \'<div class="col-8 mx-auto align-self-center display-4" style="font-size: 20px">'.$request->urun_turu_adi.'</div>\'+
+                                \'</div>\'+
+                        \'</div>';
+
         /* KAYIT SONRASI KULLANICIYI, GÖNDERMEK İSTEDİĞİMİZ BLADE E YÖNLENDİRİYORUZ, BAŞARI KAYIT MESAJINI KAYDEDİLEN KAYITTAN İSİM İLE YOLLUYORUZ */
-        return redirect('urun-turu/create',)->with('mesaj', $request->urun_turu_adi);
+        return redirect()->route('urun-turu.create')->with('mesaj', $mesaj);
     }
 
     /**
@@ -84,12 +114,42 @@ class UrunTuruController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //
+        $rules = [
+            'urun_turu_adi'=>'required|unique:urunturu,urun_turu_adi,'.$id,
+        ];
+
+        $messages = [
+            'urun_turu_adi.required'    => "Ürün türü adı alanını doldurmanız gereklidir",
+            'urun_turu_adi.unique'    => "Girdiğiniz ürün türü mevcut, başka bir tane giriniz",
+        ];
+
+        $this->validate($request, $rules,$messages);
+
         /* DÜZENLE BLADE SİNDEN GELEN ID NIN SAHİP OLDUĞU TABLO SATIRI BULUNUR */
         $guncelle = UrunTuruModel::find($id);
         /* UPDATE KOMUTU İLE DÜZENLE BLADE SİNDEKİ FORMUN YOLLADIĞI TÜM VERİLER TABLOYA İŞLENİR */
-        $guncelle->update($request->all());
+
+       $urun_turu = UrunTuruModel::find($id);
+       $urun_turu->update([
+          'urun_turu_adi' => $request->get('urun_turu_adi')
+       ]);
+
+        /**$guncelle->update($request->all());**/
+
+        /*SESSION: BAŞARILI KAYIT MESAJINI OLUŞTURMA*/
+        $mesaj=[];
+        $mesaj['tur']="success";
+        $mesaj['title']="Düzenlenen Ürün Türü Bilgileri";
+        $mesaj['icerik']='<div class="container">\'+
+                                \'<div class="row border p-1 m-1 bg-gradient-light">\'+
+                                    \'<div class="col-4 text-bold mx-auto border-right align-self-center display-4" style="font-size: 16px">ÜRÜN TÜRÜ</div>\'+
+                                    \'<div class="col-8 mx-auto align-self-center display-4" style="font-size: 20px">'.$request->get('urun_turu_adi').'</div>\'+
+                                \'</div>\'+
+                        \'</div>';
+
         /* DÜZENLEME TAMAMLANDIĞI KULLANICI YENİ BİR EKRANA YÖNLENDİRİLİR */
-        return redirect()->route('urun-turu.index');
+        return redirect()->route('urun-turu.index')->with('mesaj',$mesaj);
     }
 
     /**
@@ -102,9 +162,21 @@ class UrunTuruController extends Controller
     /* KAYIT SİLMEK İÇİN KULLANILAN İŞLEM */
     public function destroy($id)
     {
+        $urun_turu = UrunTuruModel::find($id);
+        /*SESSION: BAŞARILI KAYIT MESAJINI OLUŞTURMA*/
+        $mesaj=[];
+        $mesaj['tur']="warning";
+        $mesaj['title']="Silinen Ürün Türü Bilgileri";
+        $mesaj['icerik']='<div class="container">\'+
+                                \'<div class="row border p-1 m-1 bg-gradient-light">\'+
+                                    \'<div class="col-4 text-bold mx-auto border-right align-self-center display-4" style="font-size: 16px">ÜRÜN TÜRÜ</div>\'+
+                                    \'<div class="col-8 mx-auto align-self-center display-4" style="font-size: 20px">'.$urun_turu->urun_turu_adi.'</div>\'+
+                                \'</div>\'+
+                        \'</div>';
+
         /* SİLİNECEK KAYIDIN ID Sİ URL İLE ALNIR VE DELETE OPERATÖRÜ İLE SİLİNİR */
         UrunTuruModel::find($id)->delete();
         /* SİLME İŞLEMİ SONRASI KULLANICI YÖNLENDİRİLİR */
-        return redirect('urun-turu',);
+        return redirect()->route('urun-turu.index')->with('mesaj',$mesaj);
     }
 }

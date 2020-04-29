@@ -16,8 +16,6 @@
         $controller=Request::segment(1);
     @endphp
 
-    <!-- Main content -->
-    <section class="content">
         <div class="row">
             <div class="col-12">
 
@@ -31,7 +29,7 @@
                     <div class="card-body">
 
                         <!--KAYIT FORMU BAŞ-->
-                        <form method="post" action="{{ route($controller.'.store') }}">
+                        <form method="post" action="{{ route($controller.'.store') }}" id="kayit">
                         @csrf
 
                         <!--ŞİKAYET KATEGORİSİ BAŞ-->
@@ -63,7 +61,7 @@
                             <div class="form-group">
                                 <label>İlgili Bölüm:</label>
                                 <select name="sikayet_bolum" id="sikayet_bolum"  class="form-control select2bs4" style="width: 100%;">
-                                    <option>--Bölün Seçin--</option>
+                                    <option value="">--Bölün Seçin--</option>
                                     @foreach($bolumler as $bolum)
                                     <option value="{{$bolum->id}}">{{$bolum->bolum_adi}}</option>
                                     @endforeach
@@ -86,7 +84,7 @@
                             <div class="form-group">
                                 <label>Şikayet Eden Bayi:</label>
                                 <select name="sikayet_bayi" id="sikayet_bayi"  class="form-control select2bs4" style="width: 100%;">
-                                    <option>--Bayi Seçin--</option>
+                                    <option value="">--Bayi Seçin--</option>
                                     @foreach($bayiler as $bayi)
                                         <option value="{{$bayi->id}}">{{$bayi->bayi_adi}}</option>
                                     @endforeach
@@ -111,18 +109,13 @@
                     </div>
                     <!-- /.card-footer -->
                 </div>
-                <input type="hidden" value="{{Auth::user()->id}}" name="user_id">
                 </form>
                 <!-- KAYIT FORMU SON -->
             </div>
             <!-- /.col -->
         </div>
         <!-- /.row -->
-    </section>
 
-    <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
 
 
 
@@ -161,20 +154,7 @@
             orientation: "bottom"
         });
     </script>
-    <!--başarılı mesajı-->
 
-    @if(session('mesaj'))
-        <script type="text/javascript">
-            Swal.fire ({
-                type: '{{session('mesaj.tur')}}',
-                title: '{!! session('mesaj.title') !!}',
-                html: '{!! session('mesaj.icerik') !!}',
-                showConfirmButton: true,
-                onBeforeOpen: () => {
-                }
-            })
-        </script>
-    @endif
 <!--bölüme bağlı ürün listesi-->
 
     <script>
@@ -235,6 +215,49 @@
                 }else{
                     $('#sikayet_turu').empty();
                 }
+            });
+        });
+    </script>
+
+    <!--form doğrulama-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.validator.setDefaults({
+
+            });
+            $('#kayit').validate({
+                rules: {
+                    sikayet_tarihi: {
+                        required: true,
+                    },
+                    sikayet_bolum: {
+                        required: true,
+                    },
+                    sikayet_bayi: {
+                        required: true,
+                    },
+                    sikayet_urun: {
+                        required: true,
+                    },
+                    sikayet_turu: {
+                        required: true,
+                    },
+                    sikayet_kategorisi: {
+                        required: true,
+                    }
+                },
+                errorElement: 'span',
+                errorPlacement: function (error, element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('.form-group').append(error);
+                },
+                highlight: function (element, errorClass, validClass) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function (element, errorClass, validClass) {
+                    $(element).removeClass('is-invalid');
+                }
+
             });
         });
     </script>

@@ -168,7 +168,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item has-treeview ">
-                            <a href="{{URL::to('/musteri-sikayeti')}}" class="nav-link">
+                            <a href="{{URL::to('/musteri-sikayeti')}}" class="nav-link @if(Request::segment(1)=="musteri-sikayeti") active @endif "">
                                 <i class="fa fa-traffic-light nav-icon"></i>
                                 <p>Müşteri Şikayetleri</p>
                             </a>
@@ -179,7 +179,7 @@
                                 <p>Projeler</p>
                             </a>
                         </li>
-                        <li class="nav-item has-treeview @if(Request::segment(1)=="musteri-sikayeti" or Request::segment(1)=="proje" or Request::segment(1)=="denetim"or Request::segment(1)=="urun-denetim"or Request::segment(1)=="sistem-denetim"or Request::segment(1)=="denetci") menu-open active @endif ">
+                        <li class="nav-item has-treeview @if( Request::segment(1)=="denetim"or Request::segment(1)=="urun-denetim"or Request::segment(1)=="sistem-denetim"or Request::segment(1)=="denetci") menu-open active @endif ">
                             <a href="{{URL::to('/')}}" class="nav-link">
                                 <i class="fa fa-award nav-icon"></i>
                                 <p>Denetimler

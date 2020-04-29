@@ -23,7 +23,7 @@ class KullaniciController extends Controller
     public function index()
     {
         //
-        $kullanicilar = User::all();
+        $kullanicilar = User::all()->sortBy("name");
         $bolumler = BolumModel::all();
         return view('kullanici.index',compact('kullanicilar','bolumler'));
     }
@@ -50,7 +50,7 @@ class KullaniciController extends Controller
     public function store(Request $request)
     {
         //
-        $this->validate($request, [
+        $rules = [
             'name'=>'required',
             'email'=>'required|unique:users|email',
             'pozisyon'=>'required',
@@ -58,7 +58,21 @@ class KullaniciController extends Controller
             // nullable == optional
             // apache max upload 2mb
             'avatar' => 'image|nullable|max:2999'
-        ]);
+        ];
+
+        $messages = [
+            'name.required'    => "Personelin ismini yazmanız gereklidir",
+            'email.required'    => "Email adresi alanını doldurmanız gereklidir",
+            'email.unique'    => "Girdiğiniz email mevcut, farklı bir tane giriniz",
+            'email.email'    => "Email adresi formatı geçersiz, örn: mail@mail.com",
+            'pozisyon.required'    => "Personelin pozisyonunu yazmanız gereklidir",
+            'password.required'    => "Personelin panele giriş yapabilmesi için şifre belirlemeniz gereklidir",
+            'password.min'    => "Personel şifresi en az 8 karakter uzunluğunda olmalıdır, 8 karakterden daha kısa yazdınız",
+            'avatar.image'    => "Personel fotoğrafı geçerli bir jpeg, png veya bmp dosya formatında olmalıdır, hatalı formatta dosya yüklediniz",
+            'avatar.max'    => "Personel fotoğrafı dosyanızın boyutu çok büyük, Max: 3mb",
+        ];
+
+        $this->validate($request, $rules,$messages);
 
         // Handle File Upload
         if($request->hasFile('avatar')) {
@@ -76,24 +90,39 @@ class KullaniciController extends Controller
             $fileNameToStore = 'noimage.png';
         }
 
+
+
+
+
         $kullanici = new User();
         $kullanici->name = $request->name;
         $kullanici->email = $request->email ;
         $kullanici->bolum = $request->bolum ;
         $kullanici->pozisyon = $request->pozisyon ;
-        $kullanici->ise_giris = date('Y-m-g', strtotime($request->ise_giris)) ;
+        $kullanici->ise_giris = date('Y-m-d', strtotime($request->ise_giris)) ;
         $kullanici->password = Hash::make($request->password) ;
         $kullanici->avatar = $fileNameToStore ;
-        $kullanici->egitim = is_array($request->egitim == true ? implode(',',$request->egitim) : null);
+        $kullanici->egitim = $request->egitim != null ? implode(',',$request->egitim) : null;
         $kullanici->konum = $request->konum ;
-        $kullanici->yetenek = is_array($request->yetenek == true ? implode(',',$request->yetenek) : null) ;
-        $kullanici->gorev = is_array($request->gorev == true ? implode(',',$request->gorev) : null) ;
-        $kullanici->user_id = $request->user_id;
+        $kullanici->yetenek = $request->yetenek != null ? implode(',',$request->yetenek) : null ;
+        $kullanici->gorev = $request->gorev != null ? implode(',',$request->gorev) : null;
+        $kullanici->user_id = Auth::user()->id;
         $kullanici->save();
+
+        /*SESSION: BAŞARILI KAYIT MESAJINI OLUŞTURMA*/
         $mesaj=[];
         $mesaj['tur']="success";
         $mesaj['title']="Yeni Kaydedilen Kullanıcı Bilgileri";
-        $mesaj['icerik']="<b>Kullanıcı: </b>".$request->name."<br> <b>Mail: </b>".$request->email."<br> giriş bilgileri mail adresine gönderilmiştir.";
+        $mesaj['icerik']='<div class="container bg-gradient-light border border-info p-2">\'+
+                            \'<div class="row">\'+
+                                \'<div class="col text-bold text-right pr-2">Kullanıcı Adı:</div>\'+
+                                \'<div class="col text-left pr-2">'.$request->name.'</div>\'+
+                            \'<div class="w-100"></div>\'+
+                                \'<div class="col text-bold text-right pr-2">Mail:</div>\'+
+                                \'<div class="col text-left pr-2">'.$request->email.'</div>\'+
+                            \'</div>\'+
+                        \'</div>\'+
+                        \'<br><span class="text-center text-info"><i class="fas fa-mail-bulk"></i>  Kullanıcı bilgileri, mail adresine gönderilmiştir</span>';
 
         return redirect()->route('kullanici.create')->with('mesaj',$mesaj);
     }
@@ -136,19 +165,30 @@ class KullaniciController extends Controller
     public function update(Request $request, $id)
     {
         //
-
-
         //
-        $this->validate($request, [
+        $rules = [
             'name'=>'required',
-            'email'=>'required|unique:users|email',
-            'bolum'=>'required',
+            'email'=>'required|email|unique:users,email,'.$id,
             'pozisyon'=>'required',
-            'password'=>'required|min:8',
+            'password'=>'exclude_if:sifre_checkbox,|required|min:8',
             // nullable == optional
             // apache max upload 2mb
             'avatar' => 'image|nullable|max:2999'
-        ]);
+        ];
+
+        $messages = [
+            'name.required'    => "Personelin ismini yazmanız gereklidir",
+            'email.required'    => "Email adresi alanını doldurmanız gereklidir",
+            'email.unique'    => "Girdiğiniz email mevcut, farklı bir tane giriniz",
+            'email.email'    => "Email adresi formatı geçersiz, örn: mail@mail.com",
+            'pozisyon.required'    => "Personelin pozisyonunu yazmanız gereklidir",
+            'password.required'    => "Personelin panele giriş yapabilmesi için şifre belirlemeniz gereklidir",
+            'password.min'    => "Personel şifresi en az 8 karakter uzunluğunda olmalıdır, 8 karakterden daha kısa yazdınız",
+            'avatar.image'    => "Personel fotoğrafı geçerli bir jpeg, png veya bmp dosya formatında olmalıdır, hatalı formatta dosya yüklediniz",
+            'avatar.max'    => "Personel fotoğrafı dosyanızın boyutu çok büyük, Max: 3mb",
+        ];
+
+        $this->validate($request, $rules,$messages);
 
         // Handle File Upload
         if($request->hasFile('avatar')) {
@@ -167,24 +207,35 @@ class KullaniciController extends Controller
         }
 
         $kullanici = User::find($id);
+
+
+
         $kullanici->update([
-        'name' => $request->name,
-        'email' => $request->email,
-        'bolum' => $request->bolum,
-        'pozisyon' => $request->pozisyon,
-        'ise_giris' => date('yy-m-g', strtotime($request->ise_giris)),
-        'password' => Hash::make($request->password) ,
-        'avatar' => $fileNameToStore,
-        'egitim' => implode(',', $request->egitim) ,
-        'konum' => $request->konum ,
-        'yetenek' => implode(',',$request->yetenek) ,
-        'gorev' => implode(',',$request->gorev) ,
-            ]);
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'bolum' => $request->get('bolum'),
+            'pozisyon' => $request->get('pozisyon'),
+            'ise_giris' => date('Y-m-d', strtotime($request->get('ise_giris'))),
+            'password' => Hash::make($request->get('password')),
+            'avatar' => ($request->get('avatar') != null ? $fileNameToStore : $kullanici->avatar),
+            'egitim' => ($request->get('egitim') != null ? implode(',',$request->get('egitim')) : ""),
+            'konum' => $request->get('konum'),
+            'yetenek' => ( $request->get('yetenek') != null ? implode(',',$request->get('yetenek')): ""),
+            'gorev' => ( $request->get('gorev') != null ? implode(',',$request->get('gorev')): "")
+        ]);
+
+        /*SESSION: BAŞARILI KAYIT MESAJINI OLUŞTURMA*/
         $mesaj=[];
         $mesaj['tur']="success";
-        $mesaj['icerik']="Profil güncellenmiştir";
+        $mesaj['title']="Güncellenen Kullanıcı Bilgileri";
+        $mesaj['icerik']='<div class="container bg-gradient-light border border-info p-2">\'+
+                            \'<div class="row">\'+
+                                \'<div class="col text-bold text-right pr-2">Kullanıcı Adı: </div>\'+
+                                \'<div class="col text-left pr-2">'.$request->get('name').'</div>\'+
+                            \'</div>\'+
+                        \'</div>';
 
-        return redirect()->route('kullanici.view', $id)->with('mesaj',$mesaj);
+        return redirect()->route('kullanici.show', $id.'#settings')->with('mesaj',$mesaj);
 
 
 
@@ -199,12 +250,20 @@ class KullaniciController extends Controller
     public function destroy($id)
     {
         //
-        $kullanici = User::find($id)->name;
-        User::find($id)->delete();
+        $kullanici = User::find($id);
+        /*SESSION: BAŞARILI KAYIT MESAJINI OLUŞTURMA*/
         $mesaj=[];
-        $mesaj['tur'] = "warning";
-        $mesaj['title'] = "<b>Silinen Kullanıcı Bilgileri</b>";
-        $mesaj['icerik'] = "<b>Kullanıcı: </b>".$kullanici;
-        return redirect('kullanici')->with('mesaj',$mesaj);
+        $mesaj['tur']="warning";
+        $mesaj['title']="Silinen Kullanıcı Bilgileri";
+        $mesaj['icerik']='<div class="container bg-gradient-light border border-info p-2">\'+
+                            \'<div class="row">\'+
+                                \'<div class="col text-bold text-right pr-2">Kullanıcı Adı: </div>\'+
+                                \'<div class="col text-left pr-2">'.$kullanici->name.'</div>\'+
+                            \'</div>\'+
+                        \'</div>';
+        /* SİLİNECEK KAYIDIN ID Sİ URL İLE ALNIR VE DELETE OPERATÖRÜ İLE SİLİNİR */
+        User::find($id)->delete();
+
+        return redirect()->route('kullanici.index')->with('mesaj',$mesaj);
     }
 }

@@ -18,8 +18,6 @@
         $controller=Request::segment(1);
     @endphp
 
-    <!-- Main content -->
-    <section class="content">
         <div class="row">
             <div class="col-12">
 
@@ -33,7 +31,7 @@
                     <div class="card-body">
 
                         <!--KAYIT FORMU BAŞ-->
-                        <form method="post" action="{{ route($controller.'.store') }}">
+                        <form method="post" action="{{ route($controller.'.store') }}" id="kayit">
                         @csrf
                             <!--ÜRÜN ADI BAŞ-->
                             <div class="form-group">
@@ -51,8 +49,9 @@
                             <div class="form-group">
                                 <label>Ürünün Türü:</label>
                                 <select name="urun_turu" id="urun_turu"  class="form-control select2bs4" style="width: 100%;">
+                                    <option value="">-ÜRÜN TÜRÜ SEÇ-</option>
                                     @foreach($urunturleri as $urunturu)
-                                        <option value="{{$urunturu->id}}" selected="selected">{{$urunturu->urun_turu_adi}}</option>
+                                        <option value="{{$urunturu->id}}">{{$urunturu->urun_turu_adi}}</option>
                                     @endforeach
                                 </select>
 
@@ -63,8 +62,9 @@
                             <div class="form-group">
                                 <label>Üretildiği veya Bağlı Olduğu Bölüm:</label>
                                 <select name="urun_bolum" id="urun_bolum"  class="form-control select2bs4" style="width: 100%;">
+                                    <option value="">-BÖLÜM SEÇ-</option>
                                     @foreach($bolumler as $bolum)
-                                    <option value="{{$bolum->id}}" selected="selected">{{$bolum->bolum_adi}}</option>
+                                    <option value="{{$bolum->id}}">{{$bolum->bolum_adi}}</option>
                                     @endforeach
                                 </select>
 
@@ -112,18 +112,13 @@
                     </div>
                     <!-- /.card-footer -->
                 </div>
-                <input type="hidden" value="{{Auth::user()->id}}" name="user_id">
+                <input type="hidden" name="benzersiz" id="benzersiz" value="">
                 </form>
                 <!-- KAYIT FORMU SON -->
             </div>
             <!-- /.col -->
         </div>
         <!-- /.row -->
-    </section>
-
-    <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
 
 
 
@@ -181,6 +176,44 @@
                 $('#charNum').text(500 - len);
             }
         };
+    </script>
+
+    <!--form doğrulama-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.validator.setDefaults({
+
+            });
+
+            $('#kayit').validate({
+                rules: {
+                    urun_adi: {
+                        required: true,
+                    },
+                    urun_turu: {
+                        required: true,
+                    },
+                    urun_bolum: {
+                        required: true,
+                    },
+                    urun_raf_omru: {
+                        required: true,
+                    }
+                },
+                errorElement: 'span',
+                errorPlacement: function (error, element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('.form-group').append(error);
+                },
+                highlight: function (element, errorClass, validClass) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function (element, errorClass, validClass) {
+                    $(element).removeClass('is-invalid');
+                }
+
+            });
+        });
     </script>
     <!--AYAR KODU SON-->
 @endsection

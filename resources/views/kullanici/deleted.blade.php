@@ -45,7 +45,7 @@
                 <div class="align-self-center"><span class="p-3 text-bold"> <a href="{{ route('kullanici.show', $operator1->id)}}"> {{$operator1->name}}</a></span></div>
             </div>
             </td>
-        <td >{{$bolumler->find($operator1->bolum)->bolum_adi}}</td>
+        <td >{{is_array($bolumler->where('id',$operator1->bolum)) == true ? $bolumler->find($operator1->bolum)->bolum_adi: "TANIMSIZ"}}</td>
         <td >{{$operator1->pozisyon}}</td>
         <td >{{$operator1->yetki}}</td>
         <td >{{date('d.m.Y', strtotime($operator1->ise_giris))}} <span class="text-sm font-italic">
@@ -119,17 +119,5 @@
 </script>
 <!--{{$controller}} LİSTESİ DATATABLE AYAR SON-->
 
-@if(session('mesaj'))
-    <script type="text/javascript">
-        Swal.fire ({
-            type: '{{session('mesaj.tur')}}',
-            title: '{!! session('mesaj.title')!!}',
-            html: '{!! session('mesaj.icerik')!!}',
-            showConfirmButton: true,
-            onBeforeOpen: () => {
-            }
-        })
-    </script>
-@endif
 
 @endsection

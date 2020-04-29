@@ -20,20 +20,22 @@
                     <div class="card-header">
                         <h3 class="card-title">{{ __('Yeni Bölüm Oluştur') }}</h3>
                     </div>
+
                     <!-- /.card-header -->
                     <div class="card-body">
 
                         <!--KAYIT FORMU BAŞ-->
-                        <form method="post" action="{{ route($controller.'.store') }}">
+                        <form method="post" action="{{ route($controller.'.store') }}" id="kayit">
                         @csrf
-                        <!--BÖLÜM ADI BAŞ-->
+
+                        <!--BÖLÜM ADI BAŞ -->
                             <div class="form-group">
                                 <label>Bölüm Adı:</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-archway"></i></span>
                                     </div>
-                                    <input type="text" name="bolum_adi" id="bolum_adi"  class="form-control" placeholder="BÖLÜMÜN ADI">
+                                    <input type="text" name="bolum_adi" id="bolum_adi"  class="form-control" placeholder="BÖLÜMÜN ADI" required>
                                 </div>
                             </div>
                             <!--BAYİ ADI SON-->
@@ -43,7 +45,7 @@
                                 <label>Bölüm Yöneticisi:</label>
                                 <div class="input-group">
                                     <select class="form-control select2bs4" name="bolum_yonetici">
-                                        <option>--YÖNETİCİ SEÇ--</option>
+                                        <option value="">--YÖNETİCİ SEÇ--</option>
                                         @foreach($kullanicilar as $kullanici)
                                             <option value="{{$kullanici->id}}">{{$kullanici->name}}</option>
                                         @endforeach
@@ -52,14 +54,10 @@
                             </div>
                             <!--YÖNETİCİADI SON-->
 
-
-
-
                             <!--ŞİKAYET ALABİLİRLİK BAŞ-->
                             <div class="form-group  clearfix">
                                 <label>Bölüm Müşteri Şikayeti Alabilir mi?:</label>
                                 <div class="input-group">
-
                                     <input type="checkbox" data-off-text="Şikayet Alamaz" data-size="normal" data-animate="true" data-label-width="15px" data-handle-width="75px" data-on-text="Şikayet Alabilir" name="bolum_sikayet_alabilirlik" id="bolum_sikayet_alabilirlik" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
                                 </div>
                             </div>
@@ -69,7 +67,6 @@
                             <div class="form-group  clearfix">
                                 <label>Bölüm Üzerine Ürün Kaydedilebilir mi?:</label>
                                 <div class="input-group">
-
                                     <input type="checkbox" data-off-text="Hayır" data-size="normal" data-animate="true" data-label-width="15px" data-handle-width="75px" data-on-text="Evet" name="bolum_urun_kaydedilebilirlik" id="bolum_urun_kaydedilebilirlik" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
                                 </div>
                             </div>
@@ -123,7 +120,6 @@
                             </div>
                             <!--BÖLÜM RENGİ SON-->
 
-
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
@@ -132,7 +128,6 @@
                     </div>
                     <!-- /.card-footer -->
                 </div>
-                <input type="hidden" value="{{Auth::user()->id}}" name="user_id">
                 </form>
                 <!-- KAYIT FORMU SON -->
             </div>
@@ -176,4 +171,33 @@
         })
     </script>
     <!--AYAR KODU SON-->
+
+    <!--form doğrulama-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.validator.setDefaults({
+
+            });
+
+            $('#kayit').validate({
+                rules: {
+                    bolum_adi: {
+                        required: true,
+                    }
+                },
+                errorElement: 'span',
+                errorPlacement: function (error, element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('.form-group').append(error);
+                },
+                highlight: function (element, errorClass, validClass) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function (element, errorClass, validClass) {
+                    $(element).removeClass('is-invalid');
+                }
+
+            });
+        });
+    </script>
 @endsection

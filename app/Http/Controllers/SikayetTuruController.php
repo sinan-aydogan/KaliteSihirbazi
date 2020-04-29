@@ -6,6 +6,7 @@ use App\BolumModel;
 use App\SikayetTuruModel;
 use App\UrunModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use PhpParser\Node\Expr\Array_;
 
 class SikayetTuruController extends Controller
@@ -24,7 +25,7 @@ class SikayetTuruController extends Controller
     public function index()
     {
         /* MODELİN BAĞLI OLDUĞU TABLODAN TÜM VERİLERİ ÇEKİYORUZ */
-        $sikayet_turleri = SikayetTuruModel::all();
+        $sikayet_turleri = SikayetTuruModel::all()->sortBy("sikayet_turu_adi");
         /* MODELİMİZ DİĞER TABLOLARLA İLİŞKİLİ OLDUĞU İÇİN O TABLOLARDANDA TÜM VERİLERİ ÇEKİYORUZ */
         $bolumler = BolumModel::all();
         $urunler = UrunModel::all();
@@ -59,15 +60,45 @@ class SikayetTuruController extends Controller
     /* MODELİN BAĞLI OLDUĞU TABLODAN TÜM VERİLERİ ÇEKİYORUZ, BURAYA VERİLER CREATE İLE ÇAĞIRILMIŞ BLADE ÜZERİNDEN GELİR*/
     public function store(Request $request)
     {
+        /*VALIDATE: HATALI VERİ GİRİŞİNİ ENGELLEME*/
+        $rules = [
+            'sikayet_turu_adi'=>'required',
+            'sikayet_turu_bolum'=>'required'
+        ];
+
+        $messages = [
+            'sikayet_turu_adi.required'    => "Şikayet türü adı alanını doldurmanız gereklidir",
+            'sikayet_turu_bolum.required'    => "Şikayet türü için ilgili bölüm seçmediniz",
+        ];
+
+        $this->validate($request, $rules,$messages);
+
         $sikayet_turu = new SikayetTuruModel();
         $sikayet_turu->sikayet_turu_adi = $request->sikayet_turu_adi ;
         $sikayet_turu->sikayet_turu_bolum = $request->sikayet_turu_bolum ;
         $sikayet_turu->sikayet_turu_kaynak = $request->sikayet_turu_kaynak ;
         $sikayet_turu->sikayet_turu_oneri = $request->sikayet_turu_oneri ;
-        $sikayet_turu->sikayet_turu_urunler = implode(' , ',$request->sikayet_turu_urunler) ;
-        $sikayet_turu->user_id = $request->user_id;
-        $sikayet_turu->save();        /* KAYIT SONRASI KULLANICIYI, GÖNDERMEK İSTEDİĞİMİZ BLADE E YÖNLENDİRİYORUZ, BAŞARI KAYIT MESAJINI KAYDEDİLEN KAYITTAN İSİM İLE YOLLUYORUZ */
-        return redirect('sikayet-turu/create',)->with('mesaj', $request->sikayet_turu_adi);
+        $sikayet_turu->sikayet_turu_urunler = $request->sikayet_turu_urunler != null ? implode(' , ',$request->sikayet_turu_urunler) : null ;
+        $sikayet_turu->user_id = Auth::user()->id;
+        $sikayet_turu->save();
+        /* KAYIT SONRASI KULLANICIYI, GÖNDERMEK İSTEDİĞİMİZ BLADE E YÖNLENDİRİYORUZ, BAŞARI KAYIT MESAJINI KAYDEDİLEN KAYITTAN İSİM İLE YOLLUYORUZ */
+
+        /*SESSION: BAŞARILI KAYIT MESAJINI OLUŞTURMA*/
+        if($request->sikayet_turu_bolum != null ? $bolum = BolumModel::find($request->sikayet_turu_bolum)->bolum_adi : $bolum="Tanımsız");
+        $mesaj=[];
+        $mesaj['tur']="success";
+        $mesaj['title']="Yeni Kaydedilen Şikayet Türünün Bilgileri";
+        $mesaj['icerik']='<div class="container bg-gradient-light border border-info p-2">\'+
+                            \'<div class="row">\'+
+                                \'<div class="col text-bold text-right pr-2">Şikayet Türü Adı:</div>\'+
+                                \'<div class="col text-left pr-2">'.$request->sikayet_turu_adi.'</div>\'+
+                            \'<div class="w-100"></div>\'+
+                                \'<div class="col text-bold text-right pr-2">İlgili Bölüm:</div>\'+
+                                \'<div class="col text-left pr-2">'.$bolum.'</div>\'+
+                            \'</div>\'+
+                        \'</div>';
+
+        return redirect('sikayet-turu/create',)->with('mesaj', $mesaj);
     }
 
     /**
@@ -110,6 +141,19 @@ class SikayetTuruController extends Controller
     /* DÜZENLEME BLADE İNDEN GELEN VERİYİ TABLOMUZA İŞLİYORUZ, DEĞERLERİN GÜNCELLENMESİ KISMI BURADA OLUYOR */
     public function update(Request $request, $id)
     {
+        /*VALIDATE: HATALI VERİ GİRİŞİNİ ENGELLEME*/
+        $rules = [
+            'sikayet_turu_adi'=>'required',
+            'sikayet_turu_bolum'=>'required'
+        ];
+
+        $messages = [
+            'sikayet_turu_adi.required'    => "Şikayet türü adı alanını doldurmanız gereklidir",
+            'sikayet_turu_bolum.required'    => "Şikayet türü için ilgili bölüm seçmediniz",
+        ];
+
+        $this->validate($request, $rules,$messages);
+
         /* DÜZENLE BLADE SİNDEN GELEN ID NIN SAHİP OLDUĞU TABLO SATIRI BULUNUR */
         $guncelle = SikayetTuruModel::find($id);
         /* UPDATE KOMUTU İLE DÜZENLE BLADE SİNDEKİ FORMUN YOLLADIĞI TÜM VERİLER TABLOYA İŞLENİR */
@@ -118,12 +162,28 @@ class SikayetTuruController extends Controller
         $guncelle->update([
             'sikayet_turu_adi' => $request->get('sikayet_turu_adi'),
             'sikayet_turu_bolum' => $request->get('sikayet_turu_bolum'),
-            'sikayet_turu_urunler' => implode(',',$request->get('sikayet_turu_urunler')),
+            'sikayet_turu_urunler' => $request->get('sikayet_turu_urunler') != null ? implode(',',$request->get('sikayet_turu_urunler')) : null,
             'sikayet_turu_kaynak' => $request->get('sikayet_turu_kaynak'),
             'sikayet_turu_oneri' => $request->get('sikayet_turu_oneri')
         ]);
+
+        /*SESSION: BAŞARILI KAYIT MESAJINI OLUŞTURMA*/
+        if($request->get('sikayet_turu_bolum') != null ? $bolum = BolumModel::find($request->get('sikayet_turu_bolum'))->bolum_adi : $bolum="Tanımsız");
+        $mesaj=[];
+        $mesaj['tur']="success";
+        $mesaj['title']="Güncellenen Şikayet Türünün Bilgileri";
+        $mesaj['icerik']='<div class="container bg-gradient-light border border-info p-2">\'+
+                            \'<div class="row">\'+
+                                \'<div class="col text-bold text-right pr-2">Şikayet Türü Adı:</div>\'+
+                                \'<div class="col text-left pr-2">'.$request->get('sikayet_turu_adi').'</div>\'+
+                            \'<div class="w-100"></div>\'+
+                                \'<div class="col text-bold text-right pr-2">İlgili Bölüm:</div>\'+
+                                \'<div class="col text-left pr-2">'.$bolum.'</div>\'+
+                            \'</div>\'+
+                        \'</div>';
+
         /* DÜZENLEME TAMAMLANDIĞI KULLANICI YENİ BİR EKRANA YÖNLENDİRİLİR */
-        return redirect()->route('sikayet-turu.index');
+        return redirect()->route('sikayet-turu.index')->with('mesaj',$mesaj);
     }
 
     /**
@@ -136,9 +196,24 @@ class SikayetTuruController extends Controller
     /* KAYIT SİLMEK İÇİN KULLANILAN İŞLEM */
     public function destroy($id)
     {
+        $sikayet_turu = SikayetTuruModel::find($id);
+        /*SESSION: BAŞARILI KAYIT MESAJINI OLUŞTURMA*/
+        if($sikayet_turu->sikayet_turu_bolum != null ? $bolum = BolumModel::find($sikayet_turu->sikayet_turu_bolum)->bolum_adi : $bolum="Tanımsız");
+        $mesaj=[];
+        $mesaj['tur']="warning";
+        $mesaj['title']="Silinen Şikayet Türünün Bilgileri";
+        $mesaj['icerik']='<div class="container bg-gradient-light border border-info p-2">\'+
+                            \'<div class="row">\'+
+                                \'<div class="col text-bold text-right pr-2">Şikayet Türü Adı:</div>\'+
+                                \'<div class="col text-left pr-2">'.$sikayet_turu->sikayet_turu_adi.'</div>\'+
+                            \'<div class="w-100"></div>\'+
+                                \'<div class="col text-bold text-right pr-2">İlgili Bölüm:</div>\'+
+                                \'<div class="col text-left pr-2">'.$bolum.'</div>\'+
+                            \'</div>\'+
+                        \'</div>';
         /* SİLİNECEK KAYIDIN ID Sİ URL İLE ALNIR VE DELETE OPERATÖRÜ İLE SİLİNİR */
         SikayetTuruModel::find($id)->delete();
         /* SİLME İŞLEMİ SONRASI KULLANICI YÖNLENDİRİLİR */
-        return redirect('sikayet-turu',);
+        return redirect()->route('sikayet-turu.index')->with('mesaj',$mesaj);
     }
 }

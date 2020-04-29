@@ -96,18 +96,6 @@
   });
 </script>
 
-@if(session('mesaj'))
-    <script type="text/javascript">
-        Swal.fire ({
-            type: '{{session('mesaj.tur')}}',
-            title: '{!! session('mesaj.title') !!}',
-            html: '{!! session('mesaj.icerik')!!}',
-            showConfirmButton: true,
-            onBeforeOpen: () => {
-            }
-        })
-    </script>
-@endif
 
 <!--{{$controller}} LİSTESİ DATATABLE AYAR SON-->
 @endsection

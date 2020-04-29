@@ -26,7 +26,7 @@
                     <div class="card-body">
 
                         <!--KAYIT FORMU BAŞ-->
-                        <form method="post" action="{{ route($controller.'.store') }}">
+                        <form method="post" action="{{ route($controller.'.store') }}" id="kayit">
                         @csrf
                             <!--BAYİ ADI BAŞ-->
                             <div class="form-group">
@@ -43,7 +43,8 @@
                             <!--BÖLÜM BAŞ-->
                             <div class="form-group">
                                 <label>İlgili Bölüm:</label>
-                                <select name="sikayet_turu_bolum" id="sikayet_turu_bolum"  class="form-control select2bs4" style="width: 100%;">
+                                <select name="sikayet_turu_bolum" id="sikayet_turu_bolum"  class="form-control select2bs4" style="width: 100%;" data-placeholder="-BÖLÜM SEÇ-">
+                                    <option value="">-BÖLÜM SEÇ-</option>
                                     @foreach($bolumler as $bolum)
                                     <option value="{{$bolum->id}}">{{$bolum->bolum_adi}}</option>
                                     @endforeach
@@ -54,10 +55,7 @@
                             <!--ÜRÜNLER BAŞ-->
                             <div class="form-group">
                                 <label>İlgili Ürünler:</label>
-                                <select name="sikayet_turu_urunler[]" id="sikayet_turu_urunler" class="form-control select2bs4" multiple="multiple">
-                                    @foreach($urunler as $urun)
-                                        <option name="sikayet_turu_urunler" value="{{ $urun->id }}">{{ $urun->urun_adi }}</option>
-                                    @endforeach
+                                <select name="sikayet_turu_urunler[]" id="sikayet_turu_urunler" class="form-control select2bs4" multiple="multiple" data-placeholder="-ÜRÜN SEÇ-">
                                 </select>
                             </div>
                             <!--ÜRÜNLER SON-->
@@ -92,7 +90,6 @@
                     </div>
                     <!-- /.card-footer -->
                 </div>
-                <input type="hidden" value="{{Auth::user()->id}}" name="user_id">
                 </form>
                 <!-- KAYIT FORMU SON -->
             </div>
@@ -124,5 +121,76 @@
         })
     </script>
 
+    <!--bölüme bağlı ürün listesi-->
+
+    <script>
+        $(document).ready(function() {
+            $('#sikayet_turu_bolum').on('change', function() {
+                var stateID = $(this).val();
+                if(stateID) {
+                    $.ajax({
+                        url: '/veri/sikayet_urunu/'+stateID,
+                        type: "GET",
+                        data : {"_token":"{{ csrf_token() }}"},
+                        dataType: "json",
+                        success:function(data) {
+                            //console.log(data);
+                            if(data){
+                                $('#sikayet_turu_urunler').empty();
+                                $('#sikayet_turu_urunler').focus;
+                                $('#sikayet_turu_urunler').append('<option value="">-- Ürün Seçin --</option>');
+                                $.each(data, function(key, value){
+                                    $('select[name="sikayet_turu_urunler[]"]').append('<option value="'+ value.id +'">' + value.urun_adi+ '</option>');
+                                });
+                            }else{
+                                $('#sikayet_turu_urunler').empty();
+                            }
+                        }
+                    });
+                }else{
+                    $('#sikayet_turu_urunler').empty();
+                }
+            });
+        });
+    </script>
+    <!--form doğrulama-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.validator.setDefaults({
+
+            });
+
+            $('#kayit1').validate({
+                rules: {
+                    sikayet_turu_adi: {
+                        required: true,
+                    },
+
+                    sikayet_turu_bolum: {
+                        required: true,
+                    },
+                    sikayet_turu_oneri: {
+                        maxlength:2000
+                    },
+                    sikayet_turu_kaynak: {
+                        maxlength:2000
+                    }
+
+                },
+                errorElement: 'span',
+                errorPlacement: function (error, element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('.form-group').append(error);
+                },
+                highlight: function (element, errorClass, validClass) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function (element, errorClass, validClass) {
+                    $(element).removeClass('is-invalid');
+                }
+
+            });
+        });
+    </script>
     <!--AYAR KODU SON-->
 @endsection

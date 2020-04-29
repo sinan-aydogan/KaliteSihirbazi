@@ -18,7 +18,7 @@
         <!-- /.card-header -->
         <div class="card-body">
           <div class="text-right">
-            <a class="btn btn-app" href="{{$controller}}\create">
+            <a class="btn btn-app" href="{{url($controller.'\create')}}">
                   <i class="fas fa-user-plus text-green"></i> {{ __('Yeni Şikayet Türü Ekle') }}
             </a>
             <a class="btn btn-app" href="{{$controller}}\deleted">

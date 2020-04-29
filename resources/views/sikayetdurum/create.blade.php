@@ -24,7 +24,7 @@
                     <div class="card-body">
 
                         <!--KAYIT FORMU BAŞ-->
-                        <form method="post" action="{{ route($controller.'.store') }}">
+                        <form method="post" action="{{ route($controller.'.store') }}" id="kayit">
                         @csrf
                         <!--DURUM ADI BAŞ-->
                             <div class="form-group">
@@ -43,43 +43,43 @@
                             <div class="form-group clearfix">
                                 <label>Durum Rengi:</label>
                                 <div class="icheck-danger d-inline">
-                                    <input type="radio" id="kirmizi" value="red" name="sikayet_durum_renk">
+                                    <input type="radio" id="kirmizi" value="220,20,60" name="sikayet_durum_renk">
                                     <label class="text-red" for="kirmizi">
                                         Kırmızı
                                     </label>
                                 </div>
                                 <div class="icheck-blue d-inline">
-                                    <input type="radio" id="mavi" value="blue" name="sikayet_durum_renk">
+                                    <input type="radio" id="mavi" value="100,149,237" name="sikayet_durum_renk">
                                     <label class="text-blue" for="mavi">
                                         Mavi
                                     </label>
                                 </div>
                                 <div class="icheck-green d-inline">
-                                    <input type="radio" id="yesil" value="green" name="sikayet_durum_renk">
+                                    <input type="radio" id="yesil" value="0, 255, 0" name="sikayet_durum_renk">
                                     <label class="text-green" for="yesil">
                                         Yeşil
                                     </label>
                                 </div>
                                 <div class="icheck-purple d-inline">
-                                    <input type="radio" id="mor" value="purple" name="sikayet_durum_renk">
+                                    <input type="radio" id="mor" value="218,112,214" name="sikayet_durum_renk">
                                     <label class="text-purple" for="mor">
                                         Mor
                                     </label>
                                 </div>
                                 <div class="icheck-orange d-inline">
-                                    <input type="radio" id="turuncu" value="orange" name="sikayet_durum_renk">
+                                    <input type="radio" id="turuncu" value="255,215,0" name="sikayet_durum_renk">
                                     <label class="text-orange" for="turuncu">
                                         Turuncu
                                     </label>
                                 </div>
                                 <div class="icheck-greensea d-inline">
-                                    <input type="radio" id="eflatun" value="green-sea" name="sikayet_durum_renk">
+                                    <input type="radio" id="eflatun" value="46,139,87" name="sikayet_durum_renk">
                                     <label class="text-green-sea" for="eflatun">
                                         Eflatun
                                     </label>
                                 </div>
                                 <div class="icheck-gray d-inline">
-                                    <input type="radio" id="gri" value="gray" name="sikayet_durum_renk">
+                                    <input type="radio" id="gri" value="47,79,79" name="sikayet_durum_renk">
                                     <label class="text-gray"  for="gri">
                                         Gri
                                     </label>
@@ -96,7 +96,6 @@
                     </div>
                     <!-- /.card-footer -->
                 </div>
-                <input type="hidden" value="{{Auth::user()->id}}" name="user_id">
                 </form>
                 <!-- KAYIT FORMU SON -->
             </div>
@@ -114,18 +113,35 @@
     <!--JAVASCRİPT IMPORT SON-->
 
     <!--AYAR KODU BAŞ-->
-    @if(session('mesaj'))
-        <script type="text/javascript">
-            Swal.fire ({
-                type: '{{session('mesaj.tur')}}',
-                title: '{{session('mesaj.icerik')}}',
-                showConfirmButton: true,
-                onBeforeOpen: () => {
-                }
-            })
-        </script>
+    <!--form doğrulama-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.validator.setDefaults({
 
-    @endif
+            });
+
+            $('#kayit').validate({
+                rules: {
+                    sikayet_durum_adi: {
+                        required: true,
+                    }
+
+                },
+                errorElement: 'span',
+                errorPlacement: function (error, element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('.form-group').append(error);
+                },
+                highlight: function (element, errorClass, validClass) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function (element, errorClass, validClass) {
+                    $(element).removeClass('is-invalid');
+                }
+
+            });
+        });
+    </script>
 
     <!--AYAR KODU SON-->
 @endsection

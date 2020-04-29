@@ -9,6 +9,7 @@
         $controller3=$sikayet_turleri;
         $controller4=$urunler;
         $controller5=$bolumler;
+        $controller6=$durumlar;
     @endphp
 <!-- Main content -->
   <div class="row">
@@ -46,13 +47,13 @@
             <tbody class="">
 
             @foreach ($controller1 as $operator1)
-    <tr>
+    <tr style="background-color: rgba({!!$controller6->find($operator1->sikayet_durum) != null ? $controller6->find($operator1->sikayet_durum)->sikayet_durum_renk : ""!!}, 0.2);">
         <td >{{date('d.m.Y', strtotime($operator1->sikayet_tarihi))}}</td>
-        <td class="project-actions text-center">{{$controller5->find($operator1->sikayet_bolum)->bolum_adi}}</td>
-        <td class="project-actions text-center">{{$controller2->find($operator1->sikayet_bayi)->bayi_adi}}</td>
-        <td class="project-actions text-center">{{$controller4->find($operator1->sikayet_urun)->urun_adi}}</td>
-        <td class="project-actions text-center">{{$controller3->find($operator1->sikayet_turu)->sikayet_turu_adi}}</td>
-        <td class="project-actions text-center">{{ $operator1->sikayet_durum != null ? $operator1->sikayet_durum : 'Belirsiz' }}</td>
+        <td class="project-actions text-center">{!!$controller5->find($operator1->sikayet_bolum) !=null ? $controller5->find($operator1->sikayet_bolum)->bolum_adi : "<span class='badge badge-warning'>TANIMSIZ</span>"!!}</td>
+        <td class="project-actions text-center">{!!$controller2->find($operator1->sikayet_bayi) != null ? $controller2->find($operator1->sikayet_bayi)->bayi_adi: "<span class='badge badge-warning'>TANIMSIZ</span>"!!}</td>
+        <td class="project-actions text-center">{!!$controller4->find($operator1->sikayet_urun) != null ? $controller4->find($operator1->sikayet_urun)->urun_adi : "<span class='badge badge-warning'>TANIMSIZ</span>"!!}</td>
+        <td class="project-actions text-center">{!!$controller3->find($operator1->sikayet_turu) != null ? $controller3->find($operator1->sikayet_turu)->sikayet_turu_adi : "<span class='badge badge-warning'>TANIMSIZ</span>"!!}</td>
+        <td class="project-actions text-center">{!!$controller6->find($operator1->sikayet_durum) != null ? $controller6->find($operator1->sikayet_durum)->sikayet_durum_adi : "<span class='badge badge-warning'>BELİRSİZ</span>"!!}</td>
         <td class="project-actions text-center">
 
 
@@ -121,17 +122,5 @@
   });
 </script>
 
-@if(session('mesaj'))
-    <script type="text/javascript">
-        Swal.fire ({
-            type: '{{session('mesaj.tur')}}',
-            title: '{!! session('mesaj.title') !!}',
-            html: '{!! session('mesaj.icerik')!!}',
-            showConfirmButton: true,
-            onBeforeOpen: () => {
-            }
-        })
-    </script>
-@endif
 <!--{{$controller}} LİSTESİ DATATABLE AYAR SON-->
 @endsection

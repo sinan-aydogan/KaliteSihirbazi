@@ -85,6 +85,23 @@ to get the desired effect
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
+
+                <!-- FORMLARDAKİ HATALARI GÖSTERME BAŞ-->
+                @if ($errors->any())
+                    <div class="alert alert-danger alert-dismissible fade show">
+                        <h4 class="alert-heading">{{__('Bulunan Hatalar !')}}</h4>
+                        <ul class="fa-ul">
+                            @foreach ($errors->all() as $error)
+                                <li><i class="fas fa-exclamation-triangle"></i> {!!   $error !!}</li>
+                            @endforeach
+                        </ul>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
+            <!-- FORMLARDAKİ HATALARI GÖSTERME SON-->
+
     @yield('icerik')
             </div>
         </section>
@@ -121,6 +138,7 @@ to get the desired effect
 <!-- AdminLTE -->
 <script src="{{ asset('dist/js/adminlte.js') }}"></script>
 
+
 <!-- OPTIONAL SCRIPTS -->
 <script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
 <script src="{{ asset('dist/js/demo.js') }}"></script>
@@ -150,6 +168,10 @@ to get the desired effect
 <script src="{{asset('plugins/bootstrap-switch/js/bootstrap-switch.min.js')}}"></script>
 <script src="{{asset('dist/js/pages/dashboard2.js')}}"></script>
 <script src="{{asset('dist/js/pages/dashboard.js')}}"></script>
+<!--form validation-->
+<script src="{{asset('plugins/jquery-validation/jquery.validate.min.js')}}"></script>
+<script src="{{asset('plugins/jquery-validation/additional-methods.min.js')}}"></script>
+<script src="{{asset('plugins/jquery-validation/localization/messages_tr.min.js')}}"></script>
 
 @yield('javakodu')
 <!--UYARI EKRANLARI BAŞ-->
@@ -161,6 +183,20 @@ to get the desired effect
             title: '{{ Auth::user()->name }}</br></br>Kalitenin Merkezine Hoşgeldiniz',
             showConfirmButton: false,
             timer: 3000,
+            onBeforeOpen: () => {
+            }
+        })
+    </script>
+@endif
+
+<!--CRUD MESAJLARI-->
+@if(session('mesaj'))
+    <script type="text/javascript">
+        Swal.fire ({
+            type: '{{session('mesaj.tur')}}',
+            title: '{!! session('mesaj.title')!!}',
+            html: '{!! session('mesaj.icerik')!!}',
+            showConfirmButton: true,
             onBeforeOpen: () => {
             }
         })

@@ -17,27 +17,20 @@
 
         <div class="row">
             <div class="col-12">
+                <form method="post" action="{{ route($controller.'.store') }} " enctype="multipart/form-data" id="kayit">
+                @csrf
+
+                <!--BİRİNCİ ALAN BAŞI-->
                 <div class="card card-primary card-outline">
 
-                    <div class="card-header" style="height: 35px">
-                        <h3 class="card-title text-primary" style="margin-top: -5px "><b>{{ __('Personel Genel Bilgiler') }}</b></h3>
+                    <div class="card-header">
+                        <h3 class="card-title text-primary"><b>{{ __('Personel Genel Bilgiler') }}</b></h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
 
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                    @endif
-
                         <!--KAYIT FORMU BAŞ-->
-                        <form method="post" action="{{ route($controller.'.store') }} " enctype="multipart/form-data">
-                        @csrf
+
                         <!--PERSONEL ADI BAŞ-->
                             <div class="form-group">
                                 <label>İsim:</label>
@@ -45,7 +38,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
                                     </div>
-                                    <input type="text" name="name" id="name"  class="form-control" placeholder="PERSONELİN ADI VE SOYADI">
+                                    <input type="text" name="name" id="name" class="form-control" placeholder="PERSONELİN ADI"  required>
                                 </div>
                             </div>
                             <!--PERSONEL ADI SON-->
@@ -58,7 +51,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                                     </div>
-                                    <input type="text" name="email" id="email"  class="form-control" placeholder="PERSONELİN EMAİL ADRESİ">
+                                    <input type="email" name="email" id="email"  class="form-control" placeholder="PERSONELİN EMAİL ADRESİ" email required>
                                 </div>
                             </div>
                             <!--EMAİL ADI SON-->
@@ -84,7 +77,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-cog"></i></span>
                                     </div>
-                                    <input type="text" name="pozisyon" id="pozisyon"  class="form-control" placeholder="PERSONELİN POZİSYONU">
+                                    <input type="text" name="pozisyon" id="pozisyon"  class="form-control" placeholder="PERSONELİN POZİSYONU" required>
                                 </div>
                             </div>
                             <!--POZİSYON SON-->
@@ -110,6 +103,15 @@
                                     </div>
                                     <input type="text" name="password" id="password"  class="form-control" placeholder="PERSONELİN PANEL GİRİŞ ŞİFRESİ" VALUE="{{$sifre}}">
                                 </div>
+
+                                <label>Şifre Tekrar:</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                    </div>
+                                    <input type="text" name="password_tekrar" id="password_tekrar"  class="form-control" placeholder="YUKARIYA YAZDIĞINIZ ŞİFRENİN AYNISI" VALUE="{{$sifre}}">
+                                </div>
+                                <span class="text-muted text-sm font-italic">Şifreyi doğru yazdığınız doğrulamak için iki kutuyada aynı şifreyi yazmalısınız.</span>
                             </div>
                             <!--ŞİFRE SON-->
 
@@ -118,11 +120,8 @@
                                 <label>Profil Resmi:</label>
                                 <div class="input-group">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" name="avatar" id="exampleInputFile">
-                                        <label class="custom-file-label" for="avatar">Fotoğrafı Seçiniz</label>
-                                    </div>
-                                    <div class="input-group-append">
-                                        <span class="input-group-text" id="">Yükle</span>
+                                        <input type="file" class="custom-file-input" name="avatar" id="exampleInputFile" data-buttonText="Resim seç">
+                                        <label class="custom-file-label" for="avatar">Fotoğrafı Seçiniz (JPG, JPEG,PNG VEYA BMP)</label>
                                     </div>
                                 </div>
                             </div>
@@ -134,9 +133,15 @@
 
                     </div>
                     <!-- /.card-body -->
+                    <div class="card-footer">
+
+                    </div>
 
                     <!-- /.card-footer -->
                 </div>
+                <!--BİRİNCİ ALAN SONU-->
+
+                <!--İKİNCİ ALAN BAŞI-->
                 <div class="card card-red card-outline">
                     <div class="card-header" style="height: 35px">
                         <h3 class="card-title text-red" style="margin-top: -5px"><b>{{ __('Personel Diğer Bilgiler') }}</b></h3>
@@ -148,7 +153,7 @@
                         <div class="form-group">
                             <label>BİTİRDİĞİ OKULLAR:</label>
                             <div class="input-group">
-                                <select class="form-control select2bs4" name="egitim[]" multiple="multiple">
+                                <select class="form-control select2bs4" name="egitim[]" id="egitim" multiple="multiple">
                                 </select>
                             </div>
                             <span class="text-muted text-sm font-italic">Okulun adını yazıp ENTER tuşuna veya VİRGÜL tuşuna basın.</span>
@@ -172,7 +177,7 @@
                         <div class="form-group">
                             <label>Yetenekler:</label>
                             <div class="input-group">
-                                <select class="form-control select2bs4" name="yetenek[]" multiple="multiple">
+                                <select class="form-control select2bs4" name="yetenek[]" id="yetenek" multiple="multiple">
                                 </select>
                             </div>
                             <span class="text-muted text-sm font-italic">Her bir yetenekten sonra ENTER tuşuna veya VİRGÜ tuşuna basın.</span>
@@ -184,24 +189,25 @@
                         <div class="form-group">
                             <label>Görevleri:</label>
                             <div class="input-group">
-                                <select class="form-control select2bs4" name="gorev[]" multiple="multiple">
+                                <select class="form-control select2bs4" name="gorev[]" id="gorev" multiple="multiple">
                                 </select>
                             </div>
-                            <span class="text-muted text-sm font-italic">Her bir görevden sonra ENTER tuşuna veya VİRGÜ tuşuna basın.</span>
+                            <span class="text-muted text-sm font-italic">Her bir görevden sonra ENTER tuşuna veya VİRGÜL tuşuna basın.</span>
 
                         </div>
-
                         <!--EK BİLGİ SON-->
 
-
-
                     </div>
+
                     <div class="card-footer">
                         <a href="../{{ $controller }}">Tüm kullanıcıları görmek için tıklayınız</a> Lütfen istenen bilgileri eksiksiz ve doğru bir şekilde doldurunuz.
                         <button type="submit" class="btn btn-success float-right">{{__('Kaydet')}}</button>
+
                     </div>
+
                 </div>
-                <input type="hidden" value="{{Auth::user()->id}}" name="user_id">
+                <!--İKİNCİ ALAN SONU-->
+
                 </form>
                 <!-- KAYIT FORMU SON -->
             </div>
@@ -244,15 +250,6 @@
             $('.textarea').summernote()
         })
     </script>
-    <!--SWEETALERT-->
-
-    <script>
-        $(function () {
-            $("input[data-bootstrap-switch]").each(function(){
-                $(this).bootstrapSwitch('state', $(this).prop('checked'));
-            });
-        })
-    </script>
 
     <!--fotoğraf yükleme-->
     <script>
@@ -261,20 +258,6 @@
         });
     </script>
 
-    <!--başarılı mesajı-->
-
-    @if(session('mesaj'))
-        <script type="text/javascript">
-            Swal.fire ({
-                type: '{{session('mesaj.tur')}}',
-                title: '{!! session('mesaj.title')!!}',
-                html: '{!! session('mesaj.icerik')!!}',
-                showConfirmButton: true,
-                onBeforeOpen: () => {
-                }
-            })
-        </script>
-    @endif
     <!--açılır takvim-->
     <script>
         $('.tarih').datepicker({
@@ -282,5 +265,55 @@
         });
     </script>
 
+    <!--form doğrulama-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.validator.setDefaults({
+
+            });
+
+            $('#kayit').validate({
+                rules: {
+                    name: {
+                        required: true,
+                    },
+
+                    email: {
+                        required: true,
+                        email: true,
+                    },
+                    pozisyon: {
+                        required: true,
+                    },
+                    ise_giris: {
+                        required: true,
+                    },
+                    password: {
+                        required: true,
+                        minlength: 8
+                    },
+                    password_tekrar: {
+                        equalTo: "#password"
+                    },
+                    avatar: {
+                        extension: "png|jpg|jpeg|bmp|gif"
+                    }
+
+                },
+                errorElement: 'span',
+                errorPlacement: function (error, element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('.form-group').append(error);
+                },
+                highlight: function (element, errorClass, validClass) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function (element, errorClass, validClass) {
+                    $(element).removeClass('is-invalid');
+                }
+
+            });
+        });
+    </script>
     <!--AYAR KODU SON-->
 @endsection
