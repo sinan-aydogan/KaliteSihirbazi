@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,30 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function () {
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+});
 
-
-Auth::routes();
-Auth::routes(['verify' => true, 'register' => false]);
-
-Route::get('/', 'HomeController@index')->name('home');
-
-/**BAĞIMLI AÇILIR LİSTE ROUTE LERİ**/
-Route::get('veri/sikayet_urunu/{id}', 'MusteriSikayetiController@sikayet_urunu')->name('sikayet_urunu');
-Route::get('veri/sikayet_turu/{id}', 'MusteriSikayetiController@sikayet_turu')->name('sikayet_turu');
-
-Route::Resources([
-    'bayi' => 'BayiController',
-    'bolum' => 'BolumController',
-    'sikayet-turu' => 'SikayetTuruController',
-    'sikayet-durum' => 'SikayetDurumController',
-    'sikayet-kategori' => 'SikayetKategoriController',
-    'musteri-sikayeti' => 'MusteriSikayetiController',
-    'urun' => 'UrunController',
-    'urun-turu' => 'UrunTuruController',
-    'kullanici' => 'KullaniciController'
-]);
-
-
-Route::get('silinmis/kullanici', 'SilinmislerController@kullanici')->name('silinmis_kullanicilar_index');
-Route::get('silinmis/kullanici/restore/{id}', 'SilinmislerController@kullanici_restore')->name('silinmis_kullanici_restore');
-Route::delete('silinmis/kullanici/{id}', 'SilinmislerController@kullanici_destroy')->name('silinmis_kullanici_destroy');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return Inertia::render('Dashboard');
+})->name('dashboard');
