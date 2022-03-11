@@ -24,6 +24,12 @@ Route::get('/', function () {
     ]);
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->group(function (){
+    /*Dashboard*/
+    Route::get('/dashboard', function () {
+        return Inertia::render('Dashboard');
+    })->name('dashboard');
+
+    /*User Functions*/
+    Route::post('/user-language-update', \App\Http\Controllers\User\UpdateActiveLanguage::class)->name('user-language.update');
+});

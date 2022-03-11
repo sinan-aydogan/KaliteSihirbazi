@@ -2,7 +2,7 @@
     <app-layout title="Profile">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Profile
+                {{$t('account.account')}}
             </h2>
         </template>
 
@@ -28,6 +28,12 @@
 
                 <logout-other-browser-sessions-form :sessions="sessions" class="mt-10 sm:mt-0" />
 
+                <div>
+                    <jet-section-border />
+
+                    <language-changer/>
+                </div>
+
                 <template v-if="$page.props.jetstream.hasAccountDeletionFeatures">
                     <jet-section-border />
 
@@ -47,11 +53,13 @@
     import TwoFactorAuthenticationForm from '@/Pages/Profile/Partials/TwoFactorAuthenticationForm.vue'
     import UpdatePasswordForm from '@/Pages/Profile/Partials/UpdatePasswordForm.vue'
     import UpdateProfileInformationForm from '@/Pages/Profile/Partials/UpdateProfileInformationForm.vue'
+    import LanguageChanger from "@/Pages/Profile/Partials/LanguageChanger";
 
     export default defineComponent({
         props: ['sessions'],
 
         components: {
+            LanguageChanger,
             AppLayout,
             DeleteUserForm,
             JetSectionBorder,
