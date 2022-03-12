@@ -5,7 +5,7 @@
         </template>
 
         <template #description>
-            {{$t('account.browserSessionsDev')}}
+            {{$t('account.browserSessionsDesc')}}
         </template>
 
         <template #content>

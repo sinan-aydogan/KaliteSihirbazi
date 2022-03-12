@@ -1,5 +1,5 @@
 <template>
-    <Head title="Register" />
+    <Head :title="$t('auth.register')" />
 
     <jet-authentication-card>
         <template #logo>
@@ -43,11 +43,11 @@
 
             <div class="flex items-center justify-end mt-4">
                 <Link :href="route('login')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    Already registered?
+                    {{ $t('auth.alreadyRegistered') }}
                 </Link>
 
                 <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Register
+                    $t('auth.register')
                 </jet-button>
             </div>
         </form>

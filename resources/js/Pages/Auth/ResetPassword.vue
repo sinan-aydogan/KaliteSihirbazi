@@ -1,5 +1,5 @@
 <template>
-    <Head title="Reset Password" />
+    <Head :title="$t('auth.resetPassword')" />
 
     <jet-authentication-card>
         <template #logo>
@@ -26,7 +26,7 @@
 
             <div class="flex items-center justify-end mt-4">
                 <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Reset Password
+                    {{ $t('auth.resetPassword') }}
                 </jet-button>
             </div>
         </form>

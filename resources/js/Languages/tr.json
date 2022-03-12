@@ -49,6 +49,12 @@
     "auth": {
         "password": "Şifre",
         "email": "E-Posta",
-        "logOut": "Çıkış"
+        "logOut": "Çıkış",
+        "alreadyRegistered": "Zaten hesabın varmı??",
+        "login": "Giriş",
+        "rememberMe": "Beni Hatırla",
+        "forgotYourPassword": "Şifreni unuttun mu?",
+        "register": "Kayıt Ol",
+        "resetPassword": "Şifreni Sıfırla"
     }
 }

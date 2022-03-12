@@ -49,7 +49,12 @@
     "auth": {
         "password": "Password",
         "email": "Email",
-        "logOut": "Logout"
+        "logOut": "Logout",
+        "resetPassword": "Reset Password",
+        "register": "Register",
+        "login": "Log in",
+        "rememberMe": "Remember me",
+        "forgotYourPassword": "Forgot your password?",
+        "alreadyRegistered": "Already registered?"
     }
-
 }
