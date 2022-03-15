@@ -24,12 +24,58 @@ Route::get('/', function () {
     ]);
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->group(function (){
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     /*Dashboard*/
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
+    /*Settings*/
+    Route::prefix('settings')->group(function (){
+        Route::get('/', [\App\Http\Controllers\Setting\GlobalSettingController::class, 'index'])->name('global-setting.index');
+    });
+
     /*User Functions*/
     Route::post('/user-language-update', \App\Http\Controllers\User\UpdateActiveLanguage::class)->name('user-language.update');
+
+    /*Modules*/
+    $mRoutes = [
+        ['department', \App\Http\Controllers\DepartmentController::class],
+        ['warehouse',\App\Http\Controllers\WarehouseController::class],
+        ['vehicles',\App\Http\Controllers\VehicleController::class],
+        ['device',\App\Http\Controllers\DeviceController::class],
+        ['machine',\App\Http\Controllers\MachineController::class],
+        ['customer',\App\Http\Controllers\CustomerController::class],
+        ['supplier',\App\Http\Controllers\SupplierController::class],
+        ['audit-firm',\App\Http\Controllers\AuditFirmController::class],
+        ['staff',\App\Http\Controllers\StaffController::class],
+        ['job-description',\App\Http\Controllers\JobDescriptionController::class],
+        ['education',\App\Http\Controllers\EducationController::class],
+        ['education-plan',\App\Http\Controllers\EducationPlanController::class],
+        ['take-time-off',\App\Http\Controllers\TakeTimeOffController::class],
+        ['problem',\App\Http\Controllers\ProblemController::class],
+        ['capa-action',\App\Http\Controllers\CapaActionController::class],
+        ['product',\App\Http\Controllers\ProductController::class],
+        ['raw-material',\App\Http\Controllers\RawMaterialController::class],
+        ['consumable-material',\App\Http\Controllers\ConsumableMaterialController::class],
+        ['product-tree',\App\Http\Controllers\ProductTreeController::class],
+        ['document',\App\Http\Controllers\DocumentController::class],
+        ['document-revision-request',\App\Http\Controllers\DocumentRevisionRequestController::class],
+        ['document-distribution-point',\App\Http\Controllers\DistributionPointController::class],
+        ['document-action',\App\Http\Controllers\DocumentActionController::class],
+        ['measurement-device',\App\Http\Controllers\MeasurementDeviceController::class],
+        [ 'calibration-task',\App\Http\Controllers\CalibrationTaskController::class],
+        ['measurement-device-action',\App\Http\Controllers\MeasurementDeviceActionController::class],
+        ['audit',\App\Http\Controllers\AuditController::class],
+        ['certificate',\App\Http\Controllers\CertificateController::class],
+        ['standard',\App\Http\Controllers\StandardController::class],
+        ['improvement-work',\App\Http\Controllers\ImprovementWorkController::class]
+    ];
+
+    foreach ($mRoutes as $mRoute){
+        Route::resource($mRoute[0], $mRoute[1]);
+        Route::post($mRoute[0], [$mRoute[1], 'index'])->name($mRoute[0].".search");
+        Route::post($mRoute[0]."-store", [$mRoute[1], 'store'])->name($mRoute[0].".store");
+    }
+
 });
