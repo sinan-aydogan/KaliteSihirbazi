@@ -5,6 +5,7 @@ import { createInertiaApp } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
 /*Font Awesome*/
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import "@/Sources/icons"
 /*Vue-i18n*/
 import { createI18n } from 'vue-i18n'
 import enTranslates from "@/Languages/en.json"
