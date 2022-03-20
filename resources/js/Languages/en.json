@@ -7,7 +7,14 @@
         "saveChanges": "Save Changes",
         "cancel": "Cancel",
         "confirm": "Confirm",
-        "done": "Done"
+        "done": "Done",
+        "change": "Change",
+        "status": "Status",
+        "type": "Type",
+        "code": "Code",
+        "addNew": "Add New",
+        "active": "Active",
+        "passive": "Passive"
     },
     "account": {
         "account": "Account",
@@ -55,7 +62,8 @@
         "login": "Log in",
         "rememberMe": "Remember me",
         "forgotYourPassword": "Forgot your password?",
-        "alreadyRegistered": "Already registered?"
+        "alreadyRegistered": "Already registered?",
+        "disempower": "Dis-empower"
     },
     "mainMenu": {
         "businessManagement": "Business Management",
@@ -93,5 +101,42 @@
         "standards": "Standards",
         "continuesImprovement": "Continues Improvement",
         "improvementWorks": "Improvement Works"
+    },
+    "settingMenu": {
+        "settings" : "Settings",
+        "generalSettings" : "General Settings",
+        "generalSettingsDesc" : "You can change your business settings here",
+        "appName": "App Name",
+        "appNameDesc": "It'll be used throughout the application",
+        "appLogo" : "App Logo",
+        "darkLogo" : "Dark Theme Logo",
+        "lightLogo" : "Light Theme Logo",
+        "appLogoDesc" : "It'll be used  in the auth pages and main menu",
+        "appMailSendingEmail" : "Mail Sending Email",
+        "appMailSendingEmailDesc" : "It'll be sender address for system mails",
+        "appGlobalAdmins" : "App Global Admins",
+        "appGlobalAdminsDesc" : "Users that unlimited powers assigned throughout the application",
+        "addGlobalAdmin" : "Assign a user to global admin group",
+        "moduleManagement": "Module Management",
+        "moduleManagementDesc": "Management of the application modules",
+        "module": "Module",
+        "dueDate": "Due-date",
+        "licenceKey": "Licence Key",
+        "propertyManagement" : "Property Management",
+        "property" : "Property",
+        "properties" : "Properties",
+        "propertyType" : "Property Type",
+        "propertyTypes" : "Property Types",
+        "propertyTypesDesc" : "Management of the property types",
+        "propertyValue": "Property Value",
+        "propertyValues": "Property Values",
+        "relatedModules" : "Related Modules",
+        "authorizationManagement": "Authorization Management",
+        "permissions": "Permissions",
+        "permission": "Permission",
+        "permissionGroups": "Permission Groups",
+        "permissionGroup": "Permission Group",
+        "roles": "Roles",
+        "role": "Role"
     }
 }
