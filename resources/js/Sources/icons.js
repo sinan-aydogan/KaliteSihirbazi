@@ -1,5 +1,5 @@
 /*Import FontAwesomeIcon*/
-import {library} from "@fortawesome/fontawesome-svg-core";
+import { library } from "@fortawesome/fontawesome-svg-core";
 import {
     faUserGroup,
     faUsers,
@@ -48,7 +48,19 @@ import {
     faX,
     faEllipsisVertical,
     faInfoCircle,
-    faMoneyBill
+    faMoneyBill,
+    faLayerGroup,
+    faDatabase,
+    faCodeFork,
+    faAngleDown,
+    faCircleExclamation,
+    faIdCard,
+    faTrash,
+    faPlus,
+    faMicrochip,
+    faSearch,
+    faQrcode,
+    faShield,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -99,5 +111,17 @@ library.add(
     faX,
     faEllipsisVertical,
     faInfoCircle,
-    faMoneyBill
-)
+    faMoneyBill,
+    faLayerGroup,
+    faDatabase,
+    faCodeFork,
+    faAngleDown,
+    faCircleExclamation,
+    faIdCard,
+    faTrash,
+    faPlus,
+    faMicrochip,
+    faSearch,
+    faQrcode,
+    faShield
+);
