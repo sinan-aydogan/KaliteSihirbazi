@@ -1,6 +1,6 @@
 <template>
     <div
-        class="z-20 bg-gray-100 flex flex-col border-r border-slate-300 px-4"
+        class="relative bg-slate-50 dark:bg-slate-800 z-20 flex flex-col border-r border-slate-300 dark:border-slate-600 px-4"
         ref="subMenu"
     >
         <!-- Logo -->
@@ -62,9 +62,9 @@
     <!-- Sub Links -->
 
     <div
-        class="absolute z-10 flex flex-col h-full border-r px-4 w-56 bg-gradient-to-tl from-gray-800/75 to-gray-800 text-gray-50 rounded-r-md"
+        class="absolute z-10 flex h-full flex-col border-r border-t border-b dark:border-slate-600 px-4 -mb-4 w-56 bg-gradient-to-tl from-gray-800/75 to-gray-800  text-gray-50 rounded-r-md"
         :class="[
-            showSubMenu ? 'left-28' : '-left-52',
+            showSubMenu ? 'left-28' : '-left-56',
             'transition-all duration-700'
         ]"
         @click="showSubMenu = false"
