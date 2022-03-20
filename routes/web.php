@@ -33,6 +33,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     /*Settings*/
     Route::prefix('settings')->group(function (){
         Route::get('/', [\App\Http\Controllers\Setting\GlobalSettingController::class, 'index'])->name('global-setting.index');
+        /*Module Management*/
+        Route::resource('module', \App\Http\Controllers\Setting\ModuleController::class);
+        /*Property Management*/
+        Route::resource('property', \App\Http\Controllers\Setting\PropertyController::class);
+        Route::resource('property-type', \App\Http\Controllers\Setting\PropertyTypeController::class);
     });
 
     /*User Functions*/
