@@ -6,7 +6,7 @@
 
         <jet-banner/>
         <!-- Global Container -->
-        <div class="flex h-screen bg-gray-100 py-4">
+        <div class="flex h-screen bg-slate-50 dark:bg-slate-800 py-4 text-slate-700 dark:text-slate-100">
             <!-- Side Menu Area -->
             <div
                 :class="showMenu && smallScreen ? '-ml-[7rem]' : ''"
