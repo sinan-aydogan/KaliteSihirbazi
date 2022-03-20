@@ -15,6 +15,6 @@ class GlobalSettingController extends Controller
      */
     public function index()
     {
-        return Inertia::render('ComingSoon');
+        return Inertia::render('Setting/Index');
     }
 }
