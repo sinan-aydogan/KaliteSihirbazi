@@ -361,10 +361,13 @@ export default {
 
         /*Outside click*/
         const targetFilter = ref();
-        onClickOutside(targetFilter, (event) => showFilter.value = false);
+        onClickOutside(targetFilter, (event) => {
+            filterSelectForm.reset()
+            showFilter.value = false
+        });
         /*Filter*/
         const showFilter = ref(false);
-        const filterSelectForm = ref({
+        const filterSelectForm = useForm({
             key: null,
             comparator: null,
             value: null,
@@ -373,13 +376,9 @@ export default {
         const unSelectedFilters = ref(cloneDeep(headers.value))
         const filters = ref([]);
         const addFilter = () => {
-            filters.value.push(cloneDeep(filterSelectForm.value))
+            filters.value.push(cloneDeep(filterSelectForm))
             unSelectedFilters.value.splice(unSelectedFilters.value.findIndex(f => f.id === filterSelectForm.value.key), 1)
-            filterSelectForm.value = {
-                key: null,
-                comparator: null,
-                value: null,
-            }
+            filterSelectForm.reset()
             showFilter.value = false
         }
         const deleteFilter = (index) => {
