@@ -61,7 +61,7 @@
         </div>
 
         <!--Background-->
-        <font-awesome-icon v-if="bgIcon" :icon="bgIcon" class="absolute z-10 right-4 opacity-10" size="2xl"/>
+        <font-awesome-icon v-if="bgIcon" :icon="bgIcon" class="absolute z-10 right-4 opacity-10" size="2x"/>
     </div>
 </template>
 
@@ -85,7 +85,7 @@ export default {
             default: null
         },
         value: {
-            type: String,
+            type: [String, Number],
             default: null
         },
         diff: {

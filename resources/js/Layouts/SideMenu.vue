@@ -12,7 +12,7 @@
         </Link>
 
         <!-- Main Links -->
-        <div class="flex flex-col flex-grow overflow-y-auto">
+        <div class="flex flex-col flex-grow overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-rose-500 scrollbar-track-slate-200 overscroll-x-none pr-4 -mr-4 scroll-smooth">
             <!-- Link -->
             <template v-for="link in links" :key="link.id">
                 {{link.links.find(l=>l.id === activeMainLink)}}
@@ -37,7 +37,7 @@
           ]"
                 >
                     <!-- Icon -->
-                    <font-awesome-icon :icon="link.icon" size="xl"/>
+                    <font-awesome-icon :icon="link.icon" class="w-6 h-6"/>
                     <!-- Label -->
                     <span class="text-[.65rem]">
             {{ link.label }}
@@ -48,9 +48,9 @@
         <!-- Settings -->
         <Link
             :href="route('global-setting.index')"
-            class="flex justify-center items-center h-12 w-12 mx-auto bg-slate-100/75 border border-slate-600 text-slate-600 mb-4 rounded-full"
+            class="flex flex-shrink-0 justify-center items-center h-12 w-12 mx-auto bg-slate-100/75 border border-slate-600 text-slate-600 mb-4 rounded-full"
         >
-            <font-awesome-icon icon="cog" size="xl"/>
+            <font-awesome-icon icon="cog" class="w-6 h-6"/>
 
         </Link>
 
@@ -128,7 +128,6 @@ export default {
         /*Active Main Menu*/
         const activeMainLink = ref();
         onBeforeMount(()=>{
-            console.log(activeMainLink.value)
             let activePage;
             links.value.forEach(ml=>{
 

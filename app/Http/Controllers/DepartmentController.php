@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\DepartmentResource;
 use App\Models\Department;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreDepartmentRequest;
@@ -17,7 +18,9 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        return Inertia::render('ComingSoon');
+        return Inertia::render('Modules/BusinessManagement/Department/Index', [
+            'data' => DepartmentResource::collection(Department::paginate(5))
+        ]);
     }
 
     /**

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="mt-1 relative rounded-md shadow-sm">
+        <div class="relative rounded-md shadow-sm">
             <!--Prepend-->
             <div v-if="$slots.prepend" class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <span class="text-gray-500 sm:text-sm">
@@ -8,6 +8,9 @@
                 </span>
             </div>
             <input
+                :value="disabled ? '' : modelValue"
+                :disabled="disabled"
+                @input="$emit('update:modelValue', $event.target.value)"
                 :type="inputType"
                 :name="inputId"
                 :id="inputId"
@@ -37,6 +40,10 @@ import {inject} from "vue";
 export default {
     name: "TextInput",
     props: {
+        modelValue: {
+            type: [String, Number, Date],
+            default: "",
+        },
         inputType: {
             type: String,
             default: 'text'
@@ -48,7 +55,11 @@ export default {
         placeholder: {
             type: String,
             default: null
-        }
+        },
+        disabled: {
+            type: Boolean,
+            default: false
+        },
     },
     setup(){
         const errorStatus = inject('errorStatus')

@@ -6,7 +6,7 @@
 
         <jet-banner/>
         <!-- Global Container -->
-        <div class="flex h-screen bg-slate-50 dark:bg-slate-800 py-4 text-slate-700 dark:text-slate-100">
+        <div class="flex h-screen min-w-screen bg-slate-50 dark:bg-slate-800 py-4 text-slate-700 dark:text-slate-100">
             <!-- Side Menu Area -->
             <div
                 :class="showMenu && smallScreen ? '-ml-[7rem]' : ''"
@@ -15,7 +15,7 @@
                 <side-menu/>
             </div>
             <!-- Content Area -->
-            <div class="w-full px-4 overflow-y-auto space-y-6">
+            <div class="w-full px-4 overflow-y-auto overscroll-x-none space-y-6">
                 <!-- Top Area -->
                 <nav class="bg-white border-b border-gray-200 rounded-lg">
                     <!-- Primary Navigation Menu -->
@@ -23,7 +23,8 @@
                         <div class="relative flex justify-between items-center h-16">
                             <!--Left Side-->
                             <div class="flex items-center">
-                                <div v-if="smallScreen" class="flex cursor-pointer w-6 h-6 items-center justify-center mr-2 -ml-2">
+                                <div v-if="smallScreen"
+                                     class="flex cursor-pointer w-6 h-6 items-center justify-center mr-2 -ml-2">
                                     <!--Hamburger-->
                                     <font-awesome-icon
                                         :icon="showMenu ? 'bars' : 'x'"
@@ -38,12 +39,21 @@
                                     <slot name="header"></slot>
                                 </header>
 
-                                <!--Title-->
-                                <span
-                                    v-else
-                                    class="font-semibold text-xl text-gray-800 leading-none"
-                                    v-text="title"
-                                />
+                                <div v-else class="flex flex-col space-y-1">
+                                    <!--Title-->
+                                    <span
+                                        v-if="title"
+                                        class="font-semibold text-xl text-gray-800 leading-none"
+                                        v-text="title"
+                                    />
+
+                                    <!--Sub Title-->
+                                    <span
+                                        v-if="subTitle"
+                                        class="hidden sm:block text-xs text-gray-500 leading-none"
+                                        v-text="subTitle"
+                                    />
+                                </div>
 
                             </div>
                             <!--Right Side-->
@@ -52,11 +62,10 @@
                                 <font-awesome-icon
                                     @click="toggle"
                                     :icon="isFullscreen ? 'compress' : 'expand'"
-                                    size="xl"
-                                    class="text-gray-600 hover:scale-125 active:scale-90 cursor-pointer transition duration-300"
+                                    class="w-6 h-6 text-gray-600 hover:scale-125 active:scale-90 cursor-pointer transition duration-300"
                                 />
                                 <!--Action Area-->
-                                <div v-if="$slots.actionArea" class="flex">
+                                <div v-if="$slots.actionArea" class="flex space-x-2">
                                     <slot name="actionArea"></slot>
                                 </div>
                             </div>
@@ -66,6 +75,7 @@
 
                 <!-- Page Content -->
                 <main>
+                    {{$page.props.request}}
                     <slot></slot>
                 </main>
             </div>
@@ -75,7 +85,7 @@
 
 <script>
 /*Functions*/
-import {defineComponent, onBeforeUpdate, ref} from "vue";
+import {defineComponent, onBeforeMount, onBeforeUpdate, onUpdated, ref} from "vue";
 import JetApplicationMark from "@/Jetstream/ApplicationMark.vue";
 import {Head, Link} from "@inertiajs/inertia-vue3";
 import {useFullscreen, useBreakpoints, breakpointsTailwind} from '@vueuse/core'
@@ -96,6 +106,7 @@ import {Inertia} from "@inertiajs/inertia";
 export default defineComponent({
     props: {
         title: String,
+        subTitle: String,
     },
 
     components: {
@@ -116,7 +127,11 @@ export default defineComponent({
             useScope: "global",
         });
 
-        onBeforeUpdate(() => {
+        onBeforeMount(() => {
+            locale.value = Inertia.page.props.user.language;
+        });
+
+        onUpdated(() => {
             locale.value = Inertia.page.props.user.language;
         });
 

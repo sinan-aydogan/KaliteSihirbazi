@@ -83,7 +83,6 @@ export default {
         /*Active Main Menu*/
         const activeMainLink = ref();
         onBeforeMount(() => {
-            console.log(activeMainLink.value)
             let activePage;
             links.value.forEach(ml => {
 

@@ -1,3 +1,5 @@
+import {Inertia} from "@inertiajs/inertia";
+
 require('./bootstrap');
 
 import { createApp, h } from 'vue';
