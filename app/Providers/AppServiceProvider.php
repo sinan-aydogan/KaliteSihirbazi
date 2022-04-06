@@ -25,122 +25,130 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         /*Search Macro for Backend Table Component*/
-        Builder::macro('tableSearch', function ($request) {
+        Builder::macro('search', function ($request) {
+
             $request = (object)$request;
-            $perPage = (isset($request->perPage)) ? $request->perPage : 5;
+
+            $perPage = (isset($request->perPage)) ? $request->perPage : 10;
 
             if (key($request)) {
 
-                $searchValue = (object)$request->searchValue;
 
-                if ($request->searchType === "simple") {
+                /*Compare Commands*/
+                function compareCondition($comparator, $searchValue): array
+                {
 
+                    $searchQuery = [];
 
-                    /*Simple Search*/
-                    $searchQuery = $this->when($searchValue->simpleSearchText, function ($query) use ($searchValue) {
-                        foreach ($searchValue->simpleSearchFields as $field) {
-                            $query->orWhere($field, 'like', '%' . $searchValue->simpleSearchText . '%');
+                    switch ($comparator) {
+
+                        case 'co' :
+                            $searchQuery['comparator'] = 'like';
+                            $searchQuery['value'] = "%" . $searchValue . "%";
+                            break;
+
+                        case 'nco' :
+                            $searchQuery['comparator'] = 'not like';
+                            $searchQuery['value'] = "%" . $searchValue . "%";
+                            break;
+
+                        case 'sw' :
+                            $searchQuery['comparator'] = 'like';
+                            $searchQuery['value'] = $searchValue . "%";
+                            break;
+
+                        case 'ew' :
+                            $searchQuery['comparator'] = 'like';
+                            $searchQuery['value'] = "%" . $searchValue;
+                            break;
+
+                        case 'gt' :
+                            $searchQuery['comparator'] = '>';
+                            $searchQuery['value'] = $searchValue;
+                            break;
+
+                        case 'gte' :
+                            $searchQuery['comparator'] = '>=';
+                            $searchQuery['value'] = $searchValue;
+                            break;
+
+                        case 'lt' :
+                            $searchQuery['comparator'] = '<';
+                            $searchQuery['value'] = $searchValue;
+                            break;
+
+                        case 'lte' :
+
+                            $searchQuery['comparator'] = '<=';
+                            $searchQuery['value'] = $searchValue;
+                            break;
+
+                        case 'bt' :
+
+                            $searchQuery['comparator'] = 'Between';
+                            $searchQuery['value'] = [$searchValue['from'], $searchValue['to']];
+                            break;
+
+                        case 'nbt' :
+
+                            $searchQuery['comparator'] = 'notBetween';
+                            $searchQuery['value'] = [$searchValue['from'], $searchValue['to']];
+                            break;
+
+                        case 'eq' :
+
+                            $searchQuery['comparator'] = '=';
+                            $searchQuery['value'] = $searchValue;
+                            break;
+
+                        case 'neq' :
+
+                            $searchQuery['comparator'] = '!=';
+                            $searchQuery['value'] = $searchValue;
+                            break;
+
+                        default:
+
+                            $searchQuery['comparator'] = 'like';
+                            $searchQuery['value'] = "%" . $searchValue . "%";
+                    }
+
+                    return $searchQuery;
+                }
+
+                /*Advanced Search*/
+                foreach ($request->query as $value) {
+                    $field = compareCondition($value['comparator'], $value['value']);
+
+                    if ($value['comparator'] === "bt" || $value['comparator'] === "nbt") {
+                        $whenTrigger = $value['value']['from'] !== null || $value['value']['to'] !== null;
+                    } else {
+                        $whenTrigger = isset($value['value']);
+                    }
+
+                    $searchQuery = $this->when($whenTrigger, function ($query) use ($field, $value) {
+                        if ($value['comparator'] === "bt") {
+                            $query->whereBetween($value['key'], $field['value']['from'], $field['value']['to']);
+                        }
+                        else if($value['comparator'] === "nbt"){
+                            $query->whereNotBetween($value['key'], $field['value']['from'], $field['value']['to']);
+                        }
+                        else {
+                            $query->where($value['key'], $field['comparator'], $field['value']);
                         }
                     });
-
-                } else {
-
-                    /*Compare Commands*/
-                    function compareCondition($condition, $searchValue): array
-                    {
-
-                        $searchQuery = [];
-
-                        switch ($condition) {
-
-                            case 'contains' :
-                                $searchQuery['condition'] = 'like';
-                                $searchQuery['value'] = "%" . $searchValue . "%";
-                                break;
-
-                            case 'notContains' :
-                                $searchQuery['condition'] = 'not like';
-                                $searchQuery['value'] = "%" . $searchValue . "%";
-                                break;
-
-                            case 'starts' :
-                                $searchQuery['condition'] = 'like';
-                                $searchQuery['value'] = $searchValue . "%";
-                                break;
-
-                            case 'ends' :
-                                $searchQuery['condition'] = 'like';
-                                $searchQuery['value'] = "%" . $searchValue;
-                                break;
-
-                            case '>' :
-                                $searchQuery['condition'] = '>';
-                                $searchQuery['value'] = $searchValue;
-                                break;
-
-                            case '>=' :
-                                $searchQuery['condition'] = '>=';
-                                $searchQuery['value'] = $searchValue;
-                                break;
-
-                            case '<' :
-                                $searchQuery['condition'] = '<';
-                                $searchQuery['value'] = $searchValue;
-                                break;
-
-                            case '<=' :
-
-                                $searchQuery['condition'] = '<=';
-                                $searchQuery['value'] = $searchValue;
-                                break;
-
-                            case 'between' :
-
-                                $searchQuery['condition'] = 'between';
-                                $searchQuery['value'] = [$searchValue['from'], $searchValue['to']];
-                                break;
-
-                            default:
-
-                                $searchQuery['condition'] = '=';
-                                $searchQuery['value'] = $searchValue;
-                        }
-
-                        return $searchQuery;
-                    }
-
-                    /*Advanced Search*/
-                    foreach ($searchValue as $key => $value) {
-
-                        $field = compareCondition($value['condition'], $value['value']);
-
-                        if ($value['condition'] === "between") {
-                            $whenTrigger = $value['value']['from'] !== null || $value['value']['to'] !== null;
-                        } else {
-                            $whenTrigger = isset($value['value']);
-                        }
-
-                        $searchQuery = $this->when($whenTrigger, function ($query) use ($key, $field, $value) {
-                            if ($value['condition'] === "between") {
-                                $query->whereBetween($key, $field['value']);
-                            } else {
-                                $query->where($key, $field['condition'], $field['value']);
-                            }
-                        });
-
-                    }
 
                 }
 
                 /*Order Function*/
-                if($request->sortDirection){
+                if ($request->sortDirection) {
                     $sortDirection = 'desc';
-                }else{
+                } else {
                     $sortDirection = 'asc';
                 }
 
-                if($request->sortKey){
-                    $searchQuery->orderBy($request->sortKey, $sortDirection);
+                if ($request->sortBy) {
+                    $searchQuery->orderBy($request->sortBy, $sortDirection);
                 }
 
             } else {
@@ -148,9 +156,7 @@ class AppServiceProvider extends ServiceProvider
             }
 
 
-
-
-            return $searchQuery->paginate($perPage);
+            return $this->paginate($perPage);
         });
 
 
