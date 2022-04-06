@@ -16,7 +16,7 @@
                 <!--Advanced Search: Filter-->
                 <div ref="targetFilter" class="relative flex space-x-1 items-center">
                     <simple-button class="mr-2" color="neutral" size="slim" @click="showFilter = !showFilter"
-                                   :disabled="filters.length === headers.length">
+                                   :disabled="search.query.length === headers.length">
                         <font-awesome-icon icon="filter"/>
                         <span v-text="$t('global.filters')"></span>
                     </simple-button>
@@ -47,7 +47,7 @@
                     </div>
 
                     <!--Filters-->
-                    <template v-for="(filter,index) in filters" :key="filter">
+                    <template v-for="(filter,index) in search.query" :key="filter">
                         <filter-badge
                             :filterId="index"
                             :filter-key="headers.find(i=>i.id === filter.key).label"
@@ -134,7 +134,8 @@
                                 :class="[
                         selectedItems.includes(row[uniqueIdKey]) ? 'bg-rose-50 border-rose-300 group-hover:bg-rose-100' : 'bg-slate-100 group-odd:bg-slate-50 group-hover:bg-slate-200 border-slate-300'
                         ]">
-                                <div class="flex flex-shrink-0 px-2 min-h-[2.5rem] items-center" v-text="row[cell.id]" :class="{
+                                <div class="flex flex-shrink-0 px-2 min-h-[2.5rem] items-center" v-text="row[cell.id]"
+                                     :class="{
                             'justify-start' : cell.align === 'left' || !cell['align'],
                             'justify-end' : cell.align === 'right',
                             'justify-center' : cell.align === 'center'
@@ -148,10 +149,13 @@
                             :class="[
                         selectedItems.includes(row[uniqueIdKey]) ? 'bg-rose-50 border-rose-300 group-hover:bg-rose-100' : 'bg-slate-100 group-odd:bg-slate-50 group-hover:bg-slate-200 border-slate-300'
                         ]">
-                            <div class="flex flex-shrink-0 justify-center items-center space-x-3  min-h-[2.5rem] items-center">
-                                <font-awesome-icon icon="eye" class="text-slate-600 hover:text-slate-900 cursor-pointer"/>
+                            <div
+                                class="flex flex-shrink-0 justify-center items-center space-x-3  min-h-[2.5rem] items-center">
+                                <font-awesome-icon icon="eye"
+                                                   class="text-slate-600 hover:text-slate-900 cursor-pointer"/>
                                 <font-awesome-icon icon="edit" class="text-sky-600 hover:text-sky-900 cursor-pointer"/>
-                                <font-awesome-icon icon="trash" class="text-rose-500 hover:text-rose-900 cursor-pointer"/>
+                                <font-awesome-icon icon="trash"
+                                                   class="text-rose-500 hover:text-rose-900 cursor-pointer"/>
                             </div>
                         </td>
                     </tr>
@@ -211,9 +215,11 @@
                         </Link>
 
                         <!--Page-->
-                        <Link v-if="index> 0 && (data['meta'] ? data.meta.links.length !== index+1 : data.links.length !== index+1)" :href="link.url" aria-current="page"
-                              class="relative inline-flex items-center px-4 py-2 bg-white border border-gray-300 text-gray-500 hover:bg-gray-50 text-sm font-medium"
-                              :class="{'z-10 bg-rose-50 border-rose-500 text-rose-600' : link.active}"
+                        <Link
+                            v-if="index> 0 && (data['meta'] ? data.meta.links.length !== index+1 : data.links.length !== index+1)"
+                            :href="link.url" aria-current="page"
+                            class="relative inline-flex items-center px-4 py-2 bg-white border border-gray-300 text-gray-500 hover:bg-gray-50 text-sm font-medium"
+                            :class="{'z-10 bg-rose-50 border-rose-500 text-rose-600' : link.active}"
                         >
                             {{ link.label }}
                         </Link>
@@ -225,7 +231,8 @@
                             class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700"> ... </span>
 
                         <!--Next-->
-                        <Link v-if="data['meta'] ? data.meta.links.length === index+1 : data.links.length === index+1" :href="link.url"
+                        <Link v-if="data['meta'] ? data.meta.links.length === index+1 : data.links.length === index+1"
+                              :href="link.url"
                               class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
                               :class="{'opacity-25' : !link.url}"
                         >
@@ -254,6 +261,7 @@ import SimpleButton from "@/Components/Button/SimpleButton";
 import FilterBadge from "@/Components/Table/FilterBadge";
 import SelectInput from "@/Components/Form/SelectInput";
 import Checkbox from "@/Jetstream/Checkbox";
+import {debouncedWatch} from "@vueuse/core";
 
 export default {
     name: "Table",
@@ -262,6 +270,10 @@ export default {
         data: {
             type: [Array, Object],
             default: []
+        },
+        dataKey: {
+            type: String,
+            default: 'data'
         },
         uniqueIdKey: {
             type: String,
@@ -286,7 +298,7 @@ export default {
         const {t} = useI18n();
 
         /*Data states*/
-        const {data, headers, uniqueIdKey, simpleSearch} = toRefs(props)
+        const {data, dataKey, headers, uniqueIdKey, simpleSearch} = toRefs(props)
         const gData = computed(() => {
             return data.value['data'] ? data.value['data'] : data.value;
         })
@@ -376,20 +388,45 @@ export default {
         const unSelectedFilters = ref(cloneDeep(headers.value))
         const filters = ref([]);
         const addFilter = () => {
-            filters.value.push(cloneDeep(filterSelectForm))
+            search.query.push(cloneDeep(filterSelectForm))
             unSelectedFilters.value.splice(unSelectedFilters.value.findIndex(f => f.id === filterSelectForm.value.key), 1)
             filterSelectForm.reset()
             showFilter.value = false
         }
         const deleteFilter = (index) => {
-            unSelectedFilters.value.push(headers.value.find(h => h.id === filters.value[index].key))
-            filters.value.splice(index, 1)
+            unSelectedFilters.value.push(headers.value.find(h => h.id === search.query[index].key))
+            search.query.splice(index, 1)
         }
+
+        /*Search*/
+        const dataLoading = ref(false);
+        const search = useForm({
+            query: [],
+            perPager: 10,
+            sortDirection: 'asc',
+            sortBy: null,
+        })
+
+        debouncedWatch(() => cloneDeep(search.query), () => {
+            search.post(route('department.search'), data,{
+            },{
+                only: dataKey.value,
+                onBefore: visit => {
+                    dataLoading.value = true;
+                },
+                onFinish: visit => {
+                    dataLoading.value = false;
+                },
+            })
+        }, {
+            debounce: 500
+        });
 
         return {
             gData,
             targetFilter,
-            filters,
+            search,
+            dataLoading,
             addFilter,
             deleteFilter,
             comparators,
