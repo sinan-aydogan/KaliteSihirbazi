@@ -7,6 +7,7 @@ use App\Models\Department;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreDepartmentRequest;
 use App\Http\Requests\UpdateDepartmentRequest;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class DepartmentController extends Controller
@@ -16,10 +17,10 @@ class DepartmentController extends Controller
      *
      * @return \Inertia\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         return Inertia::render('Modules/BusinessManagement/Department/Index', [
-            'data' => DepartmentResource::collection(Department::paginate(5))
+            'data' => DepartmentResource::collection(Department::search($request->all())),
         ]);
     }
 
