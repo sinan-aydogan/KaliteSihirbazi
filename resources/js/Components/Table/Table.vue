@@ -108,7 +108,9 @@
                 </thead>
 
                 <!--Body-->
-                <tbody>
+                <tbody :style="'filter: drop-shadow(0 0 1px rgba('+
+                (gData.length>0 ? '0,0,0,0.25' : '14,165,233,1') +
+                '))'">
                 <template v-for="row in gData">
                     <tr class="group">
                         <!--Checkbox-->
@@ -160,6 +162,15 @@
                         </td>
                     </tr>
                 </template>
+
+                <tr v-if="gData.length===0">
+                    <td :colspan="headers.length + actionColumn ?? 1" class="bg-sky-100 text-sky-700">
+                        <div class="flex justify-center items-center p-4">
+                            <font-awesome-icon icon="info-circle" size="w-6 h-6"/>
+                            <span class="ml-2 font-semibold" v-text="$t('table.noResults')"></span>
+                        </div>
+                    </td>
+                </tr>
 
                 </tbody>
             </table>
@@ -286,6 +297,10 @@ export default {
         simpleSearch: {
             type: Boolean,
             default: false
+        },
+        actionColumn: {
+            type: Boolean,
+            default: true
         },
         bulkActions: {
             type: Array,
@@ -442,9 +457,9 @@ export default {
 </script>
 
 <style>
-table {
+/*table {
     filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.3));
-}
+}*/
 
 tbody > tr:first-child > td:first-child {
     border-top-left-radius: 0.50rem;
