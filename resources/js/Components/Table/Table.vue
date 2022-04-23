@@ -22,7 +22,7 @@
                     </simple-button>
 
                     <div v-if="showFilter"
-                         class="absolute space-y-2 -left-2 top-10 z-50 bg-white rounded-lg p-4 shadow-lg border">
+                         class="absolute space-y-2 -left-2 top-10 z-50 bg-white dark:bg-slate-700  dark:border-transparent dark:shadow-slate-500 rounded-lg p-4 shadow-lg dark:shadow-sm border">
                         <!--Select Key-->
                         <select-input :options="unSelectedFilters" v-model="filterSelectForm.key"
                                       :select-text="$t('table.selectField')"></select-input>
@@ -76,7 +76,7 @@
             </div>
         </div>
 
-        <div class="p-2 -m-2 overflow-x-scroll overscroll-x-auto">
+        <div class="p-2 -m-2 overflow-x-scroll overscroll-x-auto scrollbar scrollbar-thumb-rose-500 scrollbar-track-transparent">
             <!--Table-->
             <table class="w-full mt-4 text-sm">
                 <!--Header-->
@@ -116,7 +116,7 @@
                         <!--Checkbox-->
                         <td v-if="bulkActions.length>0" class="border-b group-last:border-b-0 w-12 overflow-hidden"
                             :class="[
-                        selectedItems.includes(row[uniqueIdKey]) ? 'bg-rose-50 border-rose-300 group-hover:bg-rose-100' : 'bg-slate-100 group-odd:bg-slate-50 group-hover:bg-slate-200 border-slate-300'
+                        selectedItems.includes(row[uniqueIdKey]) ? 'bg-rose-50 border-rose-300 group-hover:bg-rose-100' : 'bg-slate-100 dark:bg-slate-500 group-odd:bg-slate-50 dark:group-odd:bg-slate-600 group-hover:bg-slate-200 dark:group-hover:bg-slate-700 border-slate-300'
                         ]">
                             <div class="relative flex  flex-shrink-0 h-full">
                                 <!--Selected Indicator-->
@@ -134,7 +134,7 @@
                         <template v-for="cell in headers">
                             <td class="border-b group-last:border-b-0"
                                 :class="[
-                        selectedItems.includes(row[uniqueIdKey]) ? 'bg-rose-50 border-rose-300 group-hover:bg-rose-100' : 'bg-slate-100 group-odd:bg-slate-50 group-hover:bg-slate-200 border-slate-300'
+                        selectedItems.includes(row[uniqueIdKey]) ? 'bg-rose-50 border-rose-300 group-hover:bg-rose-100' : 'bg-slate-100 dark:bg-slate-500 group-odd:bg-slate-50 dark:group-odd:bg-slate-600 group-hover:bg-slate-200 dark:group-hover:bg-slate-700 border-slate-300'
                         ]">
                                 <div class="flex flex-shrink-0 px-2 min-h-[2.5rem] items-center" v-text="row[cell.id]"
                                      :class="{
@@ -149,15 +149,15 @@
                         <!--Actions-->
                         <td class="border-b group-last:border-b-0"
                             :class="[
-                        selectedItems.includes(row[uniqueIdKey]) ? 'bg-rose-50 border-rose-300 group-hover:bg-rose-100' : 'bg-slate-100 group-odd:bg-slate-50 group-hover:bg-slate-200 border-slate-300'
+                        selectedItems.includes(row[uniqueIdKey]) ? 'bg-rose-50 border-rose-300 group-hover:bg-rose-100' : 'bg-slate-100 dark:bg-slate-500 group-odd:bg-slate-50 dark:group-odd:bg-slate-600 group-hover:bg-slate-200 dark:group-hover:bg-slate-700 border-slate-300'
                         ]">
                             <div
                                 class="flex flex-shrink-0 justify-center items-center space-x-3  min-h-[2.5rem] items-center">
                                 <font-awesome-icon icon="eye"
-                                                   class="text-slate-600 hover:text-slate-900 cursor-pointer"/>
-                                <font-awesome-icon icon="edit" class="text-sky-600 hover:text-sky-900 cursor-pointer"/>
+                                                   class="text-slate-600 dark:bg-slate-300 dark:text-slate-700 dark:p-1 dark:rounded hover:text-slate-900 cursor-pointer"/>
+                                <font-awesome-icon icon="edit" class="text-sky-600 dark:bg-sky-500 dark:text-white dark:p-1 dark:rounded hover:text-sky-900 cursor-pointer"/>
                                 <font-awesome-icon icon="trash"
-                                                   class="text-rose-500 hover:text-rose-900 cursor-pointer"/>
+                                                   class="text-rose-500 dark:bg-rose-500 dark:text-white dark:p-1 dark:rounded hover:text-rose-900 cursor-pointer"/>
                             </div>
                         </td>
                     </tr>
@@ -180,17 +180,17 @@
 
     <!--Pagination-->
     <div v-if="data['data']" class="py-3 flex items-center justify-between">
-        <div class="grid grid-cols-2 w-full sm:hidden">
+        <div class="grid grid-cols-2 w-full sm:hidden select-none">
             <Link :href="data['meta'] ? data.meta.links[0].url : data.prev_page_url"
-                  class="col-span-1 space-x-2 inline-flex place-self-start items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
-                  :class="{'opacity-25': data['meta'] ? data.meta.links[0].url === 'null' : data.prev_page_url  === 'null'}"
+                  class="col-span-1 space-x-2 inline-flex place-self-start items-center px-4 py-2 border dark:border-transparent border-gray-300 text-sm font-medium rounded-md text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-700 hover:bg-gray-50"
+                  :class="{'opacity-25 pointer-events-none': data['meta'] ? data.meta.links[0].url === null : data.prev_page_url  === null}"
             >
                 <font-awesome-icon icon="chevron-left" size="sm" aria-hidden="true"/>
                 <span v-text="$t('global.previous')"></span>
             </Link>
             <Link :href="data['meta'] ? data.meta.links[data.meta.links.length-1].url : data.next_page_url"
-                  class="col-span-1 ml-3 space-x-2 relative inline-flex  place-self-end items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
-                  :class="{'opacity-25': data['meta'] ? data.meta.links[data.meta.links.length-1].url === 'null' : data.next_page_url  === 'null'}"
+                  class="col-span-1 ml-3 space-x-2 relative inline-flex  place-self-end items-center px-4 py-2 border dark:border-transparent border-gray-300 text-sm font-medium rounded-md text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-700 hover:bg-gray-50"
+                  :class="{'opacity-25 pointer-events-none': data['meta'] ? data.meta.links[data.meta.links.length-1].url === null : data.next_page_url  === null}"
             >
                 <span v-text="$t('global.next')"></span>
                 <font-awesome-icon icon="chevron-right" size="sm" aria-hidden="true"/>
@@ -198,7 +198,7 @@
         </div>
         <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
             <div>
-                <p class="text-sm text-gray-700">
+                <p class="text-sm text-slate-800 dark:text-slate-200">
                     <i18n-t keypath="table.paginationDetail" tag="span">
                         <template v-slot:total>
                             <span v-text="data['meta'] ? data.meta.total : data.total" class="font-bold"></span>
@@ -218,8 +218,8 @@
                     <template v-for="(link,index) in data['meta'] ? data.meta.links : data.links" :key="index">
                         <!--Previous-->
                         <Link v-if="index === 0" :href="link.url" :disabled="link.url"
-                              class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-25"
-                              :class="{'opacity-25' : !link.url}"
+                              class="relative inline-flex items-center px-1 rounded-l-md border dark:border-0 dark:border-r dark:border-slate-800 border-gray-300 bg-white dark:bg-slate-600 text-sm font-medium text-slate-800 dark:text-slate-200 hover:bg-gray-50 dark:hover:bg-slate-800 disabled:opacity-25"
+                              :class="{'opacity-25 pointer-events-none' : !link.url}"
                         >
                             <span class="sr-only" v-text="$t('global.previous')"></span>
                             <font-awesome-icon icon="chevron-left" class="h-5 w-5" aria-hidden="true"/>
@@ -229,7 +229,7 @@
                         <Link
                             v-if="index> 0 && (data['meta'] ? data.meta.links.length !== index+1 : data.links.length !== index+1)"
                             :href="link.url" aria-current="page"
-                            class="relative inline-flex items-center px-4 py-2 bg-white border border-gray-300 text-gray-500 hover:bg-gray-50 text-sm font-medium"
+                            class="relative inline-flex items-center px-3 py-1 bg-white dark:bg-slate-600 border dark:border-t-0 dark:border-b-0 border-gray-300 dark:border-slate-800 text-slate-800 dark:text-slate-200 hover:bg-gray-50 dark:hover:bg-slate-800 text-sm font-medium"
                             :class="{'z-10 bg-rose-50 border-rose-500 text-rose-600' : link.active}"
                         >
                             {{ link.label }}
@@ -239,13 +239,13 @@
                         <span
 
                             v-if="link.url === null && index >0 && index < data['meta'] ? data.meta.links.length-1 : data.links.length-1"
-                            class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700"> ... </span>
+                            class="relative inline-flex items-center px-3 py-1 border ark:bg-slate-600 border dark:border-t-0 dark:border-b-0 border-gray-300 bg-white dark:border-slate-800 text-slate-800 dark:text-slate-200 text-sm font-medium"> ... </span>
 
                         <!--Next-->
                         <Link v-if="data['meta'] ? data.meta.links.length === index+1 : data.links.length === index+1"
                               :href="link.url"
-                              class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
-                              :class="{'opacity-25' : !link.url}"
+                              class="relative inline-flex items-center px-1 rounded-r-md border dark:border-0 dark:border-l dark:border-slate-800 border-gray-300 bg-white dark:bg-slate-600 text-sm font-medium text-slate-800 dark:text-slate-200 dark:hover:bg-slate-800 hover:bg-gray-50"
+                              :class="{'opacity-25 pointer-events-none' : !link.url}"
                         >
                             <span class="sr-only" v-text="$t('global.next')"></span>
                             <font-awesome-icon icon="chevron-right" class="h-5 w-5" aria-hidden="true"/>
@@ -260,7 +260,7 @@
 
 <script>
 /*Functions*/
-import {ref, computed, toRefs, reactive} from 'vue'
+import {ref, computed, toRefs} from 'vue'
 import {onClickOutside} from "@vueuse/core/index";
 import {Link, useForm} from "@inertiajs/inertia-vue3";
 import {cloneDeep} from "lodash";
@@ -313,7 +313,7 @@ export default {
         const {t} = useI18n();
 
         /*Data states*/
-        const {data, dataKey, headers, uniqueIdKey, simpleSearch} = toRefs(props)
+        const {data, dataKey, headers} = toRefs(props)
         const gData = computed(() => {
             return data.value['data'] ? data.value['data'] : data.value;
         })
@@ -401,7 +401,6 @@ export default {
         })
 
         const unSelectedFilters = ref(cloneDeep(headers.value))
-        const filters = ref([]);
         const addFilter = () => {
             search.query.push(cloneDeep(filterSelectForm))
             unSelectedFilters.value.splice(unSelectedFilters.value.findIndex(f => f.id === filterSelectForm.value.key), 1)
