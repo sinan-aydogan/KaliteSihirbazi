@@ -9,7 +9,7 @@
         </template>
 
         <template #content>
-            <div class="max-w-xl text-sm text-gray-600">
+            <div class="max-w-xl text-sm text-slate-800 dark:text-slate-200">
                 {{$t('account.deleteAccountInfo')}}
             </div>
 

@@ -2,7 +2,7 @@
     <div>
         <label :for="labelFor">
             <!--Label-->
-            <div v-if="label || $slots.label" class="font-semibold">
+            <div v-if="label || $slots.label" class="text-sm font-medium">
                 <span v-if="label" v-text="label"></span>
                 <slot v-else name="label"/>
             </div>
@@ -14,7 +14,7 @@
         </label>
 
         <!--Input Item-->
-        <div>
+        <div class="mt-1">
             <slot></slot>
         </div>
 
@@ -71,11 +71,7 @@ export default {
         /*Error Management*/
         const {errors} = toRefs(props);
         const errorStatus = computed(()=>{
-            if(errors.value.length>0 || Inertia.page.props.errors.length>0){
-                return true
-            }else{
-                return false
-            }
+            return errors.value.length > 0 || Inertia.page.props.errors.length > 0;
         })
         provide('errorStatus', errorStatus);
     }

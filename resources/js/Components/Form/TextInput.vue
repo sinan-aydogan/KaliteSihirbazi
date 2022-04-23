@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="bg-transparent border-0 p-0">
         <div class="relative rounded-md shadow-sm">
             <!--Prepend-->
             <div v-if="$slots.prepend" class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -14,7 +14,7 @@
                 :type="inputType"
                 :name="inputId"
                 :id="inputId"
-                class=" block w-full sm:text-sm dark:bg-slate-900/30 border-slate-300 dark:border-slate-600 rounded-md"
+                class=" block h-10 w-full sm:text-sm dark:bg-slate-900/30 border-slate-300 dark:border-slate-600 rounded-md"
                 :class="[
                     {'focus:ring-rose-500 border-rose-500 focus:border-rose-500' : errorStatus},
                     {'focus:ring-indigo-500 focus:border-indigo-500' : !errorStatus},

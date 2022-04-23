@@ -9,15 +9,15 @@
         </template>
 
         <template #content>
-            <h3 class="text-lg font-medium text-gray-900" v-if="twoFactorEnabled">
+            <h3 class="text-lg font-medium text-slate-800 dark:text-slate-200" v-if="twoFactorEnabled">
                 {{$t('account.twoFactorAuthenticationEnabledTitle')}}
             </h3>
 
-            <h3 class="text-lg font-medium text-gray-900" v-else>
+            <h3 class="text-lg font-medium text-slate-800 dark:text-slate-200" v-else>
                 {{$t('account.twoFactorAuthenticationNotEnabledTitle')}}
             </h3>
 
-            <div class="mt-3 max-w-xl text-sm text-gray-600">
+            <div class="mt-3 max-w-xl text-sm text-slate-800 dark:text-slate-200">
                 <p>
                     {{$t('account.twoFactorAuthenticationNotEnabledDesc')}}
                 </p>
@@ -25,7 +25,7 @@
 
             <div v-if="twoFactorEnabled">
                 <div v-if="qrCode">
-                    <div class="mt-4 max-w-xl text-sm text-gray-600">
+                    <div class="mt-4 max-w-xl text-sm text-slate-800 dark:text-slate-200">
                         <p class="font-semibold">
                             {{$t('account.twoFactorAuthenticationEnabledDesc')}}
                         </p>
@@ -36,7 +36,7 @@
                 </div>
 
                 <div v-if="recoveryCodes.length > 0">
-                    <div class="mt-4 max-w-xl text-sm text-gray-600">
+                    <div class="mt-4 max-w-xl text-sm text-slate-800 dark:text-slate-200">
                         <p class="font-semibold">
                             {{$t('account.twoFactorAuthenticationEnabledInfo')}}
                         </p>
