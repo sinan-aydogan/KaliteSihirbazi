@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Department extends Model
 {
@@ -17,12 +18,12 @@ class Department extends Model
     ];
 
     /*Relations*/
-    public function manager()
+    public function manager():BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id',);
     }
 
-    public function department()
+    public function department():BelongsTo
     {
         return $this->belongsTo(Department::class, 'department_id');
     }
