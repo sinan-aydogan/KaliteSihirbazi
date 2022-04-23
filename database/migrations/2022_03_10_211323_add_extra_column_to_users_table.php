@@ -17,6 +17,10 @@ return new class extends Migration {
                 ->after('profile_photo_path')
                 ->default('tr')
                 ->nullable();
+            $table->string('theme')
+                ->after('language')
+                ->default('auto')
+                ->nullable();
         });
     }
 
@@ -29,6 +33,7 @@ return new class extends Migration {
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('language');
+            $table->dropColumn('theme');
         });
     }
 };

@@ -1,10 +1,6 @@
 <template>
-    <app-layout title="Profile">
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{$t('account.account')}}
-            </h2>
-        </template>
+    <app-layout :title="$t('account.account')">
+
 
         <div>
             <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
@@ -32,7 +28,15 @@
                     <jet-section-border />
 
                     <language-changer/>
+
                 </div>
+
+              <div>
+                <jet-section-border />
+
+                <theme-changer/>
+
+              </div>
 
                 <template v-if="$page.props.jetstream.hasAccountDeletionFeatures">
                     <jet-section-border />
@@ -54,11 +58,13 @@
     import UpdatePasswordForm from '@/Pages/Profile/Partials/UpdatePasswordForm.vue'
     import UpdateProfileInformationForm from '@/Pages/Profile/Partials/UpdateProfileInformationForm.vue'
     import LanguageChanger from "@/Pages/Profile/Partials/LanguageChanger";
+    import ThemeChanger from "@/Pages/Profile/Partials/ThemeChanger";
 
     export default defineComponent({
         props: ['sessions'],
 
         components: {
+          ThemeChanger,
             LanguageChanger,
             AppLayout,
             DeleteUserForm,

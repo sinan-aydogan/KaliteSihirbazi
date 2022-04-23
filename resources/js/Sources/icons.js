@@ -82,6 +82,9 @@ import {
     faLeftLong,
     faLongArrowLeft,
     faLongArrowRight,
+    faMoon,
+    faSun,
+    faWandMagicSparkles
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -165,5 +168,8 @@ library.add(
     faRightLong,
     faLeftLong,
     faLongArrowLeft,
-    faLongArrowRight
+    faLongArrowRight,
+    faMoon,
+    faSun,
+    faWandMagicSparkles
 );

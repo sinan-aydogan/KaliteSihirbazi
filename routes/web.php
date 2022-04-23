@@ -42,6 +42,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     /*User Functions*/
     Route::post('/user-language-update', \App\Http\Controllers\User\UpdateActiveLanguage::class)->name('user-language.update');
+    Route::post('/user-theme-update', \App\Http\Controllers\User\UpdateActiveTheme::class)->name('user-theme.update');
+
 
     /*Modules*/
     $mRoutes = [
