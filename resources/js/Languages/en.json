@@ -6,6 +6,7 @@
         "saved": "Saved",
         "saveChanges": "Save Changes",
         "cancel": "Cancel",
+        "reset": "Reset",
         "confirm": "Confirm",
         "done": "Done",
         "change": "Change",
@@ -17,7 +18,34 @@
         "passive": "Passive",
         "previous": "Previous",
         "next": "Next",
-        "filters": "Filters"
+        "filters": "Filters",
+        "edit": "Edit",
+        "delete": "Delete",
+        "yes": "Yes",
+        "no": "No",
+        "messages" : {
+            "validation": {
+                "required": "This field is required",
+                "email": "This field must be a valid email",
+                "url": "This field must be a valid url",
+                "number": "This field must be a valid number",
+                "digits": "This field must be a valid digits",
+                "date": "This field must be a valid date",
+                "equalTo": "This field must be equal to",
+                "maxLength": "This field must be at max {0} characters long",
+                "minLength": "This field must be at least {0} characters long",
+                "rangeLength": "This field must be between {0} and {1} characters long",
+                "range": "This field must be between {0} and {1}",
+                "max": "This field must be at max {0}",
+                "min": "This field must be at least {0}",
+                "pattern": "This field must match the pattern",
+                "invalid": "This field is invalid"
+            }
+        },
+        "questions": {
+            "areYouSure": "Are you sure?",
+            "deleteConfirm": "Are you sure to delete this item?"
+        }
     },
     "account": {
         "account": "Account",
@@ -173,6 +201,31 @@
             "notBetween": "Not Between",
             "isNull": "Is Null",
             "isNotNull": "Is Not Null"
+        }
+    },
+    "department": {
+        "global": {
+            "singular": "Department",
+            "plural": "Departments",
+            "name": "Department Name",
+            "type": "Department Type",
+            "manager": "Department Manager",
+            "mainDepartment": "Main Department"
+        },
+        "index": {
+            "title": "Departments",
+            "subTitle": "Management of the departments"
+        },
+        "create": {
+            "title": "Create New Department",
+            "subTitle": "Create a new department for your business"
+        },
+        "message": {
+            "creationSuccessfully": "Department created successfully",
+            "updateSuccessfully": "Department updated successfully",
+            "deletionSuccessfully": "Department deleted successfully",
+            "deletionFailed": "Department deletion failed",
+            "deletionFailedDeleteSubDepartments": "Department deletion failed. Please delete all sub departments first"
         }
     }
 }

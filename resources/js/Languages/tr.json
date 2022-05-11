@@ -6,6 +6,7 @@
         "saved": "Kaydedildi",
         "saveChanges": "Değişiklikleri Kaydet",
         "cancel": "İptal Et",
+        "reset": "Sıfırla",
         "confirm": "Onayla",
         "done": "Tamamlandı",
         "change": "Değiştir",
@@ -17,7 +18,34 @@
         "passive": "Pasif",
         "previous": "Önceki",
         "next": "Sonraki",
-        "filters": "Filtreler"
+        "filters": "Filtreler",
+        "delete": "Sil",
+        "edit": "Düzenle",
+        "yes": "Evet",
+        "no": "Hayır",
+        "messages" : {
+            "validation": {
+                "required": "Bu alan zorunludur.",
+                "email": "Lütfen geçerli bir e-posta adresi girin.",
+                "url": "Lütfen geçerli bir URL girin.",
+                "number": "Lütfen geçerli bir sayı girin.",
+                "digits": "Lütfen sadece sayısal karakterler girin.",
+                "date": "Lütfen geçerli bir tarih girin.",
+                "equalTo": "Lütfen aynı değeri tekrar girin.",
+                "maxLength": "Lütfen en fazla {0} karakter girin.",
+                "minLength": "Lütfen en az {0} karakter girin.",
+                "rangeLength": "Lütfen {0} ile {1} karakter arasında bir değer girin.",
+                "range": "Lütfen {0} ile {1} arasında bir değer girin.",
+                "max": "Lütfen {0} değerinden küçük bir değer girin.",
+                "min": "Lütfen {0} değerinden büyük bir değer girin.",
+                "pattern": "Lütfen geçerli bir değer girin.",
+                "invalid": "Geçersiz değer."
+            }
+        },
+        "questions": {
+            "areYouSure": "Emin misiniz?",
+            "deleteConfirm": "Bu öğeyi silmek istediğinize emin misiniz?"
+        }
     },
     "account": {
         "account": "Hesap",
@@ -178,6 +206,31 @@
             "notBetween": "Not Between",
             "isNull": "Is Null",
             "isNotNull": "Is Not Null"
+        }
+    },
+    "department": {
+        "global": {
+            "singular": "Departman",
+            "plural": "Departmanlar",
+            "name": "Departman Adı",
+            "type": "Departman Tipi",
+            "manager": "Departman Yöneticisi",
+            "mainDepartment": "Ana Departman"
+        },
+        "index": {
+            "title": "Departmanlar",
+            "subTitle": "Departmanlarınızı buradan yönetebilirsiniz"
+        },
+        "create": {
+            "title": "Departman Ekle",
+            "subTitle": "İşlemeniz için yeni bir departman ekleyin"
+        },
+        "message": {
+            "creationSuccessfully": "Departman başarıyla oluşturuldu",
+            "updateSuccessfully": "Departman başarıyla güncellendi",
+            "deletionSuccessfully": "Departman başarıyla silindi",
+            "deletionFailed": "Departman silinemedi",
+            "deletionFailedDeleteSubDepartments": "Departmanın alt departmanları var. Lütfen önce alt departmanları silin"
         }
     }
 }
