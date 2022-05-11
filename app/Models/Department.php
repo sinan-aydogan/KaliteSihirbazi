@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Department extends Model
 {
@@ -23,8 +24,13 @@ class Department extends Model
         return $this->belongsTo(User::class, 'user_id',);
     }
 
-    public function department():BelongsTo
+    public function mainDepartment():BelongsTo
     {
         return $this->belongsTo(Department::class, 'department_id');
+    }
+
+    public function subDepartments():HasMany
+    {
+        return $this->hasMany(Department::class);
     }
 }

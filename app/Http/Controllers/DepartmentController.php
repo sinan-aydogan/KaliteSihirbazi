@@ -20,7 +20,7 @@ class DepartmentController extends Controller
     public function index(Request $request)
     {
         return Inertia::render('Modules/BusinessManagement/Department/Index', [
-            'data' => DepartmentResource::collection(Department::search($request->all())),
+            'tableData' => DepartmentResource::collection(Department::search($request->all())),
         ]);
     }
 
@@ -37,18 +37,24 @@ class DepartmentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreDepartmentRequest  $request
-     * @return \Illuminate\Http\Response
+     * @param \App\Http\Requests\StoreDepartmentRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreDepartmentRequest $request)
     {
-        //
+        Department::create([
+            'code' => $request->input('code'),
+            'name' => $request->input('name'),
+            'type' => $request->input('type')
+        ]);
+
+        return redirect()->back()->with('message', ['type' => 'success', 'message' => 'department.message.creationSuccessfully']);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Department  $department
+     * @param \App\Models\Department $department
      * @return \Illuminate\Http\Response
      */
     public function show(Department $department)
@@ -59,34 +65,48 @@ class DepartmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Department  $department
+     * @param \App\Models\Department $department
      * @return \Illuminate\Http\Response
      */
     public function edit(Department $department)
     {
-        //
+        return response()->json($department);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateDepartmentRequest  $request
-     * @param  \App\Models\Department  $department
-     * @return \Illuminate\Http\Response
+     * @param \App\Http\Requests\UpdateDepartmentRequest $request
+     * @param \App\Models\Department $department
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateDepartmentRequest $request, Department $department)
     {
-        //
+        $department->update([
+            'code' => $request->input('code'),
+            'name' => $request->input('name'),
+            'user_id' => $request->input('user_id'),
+            'department_id' => $request->input('department_id')
+        ]);
+
+        return redirect()->back()->with('message', ['type' => 'success', 'message' => 'department.message.updateSuccessfully']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Department  $department
-     * @return \Illuminate\Http\Response
+     * @param \App\Models\Department $department
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Department $department)
     {
-        //
+        if ($department->subDepartments()->doesntExist()) {
+            $department->delete();
+            return redirect()->back()->with('message', ['type' => 'success', 'message' => 'department.message.deletionSuccessfully']);
+
+        }else{
+            return redirect()->back()->with('message', ['type' => 'warning', 'message' => 'department.message.deletionFailedDeleteSubDepartments']);
+        }
+
     }
 }

@@ -20,9 +20,9 @@ class DepartmentResource extends JsonResource
             'code'=> $this->code,
             'name'=> $this->name,
             'user_id'=> $this->user_id,
-            'user_name'=> $this->manager->name,
+            'user_name'=> $this->user_id ? $this->manager->name : '',
             'department_id'=> $this->department_id,
-            'department_name'=> $this->department_id ? $this->department->name : '',
+            'department_name'=> $this->department_id ? $this->mainDepartment->name : '',
         ];
     }
 }
