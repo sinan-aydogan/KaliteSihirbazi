@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('departments', function (Blueprint $table) {
             $table->id();
-            $table->string('code',5);
+            $table->string('code',10)->unique();
             $table->string('name',100);
-            $table->foreignIdFor(\App\Models\User::class);
+            $table->foreignIdFor(\App\Models\User::class)->nullable();
             $table->foreignIdFor(\App\Models\Department::class)->nullable();
             $table->timestamps();
         });
