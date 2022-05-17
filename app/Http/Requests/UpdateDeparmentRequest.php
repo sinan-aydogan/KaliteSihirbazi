@@ -13,7 +13,7 @@ class UpdateDeparmentRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return auth()->check();
     }
 
     /**
@@ -24,7 +24,8 @@ class UpdateDeparmentRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'code' => 'required|unique:departments|max:10',
+            'name' => 'required|max:100'
         ];
     }
 }
