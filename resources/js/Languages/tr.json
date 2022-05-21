@@ -20,9 +20,18 @@
         "next": "Sonraki",
         "filters": "Filtreler",
         "delete": "Sil",
+        "deletedItems": "Silinen Öğeler",
         "edit": "Düzenle",
         "yes": "Evet",
+        "yesDeleteIt": "Evet, sil!",
         "no": "Hayır",
+        "noCancelIt": "Hayır, iptal et!",
+        "noData": "Veri Yok",
+        "noMatches": "Eşleşme Yok",
+        "loading": "Yükleniyor",
+        "submit": "Gönder",
+        "update": "Güncelle",
+        "create": "Oluştur",
         "messages" : {
             "validation": {
                 "required": "Bu alan zorunludur.",
@@ -215,7 +224,9 @@
             "name": "Departman Adı",
             "type": "Departman Tipi",
             "manager": "Departman Yöneticisi",
-            "mainDepartment": "Ana Departman"
+            "mainDepartment": "Ana Departman",
+            "subDepartment": "Alt Departman",
+            "subDepartments": "Alt Departmanlar"
         },
         "index": {
             "title": "Departmanlar",
@@ -226,6 +237,8 @@
             "subTitle": "İşlemeniz için yeni bir departman ekleyin"
         },
         "message": {
+            "selectDepartment": "Departman Seçiniz",
+            "selectManager": "Departman Yöneticisi Seçiniz",
             "creationSuccessfully": "Departman başarıyla oluşturuldu",
             "updateSuccessfully": "Departman başarıyla güncellendi",
             "deletionSuccessfully": "Departman başarıyla silindi",

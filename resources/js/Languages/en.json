@@ -21,8 +21,17 @@
         "filters": "Filters",
         "edit": "Edit",
         "delete": "Delete",
+        "deletedItems": "Deleted Items",
         "yes": "Yes",
+        "yesDeleteIt": "Yes, delete it!",
         "no": "No",
+        "noCancelIt": "No, cancel it!",
+        "noData": "No Data",
+        "noMatches": "No Matches",
+        "loading": "Loading",
+        "submit": "Submit",
+        "update": "Update",
+        "create": "Create",
         "messages" : {
             "validation": {
                 "required": "This field is required",
@@ -210,7 +219,9 @@
             "name": "Department Name",
             "type": "Department Type",
             "manager": "Department Manager",
-            "mainDepartment": "Main Department"
+            "mainDepartment": "Main Department",
+            "subDepartment": "Sub Department",
+            "subDepartments": "Sub Departments"
         },
         "index": {
             "title": "Departments",
@@ -221,6 +232,8 @@
             "subTitle": "Create a new department for your business"
         },
         "message": {
+            "selectDepartment": "Select a department",
+            "selectManager": "Select a manager",
             "creationSuccessfully": "Department created successfully",
             "updateSuccessfully": "Department updated successfully",
             "deletionSuccessfully": "Department deleted successfully",

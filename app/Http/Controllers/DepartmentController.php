@@ -7,6 +7,7 @@ use App\Models\Department;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreDepartmentRequest;
 use App\Http\Requests\UpdateDepartmentRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -21,6 +22,12 @@ class DepartmentController extends Controller
     {
         return Inertia::render('Modules/BusinessManagement/Department/Index', [
             'tableData' => DepartmentResource::collection(Department::search($request->all())),
+            'users' => User::when($request->input('qD'), function($query)use($request){
+                $query->where('name', 'LIKE', "%{$request->input('qD')}%");
+            })->get(),
+            'departments' => Department::when($request->input('qD'), function($query)use($request){
+                $query->where('name', 'LIKE', "%{$request->input('qD')}%");
+            })->get(),
         ]);
     }
 
@@ -45,7 +52,9 @@ class DepartmentController extends Controller
         Department::create([
             'code' => $request->input('code'),
             'name' => $request->input('name'),
-            'type' => $request->input('type')
+            'type' => $request->input('type'),
+            'department_id' => $request->input('department_id'),
+            'user_id' => $request->input('user_id')
         ]);
 
         return redirect()->back()->with('message', ['type' => 'success', 'message' => 'department.message.creationSuccessfully']);
@@ -85,6 +94,7 @@ class DepartmentController extends Controller
         $department->update([
             'code' => $request->input('code'),
             'name' => $request->input('name'),
+            'type' => $request->input('type'),
             'user_id' => $request->input('user_id'),
             'department_id' => $request->input('department_id')
         ]);
