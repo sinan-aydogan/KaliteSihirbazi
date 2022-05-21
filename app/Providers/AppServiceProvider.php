@@ -31,8 +31,8 @@ class AppServiceProvider extends ServiceProvider
 
             $perPage = (isset($request->perPage)) ? $request->perPage : 10;
 
-            if (key($request)) {
 
+            if (key($request) === 'query') {
 
                 /*Compare Commands*/
                 function compareCondition($comparator, $searchValue): array
@@ -154,7 +154,6 @@ class AppServiceProvider extends ServiceProvider
             } else {
                 $searchQuery = $this;
             }
-
 
             return $this->paginate($perPage);
         });
