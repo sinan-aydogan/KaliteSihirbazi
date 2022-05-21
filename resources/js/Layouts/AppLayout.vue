@@ -75,7 +75,6 @@
 
                 <!-- Page Content -->
                 <main>
-                    {{ $page.props.request }}
                     <slot></slot>
                 </main>
             </div>
@@ -124,7 +123,6 @@ export default defineComponent({
         /*Theme*/
         Theme();
 
-
         /*Multi-language*/
         const {locale, t} = useI18n({
             useScope: "global",
@@ -150,15 +148,35 @@ export default defineComponent({
         /*Navigation*/
         const showingNavigationDropdown = ref(false);
 
-        /*Notification*/
+        /*Notifications*/
         watch(() => usePage().props.value.flash.message, () => {
             let message = usePage().props.value.flash.message;
-            if (message.hasOwnProperty('type')) {
+            if (message) {
                 ElNotification({
                     title: message["title"] ? t(message["title"]) : null,
                     message: message["message"] ? t(message["message"]) : null,
                     type: message["type"],
+                    position: "bottom-right",
+                    duration: message["duration"] ? message["duration"] : 0,
                 })
+            }
+        })
+
+        /*Error Notifications*/
+        watch(() => usePage().props.value.errors, () => {
+            let messages = usePage().props.value.errors;
+            if (Object.keys(messages)) {
+                for(const m in messages){
+                    console.log(m)
+                    for(const s in messages[m]){
+                        ElNotification({
+                            message: messages[m][s],
+                            type: 'error',
+                            position: "bottom-right",
+                            duration: 5000,
+                        })
+                    }
+                }
             }
         })
 
