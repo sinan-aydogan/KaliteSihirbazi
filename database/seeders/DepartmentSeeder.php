@@ -19,6 +19,7 @@ class DepartmentSeeder extends Seeder
         Department::create([
             'code'=>'URT',
             'name'=>'Üretim',
+            'type'=> 'main',
             'user_id'=>1
         ]);
 
@@ -42,6 +43,7 @@ class DepartmentSeeder extends Seeder
         Department::create([
             'code'=>'KLT',
             'name'=>'Kalite',
+            'type'=> 'main',
             'user_id'=>1,
         ]);
 
@@ -49,6 +51,7 @@ class DepartmentSeeder extends Seeder
         Department::create([
             'code'=>'STP',
             'name'=>'Satış & Pazarlama',
+            'type'=> 'main',
             'user_id'=>1,
         ]);
 
@@ -56,6 +59,7 @@ class DepartmentSeeder extends Seeder
         Department::create([
             'code'=>'STA',
             'name'=>'Satın Alma',
+            'type'=> 'main',
             'user_id'=>1,
         ]);
 
@@ -63,6 +67,7 @@ class DepartmentSeeder extends Seeder
         Department::create([
             'code'=>'MUH',
             'name'=>'Muhasebe',
+            'type'=> 'main',
             'user_id'=>1,
         ]);
 
@@ -70,6 +75,7 @@ class DepartmentSeeder extends Seeder
         Department::create([
             'code'=>'SEV',
             'name'=>'Sevkiyat',
+            'type'=> 'main',
             'user_id'=>1,
         ]);
 
@@ -77,6 +83,7 @@ class DepartmentSeeder extends Seeder
         Department::create([
             'code'=>'BKM',
             'name'=>'Bakım',
+            'type'=> 'main',
             'user_id'=>1,
         ]);
     }
