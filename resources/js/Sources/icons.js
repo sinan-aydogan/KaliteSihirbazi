@@ -1,5 +1,5 @@
 /*Import FontAwesomeIcon*/
-import { library } from "@fortawesome/fontawesome-svg-core";
+import {library} from "@fortawesome/fontawesome-svg-core";
 import {
     faUserGroup,
     faUsers,
@@ -84,7 +84,9 @@ import {
     faLongArrowRight,
     faMoon,
     faSun,
-    faWandMagicSparkles
+    faWandMagicSparkles,
+    faExpandAlt,
+    faCompressAlt,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -171,5 +173,7 @@ library.add(
     faLongArrowRight,
     faMoon,
     faSun,
-    faWandMagicSparkles
+    faWandMagicSparkles,
+    faExpandAlt,
+    faCompressAlt,
 );
