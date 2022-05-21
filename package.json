@@ -38,9 +38,10 @@
         "@fortawesome/free-regular-svg-icons": "^6.0.0",
         "@fortawesome/free-solid-svg-icons": "^6.0.0",
         "@fortawesome/vue-fontawesome": "^3.0.0-5",
-        "@quasar/extras": "^1.13.6",
+        "@vuelidate/core": "^2.0.0-alpha.41",
+        "@vuelidate/validators": "^2.0.0-alpha.29",
         "@vueuse/core": "^8.0.0",
         "element-plus": "^2.2.0",
-        "vue-i18n": "^9.1.9"
+        "vue-i18n": "^9.2.0-beta.35"
     }
 }

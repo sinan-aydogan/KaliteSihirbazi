@@ -2,7 +2,7 @@ import {Inertia} from "@inertiajs/inertia";
 
 require('./bootstrap');
 
-import { createApp, h } from 'vue';
+import { createApp, h, ref } from 'vue';
 import { createInertiaApp } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
 /*Font Awesome*/
@@ -12,7 +12,9 @@ import "@/Sources/icons"
 import { createI18n } from 'vue-i18n'
 import enTranslates from "@/Languages/en.json"
 import trTranslates from "@/Languages/tr.json"
+
 const i18n = createI18n({
+    legacy: false,
     locale: 'tr', // set locale
     fallbackLocale: 'tr', // set fallback locale
     messages: {
