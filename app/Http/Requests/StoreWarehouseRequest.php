@@ -13,7 +13,7 @@ class StoreWarehouseRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return auth()->check();
     }
 
     /**
@@ -24,7 +24,9 @@ class StoreWarehouseRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'code' => 'required|unique:warehouses|max:10',
+            'name' => 'required|max:100',
+            'type' => 'required',
         ];
     }
 }

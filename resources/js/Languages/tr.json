@@ -32,6 +32,7 @@
         "submit": "Gönder",
         "update": "Güncelle",
         "create": "Oluştur",
+        "supervisor": "Sorumlu",
         "messages" : {
             "validation": {
                 "required": "Bu alan zorunludur.",
@@ -244,6 +245,32 @@
             "deletionSuccessfully": "Departman başarıyla silindi",
             "deletionFailed": "Departman silinemedi",
             "deletionFailedDeleteSubDepartments": "Departmanın alt departmanları var. Lütfen önce alt departmanları silin"
+        }
+    },
+    "warehouse": {
+        "global": {
+            "warehouse": "Depo",
+            "warehouses": "Depolar",
+            "name": "Depo Adı",
+            "type": "Depo Tipi",
+            "rawMaterialWarehouse": "Hammadde Deposu",
+            "finishedProductsWarehouse": "Ürün Deposu",
+            "generalWarehouse": "Genel Depo"
+        },
+        "index": {
+            "title": "Depo Listesi",
+            "subTitle": "Depo listesini yönetin ve düzenleyin",
+            "addNew": "Yeni Depo Ekle"
+        },
+        "create": {
+            "title": "Yeni Depo Ekle",
+            "subTitle": "İşletmeye yeni bir depo ekleyin"
+        },
+        "message": {
+            "selectSupervisor": "Depo Yöneticisi Seçiniz",
+            "creationSuccessfully": "Depo başarıyla oluşturuldu",
+            "updateSuccessfully": "Depo başarıyla güncellendi",
+            "deletionSuccessfully": "Depo başarıyla silindi"
         }
     }
 }

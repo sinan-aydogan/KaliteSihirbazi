@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AdminSeeder::class,
             ModuleSeeder::class,
-            DepartmentSeeder::class
+            DepartmentSeeder::class,
+            WarehouseSeeder::class
         ]);
     }
 }

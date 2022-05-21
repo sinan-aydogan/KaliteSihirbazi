@@ -1,6 +1,5 @@
 <template>
-    <app-layout :title="$t('department.index.title')" :sub-title="$t('department.index.subTitle')">
-        <template #actionArea>
+    <app-layout :title="$t('warehouse.index.title')" :sub-title="$t('warehouse.index.subTitle')">        <template #actionArea>
             <el-button @click="showModal = true;formType='create'">
                 <font-awesome-icon icon="trash-can" class="mr-2"/>
                 <span v-text="$t('global.deletedItems')"/>
@@ -13,11 +12,9 @@
         <!--Table-->
         <el-table :data="tableData.data" style="width: 100%" :empty-text="$t('global.noData')">
             <el-table-column :label="$t('global.code')" prop="code"/>
-            <el-table-column :label="$t('department.global.name')" prop="name"/>
-            <el-table-column :label="$t('department.global.manager')" prop="user_name"/>
-            <el-table-column :label="$t('department.global.mainDepartment')" prop="department_name"/>
+            <el-table-column :label="$t('warehouse.global.name')" prop="name"/>
+            <el-table-column :label="$t('global.supervisor')" prop="user_name"/>
             <el-table-column align="right">
-
                 <template #default="scope">
                     <el-button size="small" @click="getRowInfo(scope.row.id)">
                         {{ $t('global.edit') }}
@@ -43,7 +40,7 @@
         </el-table>
 
         <!--Modal-->
-        <el-dialog :title="$t('department.create.title')" v-model="showModal">
+        <el-dialog :title="$t('warehouse.create.title')" v-model="showModal">
             <el-form
                 ref="formRef"
                 :model="form"
@@ -67,7 +64,7 @@
 
                 <!--Name-->
                 <el-form-item
-                    :label="$t('department.global.name')"
+                    :label="$t('warehouse.global.name')"
                     prop="name"
                 >
                     <el-input
@@ -81,47 +78,19 @@
 
                 <!--Type-->
                 <el-form-item
-                    :label="$t('department.global.type')"
+                    :label="$t('warehouse.global.type')"
                     prop="type"
                 >
                     <el-radio-group v-model="form.type">
-                        <el-radio-button label="main">{{ $t('department.global.mainDepartment') }}</el-radio-button>
-                        <el-radio-button label="sub">{{ $t('department.global.subDepartment') }}</el-radio-button>
+                        <el-radio-button label="import">{{ $t('warehouse.global.finishedProductsWarehouse') }}</el-radio-button>
+                        <el-radio-button label="export">{{ $t('warehouse.global.rawMaterialWarehouse') }}</el-radio-button>
+                        <el-radio-button label="general">{{ $t('warehouse.global.generalWarehouse') }}</el-radio-button>
                     </el-radio-group>
-                </el-form-item>
-
-                <!--Main Department-->
-                <el-form-item
-                    v-if="form.type === 'sub'"
-                    :label="$t('department.global.mainDepartment')"
-                    prop="department_id"
-                >
-                    <el-select
-                        v-model="form.department_id"
-                        filterable
-                        clearable
-                        remote
-                        reserve-keyword
-                        @focus="getDataModel = 'departments'"
-                        :remote-method="getData"
-                        :loading="loading"
-                        :no-data-text="$t('global.noData')"
-                        :no-match-text="$t('global.noMatches')"
-                        :loading-text="$t('global.loading')"
-                        :placeholder="$t('department.message.selectDepartment')"
-                    >
-                        <el-option
-                            v-for="item in departments"
-                            :key="item.id"
-                            :label="item.name"
-                            :value="item.id"
-                        />
-                    </el-select>
                 </el-form-item>
 
                 <!--Manager-->
                 <el-form-item
-                    :label="$t('department.global.manager')"
+                    :label="$t('global.supervisor')"
                     prop="user_id"
                 >
                     <el-select
@@ -136,7 +105,7 @@
                         :no-data-text="$t('global.noData')"
                         :no-match-text="$t('global.noMatches')"
                         :loading-text="$t('global.loading')"
-                        :placeholder="$t('department.message.selectManager')"
+                        :placeholder="$t('warehouse.message.selectSupervisor')"
                     >
                         <el-option
                             v-for="item in users"
@@ -172,10 +141,6 @@ const props = defineProps({
         type: Object,
         default: {}
     },
-    departments: {
-        type: Array,
-        default: []
-    },
     users: {
         type: Array,
         default: []
@@ -192,8 +157,7 @@ const form = useForm({
     id: null,
     code: "",
     name: "",
-    type: "main",
-    department_id: null,
+    type: "general",
     user_id: null,
 })
 
@@ -220,13 +184,6 @@ const getData = (query) => {
 }
 
 /*Validation*/
-const checkDepartment = (rule, value, callback) => {
-    if (!value && form.type === "sub") {
-        return callback(new Error(t('global.messages.validation.required')))
-    } else {
-        return callback()
-    }
-}
 const rules = reactive({
     code: [
         {required: true, message: t('global.messages.validation.required'), trigger: 'blur'},
@@ -238,9 +195,6 @@ const rules = reactive({
     ],
     type: [
         {required: true, message: t('global.messages.validation.required'), trigger: 'blur'},
-    ],
-    department_id: [
-        {required: true, validator: checkDepartment, trigger: 'focus'},
     ]
 });
 
@@ -250,9 +204,9 @@ const submit = (formEl) => {
     formEl.validate((valid) => {
         if (valid) {
             if (formType.value === 'create') {
-                form.post(route('department.store'))
+                form.post(route('warehouse.store'))
             } else {
-                form.put(route('department.update', {id: form.id}))
+                form.put(route('warehouse.update', {id: form.id}))
             }
             form.reset();
             showModal.value = false;
@@ -263,12 +217,11 @@ const submit = (formEl) => {
 }
 /*Update*/
 const getRowInfo = (id) => {
-    axios.get(route("department.edit", {id: id})).then(response => {
+    axios.get(route("warehouse.edit", {id: id})).then(response => {
         form.id = response.data.id;
         form.code = response.data.code;
         form.name = response.data.name;
         form.type = response.data.type;
-        form.department_id = response.data.department_id;
         form.user_id = response.data.user_id;
     })
     showModal.value = true;
@@ -276,7 +229,7 @@ const getRowInfo = (id) => {
 }
 /*Delete*/
 const handleDelete = (id) => {
-    Inertia.delete(route("department.destroy", id), {
+    Inertia.delete(route("warehouse.destroy", id), {
         preserveState: true,
     });
 }

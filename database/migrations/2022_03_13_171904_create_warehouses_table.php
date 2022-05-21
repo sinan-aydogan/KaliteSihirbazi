@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('warehouses', function (Blueprint $table) {
             $table->id();
+            $table->string('code',10)->unique();
+            $table->string('name',100);
+            $table->string('type',10)->default('general');
+            $table->foreignIdFor(\App\Models\User::class)->nullable();
             $table->timestamps();
         });
     }

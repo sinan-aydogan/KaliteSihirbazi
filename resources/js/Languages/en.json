@@ -32,6 +32,7 @@
         "submit": "Submit",
         "update": "Update",
         "create": "Create",
+        "supervisor": "Supervisor",
         "messages" : {
             "validation": {
                 "required": "This field is required",
@@ -239,6 +240,31 @@
             "deletionSuccessfully": "Department deleted successfully",
             "deletionFailed": "Department deletion failed",
             "deletionFailedDeleteSubDepartments": "Department deletion failed. Please delete all sub departments first"
+        }
+    },
+    "warehouse": {
+        "global": {
+            "warehouse": "Warehouse",
+            "warehouses": "Warehouses",
+            "name": "Warehouse Name",
+            "type": "Warehouse Type",
+            "rawMaterialWarehouse": "Goods Warehouse",
+            "finishedProductsWarehouse": "Finished Products Warehouse",
+            "generalWarehouse": "General Warehouse"
+        },
+        "index": {
+            "title": "Warehouses",
+            "subTitle": "Management of the warehouses"
+        },
+        "create": {
+            "title": "Create New Warehouse",
+            "subTitle": "Create a new warehouse for your business"
+        },
+        "message": {
+            "selectSupervisor": "Select a supervisor",
+            "creationSuccessfully": "Warehouse created successfully",
+            "updateSuccessfully": "Warehouse updated successfully",
+            "deletionSuccessfully": "Warehouse deleted successfully"
         }
     }
 }
