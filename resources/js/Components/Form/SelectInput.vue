@@ -30,9 +30,9 @@
         <!--Selected Content-->
 
         <!--Options-->
-        <div v-if="showOptions" class="absolute z-50 bg-white border shadow-lg rounded-lg w-full">
+        <div v-if="showOptions" class="absolute z-50 bg-white dark:bg-slate-600 border shadow-lg rounded-lg py-1 w-full">
             <template v-for="option in options" :key="option">
-                <div @click="select(option)" class="flex justify-between items-center border-b last:border-b-0 last:rounded-b first:rounded-t py-1 px-2 hover:bg-slate-100 cursor-pointer">
+                <div @click="select(option)" class="flex justify-between items-center border-b last:border-b-0 last:rounded-b first:rounded-t py-1 px-2 hover:bg-slate-100 dark:hover:bg-slate-800/50 cursor-pointer">
                     <!--Label-->
                     <div >
                         <slot v-if="$slots[option[optionKey]]" :name="option[optionKey]" :props="option"></slot>

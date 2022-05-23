@@ -4,7 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      *
@@ -12,13 +13,10 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('suppliers', function (Blueprint $table) {
+        Schema::create('supplier_tag_supplier', function (Blueprint $table) {
             $table->id();
-            $table->string('code', 10)->unique();
-            $table->string('name', 150);
-            $table->json('contact_info')->nullable();
-            $table->json('notes')->nullable();
-            $table->boolean('is_active')->default(true);
+            $table->unsignedBigInteger('supplier_tag_id');
+            $table->unsignedBigInteger('supplier_id');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('suppliers');
+        Schema::dropIfExists('supplier_tag_supplier');
     }
 };

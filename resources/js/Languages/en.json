@@ -15,7 +15,7 @@
         "code": "Code",
         "addNew": "Add New",
         "active": "Active",
-        "passive": "Passive",
+        "inactive": "Inactive",
         "previous": "Previous",
         "next": "Next",
         "filters": "Filters",
@@ -33,7 +33,17 @@
         "update": "Update",
         "create": "Create",
         "supervisor": "Supervisor",
-        "messages" : {
+        "selectType": "Select Type",
+        "tags": "Tags",
+        "contactDetails": "Contact Details",
+        "generalDetails": "General Details",
+        "default": "Default",
+        "title": "Title",
+        "value": "Value",
+        "makeDefault": "Make Default",
+        "address": "Address",
+        "phoneNumber": "Phone Number",
+        "messages": {
             "validation": {
                 "required": "This field is required",
                 "email": "This field must be a valid email",
@@ -195,7 +205,7 @@
         "addFilter": "Add Filter",
         "noData": "No Data",
         "noResults": "No results",
-        "paginationDetail" : "Showing from {from} to {to} in {total} entries",
+        "paginationDetail": "Showing from {from} to {to} in {total} entries",
         "comparators": {
             "equal": "Equal",
             "notEqual": "Not Equal",
@@ -265,6 +275,54 @@
             "creationSuccessfully": "Warehouse created successfully",
             "updateSuccessfully": "Warehouse updated successfully",
             "deletionSuccessfully": "Warehouse deleted successfully"
+        }
+    },
+    "supplier": {
+        "main": {
+            "global": {
+                "supplier": "Supplier",
+                "suppliers": "Suppliers",
+                "name": "Supplier Name"
+            },
+            "index": {
+                "title": "Suppliers",
+                "subTitle": "Management of the suppliers"
+            },
+            "create": {
+                "title": "Create New Supplier",
+                "subTitle": "Create a new supplier for your business",
+                "selectContactType": "Select a contact type to add"
+            },
+            "message": {
+                "creationSuccessfully": "Supplier created successfully",
+                "updateSuccessfully": "Supplier updated successfully",
+                "deletionSuccessfully": "Supplier deleted successfully"
+            },
+            "question": {
+                "areYouSureMakeDefaultContact": "Are you sure you want to make this contact information the default?",
+                "areYouSureRemoveDefaultContact": "Are you sure you want to remove this contact info from the default?"
+            }
+        },
+        "type": {
+            "global": {
+                "supplierType": "Supplier Type",
+                "supplierTypes": "Suppliers Type",
+                "name": "Supplier Type Name",
+                "manage": "Manage Supplier Types"
+            },
+            "index": {
+                "title": "Supplier Types",
+                "subTitle": "Management of the supplier types"
+            },
+            "create": {
+                "title": "Create New Supplier Type",
+                "subTitle": "Create a new supplier type for your business"
+            },
+            "message": {
+                "creationSuccessfully": "Supplier type created successfully",
+                "updateSuccessfully": "Supplier type updated successfully",
+                "deletionSuccessfully": "Supplier type deleted successfully"
+            }
         }
     }
 }

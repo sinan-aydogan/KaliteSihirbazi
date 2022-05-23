@@ -28,7 +28,7 @@
                 <!--Status-->
                 <template #status="{props}">
                     <badge :color="props.status ? 'green' : 'red'">
-                        {{props.status ? $t('global.active') : $t('global.passive')}}
+                        {{props.status ? $t('global.active') : $t('global.inactive')}}
                     </badge>
                 </template>
             </inner-table>

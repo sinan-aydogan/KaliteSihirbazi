@@ -15,7 +15,7 @@
         "code": "Kod",
         "addNew": "Yeni Ekle",
         "active": "Aktif",
-        "passive": "Pasif",
+        "inactive": "Pasif",
         "previous": "Önceki",
         "next": "Sonraki",
         "filters": "Filtreler",
@@ -33,6 +33,16 @@
         "update": "Güncelle",
         "create": "Oluştur",
         "supervisor": "Sorumlu",
+        "selectType": "Tür Seç",
+        "tags": "Etiketler",
+        "contactDetails": "İletişim Bilgileri",
+        "generalDetails": "Genel Detaylar",
+        "default": "Varsayılan",
+        "title": "Başlık",
+        "value": "Değer",
+        "makeDefault": "Varsayılan Yap",
+        "address": "Adres",
+        "phoneNumber": "Telefon Numarası",
         "messages" : {
             "validation": {
                 "required": "Bu alan zorunludur.",
@@ -268,9 +278,58 @@
         },
         "message": {
             "selectSupervisor": "Depo Yöneticisi Seçiniz",
+
             "creationSuccessfully": "Depo başarıyla oluşturuldu",
             "updateSuccessfully": "Depo başarıyla güncellendi",
             "deletionSuccessfully": "Depo başarıyla silindi"
+        }
+    },
+    "supplier": {
+        "main": {
+            "global": {
+                "supplier": "Tedarikçi",
+                "suppliers": "Tedarikçiler",
+                "name": "Tedarikçi Adı"
+            },
+            "index": {
+                "title": "Tedarikçiler",
+                "subTitle": "Tedarikçileri buradan yönetebilirsiniz"
+            },
+            "create": {
+                "title": "Tedarikçi Ekle",
+                "subTitle": "İşlemeniz için yeni bir tedarikçi ekleyin",
+                "selectContactType": "Eklenecek İletişim Tipini Seçiniz"
+            },
+            "message": {
+                "creationSuccessfully": "Tedarikçi başarıyla oluşturuldu",
+                "updateSuccessfully": "Tedarikçi başarıyla güncellendi",
+                "deletionSuccessfully": "Tedarikçi başarıyla silindi"
+            },
+            "question": {
+                "areYouSureMakeDefaultContact": "Bu iletişim bilgisini varsayılan yapmak istediğinizden emin misiniz?",
+                "areYouSureRemoveDefaultContact": "Bu iletişim bilgisini varsayılanlardan çıkartmak istediğinizden emin misiniz?"
+            }
+        },
+        "type": {
+            "global": {
+                "supplierType": "Tedarikçi Tipi",
+                "supplierTypes": "Tedarikçi Tipleri",
+                "name": "Tedarikçi Tipi Adı",
+                "manage": "Tedarikçi Tiplerini Yönet"
+            },
+            "index": {
+                "title": "Tedarikçi Tipleri",
+                "subTitle": "Tedarikçi tiplerini buradan yönetebilirsiniz"
+            },
+            "create": {
+                "title": "Tedarikçi Tipi Ekle",
+                "subTitle": "İşlemeniz için yeni bir tedarikçi tipi ekleyin"
+            },
+            "message": {
+                "creationSuccessfully": "Tedarikçi tipi başarıyla oluşturuldu",
+                "updateSuccessfully": "Tedarikçi tipi başarıyla güncellendi",
+                "deletionSuccessfully": "Tedarikçi tipi başarıyla silindi"
+            }
         }
     }
 }

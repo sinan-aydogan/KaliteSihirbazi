@@ -76,7 +76,8 @@
             </div>
         </div>
 
-        <div class="p-2 -m-2 overflow-x-scroll overscroll-x-auto scrollbar scrollbar-thumb-rose-500 scrollbar-track-transparent">
+        <div
+            class="p-2 -m-2 overflow-x-scroll overscroll-x-auto scrollbar scrollbar-thumb-rose-500 scrollbar-track-transparent">
             <!--Table-->
             <table class="w-full mt-4 text-sm">
                 <!--Header-->
@@ -153,16 +154,26 @@
                         ]">
                             <div
                                 class="flex flex-shrink-0 justify-center items-center space-x-3  min-h-[2.5rem] items-center">
-                                <font-awesome-icon icon="eye"
-                                                   class="text-slate-600 dark:bg-slate-300 dark:text-slate-700 dark:p-1 dark:rounded hover:text-slate-900 cursor-pointer"/>
-                                <font-awesome-icon icon="edit" class="text-sky-600 dark:bg-sky-500 dark:text-white dark:p-1 dark:rounded hover:text-sky-900 cursor-pointer"/>
-                                <font-awesome-icon icon="trash"
-                                                   class="text-rose-500 dark:bg-rose-500 dark:text-white dark:p-1 dark:rounded hover:text-rose-900 cursor-pointer"/>
+                                <font-awesome-icon
+                                    @click="$emit('view', row)"
+                                    icon="eye"
+                                    class="text-slate-600 dark:bg-slate-300 dark:text-slate-700 dark:p-1 dark:rounded hover:text-slate-900 cursor-pointer"/>
+                                <font-awesome-icon
+                                    @click="$emit('edit', row)"
+                                    icon="edit"
+                                    class="text-sky-600 dark:bg-sky-500 dark:text-white dark:p-1 dark:rounded hover:text-sky-900 cursor-pointer"
+                                />
+                                <font-awesome-icon
+                                    @click="$emit('delete', row)"
+                                    icon="trash"
+                                    class="text-rose-500 dark:bg-rose-500 dark:text-white dark:p-1 dark:rounded hover:text-rose-900 cursor-pointer"
+                                />
                             </div>
                         </td>
                     </tr>
                 </template>
 
+                <!--No results-->
                 <tr v-if="gData.length===0">
                     <td :colspan="headers.length + actionColumn ?? 1" class="bg-sky-100 text-sky-700">
                         <div class="flex justify-center items-center p-4">
@@ -308,6 +319,7 @@ export default {
         },
     },
 
+    emits: ['delete', 'edit', 'view'],
     setup(props) {
         /*Multi-lang*/
         const {t} = useI18n();
@@ -422,8 +434,7 @@ export default {
         })
 
         debouncedWatch(() => cloneDeep(search.query), () => {
-            search.post(route('department.search'), data,{
-            },{
+            search.post(route('department.search'), data, {}, {
                 only: dataKey.value,
                 onBefore: visit => {
                     dataLoading.value = true;

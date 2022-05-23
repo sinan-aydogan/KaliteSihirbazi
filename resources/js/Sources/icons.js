@@ -87,6 +87,9 @@ import {
     faWandMagicSparkles,
     faExpandAlt,
     faCompressAlt,
+    faAt,
+    faMapLocationDot,
+    faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -176,4 +179,8 @@ library.add(
     faWandMagicSparkles,
     faExpandAlt,
     faCompressAlt,
+    faLayerGroup,
+    faAt,
+    faMapLocationDot,
+    faPhone,
 );

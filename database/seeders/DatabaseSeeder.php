@@ -19,7 +19,9 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             ModuleSeeder::class,
             DepartmentSeeder::class,
-            WarehouseSeeder::class
+            WarehouseSeeder::class,
+            SupplierTypeSeeder::class,
+            SupplierTagSeeder::class
         ]);
     }
 }
