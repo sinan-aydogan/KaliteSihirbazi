@@ -178,8 +178,8 @@ const handleDelete = (id) => {
       <Table :data="tableData" :headers="tableHeaders" @view="Inertia.visit(route('department.show', $event.id))">
         <template #manager="{props}">
           <div class="flex space-x-2 items-center">
-            <avatar :src="props.manager.profile_photo_url"/>
-            <span v-text="props.manager.name"/>
+            <avatar :src="props.manager.has_account ? props.manager.account.profile_photo_url : ''"/>
+            <span v-text="props.manager.employeeName"/>
           </div>
         </template>
       </Table>
@@ -230,7 +230,7 @@ const handleDelete = (id) => {
 
         <!-- Manager -->
         <input-group class="col-span-6" labelFor="employee_id" :label="t('department.global.manager')">
-          <select-input v-model="form.employee_id" :options="employees" optionLabel="name" />
+          <select-input v-model="form.employee_id" :options="employees" optionLabel="employeeName" />
         </input-group>
 
         <!-- Type -->

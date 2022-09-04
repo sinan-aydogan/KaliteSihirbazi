@@ -17,34 +17,22 @@ class EmploymentTypeSeeder extends Seeder
     {
         /*Full-time*/
         EmploymentType::create([
-            'name' => [
-                'tr' => 'Tam Zamanlı',
-                'en' => 'Full-Time'
-            ]
+            'name' => 'Tam Zamanlı'
         ]);
 
         /*Part-time*/
         EmploymentType::create([
-            'name' => [
-                'tr' => 'Yarı Zamanlı',
-                'en' => 'Part-Time'
-            ]
+            'name' => 'Yarı Zamanlı'
         ]);
 
         /*Daily Wage*/
         EmploymentType::create([
-            'name' => [
-                'tr' => 'Sözleşmeli',
-                'en' => 'Daily-wage'
-            ]
+            'name' => 'Yevmiye Usulü'
         ]);
 
         /*Seasonal*/
         EmploymentType::create([
-            'name' => [
-                'tr' => 'Dönemsel',
-                'en' => 'Seasonal'
-            ]
+            'name' => 'Dönemsel'
         ]);
     }
 }

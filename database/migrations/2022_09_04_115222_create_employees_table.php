@@ -16,8 +16,7 @@ return new class extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
             $table->boolean('has_account')->default(false);
-            $table->foreignIdFor(\App\Models\User::class)->nullable();
-            $table->string('code', 10)->unique();
+            $table->string('code', 25)->unique();
             $table->string('name', 250)->nullable();
             $table->foreignIdFor(\App\Models\Department::class)->nullable();
             $table->foreignIdFor(\App\Models\EmploymentType::class)->nullable();

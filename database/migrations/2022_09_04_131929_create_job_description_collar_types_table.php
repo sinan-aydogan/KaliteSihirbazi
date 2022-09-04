@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('job_description_collar_types', function (Blueprint $table) {
             $table->id();
+            $table->string('code',10)->unique();
+            $table->string('name');
             $table->timestamps();
         });
     }

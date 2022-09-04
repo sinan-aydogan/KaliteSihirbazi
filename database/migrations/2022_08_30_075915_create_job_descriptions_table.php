@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('code', 10)->unique();
             $table->string('name');
             $table->string('description');
-            $table->string('collar_type',10)->default('blue');
+            $table->foreignIdFor(\App\Models\JobDescriptionCollarType::class)->nullable();
+            $table->foreignIdFor(\App\Models\EmploymentType::class)->nullable();
             $table->json('responsibilities');
             $table->json('powers');
             $table->json('requirements');

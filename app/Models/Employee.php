@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Employee extends Model
 {
@@ -39,12 +40,27 @@ class Employee extends Model
         'staffName' => 'string',
     ];
 
-    public function getstaffNameAttribute()
+    public function getemployeeNameAttribute()
     {
         if ($this->account) {
             return $this->account->name;
         } else {
             return $this->name;
         }
+    }
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['employeeName'];
+
+    /**
+     * Get the staff account.
+     */
+    public function account()
+    {
+        return $this->morphOne(User::class, 'accountable');
     }
 }

@@ -18,8 +18,8 @@ class DepartmentController extends Controller
     public function index()
     {
         return Inertia::render("Modules/BusinessManagement/Department/Index", [
-            'tableData' => Department::with('manager:id,name')->latest('id')->paginate(10),
-            'employees' => Employee::all(['id', 'name']),
+            'tableData' => Department::with('manager:id,has_account')->latest('id')->paginate(10),
+            'employees' => Employee::all(['id']),
             'departments' => Department::all(['id', 'name'])
         ]);
     }

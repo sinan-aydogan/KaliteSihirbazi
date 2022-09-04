@@ -27,7 +27,9 @@ class DatabaseSeeder extends Seeder
             DepartmentSeeder::class,
             WarehouseSeeder::class,
             SupplierTypeSeeder::class,
-            SupplierTagSeeder::class
+            SupplierTagSeeder::class,
+            EmploymentTypeSeeder::class,
+            JobDescriptionCollarTypeSeeder::class,
         ]);
     }
 }
