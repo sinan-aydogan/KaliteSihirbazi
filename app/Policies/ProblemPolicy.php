@@ -2,9 +2,9 @@
 
 namespace App\Policies;
 
-use Illuminate\Auth\Access\HandlesAuthorization;
 use App\Models\Problem;
 use App\Models\User;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ProblemPolicy
 {

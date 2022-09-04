@@ -3,21 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Education;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreEducationRequest;
 use App\Http\Requests\UpdateEducationRequest;
-use Inertia\Inertia;
 
 class EducationController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Inertia\Response
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return Inertia::render('ComingSoon');
+        //
     }
 
     /**

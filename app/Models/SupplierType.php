@@ -10,16 +10,17 @@ class SupplierType extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
     protected $fillable = [
         'code',
         'name',
     ];
 
-    /*Relations*/
-
-    /**
-     * @return BelongsToMany
-     */
+    // Suppliers associated with the supplier type
     public function suppliers():BelongsToMany
     {
         return $this->belongsToMany(Supplier::class);

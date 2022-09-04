@@ -4,6 +4,7 @@ namespace App\Models\Setting;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Module extends Model
 {
@@ -22,10 +23,8 @@ class Module extends Model
         'status'
     ];
 
-    /**
-     * The property types that belong to the modul.
-     */
-    public function propertyTypes()
+    // Property Types associated with the module
+    public function propertyTypes():BelongsToMany
     {
         return $this->belongsToMany(PropertyType::class);
     }

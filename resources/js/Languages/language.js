@@ -1,6 +1,6 @@
 /* Flags */
-import flagEn from "@/Languages/Flags/flagEn";
-import flagTr from "@/Languages/Flags/flagTr";
+import flagEn from "@/Languages/Flags/flagEn.vue";
+import flagTr from "@/Languages/Flags/flagTr.vue";
 
 const flags = {
     flagEn: flagEn,
@@ -13,7 +13,4 @@ const languages = [
     { id: "tr", name: "Türkçe", flag: "flagTr" },
 ];
 
-export {
-    languages,
-    flags,
-};
+export { languages, flags };

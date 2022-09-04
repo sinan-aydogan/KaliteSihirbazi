@@ -3,21 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Machine;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreMachineRequest;
 use App\Http\Requests\UpdateMachineRequest;
-use Inertia\Inertia;
 
 class MachineController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Inertia\Response
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return Inertia::render('ComingSoon');
+        //
     }
 
     /**

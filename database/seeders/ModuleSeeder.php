@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Setting\Module;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Setting\Module;
 use Illuminate\Support\Str;
 
 class ModuleSeeder extends Seeder

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SupplierTag;
 use App\Http\Requests\StoreSupplierTagRequest;
 use App\Http\Requests\UpdateSupplierTagRequest;
-use App\Models\SupplierTag;
 
 class SupplierTagController extends Controller
 {

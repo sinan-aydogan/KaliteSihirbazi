@@ -1,171 +1,24 @@
-<template>
-    <app-layout :title="$t('department.index.title')" :sub-title="$t('department.index.subTitle')">
-        <template #actionArea>
-            <el-button @click="showModal = true;formType='create'">
-                <font-awesome-icon icon="trash-can" class="mr-2"/>
-                <span v-text="$t('global.deletedItems')"/>
-            </el-button>
-            <el-button type="primary" @click="showModal = true;">
-                <font-awesome-icon icon="plus" class="mr-2"/>
-                <span v-text="$t('global.addNew')"/>
-            </el-button>
-        </template>
-        <!--Table-->
-        <el-table :data="tableData.data" style="width: 100%" :empty-text="$t('global.noData')">
-            <el-table-column :label="$t('global.code')" prop="code"/>
-            <el-table-column :label="$t('department.global.name')" prop="name"/>
-            <el-table-column :label="$t('department.global.manager')" prop="user_name"/>
-            <el-table-column :label="$t('department.global.mainDepartment')" prop="department_name"/>
-            <el-table-column align="right">
-
-                <template #default="scope">
-                    <el-button size="small" @click="getRowInfo(scope.row.id)">
-                        {{ $t('global.edit') }}
-                    </el-button>
-                    <el-popconfirm
-                        :title="$t('global.questions.deleteConfirm')"
-                        :cancel-button-text="$t('global.no')"
-                        :confirm-button-text="$t('global.yes')"
-                        @confirm="handleDelete(scope.row.id)"
-                    >
-                        <template #reference>
-                            <el-button
-                                size="small"
-                                type="danger"
-                            >
-                                {{ $t('global.delete') }}
-                            </el-button>
-                        </template>
-                    </el-popconfirm>
-
-                </template>
-            </el-table-column>
-        </el-table>
-
-        <!--Modal-->
-        <el-dialog :title="$t('department.create.title')" v-model="showModal">
-            <el-form
-                ref="formRef"
-                :model="form"
-                label-width="auto"
-                :rules="rules"
-            >
-                <!--Code-->
-                <el-form-item
-                    :label="$t('global.code')"
-                    prop="code"
-                >
-                    <el-input
-                        v-model="form.code"
-                        type="text"
-                        autocomplete="off"
-                        :formatter="(value) => value.toUpperCase()"
-                        :maxlength="10"
-                        show-word-limit
-                    />
-                </el-form-item>
-
-                <!--Name-->
-                <el-form-item
-                    :label="$t('department.global.name')"
-                    prop="name"
-                >
-                    <el-input
-                        v-model="form.name"
-                        type="text"
-                        autocomplete="off"
-                        :maxlength="100"
-                        show-word-limit
-                    />
-                </el-form-item>
-
-                <!--Type-->
-                <el-form-item
-                    :label="$t('department.global.type')"
-                    prop="type"
-                >
-                    <el-radio-group v-model="form.type">
-                        <el-radio-button label="main">{{ $t('department.global.mainDepartment') }}</el-radio-button>
-                        <el-radio-button label="sub">{{ $t('department.global.subDepartment') }}</el-radio-button>
-                    </el-radio-group>
-                </el-form-item>
-
-                <!--Main Department-->
-                <el-form-item
-                    v-if="form.type === 'sub'"
-                    :label="$t('department.global.mainDepartment')"
-                    prop="department_id"
-                >
-                    <el-select
-                        v-model="form.department_id"
-                        filterable
-                        clearable
-                        remote
-                        reserve-keyword
-                        @focus="getDataModel = 'departments'"
-                        :remote-method="getData"
-                        :loading="loading"
-                        :no-data-text="$t('global.noData')"
-                        :no-match-text="$t('global.noMatches')"
-                        :loading-text="$t('global.loading')"
-                        :placeholder="$t('department.message.selectDepartment')"
-                    >
-                        <el-option
-                            v-for="item in departments"
-                            :key="item.id"
-                            :label="item.name"
-                            :value="item.id"
-                        />
-                    </el-select>
-                </el-form-item>
-
-                <!--Manager-->
-                <el-form-item
-                    :label="$t('department.global.manager')"
-                    prop="user_id"
-                >
-                    <el-select
-                        v-model="form.user_id"
-                        @focus="getDataModel = 'users'"
-                        filterable
-                        remote
-                        clearable
-                        reserve-keyword
-                        :remote-method="getData"
-                        :loading="loading"
-                        :no-data-text="$t('global.noData')"
-                        :no-match-text="$t('global.noMatches')"
-                        :loading-text="$t('global.loading')"
-                        :placeholder="$t('department.message.selectManager')"
-                    >
-                        <el-option
-                            v-for="item in users"
-                            :key="item.id"
-                            :label="item.name"
-                            :value="item.id"
-                        />
-                    </el-select>
-                </el-form-item>
-
-                <!--Action Buttons-->
-                <el-form-item>
-                    <el-button type="primary" @click="submit(formRef)">
-                        {{ $t(formType === 'create' ? 'global.create' : 'global.update') }}
-                    </el-button>
-                    <el-button v-if="formType==='create'" @click="form.reset()">
-                        {{ $t('global.reset') }}
-                    </el-button>
-                </el-form-item>
-            </el-form>
-        </el-dialog>
-    </app-layout>
-</template>
-
 <script setup>
-import AppLayout from "@/Layouts/AppLayout";
-import { reactive, ref} from "vue";
-import {useI18n} from "vue-i18n";
-import {Inertia} from "@inertiajs/inertia";
+import AppLayout from "@/Layouts/AppLayout.vue";
+import { reactive, ref } from "vue";
+import { useI18n } from "vue-i18n";
+import { Inertia } from "@inertiajs/inertia";
+import { useForm } from "@inertiajs/inertia-vue3";
+
+// Components
+import Modal from "@/Components/Modal/Modal.vue"
+import Table from "@/Components/Table/Table.vue"
+import SimpleButton from "@/Components/Button/SimpleButton.vue"
+import Form from "@/Components/Form/Form.vue"
+import InputGroup from "@/Components/Form/InputGroup.vue"
+import TextInput from "@/Components/Form/TextInput.vue"
+import SelectInput from "@/Components/Form/SelectInput.vue"
+import Avatar from "@/Components/Avatar/Avatar.vue"
+
+// Validate
+// Validation
+import { useVuelidate } from "@vuelidate/core"
+import { required, maxLength, helpers } from "@vuelidate/validators"
 
 const props = defineProps({
     tableData: {
@@ -176,17 +29,32 @@ const props = defineProps({
         type: Array,
         default: []
     },
-    users: {
+    employees: {
         type: Array,
         default: []
     },
 })
-const {t} = useI18n();
+const { t } = useI18n();
+
+/*Table*/
+const tableHeaders = [
+  {
+    id: 'code',
+    label: t ('department.global.code')
+  },
+  {
+    id: 'name',
+    label: t ('department.global.name')
+  },
+  {
+    id: "manager",
+    label: t ('department.global.manager')
+  }
+]
 const showModal = ref(false);
 
 /*Form*/
 const formType = ref("create");
-import {useForm} from "@inertiajs/inertia-vue3";
 const formRef = ref()
 const form = useForm({
     id: null,
@@ -194,7 +62,7 @@ const form = useForm({
     name: "",
     type: "main",
     department_id: null,
-    user_id: null,
+    employee_id: null,
 })
 
 /*Related Data with select*/
@@ -219,65 +87,164 @@ const getData = (query) => {
     }
 }
 
-/*Validation*/
-const checkDepartment = (rule, value, callback) => {
-    if (!value && form.type === "sub") {
-        return callback(new Error(t('global.messages.validation.required')))
-    } else {
-        return callback()
+// Rules
+const departmentValidation = (value) => (form.type === "main" && !value) || (form.type === 'sub' && value)
+const rules = ref({
+    code: {
+        required: helpers.withMessage(t('global.messages.validation.required'), required),
+        maxLength: helpers.withMessage(t('global.messages.validation.maxLength', [10]), maxLength(10))
+    },
+    name: {
+        required: helpers.withMessage(t('global.messages.validation.required'), required),
+        maxLength: helpers.withMessage(t('global.messages.validation.maxLength', [255]), maxLength(255))
+    },
+    type: { required: helpers.withMessage(t('global.messages.validation.required'), required) },
+    department_id: { departmentValidation: helpers.withMessage(t('global.messages.validation.required'), departmentValidation) },
+})
+
+const v$ = useVuelidate(rules, form)
+
+// Data
+const departmentTypes = [
+    {
+        id: 'main',
+        label: t('department.global.mainDepartment')
+    },
+    {
+        id: 'sub',
+        label: t('department.global.subDepartment')
     }
-}
-const rules = reactive({
-    code: [
-        {required: true, message: t('global.messages.validation.required'), trigger: 'blur'},
-        {max: 10, message: t('global.messages.validation.maxLength', [10]), trigger: 'blur'},
-    ],
-    name: [
-        {required: true, message: t('global.messages.validation.required'), trigger: 'blur'},
-        {max: 100, message: t('global.messages.validation.maxLength', [100]), trigger: 'blur'},
-    ],
-    type: [
-        {required: true, message: t('global.messages.validation.required'), trigger: 'blur'},
-    ],
-    department_id: [
-        {required: true, validator: checkDepartment, trigger: 'focus'},
-    ]
-});
+];
 
 /*Create*/
-const submit = (formEl) => {
-    if (!formEl) return
-    formEl.validate((valid) => {
-        if (valid) {
-            if (formType.value === 'create') {
-                form.post(route('department.store'))
-            } else {
-                form.put(route('department.update', {id: form.id}))
-            }
+const handleSubmit = async () => {
+    const isValidated = await v$.value.$validate()
+    if (!isValidated) return
+
+    // Correction Main Department
+    if (form.type === 'main') {
+        form.department_id = null
+    }
+
+    if (formType.value === 'create') {
+        form.post(route('department.store'),{
+          onSuccess: ()=>{
             form.reset();
+            v$.value.$reset();
             showModal.value = false;
-        } else {
-            return false
-        }
-    })
+          }
+        })
+    } else {
+        form.put(route('department.update', { id: form.id }))
+    }
 }
+
 /*Update*/
 const getRowInfo = (id) => {
-    axios.get(route("department.edit", {id: id})).then(response => {
+    axios.get(route("department.edit", { id: id })).then(response => {
         form.id = response.data.id;
         form.code = response.data.code;
         form.name = response.data.name;
         form.type = response.data.type;
         form.department_id = response.data.department_id;
-        form.user_id = response.data.user_id;
+        form.employee_id = response.data.employee_id;
     })
     showModal.value = true;
     formType.value = "update"
 }
+
 /*Delete*/
 const handleDelete = (id) => {
     Inertia.delete(route("department.destroy", id), {
         preserveState: true,
     });
 }
+
 </script>
+
+<template>
+    <app-layout :title="$t('department.index.title')" :sub-title="$t('department.index.subTitle')">
+        <template #actionArea>
+            <simple-button @click="showModal = true; formType = 'create'" color="red">
+                <font-awesome-icon icon="trash-can" class="mr-2" />
+                <span v-text="$t('global.deletedItems')" />
+            </simple-button>
+
+            <simple-button @click="showModal = true; formType = 'create'" color="green">
+                <font-awesome-icon icon="plus" class="mr-2" />
+                <span v-text="$t('global.addNew')" />
+            </simple-button>
+        </template>
+      <Table :data="tableData" :headers="tableHeaders" @view="Inertia.visit(route('department.show', $event.id))">
+        <template #manager="{props}">
+          <div class="flex space-x-2 items-center">
+            <avatar :src="props.manager.profile_photo_url"/>
+            <span v-text="props.manager.name"/>
+          </div>
+        </template>
+      </Table>
+        <!--Table-->
+        <!-- <el-table :data="tableData.data" style="width: 100%" :empty-text="$t('global.noData')">
+            <el-table-column :label="$t('global.code')" prop="code" />
+            <el-table-column :label="$t('department.global.name')" prop="name" />
+            <el-table-column :label="$t('department.global.manager')" prop="user_name" />
+            <el-table-column :label="$t('department.global.mainDepartment')" prop="department_name" />
+            <el-table-column align="right">
+
+                <template #default="scope">
+                    <el-button size="small" @click="getRowInfo(scope.row.id)">
+                        {{  $t('global.edit')  }}
+                    </el-button>
+                    <el-popconfirm :title="$t('global.questions.deleteConfirm')" :cancel-button-text="$t('global.no')"
+                        :confirm-button-text="$t('global.yes')" @confirm="handleDelete(scope.row.id)">
+                        <template #reference>
+                            <el-button size="small" type="danger">
+                                {{  $t('global.delete')  }}
+                            </el-button>
+                        </template>
+                    </el-popconfirm>
+
+                </template>
+            </el-table-column>
+        </el-table> -->
+    </app-layout>
+
+  <teleport to="body">
+    <!--Modal-->
+    <Modal v-model="showModal" :header="t('department.create.title')" :subHeader="t('department.create.subTitle')"
+           closeable closeButton :actionButtons="['submit', 'reset']" @reset="form.reset()" @submit="handleSubmit">
+      <Form layout="basic">
+        <!-- Code -->
+        <input-group class="col-span-2" labelFor="code" :label="t('global.code')" :errors="v$.code.$errors">
+          <text-input v-model="form.code" />
+        </input-group>
+
+        <!-- Space Filler -->
+        <div class="col-span-4"></div>
+
+        <!-- Name -->
+        <input-group class="col-span-6" labelFor="name" :label="t('department.global.name')"
+                     :errors="v$.name.$errors">
+          <text-input v-model="form.name" />
+        </input-group>
+
+        <!-- Manager -->
+        <input-group class="col-span-6" labelFor="employee_id" :label="t('department.global.manager')">
+          <select-input v-model="form.employee_id" :options="employees" optionLabel="name" />
+        </input-group>
+
+        <!-- Type -->
+        <input-group class="col-span-3" labelFor="type" :label="t('department.global.type')">
+          <select-input v-model="form.type" :options="departmentTypes" />
+        </input-group>
+
+        <!-- Main Department -->
+        <input-group class="col-span-3" labelFor="department_id" :label="t('department.global.mainDepartment')"
+                     :errors="v$.department_id.$errors">
+          <select-input v-model="form.department_id" :options="departments" optionLabel="name"
+                        :disabled="form.type === 'main'" />
+        </input-group>
+      </Form>
+    </Modal>
+  </teleport>
+</template>

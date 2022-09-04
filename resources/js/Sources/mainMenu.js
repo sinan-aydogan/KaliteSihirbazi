@@ -81,10 +81,10 @@ export default function ({roles, permissions}) {
                 links: [
                     {
                         id: 'hr-st',
-                        label: t('mainMenu.staff'),
+                        label: t('mainMenu.employees'),
                         icon: 'users',
                         type: "route",
-                        link: 'staff.index'
+                        link: 'employee.index'
                     },
                     {
                         id: 'hr-jd',

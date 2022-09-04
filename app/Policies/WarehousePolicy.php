@@ -2,9 +2,9 @@
 
 namespace App\Policies;
 
-use Illuminate\Auth\Access\HandlesAuthorization;
-use App\Models\Warehouse;
 use App\Models\User;
+use App\Models\Warehouse;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
 class WarehousePolicy
 {

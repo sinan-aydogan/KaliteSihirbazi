@@ -3,21 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\CapaAction;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCapaActionRequest;
 use App\Http\Requests\UpdateCapaActionRequest;
-use Inertia\Inertia;
 
 class CapaActionController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Inertia\Response
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return Inertia::render('ComingSoon');
+        //
     }
 
     /**

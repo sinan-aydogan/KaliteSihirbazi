@@ -13,20 +13,18 @@ class UpdateWarehouseRequest extends FormRequest
      */
     public function authorize()
     {
-        return auth()->check();
+        return false;
     }
 
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function rules()
     {
         return [
-            'code' => 'required|max:10|unique:warehouses,code,' . $this->input('id'),
-            'name' => 'required|max:100',
-            'type' => 'required',
+            //
         ];
     }
 }

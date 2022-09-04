@@ -15,17 +15,16 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/', function(){
+        return Inertia::render('Dashboard');
+    });
 
-Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    /*Dashboard*/
+    // Dashboard
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
@@ -41,8 +40,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     });
 
     /*User Functions*/
-    Route::post('/user-language-update', \App\Http\Controllers\User\UpdateActiveLanguage::class)->name('user-language.update');
-    Route::post('/user-theme-update', \App\Http\Controllers\User\UpdateActiveTheme::class)->name('user-theme.update');
+    Route::post('/user-language-update', \App\Http\Controllers\User\UpdateActiveLanguageController::class)->name('user-language.update');
+    Route::post('/user-theme-update', \App\Http\Controllers\User\UpdateActiveThemeController::class)->name('user-theme.update');
 
 
     /*Modules*/
@@ -55,7 +54,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         ['customer',\App\Http\Controllers\CustomerController::class],
         ['supplier',\App\Http\Controllers\SupplierController::class],
         ['audit-firm',\App\Http\Controllers\AuditFirmController::class],
-        ['staff',\App\Http\Controllers\StaffController::class],
+        ['employee',\App\Http\Controllers\EmployeeController::class],
         ['job-description',\App\Http\Controllers\JobDescriptionController::class],
         ['education',\App\Http\Controllers\EducationController::class],
         ['education-plan',\App\Http\Controllers\EducationPlanController::class],
@@ -84,5 +83,4 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::post($mRoute[0], [$mRoute[1], 'index'])->name($mRoute[0].".search");
         Route::post($mRoute[0]."-store", [$mRoute[1], 'store'])->name($mRoute[0].".store");
     }
-
 });

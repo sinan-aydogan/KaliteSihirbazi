@@ -123,10 +123,10 @@
 </template>
 
 <script>
-import SettingLayout from "@/Layouts/SettingLayout";
-import ContentCard from "@/Layouts/ContentCard";
-import InputGroup from "@/Components/Form/InputGroup";
-import TextInput from "@/Components/Form/TextInput";
+import SettingLayout from "@/Layouts/SettingLayout.vue";
+import ContentCard from "@/Layouts/ContentCard.vue";
+import InputGroup from "@/Components/Form/InputGroup.vue";
+import TextInput from "@/Components/Form/TextInput.vue";
 
 export default {
     name: "Index",

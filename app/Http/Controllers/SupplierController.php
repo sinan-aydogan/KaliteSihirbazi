@@ -2,31 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\SupplierResource;
 use App\Models\Supplier;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSupplierRequest;
 use App\Http\Requests\UpdateSupplierRequest;
-use App\Models\SupplierTag;
-use App\Models\SupplierType;
-use Illuminate\Http\Request;
-use Inertia\Inertia;
 
 class SupplierController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Inertia\Response
+     * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        return Inertia::render('Modules/BusinessManagement/Supplier/Index', [
-            'supplierTableData' => SupplierResource::collection(Supplier::search($request->all())),
-            'types' => SupplierType::all(['id', 'code', 'name']),
-            'tags' => SupplierTag::all(['id', 'name']),
-            'typeTableData' => SupplierType::all(['id', 'code', 'name']),
-        ]);
+        //
     }
 
     /**
@@ -43,27 +32,11 @@ class SupplierController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreSupplierRequest  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\Response
      */
     public function store(StoreSupplierRequest $request)
     {
-        $supplier = Supplier::create([
-            'code'=>$request->input('code'),
-            'name'=>$request->input('name'),
-            'type'=>$request->input('type'),
-            'contact_info'=>$request->input('contact_info'),
-            'notes'=>$request->input('notes'),
-            'supplier_type_id'=>$request->input('supplier_type_id'),
-            'is_active'=>$request->input('is_active')
-        ]);
-
-        /*Types*/
-        $supplier->types()->sync($request->input('supplier_types'));
-
-        /*Tags*/
-        $supplier->tags()->sync($request->input('tags'));
-
-        return redirect()->back()->with('message', ['type'=>'success', 'message'=> 'supplier.main.message.creationSuccessfully'] );
+        //
     }
 
     /**
@@ -85,7 +58,7 @@ class SupplierController extends Controller
      */
     public function edit(Supplier $supplier)
     {
-        return response()->json($supplier);
+        //
     }
 
     /**
@@ -93,27 +66,11 @@ class SupplierController extends Controller
      *
      * @param  \App\Http\Requests\UpdateSupplierRequest  $request
      * @param  \App\Models\Supplier  $supplier
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\Response
      */
     public function update(UpdateSupplierRequest $request, Supplier $supplier)
     {
-        $supplier->update([
-            'code'=>$request->input('code'),
-            'name'=>$request->input('name'),
-            'type'=>$request->input('type'),
-            'contact_info'=>$request->input('contact_info'),
-            'notes'=>$request->input('notes'),
-            'supplier_type_id'=>$request->input('supplier_type_id'),
-            'is_active'=>$request->input('is_active')
-        ]);
-
-        /*Types*/
-        $supplier->types()->sync($request->input('supplier_types'));
-
-        /*Tags*/
-        $supplier->tags()->sync($request->input('tags'));
-
-        return redirect()->back()->with('message', ['type'=>'success', 'message'=> 'supplier.main.message.updateSuccessfully'] );
+        //
     }
 
     /**
@@ -124,8 +81,6 @@ class SupplierController extends Controller
      */
     public function destroy(Supplier $supplier)
     {
-        $warehouse->delete();
-
-        return redirect()->back()->with('message', ['type'=>'success', 'message'=> 'warehouse.message.deletionSuccessfully'] );
+        //
     }
 }

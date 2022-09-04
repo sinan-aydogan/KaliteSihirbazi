@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\JobDescription;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreJobDescriptionRequest;
 use App\Http\Requests\UpdateJobDescriptionRequest;
 use Inertia\Inertia;
@@ -17,7 +16,9 @@ class JobDescriptionController extends Controller
      */
     public function index()
     {
-        return Inertia::render('ComingSoon');
+        return Inertia::render("Modules/HumanResources/JobDescription/Index", [
+            'tableData' => JobDescription::latest('id')->paginate(10),
+        ]);
     }
 
     /**
@@ -34,22 +35,38 @@ class JobDescriptionController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreJobDescriptionRequest  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreJobDescriptionRequest $request)
     {
-        //
+        $jobDescription = new JobDescription;
+        $jobDescription->code = $request->code;
+        $jobDescription->name = $request->name;
+
+        $jobDescription->save();
+
+        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.jobDescription.created', ['jobDescription' => $jobDescription->name])]);
+
+        return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
      * @param  \App\Models\JobDescription  $jobDescription
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
     public function show(JobDescription $jobDescription)
     {
-        //
+        $data = [
+            'id' => $jobDescription->id,
+            'code' => $jobDescription->code,
+            'name' => $jobDescription->name,
+        ];
+
+        return Inertia::render('Modules/HumanResources/JobDescription/Show', [
+            'data' => $data
+        ]);
     }
 
     /**
@@ -79,10 +96,14 @@ class JobDescriptionController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\JobDescription  $jobDescription
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(JobDescription $jobDescription)
     {
-        //
+        session()->flash('message', ['type'=> 'danger', 'content'=>__('messages.jobDescription.deleted', ['jobDescription' => $jobDescription->name])]);
+
+        $jobDescription->delete();
+
+        return redirect()->route('job-description.index');
     }
 }

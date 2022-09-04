@@ -12,10 +12,7 @@ class SupplierTag extends Model
 
     protected $fillable = ['name'];
 
-    /*Relations*/
-    /**
-     * @return BelongsToMany
-     */
+    // Suppliers associated with the supplier tag
     public function suppliers():BelongsToMany
     {
         return $this->belongsToMany(Supplier::class);

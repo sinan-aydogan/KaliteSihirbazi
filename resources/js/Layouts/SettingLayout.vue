@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import SettingMenu from "@/Layouts/SettingMenu";
-import AppLayout from "@/Layouts/AppLayout";
+import SettingMenu from "@/Layouts/SettingMenu.vue";
+import AppLayout from "@/Layouts/AppLayout.vue";
 export default {
     name: "SettingLayout",
     components: {AppLayout, SettingMenu},

@@ -2,19 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SupplierType;
 use App\Http\Requests\StoreSupplierTypeRequest;
 use App\Http\Requests\UpdateSupplierTypeRequest;
-use App\Http\Resources\SupplierResource;
-use App\Models\Supplier;
-use App\Models\SupplierType;
-use Inertia\Inertia;
 
 class SupplierTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Inertia\Response
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -34,7 +31,7 @@ class SupplierTypeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\StoreSupplierTypeRequest $request
+     * @param  \App\Http\Requests\StoreSupplierTypeRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreSupplierTypeRequest $request)
@@ -45,7 +42,7 @@ class SupplierTypeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\SupplierType $supplierType
+     * @param  \App\Models\SupplierType  $supplierType
      * @return \Illuminate\Http\Response
      */
     public function show(SupplierType $supplierType)
@@ -56,7 +53,7 @@ class SupplierTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\SupplierType $supplierType
+     * @param  \App\Models\SupplierType  $supplierType
      * @return \Illuminate\Http\Response
      */
     public function edit(SupplierType $supplierType)
@@ -67,8 +64,8 @@ class SupplierTypeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\UpdateSupplierTypeRequest $request
-     * @param \App\Models\SupplierType $supplierType
+     * @param  \App\Http\Requests\UpdateSupplierTypeRequest  $request
+     * @param  \App\Models\SupplierType  $supplierType
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateSupplierTypeRequest $request, SupplierType $supplierType)
@@ -79,7 +76,7 @@ class SupplierTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\SupplierType $supplierType
+     * @param  \App\Models\SupplierType  $supplierType
      * @return \Illuminate\Http\Response
      */
     public function destroy(SupplierType $supplierType)

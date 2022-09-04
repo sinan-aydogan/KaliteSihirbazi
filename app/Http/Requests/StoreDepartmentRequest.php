@@ -19,14 +19,16 @@ class StoreDepartmentRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function rules()
     {
         return [
-            'code' => 'required|unique:departments|max:10',
-            'type' => 'required|max:10',
-            'name' => 'required|max:100',
+            'code' => 'required|string|unique:departments|max:10',
+            'name' => 'required|string|max:255',
+            'employee_id' => 'required|exists:employees,id',
+            'type' => 'required|string|max:10',
+            'department_id' => 'required_if:type,sub|exclude_if:type,main|exists:departments,id',
         ];
     }
 }

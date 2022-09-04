@@ -3,21 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\ConsumableMaterial;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreConsumableMaterialRequest;
 use App\Http\Requests\UpdateConsumableMaterialRequest;
-use Inertia\Inertia;
 
 class ConsumableMaterialController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Inertia\Response
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return Inertia::render('ComingSoon');
+        //
     }
 
     /**

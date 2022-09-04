@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use phpDocumentor\Reflection\DocBlock\Tag;
 
 class Supplier extends Model
 {
@@ -35,22 +34,15 @@ class Supplier extends Model
         'is_active' => 'boolean',
     ];
 
-    /*Relations*/
-
-    /**
-     * @return BelongsToMany
-     */
+    // Supplier's types
     public function types():BelongsToMany
     {
         return $this->belongsToMany(SupplierType::class, 'supplier_type_supplier', 'supplier_id', 'supplier_type_id');
     }
 
-    /**
-     * @return BelongsToMany
-     */
+    // Supplier's Tags
     public function tags():BelongsToMany
     {
         return $this->belongsToMany(SupplierTag::class, 'supplier_tag_supplier', 'supplier_id', 'supplier_tag_id');
     }
-
 }

@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\SupplierTag;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\SupplierTag;
 
 class SupplierTagSeeder extends Seeder
 {

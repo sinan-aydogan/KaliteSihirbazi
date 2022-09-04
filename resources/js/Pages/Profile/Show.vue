@@ -1,78 +1,79 @@
-<template>
-    <app-layout :title="$t('account.account')">
+<script setup>
+import AppLayout from '@/Layouts/AppLayout.vue';
+import DeleteUserForm from '@/Pages/Profile/Partials/DeleteUserForm.vue';
+import JetSectionBorder from '@/Jetstream/SectionBorder.vue';
+import LogoutOtherBrowserSessionsForm from '@/Pages/Profile/Partials/LogoutOtherBrowserSessionsForm.vue';
+import TwoFactorAuthenticationForm from '@/Pages/Profile/Partials/TwoFactorAuthenticationForm.vue';
+import UpdatePasswordForm from '@/Pages/Profile/Partials/UpdatePasswordForm.vue';
+import UpdateProfileInformationForm from '@/Pages/Profile/Partials/UpdateProfileInformationForm.vue';
+import LanguageChanger from "@/Pages/Profile/Partials/LanguageChanger.vue";
+import ThemeChanger from "@/Pages/Profile/Partials/ThemeChanger.vue";
 
+defineProps({
+    confirmsTwoFactorAuthentication: Boolean,
+    sessions: Array,
+});
+</script>
+
+<template>
+    <AppLayout title="Profile">
+        <template #header>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                {{  t('account.account')  }}
+            </h2>
+        </template>
 
         <div>
             <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+
+                <!-- User Info -->
                 <div v-if="$page.props.jetstream.canUpdateProfileInformation">
-                    <update-profile-information-form :user="$page.props.user" />
+                    <UpdateProfileInformationForm :user="$page.props.user" />
 
-                    <jet-section-border />
+                    <JetSectionBorder />
                 </div>
 
+                <!-- Update Password -->
                 <div v-if="$page.props.jetstream.canUpdatePassword">
-                    <update-password-form class="mt-10 sm:mt-0" />
+                    <UpdatePasswordForm class="mt-10 sm:mt-0" />
 
-                    <jet-section-border />
+                    <JetSectionBorder />
                 </div>
 
+                <!-- Two Authentication -->
                 <div v-if="$page.props.jetstream.canManageTwoFactorAuthentication">
-                    <two-factor-authentication-form class="mt-10 sm:mt-0" />
+                    <TwoFactorAuthenticationForm :requires-confirmation="confirmsTwoFactorAuthentication"
+                        class="mt-10 sm:mt-0" />
 
-                    <jet-section-border />
+                    <JetSectionBorder />
                 </div>
 
-                <logout-other-browser-sessions-form :sessions="sessions" class="mt-10 sm:mt-0" />
+                <!-- Logout from Other Browsers -->
+                <LogoutOtherBrowserSessionsForm :sessions="sessions" class="mt-10 sm:mt-0" />
 
+                <!-- Language Changer -->
                 <div>
                     <jet-section-border />
 
-                    <language-changer/>
+                    <language-changer />
 
                 </div>
 
-              <div>
-                <jet-section-border />
-
-                <theme-changer/>
-
-              </div>
-
-                <template v-if="$page.props.jetstream.hasAccountDeletionFeatures">
+                <!-- Theme Changer -->
+                <div>
                     <jet-section-border />
 
-                    <delete-user-form class="mt-10 sm:mt-0" />
+                    <theme-changer />
+
+                </div>
+
+                <!-- Delete User -->
+                <template v-if="$page.props.jetstream.hasAccountDeletionFeatures">
+                    <JetSectionBorder />
+
+                    <DeleteUserForm class="mt-10 sm:mt-0" />
                 </template>
             </div>
         </div>
-    </app-layout>
+    </AppLayout>
 </template>
-
-<script>
-    import { defineComponent } from 'vue'
-    import AppLayout from '@/Layouts/AppLayout.vue'
-    import DeleteUserForm from '@/Pages/Profile/Partials/DeleteUserForm.vue'
-    import JetSectionBorder from '@/Jetstream/SectionBorder.vue'
-    import LogoutOtherBrowserSessionsForm from '@/Pages/Profile/Partials/LogoutOtherBrowserSessionsForm.vue'
-    import TwoFactorAuthenticationForm from '@/Pages/Profile/Partials/TwoFactorAuthenticationForm.vue'
-    import UpdatePasswordForm from '@/Pages/Profile/Partials/UpdatePasswordForm.vue'
-    import UpdateProfileInformationForm from '@/Pages/Profile/Partials/UpdateProfileInformationForm.vue'
-    import LanguageChanger from "@/Pages/Profile/Partials/LanguageChanger";
-    import ThemeChanger from "@/Pages/Profile/Partials/ThemeChanger";
-
-    export default defineComponent({
-        props: ['sessions'],
-
-        components: {
-          ThemeChanger,
-            LanguageChanger,
-            AppLayout,
-            DeleteUserForm,
-            JetSectionBorder,
-            LogoutOtherBrowserSessionsForm,
-            TwoFactorAuthenticationForm,
-            UpdatePasswordForm,
-            UpdateProfileInformationForm,
-        },
-    })
-</script>

@@ -3,21 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\TakeTimeOff;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTakeTimeOffRequest;
 use App\Http\Requests\UpdateTakeTimeOffRequest;
-use Inertia\Inertia;
 
 class TakeTimeOffController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Inertia\Response
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return Inertia::render('ComingSoon');
+        //
     }
 
     /**

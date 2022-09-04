@@ -3,21 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\MeasurementDevice;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreMeasurementDeviceRequest;
 use App\Http\Requests\UpdateMeasurementDeviceRequest;
-use Inertia\Inertia;
 
 class MeasurementDeviceController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Inertia\Response
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return Inertia::render('ComingSoon');
+        //
     }
 
     /**

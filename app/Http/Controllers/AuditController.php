@@ -3,21 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Audit;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAuditRequest;
 use App\Http\Requests\UpdateAuditRequest;
-use Inertia\Inertia;
 
 class AuditController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Inertia\Response
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return Inertia::render('ComingSoon');
+        //
     }
 
     /**

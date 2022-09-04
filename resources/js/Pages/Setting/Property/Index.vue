@@ -42,11 +42,11 @@ import {ref} from "vue";
 import {useI18n} from "vue-i18n";
 
 /*Components*/
-import SettingLayout from "@/Layouts/SettingLayout";
-import ContentCard from "@/Layouts/ContentCard";
-import InnerTable from "@/Components/Table/InnerTable";
-import SimpleButton from "@/Components/Button/SimpleButton";
-import Badge from "@/Components/Badge/Badge";
+import SettingLayout from "@/Layouts/SettingLayout.vue";
+import ContentCard from "@/Layouts/ContentCard.vue";
+import InnerTable from "@/Components/Table/InnerTable.vue";
+import SimpleButton from "@/Components/Button/SimpleButton.vue";
+import Badge from "@/Components/Badge/Badge.vue";
 export default {
     name: "Index",
     components: {Badge, SimpleButton, InnerTable, ContentCard, SettingLayout},

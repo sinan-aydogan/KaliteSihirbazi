@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Department;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Department;
 
 class DepartmentSeeder extends Seeder
 {
@@ -20,14 +20,14 @@ class DepartmentSeeder extends Seeder
             'code'=>'URT',
             'name'=>'Üretim',
             'type'=> 'main',
-            'user_id'=>1
+            'employee_id'=>1
         ]);
 
         /*Paste Production*/
         Department::create([
             'code'=>'SUR',
             'name'=>'Salça Üretim',
-            'user_id'=>1,
+            'employee_id'=>1,
             'department_id'=>Department::where('code', 'URT')->first()->id
         ]);
 
@@ -35,7 +35,7 @@ class DepartmentSeeder extends Seeder
         Department::create([
             'code'=>'ASV',
             'name'=>'Turşu',
-            'user_id'=>1,
+            'employee_id'=>1,
             'department_id'=>Department::where('code', 'URT')->first()->id
         ]);
 
@@ -44,7 +44,7 @@ class DepartmentSeeder extends Seeder
             'code'=>'KLT',
             'name'=>'Kalite',
             'type'=> 'main',
-            'user_id'=>1,
+            'employee_id'=>1,
         ]);
 
         /*Sales*/
@@ -52,7 +52,7 @@ class DepartmentSeeder extends Seeder
             'code'=>'STP',
             'name'=>'Satış & Pazarlama',
             'type'=> 'main',
-            'user_id'=>1,
+            'employee_id'=>1,
         ]);
 
         /*Purchase*/
@@ -60,7 +60,7 @@ class DepartmentSeeder extends Seeder
             'code'=>'STA',
             'name'=>'Satın Alma',
             'type'=> 'main',
-            'user_id'=>1,
+            'employee_id'=>1,
         ]);
 
         /*Accountant*/
@@ -68,7 +68,7 @@ class DepartmentSeeder extends Seeder
             'code'=>'MUH',
             'name'=>'Muhasebe',
             'type'=> 'main',
-            'user_id'=>1,
+            'employee_id'=>1,
         ]);
 
         /*Loading*/
@@ -76,7 +76,7 @@ class DepartmentSeeder extends Seeder
             'code'=>'SEV',
             'name'=>'Sevkiyat',
             'type'=> 'main',
-            'user_id'=>1,
+            'employee_id'=>1,
         ]);
 
         /*Maintenance*/
@@ -84,7 +84,7 @@ class DepartmentSeeder extends Seeder
             'code'=>'BKM',
             'name'=>'Bakım',
             'type'=> 'main',
-            'user_id'=>1,
+            'employee_id'=>1,
         ]);
     }
 }

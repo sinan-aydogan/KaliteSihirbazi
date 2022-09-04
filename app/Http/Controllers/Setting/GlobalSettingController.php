@@ -13,6 +13,7 @@ class GlobalSettingController extends Controller
      *
      * @return \Inertia\Response
      */
+
     public function index()
     {
         return Inertia::render('Setting/Index');

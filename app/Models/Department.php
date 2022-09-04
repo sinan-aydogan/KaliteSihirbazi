@@ -15,21 +15,23 @@ class Department extends Model
         'code',
         'name',
         'type',
-        'user_id',
+        'employee_id',
         'department_id',
     ];
 
-    /*Relations*/
+    // The manager of the depertment
     public function manager():BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id',);
+        return $this->belongsTo(Employee::class, 'employee_id',);
     }
 
+    // The main department of the department
     public function mainDepartment():BelongsTo
     {
         return $this->belongsTo(Department::class, 'department_id');
     }
 
+    // Sub-departments of the department
     public function subDepartments():HasMany
     {
         return $this->hasMany(Department::class);

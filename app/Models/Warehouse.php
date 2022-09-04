@@ -10,6 +10,11 @@ class Warehouse extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
     protected $fillable = [
         'code',
         'name',
@@ -17,7 +22,7 @@ class Warehouse extends Model
         'user_id'
     ];
 
-    /*Relations*/
+    // The supervisor of the warehouse
     public function supervisor():BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id',);

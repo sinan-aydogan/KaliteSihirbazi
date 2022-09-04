@@ -43,7 +43,8 @@
         "makeDefault": "Varsayılan Yap",
         "address": "Adres",
         "phoneNumber": "Telefon Numarası",
-        "messages" : {
+        "goBack": "Geri Dön",
+        "messages": {
             "validation": {
                 "required": "Bu alan zorunludur.",
                 "email": "Lütfen geçerli bir e-posta adresi girin.",
@@ -82,11 +83,14 @@
         "confirmPassword": "Yeni Şifre (Tekrar)",
         "twoFactorAuthentication": "İki Faktörlü Hesap Doğrulama",
         "twoFactorAuthenticationDesc": "Hesabınızda iki faktörlü doğrulamayı açarak, hesabınızı yabancılardan koruyun.",
+        "twoFactorAuthenticationEnabledTitle": "İki faktörlü doğrulamayı aktif hale getirdiniz.",
+        "twoFactorAuthenticationFinishEnablingTitle": "İki faktörlü doğrulamayı etkinleştirme işleminizi tamamlayın",
         "twoFactorAuthenticationNotEnabledTitle": "Henüz iki faktörlü doğrulamayı aktif yapmadınız.",
         "twoFactorAuthenticationNotEnabledDesc": "İki faktörlü doğrulamayı aktif hale getirirseniz, benzersiz ve güvenli bir oturum tokeniniz olacak. Bu tokeni telefonunuzdan Google Authenticator uygulaması ilede kullanabilirsiniz.",
-        "twoFactorAuthenticationEnabledTitle": "İki faktörlü doğrulamayı aktif hale getirdiniz.",
+        "twoFactorAuthenticationFinishEnablingDesc": "İki faktörlü doğrulamayı etkinleştirme işleminizi tamamlayın, telefonunuzdaki iki faktörlü doğrulama uygulaması ile QR kodu tarayın veya uygulamaya kurulum koudunuz girin ve ardından OTP kodunuzu oluşturun.",
         "twoFactorAuthenticationEnabledDesc": "İki faktörlü doğrulamayı aktif, QR Kodu telefonunuzdaki iki faktörlü doğrulama uygulaması ile tarayarak telefonunuza ekleyebilirsiniz.",
         "twoFactorAuthenticationEnabledInfo": "Kurtarma kodlarını güven bir yerde sakladığınızdan emin olun. İki faktörlü doğrulama uygulamanız ile problem yaşarsanız bu kodları hesabınızı kurtarmak için kullanacaksanız.",
+        "twoFactorAuthenticationSetupKey": "Kurulum Anahtarı",
         "regenerateRecoveryCodes": "Kurtarma Kodlarını Oluşrue",
         "showRecoveryCodes": "Kurtarma Kodlarını Göster",
         "confirmPasswordModalTitle": "Şifre ile İşlemi Onayla",
@@ -96,6 +100,7 @@
         "browserSessionsInfo": "Eğer listelenen cihazlardan tanımadıklarınız varsa, Diğer Cihazlardaki Oturumları Kapat düğmesini tıklayınız.",
         "lastActive": "En son oturum açılan",
         "thisDevice": "Bu Cihaz",
+        "unknown": "Bilinmeyen",
         "logOutOtherDevices": "Diğer Cihazlardaki Oturumları Kapat",
         "displayLanguage": "Görüntüleme Dili",
         "displayLanguageDesc": "Sistem geneli görüntüleme dilini değiştirin.",
@@ -135,7 +140,7 @@
         "suppliers": "Tedarikçiler",
         "auditFirms": "Denetim Firmaları",
         "humanResources": "İnsan Kaynakları",
-        "staff": "Personeller",
+        "employees": "Personeller",
         "jobDescriptions": "Görev Tanımları",
         "educationPlaning": "Eğitim Planlama",
         "takeTimeOff": "İzinler",
@@ -210,7 +215,7 @@
         "addFilter": "Filtre Ekle",
         "noData": "Veri Yok",
         "noResults": "Sonuç Bulunamadı",
-        "paginationDetail" : "{total} sayfadan {from} ile {to} arası gösteriliyor",
+        "paginationDetail": "{from} ile {to} arası kayıtlar gösteriliyor, Toplam {total} kayıt",
         "comparators": {
             "equal": "Equal",
             "notEqual": "Not Equal",
@@ -232,12 +237,14 @@
         "global": {
             "singular": "Departman",
             "plural": "Departmanlar",
+            "code": "Departman Kodu",
             "name": "Departman Adı",
             "type": "Departman Tipi",
             "manager": "Departman Yöneticisi",
             "mainDepartment": "Ana Departman",
             "subDepartment": "Alt Departman",
-            "subDepartments": "Alt Departmanlar"
+            "subDepartments": "Alt Departmanlar",
+            "addEmployee": "Personel Ataması Yap"
         },
         "index": {
             "title": "Departmanlar",

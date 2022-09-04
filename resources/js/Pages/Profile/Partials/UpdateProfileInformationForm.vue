@@ -1,162 +1,163 @@
-<template>
-  <jet-form-section @submitted="updateProfileInformation">
-    <template #title>
-      {{ $t('account.accountInformation') }}
-    </template>
+<script setup>
+import { ref } from 'vue';
+import { Inertia } from '@inertiajs/inertia';
+import { Link, useForm } from '@inertiajs/inertia-vue3';
+import JetButton from '@/Jetstream/Button.vue';
+import Form from '@/Components/Form/Form.vue';
+import JetInput from '@/Jetstream/Input.vue';
+import JetInputError from '@/Jetstream/InputError.vue';
+import JetLabel from '@/Jetstream/Label.vue';
+import FormActionMessage from '@/Components/Form/FormActionMessage.vue';
+import JetSecondaryButton from '@/Jetstream/SecondaryButton.vue';
+import InputGroup from "@/Components/Form/InputGroup.vue";
+import TextInput from "@/Components/Form/TextInput.vue";
 
-    <template #description>
-      {{ $t('account.accountInformationDesc') }}
-    </template>
+const props = defineProps({
+    user: Object,
+});
 
-    <template #form>
-      <!-- Profile Photo -->
-      <div class="col-span-6 sm:col-span-4" v-if="$page.props.jetstream.managesProfilePhotos">
-        <!-- Profile Photo File Input -->
-        <input type="file" class="hidden"
-               ref="photo"
-               @change="updatePhotoPreview">
+const userName = ref(null);
+const userEmail = ref(null);
 
-        <jet-label for="photo" value="Photo"/>
+const form = useForm({
+    _method: 'PUT',
+    name: props.user.name,
+    email: props.user.email,
+    photo: null,
+});
 
-        <!-- Current Profile Photo -->
-        <div class="mt-2" v-show="! photoPreview">
-          <img :src="user.profile_photo_url" :alt="user.name" class="rounded-full h-20 w-20 object-cover">
-        </div>
+const verificationLinkSent = ref(null);
+const photoPreview = ref(null);
+const photoInput = ref(null);
 
-        <!-- New Profile Photo Preview -->
-        <div class="mt-2" v-show="photoPreview">
-                    <span class="block rounded-full w-20 h-20 bg-cover bg-no-repeat bg-center"
-                          :style="'background-image: url(\'' + photoPreview + '\');'">
-                    </span>
-        </div>
-
-        <jet-secondary-button class="mt-2 mr-2" type="button" @click.prevent="selectNewPhoto">
-          {{ $t('account.selectAvatar') }}
-        </jet-secondary-button>
-
-        <jet-secondary-button type="button" class="mt-2" @click.prevent="deletePhoto" v-if="user.profile_photo_path">
-          {{ $t('account.removeAvatar') }}
-        </jet-secondary-button>
-
-        <jet-input-error :message="form.errors.photo" class="mt-2"/>
-      </div>
-
-      <!-- Name -->
-      <div class="col-span-6 sm:col-span-4">
-        <input-group :label="$t('account.name')" label-for="name" :errors="form.errors.name">
-          <text-input id="name" type="text" v-model="form.name" autocomplete="name"/>
-        </input-group>
-      </div>
-
-      <!-- Email -->
-      <div class="col-span-6 sm:col-span-4">
-        <input-group :label="$t('auth.email')" label-for="email" :errors="form.errors.email">
-          <text-input id="email" type="email" v-model="form.email"/>
-        </input-group>
-      </div>
-    </template>
-
-    <template #actions>
-      <jet-action-message :on="form.recentlySuccessful" class="mr-3">
-        {{ $t('global.saved') }}
-      </jet-action-message>
-
-      <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-        {{ $t('global.save') }}
-      </jet-button>
-    </template>
-  </jet-form-section>
-</template>
-
-<script>
-/*Functions*/
-import {defineComponent} from 'vue'
-
-/*Components*/
-import JetButton from '@/Jetstream/Button.vue'
-import JetFormSection from '@/Jetstream/FormSection.vue'
-import JetInput from '@/Jetstream/Input.vue'
-import JetInputError from '@/Jetstream/InputError.vue'
-import JetLabel from '@/Jetstream/Label.vue'
-import JetActionMessage from '@/Jetstream/ActionMessage.vue'
-import JetSecondaryButton from '@/Jetstream/SecondaryButton.vue'
-import InputGroup from "@/Components/Form/InputGroup";
-import TextInput from "@/Components/Form/TextInput";
-
-export default defineComponent({
-  components: {
-    JetActionMessage,
-    JetButton,
-    JetFormSection,
-    JetInput,
-    JetInputError,
-    JetLabel,
-    JetSecondaryButton,
-    InputGroup,
-    TextInput
-  },
-
-  props: ['user'],
-
-  data() {
-    return {
-      form: this.$inertia.form({
-        _method: 'PUT',
-        name: this.user.name,
-        email: this.user.email,
-        photo: null,
-      }),
-
-      photoPreview: null,
+const updateProfileInformation = () => {
+    if (photoInput.value) {
+        form.photo = photoInput.value.files[0];
     }
-  },
 
-  methods: {
-    updateProfileInformation() {
-      if (this.$refs.photo) {
-        this.form.photo = this.$refs.photo.files[0]
-      }
-
-      this.form.post(route('user-profile-information.update'), {
+    form.post(route('user-profile-information.update'), {
         errorBag: 'updateProfileInformation',
         preserveScroll: true,
-        onSuccess: () => (this.clearPhotoFileInput()),
-      });
-    },
+        onSuccess: () => clearPhotoFileInput(),
+        onError: () => {
+            if (form.errors.name) {
+                form.reset('name');
+                userName.value.focus();
+            }
 
-    selectNewPhoto() {
-      this.$refs.photo.click();
-    },
+            if (form.errors.email) {
+                form.reset('email');
+                userEmail.value.focus();
+            }
+        },
+    });
+};
 
-    updatePhotoPreview() {
-      const photo = this.$refs.photo.files[0];
+const sendEmailVerification = () => {
+    verificationLinkSent.value = true;
+};
 
-      if (!photo) return;
+const selectNewPhoto = () => {
+    photoInput.value.click();
+};
 
-      const reader = new FileReader();
+const updatePhotoPreview = () => {
+    const photo = photoInput.value.files[0];
 
-      reader.onload = (e) => {
-        this.photoPreview = e.target.result;
-      };
+    if (!photo) return;
 
-      reader.readAsDataURL(photo);
-    },
+    const reader = new FileReader();
 
-    deletePhoto() {
-      this.$inertia.delete(route('current-user-photo.destroy'), {
+    reader.onload = (e) => {
+        photoPreview.value = e.target.result;
+    };
+
+    reader.readAsDataURL(photo);
+};
+
+const deletePhoto = () => {
+    Inertia.delete(route('current-user-photo.destroy'), {
         preserveScroll: true,
         onSuccess: () => {
-          this.photoPreview = null;
-          this.clearPhotoFileInput();
+            photoPreview.value = null;
+            clearPhotoFileInput();
         },
-      });
-    },
+    });
+};
 
-    clearPhotoFileInput() {
-      if (this.$refs.photo?.value) {
-        this.$refs.photo.value = null;
-      }
-    },
-  },
-})
+const clearPhotoFileInput = () => {
+    if (photoInput.value?.value) {
+        photoInput.value.value = null;
+    }
+};
 </script>
+
+<template>
+    <Form @submitted="updateProfileInformation">
+        <template #title>
+            {{  t('account.accountInformation')  }}
+        </template>
+
+        <template #description>
+            {{  t('account.accountInformationDesc')  }}
+        </template>
+
+        <template #form>
+            <!-- Profile Photo -->
+            <div v-if="$page.props.jetstream.managesProfilePhotos" class="col-span-6 sm:col-span-4">
+                <!-- Profile Photo File Input -->
+                <input ref="photoInput" type="file" class="hidden" @change="updatePhotoPreview">
+
+                <JetLabel for="photo" value="Photo" />
+
+                <!-- Current Profile Photo -->
+                <div v-show="!photoPreview" class="mt-2">
+                    <img :src="user.profile_photo_url" :alt="user.name" class="rounded-full h-20 w-20 object-cover">
+                </div>
+
+                <!-- New Profile Photo Preview -->
+                <div v-show="photoPreview" class="mt-2">
+                    <span class="block rounded-full w-20 h-20 bg-cover bg-no-repeat bg-center"
+                        :style="'background-image: url(\'' + photoPreview + '\');'" />
+                </div>
+
+                <JetSecondaryButton class="mt-2 mr-2" type="button" @click.prevent="selectNewPhoto">
+                    {{  t('account.selectAvatar')  }}
+                </JetSecondaryButton>
+
+                <JetSecondaryButton v-if="user.profile_photo_path" type="button" class="mt-2"
+                    @click.prevent="deletePhoto">
+                    {{  t('account.removeAvatar')  }}
+                </JetSecondaryButton>
+
+                <JetInputError :message="form.errors.photo" class="mt-2" />
+            </div>
+
+            <!-- Name -->
+            <div class="col-span-6 sm:col-span-4">
+                <input-group :label="t('account.name')" label-for="name" errorBag="updateProfileInformation"
+                    :errors="form.errors.name">
+                    <text-input id="name" v-model="form.name" autocomplete="name" ref="userName" />
+                </input-group>
+            </div>
+
+            <!-- Email -->
+            <div class="col-span-6 sm:col-span-4">
+                <input-group :label="t('auth.email')" label-for="email" errorBag="updateProfileInformation"
+                    :errors="form.errors.email">
+                    <text-input id="email" v-model="form.email" ref="userEmail" />
+                </input-group>
+            </div>
+        </template>
+
+        <template #actions>
+            <FormActionMessage :on="form.recentlySuccessful" class="mr-3">
+                {{  t('global.saved')  }}
+            </FormActionMessage>
+
+            <JetButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                {{  t('global.save')  }}
+            </JetButton>
+        </template>
+    </Form>
+</template>

@@ -3,21 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Problem;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProblemRequest;
 use App\Http\Requests\UpdateProblemRequest;
-use Inertia\Inertia;
 
 class ProblemController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Inertia\Response
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return Inertia::render('ComingSoon');
+        //
     }
 
     /**
