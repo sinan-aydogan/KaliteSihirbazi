@@ -1,0 +1,30 @@
+{
+  "title": {
+    "indexPage": {
+      "title": "Departmanlar",
+      "subTitle": "Departmanlarınızı buradan yönetebilirsiniz"
+    },
+    "createPage": {
+      "title": "Departman Oluştur",
+      "subTitle": "İşletmeniz için yeni bir departman oluşturun"
+    }
+  },
+  "term": {
+    "department": "Departman | Departmanlar",
+    "code": "Departman Kodu",
+    "name": "Departman Adı",
+    "type": "Departman Tipi",
+    "manager": "Yönetici",
+    "mainDepartment": "Ana Departman",
+    "subDepartment": "Alt Departman",
+    "noManagerAppointed": "Yönetici Ataması Yapılmamış"
+  },
+  "action": {
+    "attachEmployee": "Departmana Personel Ekle"
+  },
+  "message": {
+    "feedback": {
+      "noAttachedEmployee": "Bu departmana henüz personel ataması gerçekleşmemiş."
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "title": {
+    "indexPage": {
+      "title": "Departments",
+      "subTitle": "You can manage departments from this module"
+    },
+    "createPage": {
+      "title": "Create a New Department",
+      "subTitle": "Create a new department for your business"
+    }
+  },
+  "term": {
+    "department": "Department | Departments",
+    "code": "Department Code",
+    "name": "Department Name",
+    "type": "Department Type",
+    "manager": "Manager",
+    "mainDepartment": "Main Department",
+    "subDepartment": "Sub Department",
+    "noManagerAppointed": "No Manager Appointed"
+  },
+  "action": {
+    "attachEmployee": "Add an Employee to Department"
+  },
+  "message": {
+    "feedback": {
+      "noAttachedEmployee": "No personnel has been assigned to this department yet."
+    }
+  }
+}
