@@ -17,10 +17,22 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        return Inertia::render("Modules/BusinessManagement/Department/Index", [
+        return Inertia::render("Modules/BusinessManagement/Department/IndexPage", [
             'tableData' => Department::with('manager:id,has_account')->latest('id')->paginate(10),
             'employees' => Employee::all(['id']),
             'departments' => Department::all(['id', 'name'])
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Inertia\Response
+     */
+    public function deleted()
+    {
+        return Inertia::render("Modules/BusinessManagement/Department/DeletedPage", [
+            'tableData' => Department::onlyTrashed()->with('manager:id,has_account')->latest('deleted_at')->paginate(10),
         ]);
     }
 
@@ -38,7 +50,7 @@ class DepartmentController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreDepartmentRequest  $request
-     * @return \Inertia\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreDepartmentRequest $request)
     {
@@ -72,7 +84,7 @@ class DepartmentController extends Controller
         $data['manager'] = $department->manager()->select('id', 'name')->first();
         $data['mainDepartment'] = $department->mainDepartment()->select('id', 'name')->first();
 
-        return Inertia::render('Modules/BusinessManagement/Department/Show', [
+        return Inertia::render('Modules/BusinessManagement/Department/ShowPage', [
             'data' => $data
         ]);
     }
@@ -81,11 +93,11 @@ class DepartmentController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Department  $department
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function edit(Department $department)
     {
-        //
+        return response()->json($department);
     }
 
     /**
@@ -93,11 +105,21 @@ class DepartmentController extends Controller
      *
      * @param  \App\Http\Requests\UpdateDepartmentRequest  $request
      * @param  \App\Models\Department  $department
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateDepartmentRequest $request, Department $department)
     {
-        //
+        $department->code = $request->code;
+        $department->name = $request->name;
+        $department->department_id = $request->department_id;
+        $department->type = $request->type;
+        $department->employee_id = $request->employee_id;
+
+        $department->save();
+
+        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.department.updated', ['department' => $department->name])]);
+
+        return redirect()->back();
     }
 
     /**
@@ -111,6 +133,36 @@ class DepartmentController extends Controller
         session()->flash('message', ['type'=> 'danger', 'content'=>__('messages.department.deleted', ['department' => $department->name])]);
 
         $department->delete();
+
+        return redirect()->route('department.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Department  $department
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function permanentDestroy(Department $department)
+    {
+        session()->flash('message', ['type'=> 'danger', 'content'=>__('messages.department.permanentDeleted', ['department' => $department->name])]);
+
+        $department->forceDelete();
+
+        return redirect()->route('department.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Department  $department
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function restore(Department $department)
+    {
+        session()->flash('message', ['type'=> 'info', 'content'=>__('messages.department.restored', ['department' => $department->name])]);
+
+        $department->restore();
 
         return redirect()->route('department.index');
     }

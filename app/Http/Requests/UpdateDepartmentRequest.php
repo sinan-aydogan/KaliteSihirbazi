@@ -13,7 +13,7 @@ class UpdateDepartmentRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return auth()->check();
     }
 
     /**
@@ -24,7 +24,11 @@ class UpdateDepartmentRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'code' => 'required|string|max:10|unique:departments,id,'.$this->id,
+            'name' => 'required|string|max:255',
+            'employee_id' => 'required|exists:employees,id',
+            'type' => 'required|string|max:10',
+            'department_id' => 'required_if:type,sub|exclude_if:type,main|exists:departments,id',
         ];
     }
 }

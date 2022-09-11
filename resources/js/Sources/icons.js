@@ -89,7 +89,7 @@ import {
     faCompressAlt,
     faAt,
     faMapLocationDot,
-    faPhone, faXmark, faCircle, faEraser, faFingerprint, faUserShield, faUserPlus,
+    faPhone, faXmark, faCircle, faEraser, faFingerprint, faUserShield, faUserPlus, faRotateLeft,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -188,5 +188,6 @@ library.add(
     faEraser,
     faFingerprint,
     faUserShield,
-    faUserPlus
+    faUserPlus,
+    faRotateLeft
 );

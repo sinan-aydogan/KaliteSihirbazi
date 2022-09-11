@@ -1,7 +1,6 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
-import { reactive, ref } from "vue";
-import { useI18n } from "vue-i18n";
+import { ref } from "vue";
 import { Inertia } from "@inertiajs/inertia";
 import { useForm } from "@inertiajs/inertia-vue3";
 
@@ -15,40 +14,43 @@ import TextInput from "@/Components/Form/TextInput.vue"
 import SelectInput from "@/Components/Form/SelectInput.vue"
 import Avatar from "@/Components/Avatar/Avatar.vue"
 
-// Validate
+// Props
+const props = defineProps({
+  tableData: {
+    type: Object,
+    default: {}
+  },
+  departments: {
+    type: Array,
+    default: []
+  },
+  employees: {
+    type: Array,
+    default: []
+  },
+})
+
+// Multi-lang
+import Translates from "./translates"
+const {t,tm} = Translates();
+
 // Validation
 import { useVuelidate } from "@vuelidate/core"
 import { required, maxLength, helpers } from "@vuelidate/validators"
-
-const props = defineProps({
-    tableData: {
-        type: Object,
-        default: {}
-    },
-    departments: {
-        type: Array,
-        default: []
-    },
-    employees: {
-        type: Array,
-        default: []
-    },
-})
-const { t } = useI18n();
 
 /*Table*/
 const tableHeaders = [
   {
     id: 'code',
-    label: t ('department.global.code')
+    label: tm ('term.code')
   },
   {
     id: 'name',
-    label: t ('department.global.name')
+    label: tm ('term.name')
   },
   {
     id: "manager",
-    label: t ('department.global.manager')
+    label: tm ('term.manager')
   }
 ]
 const showModal = ref(false);
@@ -91,15 +93,15 @@ const getData = (query) => {
 const departmentValidation = (value) => (form.type === "main" && !value) || (form.type === 'sub' && value)
 const rules = ref({
     code: {
-        required: helpers.withMessage(t('global.messages.validation.required'), required),
-        maxLength: helpers.withMessage(t('global.messages.validation.maxLength', [10]), maxLength(10))
+        required: helpers.withMessage(t('message.validation.required'), required),
+        maxLength: helpers.withMessage(t('message.validation.maxLength', [10]), maxLength(10))
     },
     name: {
-        required: helpers.withMessage(t('global.messages.validation.required'), required),
-        maxLength: helpers.withMessage(t('global.messages.validation.maxLength', [255]), maxLength(255))
+        required: helpers.withMessage(t('message.validation.required'), required),
+        maxLength: helpers.withMessage(t('message.validation.maxLength', [255]), maxLength(255))
     },
-    type: { required: helpers.withMessage(t('global.messages.validation.required'), required) },
-    department_id: { departmentValidation: helpers.withMessage(t('global.messages.validation.required'), departmentValidation) },
+    type: { required: helpers.withMessage(t('message.validation.required'), required) },
+    department_id: { departmentValidation: helpers.withMessage(t('message.validation.required'), departmentValidation) },
 })
 
 const v$ = useVuelidate(rules, form)
@@ -108,11 +110,11 @@ const v$ = useVuelidate(rules, form)
 const departmentTypes = [
     {
         id: 'main',
-        label: t('department.global.mainDepartment')
+        label: tm('term.mainDepartment')
     },
     {
         id: 'sub',
-        label: t('department.global.subDepartment')
+        label: tm('term.subDepartment')
     }
 ];
 
@@ -135,7 +137,13 @@ const handleSubmit = async () => {
           }
         })
     } else {
-        form.put(route('department.update', { id: form.id }))
+        form.put(route('department.update', { id: form.id }),{
+          onSuccess: ()=>{
+            form.reset();
+            v$.value.$reset();
+            showModal.value = false;
+          }
+        })
     }
 }
 
@@ -163,19 +171,26 @@ const handleDelete = (id) => {
 </script>
 
 <template>
-    <app-layout :title="$t('department.index.title')" :sub-title="$t('department.index.subTitle')">
+    <app-layout :title="tm('title.indexPage.title')" :sub-title="tm('title.indexPage.subTitle')">
         <template #actionArea>
-            <simple-button @click="showModal = true; formType = 'create'" color="red">
+            <simple-button type="route" :link="route('department.deleted')" color="red">
                 <font-awesome-icon icon="trash-can" class="mr-2" />
-                <span v-text="$t('global.deletedItems')" />
+                <span v-text="t('term.deletedItems')" />
             </simple-button>
 
             <simple-button @click="showModal = true; formType = 'create'" color="green">
                 <font-awesome-icon icon="plus" class="mr-2" />
-                <span v-text="$t('global.addNew')" />
+                <span v-text="t('action.addNew')" />
             </simple-button>
         </template>
-      <Table :data="tableData" :headers="tableHeaders" @view="Inertia.visit(route('department.show', $event.id))">
+      <Table
+          :data="tableData"
+          :headers="tableHeaders"
+          @view="Inertia.visit(route('department.show', $event.id))"
+          @edit="getRowInfo($event.id)"
+          show-action
+          edit-action
+      >
         <template #manager="{props}">
           <div class="flex space-x-2 items-center">
             <avatar :src="props.manager.has_account ? props.manager.account.profile_photo_url : ''"/>
@@ -183,39 +198,15 @@ const handleDelete = (id) => {
           </div>
         </template>
       </Table>
-        <!--Table-->
-        <!-- <el-table :data="tableData.data" style="width: 100%" :empty-text="$t('global.noData')">
-            <el-table-column :label="$t('global.code')" prop="code" />
-            <el-table-column :label="$t('department.global.name')" prop="name" />
-            <el-table-column :label="$t('department.global.manager')" prop="user_name" />
-            <el-table-column :label="$t('department.global.mainDepartment')" prop="department_name" />
-            <el-table-column align="right">
-
-                <template #default="scope">
-                    <el-button size="small" @click="getRowInfo(scope.row.id)">
-                        {{  $t('global.edit')  }}
-                    </el-button>
-                    <el-popconfirm :title="$t('global.questions.deleteConfirm')" :cancel-button-text="$t('global.no')"
-                        :confirm-button-text="$t('global.yes')" @confirm="handleDelete(scope.row.id)">
-                        <template #reference>
-                            <el-button size="small" type="danger">
-                                {{  $t('global.delete')  }}
-                            </el-button>
-                        </template>
-                    </el-popconfirm>
-
-                </template>
-            </el-table-column>
-        </el-table> -->
     </app-layout>
 
   <teleport to="body">
     <!--Modal-->
-    <Modal v-model="showModal" :header="t('department.create.title')" :subHeader="t('department.create.subTitle')"
+    <Modal v-model="showModal" :header="tm('title.createPage.title')" :subHeader="tm('title.createPage.subTitle')"
            closeable closeButton :actionButtons="['submit', 'reset']" @reset="form.reset()" @submit="handleSubmit">
       <Form layout="basic">
         <!-- Code -->
-        <input-group class="col-span-2" labelFor="code" :label="t('global.code')" :errors="v$.code.$errors">
+        <input-group class="col-span-2" labelFor="code" :label="tm('term.code')" :errors="v$.code.$errors">
           <text-input v-model="form.code" />
         </input-group>
 
@@ -223,23 +214,23 @@ const handleDelete = (id) => {
         <div class="col-span-4"></div>
 
         <!-- Name -->
-        <input-group class="col-span-6" labelFor="name" :label="t('department.global.name')"
+        <input-group class="col-span-6" labelFor="name" :label="tm('term.name')"
                      :errors="v$.name.$errors">
           <text-input v-model="form.name" />
         </input-group>
 
         <!-- Manager -->
-        <input-group class="col-span-6" labelFor="employee_id" :label="t('department.global.manager')">
+        <input-group class="col-span-6" labelFor="employee_id" :label="tm('term.manager')">
           <select-input v-model="form.employee_id" :options="employees" optionLabel="employeeName" />
         </input-group>
 
         <!-- Type -->
-        <input-group class="col-span-3" labelFor="type" :label="t('department.global.type')">
+        <input-group class="col-span-3" labelFor="type" :label="tm('term.type')">
           <select-input v-model="form.type" :options="departmentTypes" />
         </input-group>
 
         <!-- Main Department -->
-        <input-group class="col-span-3" labelFor="department_id" :label="t('department.global.mainDepartment')"
+        <input-group class="col-span-3" labelFor="department_id" :label="tm('term.mainDepartment')"
                      :errors="v$.department_id.$errors">
           <select-input v-model="form.department_id" :options="departments" optionLabel="name"
                         :disabled="form.type === 'main'" />

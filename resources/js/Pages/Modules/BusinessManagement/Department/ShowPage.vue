@@ -1,14 +1,20 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {Link} from "@inertiajs/inertia-vue3";
+import {Inertia} from "@inertiajs/inertia";
+
 // Components
 import SimpleButton from "@/Components/Button/SimpleButton.vue"
 import Alert from "@/Components/Alert/Alert.vue";
-import {Inertia} from "@inertiajs/inertia";
 
+// Props
 const props = defineProps({
   data: Object
 })
+
+// Multi-lang
+import Translates from "./translates"
+const {t,tm} = Translates();
 
 const handleDelete = ()=>{
   Inertia.delete(route('department.destroy', props.data.id))
@@ -21,12 +27,12 @@ const handleDelete = ()=>{
   <template #actionArea>
     <simple-button @click="handleDelete" color="red">
       <font-awesome-icon icon="trash-can" class="mr-2" />
-      <span v-text="$t('global.delete')" />
+      <span v-text="tm('action.delete')" />
     </simple-button>
 
     <simple-button type="route" :link="route('department.index')">
       <font-awesome-icon icon="fa-solid fa-left-long" class="mr-2" />
-      <span v-text="$t('global.goBack')" />
+      <span v-text="tm('action.goBack')" />
     </simple-button>
   </template>
 
@@ -43,12 +49,12 @@ const handleDelete = ()=>{
     </div>
     <!--Manager-->
     <div v-if="data['manager']" class="flex items-center space-x-1 text-xs mt-1">
-      <font-awesome-icon icon="fa-solid fa-user-shield" :class="`before:content-['${t('department.global.manager')}']`"/>
+      <font-awesome-icon icon="fa-solid fa-user-shield" :class="`before:content-['${tm('term.manager')}']`"/>
       <!--Manager Name-->
-      <Link :href="route('employee.show', data.manager.id)" v-text="data.manager.name"/>
+      <Link :href="route('employee.show', data.manager.id)" v-text="data.manager.employeeName"/>
     </div>
     <div v-else>
-      Henüz yönetici atanmamış
+      {{tm('term.noManagerAppointed')}}
     </div>
   </template>
 
@@ -61,12 +67,12 @@ const handleDelete = ()=>{
     <div v-else class="col-span-12 space-y-2">
       <!--Alert-->
       <Alert>
-        Bu departmana henüz personel ataması gerçekleşmemiş.
+        {{tm('message.feedback.noAttachedEmployee')}}
       </Alert>
       <!--Add Employee-->
       <simple-button full-size color="green">
         <font-awesome-icon icon="fa-solid fa-user-plus"/>
-        <span v-text="t('department.global.addEmployee')"/>
+        <span v-text="tm('action.attachEmployee')"/>
       </simple-button>
     </div>
   </div>
