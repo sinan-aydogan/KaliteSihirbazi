@@ -379,7 +379,7 @@ updateSize();
                                 " :design="actionButtonsDef.cancel.design" :color="actionButtonsDef.cancel.color"
                                     @click="close()">
                                     <span v-if="actionButtonsDef.cancel.iconButton"
-                                        v-text="actionButtonsDef.cancel.title ? actionButtonsDef.cancel.title : t('global.cancel')"></span>
+                                        v-text="actionButtonsDef.cancel.title ? actionButtonsDef.cancel.title : t('action.cancel')"></span>
                                     <slot v-else name="action-cancel-button"></slot>
                                 </simple-button>
                                 <div class="flex space-x-2">
@@ -389,7 +389,7 @@ updateSize();
                                     " :design="actionButtonsDef.reset.design" :color="actionButtonsDef.reset.color"
                                         @click="$emit('reset')">
                                         <span v-if="!actionButtonsDef.reset.iconButton"
-                                            v-text="actionButtonsDef.reset.title ? actionButtonsDef.reset.title : t('global.reset')"></span>
+                                            v-text="actionButtonsDef.reset.title ? actionButtonsDef.reset.title : t('action.reset')"></span>
                                         <slot v-else name="action-resesimple-button"></slot>
                                     </simple-button>
                                     <simple-button v-if="
@@ -398,7 +398,7 @@ updateSize();
                                     " :design="actionButtonsDef.submit.design" :color="actionButtonsDef.submit.color"
                                         @click="$emit('submit')">
                                         <span v-if="!actionButtonsDef.submit.iconButton"
-                                            v-text="actionButtonsDef.submit.title ? actionButtonsDef.submit.title : t('global.submit')"></span>
+                                            v-text="actionButtonsDef.submit.title ? actionButtonsDef.submit.title : t('action.submit')"></span>
                                         <slot v-else name="action-submisimple-button"></slot>
                                     </simple-button>
                                 </div>

@@ -1,342 +1,349 @@
 {
+  "account": {
+    "account": "Hesap",
+    "accountInformation": "Genel Hesap Bilgileri",
+    "accountInformationDesc": "Genel bilgilerinizi güncelleyin",
+    "autoTheme": "Otomatik",
+    "autoThemeDesc": "Tarayıcı temanıza göre otomatik belirlenir (koyu/açık mod).",
+    "browserSessions": "Oturum Açılan Cihazlar",
+    "browserSessionsDesc": "Hesabınızla oturum açtığınız cihazlarınızı yönetin.",
+    "browserSessionsInfo": "Eğer listelenen cihazlardan tanımadıklarınız varsa, Diğer Cihazlardaki Oturumları Kapat düğmesini tıklayınız.",
+    "confirmPassword": "Yeni Şifre (Tekrar)",
+    "confirmPasswordModalDesc": "Güvenliğiniz ve bu işleme devam edebilmek için şifrenizi onaylayınız.",
+    "confirmPasswordModalTitle": "Şifre ile İşlemi Onayla",
+    "currentPassword": "Güncel Şifre",
+    "darkTheme": "Koyu Tema",
+    "darkThemeDesc": "Gözü yormayan koyu renkler.",
+    "deleteAccount": "Hesabı Sil",
+    "deleteAccountDesc": "Kalıcı olarak hesabı siler.",
+    "deleteAccountModalMessage": "Hesabınızı silmek istediğinizden emin misiniz? Hesabınızı kalıcı olarak silindikten sonra, değişiklikler geri alınamaz. Hesabınızı silme isteğinizi onaylamak için şifrenizi giriniz.",
+    "deleteAccountInfo": "Hesap silinde, bu hesap ile oluşturulmuş verilerde zarar görecektir. Hesabınızı silmeden önce gerekli yedekme ve içerik devir işlemleri yaptınızdan emin olun.",
+    "displayLanguage": "Görüntüleme Dili",
+    "displayLanguageDesc": "Sistem geneli görüntüleme dilini değiştirin.",
+    "lastActive": "En son oturum açılan",
+    "lightTheme": "Açık Tema",
+    "lightThemeDesc": "Parlak ve fark edilebilirliği yüksek renkler.",
+    "logOutOtherDevices": "Diğer Cihazlardaki Oturumları Kapat",
+    "manageAccount": "Hesabı Yönet",
+    "name": "İsim",
+    "newPassword": "Yeni Şifre",
+    "regenerateRecoveryCodes": "Kurtarma Kodlarını Oluşrue",
+    "removeAvatar": "Hesap Fotoğrafını Sil",
+    "selectAvatar": "Hesabınız İçin Fotoğraf Seçin",
+    "showRecoveryCodes": "Kurtarma Kodlarını Göster",
+    "theme": "Tema",
+    "themeDesc": "Sistem görünümünü değiştir.",
+    "thisDevice": "Bu Cihaz",
+    "twoFactorAuthentication": "İki Faktörlü Hesap Doğrulama",
+    "twoFactorAuthenticationDesc": "Hesabınızda iki faktörlü doğrulamayı açarak, hesabınızı yabancılardan koruyun.",
+    "twoFactorAuthenticationEnabledDesc": "İki faktörlü doğrulamayı aktif, QR Kodu telefonunuzdaki iki faktörlü doğrulama uygulaması ile tarayarak telefonunuza ekleyebilirsiniz.",
+    "twoFactorAuthenticationEnabledTitle": "İki faktörlü doğrulamayı aktif hale getirdiniz.",
+    "twoFactorAuthenticationEnabledInfo": "Kurtarma kodlarını güven bir yerde sakladığınızdan emin olun. İki faktörlü doğrulama uygulamanız ile problem yaşarsanız bu kodları hesabınızı kurtarmak için kullanacaksanız.",
+    "twoFactorAuthenticationFinishEnablingDesc": "İki faktörlü doğrulamayı etkinleştirme işleminizi tamamlayın, telefonunuzdaki iki faktörlü doğrulama uygulaması ile QR kodu tarayın veya uygulamaya kurulum koudunuz girin ve ardından OTP kodunuzu oluşturun.",
+    "twoFactorAuthenticationFinishEnablingTitle": "İki faktörlü doğrulamayı etkinleştirme işleminizi tamamlayın",
+    "twoFactorAuthenticationNotEnabledDesc": "İki faktörlü doğrulamayı aktif hale getirirseniz, benzersiz ve güvenli bir oturum tokeniniz olacak. Bu tokeni telefonunuzdan Google Authenticator uygulaması ilede kullanabilirsiniz.",
+    "twoFactorAuthenticationNotEnabledTitle": "Henüz iki faktörlü doğrulamayı aktif yapmadınız.",
+    "twoFactorAuthenticationSetupKey": "Kurulum Anahtarı",
+    "unknown": "Bilinmeyen",
+    "updatePassword": "Şifreni Güncelle",
+    "updatePasswordDesc": "Uzun ve karmaşık bir şifre kullanmak seni güvende tutar."
+  },
+  "action": {
+    "addNew": "Yeni Ekle",
+    "cancel": "İptal Et",
+    "change": "Değiştir",
+    "confirm": "Onayla",
+    "create": "Oluştur",
+    "delete": "Sil",
+    "disable": "İptal Et",
+    "edit": "Düzenle",
+    "enable": "Aktif Et",
+    "goBack": "Geri Dön",
+    "makeDefault": "Varsayılan Yap",
+    "noCancelIt": "Hayır, iptal et!",
+    "reset": "Sıfırla",
+    "returnToList": "Listeye Geri Dön",
+    "save": "Kaydet",
+    "saveChanges": "Değişiklikleri Kaydet",
+    "selectType": "Tür Seç",
+    "submit": "Gönder",
+    "update": "Güncelle",
+    "yesDeleteIt": "Evet, sil!"
+  },
+  "auth": {
+    "alreadyRegistered": "Zaten hesabın varmı??",
+    "disempower": "Yetkiyi Kaldır",
+    "email": "E-Posta",
+    "forgotYourPassword": "Şifreni unuttun mu?",
+    "login": "Giriş",
+    "logOut": "Çıkış",
+    "password": "Şifre",
+    "register": "Kayıt Ol",
+    "rememberMe": "Beni Hatırla",
+    "resetPassword": "Şifreni Sıfırla"
+  },
+  "department": {
+    "create": {
+      "subTitle": "İşlemeniz için yeni bir departman ekleyin",
+      "title": "Departman Ekle"
+    },
     "global": {
-        "enable": "Aktif Et",
-        "disable": "İptal Et",
-        "save": "Kaydet",
-        "saved": "Kaydedildi",
-        "saveChanges": "Değişiklikleri Kaydet",
-        "cancel": "İptal Et",
-        "reset": "Sıfırla",
-        "confirm": "Onayla",
-        "done": "Tamamlandı",
-        "change": "Değiştir",
-        "status": "Durum",
-        "type": "Tür",
-        "code": "Kod",
-        "addNew": "Yeni Ekle",
-        "active": "Aktif",
-        "inactive": "Pasif",
-        "previous": "Önceki",
-        "next": "Sonraki",
-        "filters": "Filtreler",
-        "delete": "Sil",
-        "deletedItems": "Silinen Öğeler",
-        "edit": "Düzenle",
-        "yes": "Evet",
-        "yesDeleteIt": "Evet, sil!",
-        "no": "Hayır",
-        "noCancelIt": "Hayır, iptal et!",
-        "noData": "Veri Yok",
-        "noMatches": "Eşleşme Yok",
-        "loading": "Yükleniyor",
-        "submit": "Gönder",
-        "update": "Güncelle",
-        "create": "Oluştur",
-        "supervisor": "Sorumlu",
-        "selectType": "Tür Seç",
-        "tags": "Etiketler",
-        "contactDetails": "İletişim Bilgileri",
-        "generalDetails": "Genel Detaylar",
-        "default": "Varsayılan",
-        "title": "Başlık",
-        "value": "Değer",
-        "makeDefault": "Varsayılan Yap",
-        "address": "Adres",
-        "phoneNumber": "Telefon Numarası",
-        "goBack": "Geri Dön",
-        "messages": {
-            "validation": {
-                "required": "Bu alan zorunludur.",
-                "email": "Lütfen geçerli bir e-posta adresi girin.",
-                "url": "Lütfen geçerli bir URL girin.",
-                "number": "Lütfen geçerli bir sayı girin.",
-                "digits": "Lütfen sadece sayısal karakterler girin.",
-                "date": "Lütfen geçerli bir tarih girin.",
-                "equalTo": "Lütfen aynı değeri tekrar girin.",
-                "maxLength": "Lütfen en fazla {0} karakter girin.",
-                "minLength": "Lütfen en az {0} karakter girin.",
-                "rangeLength": "Lütfen {0} ile {1} karakter arasında bir değer girin.",
-                "range": "Lütfen {0} ile {1} arasında bir değer girin.",
-                "max": "Lütfen {0} değerinden küçük bir değer girin.",
-                "min": "Lütfen {0} değerinden büyük bir değer girin.",
-                "pattern": "Lütfen geçerli bir değer girin.",
-                "invalid": "Geçersiz değer."
-            }
-        },
-        "questions": {
-            "areYouSure": "Emin misiniz?",
-            "deleteConfirm": "Bu öğeyi silmek istediğinize emin misiniz?"
-        }
+      "addEmployee": "Personel Ataması Yap",
+      "code": "Departman Kodu",
+      "mainDepartment": "Ana Departman",
+      "manager": "Departman Yöneticisi",
+      "name": "Departman Adı",
+      "plural": "Departmanlar",
+      "singular": "Departman",
+      "subDepartment": "Alt Departman",
+      "subDepartments": "Alt Departmanlar",
+      "type": "Departman Tipi"
     },
-    "account": {
-        "account": "Hesap",
-        "manageAccount": "Hesabı Yönet",
-        "accountInformation": "Genel Hesap Bilgileri",
-        "accountInformationDesc": "Genel bilgilerinizi güncelleyin",
-        "name": "İsim",
-        "selectAvatar": "Hesabınız İçin Fotoğraf Seçin",
-        "removeAvatar": "Hesap Fotoğrafını Sil",
-        "updatePassword": "Şifreni Güncelle",
-        "updatePasswordDesc": "Uzun ve karmaşık bir şifre kullanmak seni güvende tutar.",
-        "currentPassword": "Güncel Şifre",
-        "newPassword": "Yeni Şifre",
-        "confirmPassword": "Yeni Şifre (Tekrar)",
-        "twoFactorAuthentication": "İki Faktörlü Hesap Doğrulama",
-        "twoFactorAuthenticationDesc": "Hesabınızda iki faktörlü doğrulamayı açarak, hesabınızı yabancılardan koruyun.",
-        "twoFactorAuthenticationEnabledTitle": "İki faktörlü doğrulamayı aktif hale getirdiniz.",
-        "twoFactorAuthenticationFinishEnablingTitle": "İki faktörlü doğrulamayı etkinleştirme işleminizi tamamlayın",
-        "twoFactorAuthenticationNotEnabledTitle": "Henüz iki faktörlü doğrulamayı aktif yapmadınız.",
-        "twoFactorAuthenticationNotEnabledDesc": "İki faktörlü doğrulamayı aktif hale getirirseniz, benzersiz ve güvenli bir oturum tokeniniz olacak. Bu tokeni telefonunuzdan Google Authenticator uygulaması ilede kullanabilirsiniz.",
-        "twoFactorAuthenticationFinishEnablingDesc": "İki faktörlü doğrulamayı etkinleştirme işleminizi tamamlayın, telefonunuzdaki iki faktörlü doğrulama uygulaması ile QR kodu tarayın veya uygulamaya kurulum koudunuz girin ve ardından OTP kodunuzu oluşturun.",
-        "twoFactorAuthenticationEnabledDesc": "İki faktörlü doğrulamayı aktif, QR Kodu telefonunuzdaki iki faktörlü doğrulama uygulaması ile tarayarak telefonunuza ekleyebilirsiniz.",
-        "twoFactorAuthenticationEnabledInfo": "Kurtarma kodlarını güven bir yerde sakladığınızdan emin olun. İki faktörlü doğrulama uygulamanız ile problem yaşarsanız bu kodları hesabınızı kurtarmak için kullanacaksanız.",
-        "twoFactorAuthenticationSetupKey": "Kurulum Anahtarı",
-        "regenerateRecoveryCodes": "Kurtarma Kodlarını Oluşrue",
-        "showRecoveryCodes": "Kurtarma Kodlarını Göster",
-        "confirmPasswordModalTitle": "Şifre ile İşlemi Onayla",
-        "confirmPasswordModalDesc": "Güvenliğiniz ve bu işleme devam edebilmek için şifrenizi onaylayınız.",
-        "browserSessions": "Oturum Açılan Cihazlar",
-        "browserSessionsDesc": "Hesabınızla oturum açtığınız cihazlarınızı yönetin.",
-        "browserSessionsInfo": "Eğer listelenen cihazlardan tanımadıklarınız varsa, Diğer Cihazlardaki Oturumları Kapat düğmesini tıklayınız.",
-        "lastActive": "En son oturum açılan",
-        "thisDevice": "Bu Cihaz",
-        "unknown": "Bilinmeyen",
-        "logOutOtherDevices": "Diğer Cihazlardaki Oturumları Kapat",
-        "displayLanguage": "Görüntüleme Dili",
-        "displayLanguageDesc": "Sistem geneli görüntüleme dilini değiştirin.",
-        "theme": "Tema",
-        "themeDesc": "Sistem görünümünü değiştir.",
-        "darkTheme": "Koyu Tema",
-        "darkThemeDesc": "Gözü yormayan koyu renkler.",
-        "lightTheme": "Açık Tema",
-        "lightThemeDesc": "Parlak ve fark edilebilirliği yüksek renkler.",
-        "autoTheme": "Otomatik",
-        "autoThemeDesc": "Tarayıcı temanıza göre otomatik belirlenir (koyu/açık mod).",
-        "deleteAccount": "Hesabı Sil",
-        "deleteAccountDesc": "Kalıcı olarak hesabı siler.",
-        "deleteAccountInfo": "Hesap silinde, bu hesap ile oluşturulmuş verilerde zarar görecektir. Hesabınızı silmeden önce gerekli yedekme ve içerik devir işlemleri yaptınızdan emin olun.",
-        "deleteAccountModalMessage": "Hesabınızı silmek istediğinizden emin misiniz? Hesabınızı kalıcı olarak silindikten sonra, değişiklikler geri alınamaz. Hesabınızı silme isteğinizi onaylamak için şifrenizi giriniz."
+    "index": {
+      "subTitle": "Departmanlarınızı buradan yönetebilirsiniz",
+      "title": "Departmanlar"
     },
-    "auth": {
-        "password": "Şifre",
-        "email": "E-Posta",
-        "logOut": "Çıkış",
-        "alreadyRegistered": "Zaten hesabın varmı??",
-        "login": "Giriş",
-        "rememberMe": "Beni Hatırla",
-        "forgotYourPassword": "Şifreni unuttun mu?",
-        "register": "Kayıt Ol",
-        "resetPassword": "Şifreni Sıfırla",
-        "disempower": "Yetkiyi Kaldır"
-    },
-    "mainMenu": {
-        "businessManagement": "İşletme Yönetimi",
-        "departments": "Departmanlar",
-        "warehouses": "Depolar",
-        "vehicles": "Taşıtlar",
-        "devices": "Cihazlar",
-        "machines": "Makinalar",
-        "customers": "Müşteriler",
-        "suppliers": "Tedarikçiler",
-        "auditFirms": "Denetim Firmaları",
-        "humanResources": "İnsan Kaynakları",
-        "employees": "Personeller",
-        "jobDescriptions": "Görev Tanımları",
-        "educationPlaning": "Eğitim Planlama",
-        "takeTimeOff": "İzinler",
-        "capaSystem": "CAPA Sistemi",
-        "problems": "Uygunsuzluklar",
-        "actions": "Aksiyonlar",
-        "productionManagement": "Üretim Yönetimi",
-        "products": "Ürünler",
-        "rawMaterials": "Hammaddeler",
-        "consumableMaterials": "Sarf Malzemeler",
-        "productTrees": "Ürün Ağaçları",
-        "documentation": "Dökümantasyon",
-        "documents": "Dökümanlar",
-        "requestsOfTheRevision": "Revizyon Talepleri",
-        "distributionPoints": "Dağıtım Noktaları",
-        "measurementDeviceManagement": "Ölçüm Cihazı Yönetimi",
-        "measurementDevices": "Cihazlar",
-        "calibrationTasks": "Kalibrasyon Emirleri",
-        "certification": "Belgelendirme",
-        "audits": "Denetimler",
-        "certificates": "Sertifikalar",
-        "standards": "Standartlar",
-        "continuesImprovement": "Sürekli İyileştirme",
-        "improvementWorks": "İyileştirme Çalışmaları"
-    },
-    "settingMenu": {
-        "settings": "Ayarlar",
-        "generalSettings": "Genel Ayarlar",
-        "generalSettingsDesc": "İşletme ayarlarınızı bu kısımdan yapabilirsiniz",
-        "appName": "Uygulama İsmi",
-        "appNameDesc": "Site genelinde kullanıcaktır",
-        "appLogo": "Uygulama Logosu",
-        "darkLogo": "Koyu Tema Logosu",
-        "lightLogo": "Aydınlık Tema Logosu",
-        "appLogoDesc": "Giriş ekranlarında ve ana menüde kullanılacaktır",
-        "appMailSendingEmail": "Mail Gönderen Adresi",
-        "appMailSendingEmailDesc": "Sistemin mail gönderirken kullanacağı Adres",
-        "appGlobalAdmins": "Global Uygulama Yöneticileri",
-        "appGlobalAdminsDesc": "Sistem genelinde sınırsız yetkisi olan kullanıcılar",
-        "addGlobalAdmin": "Global yönetici grubuna yeni kullanıcı ekle",
-        "moduleManagement": "Modül Yönetimi",
-        "moduleManagementDesc": "Uygulama modüllerin yönetimi",
-        "module": "Modül",
-        "dueDate": "Geçerlilik Süresi",
-        "licenceKey": "Lisans Anahtarı",
-        "propertyManagement": "Özellik Yönetimi",
-        "property": "Özellik",
-        "properties": "Özellikler",
-        "propertyType": "Özellik Tipi",
-        "propertyTypes": "Özellik Tipleri",
-        "propertyTypesDesc": "Özellik tiplerinin yönetimi",
-        "propertyValue": "Özellik Değeri",
-        "propertyValues": "Özellik Değerleri",
-        "relatedModules": "İlgili Modüller",
-        "authorizationManagement": "Yetkilendirme Yönetimi",
-        "permissions": "Yetkiler",
-        "permission": "Yetki",
-        "permissionGroups": "Yetki Grupları",
-        "permissionGroup": "Yetki Grubu",
-        "roles": "Roller",
-        "role": "Rol"
-    },
-    "form": {
-        "selectInput": {
-            "selectOption": "Seçenek Seçiniz"
-        }
-    },
-    "table": {
-        "actions": "Aksiyonlar",
-        "selectField": "Alan Seçiniz",
-        "selectComparator": "Karşılaştırıcı Seçiniz",
-        "addFilter": "Filtre Ekle",
-        "noData": "Veri Yok",
-        "noResults": "Sonuç Bulunamadı",
-        "paginationDetail": "{from} ile {to} arası kayıtlar gösteriliyor, Toplam {total} kayıt",
-        "comparators": {
-            "equal": "Equal",
-            "notEqual": "Not Equal",
-            "greaterThan": "Greater Than",
-            "lessThan": "Less Than",
-            "greaterThanOrEqual": "Greater Than Or Equal",
-            "lessThanOrEqual": "Less Than Or Equal",
-            "contains": "Contains",
-            "notContains": "Not Contains",
-            "startsWith": "Starts With",
-            "endsWith": "Ends With",
-            "between": "Between",
-            "notBetween": "Not Between",
-            "isNull": "Is Null",
-            "isNotNull": "Is Not Null"
-        }
-    },
-    "department": {
-        "global": {
-            "singular": "Departman",
-            "plural": "Departmanlar",
-            "code": "Departman Kodu",
-            "name": "Departman Adı",
-            "type": "Departman Tipi",
-            "manager": "Departman Yöneticisi",
-            "mainDepartment": "Ana Departman",
-            "subDepartment": "Alt Departman",
-            "subDepartments": "Alt Departmanlar",
-            "addEmployee": "Personel Ataması Yap"
-        },
-        "index": {
-            "title": "Departmanlar",
-            "subTitle": "Departmanlarınızı buradan yönetebilirsiniz"
-        },
-        "create": {
-            "title": "Departman Ekle",
-            "subTitle": "İşlemeniz için yeni bir departman ekleyin"
-        },
-        "message": {
-            "selectDepartment": "Departman Seçiniz",
-            "selectManager": "Departman Yöneticisi Seçiniz",
-            "creationSuccessfully": "Departman başarıyla oluşturuldu",
-            "updateSuccessfully": "Departman başarıyla güncellendi",
-            "deletionSuccessfully": "Departman başarıyla silindi",
-            "deletionFailed": "Departman silinemedi",
-            "deletionFailedDeleteSubDepartments": "Departmanın alt departmanları var. Lütfen önce alt departmanları silin"
-        }
-    },
-    "warehouse": {
-        "global": {
-            "warehouse": "Depo",
-            "warehouses": "Depolar",
-            "name": "Depo Adı",
-            "type": "Depo Tipi",
-            "rawMaterialWarehouse": "Hammadde Deposu",
-            "finishedProductsWarehouse": "Ürün Deposu",
-            "generalWarehouse": "Genel Depo"
-        },
-        "index": {
-            "title": "Depo Listesi",
-            "subTitle": "Depo listesini yönetin ve düzenleyin",
-            "addNew": "Yeni Depo Ekle"
-        },
-        "create": {
-            "title": "Yeni Depo Ekle",
-            "subTitle": "İşletmeye yeni bir depo ekleyin"
-        },
-        "message": {
-            "selectSupervisor": "Depo Yöneticisi Seçiniz",
-
-            "creationSuccessfully": "Depo başarıyla oluşturuldu",
-            "updateSuccessfully": "Depo başarıyla güncellendi",
-            "deletionSuccessfully": "Depo başarıyla silindi"
-        }
-    },
-    "supplier": {
-        "main": {
-            "global": {
-                "supplier": "Tedarikçi",
-                "suppliers": "Tedarikçiler",
-                "name": "Tedarikçi Adı"
-            },
-            "index": {
-                "title": "Tedarikçiler",
-                "subTitle": "Tedarikçileri buradan yönetebilirsiniz"
-            },
-            "create": {
-                "title": "Tedarikçi Ekle",
-                "subTitle": "İşlemeniz için yeni bir tedarikçi ekleyin",
-                "selectContactType": "Eklenecek İletişim Tipini Seçiniz"
-            },
-            "message": {
-                "creationSuccessfully": "Tedarikçi başarıyla oluşturuldu",
-                "updateSuccessfully": "Tedarikçi başarıyla güncellendi",
-                "deletionSuccessfully": "Tedarikçi başarıyla silindi"
-            },
-            "question": {
-                "areYouSureMakeDefaultContact": "Bu iletişim bilgisini varsayılan yapmak istediğinizden emin misiniz?",
-                "areYouSureRemoveDefaultContact": "Bu iletişim bilgisini varsayılanlardan çıkartmak istediğinizden emin misiniz?"
-            }
-        },
-        "type": {
-            "global": {
-                "supplierType": "Tedarikçi Tipi",
-                "supplierTypes": "Tedarikçi Tipleri",
-                "name": "Tedarikçi Tipi Adı",
-                "manage": "Tedarikçi Tiplerini Yönet"
-            },
-            "index": {
-                "title": "Tedarikçi Tipleri",
-                "subTitle": "Tedarikçi tiplerini buradan yönetebilirsiniz"
-            },
-            "create": {
-                "title": "Tedarikçi Tipi Ekle",
-                "subTitle": "İşlemeniz için yeni bir tedarikçi tipi ekleyin"
-            },
-            "message": {
-                "creationSuccessfully": "Tedarikçi tipi başarıyla oluşturuldu",
-                "updateSuccessfully": "Tedarikçi tipi başarıyla güncellendi",
-                "deletionSuccessfully": "Tedarikçi tipi başarıyla silindi"
-            }
-        }
+    "message": {
+      "creationSuccessfully": "Departman başarıyla oluşturuldu",
+      "deletionFailed": "Departman silinemedi",
+      "deletionFailedDeleteSubDepartments": "Departmanın alt departmanları var. Lütfen önce alt departmanları silin",
+      "deletionSuccessfully": "Departman başarıyla silindi",
+      "selectDepartment": "Departman Seçiniz",
+      "selectManager": "Departman Yöneticisi Seçiniz",
+      "updateSuccessfully": "Departman başarıyla güncellendi"
     }
+  },
+  "form": {
+    "selectInput": {
+      "selectOption": "Seçenek Seçiniz"
+    }
+  },
+  "mainMenu": {
+    "actions": "Aksiyonlar",
+    "auditFirms": "Denetim Firmaları",
+    "audits": "Denetimler",
+    "businessManagement": "İşletme Yönetimi",
+    "calibrationTasks": "Kalibrasyon Emirleri",
+    "capaSystem": "CAPA Sistemi",
+    "certificates": "Sertifikalar",
+    "certification": "Belgelendirme",
+    "consumableMaterials": "Sarf Malzemeler",
+    "continuesImprovement": "Sürekli İyileştirme",
+    "customers": "Müşteriler",
+    "departments": "Departmanlar",
+    "devices": "Cihazlar",
+    "distributionPoints": "Dağıtım Noktaları",
+    "documentation": "Dökümantasyon",
+    "documents": "Dökümanlar",
+    "educationPlaning": "Eğitim Planlama",
+    "employees": "Personeller",
+    "humanResources": "İnsan Kaynakları",
+    "improvementWorks": "İyileştirme Çalışmaları",
+    "jobDescriptions": "Görev Tanımları",
+    "machines": "Makinalar",
+    "measurementDeviceManagement": "Ölçüm Cihazı Yönetimi",
+    "measurementDevices": "Cihazlar",
+    "problems": "Uygunsuzluklar",
+    "productionManagement": "Üretim Yönetimi",
+    "products": "Ürünler",
+    "productTrees": "Ürün Ağaçları",
+    "rawMaterials": "Hammaddeler",
+    "requestsOfTheRevision": "Revizyon Talepleri",
+    "standards": "Standartlar",
+    "suppliers": "Tedarikçiler",
+    "takeTimeOff": "İzinler",
+    "vehicles": "Taşıtlar",
+    "warehouses": "Depolar"
+  },
+  "message": {
+    "feedback": {
+      "done": "Tamamlandı",
+      "loading": "Yükleniyor",
+      "noData": "Veri Yok",
+      "noMatches": "Eşleşme Yok",
+      "noResults": "Hiç veri yok",
+      "saved": "Kaydedildi"
+    },
+    "question": {
+      "areYouSure": "Emin misiniz?",
+      "deleteConfirm": "Bu öğeyi silmek istediğinize emin misiniz?"
+    },
+    "validation": {
+      "date": "Lütfen geçerli bir tarih girin.",
+      "digits": "Lütfen sadece sayısal karakterler girin.",
+      "email": "Lütfen geçerli bir e-posta adresi girin.",
+      "equalTo": "Lütfen aynı değeri tekrar girin.",
+      "invalid": "Geçersiz değer.",
+      "max": "Lütfen {0} değerinden küçük bir değer girin.",
+      "maxLength": "Lütfen en fazla {0} karakter girin.",
+      "min": "Lütfen {0} değerinden büyük bir değer girin.",
+      "minLength": "Lütfen en az {0} karakter girin.",
+      "number": "Lütfen geçerli bir sayı girin.",
+      "pattern": "Lütfen geçerli bir değer girin.",
+      "range": "Lütfen {0} ile {1} arasında bir değer girin.",
+      "rangeLength": "Lütfen {0} ile {1} karakter arasında bir değer girin.",
+      "required": "Bu alan zorunludur.",
+      "url": "Lütfen geçerli bir URL girin."
+    }
+  },
+  "settingMenu": {
+    "addGlobalAdmin": "Global yönetici grubuna yeni kullanıcı ekle",
+    "appGlobalAdmins": "Global Uygulama Yöneticileri",
+    "appGlobalAdminsDesc": "Sistem genelinde sınırsız yetkisi olan kullanıcılar",
+    "appLogo": "Uygulama Logosu",
+    "appLogoDesc": "Giriş ekranlarında ve ana menüde kullanılacaktır",
+    "appMailSendingEmail": "Mail Gönderen Adresi",
+    "appMailSendingEmailDesc": "Sistemin mail gönderirken kullanacağı Adres",
+    "appName": "Uygulama İsmi",
+    "appNameDesc": "Site genelinde kullanıcaktır",
+    "authorizationManagement": "Yetkilendirme Yönetimi",
+    "darkLogo": "Koyu Tema Logosu",
+    "dueDate": "Geçerlilik Süresi",
+    "generalSettings": "Genel Ayarlar",
+    "generalSettingsDesc": "İşletme ayarlarınızı bu kısımdan yapabilirsiniz",
+    "licenceKey": "Lisans Anahtarı",
+    "lightLogo": "Aydınlık Tema Logosu",
+    "module": "Modül",
+    "moduleManagement": "Modül Yönetimi",
+    "moduleManagementDesc": "Uygulama modüllerin yönetimi",
+    "permission": "Yetki",
+    "permissionGroup": "Yetki Grubu",
+    "permissionGroups": "Yetki Grupları",
+    "permissions": "Yetkiler",
+    "properties": "Özellikler",
+    "property": "Özellik",
+    "propertyManagement": "Özellik Yönetimi",
+    "propertyType": "Özellik Tipi",
+    "propertyTypes": "Özellik Tipleri",
+    "propertyTypesDesc": "Özellik tiplerinin yönetimi",
+    "propertyValue": "Özellik Değeri",
+    "propertyValues": "Özellik Değerleri",
+    "relatedModules": "İlgili Modüller",
+    "role": "Rol",
+    "roles": "Roller",
+    "settings": "Ayarlar"
+  },
+  "supplier": {
+    "main": {
+      "create": {
+        "selectContactType": "Eklenecek İletişim Tipini Seçiniz",
+        "subTitle": "İşlemeniz için yeni bir tedarikçi ekleyin",
+        "title": "Tedarikçi Ekle"
+      },
+      "global": {
+        "name": "Tedarikçi Adı",
+        "supplier": "Tedarikçi",
+        "suppliers": "Tedarikçiler"
+      },
+      "index": {
+        "subTitle": "Tedarikçileri buradan yönetebilirsiniz",
+        "title": "Tedarikçiler"
+      },
+      "message": {
+        "creationSuccessfully": "Tedarikçi başarıyla oluşturuldu",
+        "deletionSuccessfully": "Tedarikçi başarıyla silindi",
+        "updateSuccessfully": "Tedarikçi başarıyla güncellendi"
+      },
+      "question": {
+        "areYouSureMakeDefaultContact": "Bu iletişim bilgisini varsayılan yapmak istediğinizden emin misiniz?",
+        "areYouSureRemoveDefaultContact": "Bu iletişim bilgisini varsayılanlardan çıkartmak istediğinizden emin misiniz?"
+      }
+    },
+    "type": {
+      "create": {
+        "subTitle": "İşlemeniz için yeni bir tedarikçi tipi ekleyin",
+        "title": "Tedarikçi Tipi Ekle"
+      },
+      "global": {
+        "manage": "Tedarikçi Tiplerini Yönet",
+        "name": "Tedarikçi Tipi Adı",
+        "supplierType": "Tedarikçi Tipi",
+        "supplierTypes": "Tedarikçi Tipleri"
+      },
+      "index": {
+        "subTitle": "Tedarikçi tiplerini buradan yönetebilirsiniz",
+        "title": "Tedarikçi Tipleri"
+      },
+      "message": {
+        "creationSuccessfully": "Tedarikçi tipi başarıyla oluşturuldu",
+        "deletionSuccessfully": "Tedarikçi tipi başarıyla silindi",
+        "updateSuccessfully": "Tedarikçi tipi başarıyla güncellendi"
+      }
+    }
+  },
+  "table": {
+    "actions": "Aksiyonlar",
+    "addFilter": "Filtre Ekle",
+    "comparators": {
+      "between": "Between",
+      "contains": "Contains",
+      "endsWith": "Ends With",
+      "equal": "Equal",
+      "greaterThan": "Greater Than",
+      "greaterThanOrEqual": "Greater Than Or Equal",
+      "isNotNull": "Is Not Null",
+      "isNull": "Is Null",
+      "lessThan": "Less Than",
+      "lessThanOrEqual": "Less Than Or Equal",
+      "notBetween": "Not Between",
+      "notContains": "Not Contains",
+      "notEqual": "Not Equal",
+      "startsWith": "Starts With"
+    },
+    "noData": "Veri Yok",
+    "noResults": "Sonuç Bulunamadı",
+    "paginationDetail": "{from} ile {to} arası kayıtlar gösteriliyor, Toplam {total} kayıt",
+    "selectComparator": "Karşılaştırıcı Seçiniz",
+    "selectField": "Alan Seçiniz"
+  },
+  "term": {
+    "active": "Aktif",
+    "address": "Adres",
+    "code": "Kod",
+    "contactDetails": "İletişim Bilgileri",
+    "default": "Varsayılan",
+    "deletedAt": "Silinme Zamanı",
+    "deletedItems": "Silinen Öğeler",
+    "filters": "Filtreler",
+    "generalDetails": "Genel Detaylar",
+    "inactive": "Pasif",
+    "next": "Sonraki",
+    "no": "Hayır",
+    "phoneNumber": "Telefon Numarası",
+    "previous": "Önceki",
+    "status": "Durum",
+    "supervisor": "Sorumlu",
+    "tags": "Etiketler",
+    "title": "Başlık",
+    "type": "Tür",
+    "undefined": "Tanımlanmamış",
+    "value": "Değer",
+    "yes": "Evet"
+  },
+  "warehouse": {
+    "create": {
+      "subTitle": "İşletmeye yeni bir depo ekleyin",
+      "title": "Yeni Depo Ekle"
+    },
+    "global": {
+      "finishedProductsWarehouse": "Ürün Deposu",
+      "generalWarehouse": "Genel Depo",
+      "name": "Depo Adı",
+      "rawMaterialWarehouse": "Hammadde Deposu",
+      "type": "Depo Tipi",
+      "warehouse": "Depo",
+      "warehouses": "Depolar"
+    },
+    "index": {
+      "addNew": "Yeni Depo Ekle",
+      "subTitle": "Depo listesini yönetin ve düzenleyin",
+      "title": "Depo Listesi"
+    },
+    "message": {
+      "creationSuccessfully": "Depo başarıyla oluşturuldu",
+      "deletionSuccessfully": "Depo başarıyla silindi",
+      "selectSupervisor": "Depo Yöneticisi Seçiniz",
+      "updateSuccessfully": "Depo başarıyla güncellendi"
+    }
+  }
 }
