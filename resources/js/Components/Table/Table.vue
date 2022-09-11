@@ -39,13 +39,29 @@ const props = defineProps({
     type: Boolean,
     default: true
   },
+  deleteAction: {
+    type: Boolean,
+    default: false
+  },
+  showAction: {
+    type: Boolean,
+    default: false
+  },
+  editAction: {
+    type: Boolean,
+    default: false
+  },
+  restoreAction: {
+    type: Boolean,
+    default: false
+  },
   bulkActions: {
     type: Array,
     default: () => []
   },
 })
 
-defineEmits(['delete', 'edit', 'view'])
+defineEmits(['delete', 'edit', 'view', 'restore'])
 
 
 const {t} = useI18n();
@@ -196,14 +212,14 @@ debouncedWatch(() => cloneDeep(search.query), () => {
           }" color="neutral" size="slim" @click="showFilter = !showFilter"
                          :disabled="search.query.length === headers.length">
             <font-awesome-icon icon="filter"/>
-            <span v-text="$t('global.filters')"></span>
+            <span v-text="t('term.filters')"></span>
           </simple-button>
 
           <div v-if="showFilter"
                class="absolute space-y-2 -left-2 top-10 z-50 bg-white dark:bg-slate-700  dark:border-transparent dark:shadow-slate-500 rounded-lg p-4 shadow-lg dark:shadow-sm border">
             <!--Select Key-->
             <select-input :options="unSelectedFilters" v-model="filterSelectForm.key"
-                          :select-text="$t('table.selectField')"></select-input>
+                          :select-text="t('table.selectField')"></select-input>
 
             <!--Select Comparator-->
             <select-input
@@ -211,7 +227,7 @@ debouncedWatch(() => cloneDeep(search.query), () => {
                 v-model="filterSelectForm.comparator"
                 option-key="value"
                 :options="comparators"
-                :select-text="$t('table.selectComparator')"
+                :select-text="t('table.selectComparator')"
             ></select-input>
 
             <!--Filter Value-->
@@ -221,7 +237,7 @@ debouncedWatch(() => cloneDeep(search.query), () => {
                           v-if="filterSelectForm.key && headers.find(i=>i.id === filterSelectForm.key).filterType === 'select'"></select-input>
 
             <!--Add Filter-->
-            <simple-button @click="addFilter" full-size>{{ $t('table.addFilter') }}</simple-button>
+            <simple-button @click="addFilter" full-size>{{ t('table.addFilter') }}</simple-button>
           </div>
 
           <!--Filters-->
@@ -281,7 +297,7 @@ debouncedWatch(() => cloneDeep(search.query), () => {
           </template>
 
           <th>
-            <div class="flex flex-shrink-0 justify-center items-center" v-text="$t('table.actions')"></div>
+            <div class="flex flex-shrink-0 justify-center items-center" v-text="t('table.actions')"></div>
           </th>
         </tr>
         </thead>
@@ -335,18 +351,27 @@ debouncedWatch(() => cloneDeep(search.query), () => {
               <div
                   class="flex flex-shrink-0 justify-center items-center space-x-3  min-h-[2.5rem] items-center">
                 <font-awesome-icon
+                    v-if="showAction"
                     @click="$emit('view', row)"
                     icon="eye"
-                    class="text-slate-600 dark:bg-slate-300 dark:text-slate-700 dark:p-1 dark:rounded hover:text-slate-900 cursor-pointer"/>
+                    class="action-button text-slate-600 dark:bg-slate-300 dark:text-slate-700 hover:text-slate-900"/>
                 <font-awesome-icon
+                    v-if="editAction"
                     @click="$emit('edit', row)"
                     icon="edit"
-                    class="text-sky-600 dark:bg-sky-500 dark:text-white dark:p-1 dark:rounded hover:text-sky-900 cursor-pointer"
+                    class="action-button text-sky-600 dark:bg-sky-500 dark:text-white hover:text-sky-900"
                 />
                 <font-awesome-icon
+                    v-if="restoreAction"
+                    @click="$emit('restore', row)"
+                    icon="fa-solid fa-rotate-left"
+                    class="action-button text-emerald-500 dark:bg-emerald-500 dark:text-white hover:text-emerald-900"
+                />
+                <font-awesome-icon
+                    v-if="deleteAction"
                     @click="$emit('delete', row)"
                     icon="trash"
-                    class="text-rose-500 dark:bg-rose-500 dark:text-white dark:p-1 dark:rounded hover:text-rose-900 cursor-pointer"
+                    class="action-button text-rose-500 dark:bg-rose-500 dark:text-white hover:text-rose-900"
                 />
               </div>
             </td>
@@ -358,7 +383,7 @@ debouncedWatch(() => cloneDeep(search.query), () => {
           <td :colspan="headers.length + actionColumn ?? 1" class="bg-sky-100 text-sky-700">
             <div class="flex justify-center items-center p-4">
               <font-awesome-icon icon="info-circle" size="w-6 h-6"/>
-              <span class="ml-2 font-semibold" v-text="$t('table.noResults')"></span>
+              <span class="ml-2 font-semibold" v-text="t('message.feedback.noResults')"></span>
             </div>
           </td>
         </tr>
@@ -377,13 +402,13 @@ debouncedWatch(() => cloneDeep(search.query), () => {
             :class="{'opacity-25 pointer-events-none': data['meta'] ? data.meta.links[0].url === null : data.prev_page_url  === null}"
       >
         <font-awesome-icon icon="chevron-left" size="sm" aria-hidden="true"/>
-        <span v-text="$t('global.previous')"></span>
+        <span v-text="t('term.previous')"></span>
       </Link>
       <Link :href="data['meta'] ? data.meta.links[data.meta.links.length-1].url : data.next_page_url"
             class="col-span-1 ml-3 space-x-2 relative inline-flex  place-self-end items-center px-4 py-2 border dark:border-transparent border-gray-300 text-sm font-medium rounded-md text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-700 hover:bg-gray-50"
             :class="{'opacity-25 pointer-events-none': data['meta'] ? data.meta.links[data.meta.links.length-1].url === null : data.next_page_url  === null}"
       >
-        <span v-text="$t('global.next')"></span>
+        <span v-text="('term.next')"></span>
         <font-awesome-icon icon="chevron-right" size="sm" aria-hidden="true"/>
       </Link>
     </div>
@@ -412,7 +437,7 @@ debouncedWatch(() => cloneDeep(search.query), () => {
                   class="relative inline-flex items-center px-1 rounded-l-md border dark:border-0 dark:border-r dark:border-slate-800 border-gray-300 bg-white dark:bg-slate-600 text-sm font-medium text-slate-800 dark:text-slate-200 hover:bg-gray-50 dark:hover:bg-slate-800 disabled:opacity-25"
                   :class="{'opacity-25 pointer-events-none' : !link.url}"
             >
-              <span class="sr-only" v-text="$t('global.previous')"></span>
+              <span class="sr-only" v-text="t('term.previous')"></span>
               <font-awesome-icon icon="chevron-left" class="h-5 w-5" aria-hidden="true"/>
             </Link>
 
@@ -438,7 +463,7 @@ debouncedWatch(() => cloneDeep(search.query), () => {
                   class="relative inline-flex items-center px-1 rounded-r-md border dark:border-0 dark:border-l dark:border-slate-800 border-gray-300 bg-white dark:bg-slate-600 text-sm font-medium text-slate-800 dark:text-slate-200 dark:hover:bg-slate-800 hover:bg-gray-50"
                   :class="{'opacity-25 pointer-events-none' : !link.url}"
             >
-              <span class="sr-only" v-text="$t('global.next')"></span>
+              <span class="sr-only" v-text="t('term.next')"></span>
               <font-awesome-icon icon="chevron-right" class="h-5 w-5" aria-hidden="true"/>
             </Link>
           </template>
@@ -450,42 +475,23 @@ debouncedWatch(() => cloneDeep(search.query), () => {
 </template>
 
 
-<style>
-/*table {
-    filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.3));
-}*/
-
-tbody > tr:first-child > td:first-child {
-  border-top-left-radius: 0.50rem;
-}
-
-tbody > tr:first-child > td:last-child {
-  border-top-right-radius: 0.50rem;
-}
-
-tbody > tr:last-child > td:first-child {
-  border-bottom-left-radius: 0.50rem;
-}
-
-tbody > tr:last-child > td:last-child {
-  border-bottom-right-radius: 0.50rem;
-}
-
-/*tr > th:first-child {
-    border-top-left-radius: 0.5rem;
-}
-
-tr > th:last-child {
-    border-top-right-radius: 0.5rem;
-}
-
-tr:last-child > td:first-child {
-    border-bottom-left-radius: 0.5rem;
-}
-
-tr:last-child > td:last-child {
-    border-bottom-right-radius: 0.5rem;
-}*/
+<style lang="sass" scoped>
+tbody > tr:first-child > td:first-child
+  border-top-left-radius: 0.50rem
 
 
+tbody > tr:first-child > td:last-child
+  border-top-right-radius: 0.50rem
+
+
+tbody > tr:last-child > td:first-child
+  border-bottom-left-radius: 0.50rem
+
+
+tbody > tr:last-child > td:last-child
+  border-bottom-right-radius: 0.50rem
+
+
+.action-button
+  @apply hover:scale-110 active:scale-90 dark:p-1 dark:rounded cursor-pointer transition
 </style>
