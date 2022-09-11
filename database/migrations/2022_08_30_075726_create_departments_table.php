@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('type',10)->default('main');
             $table->foreignIdFor(\App\Models\Employee::class)->nullable();
             $table->foreignIdFor(\App\Models\Department::class)->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -82,5 +82,8 @@ Route::middleware([
         Route::resource($mRoute[0], $mRoute[1]);
         Route::post($mRoute[0], [$mRoute[1], 'index'])->name($mRoute[0].".search");
         Route::post($mRoute[0]."-store", [$mRoute[1], 'store'])->name($mRoute[0].".store");
+        Route::get($mRoute[0]."-deleted", [$mRoute[1], 'deleted'])->name($mRoute[0].".deleted");
+        Route::delete($mRoute[0]."-permanent-delete/{".$mRoute[0]."}", [$mRoute[1], 'permanentDestroy'])->withTrashed()->name($mRoute[0].".permanent-delete");
+        Route::get($mRoute[0]."-restore/{".$mRoute[0]."}", [$mRoute[1], 'restore'])->withTrashed()->name($mRoute[0].".restore");
     }
 });
