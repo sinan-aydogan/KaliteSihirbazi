@@ -48,6 +48,7 @@ createInertiaApp({
 
         // vuei18n Global Import
         App.config.globalProperties.t = i18n.global.t;
+        App.config.globalProperties.tm = i18n.global.tm;
 
         return App
             .component("font-awesome-icon", FontAwesomeIcon)
