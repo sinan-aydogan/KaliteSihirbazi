@@ -46,44 +46,44 @@ Route::middleware([
 
     /*Modules*/
     $mRoutes = [
-        ['department', \App\Http\Controllers\DepartmentController::class],
-        ['warehouse',\App\Http\Controllers\WarehouseController::class],
-        ['vehicles',\App\Http\Controllers\VehicleController::class],
-        ['device',\App\Http\Controllers\DeviceController::class],
-        ['machine',\App\Http\Controllers\MachineController::class],
-        ['customer',\App\Http\Controllers\CustomerController::class],
-        ['supplier',\App\Http\Controllers\SupplierController::class],
-        ['audit-firm',\App\Http\Controllers\AuditFirmController::class],
-        ['employee',\App\Http\Controllers\EmployeeController::class],
-        ['job-description',\App\Http\Controllers\JobDescriptionController::class],
-        ['education',\App\Http\Controllers\EducationController::class],
-        ['education-plan',\App\Http\Controllers\EducationPlanController::class],
-        ['take-time-off',\App\Http\Controllers\TakeTimeOffController::class],
-        ['problem',\App\Http\Controllers\ProblemController::class],
-        ['capa-action',\App\Http\Controllers\CapaActionController::class],
-        ['product',\App\Http\Controllers\ProductController::class],
-        ['raw-material',\App\Http\Controllers\RawMaterialController::class],
-        ['consumable-material',\App\Http\Controllers\ConsumableMaterialController::class],
-        ['product-tree',\App\Http\Controllers\ProductTreeController::class],
-        ['document',\App\Http\Controllers\DocumentController::class],
-        ['document-revision-request',\App\Http\Controllers\DocumentRevisionRequestController::class],
-        ['document-distribution-point',\App\Http\Controllers\DistributionPointController::class],
-        ['document-action',\App\Http\Controllers\DocumentActionController::class],
-        ['measurement-device',\App\Http\Controllers\MeasurementDeviceController::class],
-        [ 'calibration-task',\App\Http\Controllers\CalibrationTaskController::class],
-        ['measurement-device-action',\App\Http\Controllers\MeasurementDeviceActionController::class],
-        ['audit',\App\Http\Controllers\AuditController::class],
-        ['certificate',\App\Http\Controllers\CertificateController::class],
-        ['standard',\App\Http\Controllers\StandardController::class],
-        ['improvement-work',\App\Http\Controllers\ImprovementWorkController::class]
+        ['uri'=>'department', 'model'=>'department', 'controller'=> \App\Http\Controllers\DepartmentController::class],
+        ['uri'=>'warehouse', 'model'=>'warehouse', 'controller'=>\App\Http\Controllers\WarehouseController::class],
+        ['uri'=>'vehicles', 'model'=>'vehicles', 'controller'=>\App\Http\Controllers\VehicleController::class],
+        ['uri'=>'device', 'model'=>'device', 'controller'=>\App\Http\Controllers\DeviceController::class],
+        ['uri'=>'machine', 'model'=>'machine', 'controller'=>\App\Http\Controllers\MachineController::class],
+        ['uri'=>'customer', 'model'=>'customer', 'controller'=>\App\Http\Controllers\CustomerController::class],
+        ['uri'=>'supplier', 'model'=>'supplier', 'controller'=>\App\Http\Controllers\SupplierController::class],
+        ['uri'=>'audit-firm', 'model'=>'auditFirm', 'controller'=>\App\Http\Controllers\AuditFirmController::class],
+        ['uri'=>'employee', 'model'=>'employee', 'controller'=>\App\Http\Controllers\EmployeeController::class],
+        ['uri'=>'job-description', 'model'=>'jobDescription', 'controller'=>\App\Http\Controllers\JobDescriptionController::class],
+        ['uri'=>'education', 'model'=>'education', 'controller'=>\App\Http\Controllers\EducationController::class],
+        ['uri'=>'education-plan', 'model'=>'educationPlan', 'controller'=>\App\Http\Controllers\EducationPlanController::class],
+        ['uri'=>'take-time-off', 'model'=>'takeTime', 'controller'=>\App\Http\Controllers\TakeTimeOffController::class],
+        ['uri'=>'problem', 'model'=>'problem', 'controller'=>App\Http\Controllers\ProblemController::class],
+        ['uri'=>'capa-action', 'model'=>'capaAction', 'controller'=>\App\Http\Controllers\CapaActionController::class],
+        ['uri'=>'product', 'model'=>'product', 'controller'=>\App\Http\Controllers\ProductController::class],
+        ['uri'=>'raw-material', 'model'=>'rawMaterial', 'controller'=>\App\Http\Controllers\RawMaterialController::class],
+        ['uri'=>'consumable-material', 'model'=>'consumableMaterial', 'controller'=>\App\Http\Controllers\ConsumableMaterialController::class],
+        ['uri'=>'product-tree', 'model'=>'productTree', 'controller'=>\App\Http\Controllers\ProductTreeController::class],
+        ['uri'=>'document', 'model'=>'document', 'controller'=>\App\Http\Controllers\DocumentController::class],
+        ['uri'=>'document-revision-request', 'model'=>'documentRevisionRequest', 'controller'=>\App\Http\Controllers\DocumentRevisionRequestController::class],
+        ['uri'=>'document-distribution-point', 'model'=>'documentDistributionPoint', 'controller'=>\App\Http\Controllers\DistributionPointController::class],
+        ['uri'=>'document-action', 'model'=>'documentAction', 'controller'=>\App\Http\Controllers\DocumentActionController::class],
+        ['uri'=>'measurement-device', 'model'=>'measurementDevice', 'controller'=>\App\Http\Controllers\MeasurementDeviceController::class],
+        ['uri'=>'calibration-task', 'model'=>'calibrationTask', 'controller'=>\App\Http\Controllers\CalibrationTaskController::class],
+        ['uri'=>'measurement-device-action', 'model'=>'measurementDeviceAction', 'controller'=>\App\Http\Controllers\MeasurementDeviceActionController::class],
+        ['uri'=>'audit', 'model'=>'audit', 'controller'=>\App\Http\Controllers\AuditController::class],
+        ['uri'=>'certificate', 'model'=>'certificate', 'controller'=>\App\Http\Controllers\CertificateController::class],
+        ['uri'=>'standard', 'model'=>'standard', 'controller'=>\App\Http\Controllers\StandardController::class],
+        ['uri'=>'improvement-work', 'model'=>'improvementWork', 'controller'=>\App\Http\Controllers\ImprovementWorkController::class]
     ];
 
     foreach ($mRoutes as $mRoute){
-        Route::resource($mRoute[0], $mRoute[1]);
-        Route::post($mRoute[0], [$mRoute[1], 'index'])->name($mRoute[0].".search");
-        Route::post($mRoute[0]."-store", [$mRoute[1], 'store'])->name($mRoute[0].".store");
-        Route::get($mRoute[0]."-deleted", [$mRoute[1], 'deleted'])->name($mRoute[0].".deleted");
-        Route::delete($mRoute[0]."-permanent-delete/{".$mRoute[0]."}", [$mRoute[1], 'permanentDestroy'])->withTrashed()->name($mRoute[0].".permanent-delete");
-        Route::get($mRoute[0]."-restore/{".$mRoute[0]."}", [$mRoute[1], 'restore'])->withTrashed()->name($mRoute[0].".restore");
+        Route::resource($mRoute['uri'], $mRoute['controller']);
+        Route::post($mRoute['uri'], [$mRoute['controller'], 'index'])->name($mRoute['uri'].".search");
+        Route::post($mRoute['uri']."-store", [$mRoute['controller'], 'store'])->name($mRoute['uri'].".store");
+        Route::get($mRoute['uri']."-deleted", [$mRoute['controller'], 'deleted'])->name($mRoute['uri'].".deleted");
+        Route::delete($mRoute['uri']."-permanent-delete/{".$mRoute['model']."}", [$mRoute['controller'], 'permanentDestroy'])->withTrashed()->name($mRoute['uri'].".permanent-delete");
+        Route::get($mRoute['uri']."-restore/{".$mRoute['model']."}", [$mRoute['controller'], 'restore'])->withTrashed()->name($mRoute['uri'].".restore");
     }
 });
