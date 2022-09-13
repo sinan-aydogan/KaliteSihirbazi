@@ -29,7 +29,6 @@ class DatabaseSeeder extends Seeder
             SupplierTypeSeeder::class,
             SupplierTagSeeder::class,
             EmploymentTypeSeeder::class,
-            JobDescriptionCollarTypeSeeder::class,
         ]);
     }
 }

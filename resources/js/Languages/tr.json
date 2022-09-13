@@ -163,7 +163,8 @@
       "noData": "Veri Yok",
       "noMatches": "Eşleşme Yok",
       "noResults": "Hiç veri yok",
-      "saved": "Kaydedildi"
+      "saved": "Kaydedildi",
+      "writeHereAndClickPlus": "Buraya yazın ve ardından ekle düğmesine tıklayın"
     },
     "question": {
       "areYouSure": "Emin misiniz?",
