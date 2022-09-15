@@ -1,0 +1,58 @@
+{
+  "title": {
+    "indexPage": {
+      "title": "Personeller",
+      "subTitle": "Personelleri buradan yönetebilirsiniz"
+    },
+    "createPage": {
+      "title": "Personel Oluştur",
+      "subTitle": "Yeni çalışanınız için personel kaydı oluşturun"
+    }
+  },
+  "term": {
+    "jobDescription": "Görev Tanımı | Görev Tanımları",
+    "code": "Kimlik No",
+    "name": "Personel İsmi",
+    "bloodType": "Kan Grubu",
+    "department": "Bağlı Olduğu Departman",
+    "birthday": "Doğum Tarihi",
+    "employmentDate": "İşe Giriş Tarihi",
+    "leavingDate": "Ayrılma Tarihi",
+    "leavingDetail": "Ayrılma Detayı",
+    "hasAccount": "Sisteme Giriş Hesabı Olacak mı?",
+    "employmentType": "Kadro Türü",
+    "fullTime": "Tam Zamanlı",
+    "partTime": "Yarı Zamanlı",
+    "seasonal": "Dönemsel",
+    "intern": "Stajer",
+    "contracted": "Sözleşmeli",
+    "dailyWage": "Yevmiyeli",
+    "handicappedStaff": "Engelli Kadrosu",
+    "convictStaff": "Yükümlü Kadrosu",
+    "age": "Yaş",
+    "sex": "Cinsiyet",
+    "male": "Erkek",
+    "female": "Kadın",
+    "contactInfo": "İletişim Bilgileri",
+    "email": "Eposta Adresi",
+    "personal": "Kişisel",
+    "work": "İş",
+    "phone": "Telefon",
+    "address": "Adres",
+    "isMarried": "Evli mi?",
+    "childrenCount": "Çocuk Sayısı",
+    "emergencyContacts": "Acil Durum İletişim Kişileri",
+    "emergencyContactName": "İsim",
+    "relationshipDegree": "Yakınlık Derecesi",
+    "working": "Çalışıyor",
+    "retired": "Emekli",
+    "fired": "Kovuldu",
+    "left": "Kendi Ayrıldı",
+    "other": "Diğer",
+    "assigmentDate": "Atama Zamanı",
+    "endingDate": "Bitiş Zamanı",
+    "password": "Şifre",
+    "randomRegenerate": "Rasgele Oluştur",
+    "status": "Çalışma Durumu"
+  }
+}

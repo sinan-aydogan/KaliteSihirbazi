@@ -20,6 +20,10 @@ return new class extends Migration
             $table->string('name', 250)->nullable();
             $table->foreignIdFor(\App\Models\Department::class)->nullable();
             $table->string('employment_type')->nullable();
+            $table->string('sex')->nullable();
+            $table->boolean('is_married')->default(false);
+            $table->json('contact_info')->nullable();
+            $table->unsignedSmallInteger('children_count')->nullable();
             $table->date('birthday')->nullable();
             $table->date('employment_date')->default(\Carbon\Carbon::now());
             $table->date('leaving_date')->nullable();

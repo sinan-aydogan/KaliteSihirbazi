@@ -21,6 +21,10 @@ class Employee extends Model
         'name',
         'department_id',
         'employment_type',
+        'sex',
+        'is_married',
+        'children_count',
+        'contact_info',
         'birthday',
         'employment_date',
         'leaving_date',
@@ -38,6 +42,7 @@ class Employee extends Model
         'employment_date' => 'datetime',
         'leaving_date' => 'datetime',
         'staffName' => 'string',
+        'contact_info' => 'array'
     ];
 
     public function getemployeeNameAttribute()
