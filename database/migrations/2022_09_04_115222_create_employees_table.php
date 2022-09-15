@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('code', 25)->unique();
             $table->string('name', 250)->nullable();
             $table->foreignIdFor(\App\Models\Department::class)->nullable();
-            $table->foreignIdFor(\App\Models\EmploymentType::class)->nullable();
+            $table->string('employment_type')->nullable();
             $table->date('birthday')->nullable();
             $table->date('employment_date')->default(\Carbon\Carbon::now());
             $table->date('leaving_date')->nullable();

@@ -17,10 +17,10 @@ class Employee extends Model
      */
     protected $fillable = [
         'has_account',
-        'user_id',
         'code',
         'name',
         'department_id',
+        'employment_type',
         'birthday',
         'employment_date',
         'leaving_date',
