@@ -63,4 +63,12 @@ class Employee extends Model
     {
         return $this->morphOne(User::class, 'accountable');
     }
+
+    /**
+     * Get the staff department.
+     */
+    public function department()
+    {
+        return $this->belongsTo(Department::class, 'department_id');
+    }
 }
