@@ -23,22 +23,6 @@ class DepartmentSeeder extends Seeder
             'employee_id'=>1
         ]);
 
-        /*Paste Production*/
-        Department::create([
-            'code'=>'SUR',
-            'name'=>'Salça Üretim',
-            'employee_id'=>1,
-            'department_id'=>Department::where('code', 'URT')->first()->id
-        ]);
-
-        /*Pickle Production*/
-        Department::create([
-            'code'=>'ASV',
-            'name'=>'Turşu',
-            'employee_id'=>1,
-            'department_id'=>Department::where('code', 'URT')->first()->id
-        ]);
-
         /*Quality*/
         Department::create([
             'code'=>'KLT',
