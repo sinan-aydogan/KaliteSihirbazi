@@ -25,6 +25,8 @@
     "workingHours": "Working Hours",
     "overtimeStatus": "Overtime Status",
     "travelStatus": "Travel Status",
+    "abroad": "Abroad",
+    "domestic": "Domestic",
     "whiteCollar": "White Collar",
     "blueCollar": "Blue Collar"
   }

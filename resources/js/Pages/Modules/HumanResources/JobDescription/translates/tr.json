@@ -25,6 +25,8 @@
     "workingHours": "Çalışma Saatleri",
     "overtimeStatus": "Fazla Mesai Durumu",
     "travelStatus": "Seyehat Durumu",
+    "abroad": "Yurt dışı",
+    "domestic": "Yurt içi",
     "whiteCollar": "Beyaz Yaka",
     "blueCollar": "Mavi Yaka"
   }
