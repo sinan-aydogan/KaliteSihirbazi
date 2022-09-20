@@ -329,7 +329,8 @@ debouncedWatch(() => cloneDeep(search.query), () => {
             <template v-for="cell in headers">
               <td class="border-b group-last:border-b-0"
                   :class="[
-                        selectedItems.includes(row[uniqueIdKey]) ? 'bg-rose-50 border-rose-300 group-hover:bg-rose-100' : 'bg-slate-100 dark:bg-slate-500 group-odd:bg-slate-50 dark:group-odd:bg-slate-600 group-hover:bg-slate-200 dark:group-hover:bg-slate-700 border-slate-300'
+                        selectedItems.includes(row[uniqueIdKey]) ? 'bg-rose-50 border-rose-300 group-hover:bg-rose-100' : 'bg-slate-100 dark:bg-slate-500 group-odd:bg-slate-50 dark:group-odd:bg-slate-600 group-hover:bg-slate-200 dark:group-hover:bg-slate-700 border-slate-300',
+                        cell.width
                         ]">
                 <div class="flex flex-shrink-0 px-2 min-h-[2.5rem] items-center"
                      :class="{
