@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             WarehouseSeeder::class,
             SupplierTypeSeeder::class,
             SupplierTagSeeder::class,
+            JobDescriptionSeeder::class
         ]);
     }
 }
