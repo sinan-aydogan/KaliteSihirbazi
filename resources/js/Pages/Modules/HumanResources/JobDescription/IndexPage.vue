@@ -13,6 +13,7 @@ import InputGroup from "@/Components/Form/InputGroup.vue"
 import TextInput from "@/Components/Form/TextInput.vue"
 import TextAreaInput from "@/Components/Form/TextAreaInput.vue"
 import TextListInput from "@/Components/Form/TextListInput.vue"
+import TextListInputWithSelect from "@/Components/Form/TextListInputWithSelect.vue"
 import SelectInput from "@/Components/Form/SelectInput.vue"
 import SwitchInput from "@/Components/Form/SwitchInput.vue"
 
@@ -133,16 +134,8 @@ const rules = ref({
 const v$ = useVuelidate(rules, form)
 
 // Data
-const staffTypes = [
-  {
-    id: 'white',
-    label: tm('term.whiteCollar')
-  },
-  {
-    id: 'blue',
-    label: tm('term.blueCollar')
-  }
-];
+import Terms from "./terms"
+const {staffTypes,locationTypes} = Terms()
 
 /*Create*/
 const handleSubmit = async () => {
@@ -219,8 +212,21 @@ const handleDelete = (id) => {
     >
       <!--Staff Type-->
       <template #staff_type="{props}">
-        <div class="flex space-x-2 items-center">
-          <font-awesome-icon :icon="'fa-solid '+ props.staff_type=== 'white' ? 'fa-user-tie': 'fa-helmet-safety'"/>
+        <div
+            class="flex space-x-2 items-center px-2 py-1 rounded"
+
+        >
+          <div
+              class="flex items-center justify-center w-8 h-8 rounded"
+               :class="props.staff_type=== 'white' ? 'dark:bg-slate-700': 'text-sky-700 dark:text-white dark:bg-sky-700'"
+          >
+            <font-awesome-icon
+                :icon="'fa-solid '+ (props.staff_type=== 'white' ? 'fa-user-tie': 'fa-helmet-safety')"
+                size="lg"
+                class="px-2 py-1 rounded-full"
+            />
+          </div>
+
           <span v-text="staffTypes.find(i=>i.id === props.staff_type).label"/>
         </div>
       </template>
@@ -312,7 +318,14 @@ const handleDelete = (id) => {
 
         <!-- Travel Status -->
         <input-group class="col-span-6" labelFor="travel_status" :label="tm('term.travelStatus')" :errors="v$.travel_status.$errors">
-          <text-list-input :rows="4" v-model="form.travel_status"/>
+          <text-list-input-with-select
+              v-model="form.travel_status"
+              :options="locationTypes"
+              label-key="label"
+              text-key="reason"
+              select-key="location"
+              select-placeholder="Yön Seçini"
+          />
         </input-group>
 
         <!-- Status -->
