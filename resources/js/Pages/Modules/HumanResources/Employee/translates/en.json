@@ -38,6 +38,10 @@
     "personal": "Personal",
     "work": "Work",
     "phone": "Phone",
+    "personalPhone": "Personal Phone",
+    "workPhone": "Work Phone",
+    "personalEmail": "Personal Email",
+    "workEmail": "Work Email",
     "address": "Address",
     "isMarried": "Is It Married?",
     "childrenCount": "Children Count",
@@ -53,6 +57,13 @@
     "endingDate": "Ending Date",
     "password": "Password",
     "randomRegenerate": "Random Regenerate",
-    "status": "Working Status"
+    "status": "Working Status",
+    "personalInfo": "Personal Info",
+    "employmentInfo": "Employment Info"
+  },
+  "message": {
+    "feedback": {
+      "emptyEmergencyContactsList": "No emergency contact have been added yet"
+    }
   }
 }

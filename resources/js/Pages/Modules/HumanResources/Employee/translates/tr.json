@@ -38,6 +38,10 @@
     "personal": "Kişisel",
     "work": "İş",
     "phone": "Telefon",
+    "personalPhone": "Kişisel Telefon",
+    "workPhone": "İş Telefonu",
+    "personalEmail": "Kişisel Email",
+    "workEmail": "İş Emaili",
     "address": "Adres",
     "isMarried": "Evli mi?",
     "childrenCount": "Çocuk Sayısı",
@@ -53,6 +57,13 @@
     "endingDate": "Bitiş Zamanı",
     "password": "Şifre",
     "randomRegenerate": "Rasgele Oluştur",
-    "status": "Çalışma Durumu"
+    "status": "Çalışma Durumu",
+    "personalInfo": "Kişisel Bilgiler",
+    "employmentInfo": "Çalışma Bilgileri"
+  },
+  "message": {
+    "feedback": {
+      "emptyEmergencyContactsList": "Henüz hiç acil durum kişisi eklenmemiş"
+    }
   }
 }
