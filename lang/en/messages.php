@@ -21,5 +21,12 @@ return [
         'permanentDeleted' => 'The job description named :jobDescription permanently deleted successfully',
         'restored' => 'The job description named :jobDescription restored successfully',
         'updated' => 'The job description named :jobDescription has been updated successfully'
+    ],
+    'employee' => [
+        'created' => 'The new employee named :employee has been created successfully',
+        'deleted' => 'The employee named :employee deleted successfully',
+        'permanentDeleted' => 'The employee named :employee permanently deleted successfully',
+        'restored' => 'The employee named :employee restored successfully',
+        'updated' => 'The employee named :employee has been updated successfully'
     ]
 ];
