@@ -164,7 +164,8 @@
       "noMatches": "Eşleşme Yok",
       "noResults": "Hiç veri yok",
       "saved": "Kaydedildi",
-      "writeHereAndClickPlus": "Buraya yazın ve ardından ekle düğmesine tıklayın"
+      "writeHereAndClickPlus": "Buraya yazın ve ardından ekle düğmesine tıklayın",
+      "pleaseFillInAllFields": "Lütfen tüm alanları doldurunuz"
     },
     "question": {
       "areYouSure": "Emin misiniz?",

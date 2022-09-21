@@ -188,7 +188,8 @@
       "noResults": "There is no data",
       "noMatches": "No Matches",
       "saved": "Saved",
-      "writeHereAndClickPlus": "Write here then click plus button"
+      "writeHereAndClickPlus": "Write here then click plus button",
+      "pleaseFillInAllFields": "Please, fill in all fields"
     },
     "question": {
       "areYouSure": "Are you sure?",
