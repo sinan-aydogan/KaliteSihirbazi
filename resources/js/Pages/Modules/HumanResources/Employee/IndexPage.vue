@@ -13,9 +13,7 @@ import Form from "@/Components/Form/Form.vue"
 import InputGroup from "@/Components/Form/InputGroup.vue"
 import TextInput from "@/Components/Form/TextInput.vue"
 import TextAreaInput from "@/Components/Form/TextAreaInput.vue"
-import TextListInput from "@/Components/Form/TextListInput.vue"
 import SelectInput from "@/Components/Form/SelectInput.vue"
-import SwitchInput from "@/Components/Form/SwitchInput.vue"
 
 // Props
 const props = defineProps({
@@ -127,7 +125,7 @@ const getData = (query) => {
 }
 
 // Rules
-const lengthValidation = (value) => value.length>0
+const lengthValidation = (value) => value.length > 0
 
 const rules = ref({
   code: {
@@ -146,23 +144,24 @@ const v$ = useVuelidate(rules, form)
 
 // Data
 import Terms from "./terms"
-const {bloodTypes,employmentTypes,genders, yesNoQuestions, statuses} = Terms()
+
+const {bloodTypes, employmentTypes, genders, yesNoQuestions, statuses} = Terms()
 
 /*Add Emergency Contact*/
-const addEmergencyContact = ()=>{
-  if(emergencyContactForm.value.name && emergencyContactForm.value.relationship && emergencyContactForm.value.data){
+const addEmergencyContact = () => {
+  if (emergencyContactForm.value.name && emergencyContactForm.value.relationship && emergencyContactForm.value.data) {
     form.contact_info.emergencyContacts.push(emergencyContactForm.value)
     emergencyContactForm.value = {
       name: '',
       relationship: '',
       data: ''
     }
-  }else{
+  } else {
     alert(t('message.feedback.pleaseFillInAllFields'));
   }
 
 }
-const deleteEmergencyContact = (index)=>{
+const deleteEmergencyContact = (index) => {
   form.contact_info.emergencyContacts.splice(index, 1)
 }
 
@@ -242,15 +241,19 @@ const handleDelete = (id) => {
 
       <!--Employee Name-->
       <template #employeeName="{props}">
-        <Link :href="route('employee.show', props.account.accountable_id)" class="flex space-x-2 items-center">
-          <Avatar :src="props.account.profile_photo_url"/>
+        <component
+            :is="props['account'] ? Link : 'div'"
+            :href="props['account'] ? route('employee.show', props.account.accountable_id) : null"
+            class="flex space-x-2 items-center"
+        >
+          <Avatar v-if="props['account']" :src="props.account.profile_photo_url"/>
           <span v-text="props.employeeName"/>
-        </Link>
+        </component>
       </template>
 
       <!--Department-->
       <template #department_id="{props}">
-        {{props.department_id ? props.department.name : ''}}
+        {{ props.department_id ? props.department.name : '' }}
       </template>
 
       <!--Status-->
@@ -292,7 +295,8 @@ const handleDelete = (id) => {
                 'text-sky-600 dark:text-sky-400' : props.id === 'male',
                 'text-indigo-600 dark:text-indigo-400' : props.id === 'other',
               }">
-                <font-awesome-icon :icon="`fa-solid ${props.id === 'female' ? 'fa-venus' : props.id === 'male' ? 'fa-mars' : 'fa-transgender'}`"/>
+                <font-awesome-icon
+                    :icon="`fa-solid ${props.id === 'female' ? 'fa-venus' : props.id === 'male' ? 'fa-mars' : 'fa-transgender'}`"/>
                 <span v-text="props.label"></span>
               </div>
             </template>
@@ -341,24 +345,28 @@ const handleDelete = (id) => {
         </input-group>
 
         <!-- Emergency Contact -->
-        <h3 v-text="tm('term.emergencyContacts')" class="col-span-12 font-bold -mb-2 pb-2 border-b border-slate-500"></h3>
+        <h3 v-text="tm('term.emergencyContacts')"
+            class="col-span-12 font-bold -mb-2 pb-2 border-b border-slate-500"></h3>
 
         <div class="col-span-12">
           <!--List-->
           <div v-if="form.contact_info.emergencyContacts.length>0">
             <template v-for="(i,index) in form.contact_info.emergencyContacts">
-              <div class="flex justify-between pr-4 w-full border-b last:border-b-0 border-dotted border-slate-500 py-2">
+              <div
+                  class="flex justify-between pr-4 w-full border-b last:border-b-0 border-dotted border-slate-500 py-2">
                 <div class="space-x-2">
                   <span v-text="i.name"></span>
                   <span v-text="i.relationship" class="before:content-['('] after:content-[')']"></span>
                 </div>
                 <span v-text="i.data"></span>
-                <font-awesome-icon @click="deleteEmergencyContact(index)" icon="fa-solid fa-trash" class="cursor-pointer"/>
+                <font-awesome-icon @click="deleteEmergencyContact(index)" icon="fa-solid fa-trash"
+                                   class="cursor-pointer"/>
               </div>
             </template>
           </div>
           <!--Empty Message-->
-          <div v-else-if="form.contact_info.emergencyContacts.length===0 && !showEmergencyContactForm" class="flex flex-col bg-slate-600 p-6 space-y-6 justify-center items-center rounded w-full border border-dashed">
+          <div v-else-if="form.contact_info.emergencyContacts.length===0 && !showEmergencyContactForm"
+               class="flex flex-col bg-slate-600 p-6 space-y-6 justify-center items-center rounded w-full border border-dashed">
             <span v-text="tm('message.feedback.emptyEmergencyContactsList')"></span>
             <simple-button @click="showEmergencyContactForm=true" :label="t('action.addNew')" full-size size="slim"/>
           </div>
@@ -412,7 +420,8 @@ const handleDelete = (id) => {
         </input-group>
 
         <!-- Leaving Date -->
-        <input-group v-if="form.status !== 'working'" class="col-span-6" labelFor="leavingDate" :label="tm('term.leavingDate')">
+        <input-group v-if="form.status !== 'working'" class="col-span-6" labelFor="leavingDate"
+                     :label="tm('term.leavingDate')">
           <text-input v-model="form.leaving_date" inputType="date"/>
         </input-group>
 
@@ -420,7 +429,8 @@ const handleDelete = (id) => {
         <div class="col-span-6"></div>
 
         <!-- Leaving Detail -->
-        <input-group v-if="form.status !== 'working' && form.status !== 'retired'" class="col-span-12" labelFor="leavingDetail" :label="tm('term.leavingDetail')">
+        <input-group v-if="form.status !== 'working' && form.status !== 'retired'" class="col-span-12"
+                     labelFor="leavingDetail" :label="tm('term.leavingDetail')">
           <text-area-input v-model="form.leaving_detail"/>
         </input-group>
       </Form>

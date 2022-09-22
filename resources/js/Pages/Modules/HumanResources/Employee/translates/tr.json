@@ -59,7 +59,11 @@
     "randomRegenerate": "Rasgele Oluştur",
     "status": "Çalışma Durumu",
     "personalInfo": "Kişisel Bilgiler",
-    "employmentInfo": "Çalışma Bilgileri"
+    "employmentInfo": "Çalışma Bilgileri",
+    "careerPathing": "Kariyer Patikasi",
+    "timeOff": "İzin Kullanımı",
+    "debt": "Zimmetli Malzeme",
+    "education": "Eğitim"
   },
   "message": {
     "feedback": {

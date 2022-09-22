@@ -59,7 +59,11 @@
     "randomRegenerate": "Random Regenerate",
     "status": "Working Status",
     "personalInfo": "Personal Info",
-    "employmentInfo": "Employment Info"
+    "employmentInfo": "Employment Info",
+    "careerPathing": "Career Pathing",
+    "timeOff": "Time Off",
+    "debt": "Debt",
+    "education": "Education"
   },
   "message": {
     "feedback": {
