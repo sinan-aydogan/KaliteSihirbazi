@@ -272,7 +272,7 @@
 </template>
 
 <script setup>
-import AppLayout from "@/Layouts/AppLayout";
+import AppLayout from "@/Layouts/AppLayout.vue";
 import {computed, reactive, ref} from "vue";
 import {useI18n} from "vue-i18n";
 import {Inertia} from "@inertiajs/inertia";
