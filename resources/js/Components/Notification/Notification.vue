@@ -1,5 +1,5 @@
 <script setup>
-import {useNotification} from "@/stores/useNotification.js";
+import {useNotification} from "@/Stores/useNotification.js";
 import {storeToRefs} from "pinia";
 // Notification
 const notification = useNotification();
