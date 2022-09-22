@@ -78,7 +78,7 @@
 </template>
 
 <script>
-import TextInput from "@/Components/Form/TextInput";
+import TextInput from "@/Components/Form/TextInput.vue";
 
 export default {
     name: "InnerTable",
