@@ -39,7 +39,7 @@ onBeforeMount(() => {
 
 
 <template>
-    <div class="relative pt-4 bg-slate-50 dark:bg-slate-800 z-20 flex flex-col border-r border-slate-300 dark:border-slate-600 px-4"
+    <div class="relative py-4 bg-slate-50 dark:bg-slate-800 z-20 flex flex-col border-r border-slate-300 dark:border-slate-600 px-4"
         ref="subMenu">
         <!-- Logo -->
         <Link :href="route('dashboard')" class="h-16 w-16 text-rose-600 mb-4 mx-auto">
