@@ -83,8 +83,8 @@ const logout = () => {
     <div class="flex h-screen min-w-screen bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-100 overflow-hidden">
       <!-- Side Menu Area -->
       <div :class="showMenu && smallScreen ? '-ml-[7rem]' : ''"
-           class="relative min-w-[7rem] flex flex-shrink-0 justify-center transition-all duration-300">
-        <side-menu/>
+           class="absolute sm:relative min-w-[7rem] flex flex-shrink-0 justify-center transition-all duration-300">
+        <side-menu @hide="showMenu=true"/>
       </div>
       <!-- Content Area -->
       <div class="w-full pt-4 px-4 overflow-y-scroll overscroll-x-none space-y-6">
@@ -121,7 +121,7 @@ const logout = () => {
 
               </div>
               <!--Right Side-->
-              <div class="flex items-center space-x-4">
+              <div v-if="!smallScreen" class="flex items-center space-x-4">
                 <!--Full-size-->
                 <font-awesome-icon @click="toggle" :icon="isFullscreen ? 'compress' : 'expand'"
                                    class="w-6 h-6 text-gray-600 hover:scale-125 active:scale-90 cursor-pointer transition duration-300"/>
@@ -133,6 +133,17 @@ const logout = () => {
             </div>
           </div>
         </nav>
+
+        <!--Right Side-->
+        <div v-if="smallScreen" class="flex flex-wrap justify-center items-center space-x-4">
+          <!--Full-size-->
+          <font-awesome-icon v-if="!smallScreen" @click="toggle" :icon="isFullscreen ? 'compress' : 'expand'"
+                             class="w-6 h-6 text-gray-600 hover:scale-125 active:scale-90 cursor-pointer transition duration-300"/>
+          <!--Action Area-->
+          <div v-if="$slots.actionArea" class="flex space-x-2">
+            <slot name="actionArea"></slot>
+          </div>
+        </div>
 
         <!-- Page Content -->
         <main>

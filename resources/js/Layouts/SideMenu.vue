@@ -9,13 +9,26 @@ import { Link } from "@inertiajs/inertia-vue3";
 import MainMenuLinks from "@/Sources/mainMenu";
 import UserMenu from '@/Layouts/UserMenu.vue';
 
+/*Emits*/
+const emit = defineEmits(['hide'])
+
+/*Breakpoints*/
+import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
+
+const breakpoints = useBreakpoints(breakpointsTailwind)
+
 /*Links*/
 const { links } = MainMenuLinks(Inertia.page.props);
 
 /*Show SubMenu*/
 const subMenu = ref(null)
 const showSubMenu = ref();
-onClickOutside(subMenu, (event) => showSubMenu.value = false)
+onClickOutside(subMenu, (event) => {
+  showSubMenu.value = false
+  if(breakpoints.isSmaller('md')){
+    emit('hide')
+  }
+})
 
 /*Active Main Menu*/
 const activeMainLink = ref();
@@ -39,7 +52,7 @@ onBeforeMount(() => {
 
 
 <template>
-    <div class="relative py-4 bg-slate-50 dark:bg-slate-800 z-20 flex flex-col border-r border-slate-300 dark:border-slate-600 px-4"
+    <div class="relative py-4 bg-slate-50 dark:bg-slate-800 z-20 flex flex-col border-r border-slate-300 dark:border-slate-600 px-4 h-screen"
         ref="subMenu">
         <!-- Logo -->
         <Link :href="route('dashboard')" class="h-16 w-16 text-rose-600 mb-4 mx-auto">
@@ -55,6 +68,11 @@ onBeforeMount(() => {
                 stroke-linecap="square" stroke-width="6" />
         </svg>
         </Link>
+
+      <!--Mobile Menu Hider-->
+      <div class="flex sm:hidden items-center justify-center mb-4 bg-rose-500 rounded-full cursor-pointer" @click="$emit('hide')">
+        <font-awesome-icon icon="left-long" size="xl"/>
+      </div>
 
         <!-- Main Links -->
         <div
@@ -74,6 +92,7 @@ onBeforeMount(() => {
             rounded-md
             text-center
             cursor-pointer
+            select-none
           " :class="[
               { 'bg-rose-500 text-gray-50': activeMainLink === link.id || link.links.find(l => l.id === activeMainLink) },
               'transition duration-300',
