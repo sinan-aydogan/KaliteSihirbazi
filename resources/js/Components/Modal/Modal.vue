@@ -289,8 +289,8 @@ watch(
                     enter-to-class="opacity-100 translate-y-0 sm:scale-100" leave-active-class="ease-in duration-300"
                     leave-from-class="opacity-100 translate-y-0 sm:scale-100"
                     leave-to-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
-                    <div id="draggable" v-if="modelValue"
-                        class="relative flex h-min max-h-[calc(100%-25px)] max-w-[calc(100%-25px)] flex-col mx-auto transform transition-all w-full"
+                    <div id="draggable " v-if="modelValue"
+                        class="relative flex h-min max-w-[calc(100%-25px)] flex-col mx-auto transform transition-all w-full"
                         :class="[!isExpanded ? maxWidthClass + ' m-6' : '']" :draggable="draggable"
                         @dragstart="dragStart($event)" @dragend="dragEnd($event)" ref="modalContainer">
                         <!--Header-->
@@ -370,7 +370,7 @@ updateSize();
 
                         <!--Footer-->
                         <div v-if="$slots.footer || actionButtons.length > 0"
-                            class="flex flex-row justify-end px-4 py-2 border-t bg-white dark:bg-slate-700 border-slate-300/75 dark:border-slate-500/75 text-right last:rounded-b-lg">
+                            class="flex flex-row justify-center sm:justify-end px-4 py-2 border-t bg-white dark:bg-slate-700 border-slate-300/75 dark:border-slate-500/75 text-right last:rounded-b-lg">
                             <slot v-if="$slots.footer" name="footer"></slot>
                             <div v-else class="flex justify-between items-center">
                                 <simple-button v-if="
