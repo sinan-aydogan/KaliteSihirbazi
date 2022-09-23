@@ -271,23 +271,24 @@ const handleDelete = (id) => {
         <!--Personal Info-->
         <h3 v-text="tm('term.personalInfo')" class="col-span-12 font-bold -mb-2 pb-2 border-b border-slate-500"></h3>
         <!-- Code -->
-        <input-group class="col-span-4" labelFor="code" :label="tm('term.code')" :errors="v$.code.$errors">
+        <input-group class="col-span-12 sm:col-span-4" labelFor="code" :label="tm('term.code')"
+                     :errors="v$.code.$errors">
           <text-input v-model="form.code"/>
         </input-group>
 
         <!-- Name -->
-        <input-group class="col-span-8" labelFor="name" :label="tm('term.name')"
+        <input-group class="col-span-12 sm:col-span-8" labelFor="name" :label="tm('term.name')"
                      :errors="v$.name.$errors">
           <text-input v-model="form.name"/>
         </input-group>
 
         <!-- Birthday -->
-        <input-group class="col-span-4" labelFor="birthday" :label="tm('term.birthday')">
+        <input-group class="col-span-6 sm:col-span-4" labelFor="birthday" :label="tm('term.birthday')">
           <text-input v-model="form.birthday" inputType="date"/>
         </input-group>
 
         <!-- Sex -->
-        <input-group class="col-span-4" labelFor="sex" :label="tm('term.sex')">
+        <input-group class="col-span-6 sm:col-span-4" labelFor="sex" :label="tm('term.sex')">
           <select-input v-model="form.sex" :options="genders">
             <template #both="{props}">
               <div class="space-x-2" :class="{
@@ -304,43 +305,43 @@ const handleDelete = (id) => {
         </input-group>
 
         <!-- Blood Type -->
-        <input-group class="col-span-4" labelFor="blood_type" :label="tm('term.bloodType')">
+        <input-group class="col-span-6 sm:col-span-4" labelFor="blood_type" :label="tm('term.bloodType')">
           <select-input v-model="form.blood_type" :options="bloodTypes"/>
         </input-group>
 
         <!-- Is Married? -->
-        <input-group class="col-span-4" labelFor="is_married" :label="tm('term.isMarried')">
+        <input-group class="col-span-6 sm:col-span-4" labelFor="is_married" :label="tm('term.isMarried')">
           <select-input v-model="form.is_married" :options="yesNoQuestions"/>
         </input-group>
 
         <!-- Children Count -->
-        <input-group class="col-span-4" labelFor="name" :label="tm('term.childrenCount')"
+        <input-group class="col-span-6 sm:col-span-4" labelFor="name" :label="tm('term.childrenCount')"
                      :errors="v$.children_count.$errors">
           <text-input input-type="number" v-model="form.children_count"/>
         </input-group>
 
         <!--Filler-->
-        <div class="col-span-4"></div>
+        <div class="col-span-6 sm:col-span-4"></div>
 
         <!--Contact Info-->
         <h3 v-text="tm('term.contactInfo')" class="col-span-12 font-bold -mb-2 pb-2 border-b border-slate-500"></h3>
         <!-- Personal Phone -->
-        <input-group class="col-span-6" labelFor="personalPhone" :label="tm('term.personalPhone')">
+        <input-group class="col-span-12 sm:col-span-6" labelFor="personalPhone" :label="tm('term.personalPhone')">
           <text-input v-model="form.contact_info.personal.phone"/>
         </input-group>
 
         <!-- Personal Email -->
-        <input-group class="col-span-6" labelFor="personalEmail" :label="tm('term.personalEmail')">
+        <input-group class="col-span-12 sm:col-span-6" labelFor="personalEmail" :label="tm('term.personalEmail')">
           <text-input v-model="form.contact_info.personal.email"/>
         </input-group>
 
         <!-- Work Phone -->
-        <input-group class="col-span-6" labelFor="workPhone" :label="tm('term.workPhone')">
+        <input-group class="col-span-12 sm:col-span-6" labelFor="workPhone" :label="tm('term.workPhone')">
           <text-input v-model="form.contact_info.work.phone"/>
         </input-group>
 
         <!-- Work Email -->
-        <input-group class="col-span-6" labelFor="workEmail" :label="tm('term.workEmail')">
+        <input-group class="col-span-12 sm:col-span-6" labelFor="workEmail" :label="tm('term.workEmail')">
           <text-input v-model="form.contact_info.work.email"/>
         </input-group>
 
@@ -352,15 +353,29 @@ const handleDelete = (id) => {
           <!--List-->
           <div v-if="form.contact_info.emergencyContacts.length>0">
             <template v-for="(i,index) in form.contact_info.emergencyContacts">
-              <div
-                  class="flex justify-between pr-4 w-full border-b last:border-b-0 border-dotted border-slate-500 py-2">
-                <div class="space-x-2">
-                  <span v-text="i.name"></span>
-                  <span v-text="i.relationship" class="before:content-['('] after:content-[')']"></span>
+              <div class="flex justify-between items-center pr-4 w-full border-b last:border-b-0 border-dotted border-slate-500 py-2">
+                <!--Contact Info-->
+                <div class="flex flex-col sm:flex-row justify-between sm:items-center w-full pr-4">
+
+                  <!--Contact Name-->
+                  <div class="flex flex-col">
+                    <div>
+                      <font-awesome-icon icon="fa-solid fa-user" class="mr-2"/>
+                      <span v-text="i.name" class="font-semibold"></span>
+                    </div>
+                    <span v-text="i.relationship" class="text-xs italic text-slate-400"></span>
+                  </div>
+
+                  <!--Contact Line-->
+                  <span v-text="i.data" class="underline text-lg"></span>
                 </div>
-                <span v-text="i.data"></span>
-                <font-awesome-icon @click="deleteEmergencyContact(index)" icon="fa-solid fa-trash"
-                                   class="cursor-pointer"/>
+
+                <!--Delete Button-->
+                <font-awesome-icon
+                    @click="deleteEmergencyContact(index)"
+                    icon="fa-solid fa-trash"
+                                   class="cursor-pointer"
+                />
               </div>
             </template>
           </div>
@@ -372,22 +387,48 @@ const handleDelete = (id) => {
           </div>
         </div>
 
-        <div v-if="showEmergencyContactForm" class="col-span-12 flex flex-col -mt-2">
-          <div class="flex space-x-2">
-            <input-group class="w-full" labelFor="workEmail" :label="tm('term.emergencyContactName')">
+        <!--Emergency Contact Add Form-->
+        <div v-if="showEmergencyContactForm" class="col-span-12 flex flex-col -mt-6 border border-slate-500 p-2 rounded-lg">
+          <div class="relative flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-2">
+
+            <!--Name-->
+            <input-group class="w-full" labelFor="emergencyContactName" :label="tm('term.emergencyContactName')">
               <text-input v-model="emergencyContactForm.name"/>
             </input-group>
 
-            <input-group class="w-full" labelFor="workEmail" :label="tm('term.relationshipDegree')">
+            <!--Relationship Degree-->
+            <input-group class="w-full" labelFor="relationshipDegree" :label="tm('term.relationshipDegree')">
               <text-input v-model="emergencyContactForm.relationship"/>
             </input-group>
 
-            <input-group class="w-full" labelFor="workEmail" :label="tm('term.phone')">
+            <!--Phone-->
+            <input-group class="w-full" labelFor="phone" :label="tm('term.phone')">
               <text-input v-model="emergencyContactForm.data"/>
             </input-group>
+            
+            <!--Close Button-->
+            <div @click="showEmergencyContactForm = false" class="absolute -right-4 -top-8 sm:-top-4 flex items-center justify-center w-6 h-6 bg-rose-500 rounded cursor-pointer hover:scale-105 active:scale-95 transition-all">
+              <font-awesome-icon icon="fa-solid fa-xmark" class=""/>
+            </div>
           </div>
 
-          <simple-button @click="addEmergencyContact" :label="t('action.addNew')" full-size size="slim" class="mt-2"/>
+          <div class="mt-4 sm:mt-2">
+            <simple-button
+                @click.stop="addEmergencyContact"
+                :label="t('action.add')"
+                full-size size="slim"
+                />
+          </div>
+        </div>
+
+        <!--Show Add Form-->
+        <div v-else-if="!showEmergencyContactForm && form.contact_info.emergencyContacts.length>0"
+        class="col-span-12">
+          <simple-button
+              @click="showEmergencyContactForm = true"
+              full-size size="slim"
+              :label="t('action.addOtherOne')"
+          />
         </div>
 
 
@@ -395,23 +436,23 @@ const handleDelete = (id) => {
         <h3 v-text="tm('term.employmentInfo')" class="col-span-12 font-bold -mb-2 pb-2 border-b border-slate-500"></h3>
 
         <!-- Department -->
-        <input-group class="col-span-6" labelFor="department_id" :label="tm('term.department')"
+        <input-group class="col-span-12 sm:col-span-6" labelFor="department_id" :label="tm('term.department')"
                      :errors="v$.department_id.$errors">
           <select-input v-model="form.department_id" :options="departments" optionLabel="name"/>
         </input-group>
 
         <!-- Employment Type -->
-        <input-group class="col-span-6" labelFor="employment_type" :label="tm('term.employmentType')">
+        <input-group class="col-span-12 sm:col-span-6" labelFor="employment_type" :label="tm('term.employmentType')">
           <select-input v-model="form.employment_type" :options="employmentTypes"/>
         </input-group>
 
         <!-- Employment Date -->
-        <input-group class="col-span-6" labelFor="employmentDate" :label="tm('term.employmentDate')">
+        <input-group class="col-span-12 sm:col-span-6" labelFor="employmentDate" :label="tm('term.employmentDate')">
           <text-input v-model="form.employment_date" inputType="date"/>
         </input-group>
 
         <!-- Status -->
-        <input-group class="col-span-6" labelFor="status" :label="tm('term.status')">
+        <input-group class="col-span-12 sm:col-span-6" labelFor="status" :label="tm('term.status')">
           <select-input v-model="form.status" :options="statuses">
             <template #both="{props}">
               <span v-text="props.label" class="px-1 py-0.5 rounded text-slate-100 text-sm" :class="props.style"></span>
@@ -420,13 +461,13 @@ const handleDelete = (id) => {
         </input-group>
 
         <!-- Leaving Date -->
-        <input-group v-if="form.status !== 'working'" class="col-span-6" labelFor="leavingDate"
+        <input-group v-if="form.status !== 'working'" class="col-span-12 sm:col-span-6" labelFor="leavingDate"
                      :label="tm('term.leavingDate')">
           <text-input v-model="form.leaving_date" inputType="date"/>
         </input-group>
 
         <!--Filler-->
-        <div class="col-span-6"></div>
+        <div class="hidden sm:block col-span-6"></div>
 
         <!-- Leaving Detail -->
         <input-group v-if="form.status !== 'working' && form.status !== 'retired'" class="col-span-12"
