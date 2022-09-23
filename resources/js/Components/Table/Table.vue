@@ -1,7 +1,7 @@
 <script setup>
 /*Functions*/
 import {ref, computed, toRefs} from 'vue'
-import {onClickOutside} from "@vueuse/core/index";
+import {onClickOutside} from "@vueuse/core";
 import {Link, useForm} from "@inertiajs/inertia-vue3";
 import {cloneDeep} from "lodash";
 import {useI18n} from "vue-i18n";
@@ -271,7 +271,7 @@ debouncedWatch(() => cloneDeep(search.query), () => {
     </div>
 
     <div
-        class="p-2 -m-2 overflow-x-scroll overscroll-x-auto scrollbar scrollbar-thumb-rose-500 scrollbar-track-transparent">
+        class="p-2 -m-2 overflow-x-scroll overscroll-x-auto scrollbar-thin scrollbar-thumb-rose-500 scrollbar-track-transparent">
       <!--Table-->
       <table class="w-full mt-4 text-sm">
         <!--Header-->
@@ -288,7 +288,9 @@ debouncedWatch(() => cloneDeep(search.query), () => {
           </th>
           <template v-for="header in headers">
             <th>
-              <div class="flex flex-shrink-0 items-center h-8 px-2" v-text="header.label" :class="{
+              <div class="flex flex-shrink-0 h-full px-2 mb-1 text-slate-400 font-semibold"
+                   v-text="header.label"
+                   :class="{
                             'justify-start' : header.align === 'left' || !header['align'],
                             'justify-end' : header.align === 'right',
                             'justify-center' : header.align === 'center'
@@ -297,7 +299,7 @@ debouncedWatch(() => cloneDeep(search.query), () => {
           </template>
 
           <th>
-            <div class="flex flex-shrink-0 justify-center items-center" v-text="t('table.actions')"></div>
+            <div class="flex flex-shrink-0 justify-center items-center  text-slate-400 font-semibold" v-text="t('table.actions')"></div>
           </th>
         </tr>
         </thead>
@@ -350,7 +352,7 @@ debouncedWatch(() => cloneDeep(search.query), () => {
                         selectedItems.includes(row[uniqueIdKey]) ? 'bg-rose-50 border-rose-300 group-hover:bg-rose-100' : 'bg-slate-100 dark:bg-slate-500 group-odd:bg-slate-50 dark:group-odd:bg-slate-600 group-hover:bg-slate-200 dark:group-hover:bg-slate-700 border-slate-300'
                         ]">
               <div
-                  class="flex flex-shrink-0 justify-center items-center space-x-3  min-h-[2.5rem] items-center">
+                  class="flex flex-shrink-0 justify-center items-center space-x-3 pr-2  min-h-[2.5rem] items-center">
                 <font-awesome-icon
                     v-if="showAction"
                     @click="$emit('view', row)"
