@@ -49,6 +49,8 @@
     "updatePasswordDesc": "Uzun ve karmaşık bir şifre kullanmak seni güvende tutar."
   },
   "action": {
+    "add": "Ekle",
+    "addOtherOne": "Başka Bir Tane Ekle",
     "addNew": "Yeni Ekle",
     "cancel": "İptal Et",
     "change": "Değiştir",

@@ -49,6 +49,8 @@
     "updatePasswordDesc": "Ensure your account is using a long, random password to stay secure"
   },
   "action": {
+    "add": "Add",
+    "addOtherOne": "Add an Other One",
     "addNew": "Add New",
     "cancel": "Cancel",
     "change": "Change",
