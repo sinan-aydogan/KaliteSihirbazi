@@ -71,7 +71,7 @@ provide('errorStatus', errorStatus);
 
             <!--Backend Error-->
             <div v-if="$page.props.errors.hasOwnProperty(labelFor)">
-                <p class="text-sm text-red-600 mt-2 whitespace-nowrap">
+                <p class="text-sm text-rose-600 dark:text-rose-400 mt-2 whitespace-nowrap">
                     {{  $page.props.errors[labelFor]  }}
                 </p>
             </div>
@@ -79,7 +79,7 @@ provide('errorStatus', errorStatus);
             <div
                 v-if="$page.props.errorBags.hasOwnProperty(errorBag) && $page.props.errorBags[errorBag].hasOwnProperty(labelFor)">
                 <template v-for="error in $page.props.errorBags[errorBag][labelFor]">
-                    <p class="text-sm text-red-600 mt-2 whitespace-nowrap">
+                    <p class="-mt-1 text-xs text-rose-600 dark:text-rose-400 mt-2 whitespace-nowrap">
                         {{  error  }}
                     </p>
                 </template>
