@@ -1,68 +1,85 @@
 <script setup>
-import {computed, useSlots} from 'vue';
+import {computed, provide, useSlots} from 'vue';
 
-defineEmits(['submitted']);
+defineEmits(['submitted', 'reset']);
 
-defineProps({
-  layout: {
+const props = defineProps({
+  hasHeader: Boolean,
+  title: String,
+  description: String,
+  multipart: Boolean,
+  method: {
     type: String,
-    default: 'default'
+    default: 'post'
   },
-  gridSize: {
-    type: Number,
-    default: 6
-  }
+  fullSize: Boolean
 })
+
+provide('design', props.design)
+provide('fullSize', props.fullSize)
 
 const hasActions = computed(() => !!useSlots().actions);
 </script>
 
 <template>
-  <div class="md:grid md:gap-6" :class="{
-        'md:grid-cols-3': layout === 'default',
-        '': layout === 'basic'
-    }">
+  <div class="form-wrapper">
 
-    <div class="md:col-span-1 flex justify-between"
-         v-if="$slots['title'] || $slots['description'] || $slots['aside']">
-      <div class="px-4 sm:px-0" v-if="$slots['title'] || $slots['description']">
-        <h3 v-if="$slots['title']" class="text-lg font-medium text-slate-700 dark:text-slate-100">
-          <slot name="title"/>
+    <!--Header Wrapper-->
+    <div class="form-header" v-if="hasHeader">
+      <!--Left Side: Title, Description-->
+      <div>
+        <!--Title-->
+        <h3 v-if="$slots['title'] || title">
+          <slot v-if="$slots['title']" name="title"/>
+          <span v-else v-text="title" class="title"></span>
         </h3>
 
-        <p v-if="$slots['description']" class="mt-1 text-sm text-slate-500">
-          <slot name="description"/>
+        <!--Description-->
+        <p v-if="$slots['description'] || description" class="description">
+          <slot v-if="$slots['description']" name="description"/>
+          <span v-else v-text="description" class="description"></span>
         </p>
       </div>
 
-      <div v-if="$slots['aside']" class="px-4 sm:px-0">
+      <!--Right Side: Aside-->
+      <div v-if="$slots['aside']" class="aside">
         <slot name="aside"/>
       </div>
     </div>
 
-    <div class="mt-5 md:mt-0 md:col-span-2">
-      <form @submit.prevent="$emit('submitted')">
-        <div :class="[
-                    hasActions ? 'sm:rounded-tl-md sm:rounded-tr-md' : 'sm:rounded-md',
-                    {
-                        'bg-white dark:bg-slate-700 dark:text-slate-100 shadow px-4 py-5 sm:p-6': layout === 'default',
-                        '': layout === 'basic',
-                    }
-                ]">
-          <div class="grid gap-6" :class="{
-            'grid-cols-12' : gridSize === 12,
-            'grid-cols-6' : gridSize === 6,
-          }">
-            <slot name="form"/>
-            <slot/>
-          </div>
-        </div>
+    <!--Form Content-->
+    <form
+        :enctype="multipart ? 'multipart/form-data' : 'application/x-www-form-urlencoded'"
+        :method="method"
+        @submit.prevent="$emit('submitted')"
+    >
 
-        <div v-if="hasActions"
-             class="flex items-center justify-end px-4 py-3 dark:bg-slate-700 dark:border-t-2 dark:border-slate-800 dark:text-slate-100 text-right sm:px-6 shadow sm:rounded-bl-md sm:rounded-br-md">
-          <slot name="actions"/>
-        </div>
-      </form>
-    </div>
+      <div class="space-y-6">
+        <slot name="form"/><slot/>
+      </div>
+
+      <div v-if="hasActions" class="form-actions">
+        <slot name="actions"/>
+      </div>
+    </form>
   </div>
 </template>
+
+<style lang="sass">
+.form-wrapper
+  @apply flex flex-col space-y-4
+
+.form-header
+  @apply flex flex-col sm:flex-row sm:justify-between
+
+.title
+  @apply text-lg font-medium text-slate-700 dark:text-slate-100
+
+.description
+  @apply mt-1 text-xs text-slate-500 dark:text-slate-400
+
+.aside
+  @apply mt-1 sm:mt-0 flex items-center
+.form-actions
+  @apply flex items-center justify-center sm:justify-end mt-4 space-x-2 dark:text-slate-100
+</style>

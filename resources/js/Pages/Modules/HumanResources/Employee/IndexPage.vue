@@ -10,6 +10,7 @@ import Modal from "@/Components/Modal/Modal.vue"
 import Table from "@/Components/Table/Table.vue"
 import SimpleButton from "@/Components/Button/SimpleButton.vue"
 import Form from "@/Components/Form/Form.vue"
+import FormSection from "@/Components/Form/FormSection.vue"
 import InputGroup from "@/Components/Form/InputGroup.vue"
 import TextInput from "@/Components/Form/TextInput.vue"
 import TextAreaInput from "@/Components/Form/TextAreaInput.vue"
@@ -265,216 +266,228 @@ const handleDelete = (id) => {
 
   <teleport to="body">
     <!--Modal-->
-    <Modal v-model="showModal" :header="tm('title.createPage.title')" :subHeader="tm('title.createPage.subTitle')"
-           closeable closeButton :actionButtons="['submit', 'reset']" @reset="form.reset()" @submit="handleSubmit">
-      <Form layout="basic" :grid-size="12">
+    <Modal
+        v-model="showModal"
+        :header="tm('title.createPage.title')"
+        :subHeader="tm('title.createPage.subTitle')"
+        closeable
+        closeButton
+        @submit="handleSubmit"
+    >
+      <Form full-size>
         <!--Personal Info-->
-        <h3 v-text="tm('term.personalInfo')" class="col-span-12 font-bold -mb-2 pb-2 border-b border-slate-500"></h3>
-        <!-- Code -->
-        <input-group class="col-span-12 sm:col-span-4" labelFor="code" :label="tm('term.code')"
-                     :errors="v$.code.$errors">
-          <text-input v-model="form.code"/>
-        </input-group>
+        <FormSection :title="tm('term.personalInfo')" grid>
+          <!-- Code -->
+          <input-group class="col-span-12 sm:col-span-4" labelFor="code" :label="tm('term.code')"
+                       :errors="v$.code.$errors">
+            <text-input v-model="form.code"/>
+          </input-group>
 
-        <!-- Name -->
-        <input-group class="col-span-12 sm:col-span-8" labelFor="name" :label="tm('term.name')"
-                     :errors="v$.name.$errors">
-          <text-input v-model="form.name"/>
-        </input-group>
+          <!-- Name -->
+          <input-group class="col-span-12 sm:col-span-8" labelFor="name" :label="tm('term.name')"
+                       :errors="v$.name.$errors">
+            <text-input v-model="form.name"/>
+          </input-group>
 
-        <!-- Birthday -->
-        <input-group class="col-span-6 sm:col-span-4" labelFor="birthday" :label="tm('term.birthday')">
-          <text-input v-model="form.birthday" inputType="date"/>
-        </input-group>
+          <!-- Birthday -->
+          <input-group class="col-span-6 sm:col-span-4" labelFor="birthday" :label="tm('term.birthday')">
+            <text-input v-model="form.birthday" inputType="date"/>
+          </input-group>
 
-        <!-- Sex -->
-        <input-group class="col-span-6 sm:col-span-4" labelFor="sex" :label="tm('term.sex')">
-          <select-input v-model="form.sex" :options="genders">
-            <template #both="{props}">
-              <div class="space-x-2" :class="{
+          <!-- Sex -->
+          <input-group class="col-span-6 sm:col-span-4" labelFor="sex" :label="tm('term.sex')">
+            <select-input v-model="form.sex" :options="genders">
+              <template #both="{props}">
+                <div class="space-x-2" :class="{
                 'text-pink-600 dark:text-pink-400' : props.id === 'female',
                 'text-sky-600 dark:text-sky-400' : props.id === 'male',
                 'text-indigo-600 dark:text-indigo-400' : props.id === 'other',
               }">
-                <font-awesome-icon
-                    :icon="`fa-solid ${props.id === 'female' ? 'fa-venus' : props.id === 'male' ? 'fa-mars' : 'fa-transgender'}`"/>
-                <span v-text="props.label"></span>
-              </div>
-            </template>
-          </select-input>
-        </input-group>
+                  <font-awesome-icon
+                      :icon="`fa-solid ${props.id === 'female' ? 'fa-venus' : props.id === 'male' ? 'fa-mars' : 'fa-transgender'}`"/>
+                  <span v-text="props.label"></span>
+                </div>
+              </template>
+            </select-input>
+          </input-group>
 
-        <!-- Blood Type -->
-        <input-group class="col-span-6 sm:col-span-4" labelFor="blood_type" :label="tm('term.bloodType')">
-          <select-input v-model="form.blood_type" :options="bloodTypes"/>
-        </input-group>
+          <!-- Blood Type -->
+          <input-group class="col-span-6 sm:col-span-4" labelFor="blood_type" :label="tm('term.bloodType')">
+            <select-input v-model="form.blood_type" :options="bloodTypes"/>
+          </input-group>
 
-        <!-- Is Married? -->
-        <input-group class="col-span-6 sm:col-span-4" labelFor="is_married" :label="tm('term.isMarried')">
-          <select-input v-model="form.is_married" :options="yesNoQuestions"/>
-        </input-group>
+          <!-- Is Married? -->
+          <input-group class="col-span-6 sm:col-span-4" labelFor="is_married" :label="tm('term.isMarried')">
+            <select-input v-model="form.is_married" :options="yesNoQuestions"/>
+          </input-group>
 
-        <!-- Children Count -->
-        <input-group class="col-span-6 sm:col-span-4" labelFor="name" :label="tm('term.childrenCount')"
-                     :errors="v$.children_count.$errors">
-          <text-input input-type="number" v-model="form.children_count"/>
-        </input-group>
-
-        <!--Filler-->
-        <div class="col-span-6 sm:col-span-4"></div>
+          <!-- Children Count -->
+          <input-group class="col-span-6 sm:col-span-4" labelFor="name" :label="tm('term.childrenCount')"
+                       :errors="v$.children_count.$errors">
+            <text-input input-type="number" v-model="form.children_count"/>
+          </input-group>
+        </FormSection>
 
         <!--Contact Info-->
-        <h3 v-text="tm('term.contactInfo')" class="col-span-12 font-bold -mb-2 pb-2 border-b border-slate-500"></h3>
-        <!-- Personal Phone -->
-        <input-group class="col-span-12 sm:col-span-6" labelFor="personalPhone" :label="tm('term.personalPhone')">
-          <text-input v-model="form.contact_info.personal.phone"/>
-        </input-group>
+        <FormSection :title="tm('term.contactInfo')" grid>
+          <!-- Personal Phone -->
+          <input-group class="col-span-12 sm:col-span-6" labelFor="personalPhone" :label="tm('term.personalPhone')">
+            <text-input v-model="form.contact_info.personal.phone"/>
+          </input-group>
 
-        <!-- Personal Email -->
-        <input-group class="col-span-12 sm:col-span-6" labelFor="personalEmail" :label="tm('term.personalEmail')">
-          <text-input v-model="form.contact_info.personal.email"/>
-        </input-group>
+          <!-- Personal Email -->
+          <input-group class="col-span-12 sm:col-span-6" labelFor="personalEmail" :label="tm('term.personalEmail')">
+            <text-input v-model="form.contact_info.personal.email"/>
+          </input-group>
 
-        <!-- Work Phone -->
-        <input-group class="col-span-12 sm:col-span-6" labelFor="workPhone" :label="tm('term.workPhone')">
-          <text-input v-model="form.contact_info.work.phone"/>
-        </input-group>
+          <!-- Work Phone -->
+          <input-group class="col-span-12 sm:col-span-6" labelFor="workPhone" :label="tm('term.workPhone')">
+            <text-input v-model="form.contact_info.work.phone"/>
+          </input-group>
 
-        <!-- Work Email -->
-        <input-group class="col-span-12 sm:col-span-6" labelFor="workEmail" :label="tm('term.workEmail')">
-          <text-input v-model="form.contact_info.work.email"/>
-        </input-group>
+          <!-- Work Email -->
+          <input-group class="col-span-12 sm:col-span-6" labelFor="workEmail" :label="tm('term.workEmail')">
+            <text-input v-model="form.contact_info.work.email"/>
+          </input-group>
 
-        <!-- Emergency Contact -->
-        <h3 v-text="tm('term.emergencyContacts')"
-            class="col-span-12 font-bold -mb-2 pb-2 border-b border-slate-500"></h3>
+          <!-- Emergency Contact -->
+          <h3 v-text="tm('term.emergencyContacts')"
+              class="col-span-12 font-bold -mb-2 pb-2 border-b border-slate-500"></h3>
 
-        <div class="col-span-12">
-          <!--List-->
-          <div v-if="form.contact_info.emergencyContacts.length>0">
-            <template v-for="(i,index) in form.contact_info.emergencyContacts">
-              <div class="flex justify-between items-center pr-4 w-full border-b last:border-b-0 border-dotted border-slate-500 py-2">
-                <!--Contact Info-->
-                <div class="flex flex-col sm:flex-row justify-between sm:items-center w-full pr-4">
+          <div class="col-span-12">
+            <!--List-->
+            <div v-if="form.contact_info.emergencyContacts.length>0">
+              <template v-for="(i,index) in form.contact_info.emergencyContacts">
+                <div
+                    class="flex justify-between items-center pr-4 w-full border-b last:border-b-0 border-dotted border-slate-500 py-2">
+                  <!--Contact Info-->
+                  <div class="flex flex-col sm:flex-row justify-between sm:items-center w-full pr-4">
 
-                  <!--Contact Name-->
-                  <div class="flex flex-col">
-                    <div>
-                      <font-awesome-icon icon="fa-solid fa-user" class="mr-2"/>
-                      <span v-text="i.name" class="font-semibold"></span>
+                    <!--Contact Name-->
+                    <div class="flex flex-col">
+                      <div>
+                        <font-awesome-icon icon="fa-solid fa-user" class="mr-2"/>
+                        <span v-text="i.name" class="font-semibold"></span>
+                      </div>
+                      <span v-text="i.relationship" class="text-xs italic text-slate-400"></span>
                     </div>
-                    <span v-text="i.relationship" class="text-xs italic text-slate-400"></span>
+
+                    <!--Contact Line-->
+                    <span v-text="i.data" class="underline text-lg"></span>
                   </div>
 
-                  <!--Contact Line-->
-                  <span v-text="i.data" class="underline text-lg"></span>
+                  <!--Delete Button-->
+                  <font-awesome-icon
+                      @click="deleteEmergencyContact(index)"
+                      icon="fa-solid fa-trash"
+                      class="cursor-pointer"
+                  />
                 </div>
-
-                <!--Delete Button-->
-                <font-awesome-icon
-                    @click="deleteEmergencyContact(index)"
-                    icon="fa-solid fa-trash"
-                                   class="cursor-pointer"
-                />
-              </div>
-            </template>
-          </div>
-          <!--Empty Message-->
-          <div v-else-if="form.contact_info.emergencyContacts.length===0 && !showEmergencyContactForm"
-               class="flex flex-col bg-slate-600 p-6 space-y-6 justify-center items-center rounded w-full border border-dashed">
-            <span v-text="tm('message.feedback.emptyEmergencyContactsList')"></span>
-            <simple-button @click="showEmergencyContactForm=true" :label="t('action.addNew')" full-size size="slim"/>
-          </div>
-        </div>
-
-        <!--Emergency Contact Add Form-->
-        <div v-if="showEmergencyContactForm" class="col-span-12 flex flex-col -mt-6 border border-slate-500 p-2 rounded-lg">
-          <div class="relative flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-2">
-
-            <!--Name-->
-            <input-group class="w-full" labelFor="emergencyContactName" :label="tm('term.emergencyContactName')">
-              <text-input v-model="emergencyContactForm.name"/>
-            </input-group>
-
-            <!--Relationship Degree-->
-            <input-group class="w-full" labelFor="relationshipDegree" :label="tm('term.relationshipDegree')">
-              <text-input v-model="emergencyContactForm.relationship"/>
-            </input-group>
-
-            <!--Phone-->
-            <input-group class="w-full" labelFor="phone" :label="tm('term.phone')">
-              <text-input v-model="emergencyContactForm.data"/>
-            </input-group>
-            
-            <!--Close Button-->
-            <div @click="showEmergencyContactForm = false" class="absolute -right-4 -top-8 sm:-top-4 flex items-center justify-center w-6 h-6 bg-rose-500 rounded cursor-pointer hover:scale-105 active:scale-95 transition-all">
-              <font-awesome-icon icon="fa-solid fa-xmark" class=""/>
+              </template>
+            </div>
+            <!--Empty Message-->
+            <div v-else-if="form.contact_info.emergencyContacts.length===0 && !showEmergencyContactForm"
+                 class="flex flex-col bg-slate-600 p-6 space-y-6 justify-center items-center rounded w-full border border-dashed">
+              <span v-text="tm('message.feedback.emptyEmergencyContactsList')"></span>
+              <simple-button @click="showEmergencyContactForm=true" :label="t('action.addNew')" full-size size="slim"/>
             </div>
           </div>
 
-          <div class="mt-4 sm:mt-2">
-            <simple-button
-                @click.stop="addEmergencyContact"
-                :label="t('action.add')"
-                full-size size="slim"
-                />
+          <!--Emergency Contact Add Form-->
+          <div v-if="showEmergencyContactForm"
+               class="col-span-12 flex flex-col -mt-6 border border-slate-500 p-2 rounded-lg">
+            <div class="relative flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-2">
+
+              <!--Name-->
+              <input-group class="w-full" labelFor="emergencyContactName" :label="tm('term.emergencyContactName')">
+                <text-input v-model="emergencyContactForm.name"/>
+              </input-group>
+
+              <!--Relationship Degree-->
+              <input-group class="w-full" labelFor="relationshipDegree" :label="tm('term.relationshipDegree')">
+                <text-input v-model="emergencyContactForm.relationship"/>
+              </input-group>
+
+              <!--Phone-->
+              <input-group class="w-full" labelFor="phone" :label="tm('term.phone')">
+                <text-input v-model="emergencyContactForm.data"/>
+              </input-group>
+
+              <!--Close Button-->
+              <div @click="showEmergencyContactForm = false"
+                   class="absolute -right-4 -top-8 sm:-top-4 flex items-center justify-center w-6 h-6 bg-rose-500 rounded cursor-pointer hover:scale-105 active:scale-95 transition-all">
+                <font-awesome-icon icon="fa-solid fa-xmark" class=""/>
+              </div>
+            </div>
+
+            <div class="mt-4 sm:mt-2">
+              <simple-button
+                  @click.stop="addEmergencyContact"
+                  :label="t('action.add')"
+                  full-size size="slim"
+              />
+            </div>
           </div>
-        </div>
 
-        <!--Show Add Form-->
-        <div v-else-if="!showEmergencyContactForm && form.contact_info.emergencyContacts.length>0"
-        class="col-span-12">
-          <simple-button
-              @click="showEmergencyContactForm = true"
-              full-size size="slim"
-              :label="t('action.addOtherOne')"
-          />
-        </div>
-
+          <!--Show Add Form-->
+          <div v-else-if="!showEmergencyContactForm && form.contact_info.emergencyContacts.length>0"
+               class="col-span-12">
+            <simple-button
+                @click="showEmergencyContactForm = true"
+                full-size size="slim"
+                :label="t('action.addOtherOne')"
+            />
+          </div>
+        </FormSection>
 
         <!--Employment Info-->
-        <h3 v-text="tm('term.employmentInfo')" class="col-span-12 font-bold -mb-2 pb-2 border-b border-slate-500"></h3>
+        <FormSection :title="tm('term.employmentInfo')" grid>
+          <!-- Department -->
+          <input-group class="col-span-12 sm:col-span-6" labelFor="department_id" :label="tm('term.department')"
+                       :errors="v$.department_id.$errors">
+            <select-input v-model="form.department_id" :options="departments" optionLabel="name"/>
+          </input-group>
 
-        <!-- Department -->
-        <input-group class="col-span-12 sm:col-span-6" labelFor="department_id" :label="tm('term.department')"
-                     :errors="v$.department_id.$errors">
-          <select-input v-model="form.department_id" :options="departments" optionLabel="name"/>
-        </input-group>
+          <!-- Employment Type -->
+          <input-group class="col-span-12 sm:col-span-6" labelFor="employment_type" :label="tm('term.employmentType')">
+            <select-input v-model="form.employment_type" :options="employmentTypes"/>
+          </input-group>
 
-        <!-- Employment Type -->
-        <input-group class="col-span-12 sm:col-span-6" labelFor="employment_type" :label="tm('term.employmentType')">
-          <select-input v-model="form.employment_type" :options="employmentTypes"/>
-        </input-group>
+          <!-- Employment Date -->
+          <input-group class="col-span-12 sm:col-span-6" labelFor="employmentDate" :label="tm('term.employmentDate')">
+            <text-input v-model="form.employment_date" inputType="date"/>
+          </input-group>
 
-        <!-- Employment Date -->
-        <input-group class="col-span-12 sm:col-span-6" labelFor="employmentDate" :label="tm('term.employmentDate')">
-          <text-input v-model="form.employment_date" inputType="date"/>
-        </input-group>
+          <!-- Status -->
+          <input-group class="col-span-12 sm:col-span-6" labelFor="status" :label="tm('term.status')">
+            <select-input v-model="form.status" :options="statuses">
+              <template #both="{props}">
+                <span v-text="props.label" class="px-1 py-0.5 rounded text-slate-100 text-sm"
+                      :class="props.style"></span>
+              </template>
+            </select-input>
+          </input-group>
 
-        <!-- Status -->
-        <input-group class="col-span-12 sm:col-span-6" labelFor="status" :label="tm('term.status')">
-          <select-input v-model="form.status" :options="statuses">
-            <template #both="{props}">
-              <span v-text="props.label" class="px-1 py-0.5 rounded text-slate-100 text-sm" :class="props.style"></span>
-            </template>
-          </select-input>
-        </input-group>
+          <!-- Leaving Date -->
+          <input-group v-if="form.status !== 'working'" class="col-span-12 sm:col-span-6" labelFor="leavingDate"
+                       :label="tm('term.leavingDate')">
+            <text-input v-model="form.leaving_date" inputType="date"/>
+          </input-group>
 
-        <!-- Leaving Date -->
-        <input-group v-if="form.status !== 'working'" class="col-span-12 sm:col-span-6" labelFor="leavingDate"
-                     :label="tm('term.leavingDate')">
-          <text-input v-model="form.leaving_date" inputType="date"/>
-        </input-group>
+          <!--Filler-->
+          <div class="hidden sm:block col-span-6"></div>
 
-        <!--Filler-->
-        <div class="hidden sm:block col-span-6"></div>
-
-        <!-- Leaving Detail -->
-        <input-group v-if="form.status !== 'working' && form.status !== 'retired'" class="col-span-12"
-                     labelFor="leavingDetail" :label="tm('term.leavingDetail')">
-          <text-area-input v-model="form.leaving_detail"/>
-        </input-group>
+          <!-- Leaving Detail -->
+          <input-group v-if="form.status !== 'working' && form.status !== 'retired'" class="col-span-12"
+                       labelFor="leavingDetail" :label="tm('term.leavingDetail')">
+            <text-area-input v-model="form.leaving_detail"/>
+          </input-group>
+        </FormSection>
       </Form>
+      <template #footer>
+        <SimpleButton :label="t('action.reset')" color="orange" @click="form.reset()"/>
+        <SimpleButton :label="t('action.create')" color="green" @click="handleSubmit" :loading="form.processing"/>
+      </template>
     </Modal>
   </teleport>
 </template>

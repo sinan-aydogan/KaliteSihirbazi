@@ -1,6 +1,6 @@
 <script setup>
 import {Link} from "@inertiajs/inertia-vue3";
-import {computed, defineComponent} from 'vue'
+import {computed} from 'vue'
 
 const props = defineProps({
   type: {
@@ -27,15 +27,16 @@ const props = defineProps({
     type: String,
     default: ''
   },
-  link: String
+  link: String,
+  loading: Boolean
 })
 
 const colors = {
-  blue: 'bg-blue-600 text-blue-50 active:bg-blue-700 focus:ring-blue-600',
-  red: 'bg-red-600 text-red-50 active:bg-red-700 focus:ring-red-600',
-  green: 'bg-green-600 text-green-50 active:bg-green-700 focus:ring-green-600',
-  orange: 'bg-orange-600 text-orange-50 active:bg-orange-700 focus:ring-orange-600',
-  neutral: 'bg-slate-600 dark:bg-slate-700/75 dark:hover:bg-slate-500/75 text-slate-50 active:bg-slate-700 focus:ring-slate-600',
+  blue: 'bg-sky-600 hover:bg-sky-500 text-sky-50 focus:ring-sky-600',
+  red: 'bg-rose-600 hover:bg-red-500 text-rose-50 focus:ring-rose-600',
+  green: 'bg-green-600 hover:bg-green-500 text-green-50 focus:ring-green-600',
+  orange: 'bg-amber-600 hover:bg-amber-500 hover:bg-amber-500 text-amber-50 focus:ring-amber-600',
+  neutral: 'bg-slate-600 hover:bg-slate-500 dark:bg-slate-700/75 dark:hover:bg-slate-500/75 text-slate-50 focus:ring-slate-600',
 }
 
 const componentType = computed(()=>{
@@ -52,22 +53,27 @@ const componentType = computed(()=>{
 </script>
 
 <template>
-  <div class="flex" @click="$emit('handleClick')">
+  <div class="flex" :class="fullSize ? 'w-full' : 'w-fit'" @click="$emit('handleClick')">
     <component
         :is="componentType"
         :type="type"
         :href="link ? link : ''"
-            class="flex min-h-[2rem] items-center justify-center whitespace-nowrap rounded-md border border-transparent space-x-2 px-4 py-2 text-sm font-medium text-white shadow-sm tracking-widest focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-25 disabled:cursor-not-allowed active:scale-95 transition"
+            class="flex min-h-[2rem] items-center justify-center whitespace-nowrap rounded-md border border-transparent space-x-2 px-4 py-2 text-sm font-medium text-white shadow-sm tracking-widest focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-25 disabled:cursor-not-allowed transition"
             :class="[
                     colors[color],
                     {
                         'h-8 px-2' : size === 'slim',
                         'w-full' : fullSize,
+                        'bg-opacity-25 pointer-events-none': loading
                     }
                     ]"
             :disabled="disabled"
     >
+      <!--Loading-->
+      <div v-if="loading" class="h-full aspect-square border-2 border-b-transparent animate-spin rounded-full opacity-100"></div>
+      <!--Label-->
       <span v-text="label" v-if="label"/>
+      <!--Label Slot-->
       <slot v-else></slot>
     </component>
   </div>

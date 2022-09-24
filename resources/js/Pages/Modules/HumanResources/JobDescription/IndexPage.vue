@@ -9,6 +9,7 @@ import Modal from "@/Components/Modal/Modal.vue"
 import Table from "@/Components/Table/Table.vue"
 import SimpleButton from "@/Components/Button/SimpleButton.vue"
 import Form from "@/Components/Form/Form.vue"
+import FormSection from "@/Components/Form/FormSection.vue"
 import InputGroup from "@/Components/Form/InputGroup.vue"
 import TextInput from "@/Components/Form/TextInput.vue"
 import TextAreaInput from "@/Components/Form/TextAreaInput.vue"
@@ -108,7 +109,7 @@ const getData = (query) => {
 }
 
 // Rules
-const lengthValidation = (value) => value.length>0
+const lengthValidation = (value) => value.length > 0
 
 const rules = ref({
   code: {
@@ -135,7 +136,8 @@ const v$ = useVuelidate(rules, form)
 
 // Data
 import Terms from "./terms"
-const {staffTypes,locationTypes} = Terms()
+
+const {staffTypes, locationTypes} = Terms()
 
 /*Create*/
 const handleSubmit = async () => {
@@ -218,7 +220,7 @@ const handleDelete = (id) => {
         >
           <div
               class="flex items-center justify-center w-8 h-8 rounded"
-               :class="props.staff_type=== 'white' ? 'dark:bg-slate-700': 'text-sky-700 dark:text-white dark:bg-sky-700'"
+              :class="props.staff_type=== 'white' ? 'dark:bg-slate-700': 'text-sky-700 dark:text-white dark:bg-sky-700'"
           >
             <font-awesome-icon
                 :icon="'fa-solid '+ (props.staff_type=== 'white' ? 'fa-user-tie': 'fa-helmet-safety')"
@@ -233,7 +235,7 @@ const handleDelete = (id) => {
 
       <!--Department-->
       <template #department_id="{props}">
-        {{props.department_id ? props.department.name : ''}}
+        {{ props.department_id ? props.department.name : '' }}
       </template>
 
       <!--Status-->
@@ -245,94 +247,113 @@ const handleDelete = (id) => {
 
   <teleport to="body">
     <!--Modal-->
-    <Modal v-model="showModal" :header="tm('title.createPage.title')" :subHeader="tm('title.createPage.subTitle')"
-           closeable closeButton :actionButtons="['submit', 'reset']" @reset="form.reset()" @submit="handleSubmit">
-      <Form layout="basic">
-        <!-- Code -->
-        <input-group class="col-span-2" labelFor="code" :label="tm('term.code')" :errors="v$.code.$errors">
-          <text-input v-model="form.code"/>
-        </input-group>
+    <Modal
+        v-model="showModal"
+        :header="tm('title.createPage.title')"
+        :subHeader="tm('title.createPage.subTitle')"
+        closeable
+        closeButton
+    >
+      <Form full-size>
+        <FormSection bg-less>
+          <!-- Code -->
+          <input-group class="col-span-2" labelFor="code" :label="tm('term.code')" :errors="v$.code.$errors">
+            <text-input v-model="form.code"/>
+          </input-group>
 
-        <!-- Name -->
-        <input-group class="col-span-4" labelFor="name" :label="tm('term.name')"
-                     :errors="v$.name.$errors">
-          <text-input v-model="form.name"/>
-        </input-group>
+          <!-- Name -->
+          <input-group class="col-span-4" labelFor="name" :label="tm('term.name')"
+                       :errors="v$.name.$errors">
+            <text-input v-model="form.name"/>
+          </input-group>
 
-        <!-- Description -->
-        <input-group class="col-span-6" labelFor="description" :label="tm('term.description')">
-          <text-area-input :rows="4" v-model="form.description"/>
-        </input-group>
+          <!-- Description -->
+          <input-group class="col-span-6" labelFor="description" :label="tm('term.description')">
+            <text-area-input :rows="4" v-model="form.description"/>
+          </input-group>
 
-        <!-- Type -->
-        <input-group class="col-span-3" labelFor="staff_type" :label="tm('term.staffType')">
-          <select-input v-model="form.staff_type" :options="staffTypes"/>
-        </input-group>
+          <!-- Type -->
+          <input-group class="col-span-3" labelFor="staff_type" :label="tm('term.staffType')">
+            <select-input v-model="form.staff_type" :options="staffTypes"/>
+          </input-group>
 
-        <!-- Department -->
-        <input-group class="col-span-3" labelFor="department_id" :label="tm('term.department')"
-                     :errors="v$.department_id.$errors">
-          <select-input v-model="form.department_id" :options="departments" optionLabel="name"
-                        :disabled="form.type === 'main'"/>
-        </input-group>
+          <!-- Department -->
+          <input-group class="col-span-3" labelFor="department_id" :label="tm('term.department')"
+                       :errors="v$.department_id.$errors">
+            <select-input v-model="form.department_id" :options="departments" optionLabel="name"
+                          :disabled="form.type === 'main'"/>
+          </input-group>
 
-        <!-- Requirements -->
-        <input-group class="col-span-6" labelFor="requirements" :label="tm('term.requirements')"  :errors="v$.requirements.$errors">
-          <text-list-input :rows="4" v-model="form.requirements"/>
-        </input-group>
+          <!-- Requirements -->
+          <input-group class="col-span-6" labelFor="requirements" :label="tm('term.requirements')"
+                       :errors="v$.requirements.$errors">
+            <text-list-input :rows="4" v-model="form.requirements"/>
+          </input-group>
 
-        <!-- Responsibilities -->
-        <input-group class="col-span-6" labelFor="responsibilities" :label="tm('term.responsibilities')" :errors="v$.responsibilities.$errors">
-          <text-list-input :rows="4" v-model="form.responsibilities"/>
-        </input-group>
+          <!-- Responsibilities -->
+          <input-group class="col-span-6" labelFor="responsibilities" :label="tm('term.responsibilities')"
+                       :errors="v$.responsibilities.$errors">
+            <text-list-input :rows="4" v-model="form.responsibilities"/>
+          </input-group>
 
-        <!-- Powers -->
-        <input-group class="col-span-6" labelFor="powers" :label="tm('term.powers')" :errors="v$.powers.$errors">
-          <text-list-input :rows="4" v-model="form.powers"/>
-        </input-group>
+          <!-- Powers -->
+          <input-group class="col-span-6" labelFor="powers" :label="tm('term.powers')" :errors="v$.powers.$errors">
+            <text-list-input :rows="4" v-model="form.powers"/>
+          </input-group>
 
-        <!-- Skills -->
-        <input-group class="col-span-6" labelFor="skills" :label="tm('term.skills')" :errors="v$.skills.$errors">
-          <text-list-input :rows="4" v-model="form.skills"/>
-        </input-group>
+          <!-- Skills -->
+          <input-group class="col-span-6" labelFor="skills" :label="tm('term.skills')" :errors="v$.skills.$errors">
+            <text-list-input :rows="4" v-model="form.skills"/>
+          </input-group>
 
-        <!-- Working Conditions -->
-        <input-group class="col-span-6" labelFor="working_conditions" :label="tm('term.workingConditions')" :errors="v$.working_conditions.$errors">
-          <text-list-input :rows="4" v-model="form.working_conditions"/>
-        </input-group>
+          <!-- Working Conditions -->
+          <input-group class="col-span-6" labelFor="working_conditions" :label="tm('term.workingConditions')"
+                       :errors="v$.working_conditions.$errors">
+            <text-list-input :rows="4" v-model="form.working_conditions"/>
+          </input-group>
 
-        <!-- Working Tools -->
-        <input-group class="col-span-6" labelFor="working_tools" :label="tm('term.workingTools')" :errors="v$.working_tools.$errors">
-          <text-list-input :rows="4" v-model="form.working_tools"/>
-        </input-group>
+          <!-- Working Tools -->
+          <input-group class="col-span-6" labelFor="working_tools" :label="tm('term.workingTools')"
+                       :errors="v$.working_tools.$errors">
+            <text-list-input :rows="4" v-model="form.working_tools"/>
+          </input-group>
 
-        <!-- Working Hours -->
-        <input-group class="col-span-6" labelFor="working_hours" :label="tm('term.workingHours')" :errors="v$.working_hours.$errors">
-          <text-list-input :rows="4" v-model="form.working_hours"/>
-        </input-group>
+          <!-- Working Hours -->
+          <input-group class="col-span-6" labelFor="working_hours" :label="tm('term.workingHours')"
+                       :errors="v$.working_hours.$errors">
+            <text-list-input :rows="4" v-model="form.working_hours"/>
+          </input-group>
 
-        <!-- Overtime Status -->
-        <input-group class="col-span-6" labelFor="overtime_status" :label="tm('term.overtimeStatus')" :errors="v$.overtime_status.$errors">
-          <text-list-input :rows="4" v-model="form.overtime_status"/>
-        </input-group>
+          <!-- Overtime Status -->
+          <input-group class="col-span-6" labelFor="overtime_status" :label="tm('term.overtimeStatus')"
+                       :errors="v$.overtime_status.$errors">
+            <text-list-input :rows="4" v-model="form.overtime_status"/>
+          </input-group>
 
-        <!-- Travel Status -->
-        <input-group class="col-span-6" labelFor="travel_status" :label="tm('term.travelStatus')" :errors="v$.travel_status.$errors">
-          <text-list-input-with-select
-              v-model="form.travel_status"
-              :options="locationTypes"
-              label-key="label"
-              text-key="reason"
-              select-key="location"
-              select-placeholder="Yön Seçini"
-          />
-        </input-group>
+          <!-- Travel Status -->
+          <input-group class="col-span-6" labelFor="travel_status" :label="tm('term.travelStatus')"
+                       :errors="v$.travel_status.$errors">
+            <text-list-input-with-select
+                v-model="form.travel_status"
+                :options="locationTypes"
+                label-key="label"
+                text-key="reason"
+                select-key="location"
+                select-placeholder="Yön Seçini"
+            />
+          </input-group>
 
-        <!-- Status -->
-        <input-group class="col-span-6" labelFor="status" :label="tm('term.status')">
-          <switch-input v-model="form.status"/>
-        </input-group>
+          <!-- Status -->
+          <input-group class="col-span-6" labelFor="status" :label="tm('term.status')">
+            <switch-input v-model="form.status"/>
+          </input-group>
+        </FormSection>
       </Form>
+
+      <template #footer>
+        <SimpleButton :label="t('action.reset')" color="orange" @click="form.reset()" />
+        <SimpleButton :label="t('action.create')" color="green" @click="handleSubmit" :loading="form.processing"/>
+      </template>
     </Modal>
   </teleport>
 </template>

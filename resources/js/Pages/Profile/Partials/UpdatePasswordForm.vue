@@ -1,14 +1,11 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3';
 import FormActionMessage from '@/Components/Form/FormActionMessage.vue';
-import JetButton from '@/Jetstream/Button.vue';
-import Form from '@/Components/Form/Form.vue';
-import JetInput from '@/Jetstream/Input.vue';
-import JetInputError from '@/Jetstream/InputError.vue';
-import JetLabel from '@/Jetstream/Label.vue';
+import FormSection from '@/Components/Form/FormSection.vue';
 import InputGroup from "@/Components/Form/InputGroup.vue";
 import TextInput from "@/Components/Form/TextInput.vue";
+import SimpleButton from "@/Components/Button/SimpleButton.vue";
 
 const passwordInput = ref(null);
 const currentPasswordInput = ref(null);
@@ -40,16 +37,10 @@ const updatePassword = () => {
 </script>
 
 <template>
-    <Form @submitted="updatePassword">
-        <template #title>
-            {{  t('account.updatePassword')  }}
-        </template>
-
-        <template #description>
-            {{  t('account.updatePasswordDesc')  }}
-        </template>
-
-        <template #form>
+    <FormSection
+        :title="t('account.updatePassword')"
+        :description="t('account.updatePasswordDesc')"
+    >
             <div class="col-span-6 sm:col-span-4">
                 <input-group :label="t('account.currentPassword')" label-for="current_password"
                     errorBag="updatePassword" :errors="form.errors.current_password">
@@ -73,16 +64,13 @@ const updatePassword = () => {
                         autocomplete="new-password" />
                 </input-group>
             </div>
-        </template>
 
         <template #actions>
             <FormActionMessage :on="form.recentlySuccessful" class="mr-3">
-                {{  t('global.saved')  }}
+                {{  t('message.feedback.saved')  }}
             </FormActionMessage>
 
-            <JetButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                {{  t('global.save')  }}
-            </JetButton>
+            <SimpleButton :label="t('action.save')" @click="updatePassword" :loading="form.processing" :disabled="form.processing"/>
         </template>
-    </Form>
+    </FormSection>
 </template>
