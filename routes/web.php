@@ -87,3 +87,8 @@ Route::middleware([
         Route::get($mRoute['uri']."-restore/{".$mRoute['model']."}", [$mRoute['controller'], 'restore'])->withTrashed()->name($mRoute['uri'].".restore");
     }
 });
+
+// Test Route
+Route::get('test', function (){
+    return Inertia::render('Test');
+})->name('route');
