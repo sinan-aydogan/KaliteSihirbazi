@@ -6,10 +6,6 @@ const props = defineProps({
     type: [String, Number, Date],
     default: "",
   },
-  inputType: {
-    type: String,
-    default: 'text'
-  },
   inputId: {
     type: String,
     default: null
@@ -53,7 +49,7 @@ const errorStatus = inject('errorStatus')
                 </span>
       </div>
       <textarea :rows="rows" :value="disabled ? '' : modelValue" :disabled="disabled"
-                @input="$emit('update:modelValue', $event.target.value)" :type="inputType" :name="inputId" :id="inputId"
+                @input="$emit('update:modelValue', $event.target.value)" :name="inputId" :id="inputId"
                 class=" block w-full sm:text-sm dark:bg-slate-900/30 border-slate-300 dark:border-slate-600 rounded-md"
                 :class="[
                     { 'focus:ring-rose-500 border-rose-500 focus:border-rose-500': errorStatus },
@@ -66,7 +62,7 @@ const errorStatus = inject('errorStatus')
            class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                 <span class="text-gray-500 sm:text-sm">
                     <slot name="append"></slot>
-                    <font-awesome-icon v-if="errorStatus" icon="circle-exclamation" class="text-rose-600" size="lg"/>
+                    <font-awesome-icon v-if="errorStatus" icon="circle-exclamation" class="text-rose-600 dark:text-rose-400" size="lg"/>
                 </span>
       </div>
     </div>

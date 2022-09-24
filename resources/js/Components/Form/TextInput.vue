@@ -62,7 +62,7 @@ const errorStatus = inject('errorStatus')
                 class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                 <span class="text-gray-500 sm:text-sm">
                     <slot name="append"></slot>
-                    <font-awesome-icon v-if="errorStatus" icon="circle-exclamation" class="text-rose-600" size="lg" />
+                    <font-awesome-icon v-if="errorStatus" icon="circle-exclamation" class="text-rose-600 dark:text-rose-400" size="lg" />
                 </span>
             </div>
         </div>
