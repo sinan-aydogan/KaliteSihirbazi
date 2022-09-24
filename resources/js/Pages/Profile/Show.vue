@@ -1,7 +1,7 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
 import DeleteUserForm from '@/Pages/Profile/Partials/DeleteUserForm.vue';
-import JetSectionBorder from '@/Jetstream/SectionBorder.vue';
+import Divider from '@/Components/Content/Divider.vue';
 import LogoutOtherBrowserSessionsForm from '@/Pages/Profile/Partials/LogoutOtherBrowserSessionsForm.vue';
 import TwoFactorAuthenticationForm from '@/Pages/Profile/Partials/TwoFactorAuthenticationForm.vue';
 import UpdatePasswordForm from '@/Pages/Profile/Partials/UpdatePasswordForm.vue';
@@ -16,12 +16,7 @@ defineProps({
 </script>
 
 <template>
-    <AppLayout title="Profile">
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{  t('account.account')  }}
-            </h2>
-        </template>
+    <AppLayout :title="t('account.account')">
 
         <div>
             <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
@@ -30,14 +25,14 @@ defineProps({
                 <div v-if="$page.props.jetstream.canUpdateProfileInformation">
                     <UpdateProfileInformationForm :user="$page.props.user" />
 
-                    <JetSectionBorder />
+                    <Divider />
                 </div>
 
                 <!-- Update Password -->
                 <div v-if="$page.props.jetstream.canUpdatePassword">
                     <UpdatePasswordForm class="mt-10 sm:mt-0" />
 
-                    <JetSectionBorder />
+                    <Divider />
                 </div>
 
                 <!-- Two Authentication -->
@@ -45,7 +40,7 @@ defineProps({
                     <TwoFactorAuthenticationForm :requires-confirmation="confirmsTwoFactorAuthentication"
                         class="mt-10 sm:mt-0" />
 
-                    <JetSectionBorder />
+                    <Divider />
                 </div>
 
                 <!-- Logout from Other Browsers -->
@@ -53,7 +48,7 @@ defineProps({
 
                 <!-- Language Changer -->
                 <div>
-                    <jet-section-border />
+                    <Divider />
 
                     <language-changer />
 
@@ -61,7 +56,7 @@ defineProps({
 
                 <!-- Theme Changer -->
                 <div>
-                    <jet-section-border />
+                    <Divider />
 
                     <theme-changer />
 
@@ -69,7 +64,7 @@ defineProps({
 
                 <!-- Delete User -->
                 <template v-if="$page.props.jetstream.hasAccountDeletionFeatures">
-                    <JetSectionBorder />
+                    <Divider />
 
                     <DeleteUserForm class="mt-10 sm:mt-0" />
                 </template>
