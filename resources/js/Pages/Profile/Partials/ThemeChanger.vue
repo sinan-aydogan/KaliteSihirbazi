@@ -1,5 +1,6 @@
 <script setup>
 /*Functions*/
+import { computed } from "vue";
 import { useForm } from "@inertiajs/inertia-vue3";
 import { Inertia } from "@inertiajs/inertia";
 import { useI18n } from "vue-i18n";
@@ -7,9 +8,7 @@ import { useI18n } from "vue-i18n";
 /*Components*/
 import FormSection from '@/Components/Form/FormSection.vue';
 import FormActionMessage from '@/Components/Form/FormActionMessage.vue';
-import JetDangerButton from '@/Jetstream/DangerButton.vue'
-import JetButton from '@/Jetstream/Button.vue'
-import { computed } from "vue";
+import SimpleButton from "@/Components/Button/SimpleButton.vue";
 
 
 /*Multi-lang*/
@@ -54,17 +53,13 @@ const updateActiveTheme = () => {
 </script>
 
 <template>
-    <FormSection>
-        <template #title>
-            {{  $t('account.theme')  }}
-        </template>
+    <FormSection
+        :title="t('account.theme')"
+        :description="t('account.themeDesc')"
+    >
 
-        <template #description>
-            {{  $t('account.themeDesc')  }}
-        </template>
 
-        <template #content>
-            <div class="-mb-2">
+
                 <div class="flex justify-between h-10 mb-2">
                     <div class="flex justify-between space-x-4 select-none">
                         <template v-for="theme in themes">
@@ -89,26 +84,27 @@ const updateActiveTheme = () => {
 
                         <transition mode="out-in" name="fade">
                             <!--Save Button-->
-                            <jet-button v-if="themeUpdateForm.activeTheme !== $page.props.user.theme"
-                                :class="{ 'opacity-25': themeUpdateForm.processing }"
-                                :disabled="themeUpdateForm.processing || (themeUpdateForm.activeTheme === $page.props.user.theme)"
-                                @click="updateActiveTheme">
-                                {{  $t('global.saveChanges')  }}
-                            </jet-button>
-
+                          <SimpleButton
+                              v-if="themeUpdateForm.activeTheme !== $page.props.user.theme"
+                              :label="t('action.saveChanges')"
+                              :loading="themeUpdateForm.processing"
+                              :disabled="themeUpdateForm.processing || (themeUpdateForm.activeTheme === $page.props.user.theme)"
+                              @click="updateActiveTheme"
+                          />
                             <!--Success Message-->
                             <FormActionMessage v-else :on="themeUpdateForm.recentlySuccessful">
-                                {{  $t('global.saved')  }}
+                                {{  t('message.feedback.saved')  }}
                             </FormActionMessage>
                         </transition>
                     </div>
                 </div>
 
                 <!--Theme Description-->
-                <div v-text="themes.find(t => t.id === themeUpdateForm.activeTheme).description"
+                <span
+                    v-text="themes.find(t => t.id === themeUpdateForm.activeTheme).description"
                     class="text-xs text-slate-500 dark:text-slate-300 italic" />
-            </div>
-        </template>
+
+
     </FormSection>
 </template>
 

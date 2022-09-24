@@ -5,10 +5,11 @@ import { useForm, usePage } from "@inertiajs/inertia-vue3";
 /*Components*/
 import FormSection from '@/Components/Form/FormSection.vue';
 import FormActionMessage from '@/Components/Form/FormActionMessage.vue';
-import JetButton from '@/Jetstream/Button.vue'
+import SimpleButton from "@/Components/Button/SimpleButton.vue";
 
 /*Sources*/
 import { languages, flags } from "@/Languages/language";
+
 
 const languageUpdateForm = useForm({
     activeLanguage: usePage().props.value.user.language
@@ -23,16 +24,10 @@ const updateActiveLanguage = () => {
 </script>
 
 <template>
-    <FormSection>
-        <template #title>
-            {{  t('account.displayLanguage')  }}
-        </template>
-
-        <template #description>
-            {{  t('account.displayLanguageDesc')  }}
-        </template>
-
-        <template #content>
+    <FormSection
+        :title="t('account.displayLanguage')"
+        :description="t('account.displayLanguageDesc')"
+    >
             <div class="flex justify-between h-10">
                 <div class="flex justify-between space-x-4">
                     <template v-for="language in languages">
@@ -51,21 +46,21 @@ const updateActiveLanguage = () => {
 
                     <transition mode="out-in" name="fade">
                         <!--Save Button-->
-                        <jet-button v-if="languageUpdateForm.activeLanguage !== $page.props.user.language"
-                            :class="{ 'opacity-25': languageUpdateForm.processing }"
-                            :disabled="languageUpdateForm.processing || (languageUpdateForm.activeLanguage === $page.props.user.language)"
-                            @click="updateActiveLanguage">
-                            {{  $t('global.saveChanges')  }}
-                        </jet-button>
+                      <SimpleButton
+                          :label="t('action.saveChanges')"
+                          v-if="languageUpdateForm.activeLanguage !== $page.props.user.language"
+                          :loading="languageUpdateForm.processing"
+                          :disabled="languageUpdateForm.processing || (languageUpdateForm.activeLanguage === $page.props.user.language)"
+                          @click="updateActiveLanguage"
+                      />
 
                         <!--Success Message-->
                         <FormActionMessage v-else :on="languageUpdateForm.recentlySuccessful">
-                            {{  $t('global.saved')  }}
+                            {{  t('message.feedback.saved')  }}
                         </FormActionMessage>
                     </transition>
                 </div>
             </div>
-        </template>
     </FormSection>
 </template>
 
