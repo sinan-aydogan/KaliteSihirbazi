@@ -53,7 +53,7 @@ const componentType = computed(()=>{
 </script>
 
 <template>
-  <div class="flex" @click="$emit('handleClick')">
+  <div class="flex" :class="fullSize ? 'w-full' : 'w-fit'" @click="$emit('handleClick')">
     <component
         :is="componentType"
         :type="type"
