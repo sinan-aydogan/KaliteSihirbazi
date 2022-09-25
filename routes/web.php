@@ -56,6 +56,7 @@ Route::middleware([
         ['uri'=>'audit-firm', 'model'=>'auditFirm', 'controller'=>\App\Http\Controllers\AuditFirmController::class],
         ['uri'=>'employee', 'model'=>'employee', 'controller'=>\App\Http\Controllers\EmployeeController::class],
         ['uri'=>'job-description', 'model'=>'jobDescription', 'controller'=>\App\Http\Controllers\JobDescriptionController::class],
+        ['uri'=>'job-description-assignment', 'model'=>'jobDescriptionAssignment', 'controller'=>\App\Http\Controllers\JobDescriptionAssignmentController::class],
         ['uri'=>'education', 'model'=>'education', 'controller'=>\App\Http\Controllers\EducationController::class],
         ['uri'=>'education-plan', 'model'=>'educationPlan', 'controller'=>\App\Http\Controllers\EducationPlanController::class],
         ['uri'=>'take-time-off', 'model'=>'takeTime', 'controller'=>\App\Http\Controllers\TakeTimeOffController::class],
@@ -86,6 +87,14 @@ Route::middleware([
         Route::delete($mRoute['uri']."-permanent-delete/{".$mRoute['model']."}", [$mRoute['controller'], 'permanentDestroy'])->withTrashed()->name($mRoute['uri'].".permanent-delete");
         Route::get($mRoute['uri']."-restore/{".$mRoute['model']."}", [$mRoute['controller'], 'restore'])->withTrashed()->name($mRoute['uri'].".restore");
     }
+
+    /*Employee Management Pages*/
+    Route::get('employee/{employee}/personal-info', [\App\Http\Controllers\Employee\PersonalInfo::class, 'index'])->name('employee-personal-info.index');
+    Route::get('employee/{employee}/employment-info', [\App\Http\Controllers\Employee\EmploymentInfo::class, 'index'])->name('employee-employment-info.index');
+    Route::get('employee/{employee}/jd-assignment', [\App\Http\Controllers\Employee\JobAssignmentController::class, 'index'])->name('employee-jd-assignment.index');
+    Route::get('employee/{employee}/time-off', [\App\Http\Controllers\Employee\TimeOffController::class, 'index'])->name('employee-time-off.index');
+    Route::get('employee/{employee}/debt', [\App\Http\Controllers\Employee\DebtController::class, 'index'])->name('employee-debt.index');
+    Route::get('employee/{employee}/education', [\App\Http\Controllers\Employee\EducationController::class, 'index'])->name('employee-education.index');
 });
 
 // Test Route

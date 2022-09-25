@@ -7,6 +7,9 @@
     "createPage": {
       "title": "Personel Oluştur",
       "subTitle": "Yeni çalışanınız için personel kaydı oluşturun"
+    },
+    "jdAssigmentModal": {
+      "title": "Görev Tanımı Ataması Yap"
     }
   },
   "term": {
@@ -53,7 +56,7 @@
     "fired": "Kovuldu",
     "left": "Kendi Ayrıldı",
     "other": "Diğer",
-    "assigmentDate": "Atama Zamanı",
+    "assignment_date": "Atama Zamanı",
     "endingDate": "Bitiş Zamanı",
     "password": "Şifre",
     "randomRegenerate": "Rasgele Oluştur",
@@ -63,11 +66,16 @@
     "careerPathing": "Kariyer Patikasi",
     "timeOff": "İzin Kullanımı",
     "debt": "Zimmetli Malzeme",
-    "education": "Eğitim"
+    "education": "Eğitim",
+    "appointer": "Atayan"
   },
   "message": {
     "feedback": {
-      "emptyEmergencyContactsList": "Henüz hiç acil durum kişisi eklenmemiş"
+      "emptyEmergencyContactsList": "Henüz hiç acil durum kişisi eklenmemiş",
+      "emptyJobDescriptionAssigment": "Personele henüz hiç görev ataması yapılmamış"
     }
+  },
+  "action": {
+    "makeAssigment": "Görev Ataması Yap"
   }
 }
