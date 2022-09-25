@@ -22,6 +22,13 @@ return [
         'restored' => ':jobDescription isimli görev tanımı geri getirildi.',
         'updated' => ':jobDescription isimli görev tanımı güncellendi.'
     ],
+    'jobDescriptionAssignment' => [
+        'created' => ':employee personeli :jobDescription olarak atandı.',
+        'deleted' => ':employee personeline ait :jobDescription ataması silindi.',
+        'permanentDeleted' => ':employee personeline ait :jobDescription ataması kalıcı olarak silindi.',
+        'restored' => ':employee personeline ait :jobDescription ataması geri getirildi.',
+        'updated' => ':employee personeline ait :jobDescription ataması güncellendi.'
+    ],
     'employee' => [
         'created' => ':employee isimli personel oluşturuldu.',
         'deleted' => ':employee isimli personel silindi.',

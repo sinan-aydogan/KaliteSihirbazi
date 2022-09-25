@@ -22,6 +22,13 @@ return [
         'restored' => 'The job description named :jobDescription restored successfully',
         'updated' => 'The job description named :jobDescription has been updated successfully'
     ],
+    'jobDescriptionAssignment' => [
+        'created' => ':employee assigned as a :jobDescription successfully',
+        'deleted' => ':jobDescription of the assignment of :employee deleted successfully',
+        'permanentDeleted' => ':jobDescription of the assignment of :employee permanent deleted successfully',
+        'restored' => ':employee reassigned as a :jobDescription successfully',
+        'updated' => ':jobDescription of the assignment of :employee updated successfuly'
+    ],
     'employee' => [
         'created' => 'The new employee named :employee has been created successfully',
         'deleted' => 'The employee named :employee deleted successfully',
