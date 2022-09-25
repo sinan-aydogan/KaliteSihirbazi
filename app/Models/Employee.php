@@ -38,11 +38,13 @@ class Employee extends Model
      * @var array
      */
     protected $casts = [
-        'birthday' => 'datetime',
-        'employment_date' => 'datetime',
-        'leaving_date' => 'datetime',
+        'birthday' => 'date',
+        'employment_date' => 'date',
+        'leaving_date' => 'date',
         'staffName' => 'string',
-        'contact_info' => 'array'
+        'contact_info' => 'array',
+        'is_married' => 'boolean',
+        'has_account' => 'boolean',
     ];
 
     public function getemployeeNameAttribute()
@@ -72,8 +74,16 @@ class Employee extends Model
     /**
      * Get the staff department.
      */
-    public function department()
+    public function department(): BelongsTo
     {
         return $this->belongsTo(Department::class, 'department_id');
+    }
+
+    /**
+     * Get the job description assigments.
+     */
+    public function jdAssignments()
+    {
+        return JobDescriptionAssignment::where('employee_id', $this->id)->with('jobDescription:id,name', 'appointer:id,name')->get();
     }
 }

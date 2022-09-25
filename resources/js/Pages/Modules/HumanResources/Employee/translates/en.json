@@ -7,6 +7,9 @@
     "createPage": {
       "title": "Create a Employee",
       "subTitle": "Create a new employee for your company"
+    },
+    "jdAssigmentModal": {
+      "title": "Assign a Job Description to Employee"
     }
   },
   "term": {
@@ -53,7 +56,7 @@
     "fired": "Fired",
     "left": "Left",
     "other": "Other",
-    "assigmentDate": "Assigment Date",
+    "assignment_date": "Assigment Date",
     "endingDate": "Ending Date",
     "password": "Password",
     "randomRegenerate": "Random Regenerate",
@@ -63,11 +66,16 @@
     "careerPathing": "Career Pathing",
     "timeOff": "Time Off",
     "debt": "Debt",
-    "education": "Education"
+    "education": "Education",
+    "appointer": "Appointer"
   },
   "message": {
     "feedback": {
-      "emptyEmergencyContactsList": "No emergency contact have been added yet"
+      "emptyEmergencyContactsList": "No emergency contact have been added yet",
+      "emptyJobDescriptionAssigment": "No job description assigment to this employee"
     }
+  },
+  "action": {
+    "makeAssigment": "Görev Ataması Yap"
   }
 }

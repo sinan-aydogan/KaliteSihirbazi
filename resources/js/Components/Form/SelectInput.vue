@@ -1,5 +1,5 @@
 <script setup>
-import {ref} from "vue";
+import {ref, watch} from "vue";
 import {onClickOutside} from "@vueuse/core";
 
 const props = defineProps({
@@ -51,6 +51,10 @@ const clear = () => {
   showOptions.value = false;
   emit("update:modelValue", null);
 }
+
+watch(()=>props.modelValue, ()=>{
+  emit('changed')
+})
 </script>
 
 <template>
@@ -88,10 +92,10 @@ const clear = () => {
 
     <!--Options-->
       <div v-if="showOptions"
-           class="absolute z-50 bg-white dark:bg-slate-600 border shadow-lg rounded-md py-1 w-full">
+           class="absolute z-50 bg-white dark:bg-slate-800 border dark:border-slate-600 shadow-lg rounded-md py-1 w-full">
         <template v-for="option in options" :key="option">
           <div @click="select(option)"
-               class="flex justify-between items-center border-b last:border-b-0 last:rounded-b first:rounded-t py-1 px-2 hover:bg-slate-100 dark:hover:bg-slate-800/50 cursor-pointer transition-all">
+               class="flex justify-between items-center border-b dark:border-slate-600 last:border-b-0 last:rounded-b first:rounded-t py-1 px-2 hover:bg-slate-100 dark:hover:bg-slate-600/75 cursor-pointer transition-all">
             <!--Label-->
             <div>
               <slot v-if="$slots.hasOwnProperty('option')" name="option" :props="option"></slot>

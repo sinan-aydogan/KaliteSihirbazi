@@ -234,7 +234,7 @@ const handleDelete = (id) => {
     <Table
         :data="tableData"
         :headers="tableHeaders"
-        @view="Inertia.visit(route('employee.show', $event.id))"
+        @view="Inertia.visit(route('employee-personal-info.index', $event.id))"
         @edit="getRowInfo($event.id)"
         show-action
         edit-action
@@ -244,7 +244,7 @@ const handleDelete = (id) => {
       <template #employeeName="{props}">
         <component
             :is="props['account'] ? Link : 'div'"
-            :href="props['account'] ? route('employee.show', props.account.accountable_id) : null"
+            :href="props['account'] ? route('employee-personal-info.index', props.account.accountable_id) : null"
             class="flex space-x-2 items-center"
         >
           <Avatar v-if="props['account']" :src="props.account.profile_photo_url"/>
@@ -395,7 +395,7 @@ const handleDelete = (id) => {
 
           <!--Emergency Contact Add Form-->
           <div v-if="showEmergencyContactForm"
-               class="col-span-12 flex flex-col -mt-6 border border-slate-500 p-2 rounded-lg">
+               class="col-span-12 flex flex-col border border-slate-500 p-2 rounded-lg">
             <div class="relative flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-2">
 
               <!--Name-->

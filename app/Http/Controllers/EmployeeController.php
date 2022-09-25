@@ -6,7 +6,6 @@ use App\Models\Department;
 use App\Models\Employee;
 use App\Http\Requests\StoreEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
-use App\Models\User;
 use Inertia\Inertia;
 
 class EmployeeController extends Controller
@@ -61,7 +60,7 @@ class EmployeeController extends Controller
 
         $employee->save();
 
-        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.employee.created', ['employee' => $employee->name])]);
+        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.employee.created', ['employee' => $employee->employeeName])]);
 
         return redirect()->back();
     }
@@ -75,9 +74,10 @@ class EmployeeController extends Controller
     public function show(Employee $employee)
     {
         $employee['department'] = $employee->department;
+        $employee['jdAssignments'] = $employee->jdAssignments();
 
         return Inertia::render('Modules/HumanResources/Employee/ShowPage', [
-            'data' => $employee
+            'employee' => $employee,
         ]);
     }
 
@@ -97,11 +97,18 @@ class EmployeeController extends Controller
      *
      * @param  \App\Http\Requests\UpdateEmployeeRequest  $request
      * @param  \App\Models\Employee  $employee
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateEmployeeRequest $request, Employee $employee)
     {
-        //
+        $employee->update($request->all());
+        if($employee->account && $request->name){
+            $employee->account->name = $request->name;
+            $employee->push();
+        }
+        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.employee.updated', ['employee' => $employee->employeeName])]);
+
+        return redirect()->back()->with('employee',$employee);
     }
 
     /**
