@@ -28,9 +28,9 @@ const notificationStyle = {
           </div>
         </div>
       </template>
-      <div v-if="notifications.length>1" @click="notification.clear()" class="flex justify-end items-center space-x-2 -mt-5 mb-5 mr-10 text-xs cursor-pointer select-none">
-        <span>Tüm bildirimleri temizle</span>
-        <font-awesome-icon icon="fa-solid fa-eraser" size="lg" class="-mt-1 text-slate-600 animate-bounce"/>
+      <div v-if="notifications.length>1" @click="notification.clear()" class="flex justify-end items-center space-x-2 -mt-5 mb-5 mr-10 text-xs dark:text-slate-100 cursor-pointer select-none">
+        <span v-text="t('action.clearAllNotifications')"></span>
+        <font-awesome-icon icon="fa-solid fa-eraser" size="lg" class="-mt-1 animate-bounce"/>
       </div>
     </transition-group>
   </div>
