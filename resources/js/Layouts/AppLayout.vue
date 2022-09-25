@@ -16,6 +16,7 @@ import {useI18n} from "vue-i18n";
 
 /*Stores*/
 import {useNotification} from "@/Stores/useNotification.js";
+import dayjs from "dayjs";
 
 defineProps({
   title: String,
@@ -32,6 +33,7 @@ const {locale, t} = useI18n({
 
 onBeforeMount(() => {
   locale.value = usePage().props.value.user.language;
+  dayjs.locale(locale.value)
   addNotification();
 });
 

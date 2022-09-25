@@ -33,6 +33,9 @@ const i18n = createI18n({
     },
 });
 
+import dayjs from "dayjs";
+import "dayjs/locale/tr"
+
 const appName =
     window.document.getElementsByTagName("title")[0]?.innerText || "Laravel";
 
@@ -49,6 +52,7 @@ createInertiaApp({
         // vuei18n Global Import
         App.config.globalProperties.t = i18n.global.t;
         App.config.globalProperties.tm = i18n.global.tm;
+        App.config.globalProperties.dayjs = dayjs;
 
         return App
             .component("font-awesome-icon", FontAwesomeIcon)
