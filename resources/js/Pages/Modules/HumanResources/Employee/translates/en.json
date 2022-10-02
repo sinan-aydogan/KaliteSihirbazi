@@ -67,7 +67,9 @@
     "timeOff": "Time Off",
     "debt": "Debt",
     "education": "Education",
-    "appointer": "Appointer"
+    "appointer": "Appointer",
+    "properties": "Properties",
+    "types": "Type | Types"
   },
   "message": {
     "feedback": {

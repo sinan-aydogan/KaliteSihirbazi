@@ -7,6 +7,10 @@
     "createPage": {
       "title": "Görev Tanımı Oluştur",
       "subTitle": "Çalışanlarınız için yeniş görev tanımı oluşturun"
+    },
+    "deletedPage": {
+      "title": "Silinen Görev Tanımları",
+      "subTitle": "Silinen görev tanımlarını kurtarabilir veya kalıcı olarak silebilirsiniz"
     }
   },
   "term": {
