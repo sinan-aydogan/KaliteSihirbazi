@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -47,7 +46,7 @@ Route::middleware([
     /*Modules*/
     $mRoutes = [
         ['uri'=>'department', 'model'=>'department', 'controller'=> \App\Http\Controllers\DepartmentController::class],
-        ['uri'=>'warehouse', 'model'=>'warehouse', 'controller'=>\App\Http\Controllers\WarehouseController::class],
+        ['uri'=>'warehouse', 'model'=>'warehouse', 'controller'=> \App\Http\Controllers\Warehouse\WarehouseController::class, 'settingController' => \App\Http\Controllers\Warehouse\WarehouseSettingController::class],
         ['uri'=>'vehicles', 'model'=>'vehicles', 'controller'=>\App\Http\Controllers\VehicleController::class],
         ['uri'=>'device', 'model'=>'device', 'controller'=>\App\Http\Controllers\DeviceController::class],
         ['uri'=>'machine', 'model'=>'machine', 'controller'=>\App\Http\Controllers\MachineController::class],
@@ -80,12 +79,21 @@ Route::middleware([
     ];
 
     foreach ($mRoutes as $mRoute){
+        /*Setting*/
+        if(isset($mRoute['settingController'])){
+            Route::get($mRoute['uri']."/setting", [$mRoute['settingController'], 'index'])->withTrashed()->name($mRoute['uri']."-setting.index");
+        }
+        /*Resource*/
         Route::resource($mRoute['uri'], $mRoute['controller']);
+        /*Search*/
         Route::post($mRoute['uri'], [$mRoute['controller'], 'index'])->name($mRoute['uri'].".search");
+        /*Regenerate Store Route because of the Search*/
         Route::post($mRoute['uri']."-store", [$mRoute['controller'], 'store'])->name($mRoute['uri'].".store");
+        /*Soft Delete Routes*/
         Route::get($mRoute['uri']."-deleted", [$mRoute['controller'], 'deleted'])->name($mRoute['uri'].".deleted");
         Route::delete($mRoute['uri']."-permanent-delete/{".$mRoute['model']."}", [$mRoute['controller'], 'permanentDestroy'])->withTrashed()->name($mRoute['uri'].".permanent-delete");
         Route::get($mRoute['uri']."-restore/{".$mRoute['model']."}", [$mRoute['controller'], 'restore'])->withTrashed()->name($mRoute['uri'].".restore");
+
     }
 
     /*Employee Management Pages*/
@@ -95,6 +103,10 @@ Route::middleware([
     Route::get('employee/{employee}/time-off', [\App\Http\Controllers\Employee\TimeOffController::class, 'index'])->name('employee-time-off.index');
     Route::get('employee/{employee}/debt', [\App\Http\Controllers\Employee\DebtController::class, 'index'])->name('employee-debt.index');
     Route::get('employee/{employee}/education', [\App\Http\Controllers\Employee\EducationController::class, 'index'])->name('employee-education.index');
+
+    /*Warehouse Setting Pages*/
+    Route::resource('warehouse-type', \App\Http\Controllers\Warehouse\WarehouseTypeController::class);
+    Route::get('warehouse-setting-property', [\App\Http\Controllers\Warehouse\WarehousePropertyController::class, 'index'])->name('warehouse-setting-property.index');
 });
 
 // Test Route
