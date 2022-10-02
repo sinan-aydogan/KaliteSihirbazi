@@ -35,5 +35,19 @@ return [
         'permanentDeleted' => 'The employee named :employee permanently deleted successfully',
         'restored' => 'The employee named :employee restored successfully',
         'updated' => 'The employee named :employee has been updated successfully'
+    ],
+    'warehouse' => [
+        'created' => 'The new warehouse named :warehouse has been created successfully',
+        'deleted' => 'The warehouse named :warehouse deleted successfully',
+        'permanentDeleted' => 'The warehouse named :warehouse permanently deleted successfully',
+        'restored' => 'The warehouse named :warehouse restored successfully',
+        'updated' => 'The warehouse named :warehouse has been updated successfully'
+    ],
+    'warehouseType' => [
+        'created' => 'The new warehouse type named :warehouseType has been created successfully',
+        'deleted' => 'The warehouse type named :warehouseType deleted successfully',
+        'permanentDeleted' => 'The warehouse type named :warehouseType permanently deleted successfully',
+        'restored' => 'The warehouse type named :warehouseType restored successfully',
+        'updated' => 'The warehouse type named :warehouseType has been updated successfully'
     ]
 ];

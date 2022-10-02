@@ -35,5 +35,19 @@ return [
         'permanentDeleted' => ':employee isimli personel kalıcı olarak silindi.',
         'restored' => ':employee isimli personel geri getirildi.',
         'updated' => ':employee isimli personelin bilgileri güncellendi.'
-    ]
+    ],
+    'warehouse' => [
+        'created' => ':warehouse isimli depo oluşturuldu.',
+        'deleted' => ':warehouse isimli depo silindi.',
+        'permanentDeleted' => ':warehouse isimli depo kalıcı olarak silindi.',
+        'restored' => ':warehouse isimli depo geri getirildi.',
+        'updated' => ':warehouse isimli depo güncellendi.'
+    ],
+    'warehouseType' => [
+        'created' => ':warehouseType isimli depo tipi oluşturuldu.',
+        'deleted' => ':warehouseType isimli depo tipi silindi.',
+        'permanentDeleted' => ':warehouseType isimli depo tipi kalıcı olarak silindi.',
+        'restored' => ':warehouseType isimli depo tipi geri getirildi.',
+        'updated' => ':warehouseType isimli depo tipi güncellendi.'
+    ],
 ];
