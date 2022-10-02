@@ -2,7 +2,7 @@
 import { useI18n } from "vue-i18n";
 import { computed } from "vue";
 
-export default function ({ roles, permissions }) {
+export default function () {
     const { t } = useI18n();
 
     /*Setting Menu Links*/
