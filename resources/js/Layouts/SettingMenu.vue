@@ -1,3 +1,44 @@
+<script setup>
+import {ref, onBeforeMount} from "vue";
+import {onClickOutside} from '@vueuse/core'
+import {Link} from "@inertiajs/inertia-vue3";
+const props = defineProps({
+  links: Array
+})
+
+/*Show SubMenu*/
+const subMenu = ref(null)
+const showingSubMenu = ref()
+const toggle = (id) => {
+  if (showingSubMenu.value === id) {
+    showingSubMenu.value = null
+  } else {
+    showingSubMenu.value = id
+  }
+};
+onClickOutside(subMenu, (event) => showSubMenu.value = false)
+
+/*Active Main Menu*/
+const activeMainLink = ref();
+onBeforeMount(() => {
+  let activePage;
+  props.links.forEach(ml => {
+
+    if (ml.links) {
+      ml.links.find(sl => {
+        if (sl.link === route().current()) {
+          activePage = sl
+        }
+      })
+    }
+  })
+
+  if (activePage) {
+    activeMainLink.value = activePage.id.split('-')[0]
+  }
+})
+</script>
+
 <template>
     <div>
         <template v-for="link in links">
@@ -7,7 +48,7 @@
                 <!-- Link -->
                 <template v-for="mainLink in link.items" :key="mainLink.id">
                     <!--MainMenu Links-->
-                    <component :is="mainLink.link ? 'Link' : 'a'"
+                    <component :is="mainLink.link ? Link : 'a'"
                                @click="activeMainLink = mainLink.id; toggle(mainLink.id)"
                                :href="mainLink.link ? route(mainLink.link) : '#'"
                                class="flex flex-shrink-0 px-2 py-[.4rem] justify-between items-center rounded-md hover:bg-slate-600 text-center cursor-pointer"
@@ -19,13 +60,13 @@
                         <!--Link Content-->
                         <div class="flex items-center space-x-2">
                             <!-- Icon -->
-                            <font-awesome-icon :icon="mainLink.icon"/>
+                            <font-awesome-icon v-if="mainLink['icon']" :icon="mainLink.icon"/>
                             <!-- Label -->
                             <span class="text-xs text-left" v-text="mainLink.label"></span>
                         </div>
 
                         <!--Trigger-->
-                        <font-awesome-icon v-if="mainLink.links" icon="angle-down" size="sm"/>
+                        <font-awesome-icon v-if="mainLink.links" icon="fa-solid fa-angle-down" size="sm"/>
                     </component>
 
                     <!--SubMenu Links-->
@@ -48,65 +89,3 @@
         </template>
     </div>
 </template>
-
-<script>
-/* Functions */
-import {Inertia} from "@inertiajs/inertia";
-import {ref, onBeforeMount} from "vue";
-import {onClickOutside} from '@vueuse/core'
-import {Link} from "@inertiajs/inertia-vue3";
-
-/* Components */
-import SettingMenuLinks from "@/Sources/settingMenu";
-
-export default {
-    name: "SettingMenu",
-    components: {
-        Link
-    },
-    setup() {
-        /*Links*/
-        const {links} = SettingMenuLinks(Inertia.page.props);
-
-        /*Show SubMenu*/
-        const subMenu = ref(null)
-        const showingSubMenu = ref()
-        const toggle = (id) => {
-            if (showingSubMenu.value === id) {
-                showingSubMenu.value = null
-            } else {
-                showingSubMenu.value = id
-            }
-        };
-        onClickOutside(subMenu, (event) => showSubMenu.value = false)
-
-        /*Active Main Menu*/
-        const activeMainLink = ref();
-        onBeforeMount(() => {
-            let activePage;
-            links.value.forEach(ml => {
-
-                if (ml.links) {
-                    ml.links.find(sl => {
-                        if (sl.link === route().current()) {
-                            activePage = sl
-                        }
-                    })
-                }
-            })
-
-            if (activePage) {
-                activeMainLink.value = activePage.id.split('-')[0]
-            }
-        })
-
-        return {
-            links,
-            activeMainLink,
-            subMenu,
-            showingSubMenu,
-            toggle
-        };
-    },
-}
-</script>
