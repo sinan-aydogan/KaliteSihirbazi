@@ -1,5 +1,43 @@
+<script setup>
+import SettingLayout from "@/Layouts/SettingLayout.vue";
+import ContentCard from "@/Layouts/ContentCard.vue";
+import InputGroup from "@/Components/Form/InputGroup.vue";
+import TextInput from "@/Components/Form/TextInput.vue";
+import Menu from "@/Sources/settingMenu"
+
+const {links} = Menu()
+
+const superAdmins = [
+  {
+    id: 1,
+    name: "Sinan AYDOĞAN",
+    title: "Business Manager",
+    profile_photo_url: "https://i.pravatar.cc/150/21",
+    assignedDate: '03.09.2021',
+    assignedBy: 0
+  },
+  {
+    id: 2,
+    name: "Hamdi KAYA",
+    title: "IT Manager",
+    profile_photo_url: "https://i.pravatar.cc/150/25",
+    assignedDate: '01.03.2022',
+    assignedBy: 1
+  },
+  {
+    id: 3,
+    name: "Zuhal TAŞÇI",
+    title: "Factory Manager",
+    profile_photo_url: "https://i.pravatar.cc/150/25",
+    assignedDate: '05.01.2022',
+    assignedBy: 1
+  }
+]
+
+</script>
+
 <template>
-    <setting-layout :title="$t('settingMenu.generalSettings')">
+    <setting-layout :links="links" :title="$t('settingMenu.generalSettings')">
         <content-card
             :title="$t('settingMenu.generalSettings')"
             :sub-title="$t('settingMenu.generalSettingsDesc')"
@@ -121,51 +159,3 @@
         </content-card>
     </setting-layout>
 </template>
-
-<script>
-import SettingLayout from "@/Layouts/SettingLayout.vue";
-import ContentCard from "@/Layouts/ContentCard.vue";
-import InputGroup from "@/Components/Form/InputGroup.vue";
-import TextInput from "@/Components/Form/TextInput.vue";
-
-export default {
-    name: "Index",
-    components: {TextInput, InputGroup, ContentCard, SettingLayout},
-    setup() {
-        const superAdmins = [
-            {
-                id: 1,
-                name: "Sinan AYDOĞAN",
-                title: "Business Manager",
-                profile_photo_url: "https://i.pravatar.cc/150/21",
-                assignedDate: '03.09.2021',
-                assignedBy: 0
-            },
-            {
-                id: 2,
-                name: "Hamdi KAYA",
-                title: "IT Manager",
-                profile_photo_url: "https://i.pravatar.cc/150/25",
-                assignedDate: '01.03.2022',
-                assignedBy: 1
-            },
-            {
-                id: 3,
-                name: "Zuhal TAŞÇI",
-                title: "Factory Manager",
-                profile_photo_url: "https://i.pravatar.cc/150/25",
-                assignedDate: '05.01.2022',
-                assignedBy: 1
-            }
-        ]
-
-        return {
-            superAdmins
-        }
-    }
-}
-</script>
-
-<style scoped>
-
-</style>
