@@ -175,7 +175,7 @@ const handleDelete = (id) => {
 </script>
 
 <template>
-  <app-layout :title="tm('title.indexPage.title')" :sub-title="tm('title.indexPage.subTitle')">
+  <app-layout :title="tm('title.deletedPage.title')" :sub-title="tm('title.deletedPage.subTitle')">
     <template #actionArea>
       <simple-button type="route" :link="route('department.index')" color="blue">
         <font-awesome-icon icon="fa-solid fa-left-long" class="mr-2" />
