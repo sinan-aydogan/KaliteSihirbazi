@@ -17,8 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('code',10)->unique();
             $table->string('name',100);
-            $table->string('type',10)->default('general');
-            $table->foreignIdFor(\App\Models\User::class)->nullable();
+            $table->foreignIdFor(\App\Models\WarehouseType::class)->nullable();
+            $table->foreignIdFor(\App\Models\Employee::class)->nullable();
+            $table->foreignIdFor(\App\Models\Department::class)->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
