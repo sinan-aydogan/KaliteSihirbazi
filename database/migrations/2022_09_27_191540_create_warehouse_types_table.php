@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('warehouses', function (Blueprint $table) {
+        Schema::create('warehouse_types', function (Blueprint $table) {
             $table->id();
-            $table->string('code',10)->unique();
-            $table->string('name',100);
-            $table->foreignIdFor(\App\Models\WarehouseType::class)->nullable();
-            $table->foreignIdFor(\App\Models\Employee::class)->nullable();
-            $table->foreignIdFor(\App\Models\Department::class)->nullable();
-            $table->softDeletes();
+            $table->string('code', 10)->unique();
+            $table->string('name',255);
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('warehouses');
+        Schema::dropIfExists('warehouse_types');
     }
 };

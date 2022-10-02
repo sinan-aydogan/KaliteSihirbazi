@@ -7,6 +7,10 @@
     "createPage": {
       "title": "Create a New Department",
       "subTitle": "Create a new department for your business"
+    },
+    "deletedPage": {
+      "title": "Deleted Departments",
+      "subTitle": "You can restore deleted departments or permanent delete them"
     }
   },
   "term": {

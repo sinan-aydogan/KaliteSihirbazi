@@ -7,6 +7,10 @@
     "createPage": {
       "title": "Departman Oluştur",
       "subTitle": "İşletmeniz için yeni bir departman oluşturun"
+    },
+    "deletedPage": {
+      "title": "Silinmiş Departmanlar",
+      "subTitle": "Silinen departmanları kurtarabilir veya kalıcı olarak silebiliriniz"
     }
   },
   "term": {

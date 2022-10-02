@@ -12,7 +12,7 @@ import {
 /*Component*/
 import SimpleButton from "@/Components/Button/SimpleButton.vue";
 
-const emit = defineEmits(['close', 'submit', 'reset'])
+const emit = defineEmits(['closed', 'submit', 'reset'])
 
 const props = defineProps({
   modelValue: {
@@ -100,6 +100,7 @@ const {closeable, modelValue, maxWidth} = toRefs(props);
 const close = () => {
   if (closeable.value) {
     emit("update:modelValue", false);
+    emit("closed");
     emit("reset");
     isExpanded.value = false;
   }
@@ -326,8 +327,7 @@ updateSize();
                 <!--Close Button-->
                 <div v-if="modelValue && closeButton" @click="close()"
                      class="flex justify-center items-center w-6 h-6 hover:bg-slate-200 rounded-full dark:hover:bg-rose-600 cursor-pointer">
-                  <font-awesome-icon icon="x" @click="$emit('update:modelValue', '')"
-                                     class="w-4 h-4 text-slate-600 hover:text-rose-600 dark:text-slate-200 hover:dark:text-slate-200"/>
+                  <font-awesome-icon icon="x" class="w-4 h-4 text-slate-600 hover:text-rose-600 dark:text-slate-200 hover:dark:text-slate-200"/>
                 </div>
               </div>
             </div>

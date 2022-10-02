@@ -1,0 +1,43 @@
+{
+  "title": {
+    "indexPage": {
+      "title": "Warehouses",
+      "subTitle": "You can manage warehouses from this module"
+    },
+    "createPage": {
+      "title": "Create a New Warehouse",
+      "subTitle": "Create a new warehouse for your business"
+    },
+    "deletedPage": {
+      "title": "Deleted Warehouses",
+      "subTitle": "You can restore deleted warehouses or permanent delete them"
+    },
+    "typeIndexPage": {
+      "title": "Warehouse Types",
+      "subTitle": "You can manage warehouses types from this module"
+    },
+    "typeCreatePage": {
+      "title": "Create a New Warehouse Type",
+      "subTitle": "Create a new warehouse type for your warehouses"
+    }
+  },
+  "action": {
+    "addItem": "Add an item stocked in this warehouse"
+  },
+  "term": {
+    "warehouse": "Warehouse | Warehouses",
+    "code": "Warehouse Code",
+    "name": "Warehouse Name",
+    "type": "Warehouse Type",
+    "typeName": "Warehouse Type Name",
+    "supervisor": "Supervisor",
+    "department": "Related Department",
+    "commonUse": "Common Use",
+    "commonUseDesc": "This warehouse is available common use for all use"
+  },
+  "message": {
+    "feedback": {
+      "noAttachedItems": "No items have yet been associated with this warehouse"
+    }
+  }
+}

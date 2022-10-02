@@ -338,6 +338,7 @@
     "filters": "Filters",
     "generalDetails": "General Details",
     "inactive": "Inactive",
+    "manageModule": "Manage Module",
     "next": "Next",
     "no": "No",
     "phoneNumber": "Phone Number",
@@ -349,7 +350,10 @@
     "type": "Type",
     "undefined": "Undefined",
     "value": "Value",
-    "yes": "Yes"
+    "yes": "Yes",
+    "generalSettings": "General Settings",
+    "property": "Property",
+    "properties": "Properties"
   },
   "warehouse": {
     "create": {

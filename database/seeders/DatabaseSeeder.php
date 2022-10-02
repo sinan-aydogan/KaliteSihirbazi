@@ -25,10 +25,11 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             ModuleSeeder::class,
             DepartmentSeeder::class,
+            WarehouseTypeSeeder::class,
             WarehouseSeeder::class,
             SupplierTypeSeeder::class,
             SupplierTagSeeder::class,
-            JobDescriptionSeeder::class
+            JobDescriptionSeeder::class,
         ]);
     }
 }

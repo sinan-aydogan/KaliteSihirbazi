@@ -7,6 +7,10 @@
     "createPage": {
       "title": "Create a Job Description",
       "subTitle": "Create a new job description for your employees"
+    },
+    "deletedPage": {
+      "title": "Deleted Job Description",
+      "subTitle": "You can restore deleted job descriptions or permanent delete them"
     }
   },
   "term": {

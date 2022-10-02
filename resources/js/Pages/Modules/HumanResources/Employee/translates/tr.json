@@ -67,7 +67,9 @@
     "timeOff": "İzin Kullanımı",
     "debt": "Zimmetli Malzeme",
     "education": "Eğitim",
-    "appointer": "Atayan"
+    "appointer": "Atayan",
+    "properties": "Özellikler",
+    "type": "Depo Tipi"
   },
   "message": {
     "feedback": {

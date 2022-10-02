@@ -314,6 +314,7 @@
     "filters": "Filtreler",
     "generalDetails": "Genel Detaylar",
     "inactive": "Pasif",
+    "manageModule": "Modül Yönetimi",
     "next": "Sonraki",
     "no": "Hayır",
     "phoneNumber": "Telefon Numarası",
@@ -325,7 +326,10 @@
     "type": "Tür",
     "undefined": "Tanımlanmamış",
     "value": "Değer",
-    "yes": "Evet"
+    "yes": "Evet",
+    "generalSettings": "Genel Ayarlar",
+    "property": "Özellik",
+    "properties": "Özellikler"
   },
   "warehouse": {
     "create": {
