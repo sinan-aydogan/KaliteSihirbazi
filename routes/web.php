@@ -106,7 +106,6 @@ Route::middleware([
 
     /*Warehouse Setting Pages*/
     Route::resource('warehouse-type', \App\Http\Controllers\Warehouse\WarehouseTypeController::class);
-    Route::get('warehouse-setting-property', [\App\Http\Controllers\Warehouse\WarehousePropertyController::class, 'index'])->name('warehouse-setting-property.index');
 });
 
 // Test Route
