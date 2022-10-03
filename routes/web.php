@@ -70,6 +70,7 @@ Route::middleware([
         ['uri'=>'document-distribution-point', 'model'=>'documentDistributionPoint', 'controller'=>\App\Http\Controllers\DistributionPointController::class],
         ['uri'=>'document-action', 'model'=>'documentAction', 'controller'=>\App\Http\Controllers\DocumentActionController::class],
         ['uri'=>'measurement-device', 'model'=>'measurementDevice', 'controller'=>\App\Http\Controllers\MeasurementDeviceController::class],
+        ['uri'=>'measurement-device-type', 'model'=>'measurementDeviceType', 'controller'=>\App\Http\Controllers\MeasurementDeviceTypeController::class],
         ['uri'=>'calibration-task', 'model'=>'calibrationTask', 'controller'=>\App\Http\Controllers\CalibrationTaskController::class],
         ['uri'=>'measurement-device-action', 'model'=>'measurementDeviceAction', 'controller'=>\App\Http\Controllers\MeasurementDeviceActionController::class],
         ['uri'=>'audit', 'model'=>'audit', 'controller'=>\App\Http\Controllers\AuditController::class],
