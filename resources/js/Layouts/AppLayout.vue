@@ -3,7 +3,6 @@
 import { onBeforeMount, onUpdated, ref, watch} from "vue";
 import {Head, usePage} from "@inertiajs/inertia-vue3";
 import {useFullscreen, useBreakpoints, breakpointsTailwind} from '@vueuse/core'
-import {Inertia} from "@inertiajs/inertia";
 import Theme from "@/Functions/Theme";
 import Notification from "@/Components/Notification/Notification.vue"
 
@@ -68,11 +67,6 @@ const addNotification = () => {
 watch(()=>usePage().props.value.flash.message, ()=>{
   addNotification();
 })
-
-/*Logout*/
-const logout = () => {
-  Inertia.post(route("logout"));
-};
 </script>
 
 <template>

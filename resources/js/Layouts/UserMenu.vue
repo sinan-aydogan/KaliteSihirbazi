@@ -1,3 +1,34 @@
+<script setup>
+/* Funtions */
+import { onMounted, onUnmounted, ref } from "vue";
+
+/* Components */
+import JetDropdownLink from "@/Jetstream/DropdownLink.vue";
+import {Inertia} from "@inertiajs/inertia";
+
+defineProps({
+  contentClasses: {
+    type: Array,
+    default: () => ["py-1", "bg-white"],
+  },
+})
+
+const open = ref(false);
+const closeOnEscape = (e) => {
+  if (open.value && e.key === "Escape") {
+    open.value = false;
+  }
+};
+
+onMounted(() => document.addEventListener("keydown", closeOnEscape));
+onUnmounted(() => document.removeEventListener("keydown", closeOnEscape));
+
+/*Logout*/
+const logout = () => {
+  Inertia.post(route("logout"));
+};
+</script>
+
 <template>
   <div class="relative">
     <!-- User Menu -->
@@ -125,42 +156,3 @@
     </transition>
   </div>
 </template>
-
-<script>
-/* Funtions */
-import { defineComponent, onMounted, onUnmounted, ref } from "vue";
-import {Link} from "@inertiajs/inertia-vue3"
-
-/* Components */
-import JetDropdownLink from "@/Jetstream/DropdownLink.vue";
-
-export default defineComponent({
-  props: {
-    contentClasses: {
-      default: () => ["py-1", "bg-white"],
-    },
-  },
-
-  components: {
-    JetDropdownLink,
-    Link
-  },
-
-  setup() {
-    let open = ref(false);
-
-    const closeOnEscape = (e) => {
-      if (open.value && e.key === "Escape") {
-        open.value = false;
-      }
-    };
-
-    onMounted(() => document.addEventListener("keydown", closeOnEscape));
-    onUnmounted(() => document.removeEventListener("keydown", closeOnEscape));
-
-    return {
-      open,
-    };
-  },
-});
-</script>
