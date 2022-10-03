@@ -49,5 +49,12 @@ return [
         'permanentDeleted' => 'The warehouse type named :warehouseType permanently deleted successfully',
         'restored' => 'The warehouse type named :warehouseType restored successfully',
         'updated' => 'The warehouse type named :warehouseType has been updated successfully'
-    ]
+    ],
+    'measurementDeviceType' => [
+        'created' => 'The new device type named :measurementDeviceType has been created successfully',
+        'deleted' => 'The device type named :measurementDeviceType deleted successfully',
+        'permanentDeleted' => 'The device type named :measurementDeviceType permanently deleted successfully',
+        'restored' => 'The device type named :measurementDeviceType restored successfully',
+        'updated' => 'The device type named :measurementDeviceType has been updated successfully'
+    ],
 ];
