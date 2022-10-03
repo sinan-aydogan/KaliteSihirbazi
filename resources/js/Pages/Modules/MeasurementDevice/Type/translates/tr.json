@@ -1,0 +1,20 @@
+{
+  "title": {
+    "indexPage": {
+      "title": "Ölçüm Cihazı Tipleri",
+      "subTitle": "Ölçüm cihazlarını kategorize etmenizi sağlayacak cihaz tiplerini yönetin"
+    },
+    "createPage": {
+      "title": "Ölçüm Cihazı Tipi Oluştur",
+      "subTitle": "Cihazlarınız için yeni bir cihaz tipi oluşturun"
+    },
+    "deletedPage": {
+      "title": "Silinmiş Cihazlar",
+      "subTitle": "Silinen cihazlarınızı kurtarabilir veya kalıcı olarak silebiliriniz"
+    }
+  },
+  "term": {
+    "code": "Tip Kodu",
+    "name": "Cihaz Tipi Adı"
+  }
+}

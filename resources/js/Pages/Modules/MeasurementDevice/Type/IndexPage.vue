@@ -1,0 +1,204 @@
+<script setup>
+import AppLayout from "@/Layouts/AppLayout.vue";
+import {ref} from "vue";
+import {Inertia} from "@inertiajs/inertia";
+import {useForm} from "@inertiajs/inertia-vue3";
+
+// Components
+import Modal from "@/Components/Modal/Modal.vue"
+import Table from "@/Components/Table/Table.vue"
+import SimpleButton from "@/Components/Button/SimpleButton.vue"
+import Form from "@/Components/Form/Form.vue"
+import FormSection from "@/Components/Form/FormSection.vue"
+import InputGroup from "@/Components/Form/InputGroup.vue"
+import TextInput from "@/Components/Form/TextInput.vue"
+import TextAreaInput from "@/Components/Form/TextAreaInput.vue"
+
+// Props
+const props = defineProps({
+  tableData: {
+    type: Object,
+    default: {}
+  }
+})
+
+// Multi-lang
+import Translates from "./translates"
+
+const {t, tm} = Translates();
+
+// Validation
+import {useVuelidate} from "@vuelidate/core"
+import {required, maxLength, helpers} from "@vuelidate/validators"
+
+/*Table*/
+const tableHeaders = [
+  {
+    id: 'code',
+    label: tm('term.code')
+  },
+  {
+    id: 'name',
+    label: tm('term.name')
+  },
+  {
+    id: "description",
+    label: tm('term.description')
+  }
+]
+const showModal = ref(false);
+
+/*Form*/
+const formType = ref("create");
+const formRef = ref()
+const form = useForm({
+  id: null,
+  code: "",
+  name: "",
+  description: ""
+})
+
+/*Related Data with select*/
+const loading = ref(false)
+const getDataModel = ref()
+const getData = (query) => {
+  if (query) {
+    loading.value = true
+    setTimeout(() => {
+      loading.value = false
+      Inertia.reload({
+        data: {
+          qD: query
+        },
+        preserveState: true,
+        preserveScroll: true,
+        only: [getDataModel.value]
+      })
+    }, 500)
+  } else {
+    props[getDataModel.value] = []
+  }
+}
+
+// Rules
+const rules = ref({
+  code: {
+    required: helpers.withMessage(t('message.validation.required'), required),
+    maxLength: helpers.withMessage(t('message.validation.maxLength', [10]), maxLength(10))
+  },
+  name: {
+    required: helpers.withMessage(t('message.validation.required'), required),
+    maxLength: helpers.withMessage(t('message.validation.maxLength', [255]), maxLength(255))
+  },
+})
+
+const v$ = useVuelidate(rules, form)
+
+/*Create*/
+const handleSubmit = async () => {
+  const isValidated = await v$.value.$validate()
+  if (!isValidated) return
+
+  if (formType.value === 'create') {
+    form.post(route('measurement-device-type.store'), {
+      onSuccess: () => {
+        form.reset();
+        v$.value.$reset();
+        showModal.value = false;
+      }
+    })
+  } else {
+    form.put(route('measurement-device-type.update', {id: form.id}), {
+      onSuccess: () => {
+        form.reset();
+        v$.value.$reset();
+        showModal.value = false;
+      }
+    })
+  }
+}
+
+/*Update*/
+const getRowInfo = (id) => {
+  axios.get(route("measurement-device-type.edit", {id: id})).then(response => {
+    form.id = response.data.id;
+    form.code = response.data.code;
+    form.name = response.data.name;
+    form.description = response.data.description;
+  })
+  showModal.value = true;
+  formType.value = "update"
+}
+
+/*Delete*/
+const handleDelete = (id) => {
+  Inertia.delete(route("measurement-device-type.destroy", id), {
+    preserveState: true,
+  });
+}
+
+</script>
+
+<template>
+  <app-layout :title="tm('title.indexPage.title')" :sub-title="tm('title.indexPage.subTitle')">
+    <template #actionArea>
+      <simple-button type="route" :link="route('measurement-device-type.deleted')" color="red">
+        <font-awesome-icon icon="trash-can" class="mr-2"/>
+        <span v-text="t('term.deletedItems')"/>
+      </simple-button>
+
+      <simple-button @click="showModal = true; formType = 'create'" color="green">
+        <font-awesome-icon icon="plus" class="mr-2"/>
+        <span v-text="t('action.addNew')"/>
+      </simple-button>
+    </template>
+    <Table
+        :data="tableData"
+        :headers="tableHeaders"
+        @edit="getRowInfo($event.id)"
+        @delete="handleDelete($event.id)"
+        edit-action
+        delete-action
+    ></Table>
+  </app-layout>
+
+  <teleport to="body">
+    <!--Modal-->
+    <Modal
+        v-model="showModal"
+        :header="tm('title.createPage.title')"
+        :subHeader="tm('title.createPage.subTitle')"
+        closeable
+        close-button
+    >
+      <Form full-size>
+        <FormSection
+            bg-less
+        >
+          <!-- Code -->
+          <input-group class="col-span-2" labelFor="code" :label="tm('term.code')" :errors="v$.code.$errors">
+            <text-input v-model="form.code"/>
+          </input-group>
+
+          <!-- Space Filler -->
+          <div class="col-span-4"></div>
+
+          <!-- Name -->
+          <input-group class="col-span-6" labelFor="name" :label="tm('term.name')"
+                       :errors="v$.name.$errors">
+            <text-input v-model="form.name"/>
+          </input-group>
+
+          <!-- Description -->
+          <input-group class="col-span-6" labelFor="description" :label="tm('term.description')">
+            <text-area-input v-model="form.description"/>
+          </input-group>
+        </FormSection>
+      </Form>
+      <template #footer>
+        <SimpleButton :label="t('action.reset')" color="orange" @click="form.reset()" />
+        <SimpleButton :label="t('action.create')" color="green" @click="handleSubmit" :loading="form.processing"/>
+      </template>
+    </Modal>
+  </teleport>
+</template>

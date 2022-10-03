@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
             SupplierTypeSeeder::class,
             SupplierTagSeeder::class,
             JobDescriptionSeeder::class,
+            MeasurementDeviceTypeSeeder::class
         ]);
     }
 }

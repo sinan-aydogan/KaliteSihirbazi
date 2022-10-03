@@ -50,4 +50,11 @@ return [
         'restored' => ':warehouseType isimli depo tipi geri getirildi.',
         'updated' => ':warehouseType isimli depo tipi güncellendi.'
     ],
+    'measurementDeviceType' => [
+        'created' => ':measurementDeviceType isimli cihaz tipi oluşturuldu.',
+        'deleted' => ':measurementDeviceType isimli cihaz tipi silindi.',
+        'permanentDeleted' => ':measurementDeviceType isimli cihaz tipi kalıcı olarak silindi.',
+        'restored' => ':measurementDeviceType isimli cihaz tipi geri getirildi.',
+        'updated' => ':measurementDeviceType isimli cihaz tipi güncellendi.'
+    ]
 ];

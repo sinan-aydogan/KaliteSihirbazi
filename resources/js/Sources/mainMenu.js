@@ -217,6 +217,13 @@ export default function ({roles, permissions}) {
                         link: 'measurement-device.index'
                     },
                     {
+                        id: 'md-mdt',
+                        label: t('mainMenu.measurementDeviceTypes'),
+                        icon: 'list-ul',
+                        type: "route",
+                        link: 'measurement-device-type.index'
+                    },
+                    {
                         id: 'md-co',
                         label: t('mainMenu.calibrationTasks'),
                         icon: 'code-commit',

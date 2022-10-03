@@ -98,7 +98,7 @@ import {
     faUserPlus,
     faRotateLeft,
     faHelmetSafety,
-    faUserTie, faVenus, faMars, faTransgender, faUser, faTrowelBricks,
+    faUserTie, faVenus, faMars, faTransgender, faUser, faTrowelBricks, faListUl,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -205,5 +205,6 @@ library.add(
     faMars,
     faTransgender,
     faUser,
-    faTrowelBricks
+    faTrowelBricks,
+    faListUl
 );
