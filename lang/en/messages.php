@@ -50,6 +50,13 @@ return [
         'restored' => 'The warehouse type named :warehouseType restored successfully',
         'updated' => 'The warehouse type named :warehouseType has been updated successfully'
     ],
+    'measurementDevice' => [
+        'created' => ':measurementDeviceCode coded new :measurementDeviceType has been created successfully',
+        'deleted' => ':measurementDeviceCode coded :measurementDeviceType deleted successfully',
+        'permanentDeleted' => ':measurementDeviceCode coded :measurementDeviceType permanently deleted successfully',
+        'restored' => ':measurementDeviceCode coded :measurementDeviceType restored successfully',
+        'updated' => ':measurementDeviceCode coded :measurementDeviceType has been updated successfully'
+    ],
     'measurementDeviceType' => [
         'created' => 'The new device type named :measurementDeviceType has been created successfully',
         'deleted' => 'The device type named :measurementDeviceType deleted successfully',
