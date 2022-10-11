@@ -21,11 +21,12 @@ return new class extends Migration
             $table->string('serial_no',255)->nullable();
             $table->json('properties')->nullable();
             $table->date('purchase_date')->nullable();
-            $table->string('purchase_price')->nullable();
+            $table->float('purchase_price')->nullable();
             $table->string('purchase_price_unit')->nullable();
             $table->foreignId('device_supervisor_id')->nullable();
             $table->foreignId('calibration_supervisor_id')->nullable();
             $table->foreignIdFor(\App\Models\Department::class)->nullable();
+            $table->foreignIdFor(\App\Models\MeasurementDeviceType::class)->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

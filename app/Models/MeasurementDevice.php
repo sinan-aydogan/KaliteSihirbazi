@@ -28,7 +28,8 @@ class MeasurementDevice extends Model
         'purchase_price_unit',
         'device_supervisor_id',
         'calibration_supervisor_id',
-        'department_id'
+        'department_id',
+        'measurement_device_type_id'
     ];
 
     /**
@@ -57,5 +58,11 @@ class MeasurementDevice extends Model
     public function department():BelongsTo
     {
         return $this->belongsTo(Department::class, 'department_id',);
+    }
+
+    // The department of the device
+    public function type():BelongsTo
+    {
+        return $this->belongsTo(MeasurementDeviceType::class, 'measurement_device_type_id',);
     }
 }
