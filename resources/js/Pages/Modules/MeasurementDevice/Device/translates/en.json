@@ -1,0 +1,30 @@
+{
+  "title": {
+    "indexPage": {
+      "title": "Lab. and Measurement Devices",
+      "subTitle": "You can manage lab. and measurement devices"
+    },
+    "createPage": {
+      "title": "Create Device",
+      "subTitle": "Create a new device for your company"
+    }
+  },
+  "term": {
+    "measurementDevice": "Measurement Device | Measurement Devices",
+    "laboratoryEquipment": "Laboratory Device | Laboratory Devices",
+    "deviceInfo": "Device Info",
+    "code": "Device No",
+    "brand": "Brand",
+    "model": "Model",
+    "serialNo": "Serial No",
+    "properties": "Properties",
+    "purchasingDate": "Purchasing Date",
+    "purchasingPrice": "Purchasing Price",
+    "purchasingPriceUnit": "Currency",
+    "managementInfo": "Management Info",
+    "deviceSupervisor": "Device Supervisor",
+    "calibrationSupervisor": "Calibration Supervisor",
+    "department": "Related Department",
+    "deviceType": "Device Type"
+  }
+}

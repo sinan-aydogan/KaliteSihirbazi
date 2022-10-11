@@ -111,7 +111,7 @@ watch(()=>usePage().props.value.flash.message, ()=>{
                         v-text="title"/>
 
                   <!--Sub Title-->
-                  <span v-if="subTitle" class="hidden sm:block text-xs text-gray-500 leading-none"
+                  <span v-if="subTitle" class="hidden sm:block text-xs text-slate-500 dark:text-slate-100/50 leading-none"
                         v-text="subTitle"/>
                 </div>
 

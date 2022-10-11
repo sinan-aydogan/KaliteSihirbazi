@@ -1,0 +1,30 @@
+{
+  "title": {
+    "indexPage": {
+      "title": "Ölçü Aletleri/Laboratuvar Cihazları",
+      "subTitle": "İşletmenizin sahalardaki ve laboratuvarlardaki cihazlarını yönetebilirsiniz"
+    },
+    "createPage": {
+      "title": "Cihaz Oluştur",
+      "subTitle": "İşletmenize yeni cihaz ekleyin"
+    }
+  },
+  "term": {
+    "measurementDevice": "Ölçü Aleti | Ölçü Aletleri",
+    "laboratoryEquipment": "Laboratuvar Cihazı | Laboratuvar Cihazları",
+    "deviceInfo": "Cihaz Bilgileri",
+    "code": "Cihaz No",
+    "brand": "Marka",
+    "model": "Model",
+    "serialNo": "Seri Numarası",
+    "properties": "Özellikller",
+    "purchasingDate": "Satın Alma Tarihi",
+    "purchasingPrice": "Satın Alma Fiyatı",
+    "purchasingPriceUnit": "Para Birimi",
+    "managementInfo": "Yönetim Bilgileri",
+    "deviceSupervisor": "Cihaz Sorumlusu",
+    "calibrationSupervisor": "Kalibrasyon Sorumlusu",
+    "department": "Bağlı Olduğu Departman",
+    "deviceType": "Cihaz Tipi"
+  }
+}
