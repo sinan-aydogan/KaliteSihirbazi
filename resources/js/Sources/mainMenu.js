@@ -228,7 +228,14 @@ export default function ({roles, permissions}) {
                         label: t('mainMenu.calibrationTasks'),
                         icon: 'code-commit',
                         type: "route",
-                        link: 'calibration-task.index'
+                        link: 'measurement-device-calibration.index'
+                    },
+                    {
+                        id: 'md-cf',
+                        label: t('mainMenu.calibrationFirms'),
+                        icon: 'building-columns',
+                        type: "route",
+                        link: 'calibration-firm.index'
                     },
                     {
                         id: 'md-ac',
