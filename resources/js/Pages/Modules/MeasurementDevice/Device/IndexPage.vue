@@ -169,7 +169,7 @@ const handleSubmit = async () => {
     <Table
         :data="tableData"
         :headers="tableHeaders"
-        @view="Inertia.visit(route('employee-personal-info.index', $event.id))"
+        @view="Inertia.visit(route('measurement-device-info.index', $event.id))"
         @edit="getRowInfo($event.id)"
         show-action
         edit-action
