@@ -25,6 +25,16 @@
     "deviceSupervisor": "Cihaz Sorumlusu",
     "calibrationSupervisor": "Kalibrasyon Sorumlusu",
     "department": "Bağlı Olduğu Departman",
-    "deviceType": "Cihaz Tipi"
+    "deviceType": "Cihaz Tipi",
+    "calibrationTasks": "Kalibrasyon Emirleri",
+    "deviceActions": "Aksiyonlar"
+  },
+  "message":{
+    "feedback" : {
+      "emptyCalibrationTasksList": "Henüz hiç kalibrasyon emri oluşturulmamış"
+    }
+  },
+  "action": {
+    "createCalibrationTask": "Kalibrasyon Emri Oluştur"
   }
 }
