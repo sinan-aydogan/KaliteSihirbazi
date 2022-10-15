@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Warehouse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreWarehouseTypeRequest;
 use App\Http\Requests\UpdateWarehouseTypeRequest;
-use App\Models\WarehouseType;
+use App\Models\Warehouse\WarehouseType;
 use Inertia\Inertia;
 
 class WarehouseTypeController extends Controller
@@ -53,7 +53,7 @@ class WarehouseTypeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\WarehouseType  $warehouseType
+     * @param  \App\Models\Warehouse\WarehouseType  $warehouseType
      * @return \Illuminate\Http\Response
      */
     public function show(WarehouseType $warehouseType)
@@ -64,7 +64,7 @@ class WarehouseTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\WarehouseType  $warehouseType
+     * @param  \App\Models\Warehouse\WarehouseType  $warehouseType
      * @return \Illuminate\Http\JsonResponse
      */
     public function edit(WarehouseType $warehouseType)
@@ -76,7 +76,7 @@ class WarehouseTypeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateWarehouseTypeRequest  $request
-     * @param  \App\Models\WarehouseType  $warehouseType
+     * @param  \App\Models\Warehouse\WarehouseType  $warehouseType
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateWarehouseTypeRequest $request, WarehouseType $warehouseType)
@@ -94,7 +94,7 @@ class WarehouseTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\WarehouseType  $warehouseType
+     * @param  \App\Models\Warehouse\WarehouseType  $warehouseType
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(WarehouseType $warehouseType)

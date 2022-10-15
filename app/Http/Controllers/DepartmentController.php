@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Department;
-use App\Models\Employee;
 use App\Http\Requests\StoreDepartmentRequest;
 use App\Http\Requests\UpdateDepartmentRequest;
+use App\Models\Department;
+use App\Models\HumanResources\Employee\Employee;
 use Inertia\Inertia;
 
 class DepartmentController extends Controller

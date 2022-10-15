@@ -3,6 +3,12 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Database\Seeders\HumanResources\JobDescription\JobDescriptionSeeder;
+use Database\Seeders\MeasurementDevice\Calibration\CalibrationFirmSeeder;
+use Database\Seeders\MeasurementDevice\MeasurementDeviceSeeder;
+use Database\Seeders\MeasurementDevice\MeasurementDeviceTypeSeeder;
+use Database\Seeders\Warehouse\WarehouseSeeder;
+use Database\Seeders\Warehouse\WarehouseTypeSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -32,6 +38,7 @@ class DatabaseSeeder extends Seeder
             JobDescriptionSeeder::class,
             MeasurementDeviceTypeSeeder::class,
             MeasurementDeviceSeeder::class,
+            CalibrationFirmSeeder::class
         ]);
     }
 }

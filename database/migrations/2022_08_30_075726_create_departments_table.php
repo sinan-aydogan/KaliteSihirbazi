@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('code',10)->unique();
             $table->string('name',255);
             $table->string('type',10)->default('main');
-            $table->foreignIdFor(\App\Models\Employee::class)->nullable();
+            $table->foreignIdFor(\App\Models\HumanResources\Employee\Employee::class)->nullable();
             $table->foreignIdFor(\App\Models\Department::class)->nullable();
             $table->softDeletes();
             $table->timestamps();

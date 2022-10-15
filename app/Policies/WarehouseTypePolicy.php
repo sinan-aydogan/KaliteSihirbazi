@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\WarehouseType;
+use App\Models\Warehouse\WarehouseType;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class WarehouseTypePolicy
@@ -25,7 +25,7 @@ class WarehouseTypePolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\WarehouseType  $warehouseType
+     * @param  \App\Models\Warehouse\WarehouseType  $warehouseType
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function view(User $user, WarehouseType $warehouseType)
@@ -48,7 +48,7 @@ class WarehouseTypePolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\WarehouseType  $warehouseType
+     * @param  \App\Models\Warehouse\WarehouseType  $warehouseType
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function update(User $user, WarehouseType $warehouseType)
@@ -60,7 +60,7 @@ class WarehouseTypePolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\WarehouseType  $warehouseType
+     * @param  \App\Models\Warehouse\WarehouseType  $warehouseType
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function delete(User $user, WarehouseType $warehouseType)
@@ -72,7 +72,7 @@ class WarehouseTypePolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\WarehouseType  $warehouseType
+     * @param  \App\Models\Warehouse\WarehouseType  $warehouseType
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function restore(User $user, WarehouseType $warehouseType)
@@ -84,7 +84,7 @@ class WarehouseTypePolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\WarehouseType  $warehouseType
+     * @param  \App\Models\Warehouse\WarehouseType  $warehouseType
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function forceDelete(User $user, WarehouseType $warehouseType)

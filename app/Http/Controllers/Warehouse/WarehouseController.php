@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreWarehouseRequest;
 use App\Http\Requests\UpdateWarehouseRequest;
 use App\Models\Department;
-use App\Models\Employee;
-use App\Models\Warehouse;
-use App\Models\WarehouseType;
+use App\Models\HumanResources\Employee\Employee;
+use App\Models\Warehouse\Warehouse;
+use App\Models\Warehouse\WarehouseType;
 use Inertia\Inertia;
 
 class WarehouseController extends Controller
@@ -75,7 +75,7 @@ class WarehouseController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Warehouse  $warehouse
+     * @param  \App\Models\Warehouse\Warehouse  $warehouse
      * @return \Inertia\Response
      */
     public function show(Warehouse $warehouse)
@@ -101,7 +101,7 @@ class WarehouseController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Warehouse  $warehouse
+     * @param  \App\Models\Warehouse\Warehouse  $warehouse
      * @return \Illuminate\Http\JsonResponse
      */
     public function edit(Warehouse $warehouse)
@@ -113,7 +113,7 @@ class WarehouseController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateWarehouseRequest  $request
-     * @param  \App\Models\Warehouse  $warehouse
+     * @param  \App\Models\Warehouse\Warehouse  $warehouse
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateWarehouseRequest $request, Warehouse $warehouse)
@@ -124,7 +124,7 @@ class WarehouseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Warehouse  $warehouse
+     * @param  \App\Models\Warehouse\Warehouse  $warehouse
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Warehouse $warehouse)
@@ -139,7 +139,7 @@ class WarehouseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Warehouse  $warehouse
+     * @param  \App\Models\Warehouse\Warehouse  $warehouse
      * @return \Illuminate\Http\RedirectResponse
      */
     public function permanentDestroy(Warehouse $warehouse)
@@ -154,7 +154,7 @@ class WarehouseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Warehouse  $warehouse
+     * @param  \App\Models\Warehouse\Warehouse  $warehouse
      * @return \Illuminate\Http\RedirectResponse
      */
     public function restore(Warehouse $warehouse)

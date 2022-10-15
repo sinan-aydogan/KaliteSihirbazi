@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('job_description_assignments', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\App\Models\Employee::class);
-            $table->foreignIdFor(\App\Models\JobDescription::class);
+            $table->foreignIdFor(\App\Models\HumanResources\Employee\Employee::class);
+            $table->foreignIdFor(\App\Models\HumanResources\JobDescription\JobDescription::class);
             $table->foreignId('appointer_id');
             $table->date('assignment_date')->default(\Carbon\Carbon::now());
             $table->boolean('status')->default(true);

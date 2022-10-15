@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\JobDescriptionAssignment;
+use App\Models\HumanResources\JobDescription\JobDescriptionAssignment;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -25,7 +25,7 @@ class JobDescriptionAssignmentPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\JobDescriptionAssignment  $jobDescriptionAssignment
+     * @param  \App\Models\HumanResources\JobDescription\JobDescriptionAssignment  $jobDescriptionAssignment
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function view(User $user, JobDescriptionAssignment $jobDescriptionAssignment)
@@ -48,7 +48,7 @@ class JobDescriptionAssignmentPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\JobDescriptionAssignment  $jobDescriptionAssignment
+     * @param  \App\Models\HumanResources\JobDescription\JobDescriptionAssignment  $jobDescriptionAssignment
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function update(User $user, JobDescriptionAssignment $jobDescriptionAssignment)
@@ -60,7 +60,7 @@ class JobDescriptionAssignmentPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\JobDescriptionAssignment  $jobDescriptionAssignment
+     * @param  \App\Models\HumanResources\JobDescription\JobDescriptionAssignment  $jobDescriptionAssignment
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function delete(User $user, JobDescriptionAssignment $jobDescriptionAssignment)
@@ -72,7 +72,7 @@ class JobDescriptionAssignmentPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\JobDescriptionAssignment  $jobDescriptionAssignment
+     * @param  \App\Models\HumanResources\JobDescription\JobDescriptionAssignment  $jobDescriptionAssignment
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function restore(User $user, JobDescriptionAssignment $jobDescriptionAssignment)
@@ -84,7 +84,7 @@ class JobDescriptionAssignmentPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\JobDescriptionAssignment  $jobDescriptionAssignment
+     * @param  \App\Models\HumanResources\JobDescription\JobDescriptionAssignment  $jobDescriptionAssignment
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function forceDelete(User $user, JobDescriptionAssignment $jobDescriptionAssignment)

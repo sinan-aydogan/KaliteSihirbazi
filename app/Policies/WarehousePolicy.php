@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\Warehouse;
+use App\Models\Warehouse\Warehouse;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class WarehousePolicy
@@ -25,7 +25,7 @@ class WarehousePolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Warehouse  $warehouse
+     * @param  \App\Models\Warehouse\Warehouse  $warehouse
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function view(User $user, Warehouse $warehouse)
@@ -48,7 +48,7 @@ class WarehousePolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Warehouse  $warehouse
+     * @param  \App\Models\Warehouse\Warehouse  $warehouse
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function update(User $user, Warehouse $warehouse)
@@ -60,7 +60,7 @@ class WarehousePolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Warehouse  $warehouse
+     * @param  \App\Models\Warehouse\Warehouse  $warehouse
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function delete(User $user, Warehouse $warehouse)
@@ -72,7 +72,7 @@ class WarehousePolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Warehouse  $warehouse
+     * @param  \App\Models\Warehouse\Warehouse  $warehouse
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function restore(User $user, Warehouse $warehouse)
@@ -84,7 +84,7 @@ class WarehousePolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Warehouse  $warehouse
+     * @param  \App\Models\Warehouse\Warehouse  $warehouse
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function forceDelete(User $user, Warehouse $warehouse)

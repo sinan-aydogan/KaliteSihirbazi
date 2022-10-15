@@ -26,7 +26,7 @@ return new class extends Migration
             $table->foreignId('device_supervisor_id')->nullable();
             $table->foreignId('calibration_supervisor_id')->nullable();
             $table->foreignIdFor(\App\Models\Department::class)->nullable();
-            $table->foreignIdFor(\App\Models\MeasurementDeviceType::class)->nullable();
+            $table->foreignIdFor(\App\Models\MeasurementDevice\MeasurementDeviceType::class)->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

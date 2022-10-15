@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\Education;
+use App\Models\HumanResources\Education\Education;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -25,7 +25,7 @@ class EducationPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Education  $education
+     * @param  \App\Models\HumanResources\Education\Education  $education
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function view(User $user, Education $education)
@@ -48,7 +48,7 @@ class EducationPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Education  $education
+     * @param  \App\Models\HumanResources\Education\Education  $education
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function update(User $user, Education $education)
@@ -60,7 +60,7 @@ class EducationPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Education  $education
+     * @param  \App\Models\HumanResources\Education\Education  $education
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function delete(User $user, Education $education)
@@ -72,7 +72,7 @@ class EducationPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Education  $education
+     * @param  \App\Models\HumanResources\Education\Education  $education
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function restore(User $user, Education $education)
@@ -84,7 +84,7 @@ class EducationPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Education  $education
+     * @param  \App\Models\HumanResources\Education\Education  $education
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function forceDelete(User $user, Education $education)

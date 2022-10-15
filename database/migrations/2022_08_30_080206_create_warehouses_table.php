@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('code',10)->unique();
             $table->string('name',100);
-            $table->foreignIdFor(\App\Models\WarehouseType::class)->nullable();
-            $table->foreignIdFor(\App\Models\Employee::class)->nullable();
+            $table->foreignIdFor(\App\Models\Warehouse\WarehouseType::class)->nullable();
+            $table->foreignIdFor(\App\Models\HumanResources\Employee\Employee::class)->nullable();
             $table->foreignIdFor(\App\Models\Department::class)->nullable();
             $table->softDeletes();
             $table->timestamps();
