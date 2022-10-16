@@ -31,6 +31,7 @@ class MeasurementDeviceCalibrationTask extends Model
     protected $casts = [
         'planned_date' => 'date',
         'accomplished_date' => 'date',
+        'price' => 'float',
         'status' => 'boolean',
     ];
 
