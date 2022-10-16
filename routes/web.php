@@ -71,7 +71,7 @@ Route::middleware([
         ['uri'=>'document-action', 'model'=>'documentAction', 'controller'=>\App\Http\Controllers\DocumentActionController::class],
         ['uri'=>'measurement-device', 'model'=>'measurementDevice', 'controller'=> \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::class],
         ['uri'=>'measurement-device-type', 'model'=>'measurementDeviceType', 'controller'=> \App\Http\Controllers\MeasurementDevice\MeasurementDeviceTypeController::class],
-        ['uri'=>'measurement-device-calibration', 'model'=>'measurementDeviceCalibrationTask', 'controller'=>\App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::class],
+        ['uri'=>'measurement-device-calibration', 'model'=>'measurementDeviceCalibration', 'controller'=>\App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::class],
         ['uri'=>'calibration-firm', 'model'=>'calibrationFirm', 'controller'=> \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::class],
         ['uri'=>'measurement-device-action', 'model'=>'measurementDeviceAction', 'controller'=> \App\Http\Controllers\MeasurementDevice\Action\MeasurementDeviceActionController::class],
         ['uri'=>'audit', 'model'=>'audit', 'controller'=>\App\Http\Controllers\AuditController::class],
