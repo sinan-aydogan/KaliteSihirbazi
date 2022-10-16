@@ -334,6 +334,7 @@
     "address": "Address",
     "code": "Code",
     "contactDetails": "Contact Details",
+    "currency": "Currency",
     "default": "Default",
     "deletedAt": "Deleted at",
     "deletedItems": "Deleted Items",

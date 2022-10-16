@@ -310,6 +310,7 @@
     "address": "Adres",
     "code": "Kod",
     "contactDetails": "İletişim Bilgileri",
+    "currency": "Para Birimi",
     "default": "Varsayılan",
     "deletedAt": "Silinme Zamanı",
     "deletedItems": "Silinen Öğeler",
