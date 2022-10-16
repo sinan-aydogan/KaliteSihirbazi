@@ -63,5 +63,12 @@ return [
         'permanentDeleted' => ':measurementDeviceType isimli cihaz tipi kalıcı olarak silindi.',
         'restored' => ':measurementDeviceType isimli cihaz tipi geri getirildi.',
         'updated' => ':measurementDeviceType isimli cihaz tipi güncellendi.'
+    ],
+    'measurementDeviceCalibration' => [
+        'created' => '#:measurementDeviceCalibration kodlu kalibrasyon emri oluşturuldu.',
+        'deleted' => '#:measurementDeviceCalibration kodlu kalibrasyon emri silindi.',
+        'permanentDeleted' => '#:measurementDeviceCalibration kodlu kalibrasyon emri kalıcı olarak silindi.',
+        'restored' => '#:measurementDeviceCalibration kodlu kalibrasyon emri geri getirildi.',
+        'updated' => '#:measurementDeviceCalibration kodlu kalibrasyon emri güncellendi.'
     ]
 ];

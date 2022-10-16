@@ -13,7 +13,7 @@ class StoreMeasurementDeviceCalibrationTaskRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return auth()->check();
     }
 
     /**
@@ -24,7 +24,9 @@ class StoreMeasurementDeviceCalibrationTaskRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'planned_date' => 'required|date',
+            'measurement_device_id' => 'required|exists:measurement_devices,id',
+            'calibration_firm_id' => 'required|exists:calibration_firms,id'
         ];
     }
 }

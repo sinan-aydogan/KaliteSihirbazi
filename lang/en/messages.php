@@ -64,4 +64,11 @@ return [
         'restored' => 'The device type named :measurementDeviceType restored successfully',
         'updated' => 'The device type named :measurementDeviceType has been updated successfully'
     ],
+    'measurementDeviceCalibration' => [
+        'created' => 'The calibration task code #:measurementDeviceCalibration has been created successfully',
+        'deleted' => 'The calibration task code #:measurementDeviceCalibration  deleted successfully',
+        'permanentDeleted' => 'The calibration task code #:measurementDeviceCalibration  permanently deleted successfully',
+        'restored' => 'The calibration task code #:measurementDeviceCalibration  restored successfully',
+        'updated' => 'The calibration task code #:measurementDeviceCalibration  has been updated successfully'
+    ],
 ];

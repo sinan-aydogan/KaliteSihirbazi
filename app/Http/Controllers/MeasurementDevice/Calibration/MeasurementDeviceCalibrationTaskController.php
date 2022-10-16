@@ -33,11 +33,22 @@ class MeasurementDeviceCalibrationTaskController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreMeasurementDeviceCalibrationTaskRequest  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreMeasurementDeviceCalibrationTaskRequest $request)
     {
-        //
+        $measurementDeviceCalibration = new MeasurementDeviceCalibrationTask;
+        $measurementDeviceCalibration->planned_date = $request->planned_date;
+        $measurementDeviceCalibration->measurement_device_id = $request->measurement_device_id;
+        $measurementDeviceCalibration->calibration_firm_id = $request->calibration_firm_id;
+        $measurementDeviceCalibration->price = $request->price;
+        $measurementDeviceCalibration->currency = $request->currency;
+
+        $measurementDeviceCalibration->save();
+
+        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.measurementDeviceCalibration.created', ['measurementDeviceCalibration' => $measurementDeviceCalibration->id])]);
+
+        return redirect()->back();
     }
 
     /**
@@ -77,11 +88,15 @@ class MeasurementDeviceCalibrationTaskController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTask  $measurementDeviceCalibrationTask
-     * @return \Illuminate\Http\Response
+     * @param  \App\Models\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTask  $measurementDeviceCalibration
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(MeasurementDeviceCalibrationTask $measurementDeviceCalibrationTask)
+    public function destroy(MeasurementDeviceCalibrationTask $measurementDeviceCalibration)
     {
-        //
+        session()->flash('message', ['type'=> 'danger', 'content'=>__('messages.measurementDeviceCalibration.deleted', ['measurementDeviceCalibration' => $measurementDeviceCalibration->id])]);
+
+        $measurementDeviceCalibration->delete();
+
+        return redirect()->back();
     }
 }

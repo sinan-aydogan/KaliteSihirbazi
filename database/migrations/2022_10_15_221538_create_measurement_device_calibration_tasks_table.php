@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::create('measurement_device_calibration_tasks', function (Blueprint $table) {
             $table->id();
             $table->date('planned_date');
-            $table->date('accomplished_date');
+            $table->date('accomplished_date')->nullable();
             $table->foreignIdFor(\App\Models\MeasurementDevice\MeasurementDevice::class);
             $table->foreignIdFor(\App\Models\MeasurementDevice\Calibration\CalibrationFirm::class);
             $table->float('price')->nullable();
             $table->string('currency')->nullable();
-            $table->boolean('status')->default(1);
+            $table->boolean('status')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });
