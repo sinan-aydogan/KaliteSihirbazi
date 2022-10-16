@@ -7,6 +7,10 @@
     "createPage": {
       "title": "Cihaz Oluştur",
       "subTitle": "İşletmenize yeni cihaz ekleyin"
+    },
+    "createCalibrationModal": {
+      "title": "Kalibrasyon Emri Oluştur",
+      "subTitle": "Cihaz için kalibrasyon emri oluşturun"
     }
   },
   "term": {
@@ -27,7 +31,13 @@
     "department": "Bağlı Olduğu Departman",
     "deviceType": "Cihaz Tipi",
     "calibrationTasks": "Kalibrasyon Emirleri",
-    "deviceActions": "Aksiyonlar"
+    "deviceActions": "Aksiyonlar",
+    "plannedDate": "Planlanan Tarih",
+    "accomplishedDate": "Gerçekleşme Tarihi",
+    "calibrationFirm": "Kalibrasyon Firması",
+    "calibrationFee": "Kalibrasyon Ücreti",
+    "active": "Aktif",
+    "accomplished": "Gerçekleşti"
   },
   "message":{
     "feedback" : {
@@ -35,6 +45,7 @@
     }
   },
   "action": {
-    "createCalibrationTask": "Kalibrasyon Emri Oluştur"
+    "createCalibrationTask": "Kalibrasyon Emri Oluştur",
+    "createTask": "Emri Oluştur"
   }
 }

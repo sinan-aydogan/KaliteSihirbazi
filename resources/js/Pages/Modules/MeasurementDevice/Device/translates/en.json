@@ -7,6 +7,10 @@
     "createPage": {
       "title": "Create Device",
       "subTitle": "Create a new device for your company"
+    },
+    "createCalibrationModal": {
+      "title": "Create a Calibration Task",
+      "subTitle": "Create a calibration task for your device"
     }
   },
   "term": {
@@ -27,7 +31,13 @@
     "department": "Related Department",
     "deviceType": "Device Type",
     "calibrationTasks": "Calibration Tasks",
-    "deviceActions": "Actions"
+    "deviceActions": "Actions",
+    "plannedDate": "Planned Date",
+    "accomplishedDate": "Accomplished Date",
+    "calibrationFirm": "Calibration Firm",
+    "calibrationFee": "Calibration Fee",
+    "active": "Active",
+    "accomplished": "Accomplished"
   },
   "message": {
     "feedback": {
@@ -35,6 +45,7 @@
     }
   },
   "action": {
-    "createCalibrationTask": "Create a Calibration Task"
+    "createCalibrationTask": "Create a Calibration Task",
+    "createTask": "Create Task"
   }
 }
