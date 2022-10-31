@@ -1,51 +1,52 @@
 {
-  "title": {
-    "indexPage": {
-      "title": "Lab. and Measurement Devices",
-      "subTitle": "You can manage lab. and measurement devices"
+    "title": {
+        "indexPage": {
+            "title": "Lab. and Measurement Devices",
+            "subTitle": "You can manage lab. and measurement devices"
+        },
+        "createPage": {
+            "title": "Create Device",
+            "subTitle": "Create a new device for your company"
+        },
+        "createCalibrationModal": {
+            "title": "Create a Calibration Task",
+            "subTitle": "Create a calibration task for your device"
+        }
     },
-    "createPage": {
-      "title": "Create Device",
-      "subTitle": "Create a new device for your company"
+    "term": {
+        "measurementDevice": "Measurement Device | Measurement Devices",
+        "laboratoryEquipment": "Laboratory Device | Laboratory Devices",
+        "deviceInfo": "Device Info",
+        "code": "Device No",
+        "brand": "Brand",
+        "model": "Model",
+        "serialNo": "Serial No",
+        "properties": "Properties",
+        "purchasingDate": "Purchasing Date",
+        "purchasingPrice": "Purchasing Price",
+        "purchasingPriceUnit": "Currency",
+        "managementInfo": "Management Info",
+        "deviceSupervisor": "Device Supervisor",
+        "calibrationSupervisor": "Calibration Supervisor",
+        "department": "Related Department",
+        "deviceType": "Device Type",
+        "calibrationTasks": "Calibration Tasks",
+        "deviceActions": "Actions",
+        "plannedDate": "Planned Date",
+        "accomplishedDate": "Accomplished Date",
+        "calibrationFirm": "Calibration Firm",
+        "calibrationFee": "Calibration Fee",
+        "active": "Active",
+        "accomplished": "Accomplished",
+        "calibrationReportFile": "Calibration Report File"
     },
-    "createCalibrationModal": {
-      "title": "Create a Calibration Task",
-      "subTitle": "Create a calibration task for your device"
+    "message": {
+        "feedback": {
+            "emptyCalibrationTasksList": "No calibration task have been created yet"
+        }
+    },
+    "action": {
+        "createCalibrationTask": "Create a Calibration Task",
+        "createTask": "Create Task"
     }
-  },
-  "term": {
-    "measurementDevice": "Measurement Device | Measurement Devices",
-    "laboratoryEquipment": "Laboratory Device | Laboratory Devices",
-    "deviceInfo": "Device Info",
-    "code": "Device No",
-    "brand": "Brand",
-    "model": "Model",
-    "serialNo": "Serial No",
-    "properties": "Properties",
-    "purchasingDate": "Purchasing Date",
-    "purchasingPrice": "Purchasing Price",
-    "purchasingPriceUnit": "Currency",
-    "managementInfo": "Management Info",
-    "deviceSupervisor": "Device Supervisor",
-    "calibrationSupervisor": "Calibration Supervisor",
-    "department": "Related Department",
-    "deviceType": "Device Type",
-    "calibrationTasks": "Calibration Tasks",
-    "deviceActions": "Actions",
-    "plannedDate": "Planned Date",
-    "accomplishedDate": "Accomplished Date",
-    "calibrationFirm": "Calibration Firm",
-    "calibrationFee": "Calibration Fee",
-    "active": "Active",
-    "accomplished": "Accomplished"
-  },
-  "message": {
-    "feedback": {
-      "emptyCalibrationTasksList": "No calibration task have been created yet"
-    }
-  },
-  "action": {
-    "createCalibrationTask": "Create a Calibration Task",
-    "createTask": "Create Task"
-  }
 }
