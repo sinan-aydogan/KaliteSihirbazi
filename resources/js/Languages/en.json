@@ -1,387 +1,390 @@
 {
-  "account": {
-    "account": "Account",
-    "accountInformation": "Account Information",
-    "accountInformationDesc": "Update your account's profile information and email address.",
-    "autoTheme": "Auto",
-    "autoThemeDesc": "Depended on your system theme.",
-    "browserSessions": "Browser Sessions",
-    "browserSessionsDesc": "Manage and log out your active sessions on other browsers and devices.",
-    "browserSessionsInfo": "If necessary, you may log out of all of your other browser sessions across all of your devices. Some of your recent sessions are listed below; however, this list may not be exhaustive. If you feel your account has been compromised, you should also update your password.",
-    "confirmPassword": "Confirm Password",
-    "confirmPasswordModalDesc": "For your security, please confirm your password to continue.",
-    "confirmPasswordModalTitle": "Confirm Password",
-    "currentPassword": "Current Password",
-    "darkTheme": "Dark",
-    "darkThemeDesc": "Dark theme.",
-    "deleteAccount": "Delete Account",
-    "deleteAccountDesc": "Permanently delete your account.",
-    "deleteAccountModalMessage": "Are you sure you want to delete your account? Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.",
-    "deleteAccountInfo": "Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.",
-    "displayLanguage": "Display Language",
-    "displayLanguageDesc": "You can change the display language.",
-    "lastActive": "Last active",
-    "lightTheme": "Light",
-    "lightThemeDesc": "Light theme.",
-    "logOutOtherDevices": "Log Out Other Devices",
-    "manageAccount": "Manage Account",
-    "name": "Name",
-    "newPassword": "New Password",
-    "profilePhoto": "Profile Photo",
-    "regenerateRecoveryCodes": "Regenerate Recovery Codes",
-    "removeAvatar": "Remove Photo",
-    "selectAvatar": "Select A New Photo",
-    "showRecoveryCodes": "Show Recovery Codes",
-    "theme": "Theme",
-    "themeDesc": "You can change the theme.",
-    "thisDevice": "This Device",
-    "twoFactorAuthentication": "Two Factor Authentication",
-    "twoFactorAuthenticationDesc": "Add additional security to your account using two factor authentication.",
-    "twoFactorAuthenticationEnabledDesc": " Two factor authentication is now enabled. Scan the following QR code using your phone's authenticator application.",
-    "twoFactorAuthenticationEnabledTitle": "You have enabled two factor authentication.",
-    "twoFactorAuthenticationEnabledInfo": " Store these recovery codes in a secure password manager. They can be used to recover access to your account if your two factor authentication device is lost.",
-    "twoFactorAuthenticationFinishEnablingDesc": "To finish enabling two factor authentication, scan the following QR code using your phone's authenticator application or enter the setup key and provide the generated OTP code.",
-    "twoFactorAuthenticationFinishEnablingTitle": "Finish enabling two factor authentication.",
-    "twoFactorAuthenticationNotEnabledDesc": "When two factor authentication is enabled, you will be prompted for a secure, random token during authentication. You may retrieve this token from your phone's Google Authenticator application.",
-    "twoFactorAuthenticationNotEnabledTitle": "You have not enabled two factor authentication.",
-    "twoFactorAuthenticationSetupKey": "Setup Key",
-    "unknown": "Unknown",
-    "updatePassword": "Update Password",
-    "updatePasswordDesc": "Ensure your account is using a long, random password to stay secure"
-  },
-  "action": {
-    "add": "Add",
-    "addOtherOne": "Add an Other One",
-    "addNew": "Add New",
-    "cancel": "Cancel",
-    "change": "Change",
-    "clearAllNotifications": "Clear All Notifications",
-    "confirm": "Confirm",
-    "create": "Create",
-    "delete": "Delete",
-    "disable": "Disable",
-    "edit": "Edit",
-    "enable": "Enable",
-    "goBack": "Go Back",
-    "makeDefault": "Make Default",
-    "noCancelIt": "No, cancel it!",
-    "reset": "Reset",
-    "returnToList": "Return to List",
-    "save": "Save",
-    "saveChanges": "Save Changes",
-    "select": "Select",
-    "selectType": "Select Type",
-    "submit": "Submit",
-    "update": "Update",
-    "yesDeleteIt": "Yes, delete it!"
-  },
-  "auth": {
-    "alreadyRegistered": "Already registered?",
-    "disempower": "Dis-empower",
-    "email": "Email",
-    "forgotYourPassword": "Forgot your password?",
-    "login": "Log in",
-    "logOut": "Logout",
-    "password": "Password",
-    "register": "Register",
-    "rememberMe": "Remember me",
-    "resetPassword": "Reset Password"
-  },
-  "department": {
-    "create": {
-      "subTitle": "Create a new department for your business",
-      "title": "Create New Department"
+    "account": {
+        "account": "Account",
+        "accountInformation": "Account Information",
+        "accountInformationDesc": "Update your account's profile information and email address.",
+        "autoTheme": "Auto",
+        "autoThemeDesc": "Depended on your system theme.",
+        "browserSessions": "Browser Sessions",
+        "browserSessionsDesc": "Manage and log out your active sessions on other browsers and devices.",
+        "browserSessionsInfo": "If necessary, you may log out of all of your other browser sessions across all of your devices. Some of your recent sessions are listed below; however, this list may not be exhaustive. If you feel your account has been compromised, you should also update your password.",
+        "confirmPassword": "Confirm Password",
+        "confirmPasswordModalDesc": "For your security, please confirm your password to continue.",
+        "confirmPasswordModalTitle": "Confirm Password",
+        "currentPassword": "Current Password",
+        "darkTheme": "Dark",
+        "darkThemeDesc": "Dark theme.",
+        "deleteAccount": "Delete Account",
+        "deleteAccountDesc": "Permanently delete your account.",
+        "deleteAccountModalMessage": "Are you sure you want to delete your account? Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.",
+        "deleteAccountInfo": "Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.",
+        "displayLanguage": "Display Language",
+        "displayLanguageDesc": "You can change the display language.",
+        "lastActive": "Last active",
+        "lightTheme": "Light",
+        "lightThemeDesc": "Light theme.",
+        "logOutOtherDevices": "Log Out Other Devices",
+        "manageAccount": "Manage Account",
+        "name": "Name",
+        "newPassword": "New Password",
+        "profilePhoto": "Profile Photo",
+        "regenerateRecoveryCodes": "Regenerate Recovery Codes",
+        "removeAvatar": "Remove Photo",
+        "selectAvatar": "Select A New Photo",
+        "showRecoveryCodes": "Show Recovery Codes",
+        "theme": "Theme",
+        "themeDesc": "You can change the theme.",
+        "thisDevice": "This Device",
+        "twoFactorAuthentication": "Two Factor Authentication",
+        "twoFactorAuthenticationDesc": "Add additional security to your account using two factor authentication.",
+        "twoFactorAuthenticationEnabledDesc": " Two factor authentication is now enabled. Scan the following QR code using your phone's authenticator application.",
+        "twoFactorAuthenticationEnabledTitle": "You have enabled two factor authentication.",
+        "twoFactorAuthenticationEnabledInfo": " Store these recovery codes in a secure password manager. They can be used to recover access to your account if your two factor authentication device is lost.",
+        "twoFactorAuthenticationFinishEnablingDesc": "To finish enabling two factor authentication, scan the following QR code using your phone's authenticator application or enter the setup key and provide the generated OTP code.",
+        "twoFactorAuthenticationFinishEnablingTitle": "Finish enabling two factor authentication.",
+        "twoFactorAuthenticationNotEnabledDesc": "When two factor authentication is enabled, you will be prompted for a secure, random token during authentication. You may retrieve this token from your phone's Google Authenticator application.",
+        "twoFactorAuthenticationNotEnabledTitle": "You have not enabled two factor authentication.",
+        "twoFactorAuthenticationSetupKey": "Setup Key",
+        "unknown": "Unknown",
+        "updatePassword": "Update Password",
+        "updatePasswordDesc": "Ensure your account is using a long, random password to stay secure"
     },
-    "global": {
-      "addEmployee": "Attach an Employee",
-      "code": "Department Code",
-      "mainDepartment": "Main Department",
-      "manager": "Department Manager",
-      "name": "Department Name",
-      "plural": "Departments",
-      "singular": "Department",
-      "subDepartment": "Sub Department",
-      "subDepartments": "Sub Departments",
-      "type": "Department Type"
+    "action": {
+        "add": "Add",
+        "addThisReport": "Add This Report",
+        "addOtherOne": "Add an Other One",
+        "addNew": "Add New",
+        "cancel": "Cancel",
+        "change": "Change",
+        "clearAllNotifications": "Clear All Notifications",
+        "confirm": "Confirm",
+        "complete": "Complete",
+        "create": "Create",
+        "delete": "Delete",
+        "disable": "Disable",
+        "edit": "Edit",
+        "enable": "Enable",
+        "goBack": "Go Back",
+        "makeDefault": "Make Default",
+        "noCancelIt": "No, cancel it!",
+        "reset": "Reset",
+        "returnToList": "Return to List",
+        "save": "Save",
+        "saveChanges": "Save Changes",
+        "select": "Select",
+        "selectType": "Select Type",
+        "submit": "Submit",
+        "update": "Update",
+        "yesDeleteIt": "Yes, delete it!"
     },
-    "index": {
-      "subTitle": "Management of the departments",
-      "title": "Departments"
+    "auth": {
+        "alreadyRegistered": "Already registered?",
+        "disempower": "Dis-empower",
+        "email": "Email",
+        "forgotYourPassword": "Forgot your password?",
+        "login": "Log in",
+        "logOut": "Logout",
+        "password": "Password",
+        "register": "Register",
+        "rememberMe": "Remember me",
+        "resetPassword": "Reset Password"
     },
-    "message": {
-      "creationSuccessfully": "Department created successfully",
-      "deletionFailed": "Department deletion failed",
-      "deletionFailedDeleteSubDepartments": "Department deletion failed. Please delete all sub departments first",
-      "deletionSuccessfully": "Department deleted successfully",
-      "selectDepartment": "Select a department",
-      "selectManager": "Select a manager",
-      "updateSuccessfully": "Department updated successfully"
-    }
-  },
-  "jobDescription": {
-    "create": {
-      "subTitle": "Create a new department for your business",
-      "title": "Create New Department"
+    "department": {
+        "create": {
+            "subTitle": "Create a new department for your business",
+            "title": "Create New Department"
+        },
+        "global": {
+            "addEmployee": "Attach an Employee",
+            "code": "Department Code",
+            "mainDepartment": "Main Department",
+            "manager": "Department Manager",
+            "name": "Department Name",
+            "plural": "Departments",
+            "singular": "Department",
+            "subDepartment": "Sub Department",
+            "subDepartments": "Sub Departments",
+            "type": "Department Type"
+        },
+        "index": {
+            "subTitle": "Management of the departments",
+            "title": "Departments"
+        },
+        "message": {
+            "creationSuccessfully": "Department created successfully",
+            "deletionFailed": "Department deletion failed",
+            "deletionFailedDeleteSubDepartments": "Department deletion failed. Please delete all sub departments first",
+            "deletionSuccessfully": "Department deleted successfully",
+            "selectDepartment": "Select a department",
+            "selectManager": "Select a manager",
+            "updateSuccessfully": "Department updated successfully"
+        }
     },
-    "global": {
-      "addEmployee": "Attach an Employee",
-      "code": "Job Description Code",
-      "mainDepartment": "Main Department",
-      "manager": "Department Manager",
-      "name": "Job Description Name",
-      "subDepartment": "Sub Department",
-      "subDepartments": "Sub Departments",
-      "type": "Department Type"
+    "jobDescription": {
+        "create": {
+            "subTitle": "Create a new department for your business",
+            "title": "Create New Department"
+        },
+        "global": {
+            "addEmployee": "Attach an Employee",
+            "code": "Job Description Code",
+            "mainDepartment": "Main Department",
+            "manager": "Department Manager",
+            "name": "Job Description Name",
+            "subDepartment": "Sub Department",
+            "subDepartments": "Sub Departments",
+            "type": "Department Type"
+        },
+        "index": {
+            "subTitle": "Management of the departments",
+            "title": "Departments"
+        },
+        "message": {
+            "creationSuccessfully": "Department created successfully",
+            "deletionFailed": "Department deletion failed",
+            "deletionFailedDeleteSubDepartments": "Department deletion failed. Please delete all sub departments first",
+            "deletionSuccessfully": "Department deleted successfully",
+            "selectDepartment": "Select a department",
+            "selectManager": "Select a manager",
+            "updateSuccessfully": "Department updated successfully"
+        }
     },
-    "index": {
-      "subTitle": "Management of the departments",
-      "title": "Departments"
-    },
-    "message": {
-      "creationSuccessfully": "Department created successfully",
-      "deletionFailed": "Department deletion failed",
-      "deletionFailedDeleteSubDepartments": "Department deletion failed. Please delete all sub departments first",
-      "deletionSuccessfully": "Department deleted successfully",
-      "selectDepartment": "Select a department",
-      "selectManager": "Select a manager",
-      "updateSuccessfully": "Department updated successfully"
-    }
-  },
-  "mainMenu": {
-    "actions": "Actions",
-    "auditFirms": "Audit Firms",
-    "audits": "Audits",
-    "businessManagement": "Business Management",
-    "calibrationTasks": "Calibration Tasks",
-    "calibrationFirms": "Calibration Firms",
-    "capaSystem": "CAPA System",
-    "certificates": "Certificates",
-    "certification": "Certification",
-    "consumableMaterials": "Consumable Materials",
-    "continuesImprovement": "Continues Improvement",
-    "customers": "Customers",
-    "departments": "Departments",
-    "devices": "Devices",
-    "distributionPoints": "Distribution Points",
-    "documentation": "Documentation",
-    "documents": "Documents",
-    "educationPlaning": "Education Planing",
-    "employees": "Employees",
-    "humanResources": "Human Resources",
-    "improvementWorks": "Improvement Works",
-    "jobDescriptions": "Job Descriptions",
-    "machines": "Machines",
-    "measurementDeviceManagement": "Measurement Dev. Mgmt.",
-    "measurementDevices": "Devices",
-    "measurementDeviceTypes": "Device Types",
-    "problems": "Problems",
-    "productionManagement": "Production Management",
-    "products": "Products",
-    "productTrees": "Product Trees",
-    "rawMaterials": "Raw Materials",
-    "requestsOfTheRevision": "Requests of the Revision",
-    "standards": "Standards",
-    "suppliers": "Suppliers",
-    "takeTimeOff": "Take Time Of",
-    "vehicles": "Vehicles",
-    "warehouses": "Warehouses"
-  },
-  "message": {
-    "feedback": {
-      "done": "Done",
-      "loading": "Loading",
-      "noData": "No Data",
-      "noResults": "There is no data",
-      "noMatches": "No Matches",
-      "saved": "Saved",
-      "writeHereAndClickPlus": "Write here then click plus button",
-      "pleaseFillInAllFields": "Please, fill in all fields"
-    },
-    "question": {
-      "areYouSure": "Are you sure?",
-      "deleteConfirm": "Are you sure to delete this item?"
-    },
-    "validation": {
-      "date": "This field must be a valid date",
-      "digits": "This field must be a valid digits",
-      "email": "This field must be a valid email",
-      "equalTo": "This field must be equal to",
-      "invalid": "This field is invalid",
-      "max": "This field must be at max {0}",
-      "maxLength": "This field must be at max {0} characters long",
-      "min": "This field must be at least {0}",
-      "minLength": "This field must be at least {0} characters long",
-      "number": "This field must be a valid number",
-      "pattern": "This field must match the pattern",
-      "range": "This field must be between {0} and {1}",
-      "rangeLength": "This field must be between {0} and {1} characters long",
-      "required": "This field is required",
-      "url": "This field must be a valid url"
-    }
-  },
-  "settingMenu": {
-    "addGlobalAdmin": "Assign a user to global admin group",
-    "appGlobalAdmins": "App Global Admins",
-    "appGlobalAdminsDesc": "Users that unlimited powers assigned throughout the application",
-    "appLogo": "App Logo",
-    "appLogoDesc": "It'll be used  in the auth pages and main menu",
-    "appMailSendingEmail": "Mail Sending Email",
-    "appMailSendingEmailDesc": "It'll be sender address for system mails",
-    "appName": "App Name",
-    "appNameDesc": "It'll be used throughout the application",
-    "authorizationManagement": "Authorization Management",
-    "darkLogo": "Dark Theme Logo",
-    "dueDate": "Due-date",
-    "generalSettings": "General Settings",
-    "generalSettingsDesc": "You can change your business settings here",
-    "licenceKey": "Licence Key",
-    "lightLogo": "Light Theme Logo",
-    "module": "Module",
-    "moduleManagement": "Module Management",
-    "moduleManagementDesc": "Management of the application modules",
-    "permission": "Permission",
-    "permissionGroup": "Permission Group",
-    "permissionGroups": "Permission Groups",
-    "permissions": "Permissions",
-    "properties": "Properties",
-    "property": "Property",
-    "propertyManagement": "Property Management",
-    "propertyType": "Property Type",
-    "propertyTypes": "Property Types",
-    "propertyTypesDesc": "Management of the property types",
-    "propertyValue": "Property Value",
-    "propertyValues": "Property Values",
-    "relatedModules": "Related Modules",
-    "role": "Role",
-    "roles": "Roles",
-    "settings": "Settings"
-  },
-  "supplier": {
-    "main": {
-      "create": {
-        "selectContactType": "Select a contact type to add",
-        "subTitle": "Create a new supplier for your business",
-        "title": "Create New Supplier"
-      },
-      "global": {
-        "name": "Supplier Name",
-        "supplier": "Supplier",
-        "suppliers": "Suppliers"
-      },
-      "index": {
-        "subTitle": "Management of the suppliers",
-        "title": "Suppliers"
-      },
-      "message": {
-        "creationSuccessfully": "Supplier created successfully",
-        "deletionSuccessfully": "Supplier deleted successfully",
-        "updateSuccessfully": "Supplier updated successfully"
-      },
-      "question": {
-        "areYouSureMakeDefaultContact": "Are you sure you want to make this contact information the default?",
-        "areYouSureRemoveDefaultContact": "Are you sure you want to remove this contact info from the default?"
-      }
-    },
-    "type": {
-      "create": {
-        "subTitle": "Create a new supplier type for your business",
-        "title": "Create New Supplier Type"
-      },
-      "global": {
-        "manage": "Manage Supplier Types",
-        "name": "Supplier Type Name",
-        "supplierType": "Supplier Type",
-        "supplierTypes": "Suppliers Type"
-      },
-      "index": {
-        "subTitle": "Management of the supplier types",
-        "title": "Supplier Types"
-      },
-      "message": {
-        "creationSuccessfully": "Supplier type created successfully",
-        "deletionSuccessfully": "Supplier type deleted successfully",
-        "updateSuccessfully": "Supplier type updated successfully"
-      }
-    }
-  },
-  "table": {
-    "actions": "Actions",
-    "addFilter": "Add Filter",
-    "comparators": {
-      "between": "Between",
-      "contains": "Contains",
-      "endsWith": "Ends With",
-      "equal": "Equal",
-      "greaterThan": "Greater Than",
-      "greaterThanOrEqual": "Greater Than Or Equal",
-      "isNotNull": "Is Not Null",
-      "isNull": "Is Null",
-      "lessThan": "Less Than",
-      "lessThanOrEqual": "Less Than Or Equal",
-      "notBetween": "Not Between",
-      "notContains": "Not Contains",
-      "notEqual": "Not Equal",
-      "startsWith": "Starts With"
-    },
-    "noData": "No Data",
-    "noResults": "No results",
-    "paginationDetail": "Showing from {from} to {to} in {total} entries",
-    "selectComparator": "Select Comparator",
-    "selectField": "Select Field"
-  },
-  "term": {
-    "active": "Active",
-    "address": "Address",
-    "code": "Code",
-    "contactDetails": "Contact Details",
-    "currency": "Currency",
-    "default": "Default",
-    "deletedAt": "Deleted at",
-    "deletedItems": "Deleted Items",
-    "description": "Description",
-    "filters": "Filters",
-    "generalDetails": "General Details",
-    "inactive": "Inactive",
-    "manageModule": "Manage Module",
-    "next": "Next",
-    "no": "No",
-    "phoneNumber": "Phone Number",
-    "previous": "Previous",
-    "status": "Status",
-    "supervisor": "Supervisor",
-    "tags": "Tags",
-    "title": "Title",
-    "type": "Type",
-    "undefined": "Undefined",
-    "value": "Value",
-    "yes": "Yes",
-    "generalSettings": "General Settings",
-    "property": "Property",
-    "properties": "Properties"
-  },
-  "warehouse": {
-    "create": {
-      "subTitle": "Create a new warehouse for your business",
-      "title": "Create New Warehouse"
-    },
-    "global": {
-      "finishedProductsWarehouse": "Finished Products Warehouse",
-      "generalWarehouse": "General Warehouse",
-      "name": "Warehouse Name",
-      "rawMaterialWarehouse": "Goods Warehouse",
-      "type": "Warehouse Type",
-      "warehouse": "Warehouse",
-      "warehouses": "Warehouses"
-    },
-    "index": {
-      "subTitle": "Management of the warehouses",
-      "title": "Warehouses"
+    "mainMenu": {
+        "actions": "Actions",
+        "auditFirms": "Audit Firms",
+        "audits": "Audits",
+        "businessManagement": "Business Management",
+        "calibrationTasks": "Calibration Tasks",
+        "calibrationFirms": "Calibration Firms",
+        "capaSystem": "CAPA System",
+        "certificates": "Certificates",
+        "certification": "Certification",
+        "consumableMaterials": "Consumable Materials",
+        "continuesImprovement": "Continues Improvement",
+        "customers": "Customers",
+        "departments": "Departments",
+        "devices": "Devices",
+        "distributionPoints": "Distribution Points",
+        "documentation": "Documentation",
+        "documents": "Documents",
+        "educationPlaning": "Education Planing",
+        "employees": "Employees",
+        "humanResources": "Human Resources",
+        "improvementWorks": "Improvement Works",
+        "jobDescriptions": "Job Descriptions",
+        "machines": "Machines",
+        "measurementDeviceManagement": "Measurement Dev. Mgmt.",
+        "measurementDevices": "Devices",
+        "measurementDeviceTypes": "Device Types",
+        "problems": "Problems",
+        "productionManagement": "Production Management",
+        "products": "Products",
+        "productTrees": "Product Trees",
+        "rawMaterials": "Raw Materials",
+        "requestsOfTheRevision": "Requests of the Revision",
+        "standards": "Standards",
+        "suppliers": "Suppliers",
+        "takeTimeOff": "Take Time Of",
+        "vehicles": "Vehicles",
+        "warehouses": "Warehouses"
     },
     "message": {
-      "creationSuccessfully": "Warehouse created successfully",
-      "deletionSuccessfully": "Warehouse deleted successfully",
-      "selectSupervisor": "Select a supervisor",
-      "updateSuccessfully": "Warehouse updated successfully"
+        "feedback": {
+            "done": "Done",
+            "loading": "Loading",
+            "noData": "No Data",
+            "noResults": "There is no data",
+            "noMatches": "No Matches",
+            "saved": "Saved",
+            "writeHereAndClickPlus": "Write here then click plus button",
+            "pleaseFillInAllFields": "Please, fill in all fields"
+        },
+        "question": {
+            "areYouSure": "Are you sure?",
+            "deleteConfirm": "Are you sure to delete this item?"
+        },
+        "validation": {
+            "date": "This field must be a valid date",
+            "digits": "This field must be a valid digits",
+            "email": "This field must be a valid email",
+            "equalTo": "This field must be equal to",
+            "invalid": "This field is invalid",
+            "max": "This field must be at max {0}",
+            "maxLength": "This field must be at max {0} characters long",
+            "min": "This field must be at least {0}",
+            "minLength": "This field must be at least {0} characters long",
+            "number": "This field must be a valid number",
+            "pattern": "This field must match the pattern",
+            "range": "This field must be between {0} and {1}",
+            "rangeLength": "This field must be between {0} and {1} characters long",
+            "required": "This field is required",
+            "url": "This field must be a valid url"
+        }
+    },
+    "settingMenu": {
+        "addGlobalAdmin": "Assign a user to global admin group",
+        "appGlobalAdmins": "App Global Admins",
+        "appGlobalAdminsDesc": "Users that unlimited powers assigned throughout the application",
+        "appLogo": "App Logo",
+        "appLogoDesc": "It'll be used  in the auth pages and main menu",
+        "appMailSendingEmail": "Mail Sending Email",
+        "appMailSendingEmailDesc": "It'll be sender address for system mails",
+        "appName": "App Name",
+        "appNameDesc": "It'll be used throughout the application",
+        "authorizationManagement": "Authorization Management",
+        "darkLogo": "Dark Theme Logo",
+        "dueDate": "Due-date",
+        "generalSettings": "General Settings",
+        "generalSettingsDesc": "You can change your business settings here",
+        "licenceKey": "Licence Key",
+        "lightLogo": "Light Theme Logo",
+        "module": "Module",
+        "moduleManagement": "Module Management",
+        "moduleManagementDesc": "Management of the application modules",
+        "permission": "Permission",
+        "permissionGroup": "Permission Group",
+        "permissionGroups": "Permission Groups",
+        "permissions": "Permissions",
+        "properties": "Properties",
+        "property": "Property",
+        "propertyManagement": "Property Management",
+        "propertyType": "Property Type",
+        "propertyTypes": "Property Types",
+        "propertyTypesDesc": "Management of the property types",
+        "propertyValue": "Property Value",
+        "propertyValues": "Property Values",
+        "relatedModules": "Related Modules",
+        "role": "Role",
+        "roles": "Roles",
+        "settings": "Settings"
+    },
+    "supplier": {
+        "main": {
+            "create": {
+                "selectContactType": "Select a contact type to add",
+                "subTitle": "Create a new supplier for your business",
+                "title": "Create New Supplier"
+            },
+            "global": {
+                "name": "Supplier Name",
+                "supplier": "Supplier",
+                "suppliers": "Suppliers"
+            },
+            "index": {
+                "subTitle": "Management of the suppliers",
+                "title": "Suppliers"
+            },
+            "message": {
+                "creationSuccessfully": "Supplier created successfully",
+                "deletionSuccessfully": "Supplier deleted successfully",
+                "updateSuccessfully": "Supplier updated successfully"
+            },
+            "question": {
+                "areYouSureMakeDefaultContact": "Are you sure you want to make this contact information the default?",
+                "areYouSureRemoveDefaultContact": "Are you sure you want to remove this contact info from the default?"
+            }
+        },
+        "type": {
+            "create": {
+                "subTitle": "Create a new supplier type for your business",
+                "title": "Create New Supplier Type"
+            },
+            "global": {
+                "manage": "Manage Supplier Types",
+                "name": "Supplier Type Name",
+                "supplierType": "Supplier Type",
+                "supplierTypes": "Suppliers Type"
+            },
+            "index": {
+                "subTitle": "Management of the supplier types",
+                "title": "Supplier Types"
+            },
+            "message": {
+                "creationSuccessfully": "Supplier type created successfully",
+                "deletionSuccessfully": "Supplier type deleted successfully",
+                "updateSuccessfully": "Supplier type updated successfully"
+            }
+        }
+    },
+    "table": {
+        "actions": "Actions",
+        "addFilter": "Add Filter",
+        "comparators": {
+            "between": "Between",
+            "contains": "Contains",
+            "endsWith": "Ends With",
+            "equal": "Equal",
+            "greaterThan": "Greater Than",
+            "greaterThanOrEqual": "Greater Than Or Equal",
+            "isNotNull": "Is Not Null",
+            "isNull": "Is Null",
+            "lessThan": "Less Than",
+            "lessThanOrEqual": "Less Than Or Equal",
+            "notBetween": "Not Between",
+            "notContains": "Not Contains",
+            "notEqual": "Not Equal",
+            "startsWith": "Starts With"
+        },
+        "noData": "No Data",
+        "noResults": "No results",
+        "paginationDetail": "Showing from {from} to {to} in {total} entries",
+        "selectComparator": "Select Comparator",
+        "selectField": "Select Field"
+    },
+    "term": {
+        "active": "Active",
+        "address": "Address",
+        "code": "Code",
+        "contactDetails": "Contact Details",
+        "currency": "Currency",
+        "default": "Default",
+        "deletedAt": "Deleted at",
+        "deletedItems": "Deleted Items",
+        "description": "Description",
+        "filters": "Filters",
+        "generalDetails": "General Details",
+        "inactive": "Inactive",
+        "manageModule": "Manage Module",
+        "next": "Next",
+        "no": "No",
+        "phoneNumber": "Phone Number",
+        "previous": "Previous",
+        "reportNumber": "Report Number",
+        "status": "Status",
+        "supervisor": "Supervisor",
+        "tags": "Tags",
+        "title": "Title",
+        "type": "Type",
+        "undefined": "Undefined",
+        "value": "Value",
+        "yes": "Yes",
+        "generalSettings": "General Settings",
+        "property": "Property",
+        "properties": "Properties"
+    },
+    "warehouse": {
+        "create": {
+            "subTitle": "Create a new warehouse for your business",
+            "title": "Create New Warehouse"
+        },
+        "global": {
+            "finishedProductsWarehouse": "Finished Products Warehouse",
+            "generalWarehouse": "General Warehouse",
+            "name": "Warehouse Name",
+            "rawMaterialWarehouse": "Goods Warehouse",
+            "type": "Warehouse Type",
+            "warehouse": "Warehouse",
+            "warehouses": "Warehouses"
+        },
+        "index": {
+            "subTitle": "Management of the warehouses",
+            "title": "Warehouses"
+        },
+        "message": {
+            "creationSuccessfully": "Warehouse created successfully",
+            "deletionSuccessfully": "Warehouse deleted successfully",
+            "selectSupervisor": "Select a supervisor",
+            "updateSuccessfully": "Warehouse updated successfully"
+        }
     }
-  }
 }
