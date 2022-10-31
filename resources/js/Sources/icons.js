@@ -1,5 +1,6 @@
 /*Import FontAwesomeIcon*/
 import {library} from "@fortawesome/fontawesome-svg-core";
+import {faCircleCheck as faRegularCircleCheck} from "@fortawesome/free-regular-svg-icons"
 import {
     faUserGroup,
     faUsers,
@@ -208,5 +209,6 @@ library.add(
     faTrowelBricks,
     faListUl,
     faBuildingColumns,
-    faHourglassHalf
+    faHourglassHalf,
+    faRegularCircleCheck
 );
