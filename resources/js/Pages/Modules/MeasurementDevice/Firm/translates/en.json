@@ -1,0 +1,23 @@
+{
+  "title": {
+    "indexPage": {
+      "title": "Calibration Firms",
+      "subTitle": "You can manage calibration firms"
+    },
+    "createPage": {
+      "title": "Create a New Calibration Firm",
+      "subTitle": "New calibration firm for accrediting of the devices"
+    },
+    "deletedPage": {
+      "title": "Deleted Firms",
+      "subTitle": "You can restore deleted firms or permanent delete them"
+    }
+  },
+  "term": {
+    "name": "Firm Name",
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Address",
+      "relatedDevices": "Related Devices"
+  }
+}

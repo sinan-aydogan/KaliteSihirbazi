@@ -70,5 +70,12 @@ return [
         'permanentDeleted' => '#:measurementDeviceCalibration kodlu kalibrasyon emri kalıcı olarak silindi.',
         'restored' => '#:measurementDeviceCalibration kodlu kalibrasyon emri geri getirildi.',
         'updated' => '#:measurementDeviceCalibration kodlu kalibrasyon emri güncellendi.'
+    ],
+    'calibrationFirm' => [
+        'created' => ':calibrationFirm isimli kalibrasyon firması oluşturuldu.',
+        'deleted' => ':calibrationFirm isimli kalibrasyon firması silindi.',
+        'permanentDeleted' => ':calibrationFirm isimli kalibrasyon firması kalıcı olarak silindi.',
+        'restored' => ':calibrationFirm isimli kalibrasyon firması geri getirildi.',
+        'updated' => ':calibrationFirm isimli kalibrasyon firması güncellendi.'
     ]
 ];

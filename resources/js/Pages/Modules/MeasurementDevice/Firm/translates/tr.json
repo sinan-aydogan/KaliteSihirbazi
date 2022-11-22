@@ -1,0 +1,23 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Kalibrasyon Firmaları",
+            "subTitle": "Kalibrasyon firmalarını yönetin"
+        },
+        "createPage": {
+            "title": "Kalibrasyon Firması Oluştur",
+            "subTitle": "Cihazlarınızı akredite ettirebileceğiniz firma oluşturun"
+        },
+        "deletedPage": {
+            "title": "Silinmiş Kalibrasyon Firmaları  ",
+            "subTitle": "Silinen firmalrı kurtarabilir veya kalıcı olarak silebiliriniz"
+        }
+    },
+    "term": {
+        "name": "Firma Adı",
+        "email": "Email",
+        "phone": "Telefon",
+        "address": "Adres",
+        "relatedDevices": "İlgili Cihazlar"
+    }
+}

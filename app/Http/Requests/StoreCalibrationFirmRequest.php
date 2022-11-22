@@ -13,7 +13,7 @@ class StoreCalibrationFirmRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return auth()->check();
     }
 
     /**
@@ -24,7 +24,7 @@ class StoreCalibrationFirmRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|max:255|unique:calibration_firms'
         ];
     }
 }

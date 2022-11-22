@@ -71,4 +71,11 @@ return [
         'restored' => 'The calibration task code #:measurementDeviceCalibration  restored successfully',
         'updated' => 'The calibration task code #:measurementDeviceCalibration  has been updated successfully'
     ],
+    'calibrationFirm' => [
+        'created' => 'The calibration firm named :calibrationFirm has been created successfully',
+        'deleted' => 'The calibration firm named :calibrationFirm  deleted successfully',
+        'permanentDeleted' => 'The calibration firm named :calibrationFirm  permanently deleted successfully',
+        'restored' => 'The calibration firm named :calibrationFirm  restored successfully',
+        'updated' => 'The calibration firm named :calibrationFirm  has been updated successfully'
+    ],
 ];
