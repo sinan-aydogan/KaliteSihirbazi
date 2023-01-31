@@ -7,7 +7,7 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 
 /*Quasar*/
-import { Quasar } from 'quasar'
+import { Quasar, Notify } from 'quasar'
 import quasarLang from 'quasar/lang/tr'
 import '@quasar/extras/material-icons/material-icons.css'
 import '@quasar/extras/animate/fadeIn.css'
@@ -36,20 +36,19 @@ createInertiaApp({
             .use(ZiggyVue, Ziggy)
             .use(i18n)
             .use(Quasar, {
-                plugins: {}, // import Quasar plugins and add here
+                plugins: {
+                    Notify
+                },
                 lang: quasarLang,
-                /*
                 config: {
-                  brand: {
+                  /*brand: {
                     // primary: '#e46262',
                     // ... or all other brand colors
-                  },
-                  notify: {...}, // default set of options for Notify Quasar plugin
-                  loading: {...}, // default set of options for Loading Quasar plugin
-                  loadingBar: { ... }, // settings for LoadingBar Quasar plugin
-                  // ..and many more (check Installation card on each Quasar component/directive/plugin)
+                  },*/
+                  notify: {} // default set of options for Notify Quasar plugin
+                  /*loading: {...}, // default set of options for Loading Quasar plugin
+                  loadingBar: { ... }, // settings for LoadingBar Quasar plugin*/
                 }
-                */
             })
             .mount(el);
     },
