@@ -14,6 +14,17 @@ import '@quasar/extras/animate/fadeIn.css'
 import '@quasar/extras/animate/fadeOut.css'
 import 'quasar/src/css/index.sass'
 
+/*i18n*/
+import {createI18n} from "vue-i18n";
+import Messages from "./Langs/lang"
+const i18n = createI18n({
+    locale: 'tr',
+    fallbackLocale: 'tr',
+    messages : Messages,
+    legacy: false
+})
+
+
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
 createInertiaApp({
@@ -23,6 +34,7 @@ createInertiaApp({
         return createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(ZiggyVue, Ziggy)
+            .use(i18n)
             .use(Quasar, {
                 plugins: {}, // import Quasar plugins and add here
                 lang: quasarLang,
