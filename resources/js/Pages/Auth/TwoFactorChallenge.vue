@@ -1,12 +1,12 @@
 <script setup>
 import { nextTick, ref } from 'vue';
-import { Head, useForm } from '@inertiajs/inertia-vue3';
-import JetAuthenticationCard from '@/Jetstream/AuthenticationCard.vue';
-import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo.vue';
-import JetButton from '@/Jetstream/Button.vue';
-import JetInput from '@/Jetstream/Input.vue';
-import JetInputError from '@/Jetstream/InputError.vue';
-import JetLabel from '@/Jetstream/Label.vue';
+import { Head, useForm } from '@inertiajs/vue3';
+import AuthenticationCard from '@/Components/AuthenticationCard.vue';
+import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo.vue';
+import InputError from '@/Components/InputError.vue';
+import InputLabel from '@/Components/InputLabel.vue';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
+import TextInput from '@/Components/TextInput.vue';
 
 const recovery = ref(false);
 
@@ -38,18 +38,16 @@ const submit = () => {
 </script>
 
 <template>
-
     <Head title="Two-factor Confirmation" />
 
-    <JetAuthenticationCard>
+    <AuthenticationCard>
         <template #logo>
-            <JetAuthenticationCardLogo />
+            <AuthenticationCardLogo />
         </template>
 
-        <div class="mb-4 text-sm text-gray-600">
-            <template v-if="!recovery">
-                Please confirm access to your account by entering the authentication code provided by your authenticator
-                application.
+        <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
+            <template v-if="! recovery">
+                Please confirm access to your account by entering the authentication code provided by your authenticator application.
             </template>
 
             <template v-else>
@@ -58,24 +56,37 @@ const submit = () => {
         </div>
 
         <form @submit.prevent="submit">
-            <div v-if="!recovery">
-                <JetLabel for="code" value="Code" />
-                <JetInput id="code" ref="codeInput" v-model="form.code" type="text" inputmode="numeric"
-                    class="mt-1 block w-full" autofocus autocomplete="one-time-code" />
-                <JetInputError class="mt-2" :message="form.errors.code" />
+            <div v-if="! recovery">
+                <InputLabel for="code" value="Code" />
+                <TextInput
+                    id="code"
+                    ref="codeInput"
+                    v-model="form.code"
+                    type="text"
+                    inputmode="numeric"
+                    class="mt-1 block w-full"
+                    autofocus
+                    autocomplete="one-time-code"
+                />
+                <InputError class="mt-2" :message="form.errors.code" />
             </div>
 
             <div v-else>
-                <JetLabel for="recovery_code" value="Recovery Code" />
-                <JetInput id="recovery_code" ref="recoveryCodeInput" v-model="form.recovery_code" type="text"
-                    class="mt-1 block w-full" autocomplete="one-time-code" />
-                <JetInputError class="mt-2" :message="form.errors.recovery_code" />
+                <InputLabel for="recovery_code" value="Recovery Code" />
+                <TextInput
+                    id="recovery_code"
+                    ref="recoveryCodeInput"
+                    v-model="form.recovery_code"
+                    type="text"
+                    class="mt-1 block w-full"
+                    autocomplete="one-time-code"
+                />
+                <InputError class="mt-2" :message="form.errors.recovery_code" />
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <button type="button" class="text-sm text-gray-600 hover:text-gray-900 underline cursor-pointer"
-                    @click.prevent="toggleRecovery">
-                    <template v-if="!recovery">
+                <button type="button" class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 underline cursor-pointer" @click.prevent="toggleRecovery">
+                    <template v-if="! recovery">
                         Use a recovery code
                     </template>
 
@@ -84,10 +95,10 @@ const submit = () => {
                     </template>
                 </button>
 
-                <JetButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Log in
-                </JetButton>
+                </PrimaryButton>
             </div>
         </form>
-    </JetAuthenticationCard>
+    </AuthenticationCard>
 </template>

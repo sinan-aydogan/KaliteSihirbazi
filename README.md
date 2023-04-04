@@ -1,116 +1,66 @@
-Kalite Sihirbazı & LaraQuality
-======
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
-Kalite yönetimi için hazırlanmış içinde hemen hemen tüm kalite faaliyetlerini eksiksiz yönetmenizi sağlayacak modüller barındıran online yönetim paneli.
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-<p align="center">
-<b>Kullanılan teknolojiler</b>
-<br>
-  <img src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" />
-  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
-  <img src="https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D" />
-</p>
-<hr>
-<p align="center">
-<b>Geliştirmenin devam edebilmesi için beni destekleyebilirsiniz</b>
-<br/>
-<a href="https://ko-fi.com/sinanaydogan" target="_blank">
-    <img src="https://ko-fi.com/img/githubbutton_sm.svg">
-</a>
+## About Laravel
 
-</p>
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-<p align="center">
-<a href="https://www.buymeacoffee.com/sinanaydogan">
-    <img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=sinanaydogan&button_colour=FFDD00&font_colour=000000&font_family=Lato&outline_colour=000000&coffee_colour=ffffff">
-</a>
-</p>
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-Gereklilikler
-------
-1. PHP en az v.8
-2. DB server (MySQL tavsiye edilir)
-3. [composer en az v.2](https://getcomposer.org/)
-4. [nodejs en az v.14](https://nodejs.org/)
-5. Gereklilikler hakkında daha fazla bilgi için [Laravel](https://laravel.com/) ve [Inertia](https://inertiajs.com/) sitelerini ziyaret ediniz.
+## Learning Laravel
 
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-Setup Directions
-------
+You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-1. ```npm install```
-2. ```composer install```
-3. .env.example dosyasını kopyalayın ve adını .env olarak değiştirin
-4. Temiz bir veri tablosu oluşturun
-5. Veri tabanı bilgilerinizi .env içinde yer alan DB_ ön eki ile başlayan alanlara ekleyin
-6. Sırasıyla aşağıda yer alan komutları komut satırınızdan(cmd) çalıştırın. Projenin olduğun dizinde olduğunuzu kontrol edin.
-7. ```php artisan migrate --seed```
-8. ```php artisan storage:link```
-9. ```php artisan key:generate```
-10. ```npm run hot```
-11. ```php artisan serve```
-12. ```http://localhost:8000 sayfasına gidin```
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-Demo Bilgileri
-------
+## Laravel Sponsors
 
-- **Demo:** *[https://laraquality.dev](https://laraquality.dev)*
-- **Email:** *admin@laraquality.dev*
-- **Password:** *admin*
-</a>
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-## Yardım
+### Premium Partners
 
-Daha fazla bilgiye veya desteğe ihtiyacın varsa:
-- Discord kanalımıza katılabilirsin: [Discord Channel](https://discord.gg/TnjA2GqYmw)
-## Özellikler :
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Cubet Techno Labs](https://cubettech.com)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[Many](https://www.many.co.uk)**
+- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
+- **[DevSquad](https://devsquad.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
+- **[OP.GG](https://op.gg)**
+- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
+- **[Lendio](https://lendio.com)**
 
-- Departman yönetimi
-- Döküman Yönetimi
-  - Versiyon takip
-  - Onay mekanizması
--
-### Sponsorlar
+## Contributing
 
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-> 
-<a href="https://cleavr.io/" target="_blank">
-<h3>Cleavr</h3>
-Cleavr hepsi bir arada proje(kod) yönetim sistemidir. Birden fazla server'ı ekleyebilir, içlerine bir çok özelliği tek tık ile kurabilir, yedek alabilir ve projelerinizi canlı olarak test edebilirsiniz.
-</a>
+## Code of Conduct
 
-> :metal: Eğer beni desteklemek istiyorsanız [admin@tailadmin.dev](mailto:admin@tailadmin.dev) üzerinden benimle iletişime geçebilir veya [Github üzerinden Sponsorum Olabilirsiniz](https://github.com/sponsors/sinan-aydogan)
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
----
+## Security Vulnerabilities
 
-#### Ana Kaynaklar
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-- [Tailwind](https://tailwindcss.com/)
-- [Vue](https://vuejs.org/)
-- [Fontawesome](https://fontawesome.com/)
+## License
 
-#### Alt Yapılar
-
-composer.json ve package.json dosyalarına göz atınız. Projemizde kullandığımız paketlerin sahiplerine ve topluluklarına en içten teşekkürlerimi sunarım.
-
----
-Lisans
-------
-Kalite Sihirbazı ve Laraquality [MIT license](https://opensource.org/licenses/MIT) lisansı ile yayınlanan açık kaynak bir projedir.
-
-<p align="center">
-
-<a href="https://ko-fi.com/sinanaydogan" target="_blank">
-    <img src="https://ko-fi.com/img/githubbutton_sm.svg">
-</a>
-
-</p>
-
-<p align="center">
-<a href="https://www.buymeacoffee.com/sinanaydogan">
-    <img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=sinanaydogan&button_colour=FFDD00&font_colour=000000&font_family=Lato&outline_colour=000000&coffee_colour=ffffff">
-</a>
-</p>
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
