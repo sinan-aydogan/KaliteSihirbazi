@@ -1,7 +1,7 @@
 <script setup>
 /*Functions*/
 import { onBeforeMount, onUpdated, ref, watch} from "vue";
-import {Head, usePage} from "@inertiajs/inertia-vue3";
+import {Head, usePage} from "@inertiajs/vue3";
 import {useFullscreen, useBreakpoints, breakpointsTailwind} from '@vueuse/core'
 import Theme from "@/Functions/Theme";
 import Notification from "@/Components/Notification/Notification.vue"
@@ -31,13 +31,13 @@ const {locale, t} = useI18n({
 });
 
 onBeforeMount(() => {
-  locale.value = usePage().props.value.user.language;
+  locale.value = usePage().props.auth.user.language;
   dayjs.locale(locale.value)
   addNotification();
 });
 
 onUpdated(() => {
-  locale.value = usePage().props.value.user.language;
+  locale.value = usePage().props.auth.user.language;
 });
 
 /*Expand Window*/
@@ -55,7 +55,7 @@ const showingNavigationDropdown = ref(false);
 /*Notification*/
 const notification = useNotification();
 const addNotification = () => {
-  let message = usePage().props.value.flash.message
+  let message = usePage().props.flash.message
   if (message) {
     notification.add({
       type: message.type,
@@ -64,7 +64,7 @@ const addNotification = () => {
     })
   }
 }
-watch(()=>usePage().props.value.flash.message, ()=>{
+watch(()=>usePage().props.flash.message, ()=>{
   addNotification();
 })
 </script>

@@ -2,7 +2,7 @@
 /*Functions*/
 import {ref, computed, toRefs} from 'vue'
 import {onClickOutside} from "@vueuse/core";
-import {Link, useForm} from "@inertiajs/inertia-vue3";
+import {Link, useForm} from "@inertiajs/vue3";
 import {cloneDeep} from "lodash";
 import {useI18n} from "vue-i18n";
 

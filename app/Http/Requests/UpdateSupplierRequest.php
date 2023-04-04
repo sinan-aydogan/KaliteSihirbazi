@@ -24,7 +24,8 @@ class UpdateSupplierRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'code' => 'required|string|max:10|unique:suppliers,id,'.$this->id,
+            'name' => 'required|string|max:255',
         ];
     }
 }

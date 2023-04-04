@@ -1,8 +1,7 @@
 <script setup>
 /*Functions*/
 import { computed } from "vue";
-import { useForm } from "@inertiajs/inertia-vue3";
-import { Inertia } from "@inertiajs/inertia";
+import {usePage, useForm} from '@inertiajs/vue3';
 import { useI18n } from "vue-i18n";
 
 /*Components*/
@@ -41,7 +40,7 @@ const themes = computed(() => {
 })
 
 const themeUpdateForm = useForm({
-    activeTheme: Inertia.page.props.user.theme
+    activeTheme: usePage().props.auth.user.theme
 })
 
 const updateActiveTheme = () => {
@@ -57,9 +56,6 @@ const updateActiveTheme = () => {
         :title="t('account.theme')"
         :description="t('account.themeDesc')"
     >
-
-
-
                 <div class="flex justify-between h-10 mb-2">
                     <div class="flex justify-between space-x-4 select-none">
                         <template v-for="theme in themes">
@@ -85,10 +81,10 @@ const updateActiveTheme = () => {
                         <transition mode="out-in" name="fade">
                             <!--Save Button-->
                           <SimpleButton
-                              v-if="themeUpdateForm.activeTheme !== $page.props.user.theme"
+                              v-if="themeUpdateForm.activeTheme !== $page.props.auth.user.theme"
                               :label="t('action.saveChanges')"
                               :loading="themeUpdateForm.processing"
-                              :disabled="themeUpdateForm.processing || (themeUpdateForm.activeTheme === $page.props.user.theme)"
+                              :disabled="themeUpdateForm.processing || (themeUpdateForm.activeTheme === $page.props.auth.user.theme)"
                               @click="updateActiveTheme"
                           />
                             <!--Success Message-->
@@ -101,10 +97,8 @@ const updateActiveTheme = () => {
 
                 <!--Theme Description-->
                 <span
-                    v-text="themes.find(t => t.id === themeUpdateForm.activeTheme).description"
+                    v-text="themes.find((t) => (t.id === themeUpdateForm.activeTheme)).description"
                     class="text-xs text-slate-500 dark:text-slate-300 italic" />
-
-
     </FormSection>
 </template>
 

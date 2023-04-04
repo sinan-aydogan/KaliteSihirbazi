@@ -67,7 +67,7 @@ watch(()=>props.modelValue, ()=>{
             }">
       <div class="block overflow-hidden whitespace-nowrap">
         <!--Placeholder-->
-        <span v-if="typeof modelValue === 'boolean' ? false : !modelValue"
+        <span v-if="(typeof modelValue === 'boolean' ? false : !modelValue) || modelValue.length === 0"
               v-text="selectText.length > 0 ? selectText : t('action.select')"></span>
         <!--Selected-->
         <div v-else>
@@ -91,7 +91,7 @@ watch(()=>props.modelValue, ()=>{
     </div>
 
     <!--Options-->
-      <div v-if="showOptions"
+      <div v-if="showOptions && options.length > 0"
            class="absolute z-50 bg-white dark:bg-slate-800 border dark:border-slate-600 shadow-lg rounded-md py-1 w-full">
         <template v-for="option in options" :key="option">
           <div @click="select(option)"

@@ -1,0 +1,29 @@
+{
+  "title": {
+    "indexPage": {
+      "title": "Suppliers",
+      "subTitle": "You can manage your suppliers here"
+    },
+    "createPage": {
+      "title": "Create a new supplier",
+      "subTitle": "You can create a new supplier here"
+    },
+    "deletedPage": {
+      "title": "Deleted Suppliers",
+      "subTitle": "You can manage your deleted suppliers here"
+    }
+  },
+  "term": {
+    "department": "Supplier|Suppliers",
+    "code": "Supplier Code",
+    "name": "Supplier Name",
+    "type": "Supplier Type",
+    "tag": "Supplier Tag"
+  },
+  "action": {
+  },
+  "message": {
+    "feedback": {
+    }
+  }
+}

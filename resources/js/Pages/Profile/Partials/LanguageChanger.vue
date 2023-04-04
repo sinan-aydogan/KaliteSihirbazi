@@ -1,6 +1,6 @@
 <script setup>
 /*Functions*/
-import { useForm, usePage } from "@inertiajs/inertia-vue3";
+import { useForm, usePage } from "@inertiajs/vue3";
 
 /*Components*/
 import FormSection from '@/Components/Form/FormSection.vue';
@@ -12,7 +12,7 @@ import { languages, flags } from "@/Languages/language";
 
 
 const languageUpdateForm = useForm({
-    activeLanguage: usePage().props.value.user.language
+    activeLanguage: usePage().props.auth.user.language
 })
 
 const updateActiveLanguage = () => {
@@ -24,11 +24,16 @@ const updateActiveLanguage = () => {
 </script>
 
 <template>
-    <FormSection
-        :title="t('account.displayLanguage')"
-        :description="t('account.displayLanguageDesc')"
-    >
-            <div class="flex justify-between h-10">
+    <FormSection>
+        <template #title>
+            {{t('account.displayLanguage')}}
+        </template>
+
+        <template #description>
+            {{t('account.displayLanguageDesc')}}
+        </template>
+
+            <div class="flex justify-between h-10 col-span-6 sm:col-span-4">
                 <div class="flex justify-between space-x-4">
                     <template v-for="language in languages">
                         <div class="inline-flex items-center space-x-2" :class="[
@@ -48,9 +53,9 @@ const updateActiveLanguage = () => {
                         <!--Save Button-->
                       <SimpleButton
                           :label="t('action.saveChanges')"
-                          v-if="languageUpdateForm.activeLanguage !== $page.props.user.language"
+                          v-if="languageUpdateForm.activeLanguage !== $page.props.auth.user.language"
                           :loading="languageUpdateForm.processing"
-                          :disabled="languageUpdateForm.processing || (languageUpdateForm.activeLanguage === $page.props.user.language)"
+                          :disabled="languageUpdateForm.processing || (languageUpdateForm.activeLanguage === $page.props.auth.user.language)"
                           @click="updateActiveLanguage"
                       />
 

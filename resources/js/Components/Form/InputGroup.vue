@@ -1,10 +1,10 @@
 <script setup>
 import { computed, provide } from "vue";
-import { usePage } from "@inertiajs/inertia-vue3";
+import { usePage } from "@inertiajs/vue3";
 
 const props = defineProps({
     errors: {
-        type: [Array, Object],
+        type: [Array, Object, String],
         default: () => {
             return []
         }
@@ -31,8 +31,8 @@ const props = defineProps({
 /*Error Management*/
 const errorStatus = computed(() => {
     return props.errors.length > 0 ||
-        usePage().props.value.errors[props.labelFor] ||
-        (usePage().props.value.errorBags.hasOwnProperty(props.errorBag) && usePage().props.value.errorBags[props.errorBag].hasOwnProperty(props.labelFor));
+        usePage().props.errors[props.labelFor] ||
+        (usePage().props.errorBags.hasOwnProperty(props.errorBag) && usePage().props.errorBags[props.errorBag].hasOwnProperty(props.labelFor));
 })
 
 
@@ -44,15 +44,15 @@ provide('errorStatus', errorStatus);
     <div>
         <label :for="labelFor">
             <!--Label-->
-            <div v-if="label || $slots.label" class="text-sm font-medium">
+            <span v-if="label || $slots.label" class="text-sm font-medium">
                 <span v-if="label" v-text="label"></span>
                 <slot v-else name="label" />
-            </div>
+            </span>
             <!--Sub Label-->
-            <div v-if="subLabel || $slots.subLabel" class="text-xs italic">
+            <span v-if="subLabel || $slots.subLabel" class="text-xs italic">
                 <span v-if="subLabel" v-text="subLabel"></span>
                 <slot v-else name="subLabel" />
-            </div>
+            </span>
         </label>
 
         <!--Input Item-->

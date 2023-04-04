@@ -1,18 +1,18 @@
-import { watch, ref, onBeforeMount } from "vue";
-import {usePage} from "@inertiajs/inertia-vue3";
+import {watch, ref, onBeforeMount} from "vue";
+import {usePage} from "@inertiajs/vue3";
 import {cloneDeep} from "lodash";
 
 export default function () {
     /*Dark Mode*/
-    const theme = ref(usePage().props.value.user.theme);
-    const appearingMode = ref(usePage().props.value.user.theme)
+    const theme = ref(usePage().props.auth.user.theme);
+    const appearingMode = ref(usePage().props.auth.user.theme)
 
     /*Dark Mode: Check Local Variables*/
     onBeforeMount(() => {
-        if (usePage().props.value.user.theme === "dark") {
+        if (usePage().props.auth.user.theme === "dark") {
             makeDark();
             theme.value = "dark";
-        } else if (usePage().props.value.user.theme === "light") {
+        } else if (usePage().props.auth.user.theme === "light") {
             makeLight();
             theme.value = "light";
         } else {
@@ -52,15 +52,17 @@ export default function () {
     };
 
     /*Dark Mode: Watch*/
-    watch(()=>cloneDeep(usePage().props.value.user.theme), (value) => {
-        if (value === "dark") {
-            makeDark();
-        } else if (value === "light") {
-            makeLight();
-        } else {
-            makeAuto();
-        }
-    });
+    watch(() => cloneDeep(usePage().props.auth.user.theme), (value) => {
+            if (value === "dark") {
+                makeDark();
+            } else if (value === "light") {
+                makeLight();
+            } else {
+                makeAuto();
+            }
+        },
+        {deep: true}
+    );
 
-    return { theme, appearingMode };
+    return {theme, appearingMode};
 }

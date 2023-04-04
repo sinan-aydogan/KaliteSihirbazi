@@ -1,6 +1,6 @@
 <script setup>
 import {ref} from "vue"
-import {useForm} from "@inertiajs/inertia-vue3";
+import {useForm, router} from "@inertiajs/vue3";
 import SettingLayout from "@/Layouts/SettingLayout.vue";
 import Menu from "@/Pages/Modules/BusinessManagement/Warehouse/Setting/menu";
 
@@ -15,7 +15,6 @@ import TextInput from "@/Components/Form/TextInput.vue"
 
 // Multi-lang
 import Translates from "../translates"
-import {Inertia} from "@inertiajs/inertia";
 
 /*Validation*/
 import {helpers, maxLength, required} from "@vuelidate/validators";
@@ -57,7 +56,7 @@ const getData = (query) => {
     loading.value = true
     setTimeout(() => {
       loading.value = false
-      Inertia.reload({
+      router.reload({
         data: {
           qD: query
         },
@@ -122,7 +121,7 @@ const getRowInfo = (id) => {
 
 /*Delete*/
 const handleDelete = (id) => {
-  Inertia.delete(route("warehouse-type.destroy", id), {
+  router.delete(route("warehouse-type.destroy", id), {
     preserveState: true,
   });
 }

@@ -1,9 +1,9 @@
 <script setup>
 /* Functions */
-import { Inertia } from "@inertiajs/inertia";
+import {usePage} from '@inertiajs/vue3';
 import { ref, onBeforeMount } from "vue";
 import { onClickOutside } from '@vueuse/core'
-import { Link } from "@inertiajs/inertia-vue3";
+import { Link } from "@inertiajs/vue3";
 
 /* Components */
 import MainMenuLinks from "@/Sources/mainMenu";
@@ -18,7 +18,7 @@ import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
 const breakpoints = useBreakpoints(breakpointsTailwind)
 
 /*Links*/
-const { links } = MainMenuLinks(Inertia.page.props);
+const { links } = MainMenuLinks({roles: usePage().props.auth.roles, permissions: usePage().props.auth.permissions});
 
 /*Show SubMenu*/
 const subMenu = ref(null)

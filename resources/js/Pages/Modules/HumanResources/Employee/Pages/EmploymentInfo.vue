@@ -1,6 +1,6 @@
 <script setup>
 // Components
-import {useForm} from "@inertiajs/inertia-vue3";
+import {useForm} from "@inertiajs/vue3";
 import SimpleButton from "@/Components/Button/SimpleButton.vue"
 import Form from "@/Components/Form/Form.vue"
 import FormSection from "@/Components/Form/FormSection.vue"

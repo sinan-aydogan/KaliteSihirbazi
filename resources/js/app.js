@@ -29,6 +29,10 @@ const i18n = createI18n({
     },
 });
 
+/*Pinia*/
+const pinia = createPinia()
+
+/*Dayjs*/
 import dayjs from "dayjs";
 import "dayjs/locale/tr"
 
@@ -55,6 +59,7 @@ createInertiaApp({
             .use(ZiggyVue, Ziggy)
             .mount(el);
     },
+    progress: {
+        color: '#4B5563',
+    },
 });
-
-InertiaProgress.init({ color: "#4B5563" });

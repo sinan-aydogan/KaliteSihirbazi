@@ -4,7 +4,7 @@ import { onMounted, onUnmounted, ref } from "vue";
 
 /* Components */
 import JetDropdownLink from "@/Jetstream/DropdownLink.vue";
-import {Inertia} from "@inertiajs/inertia";
+import {router, usePage} from "@inertiajs/vue3";
 
 defineProps({
   contentClasses: {
@@ -25,7 +25,7 @@ onUnmounted(() => document.removeEventListener("keydown", closeOnEscape));
 
 /*Logout*/
 const logout = () => {
-  Inertia.post(route("logout"));
+  router.post(route("logout"));
 };
 </script>
 
@@ -34,7 +34,7 @@ const logout = () => {
     <!-- User Menu -->
     <div @click="open = !open">
       <button
-        v-if="$page.props.jetstream.managesProfilePhotos"
+        v-if="usePage().props.jetstream.managesProfilePhotos"
         class="
           flex
           text-sm
@@ -46,8 +46,8 @@ const logout = () => {
       >
         <img
           class="h-12 w-12 rounded-full object-cover"
-          :src="$page.props.user.profile_photo_url"
-          :alt="$page.props.user.name"
+          :src="usePage().props.auth.user.profile_photo_url"
+          :alt="usePage().props.auth.user.name"
         />
       </button>
 
@@ -71,7 +71,7 @@ const logout = () => {
             transition
           "
         >
-          {{ $page.props.user.name }}
+          {{ usePage().props.auth.user.name }}
 
           <svg
             class="ml-2 -mr-0.5 h-4 w-4"
@@ -132,7 +132,7 @@ const logout = () => {
 
           <jet-dropdown-link
             :href="route('api-tokens.index')"
-            v-if="$page.props.jetstream.hasApiFeatures"
+            v-if="usePage().props.jetstream.hasApiFeatures"
           >
             API Tokens
           </jet-dropdown-link>

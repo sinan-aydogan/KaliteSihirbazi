@@ -1,8 +1,7 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {ref} from "vue";
-import {Inertia} from "@inertiajs/inertia";
-import {useForm} from "@inertiajs/inertia-vue3";
+import {useForm, router} from "@inertiajs/vue3";
 
 // Components
 import Modal from "@/Components/Modal/Modal.vue"
@@ -66,7 +65,7 @@ const getData = (query) => {
     loading.value = true
     setTimeout(() => {
       loading.value = false
-      Inertia.reload({
+      router.reload({
         data: {
           qD: query
         },
@@ -132,7 +131,7 @@ const getRowInfo = (id) => {
 
 /*Delete*/
 const handleDelete = (id) => {
-  Inertia.delete(route("measurement-device-type.destroy", id), {
+  router.delete(route("measurement-device-type.destroy", id), {
     preserveState: true,
   });
 }

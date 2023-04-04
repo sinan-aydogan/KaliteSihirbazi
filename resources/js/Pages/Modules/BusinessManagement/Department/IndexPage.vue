@@ -1,8 +1,7 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {ref} from "vue";
-import {Inertia} from "@inertiajs/inertia";
-import {useForm} from "@inertiajs/inertia-vue3";
+import {useForm, router} from "@inertiajs/vue3";
 
 // Components
 import Modal from "@/Components/Modal/Modal.vue"
@@ -77,7 +76,7 @@ const getData = (query) => {
     loading.value = true
     setTimeout(() => {
       loading.value = false
-      Inertia.reload({
+      router.reload({
         data: {
           qD: query
         },
@@ -165,7 +164,7 @@ const getRowInfo = (id) => {
 
 /*Delete*/
 const handleDelete = (id) => {
-  Inertia.delete(route("department.destroy", id), {
+  router.delete(route("department.destroy", id), {
     preserveState: true,
   });
 }
@@ -188,7 +187,7 @@ const handleDelete = (id) => {
     <Table
         :data="tableData"
         :headers="tableHeaders"
-        @view="Inertia.visit(route('department.show', $event.id))"
+        @view="router.visit(route('department.show', $event.id))"
         @edit="getRowInfo($event.id)"
         show-action
         edit-action

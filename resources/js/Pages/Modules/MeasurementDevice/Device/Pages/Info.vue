@@ -1,7 +1,7 @@
 <script setup>
 //Components
 import {ref, watch} from "vue";
-import {useForm} from "@inertiajs/inertia-vue3"
+import {useForm} from "@inertiajs/vue3"
 import ShowPage from "@/Pages/Modules/MeasurementDevice/Device/ShowPage.vue";
 import SimpleButton from "@/Components/Button/SimpleButton.vue";
 import Form from "@/Components/Form/Form.vue";

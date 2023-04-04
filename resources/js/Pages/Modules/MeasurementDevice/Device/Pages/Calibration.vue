@@ -1,7 +1,6 @@
 <script setup>
 import {ref} from "vue";
-import {Inertia} from "@inertiajs/inertia";
-import {useForm} from "@inertiajs/inertia-vue3";
+import {useForm, router} from "@inertiajs/vue3";
 import ShowPage from "@/Pages/Modules/MeasurementDevice/Device/ShowPage.vue";
 import EmptySource from "@/Components/Content/EmptySource.vue"
 import SimpleButton from "@/Components/Button/SimpleButton.vue"
@@ -82,7 +81,7 @@ const handleSubmit = async () => {
 }
 
 const handleDelete = (id) => {
-  Inertia.delete(route('measurement-device-calibration.destroy', id))
+  router.delete(route('measurement-device-calibration.destroy', id))
 }
 dayjs.extend(relativeTime)
 </script>

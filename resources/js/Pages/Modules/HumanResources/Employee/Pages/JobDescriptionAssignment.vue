@@ -1,7 +1,6 @@
 <script setup>
 import {ref} from "vue"
-import {Inertia} from "@inertiajs/inertia";
-import {useForm} from "@inertiajs/inertia-vue3";
+import {useForm, router} from "@inertiajs/vue3";
 import EmptySource from "@/Components/Content/EmptySource.vue"
 import Modal from "@/Components/Modal/Modal.vue"
 import SimpleButton from "@/Components/Button/SimpleButton.vue"
@@ -75,7 +74,7 @@ const headers = [
 ]
 
 const handleDelete = (id) => {
-  Inertia.delete(route('job-description-assignment.destroy', id))
+  router.delete(route('job-description-assignment.destroy', id))
 }
 
 dayjs.extend(relativeTime)

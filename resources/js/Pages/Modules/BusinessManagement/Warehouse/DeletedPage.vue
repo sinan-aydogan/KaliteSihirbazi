@@ -1,6 +1,5 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
-import { Inertia } from "@inertiajs/inertia";
 
 // Components
 import Table from "@/Components/Table/Table.vue"
@@ -64,7 +63,7 @@ const timeAgo = (time)=>{
 
 /*Delete*/
 const handleDelete = (id) => {
-  Inertia.delete(route("warehouse.destroy", id), {
+  router.delete(route("warehouse.destroy", id), {
     preserveState: true,
   });
 }
@@ -82,8 +81,8 @@ const handleDelete = (id) => {
     <Table
         :data="tableData"
         :headers="tableHeaders"
-        @delete="Inertia.delete(route('warehouse.permanent-delete', $event.id))"
-        @restore="Inertia.visit(route('warehouse.restore', $event.id))"
+        @delete="router.delete(route('warehouse.permanent-delete', $event.id))"
+        @restore="router.visit(route('warehouse.restore', $event.id))"
         restore-action
         delete-action
     >

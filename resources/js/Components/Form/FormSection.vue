@@ -8,7 +8,7 @@ defineProps({
   bgLess: Boolean
 })
 
-const fullSize = inject('fullSize')
+const fullSize = inject('fullSize', false)
 </script>
 
 <template>
@@ -20,7 +20,7 @@ const fullSize = inject('fullSize')
     <div
         class="section-header"
         :class="{
-          'col-span-3': !fullSize
+          'md:col-span-3': !fullSize
         }"
     >
       <div>

@@ -1,7 +1,6 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
-import {Link} from "@inertiajs/inertia-vue3";
-import {Inertia} from "@inertiajs/inertia";
+import {Link, router } from "@inertiajs/vue3";
 
 // Components
 import SimpleButton from "@/Components/Button/SimpleButton.vue"
@@ -21,7 +20,7 @@ const {t, tm} = Translates();
 
 const selectedTab = ref(route().current());
 const changePage = ()=>{
-  Inertia.visit(route(selectedTab.value, props.employee.id));
+  router.visit(route(selectedTab.value, props.employee.id));
 }
 /*Tabs*/
 const tabs = [
@@ -58,7 +57,7 @@ const tabs = [
 ]
 
 const handleDelete = () => {
-  Inertia.delete(route('employee.destroy', props.employee.id))
+  router.delete(route('employee.destroy', props.employee.id))
 }
 </script>
 
