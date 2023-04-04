@@ -1,15 +1,11 @@
-import "./bootstrap";
+import './bootstrap';
 import "../sass/app.sass";
 
-import { createApp, h } from "vue";
-import { createInertiaApp } from "@inertiajs/inertia-vue3";
-import { InertiaProgress } from "@inertiajs/progress";
-import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
-import { ZiggyVue } from "../../vendor/tightenco/ziggy/dist/vue.m";
+import { createApp, h } from 'vue';
+import { createInertiaApp } from '@inertiajs/vue3';
+import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
+import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import { createPinia } from "pinia";
-
-//Pinia
-const pinia = createPinia();
 
 /*Font Awesome*/
 import {
@@ -36,25 +32,20 @@ const i18n = createI18n({
 import dayjs from "dayjs";
 import "dayjs/locale/tr"
 
-const appName =
-    window.document.getElementsByTagName("title")[0]?.innerText || "Laravel";
+const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
-    resolve: (name) =>
-        resolvePageComponent(
-            `./Pages/${name}.vue`,
-            import.meta.glob("./Pages/**/*.vue"),
-        ),
-    setup({ el, app, props, plugin }) {
-        const App = createApp({ render: () => h(app, props) });
+    resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
+    setup({ el, App, props, plugin }) {
+        const app = createApp({ render: () => h(App, props) });
 
         // vuei18n Global Import
-        App.config.globalProperties.t = i18n.global.t;
-        App.config.globalProperties.tm = i18n.global.tm;
-        App.config.globalProperties.dayjs = dayjs;
+        app.config.globalProperties.t = i18n.global.t;
+        app.config.globalProperties.tm = i18n.global.tm;
+        app.config.globalProperties.dayjs = dayjs;
 
-        return App
+        return app
             .component("font-awesome-icon", FontAwesomeIcon)
             .component("font-awesome-layers", FontAwesomeLayers)
             .component("font-awesome-layers-text", FontAwesomeLayersText)
