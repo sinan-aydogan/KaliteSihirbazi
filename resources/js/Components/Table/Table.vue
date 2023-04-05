@@ -342,7 +342,7 @@ debouncedWatch(() => cloneDeep(search.query), () => {
                         }">
                   <!--Raw Value-->
                   <slot v-if="$slots[cell.id]" :name="cell.id" :props="row"/>
-                  <span v-else v-text="row[cell.id]"/>
+                  <span v-else v-text="cell.value ? cell.value(row) : row[cell.id]"/>
                 </div>
               </td>
             </template>
