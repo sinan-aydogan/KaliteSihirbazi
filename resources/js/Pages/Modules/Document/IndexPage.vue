@@ -59,6 +59,10 @@ const tableHeaders = [
         id: 'document_type',
         label: tm('term.type'),
         value: (value) => value.document_type.name,
+    },
+    {
+        id: 'creator',
+        label: tm('term.creator'),
     }
 ]
 const showModal = ref(false);
@@ -183,12 +187,12 @@ const handleDelete = (id) => {
             show-action
             edit-action
         >
-            <!--<template #manager="{props}">-->
-            <!--    <div class="flex space-x-2 items-center">-->
-            <!--        <avatar :src="props.manager.has_account ? props.manager.account.profile_photo_url : ''"/>-->
-            <!--        <span v-text="props.manager.employeeName"/>-->
-            <!--    </div>-->
-            <!--</template>-->
+            <template #creator="{props}">
+                <div class="flex space-x-2 items-center">
+                    <avatar :src="props.creator.profile_photo_url"/>
+                    <span v-text="props.creator.name"/>
+                </div>
+            </template>
         </Table>
     </app-layout>
 

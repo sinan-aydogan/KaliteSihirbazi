@@ -19,7 +19,8 @@
         "name": "Döküman Adı",
         "type": "Döküman Tipi",
         "status": "Yayın Durumu",
-        "distributionPoints": "Dağıtım Noktaları"
+        "distributionPoints": "Dağıtım Noktaları",
+        "creator": "Oluşturan"
     },
     "action": {
     },
