@@ -1,11 +1,10 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\Document;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class DocumentActionSeeder extends Seeder
+class DocumentSeeder extends Seeder
 {
     /**
      * Run the database seeds.

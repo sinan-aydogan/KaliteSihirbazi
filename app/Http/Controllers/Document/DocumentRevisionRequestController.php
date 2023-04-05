@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Document;
 
-use App\Models\DocumentRevisionRequest;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreDocumentRevisionRequestRequest;
 use App\Http\Requests\UpdateDocumentRevisionRequestRequest;
+use App\Models\Document\DocumentRevisionRequest;
 
 class DocumentRevisionRequestController extends Controller
 {
@@ -42,7 +43,7 @@ class DocumentRevisionRequestController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\DocumentRevisionRequest  $documentRevisionRequest
+     * @param  \App\Models\Document\DocumentRevisionRequest  $documentRevisionRequest
      * @return \Illuminate\Http\Response
      */
     public function show(DocumentRevisionRequest $documentRevisionRequest)
@@ -53,7 +54,7 @@ class DocumentRevisionRequestController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\DocumentRevisionRequest  $documentRevisionRequest
+     * @param  \App\Models\Document\DocumentRevisionRequest  $documentRevisionRequest
      * @return \Illuminate\Http\Response
      */
     public function edit(DocumentRevisionRequest $documentRevisionRequest)
@@ -65,7 +66,7 @@ class DocumentRevisionRequestController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateDocumentRevisionRequestRequest  $request
-     * @param  \App\Models\DocumentRevisionRequest  $documentRevisionRequest
+     * @param  \App\Models\Document\DocumentRevisionRequest  $documentRevisionRequest
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateDocumentRevisionRequestRequest $request, DocumentRevisionRequest $documentRevisionRequest)
@@ -76,7 +77,7 @@ class DocumentRevisionRequestController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\DocumentRevisionRequest  $documentRevisionRequest
+     * @param  \App\Models\Document\DocumentRevisionRequest  $documentRevisionRequest
      * @return \Illuminate\Http\Response
      */
     public function destroy(DocumentRevisionRequest $documentRevisionRequest)

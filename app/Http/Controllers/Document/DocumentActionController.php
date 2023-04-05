@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Document;
 
-use App\Models\DocumentAction;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreDocumentActionRequest;
 use App\Http\Requests\UpdateDocumentActionRequest;
+use App\Models\Document\DocumentAction;
 
 class DocumentActionController extends Controller
 {
@@ -42,7 +43,7 @@ class DocumentActionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\DocumentAction  $documentAction
+     * @param  \App\Models\Document\DocumentAction  $documentAction
      * @return \Illuminate\Http\Response
      */
     public function show(DocumentAction $documentAction)
@@ -53,7 +54,7 @@ class DocumentActionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\DocumentAction  $documentAction
+     * @param  \App\Models\Document\DocumentAction  $documentAction
      * @return \Illuminate\Http\Response
      */
     public function edit(DocumentAction $documentAction)
@@ -65,7 +66,7 @@ class DocumentActionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateDocumentActionRequest  $request
-     * @param  \App\Models\DocumentAction  $documentAction
+     * @param  \App\Models\Document\DocumentAction  $documentAction
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateDocumentActionRequest $request, DocumentAction $documentAction)
@@ -76,7 +77,7 @@ class DocumentActionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\DocumentAction  $documentAction
+     * @param  \App\Models\Document\DocumentAction  $documentAction
      * @return \Illuminate\Http\Response
      */
     public function destroy(DocumentAction $documentAction)

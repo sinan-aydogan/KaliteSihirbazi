@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
+            $table->string('code',10)->unique();
+            $table->string('name',255);
+            $table->string('description',750);
+            $table->foreignId('document_type_id');
+            $table->foreignId('creator_id');
+            $table->string('publishing_status')->default('draft')->nullable();
             $table->timestamps();
         });
     }

@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -66,10 +65,10 @@ Route::middleware([
         ['uri'=>'raw-material', 'model'=>'rawMaterial', 'controller'=>\App\Http\Controllers\RawMaterialController::class],
         ['uri'=>'consumable-material', 'model'=>'consumableMaterial', 'controller'=>\App\Http\Controllers\ConsumableMaterialController::class],
         ['uri'=>'product-tree', 'model'=>'productTree', 'controller'=>\App\Http\Controllers\ProductTreeController::class],
-        ['uri'=>'document', 'model'=>'document', 'controller'=>\App\Http\Controllers\DocumentController::class],
-        ['uri'=>'document-revision-request', 'model'=>'documentRevisionRequest', 'controller'=>\App\Http\Controllers\DocumentRevisionRequestController::class],
-        ['uri'=>'document-distribution-point', 'model'=>'documentDistributionPoint', 'controller'=>\App\Http\Controllers\DistributionPointController::class],
-        ['uri'=>'document-action', 'model'=>'documentAction', 'controller'=>\App\Http\Controllers\DocumentActionController::class],
+        ['uri'=>'document', 'model'=>'document', 'controller'=> \App\Http\Controllers\Document\DocumentController::class],
+        ['uri'=>'document-revision-request', 'model'=>'documentRevisionRequest', 'controller'=> \App\Http\Controllers\Document\DocumentRevisionRequestController::class],
+        ['uri'=>'document-distribution-point', 'model'=>'documentDistributionPoint', 'controller'=> \App\Http\Controllers\Document\DistributionPointController::class],
+        ['uri'=>'document-action', 'model'=>'documentAction', 'controller'=> \App\Http\Controllers\Document\DocumentActionController::class],
         ['uri'=>'measurement-device', 'model'=>'measurementDevice', 'controller'=> \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::class],
         ['uri'=>'measurement-device-type', 'model'=>'measurementDeviceType', 'controller'=> \App\Http\Controllers\MeasurementDevice\MeasurementDeviceTypeController::class],
         ['uri'=>'measurement-device-calibration', 'model'=>'measurementDeviceCalibration', 'controller'=>\App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::class],

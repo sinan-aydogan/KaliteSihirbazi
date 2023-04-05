@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Document;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DocumentRevisionRequest extends Model
+class DocumentAction extends Model
 {
     use HasFactory;
 }

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Document;
 
-use App\Models\DistributionPoint;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreDistributionPointRequest;
 use App\Http\Requests\UpdateDistributionPointRequest;
+use App\Models\Document\DistributionPoint;
 
 class DistributionPointController extends Controller
 {
@@ -42,7 +43,7 @@ class DistributionPointController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\DistributionPoint  $distributionPoint
+     * @param  \App\Models\Document\DistributionPoint  $distributionPoint
      * @return \Illuminate\Http\Response
      */
     public function show(DistributionPoint $distributionPoint)
@@ -53,7 +54,7 @@ class DistributionPointController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\DistributionPoint  $distributionPoint
+     * @param  \App\Models\Document\DistributionPoint  $distributionPoint
      * @return \Illuminate\Http\Response
      */
     public function edit(DistributionPoint $distributionPoint)
@@ -65,7 +66,7 @@ class DistributionPointController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateDistributionPointRequest  $request
-     * @param  \App\Models\DistributionPoint  $distributionPoint
+     * @param  \App\Models\Document\DistributionPoint  $distributionPoint
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateDistributionPointRequest $request, DistributionPoint $distributionPoint)
@@ -76,7 +77,7 @@ class DistributionPointController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\DistributionPoint  $distributionPoint
+     * @param  \App\Models\Document\DistributionPoint  $distributionPoint
      * @return \Illuminate\Http\Response
      */
     public function destroy(DistributionPoint $distributionPoint)
