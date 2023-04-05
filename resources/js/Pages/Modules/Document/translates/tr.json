@@ -1,0 +1,30 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Dökümanlar",
+            "subTitle": "Dökümanlarınızı buradan yönetebilirsiniz"
+        },
+        "createPage": {
+            "title": "Döküman Oluştur",
+            "subTitle": "Sistemde yeni bir döküman oluşturun"
+        },
+        "deletedPage": {
+            "title": "Silinmiş Dökümanlar",
+            "subTitle": "Silinen dökümanlar kurtarabilir veya kalıcı olarak silebiliriniz"
+        }
+    },
+    "term": {
+        "department": "Departman | Departmanlar",
+        "code": "Döküman Kodu",
+        "name": "Döküman Adı",
+        "type": "Döküman Tipi",
+        "status": "Yayın Durumu",
+        "distributionPoints": "Dağıtım Noktaları"
+    },
+    "action": {
+    },
+    "message": {
+        "feedback": {
+        }
+    }
+}

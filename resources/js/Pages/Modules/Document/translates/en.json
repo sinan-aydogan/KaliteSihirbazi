@@ -1,0 +1,30 @@
+{
+  "title": {
+    "indexPage": {
+      "title": "Document Management",
+      "subTitle": "Manage your documents"
+    },
+    "createPage": {
+      "title": "Create a New Document",
+      "subTitle": "Create a new document in the system"
+    },
+    "deletedPage": {
+      "title": "Deleted Documents",
+      "subTitle": "You can restore deleted documents or permanent delete them"
+    }
+  },
+  "term": {
+    "document": "Document|Documents",
+    "code": "Document Code",
+    "name": "Document Name",
+    "type": "Document Type",
+    "status": "Document Status",
+    "distributionPoints": "Distribution Points"
+  },
+  "action": {
+  },
+  "message": {
+    "feedback": {
+    }
+  }
+}
