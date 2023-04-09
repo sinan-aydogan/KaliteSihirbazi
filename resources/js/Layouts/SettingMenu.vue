@@ -1,6 +1,8 @@
 <script setup>
 import {ref, onBeforeMount} from "vue";
 import {onClickOutside} from '@vueuse/core'
+import {Link} from "@inertiajs/vue3";
+
 const props = defineProps({
   links: Array
 })
