@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Document;
 use App\Http\Controllers\Controller;
 use App\Models\Document\DocumentType;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class DocumentTypeController extends Controller
 {
@@ -13,7 +14,10 @@ class DocumentTypeController extends Controller
      */
     public function index()
     {
-        //
+        $types = DocumentType::all();
+        return Inertia::render("Modules/Document/Setting/TypePage", [
+            'tableData' => $types,
+        ]);
     }
 
     /**
@@ -29,7 +33,15 @@ class DocumentTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $documentType = new DocumentType();
+        $documentType->code = $request->code;
+        $documentType->name = $request->name;
+
+        $documentType->save();
+
+        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.documentType.created', ['documentType' => $documentType->name])]);
+
+        return redirect()->back();
     }
 
     /**
@@ -45,7 +57,7 @@ class DocumentTypeController extends Controller
      */
     public function edit(DocumentType $documentType)
     {
-        //
+        return response()->json($documentType);
     }
 
     /**
@@ -53,7 +65,14 @@ class DocumentTypeController extends Controller
      */
     public function update(Request $request, DocumentType $documentType)
     {
-        //
+        $documentType->code = $request->code;
+        $documentType->name = $request->name;
+
+        $documentType->save();
+
+        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.documentType.updated', ['documentType' => $documentType->name])]);
+
+        return redirect()->back();
     }
 
     /**
@@ -61,6 +80,15 @@ class DocumentTypeController extends Controller
      */
     public function destroy(DocumentType $documentType)
     {
-        //
+        if($documentType->documents()){
+            session()->flash('message', ['type'=> 'danger', 'content'=>__('messages.documentType.deletedError', ['documentType' => $documentType->name])]);
+            return redirect()->back();
+        }
+
+        session()->flash('message', ['type'=> 'danger', 'content'=>__('messages.documentType.deleted', ['documentType' => $documentType->name])]);
+
+        $documentType->delete();
+
+        return redirect()->route('document-type.index');
     }
 }

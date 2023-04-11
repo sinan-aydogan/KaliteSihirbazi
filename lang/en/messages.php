@@ -71,4 +71,15 @@ return [
         'restored' => 'The calibration task code #:measurementDeviceCalibration  restored successfully',
         'updated' => 'The calibration task code #:measurementDeviceCalibration  has been updated successfully'
     ],
+    'documentType' => [
+        'created' => 'The document type named :documentType has been created successfully',
+        'deleted' => 'The document type named :documentType deleted successfully',
+        'deletedError' => 'The document type named :documentType can not be deleted because it has attached documents in the system',
+        'permanentDeleted' => 'The document type named :documentType permanently deleted successfully',
+        'restored' => 'The document type named :documentType restored successfully',
+        'updated' => 'The document type named :documentType has been updated successfully'
+    ],
+    'documentSettings' => [
+        'updated' => 'The document settings has been updated successfully.'
+    ]
 ];

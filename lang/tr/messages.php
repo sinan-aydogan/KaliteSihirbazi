@@ -70,5 +70,16 @@ return [
         'permanentDeleted' => '#:measurementDeviceCalibration kodlu kalibrasyon emri kalıcı olarak silindi.',
         'restored' => '#:measurementDeviceCalibration kodlu kalibrasyon emri geri getirildi.',
         'updated' => '#:measurementDeviceCalibration kodlu kalibrasyon emri güncellendi.'
+    ],
+    'documentType' => [
+        'created' => ':documentType isimli döküman tipi oluşturuldu.',
+        'deleted' => ':documentType isimli döküman tipi silindi.',
+        'deletedError' => ':documentType isimli döküman tipi silinemedi. Bu döküman tipine ait dökümanlar bulunmaktadır.',
+        'permanentDeleted' => ':documentType isimli döküman tipi kalıcı olarak silindi.',
+        'restored' => ':documentType isimli döküman tipi geri getirildi.',
+        'updated' => ':documentType isimli döküman tipi güncellendi.'
+    ],
+    'documentSettings' => [
+        'updated' => 'Döküman modülü ayarları güncellendi.'
     ]
 ];
