@@ -27,6 +27,8 @@ const i18n = createI18n({
         en: enTranslates,
         tr: trTranslates,
     },
+    missingWarn: false,
+    fallbackWarn: false
 });
 
 /*Pinia*/
