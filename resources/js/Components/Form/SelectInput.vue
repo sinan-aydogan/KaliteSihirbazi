@@ -26,7 +26,7 @@ const props = defineProps({
   disabled: Boolean
 });
 
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['update:modelValue', 'changed'])
 
 /*Outside click*/
 const target = ref();
