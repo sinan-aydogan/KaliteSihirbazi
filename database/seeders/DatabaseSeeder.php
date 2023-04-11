@@ -39,6 +39,7 @@ class DatabaseSeeder extends Seeder
             MeasurementDeviceSeeder::class,
             CalibrationFirmSeeder::class,
             DocumentTypeSeeder::class,
+            SettingSeeder::class,
         ]);
     }
 }
