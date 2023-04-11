@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('code',10)->unique();
             $table->string('name',255);
-            $table->string('description',750);
+            $table->string('description',750)->nullable();
+            $table->foreignId('department_id');
             $table->foreignId('document_type_id');
             $table->foreignId('creator_id');
             $table->string('publishing_status')->default('draft')->nullable();
