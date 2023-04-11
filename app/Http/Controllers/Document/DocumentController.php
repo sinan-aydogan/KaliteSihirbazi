@@ -5,13 +5,16 @@ namespace App\Http\Controllers\Document;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreDocumentRequest;
 use App\Http\Requests\UpdateDocumentRequest;
+use App\Models\Department;
 use App\Models\Document\DistributionPoint;
 use App\Models\Document\Document;
 use App\Models\Document\DocumentType;
 use Inertia\Inertia;
+use App\Traits\Document\DocumentCodeTrait;
 
 class DocumentController extends Controller
 {
+    use DocumentCodeTrait;
     /**
      * Display a listing of the resource.
      *
@@ -21,11 +24,14 @@ class DocumentController extends Controller
     {
         $documents = Document::with('documentType:id,name', 'creator:id,name')->latest('id')->paginate(10);
         $types = DocumentType::all(['id', 'name']);
+        $departments = Department::all(['id', 'name']);
         $distributionPoints = DistributionPoint::all(['id', 'name']);
 
         return Inertia::render('Modules/Document/IndexPage', [
             'tableData' => $documents,
             'types' => $types,
+            'departments' => $departments,
+            'namingRule' => $this->namingRule(),
             'distributionPoints' => $distributionPoints,
         ]);
     }
@@ -49,8 +55,9 @@ class DocumentController extends Controller
     public function store(StoreDocumentRequest $request)
     {
         $document = new Document();
-        $document['code'] = $request['code'];
+        $document['code'] = $this->getDocumentCode($request->all());
         $document['name'] = $request['name'];
+        $document['department_id'] = $request['department_id'];
         $document['document_type_id'] = $request['document_type_id'];
         $document['description'] = $request['description'];
         $document['publishing_status'] = $request['publishing_status'];
@@ -60,9 +67,6 @@ class DocumentController extends Controller
 
         /*Sync Distribution Points*/
         $document->distributionPoints()->sync($request['distribution_points']);
-
-        /*Sync Related Departments*/
-        $document->relatedDepartments()->sync($request['related_departments']);
 
         /*TODO: Attachment*/
 

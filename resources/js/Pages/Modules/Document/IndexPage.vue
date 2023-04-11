@@ -32,6 +32,10 @@ const props = defineProps({
         type: Array,
         default: []
     },
+    namingRule: {
+        type: String,
+        required: true
+    },
 })
 
 // Multi-lang
@@ -41,7 +45,7 @@ const {t, tm} = Translates();
 
 // Validation
 import {useVuelidate} from "@vuelidate/core"
-import {required, maxLength, helpers} from "@vuelidate/validators"
+import {required, requiredIf, maxLength, helpers} from "@vuelidate/validators"
 import TextAreaInput from "@/Components/Form/TextAreaInput.vue";
 import FileInput from "@/Components/Form/FileInput.vue";
 
@@ -76,6 +80,7 @@ const form = useForm({
     name: "",
     description: "",
     document_type_id: null,
+    department_id: null,
     publishing_status: 'draft',
     distribution_points: [],
     related_departments: [],
@@ -107,7 +112,7 @@ const getData = (query) => {
 // Rules
 const rules = ref({
     code: {
-        required: helpers.withMessage(t('message.validation.required'), required),
+        required: helpers.withMessage(t('message.validation.required'), requiredIf(props.namingRule === 'manual')),
         maxLength: helpers.withMessage(t('message.validation.maxLength', [10]), maxLength(10))
     },
     name: {
@@ -115,6 +120,7 @@ const rules = ref({
         maxLength: helpers.withMessage(t('message.validation.maxLength', [255]), maxLength(255))
     },
     document_type_id: {required: helpers.withMessage(t('message.validation.required'), required)},
+    department_id: {required: helpers.withMessage(t('message.validation.required'), required)},
 })
 
 const v$ = useVuelidate(rules, form)
@@ -169,14 +175,22 @@ const handleDelete = (id) => {
 <template>
     <app-layout :title="tm('title.indexPage.title')" :sub-title="tm('title.indexPage.subTitle')">
         <template #actionArea>
+            <!--Deleted Documents-->
             <simple-button type="route" :link="route('department.deleted')" color="red">
                 <font-awesome-icon icon="trash-can" class="mr-2"/>
-                <span v-text="t('term.deletedItems')"/>
+                <span v-text="$t('term.deletedItems')"/>
             </simple-button>
 
+            <!--Manage Department Module-->
+            <simple-button type="route" :link="route('document-setting.index')" color="blue">
+                <font-awesome-icon icon="fa-solid fa-cog" class="mr-2"/>
+                <span v-text="tm('term.manageModule')"/>
+            </simple-button>
+
+            <!--Add New Button-->
             <simple-button @click="showModal = true; formType = 'create'" color="green">
                 <font-awesome-icon icon="plus" class="mr-2"/>
-                <span v-text="t('action.addNew')"/>
+                <span v-text="$t('action.addNew')"/>
             </simple-button>
         </template>
         <Table
@@ -205,39 +219,45 @@ const handleDelete = (id) => {
             closeable
             close-button
         >
-            <Form full-size>
-                <FormSection
-                    bg-less
-                >
-                    <!-- Manager -->
+            <Form  full-size multipart>
+                <FormSection grid>
+                    <!-- Code -->
+                    <input-group v-if="namingRule === 'manual'" class="col-span-3" labelFor="code" :label="tm('term.code')" :errors="v$.code.$errors">
+                        <text-input v-model="form.code"/>
+                    </input-group>
+
+                    <!-- Name -->
+                    <input-group :class="namingRule === 'manual' ? 'col-span-9' : 'col-span-12'" labelFor="name" :label="tm('term.name')"
+                                 :errors="v$.name.$errors">
+                        <text-input v-model="form.name"/>
+                    </input-group>
+
+                </FormSection>
+
+                <FormSection grid>
+                    <!-- Type -->
                     <input-group class="col-span-6" labelFor="document_type_id" :label="tm('term.type')"
                                  :errors="v$.document_type_id.$errors">
                         <select-input v-model="form.document_type_id" :options="types" optionLabel="name"/>
                     </input-group>
 
-
-                    <!-- Code -->
-                    <input-group class="col-span-2" labelFor="code" :label="tm('term.code')" :errors="v$.code.$errors">
-                        <text-input v-model="form.code"/>
+                    <!-- Department -->
+                    <input-group class="col-span-6" labelFor="document_type_id" :label="tm('term.department')"
+                                 :errors="v$.department_id.$errors">
+                        <select-input v-model="form.department_id" :options="departments" optionLabel="name"/>
                     </input-group>
+                </FormSection>
 
-                    <!-- Space Filler -->
-                    <div class="col-span-4"></div>
 
-                    <!-- Name -->
-                    <input-group class="col-span-6" labelFor="name" :label="tm('term.name')"
-                                 :errors="v$.name.$errors">
-                        <text-input v-model="form.name"/>
-                    </input-group>
-
-                    <!-- File -->
-                    <input-group class="col-span-3" labelFor="type" :label="tm('term.description')">
-                        <file-input v-model="form.file"/>
-                    </input-group>
-
+                <FormSection>
                     <!-- Description -->
                     <input-group class="col-span-3" labelFor="type" :label="tm('term.description')">
                         <text-area-input v-model="form.description"/>
+                    </input-group>
+
+                    <!-- File -->
+                    <input-group class="col-span-3" labelFor="type" :label="tm('term.file')">
+                        <file-input v-model="form.file"/>
                     </input-group>
                 </FormSection>
             </Form>
