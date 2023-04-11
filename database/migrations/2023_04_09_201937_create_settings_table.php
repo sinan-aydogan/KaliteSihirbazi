@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('document_department', function (Blueprint $table) {
+        Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('document_id');
-            $table->foreignId('department_id');
+            $table->string('code', 255)->unique();
+            $table->string('module', 255)->default('global');
+            $table->string('type')->default('string');
+            $table->string('value')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('document_department');
+        Schema::dropIfExists('settings');
     }
 };
