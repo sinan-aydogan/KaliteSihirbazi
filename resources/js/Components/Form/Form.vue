@@ -54,7 +54,7 @@ const hasActions = computed(() => !!useSlots().actions);
         @submit.prevent="$emit('submitted')"
     >
 
-      <div class="space-y-6">
+      <div class="space-y-2">
         <slot name="form"/><slot/>
       </div>
 
