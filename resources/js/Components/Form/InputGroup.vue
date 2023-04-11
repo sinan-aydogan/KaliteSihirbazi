@@ -49,7 +49,7 @@ provide('errorStatus', errorStatus);
                 <slot v-else name="label" />
             </span>
             <!--Sub Label-->
-            <span v-if="subLabel || $slots.subLabel" class="text-xs italic">
+            <span v-if="subLabel || $slots.subLabel" class="text-xs italic ml-2">
                 <span v-if="subLabel" v-text="subLabel"></span>
                 <slot v-else name="subLabel" />
             </span>
