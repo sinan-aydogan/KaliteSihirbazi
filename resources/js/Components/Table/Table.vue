@@ -11,7 +11,6 @@ import TextInput from "@/Components/Form/TextInput.vue";
 import SimpleButton from "@/Components/Button/SimpleButton.vue";
 import FilterBadge from "@/Components/Table/FilterBadge.vue";
 import SelectInput from "@/Components/Form/SelectInput.vue";
-import Checkbox from "@/Jetstream/Checkbox.vue";
 import {debouncedWatch} from "@vueuse/core";
 
 const props = defineProps({
@@ -385,7 +384,7 @@ debouncedWatch(() => cloneDeep(search.query), () => {
         <tr v-if="gData.length===0">
           <td :colspan="headers.length + actionColumn ?? 1" class="bg-sky-100 text-sky-700">
             <div class="flex justify-center items-center p-4">
-              <font-awesome-icon icon="info-circle" size="w-6 h-6"/>
+              <font-awesome-icon icon="info-circle" class="w-6 h-6"/>
               <span class="ml-2 font-semibold" v-text="t('message.feedback.noResults')"></span>
             </div>
           </td>
