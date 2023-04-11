@@ -7,7 +7,7 @@ export default function () {
         messages: {
             en,
             tr
-        }
+        },
     });
 
     return {

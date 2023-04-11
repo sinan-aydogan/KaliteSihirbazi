@@ -222,12 +222,12 @@ const handleDelete = (id) => {
     <template #actionArea>
       <simple-button type="route" :link="route('employee.deleted')" color="red">
         <font-awesome-icon icon="trash-can" class="mr-2"/>
-        <span v-text="t('term.deletedItems')"/>
+        <span v-text="$t('term.deletedItems')"/>
       </simple-button>
 
       <simple-button @click="showModal = true; formType = 'create'" color="green">
         <font-awesome-icon icon="plus" class="mr-2"/>
-        <span v-text="t('action.addNew')"/>
+        <span v-text="$t('action.addNew')"/>
       </simple-button>
     </template>
     <Table
@@ -388,7 +388,7 @@ const handleDelete = (id) => {
             <div v-else-if="form.contact_info.emergencyContacts.length===0 && !showEmergencyContactForm"
                  class="flex flex-col bg-slate-600 p-6 space-y-6 justify-center items-center rounded w-full border border-dashed">
               <span v-text="tm('message.feedback.emptyEmergencyContactsList')"></span>
-              <simple-button @click="showEmergencyContactForm=true" :label="t('action.addNew')" full-size size="slim"/>
+              <simple-button @click="showEmergencyContactForm=true" :label="$t('action.addNew')" full-size size="slim"/>
             </div>
           </div>
 

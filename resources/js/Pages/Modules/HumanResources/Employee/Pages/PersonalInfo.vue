@@ -298,7 +298,7 @@ const handleUpdate = async () => {
           <div v-else-if="form.contact_info.emergencyContacts.length===0 && !showEmergencyContactForm"
                class="flex flex-col bg-slate-600 p-6 space-y-6 justify-center items-center rounded w-full border border-dashed">
             <span v-text="tm('message.feedback.emptyEmergencyContactsList')"></span>
-            <simple-button @click="showEmergencyContactForm=true" :label="t('action.addNew')" full-size size="slim"/>
+            <simple-button @click="showEmergencyContactForm=true" :label="$t('action.addNew')" full-size size="slim"/>
           </div>
         </div>
 

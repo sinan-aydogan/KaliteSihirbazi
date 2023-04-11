@@ -102,15 +102,15 @@ const getData = (query) => {
 const departmentValidation = (value) => (form.type === "main" && !value) || (form.type === 'sub' && value)
 const rules = ref({
   code: {
-    required: helpers.withMessage(tm('message.validation.required'), required),
-    maxLength: helpers.withMessage(tm('message.validation.maxLength', [10]), maxLength(10))
+    required: helpers.withMessage(t('message.validation.required'), required),
+    maxLength: helpers.withMessage(t('message.validation.maxLength', [10]), maxLength(10))
   },
   name: {
-    required: helpers.withMessage(tm('message.validation.required'), required),
-    maxLength: helpers.withMessage(tm('message.validation.maxLength', [255]), maxLength(255))
+    required: helpers.withMessage(t('message.validation.required'), required),
+    maxLength: helpers.withMessage(t('message.validation.maxLength', [255]), maxLength(255))
   },
-  type: { required: helpers.withMessage(tm('message.validation.required'), required) },
-  department_id: { departmentValidation: helpers.withMessage(tm('message.validation.required'), departmentValidation) },
+  type: { required: helpers.withMessage(t('message.validation.required'), required) },
+  department_id: { departmentValidation: helpers.withMessage(t('message.validation.required'), departmentValidation) },
 })
 
 const v$ = useVuelidate(rules, form)

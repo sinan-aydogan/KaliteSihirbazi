@@ -157,12 +157,12 @@ const handleSubmit = async () => {
     <template #actionArea>
       <simple-button type="route" :link="route('employee.deleted')" color="red">
         <font-awesome-icon icon="trash-can" class="mr-2"/>
-        <span v-text="t('term.deletedItems')"/>
+        <span v-text="$t('term.deletedItems')"/>
       </simple-button>
 
       <simple-button @click="showModal = true; formType = 'create'" color="green">
         <font-awesome-icon icon="plus" class="mr-2"/>
-        <span v-text="t('action.addNew')"/>
+        <span v-text="$t('action.addNew')"/>
       </simple-button>
     </template>
     <Table

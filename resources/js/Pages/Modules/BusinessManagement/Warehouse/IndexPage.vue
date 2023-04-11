@@ -106,15 +106,15 @@ const getData = (query) => {
 // Rules
 const rules = ref({
   code: {
-    required: helpers.withMessage(tm('message.validation.required'), required),
-    maxLength: helpers.withMessage(tm('message.validation.maxLength', [10]), maxLength(10))
+    required: helpers.withMessage(t('message.validation.required'), required),
+    maxLength: helpers.withMessage(t('message.validation.maxLength', [10]), maxLength(10))
   },
   name: {
-    required: helpers.withMessage(tm('message.validation.required'), required),
-    maxLength: helpers.withMessage(tm('message.validation.maxLength', [255]), maxLength(255))
+    required: helpers.withMessage(t('message.validation.required'), required),
+    maxLength: helpers.withMessage(t('message.validation.maxLength', [255]), maxLength(255))
   },
-  warehouse_type_id: {required: helpers.withMessage(tm('message.validation.required'), required)},
-  department_id: {required: helpers.withMessage(tm('message.validation.required'), required)},
+  warehouse_type_id: {required: helpers.withMessage(t('message.validation.required'), required)},
+  department_id: {required: helpers.withMessage(t('message.validation.required'), required)},
 })
 
 const v$ = useVuelidate(rules, form)
@@ -172,7 +172,7 @@ const handleDelete = (id) => {
       <!--Deleted Records-->
       <simple-button type="route" :link="route('warehouse.deleted')" color="red">
         <font-awesome-icon icon="trash-can" class="mr-2"/>
-        <span v-text="tm('term.deletedItems')"/>
+        <span v-text="$t('term.deletedItems')"/>
       </simple-button>
 
       <!--Manage Department Module-->
