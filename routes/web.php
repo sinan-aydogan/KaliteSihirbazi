@@ -65,7 +65,8 @@ Route::middleware([
         ['uri'=>'raw-material', 'model'=>'rawMaterial', 'controller'=>\App\Http\Controllers\RawMaterialController::class],
         ['uri'=>'consumable-material', 'model'=>'consumableMaterial', 'controller'=>\App\Http\Controllers\ConsumableMaterialController::class],
         ['uri'=>'product-tree', 'model'=>'productTree', 'controller'=>\App\Http\Controllers\ProductTreeController::class],
-        ['uri'=>'document', 'model'=>'document', 'controller'=> \App\Http\Controllers\Document\DocumentController::class],
+        ['uri'=>'document', 'model'=>'document', 'controller'=> \App\Http\Controllers\Document\DocumentController::class, 'settingController' => \App\Http\Controllers\Document\DocumentSettingController::class],
+        ['uri'=>'document-type', 'model'=>'documentType', 'controller'=> \App\Http\Controllers\Document\DocumentTypeController::class],
         ['uri'=>'document-revision-request', 'model'=>'documentRevisionRequest', 'controller'=> \App\Http\Controllers\Document\DocumentRevisionRequestController::class],
         ['uri'=>'document-distribution-point', 'model'=>'documentDistributionPoint', 'controller'=> \App\Http\Controllers\Document\DistributionPointController::class],
         ['uri'=>'document-action', 'model'=>'documentAction', 'controller'=> \App\Http\Controllers\Document\DocumentActionController::class],
@@ -84,6 +85,7 @@ Route::middleware([
         /*Setting*/
         if(isset($mRoute['settingController'])){
             Route::get($mRoute['uri']."/setting", [$mRoute['settingController'], 'index'])->withTrashed()->name($mRoute['uri']."-setting.index");
+            Route::post($mRoute['uri']."/setting", [$mRoute['settingController'], 'update'])->name($mRoute['uri']."-setting.update");
         }
         /*Resource*/
         Route::resource($mRoute['uri'], $mRoute['controller']);
