@@ -11,16 +11,42 @@
         "deletedPage": {
             "title": "Silinmiş Dökümanlar",
             "subTitle": "Silinen dökümanlar kurtarabilir veya kalıcı olarak silebiliriniz"
+        },
+        "typeIndexPage": {
+            "title": "Döküman Tipleri",
+            "subTitle": "Sistemdeki döküman tiplerini buradan yönetebilirsiniz"
+        },
+        "typeCreatePage": {
+            "title": "Döküman Tipi Oluştur",
+            "subTitle": "Sistemde yeni bir döküman tipi oluşturun"
         }
     },
     "term": {
-        "department": "Departman | Departmanlar",
+        "department": "Departman",
         "code": "Döküman Kodu",
         "name": "Döküman Adı",
         "type": "Döküman Tipi",
+        "typeCode": "Döküman Tipi Kodu",
+        "typeName": "Döküman Tipi Adı",
         "status": "Yayın Durumu",
         "distributionPoints": "Dağıtım Noktaları",
-        "creator": "Oluşturan"
+        "creator": "Oluşturan",
+        "file": "Dosya",
+        "createdDate": "Oluşturulma Tarihi"
+    },
+    "setting": {
+        "document": {
+            "title": "Döküman Modülü Ayarları",
+            "subTitle": "Döküman modülünün ayarlarını buradan yönetebilirsiniz",
+            "namingRule": {
+                "title": "Döküman Adlandırma Kuralı",
+                "subTitle": "Döküman adlandırma kuralını buradan yönetebilirsiniz",
+                "auto": "Otomatik",
+                "autoDesc": "Sistem otomatik olarak döküman kodu ataması yapacaktır",
+                "manual": "Manuel",
+                "manualDesc": "Döküman kodunu manuel olarak kendiniz belirleyebilirsiniz"
+            }
+        }
     },
     "action": {
     },

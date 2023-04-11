@@ -11,6 +11,14 @@
         "deletedPage": {
             "title": "Deleted Documents",
             "subTitle": "You can restore deleted documents or permanent delete them"
+        },
+        "typeIndexPage": {
+            "title": "Document Types",
+            "subTitle": "Manage your document types"
+        },
+        "typeCreatePage": {
+            "title": "Create a New Document Type",
+            "subTitle": "Create a new document type in the system"
         }
     },
     "term": {
@@ -18,9 +26,27 @@
         "code": "Document Code",
         "name": "Document Name",
         "type": "Document Type",
+        "typeCode": "Document Type Code",
+        "typeName": "Document Type Name",
         "status": "Document Status",
         "distributionPoints": "Distribution Points",
-        "creator": "Creator"
+        "creator": "Creator",
+        "file": "File",
+        "createdDate": "Created Date"
+    },
+    "setting": {
+        "document": {
+            "title": "Document Module Settings",
+            "subTitle": "Manage your document module settings",
+            "namingRule": {
+                "title": "Document Naming Rule",
+                "subTitle": "Manage your document naming rule",
+                "auto": "Auto",
+                "autoDesc": "Auto generate document code when creating a new document",
+                "manual": "Manual",
+                "manualDesc": "Manually enter document code when creating a new document"
+            }
+        }
     },
     "action": {
     },
