@@ -17,9 +17,9 @@ defineProps({
       <template #actionArea>
         <slot name="actionArea"></slot>
       </template>
-        <div class="flex flex-col md:flex-row md:space-x-12">
+        <div class="flex flex-col md:flex-row md:space-x-6">
             <!--Setting Menu-->
-            <div class="w-full mb-4 md:w-52 md:flex-shrink-0">
+            <div class="w-full mb-4 md:w-36 md:flex-shrink-0">
                 <setting-menu :links="links"/>
             </div>
 
