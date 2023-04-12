@@ -80,7 +80,7 @@ class DocumentTypeController extends Controller
      */
     public function destroy(DocumentType $documentType)
     {
-        if($documentType->documents()){
+        if($documentType->documents->count() > 0){
             session()->flash('message', ['type'=> 'danger', 'content'=>__('messages.documentType.deletedError', ['documentType' => $documentType->name])]);
             return redirect()->back();
         }

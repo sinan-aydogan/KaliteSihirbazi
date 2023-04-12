@@ -6,6 +6,8 @@ use App\Models\Department;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Document extends Model
 {
@@ -27,15 +29,15 @@ class Document extends Model
     }
 
     /*Distribution Points*/
-    public function distributionPoints()
+    public function distributionPoints():BelongsToMany
     {
-        return $this->belongsToMany(DistributionPoint::class, 'document_distribution_point');
+        return $this->belongsToMany(DistributionPoint::class, 'distribution_point_document');
     }
 
-    /*Related Departments*/
-    public function relatedDepartments()
+    /*Related Department*/
+    public function department():BelongsTo
     {
-        return $this->belongsToMany(Department::class, 'document_department');
+        return $this->belongsTo(Department::class);
     }
 
     /*Creator*/

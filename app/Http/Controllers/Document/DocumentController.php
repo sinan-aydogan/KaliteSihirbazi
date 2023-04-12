@@ -22,7 +22,7 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        $documents = Document::with('documentType:id,name', 'creator:id,name')->latest('id')->paginate(10);
+        $documents = Document::with('documentType:id,name', 'distributionPoints:id,name', 'department:id,name', 'creator:id,name')->latest('id')->paginate(10);
         $types = DocumentType::all(['id', 'name']);
         $departments = Department::all(['id', 'name']);
         $distributionPoints = DistributionPoint::all(['id', 'name']);

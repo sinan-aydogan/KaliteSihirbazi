@@ -48,6 +48,8 @@ import {useVuelidate} from "@vuelidate/core"
 import {required, requiredIf, maxLength, helpers} from "@vuelidate/validators"
 import TextAreaInput from "@/Components/Form/TextAreaInput.vue";
 import FileInput from "@/Components/Form/FileInput.vue";
+import MultiSelectInput from "@/Components/Form/MultiSelectInput.vue";
+import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 
 /*Table*/
 const tableHeaders = [
@@ -65,11 +67,22 @@ const tableHeaders = [
         value: (value) => value.document_type.name,
     },
     {
+        id: 'department',
+        label: tm('term.department'),
+        value: (value) => value.department.name,
+    },
+    {
         id: 'creator',
         label: tm('term.creator'),
+    },
+    {
+        id: 'distributionPoints',
+        label: t('term.distributionPoints'),
+        align: 'center',
     }
 ]
 const showModal = ref(false);
+const showDistributionPointsModal = ref(false);
 
 /*Form*/
 const formType = ref("create");
@@ -155,9 +168,13 @@ const getRowInfo = (id) => {
         form.id = response.data.id;
         form.code = response.data.code;
         form.name = response.data.name;
-        form.type = response.data.type;
+        form.description = response.data.description;
+        form.document_type_id = response.data.document_type_id;
         form.department_id = response.data.department_id;
-        form.employee_id = response.data.employee_id;
+        form.publishing_status = response.data.publishing_status;
+        form.distribution_points = response.data.distribution_points;
+        form.related_departments = response.data.related_departments;
+        form.file = response.data.file;
     })
     showModal.value = true;
     formType.value = "update"
@@ -168,6 +185,13 @@ const handleDelete = (id) => {
     router.delete(route("department.destroy", id), {
         preserveState: true,
     });
+}
+
+/*Show Distribution Points*/
+const selectedDocument = ref([]);
+const showDistributionPoints = (points) => {
+    showDistributionPointsModal.value = true;
+    selectedDocument.value = points.distribution_points;
 }
 
 </script>
@@ -201,11 +225,21 @@ const handleDelete = (id) => {
             show-action
             edit-action
         >
+            <!--Creator-->
             <template #creator="{props}">
                 <div class="flex space-x-2 items-center">
                     <avatar :src="props.creator.profile_photo_url"/>
                     <span v-text="props.creator.name"/>
                 </div>
+            </template>
+
+            <!--Distribution Points-->
+            <template #distributionPoints="{props}">
+                <font-awesome-icon
+                    icon="location-dot"
+                    class="hover:scale-105 cursor-pointer transition-all"
+                    @click="showDistributionPoints(props)"
+                />
             </template>
         </Table>
     </app-layout>
@@ -219,15 +253,17 @@ const handleDelete = (id) => {
             closeable
             close-button
         >
-            <Form  full-size multipart>
+            <Form full-size multipart>
                 <FormSection grid>
                     <!-- Code -->
-                    <input-group v-if="namingRule === 'manual'" class="col-span-3" labelFor="code" :label="tm('term.code')" :errors="v$.code.$errors">
+                    <input-group v-if="namingRule === 'manual'" class="col-span-3" labelFor="code"
+                                 :label="tm('term.code')" :errors="v$.code.$errors">
                         <text-input v-model="form.code"/>
                     </input-group>
 
                     <!-- Name -->
-                    <input-group :class="namingRule === 'manual' ? 'col-span-9' : 'col-span-12'" labelFor="name" :label="tm('term.name')"
+                    <input-group :class="namingRule === 'manual' ? 'col-span-9' : 'col-span-12'" labelFor="name"
+                                 :label="tm('term.name')"
                                  :errors="v$.name.$errors">
                         <text-input v-model="form.name"/>
                     </input-group>
@@ -245,6 +281,13 @@ const handleDelete = (id) => {
                     <input-group class="col-span-6" labelFor="document_type_id" :label="tm('term.department')"
                                  :errors="v$.department_id.$errors">
                         <select-input v-model="form.department_id" :options="departments" optionLabel="name"/>
+                    </input-group>
+
+                    <!-- Distribution Point -->
+                    <input-group class="col-span-12" labelFor="distribution_points"
+                                 :label="tm('term.distributionPoints')">
+                        <multi-select-input v-model="form.distribution_points" :options="distributionPoints"
+                                            optionLabel="name"/>
                     </input-group>
                 </FormSection>
 
@@ -266,6 +309,19 @@ const handleDelete = (id) => {
                 <SimpleButton :label="t('action.create')" color="green" @click="handleSubmit"
                               :loading="form.processing"/>
             </template>
+        </Modal>
+
+
+        <!--Distribution Points Modal-->
+        <Modal
+            v-model="showDistributionPointsModal"
+            :header="tm('title.distributionPointIndexPage.title')"
+            closeable
+            close-button
+        >
+            <ul class="gap-4">
+                <li v-for="point in selectedDocument" v-bind="point" v-text="point.name"></li>
+            </ul>
         </Modal>
     </teleport>
 </template>
