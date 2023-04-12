@@ -218,7 +218,7 @@ export default function ({roles, permissions}) {
                         label: t('mainMenu.distributionPoints'),
                         icon: 'location-dot',
                         type: "route",
-                        link: 'document-distribution-point.index'
+                        link: 'distribution-point.index'
                     },
                     /*Actions*/
                     {

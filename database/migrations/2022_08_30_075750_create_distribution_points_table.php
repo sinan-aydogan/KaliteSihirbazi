@@ -15,9 +15,8 @@ return new class extends Migration
     {
         Schema::create('distribution_points', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('department_id')->constrained('departments');
-            $table->string('code', 10)->unique();
             $table->string('name', 150);
+            $table->foreignId('department_id')->constrained('departments');
             $table->timestamps();
         });
     }

@@ -21,7 +21,13 @@ export default function (){
                     'label': tm('term.type'),
                     type: "link",
                     link: 'document-type.index'
-                }
+                },
+                {
+                    'id': 'gb-type',
+                    'label': tm('term.distributionPoints'),
+                    type: "link",
+                    link: 'distribution-point.index'
+                },
             ]
         },
 

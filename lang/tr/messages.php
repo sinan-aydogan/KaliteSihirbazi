@@ -79,6 +79,14 @@ return [
         'restored' => ':documentType isimli döküman tipi geri getirildi.',
         'updated' => ':documentType isimli döküman tipi güncellendi.'
     ],
+    'distributionPoint' => [
+        'created' => ':distributionPoint isimli döküman dağıtım noktası oluşturuldu.',
+        'deleted' => ':distributionPoint isimli döküman dağıtım noktası silindi.',
+        'deletedError' => ':distributionPoint isimli döküman dağıtım noktası silinemedi. Bu döküman tipine ait dökümanlar bulunmaktadır.',
+        'permanentDeleted' => ':distributionPoint isimli döküman dağıtım noktası kalıcı olarak silindi.',
+        'restored' => ':distributionPoint isimli döküman dağıtım noktası geri getirildi.',
+        'updated' => ':distributionPoint isimli döküman dağıtım noktası güncellendi.'
+    ],
     'documentSettings' => [
         'updated' => 'Döküman modülü ayarları güncellendi.'
     ]

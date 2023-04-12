@@ -68,7 +68,7 @@ Route::middleware([
         ['uri'=>'document', 'model'=>'document', 'controller'=> \App\Http\Controllers\Document\DocumentController::class, 'settingController' => \App\Http\Controllers\Document\DocumentSettingController::class],
         ['uri'=>'document-type', 'model'=>'documentType', 'controller'=> \App\Http\Controllers\Document\DocumentTypeController::class],
         ['uri'=>'document-revision-request', 'model'=>'documentRevisionRequest', 'controller'=> \App\Http\Controllers\Document\DocumentRevisionRequestController::class],
-        ['uri'=>'document-distribution-point', 'model'=>'documentDistributionPoint', 'controller'=> \App\Http\Controllers\Document\DistributionPointController::class],
+        ['uri'=>'distribution-point', 'model'=>'distributionPoint', 'controller'=> \App\Http\Controllers\Document\DistributionPointController::class],
         ['uri'=>'document-action', 'model'=>'documentAction', 'controller'=> \App\Http\Controllers\Document\DocumentActionController::class],
         ['uri'=>'measurement-device', 'model'=>'measurementDevice', 'controller'=> \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::class],
         ['uri'=>'measurement-device-type', 'model'=>'measurementDeviceType', 'controller'=> \App\Http\Controllers\MeasurementDevice\MeasurementDeviceTypeController::class],

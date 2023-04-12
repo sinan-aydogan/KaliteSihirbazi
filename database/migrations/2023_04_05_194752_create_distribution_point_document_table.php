@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('document_distribution_point', function (Blueprint $table) {
+        Schema::create('distribution_point_document', function (Blueprint $table) {
             $table->id();
             $table->foreignId('document_id');
             $table->foreignId('distribution_point_id');
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('document_distribution_point');
+        Schema::dropIfExists('distribution_point_document');
     }
 };

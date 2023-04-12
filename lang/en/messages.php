@@ -79,6 +79,14 @@ return [
         'restored' => 'The document type named :documentType restored successfully',
         'updated' => 'The document type named :documentType has been updated successfully'
     ],
+    'distributionPoint' => [
+        'created' => 'The distribution point named :distributionPoint has been created successfully',
+        'deleted' => 'The distribution point named :distributionPoint deleted successfully',
+        'deletedError' => 'The distribution point named :distributionPoint can not be deleted because it has attached documents in the system',
+        'permanentDeleted' => 'The distribution point named :distributionPoint permanently deleted successfully',
+        'restored' => 'The distribution point named :distributionPoint restored successfully',
+        'updated' => 'The distribution point named :distributionPoint has been updated successfully'
+    ],
     'documentSettings' => [
         'updated' => 'The document settings has been updated successfully.'
     ]

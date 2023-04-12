@@ -19,6 +19,14 @@
         "typeCreatePage": {
             "title": "Döküman Tipi Oluştur",
             "subTitle": "Sistemde yeni bir döküman tipi oluşturun"
+        },
+        "distributionPointIndexPage": {
+            "title": "Dağıtım Noktaları",
+            "subTitle": "Sistemdeki dağıtım noktalarını buradan yönetebilirsiniz"
+        },
+        "distributionPointCreatePage": {
+            "title": "Dağıtım Noktası Oluştur",
+            "subTitle": "Sistemde yeni bir dağıtım noktası oluşturun"
         }
     },
     "term": {
@@ -30,6 +38,7 @@
         "typeName": "Döküman Tipi Adı",
         "status": "Yayın Durumu",
         "distributionPoints": "Dağıtım Noktaları",
+        "distributionPointName": "Dağıtım Noktası Adı",
         "creator": "Oluşturan",
         "file": "Dosya",
         "createdDate": "Oluşturulma Tarihi"

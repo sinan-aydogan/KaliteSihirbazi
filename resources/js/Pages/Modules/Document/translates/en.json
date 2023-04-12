@@ -19,6 +19,14 @@
         "typeCreatePage": {
             "title": "Create a New Document Type",
             "subTitle": "Create a new document type in the system"
+        },
+        "distributionPointIndexPage": {
+            "title": "Distribution Points",
+            "subTitle": "Manage your distribution points"
+        },
+        "distributionPointCreatePage": {
+            "title": "Create a New Distribution Point",
+            "subTitle": "Create a new distribution point in the system"
         }
     },
     "term": {
@@ -30,6 +38,7 @@
         "typeName": "Document Type Name",
         "status": "Document Status",
         "distributionPoints": "Distribution Points",
+        "distributionPointName": "Distribution Point Name",
         "creator": "Creator",
         "file": "File",
         "createdDate": "Created Date"
