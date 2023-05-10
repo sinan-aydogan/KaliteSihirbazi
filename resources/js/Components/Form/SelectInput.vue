@@ -4,7 +4,7 @@ import {onClickOutside, onKeyStroke} from "@vueuse/core";
 
 const props = defineProps({
     modelValue: {
-        type: [String, Number, Date, Boolean],
+        type: [String, Number, Date, Boolean, Object, Array],
         default: null
     },
     options: {
@@ -34,19 +34,19 @@ const emit = defineEmits(['update:modelValue', 'changed'])
 
 /*Outside click*/
 const target = ref();
-onClickOutside(target, (event) => showOptions.value = false);
+onClickOutside(target, () => showOptions.value = false);
 
 const currentIndex = ref(-1);
 
-onKeyStroke('ArrowDown', (e) => {
+onKeyStroke('ArrowDown', () => {
     currentIndex.value = currentIndex.value + 1;
 })
 
-onKeyStroke('ArrowUp', (e) => {
+onKeyStroke('ArrowUp', () => {
     currentIndex.value = currentIndex.value - 1;
 })
 
-onKeyStroke('Enter', (e) => {
+onKeyStroke('Enter', () => {
     select(props.options[currentIndex.value])
     currentIndex.value = -1;
 })
