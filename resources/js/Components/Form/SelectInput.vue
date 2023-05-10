@@ -1,6 +1,11 @@
 <script setup>
 import {computed, ref, watch} from "vue";
-import {onClickOutside, onKeyStroke} from "@vueuse/core";
+import {onKeyStroke} from "@vueuse/core";
+import {
+    VClosePopper,
+    Dropdown
+} from 'floating-vue'
+import 'floating-vue/dist/style.css'
 
 const props = defineProps({
     modelValue: {
@@ -32,18 +37,34 @@ const props = defineProps({
 
 const emit = defineEmits(['update:modelValue', 'changed'])
 
-/*Outside click*/
-const target = ref();
-onClickOutside(target, () => showOptions.value = false);
-
 const currentIndex = ref(-1);
+const optionsArea = ref(null);
 
 onKeyStroke('ArrowDown', () => {
-    currentIndex.value = currentIndex.value + 1;
+    if (currentIndex.value < props.options.length - 1) {
+        currentIndex.value = currentIndex.value + 1;
+    }
+
+    if (currentIndex.value > 0) {
+        optionsArea.value.scrollTo({
+            top: optionsArea.value.scrollTop + 32,
+            behavior: 'smooth'
+        })
+    }
+
 })
 
 onKeyStroke('ArrowUp', () => {
-    currentIndex.value = currentIndex.value - 1;
+    if (currentIndex.value > -1) {
+        currentIndex.value = currentIndex.value - 1;
+    }
+
+    if (optionsArea.value.scrollTop > 0) {
+        optionsArea.value.scrollTo({
+            top: optionsArea.value.scrollTop - 32,
+            behavior: 'smooth'
+        })
+    }
 })
 
 onKeyStroke('Enter', () => {
@@ -90,61 +111,66 @@ watch(() => props.modelValue, () => {
 </script>
 
 <template>
-    <div class="relative space-y-1 gap-1" ref="target">
-        <!--Place holder-->
-        <div @click="toggle"
-             class="flex justify-between items-center space-x-2 h-10 dark:bg-slate-900/30 border border-slate-300 dark:border-slate-600 px-4 py-2 rounded-lg cursor-pointer select-none w-full"
-             :class="{
+        <!--Options-->
+        <Dropdown
+            v-model="showOptions"
+        >
+            <!--Place holder-->
+            <div @click="toggle"
+                 class="flex justify-between items-center space-x-2 h-10 dark:bg-slate-900/30 border border-slate-300 dark:border-slate-600 px-4 py-2 rounded-lg cursor-pointer select-none w-full"
+                 :class="{
                 'opacity-50 pointer-events-none': disabled
             }">
-            <div class="block overflow-hidden whitespace-nowrap">
-                <!--Placeholder-->
-                <span v-if="(typeof modelValue === 'boolean' ? false : !modelValue) || modelValue.length === 0"
-                      v-text="selectText.length > 0 ? selectText : t('action.select')"></span>
-                <!--Selected-->
-                <div v-else>
-                    <slot v-if="$slots.hasOwnProperty('selected')" name="selected"
-                          :props="selected"></slot>
-                    <slot v-else-if="$slots.hasOwnProperty('both')" name="both"
-                          :props="selected"></slot>
-                    <span v-else>{{ selected[optionLabel] }}</span>
+                <div class="block overflow-hidden whitespace-nowrap">
+                    <!--Placeholder-->
+                    <span v-if="(typeof modelValue === 'boolean' ? false : !modelValue) || modelValue.length === 0"
+                          v-text="selectText.length > 0 ? selectText : t('action.select')"></span>
+                    <!--Selected-->
+                    <div v-else>
+                        <slot v-if="$slots.hasOwnProperty('selected')" name="selected"
+                              :props="selected"></slot>
+                        <slot v-else-if="$slots.hasOwnProperty('both')" name="both"
+                              :props="selected"></slot>
+                        <span v-else>{{ selected[optionLabel] }}</span>
+                    </div>
+                </div>
+
+                <!--Trigger Icons-->
+                <div class="flex items-center space-x-2">
+                    <!--Clear Button-->
+                    <font-awesome-icon
+                        v-if="typeof modelValue === 'boolean' ? true : modelValue"
+                        @click.stop="clear"
+                        icon="circle-xmark"
+                        class="hover:text-rose-600 active:scale-90 duration-100"/>
+                    <!--Trigger-->
+                    <font-awesome-icon icon="chevron-down"/>
                 </div>
             </div>
 
-            <!--Trigger Icons-->
-            <div class="flex items-center space-x-2">
-                <!--Clear Button-->
-                <font-awesome-icon
-                    v-if="typeof modelValue === 'boolean' ? true : modelValue"
-                    @click.stop="clear"
-                    icon="circle-xmark"
-                    class="hover:text-rose-600 active:scale-90 duration-100"/>
-                <!--Trigger-->
-                <font-awesome-icon icon="chevron-down"/>
-            </div>
-        </div>
+            <!-- This will be the content of the popover -->
+            <template #popper>
+                <div v-if="options.length > 0" class="max-h-[20rem] overflow-y-auto" ref="optionsArea">
+                    <template v-for="(option,index) in options" :key="option">
+                        <div @click="select(option)"
+                             v-close-popper
+                             class="select-option"
+                             :class="currentIndex === index ? 'select-option__active' : ''"
+                        >
+                            <!--Label-->
+                            <div>
+                                <slot v-if="$slots.hasOwnProperty('option')" name="option" :props="option"></slot>
+                                <slot v-else-if="$slots.hasOwnProperty('both')" name="both" :props="option"></slot>
+                                <span v-else v-text="option[optionLabel]"></span>
+                            </div>
 
-        <!--Options-->
-        <div v-if="showOptions && options.length > 0"
-             class="absolute z-50 bg-white dark:bg-slate-800 border dark:border-slate-600 shadow-lg rounded-md py-1">
-            <template v-for="(option,index) in options" :key="option">
-                <div @click="select(option)"
-                     class="select-option"
-                     :class="currentIndex === index ? 'select-option__active' : ''"
-                >
-                    <!--Label-->
-                    <div>
-                        <slot v-if="$slots.hasOwnProperty('option')" name="option" :props="option"></slot>
-                        <slot v-else-if="$slots.hasOwnProperty('both')" name="both" :props="option"></slot>
-                        <span v-else v-text="option[optionLabel]"></span>
-                    </div>
-
-                    <!--Selected Indicator-->
-                    <font-awesome-icon icon="circle-check" v-if="option[optionKey] === modelValue"/>
+                            <!--Selected Indicator-->
+                            <font-awesome-icon icon="circle-check" v-if="option[optionKey] === modelValue"/>
+                        </div>
+                    </template>
                 </div>
             </template>
-        </div>
-    </div>
+        </Dropdown>
 </template>
 
 <style scoped lang="sass">
