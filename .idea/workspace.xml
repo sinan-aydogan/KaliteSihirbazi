@@ -4,67 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9bc29a2b-37c7-4021-8807-243a8d8082d1" name="Default Changelist" comment="upgrade to Laravel 10-Inertia 1.0">
-      <change afterPath="$PROJECT_DIR$/resources/js/Pages/Modules/BusinessManagement/Supplier/IndexPage.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/Pages/Modules/BusinessManagement/Supplier/translates.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/Pages/Modules/BusinessManagement/Supplier/translates/en.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/Pages/Modules/BusinessManagement/Supplier/translates/tr.json" afterDir="false" />
+    <list default="true" id="9bc29a2b-37c7-4021-8807-243a8d8082d1" name="Default Changelist" comment="modelValue özelliği ekler">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SupplierController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SupplierController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/StoreSupplierRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StoreSupplierRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UpdateSupplierRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/UpdateSupplierRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2022_08_30_073711_create_sessions_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Components/Button/SimpleButton.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Components/Button/SimpleButton.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Components/Content/Divider.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Components/Content/Divider.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Components/Form/FormSection.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Components/Form/FormSection.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Components/Form/InputGroup.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Components/Form/InputGroup.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Components/Form/SelectInput.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Components/Form/SelectInput.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Components/Table/Table.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Components/Table/Table.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Functions/Theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Functions/Theme.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Jetstream/Banner.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Jetstream/Banner.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Layouts/AppLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Layouts/AppLayout.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Layouts/SettingMenu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Layouts/SettingMenu.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Layouts/SideMenu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Layouts/SideMenu.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Layouts/UserMenu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Layouts/UserMenu.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Auth/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Auth/Login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Dashboard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Dashboard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Modules/BusinessManagement/Department/DeletedPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Modules/BusinessManagement/Department/DeletedPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Modules/BusinessManagement/Department/IndexPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Modules/BusinessManagement/Department/IndexPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Modules/BusinessManagement/Department/ShowPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Modules/BusinessManagement/Department/ShowPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Modules/BusinessManagement/Supplier/Index.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Modules/BusinessManagement/Warehouse/DeletedPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Modules/BusinessManagement/Warehouse/DeletedPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Modules/BusinessManagement/Warehouse/Index.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Modules/BusinessManagement/Warehouse/IndexPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Modules/BusinessManagement/Warehouse/IndexPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Modules/BusinessManagement/Warehouse/Setting/TypePage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Modules/BusinessManagement/Warehouse/Setting/TypePage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Modules/BusinessManagement/Warehouse/ShowPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Modules/BusinessManagement/Warehouse/ShowPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Modules/HumanResources/Employee/DeletedPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Modules/HumanResources/Employee/DeletedPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Modules/HumanResources/Employee/IndexPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Modules/HumanResources/Employee/IndexPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Modules/HumanResources/Employee/Pages/EmploymentInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Modules/HumanResources/Employee/Pages/EmploymentInfo.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Modules/HumanResources/Employee/Pages/JobDescriptionAssignment.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Modules/HumanResources/Employee/Pages/JobDescriptionAssignment.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Modules/HumanResources/Employee/Pages/PersonalInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Modules/HumanResources/Employee/Pages/PersonalInfo.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Modules/HumanResources/Employee/ShowPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Modules/HumanResources/Employee/ShowPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Modules/HumanResources/JobDescription/DeletedPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Modules/HumanResources/JobDescription/DeletedPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Modules/HumanResources/JobDescription/IndexPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Modules/HumanResources/JobDescription/IndexPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Modules/HumanResources/JobDescription/ShowPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Modules/HumanResources/JobDescription/ShowPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Modules/MeasurementDevice/Device/DeletedPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Modules/MeasurementDevice/Device/DeletedPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Modules/MeasurementDevice/Device/IndexPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Modules/MeasurementDevice/Device/IndexPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Modules/MeasurementDevice/Device/Pages/Calibration.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Modules/MeasurementDevice/Device/Pages/Calibration.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Modules/MeasurementDevice/Device/Pages/Info.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Modules/MeasurementDevice/Device/Pages/Info.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Modules/MeasurementDevice/Device/ShowPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Modules/MeasurementDevice/Device/ShowPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Modules/MeasurementDevice/Type/DeletedPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Modules/MeasurementDevice/Type/DeletedPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Modules/MeasurementDevice/Type/IndexPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Modules/MeasurementDevice/Type/IndexPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Profile/Partials/DeleteUserForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Profile/Partials/DeleteUserForm.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Profile/Partials/LanguageChanger.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Profile/Partials/LanguageChanger.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Profile/Partials/LogoutOtherBrowserSessionsForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Profile/Partials/LogoutOtherBrowserSessionsForm.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Profile/Partials/ThemeChanger.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Profile/Partials/ThemeChanger.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Profile/Partials/TwoFactorAuthenticationForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Profile/Partials/TwoFactorAuthenticationForm.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Profile/Partials/UpdatePasswordForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Profile/Partials/UpdatePasswordForm.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Profile/Show.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Profile/Show.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Components/Form/FileInput.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Components/Form/FileInput.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Languages/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Languages/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Languages/tr.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Languages/tr.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Pages/API/Partials/ApiTokenManager.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/API/Partials/ApiTokenManager.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Auth/ConfirmPassword.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Auth/ConfirmPassword.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Auth/ForgotPassword.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Auth/ForgotPassword.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Auth/Register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Auth/Register.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Auth/ResetPassword.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Auth/ResetPassword.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Auth/TwoFactorChallenge.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Auth/TwoFactorChallenge.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Auth/VerifyEmail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Auth/VerifyEmail.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Pages/PrivacyPolicy.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/PrivacyPolicy.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Pages/TermsOfService.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/TermsOfService.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +38,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="Vue Single File Component" />
       </list>
     </option>
   </component>
@@ -112,7 +67,7 @@
     <scope name="i18n Ally: Symfony/PHP source" pattern="file[knauf]:src//*&amp;&amp;!file[knauf]:src/DataFixtures//*" />
     <scope name="i18n Ally: Symfony/Twig templates" pattern="file[knauf]:templates//*" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration">
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 8.1">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/psy/psysh" />
       <path value="$PROJECT_DIR$/vendor/ramsey/uuid" />
@@ -366,6 +321,7 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/deprecations" />
       <path value="$PROJECT_DIR$/vendor/brianium/paratest" />
       <path value="$PROJECT_DIR$/vendor/ta-tikoma/phpunit-architecture-test" />
+      <path value="$PROJECT_DIR$/vendor/_laravel_idea" />
     </include_path>
   </component>
   <component name="ProjectId" id="1ZTeNFB75G0tYm0ToVYA8wV4eAd" />
@@ -376,28 +332,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/laragon/www/KaliteSihirbazi/resources/js/Pages/Modules/BusinessManagement/Supplier",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "C:\\laragon\\www\\KaliteSihirbazi\\node_modules\\prettier",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "web-ide.project.structure",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;yeni&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/sinan/Desktop/Projeler/iys-api&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\laragon\\www\\KaliteSihirbazi\\node_modules\\prettier&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;web-ide.project.structure&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\PhpStorm 2022.1.3\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\KaliteSihirbazi\resources\js\Pages\Modules\Document\Setting" />
+      <recent name="C:\laragon\www\KaliteSihirbazi\resources\js\Pages\Modules\Document" />
       <recent name="C:\laragon\www\KaliteSihirbazi\resources\js\Pages\Modules\BusinessManagement\Supplier" />
       <recent name="C:\Users\Sinan AYDOĞAN\Laravel\knauf\resources\views\musterisikayeti" />
       <recent name="C:\Users\Sinan AYDOĞAN\Laravel\knauf\resources\views\sikayetkategori" />
-      <recent name="C:\Users\Sinan AYDOĞAN\Laravel\knauf\resources\views\kullanici" />
-      <recent name="C:\Users\Sinan AYDOĞAN\Laravel\knauf\resources\views" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\KaliteSihirbazi\resources\js\Pages\Modules\Document\stores" />
+      <recent name="C:\laragon\www\KaliteSihirbazi\resources\js\Pages\Modules\Document" />
     </key>
   </component>
   <component name="RunManager">
@@ -448,6 +411,21 @@
       <workItem from="1588098171702" duration="7438000" />
       <workItem from="1646848348765" duration="1586000" />
       <workItem from="1680631877696" duration="12808000" />
+      <workItem from="1680720686416" duration="6511000" />
+      <workItem from="1680810135723" duration="99000" />
+      <workItem from="1681067444736" duration="6804000" />
+      <workItem from="1681150832419" duration="6062000" />
+      <workItem from="1681235102373" duration="2385000" />
+      <workItem from="1681237565585" duration="12340000" />
+      <workItem from="1681323129314" duration="1072000" />
+      <workItem from="1681324472092" duration="8666000" />
+      <workItem from="1682612536950" duration="8581000" />
+      <workItem from="1682775106347" duration="136000" />
+      <workItem from="1682836046455" duration="634000" />
+      <workItem from="1682868056124" duration="4229000" />
+      <workItem from="1683404989083" duration="162000" />
+      <workItem from="1683405207580" duration="57000" />
+      <workItem from="1683740655328" duration="10837000" />
     </task>
     <task id="LOCAL-00001" summary="upgrade to Laravel 10-Inertia 1.0">
       <created>1680634865085</created>
@@ -463,7 +441,231 @@
       <option name="project" value="LOCAL" />
       <updated>1680634913320</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Add's dynamic value feature for columns&#10;&#10;[&#10;{&#10;id: 'name',&#10;label: 'Supplier Name',&#10;value: (value)=&gt;value.supplier.name&#10;}&#10;]">
+      <created>1680727116345</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1680727116345</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Moves all files into documents folder and organizes them">
+      <created>1680727274645</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1680727274645</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Adds new form component: FileInput">
+      <created>1680727296437</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1680727296437</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Adds Documents Index page and Translates">
+      <created>1680727338878</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1680727338878</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Adds detail for links&#10;&#10;Delete some links for migrate to settings menus exp: Device Type">
+      <created>1681069736986</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1681069736986</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Fixes Link component not found error">
+      <created>1681069764663</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1681069764663</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Döküman tipi çevirilerini ekler">
+      <created>1681248956256</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1681248956256</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Local çeviri kullanan sayfalarda fallback hatasını gizler">
+      <created>1681248996490</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1681248996490</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Döküman modülü için ayar rotası ekler">
+      <created>1681249026192</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1681249026192</updated>
+    </task>
+    <task id="LOCAL-00012" summary="SettingLayout içerik alanı okunabilirliğini arttırır">
+      <created>1681249085798</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1681249085798</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Fontawesome hatalı prop değeri kullanımını düzeltir">
+      <created>1681249145299</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1681249145299</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Form öğeleri arası boşluğu sıkılaştırır">
+      <created>1681249171487</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1681249171487</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Giriş alanlarındaki alt etiket ile ana etiket arasına boşluk ekler">
+      <created>1681249210806</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1681249210806</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Changed event'ini tanımlar">
+      <created>1681249256305</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1681249256305</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Ayar modelini sisteme dahil eder, tüm modüller için">
+      <created>1681249401794</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1681249401794</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Dökümanı departman'a bağımlı hale getirir. Döküman kodu oluşturma temeli için.">
+      <created>1681249459997</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1681249459997</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Ayarlar örnek veri dosyasını aktif hale getirir SettingSeeder">
+      <created>1681249531145</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1681249531145</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Döküman tipi Controller fonksiyonlarını ekler">
+      <created>1681249588534</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1681249588534</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Döküman kodu üreticisini ekler DocumentCodeTrait.php">
+      <created>1681249651990</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1681249651990</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Çevirilerde değişken kaynaklı çeviri bulamama hatasını düzeltir.">
+      <created>1681250053026</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1681250053026</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Döküman modülü ayarları sayfasını ekler&#10;&#10;-Döküman isimlendirme ayarı seçilebilir&#10;-Döküman türü bu başlık altından yönetilebilir">
+      <created>1681250148815</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1681250148815</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Çoklu seçim giriş komponentini ekler MultiSelectInput.vue">
+      <created>1681332991310</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1681332991310</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Dağıtım Noktası modelini ekler">
+      <created>1681333077996</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1681333077996</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Dağıtım noktasını Döküman modeline entegre eder">
+      <created>1681333128952</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1681333128952</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Aşağı yukarı tuşları ile seçimler arasında gezebilme ve enter ile seçebilme özelliği eklendi">
+      <created>1683745926426</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1683745926426</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Download düğmesi özelliği eklendi">
+      <created>1683745976069</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1683745976069</updated>
+    </task>
+    <task id="LOCAL-00029" summary="vuedraggable kütüphanesi eklendi">
+      <created>1683746093052</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1683746093052</updated>
+    </task>
+    <task id="LOCAL-00030" summary="ModelValue veri tipi hatasını düzeltir, object ve array tiplerini ekler">
+      <created>1683747197109</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1683747197109</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Tıklanabilir seçin alanını genişletir">
+      <created>1683750035356</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1683750035356</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Floatingvue kütüphanesini ekler">
+      <created>1683752128056</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1683752128056</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Floatingvue kütüphanesini SelectInput komponentine entegre eder">
+      <created>1683752240056</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1683752240056</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Döküman oluşturma özelliği ekler">
+      <created>1683752615081</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1683752615081</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -474,7 +676,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="yeni" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -482,7 +696,31 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="upgrade to Laravel 10-Inertia 1.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="upgrade to Laravel 10-Inertia 1.0" />
+    <MESSAGE value="Döküman modülü için ayar rotası ekler" />
+    <MESSAGE value="SettingLayout içerik alanı okunabilirliğini arttırır" />
+    <MESSAGE value="Fontawesome hatalı prop değeri kullanımını düzeltir" />
+    <MESSAGE value="Form öğeleri arası boşluğu sıkılaştırır" />
+    <MESSAGE value="Giriş alanlarındaki alt etiket ile ana etiket arasına boşluk ekler" />
+    <MESSAGE value="Changed event'ini tanımlar" />
+    <MESSAGE value="Ayar modelini sisteme dahil eder, tüm modüller için" />
+    <MESSAGE value="Dökümanı departman'a bağımlı hale getirir. Döküman kodu oluşturma temeli için." />
+    <MESSAGE value="Ayarlar örnek veri dosyasını aktif hale getirir SettingSeeder" />
+    <MESSAGE value="Döküman tipi Controller fonksiyonlarını ekler" />
+    <MESSAGE value="Döküman kodu üreticisini ekler DocumentCodeTrait.php" />
+    <MESSAGE value="Çevirilerde değişken kaynaklı çeviri bulamama hatasını düzeltir." />
+    <MESSAGE value="Döküman modülü ayarları sayfasını ekler&#10;&#10;-Döküman isimlendirme ayarı seçilebilir&#10;-Döküman türü bu başlık altından yönetilebilir" />
+    <MESSAGE value="Çoklu seçim giriş komponentini ekler MultiSelectInput.vue" />
+    <MESSAGE value="Dağıtım Noktası modelini ekler" />
+    <MESSAGE value="Dağıtım noktasını Döküman modeline entegre eder" />
+    <MESSAGE value="Aşağı yukarı tuşları ile seçimler arasında gezebilme ve enter ile seçebilme özelliği eklendi" />
+    <MESSAGE value="Download düğmesi özelliği eklendi" />
+    <MESSAGE value="vuedraggable kütüphanesi eklendi" />
+    <MESSAGE value="ModelValue veri tipi hatasını düzeltir, object ve array tiplerini ekler" />
+    <MESSAGE value="Tıklanabilir seçin alanını genişletir" />
+    <MESSAGE value="Floatingvue kütüphanesini ekler" />
+    <MESSAGE value="Floatingvue kütüphanesini SelectInput komponentine entegre eder" />
+    <MESSAGE value="Döküman oluşturma özelliği ekler" />
+    <MESSAGE value="modelValue özelliği ekler" />
+    <option name="LAST_COMMIT_MESSAGE" value="modelValue özelliği ekler" />
   </component>
 </project>
