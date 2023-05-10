@@ -41,7 +41,8 @@
         "distributionPointName": "Dağıtım Noktası Adı",
         "creator": "Oluşturan",
         "file": "Dosya",
-        "createdDate": "Oluşturulma Tarihi"
+        "createdDate": "Oluşturulma Tarihi",
+        "makeRevisionRequest": "Revizyon Talebi Yap"
     },
     "setting": {
         "document": {

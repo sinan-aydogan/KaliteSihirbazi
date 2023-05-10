@@ -14,6 +14,10 @@ import TextInput from "@/Components/Form/TextInput.vue"
 import SelectInput from "@/Components/Form/SelectInput.vue"
 import Avatar from "@/Components/Avatar/Avatar.vue"
 
+import {useShowDocument} from "./stores/showDocument";
+
+const showDocument = useShowDocument();
+
 // Props
 const props = defineProps({
     tableData: {
@@ -50,6 +54,7 @@ import TextAreaInput from "@/Components/Form/TextAreaInput.vue";
 import FileInput from "@/Components/Form/FileInput.vue";
 import MultiSelectInput from "@/Components/Form/MultiSelectInput.vue";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+import ShowModal from "@/Pages/Modules/Document/ShowModal.vue";
 
 /*Table*/
 const tableHeaders = [
@@ -149,7 +154,8 @@ const handleSubmit = async () => {
                 form.reset();
                 v$.value.$reset();
                 showModal.value = false;
-            }
+            },
+            forceFormData: true,
         })
     } else {
         form.put(route('document.update', {id: form.id}), {
@@ -164,7 +170,7 @@ const handleSubmit = async () => {
 
 /*Update*/
 const getRowInfo = (id) => {
-    axios.get(route("department.edit", {id: id})).then(response => {
+    axios.get(route("document.edit", {id: id})).then(response => {
         form.id = response.data.id;
         form.code = response.data.code;
         form.name = response.data.name;
@@ -182,7 +188,7 @@ const getRowInfo = (id) => {
 
 /*Delete*/
 const handleDelete = (id) => {
-    router.delete(route("department.destroy", id), {
+    router.delete(route("document.destroy", id), {
         preserveState: true,
     });
 }
@@ -220,10 +226,12 @@ const showDistributionPoints = (points) => {
         <Table
             :data="tableData"
             :headers="tableHeaders"
-            @view="router.visit(route('department.show', $event.id))"
+            @view="showDocument.getDocument($event.id)"
             @edit="getRowInfo($event.id)"
+            @delete="handleDelete($event.id)"
             show-action
             edit-action
+            delete-action
         >
             <!--Creator-->
             <template #creator="{props}">
@@ -323,5 +331,8 @@ const showDistributionPoints = (points) => {
                 <li v-for="point in selectedDocument" v-bind="point" v-text="point.name"></li>
             </ul>
         </Modal>
+
+        <!--Show Modal-->
+        <show-modal/>
     </teleport>
 </template>

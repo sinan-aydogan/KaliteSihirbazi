@@ -41,7 +41,8 @@
         "distributionPointName": "Distribution Point Name",
         "creator": "Creator",
         "file": "File",
-        "createdDate": "Created Date"
+        "createdDate": "Created Date",
+        "makeRevisionRequest": "Make Revision Request"
     },
     "setting": {
         "document": {

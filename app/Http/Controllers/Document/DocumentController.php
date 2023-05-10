@@ -9,12 +9,15 @@ use App\Models\Department;
 use App\Models\Document\DistributionPoint;
 use App\Models\Document\Document;
 use App\Models\Document\DocumentType;
+use App\Models\User;
 use Inertia\Inertia;
 use App\Traits\Document\DocumentCodeTrait;
+use App\Traits\Document\DocumentVersionTrait;
 
 class DocumentController extends Controller
 {
     use DocumentCodeTrait;
+    use DocumentVersionTrait;
     /**
      * Display a listing of the resource.
      *
@@ -39,11 +42,22 @@ class DocumentController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
     public function create()
     {
-        //
+        $types = DocumentType::all(['id', 'name']);
+        $departments = Department::all(['id', 'name']);
+        $distributionPoints = DistributionPoint::all(['id', 'name']);
+        $users = User::all(['id', 'name']);
+
+        return Inertia::render('Modules/Document/CreatePage', [
+            'types' => DocumentType::all(['id', 'name']),
+            'departments' => Department::all(['id', 'name']),
+            'distributionPoints' => DistributionPoint::all(['id', 'name']),
+            'namingRule' => $this->namingRule(),
+            'users' => User::all(['id', 'name']),
+        ]);
     }
 
     /**
@@ -69,8 +83,13 @@ class DocumentController extends Controller
         $document->distributionPoints()->sync($request['distribution_points']);
 
         /*TODO: Attachment*/
+        $document->addMedia($request->file('file'))
+        ->toMediaCollection('document');
 
-        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.department.created', ['department' => $document->name])]);
+        /*Revison Creating*/
+        $this->createVersion($document, $request);
+
+        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.document.created', ['document' => $document->name])]);
 
         return redirect()->back();
     }
@@ -79,11 +98,17 @@ class DocumentController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Document\Document  $document
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function show(Document $document)
     {
-        //
+        $document['department'] = $document->department()->first(['id', 'name']);
+        $document['document_type'] = $document->documentType()->first(['id', 'name']);
+        $document['revisions'] = $document->versions;
+        $document['file'] = $document->getMedia('document')[0]->getUrl();
+
+
+        return response()->json($document);
     }
 
     /**
@@ -113,10 +138,14 @@ class DocumentController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Document\Document  $document
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Document $document)
     {
-        //
+        session()->flash('message', ['type'=> 'danger', 'content'=>__('messages.document.deleted', ['document' => $document->name])]);
+
+        $document->delete();
+
+        return redirect()->route('document.index');
     }
 }
