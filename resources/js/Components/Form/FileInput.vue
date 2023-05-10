@@ -1,9 +1,10 @@
 <template>
-<input type="file" id="file" :model-value="modelValue" @change="$emit('update:modelValue', file)">
+<input type="file" id="file" :model-value="modelValue" @change="$emit('update:modelValue', $event.target.files[0])">
 </template>
 
 <script setup>
-import {ref} from "vue";
+
+defineEmits(['update:modelValue'])
 
 defineProps({
     modelValue: {
@@ -11,6 +12,4 @@ defineProps({
         default: null
     }
 })
-
-const file = ref(null)
 </script>
