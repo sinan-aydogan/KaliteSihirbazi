@@ -4,21 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9bc29a2b-37c7-4021-8807-243a8d8082d1" name="Default Changelist" comment="modelValue özelliği ekler">
+    <list default="true" id="9bc29a2b-37c7-4021-8807-243a8d8082d1" name="Default Changelist" comment="ek paketleri günceller">
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Components/Form/FileInput.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Components/Form/FileInput.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Languages/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Languages/en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Languages/tr.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Languages/tr.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/API/Partials/ApiTokenManager.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/API/Partials/ApiTokenManager.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Auth/ConfirmPassword.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Auth/ConfirmPassword.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Auth/ForgotPassword.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Auth/ForgotPassword.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Auth/Register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Auth/Register.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Auth/ResetPassword.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Auth/ResetPassword.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Auth/TwoFactorChallenge.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Auth/TwoFactorChallenge.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Auth/VerifyEmail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Auth/VerifyEmail.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/PrivacyPolicy.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/PrivacyPolicy.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/TermsOfService.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/TermsOfService.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -303,7 +295,6 @@
       <path value="$PROJECT_DIR$/vendor/dasprid/enum" />
       <path value="$PROJECT_DIR$/vendor/symfony/yaml" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/uri-template" />
-      <path value="$PROJECT_DIR$/vendor/myclabs/php-enum" />
       <path value="$PROJECT_DIR$/vendor/spatie/image-optimizer" />
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-medialibrary" />
       <path value="$PROJECT_DIR$/vendor/spatie/temporary-directory" />
@@ -322,6 +313,8 @@
       <path value="$PROJECT_DIR$/vendor/brianium/paratest" />
       <path value="$PROJECT_DIR$/vendor/ta-tikoma/phpunit-architecture-test" />
       <path value="$PROJECT_DIR$/vendor/_laravel_idea" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php83" />
+      <path value="$PROJECT_DIR$/vendor/league/flysystem-local" />
     </include_path>
   </component>
   <component name="ProjectId" id="1ZTeNFB75G0tYm0ToVYA8wV4eAd" />
@@ -334,10 +327,12 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;yeni&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/sinan/Desktop/Projeler/iys-api&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/sinan/PhpstormProjects/KaliteSihirbazi&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -352,11 +347,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\sinan\PhpstormProjects\KaliteSihirbazi" />
       <recent name="C:\laragon\www\KaliteSihirbazi\resources\js\Pages\Modules\Document\Setting" />
       <recent name="C:\laragon\www\KaliteSihirbazi\resources\js\Pages\Modules\Document" />
       <recent name="C:\laragon\www\KaliteSihirbazi\resources\js\Pages\Modules\BusinessManagement\Supplier" />
       <recent name="C:\Users\Sinan AYDOĞAN\Laravel\knauf\resources\views\musterisikayeti" />
-      <recent name="C:\Users\Sinan AYDOĞAN\Laravel\knauf\resources\views\sikayetkategori" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\laragon\www\KaliteSihirbazi\resources\js\Pages\Modules\Document\stores" />
@@ -426,6 +421,10 @@
       <workItem from="1683404989083" duration="162000" />
       <workItem from="1683405207580" duration="57000" />
       <workItem from="1683740655328" duration="10837000" />
+      <workItem from="1687967023945" duration="1350000" />
+      <workItem from="1688116808345" duration="502000" />
+      <workItem from="1688209436601" duration="262000" />
+      <workItem from="1689019782115" duration="328000" />
     </task>
     <task id="LOCAL-00001" summary="upgrade to Laravel 10-Inertia 1.0">
       <created>1680634865085</created>
@@ -696,7 +695,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Döküman modülü için ayar rotası ekler" />
     <MESSAGE value="SettingLayout içerik alanı okunabilirliğini arttırır" />
     <MESSAGE value="Fontawesome hatalı prop değeri kullanımını düzeltir" />
     <MESSAGE value="Form öğeleri arası boşluğu sıkılaştırır" />
@@ -721,6 +719,7 @@
     <MESSAGE value="Floatingvue kütüphanesini SelectInput komponentine entegre eder" />
     <MESSAGE value="Döküman oluşturma özelliği ekler" />
     <MESSAGE value="modelValue özelliği ekler" />
-    <option name="LAST_COMMIT_MESSAGE" value="modelValue özelliği ekler" />
+    <MESSAGE value="ek paketleri günceller" />
+    <option name="LAST_COMMIT_MESSAGE" value="ek paketleri günceller" />
   </component>
 </project>
