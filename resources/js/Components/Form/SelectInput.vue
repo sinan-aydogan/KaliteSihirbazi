@@ -80,14 +80,16 @@ const toggle = () => {
 
 /*Selected*/
 const selected = computed(() => {
-    if (props.modelValue) {
+    if (props.modelValue.toString().length>0) {
         if (props.emitObject) {
             return props.modelValue || {}
         } else {
             return props.options.find(i => i[props.optionKey] === props.modelValue)
         }
     } else {
-        return null
+        return {
+            [props.optionLabel]: null
+        }
     }
 })
 
