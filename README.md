@@ -38,8 +38,10 @@ Gereklilikler
 5. Gereklilikler hakkında daha fazla bilgi için [Laravel](https://laravel.com/) ve [Inertia](https://inertiajs.com/) sitelerini ziyaret ediniz.
 
 
-Setup Directions
+Kurulum Bilgileri
 ------
+
+### Kendi Kurulumunuzu Yapmak İçin
 
 1. ```npm install```
 2. ```composer install```
@@ -54,16 +56,28 @@ Setup Directions
 11. ```php artisan serve```
 12. ```http://localhost:8000 sayfasına gidin```
 
+### Docker ile Kurulum
+
+1. ```docker-compose up -d```
+2. ```docker-compose exec app composer install```
+3. ``docker-compose exec app npm install``
+4. ``docker-compose exec app php artisan migrate --seed``
+5. ``docker-compose exec app php artisan storage:link``
+6. ``docker-compose exec app php artisan key:generate``
+7. ``docker-compose exec app npm run hot``
+8. ``docker-compose exec app php artisan serve``
+9. ``http://localhost:8000 sayfasına gidin``
+
 Demo Bilgileri
 ------
 - LaraQuality
-  - **Demo:** *[https://laraquality.dev](https://laraquality.dev)*
-  - **Email:** *admin@laraquality.dev*
-  - **Password:** *admin*
+    - **Demo:** *[https://laraquality.dev](https://laraquality.dev)*
+    - **Email:** *admin@laraquality.dev*
+    - **Password:** *admin*
 - Kalite Sihirbazı
-  - **Demo:** *[https://kalitesihirbazi.com.tr](https://kalitesihirbazi.com.tr)*
-  - **Email:** *yonetici@kalitesihirbazi.com.tr*
-  - **Password:** *admin*
+    - **Demo:** *[https://kalitesihirbazi.com.tr](https://kalitesihirbazi.com.tr)*
+    - **Email:** *yonetici@kalitesihirbazi.com.tr*
+    - **Password:** *admin*
 
 ## Yardım
 
@@ -71,9 +85,6 @@ Daha fazla bilgiye veya desteğe ihtiyacın varsa:
 - Discord kanalımıza katılabilirsin: [Discord Channel](https://discord.gg/TnjA2GqYmw)
 
 ### Sponsorlar
-
-><a href="https://cleavr.io/" target="_blank"><h3>Cleavr</h3>
-Cleavr hepsi bir arada proje(kod) yönetim sistemidir. Birden fazla server'ı ekleyebilir, içlerine bir çok özelliği tek tık ile kurabilir, yedek alabilir ve projelerinizi canlı olarak test edebilirsiniz.</a>
 
 > :metal: Eğer beni desteklemek istiyorsanız [admin@tailadmin.dev](mailto:admin@tailadmin.dev) üzerinden benimle iletişime geçebilir veya [Github üzerinden Sponsorum Olabilirsiniz](https://github.com/sponsors/sinan-aydogan)
 
