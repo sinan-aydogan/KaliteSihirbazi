@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e4d53e00-5d28-4e29-a5ae-ee3dc216b1d7" name="Changes" comment="feat: adds role management">
+    <list default="true" id="e4d53e00-5d28-4e29-a5ae-ee3dc216b1d7" name="Changes" comment="feat: adds system-settings panel">
+      <change afterPath="$PROJECT_DIR$/app/Models/Bm/BusinessBranch.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2024_02_24_205638_create_branches_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/BusinessBranchSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
     </list>
     <list id="f3b5643a-bda0-4561-af0b-248ca3f8640b" name="Unversion" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,7 +71,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1697567793625</updated>
-      <workItem from="1708799065308" duration="8651000" />
+      <workItem from="1708799065308" duration="9730000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Setup with Sail">
       <option name="closed" value="true" />
@@ -126,7 +129,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708807920422</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="feat: adds system-settings panel">
+      <option name="closed" value="true" />
+      <created>1708808091994</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1708808091994</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,7 +164,8 @@
     <MESSAGE value="update: Adds User based language choosing&#10;&#10;-adds locale field to user model" />
     <MESSAGE value="feat: Changes menu direction from left to top" />
     <MESSAGE value="feat: adds role management" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: adds role management" />
+    <MESSAGE value="feat: adds system-settings panel" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: adds system-settings panel" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
