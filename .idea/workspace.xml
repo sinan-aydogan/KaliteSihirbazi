@@ -4,11 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e4d53e00-5d28-4e29-a5ae-ee3dc216b1d7" name="Changes" comment="feat: Setup with Sail">
+    <list default="true" id="e4d53e00-5d28-4e29-a5ae-ee3dc216b1d7" name="Changes" comment="update: Adds Filamentphp support&#10;&#10;-panel id: bi (bussines inteligent)">
+      <change afterPath="$PROJECT_DIR$/app/Providers/Filament/BiPanelProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/filament.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/filament/filament/app.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/filament/forms/forms.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/filament/support/support.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/filament/filament/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/filament/filament/echo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/filament/forms/components/color-picker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/filament/forms/components/date-time-picker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/filament/forms/components/file-upload.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/filament/forms/components/key-value.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/filament/forms/components/markdown-editor.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/filament/forms/components/rich-editor.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/filament/forms/components/select.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/filament/forms/components/tags-input.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/filament/forms/components/textarea.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/filament/notifications/notifications.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/filament/support/async-alpine.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/filament/support/support.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/filament/tables/components/table.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/filament/widgets/components/chart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/filament/widgets/components/stats-overview/stat/chart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
     </list>
+    <list id="f3b5643a-bda0-4561-af0b-248ca3f8640b" name="Unversion" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,11 +83,12 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="e4d53e00-5d28-4e29-a5ae-ee3dc216b1d7" name="Changes" comment="" />
+      <changelist id="f3b5643a-bda0-4561-af0b-248ca3f8640b" name="Unversion" comment="" />
       <created>1697567793625</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1697567793625</updated>
-      <workItem from="1708799065308" duration="1723000" />
+      <workItem from="1708799065308" duration="2478000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Setup with Sail">
       <option name="closed" value="true" />
@@ -73,7 +98,23 @@
       <option name="project" value="LOCAL" />
       <updated>1708800620321</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat: Changes primary key integer to uuid">
+      <option name="closed" value="true" />
+      <created>1708801162608</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1708801162608</updated>
+    </task>
+    <task id="LOCAL-00003" summary="update: Updates ide settings">
+      <option name="closed" value="true" />
+      <created>1708801201978</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1708801201978</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -92,6 +133,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: Setup with Sail" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Setup with Sail" />
+    <MESSAGE value="feat: Changes primary key integer to uuid" />
+    <MESSAGE value="update: Updates ide settings" />
+    <MESSAGE value="update: Adds Filamentphp support&#10;&#10;-panel id: bi (bussines inteligent)" />
+    <option name="LAST_COMMIT_MESSAGE" value="update: Adds Filamentphp support&#10;&#10;-panel id: bi (bussines inteligent)" />
   </component>
 </project>
