@@ -3,7 +3,6 @@
 namespace App\Providers\Filament;
 
 use Althinect\FilamentSpatieRolesPermissions\FilamentSpatieRolesPermissionsPlugin;
-use App\Http\Middleware\LocaleMiddleware;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -20,24 +19,22 @@ use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
-class BiPanelProvider extends PanelProvider
+class SystemManagementPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ->default()
-            ->id('bi')
-            ->path('bi')
-            ->login()
+            ->id('system-management')
+            ->path('system-management')
             ->colors([
                 'primary' => Color::Amber,
             ])
-            ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
-            ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
+            ->discoverResources(in: app_path('Filament/SystemManagement/Resources'), for: 'App\\Filament\\SystemManagement\\Resources')
+            ->discoverPages(in: app_path('Filament/SystemManagement/Pages'), for: 'App\\Filament\\SystemManagement\\Pages')
             ->pages([
                 Pages\Dashboard::class,
             ])
-            ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
+            ->discoverWidgets(in: app_path('Filament/SystemManagement/Widgets'), for: 'App\\Filament\\SystemManagement\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
                 Widgets\FilamentInfoWidget::class,
@@ -52,13 +49,13 @@ class BiPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
-                LocaleMiddleware::class,
             ])
             ->authMiddleware([
                 Authenticate::class,
             ])
-            ->topNavigation()
             ->plugins([
-            ]);
+                FilamentSpatieRolesPermissionsPlugin::make()
+            ])
+            ->topNavigation();
     }
 }

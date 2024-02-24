@@ -4,19 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e4d53e00-5d28-4e29-a5ae-ee3dc216b1d7" name="Changes" comment="feat: Changes menu direction from left to top">
-      <change afterPath="$PROJECT_DIR$/config/filament-spatie-roles-permissions.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/permission.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2024_02_24_203133_create_permission_tables.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/RoleSeeder.php" afterDir="false" />
+    <list default="true" id="e4d53e00-5d28-4e29-a5ae-ee3dc216b1d7" name="Changes" comment="feat: adds role management">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/Filament/BiPanelProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/Filament/BiPanelProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/AdminSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/AdminSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
     </list>
     <list id="f3b5643a-bda0-4561-af0b-248ca3f8640b" name="Unversion" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +68,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1697567793625</updated>
-      <workItem from="1708799065308" duration="8466000" />
+      <workItem from="1708799065308" duration="8651000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Setup with Sail">
       <option name="closed" value="true" />
@@ -128,7 +118,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708805771618</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="feat: adds role management">
+      <option name="closed" value="true" />
+      <created>1708807920422</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1708807920422</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,7 +152,8 @@
     <MESSAGE value="update: Adds User based language choosing" />
     <MESSAGE value="update: Adds User based language choosing&#10;&#10;-adds locale field to user model" />
     <MESSAGE value="feat: Changes menu direction from left to top" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Changes menu direction from left to top" />
+    <MESSAGE value="feat: adds role management" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: adds role management" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
