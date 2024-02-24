@@ -55,6 +55,7 @@ class BiPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+            ])
+            ->topNavigation();
     }
 }

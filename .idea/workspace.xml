@@ -4,32 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e4d53e00-5d28-4e29-a5ae-ee3dc216b1d7" name="Changes" comment="update: Adds Filamentphp support&#10;&#10;-panel id: bi (bussines inteligent)">
-      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/LocaleMiddleware.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/AdminSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lang/en.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lang/en/actions.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lang/en/auth.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lang/en/http-statuses.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lang/en/pagination.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lang/en/passwords.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lang/en/validation.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lang/tr.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lang/tr/actions.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lang/tr/auth.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lang/tr/http-statuses.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lang/tr/pagination.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lang/tr/passwords.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lang/tr/validation.php" afterDir="false" />
+    <list default="true" id="e4d53e00-5d28-4e29-a5ae-ee3dc216b1d7" name="Changes" comment="update: Adds User based language choosing&#10;&#10;-adds locale field to user model">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/Filament/BiPanelProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/Filament/BiPanelProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
     </list>
     <list id="f3b5643a-bda0-4561-af0b-248ca3f8640b" name="Unversion" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -91,7 +67,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1697567793625</updated>
-      <workItem from="1708799065308" duration="5523000" />
+      <workItem from="1708799065308" duration="6310000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Setup with Sail">
       <option name="closed" value="true" />
@@ -125,7 +101,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708802314966</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="update: Adds User based language choosing&#10;&#10;-adds locale field to user model">
+      <option name="closed" value="true" />
+      <created>1708804813023</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1708804813023</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,6 +132,8 @@
     <MESSAGE value="feat: Changes primary key integer to uuid" />
     <MESSAGE value="update: Updates ide settings" />
     <MESSAGE value="update: Adds Filamentphp support&#10;&#10;-panel id: bi (bussines inteligent)" />
-    <option name="LAST_COMMIT_MESSAGE" value="update: Adds Filamentphp support&#10;&#10;-panel id: bi (bussines inteligent)" />
+    <MESSAGE value="update: Adds User based language choosing" />
+    <MESSAGE value="update: Adds User based language choosing&#10;&#10;-adds locale field to user model" />
+    <option name="LAST_COMMIT_MESSAGE" value="update: Adds User based language choosing&#10;&#10;-adds locale field to user model" />
   </component>
 </project>
