@@ -21,6 +21,7 @@ class AdminSeeder extends Seeder
             'email_verified_at' => now(),
             'locale' => 'tr',
         ]);
+        $turkishUser->assignRole('Super Admin');
         $turkishUser->save();
 
         // English user
@@ -31,6 +32,7 @@ class AdminSeeder extends Seeder
             'email_verified_at' => now(),
             'locale' => 'en',
         ]);
+        $englishUser->assignRole('Super Admin');
         $englishUser->save();
     }
 }
