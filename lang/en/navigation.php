@@ -6,4 +6,5 @@ return array(
     'employee_types' => 'Employee Types',
     'system_settings' => 'System Settings',
     'bi_panel' => 'Business Intelligent Panel',
+    'my_profile' => 'My Profile',
 );

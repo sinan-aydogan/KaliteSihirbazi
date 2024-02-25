@@ -24,6 +24,7 @@ use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use App\Filament\Pages\UserProfile;
 
 class BiPanelProvider extends PanelProvider
 {
@@ -73,6 +74,10 @@ class BiPanelProvider extends PanelProvider
                     ->label(trans('navigation.system_settings'))
                     ->url(fn (): string => Filament::getPanel('system-management')->getUrl())
                     ->icon('heroicon-o-cog-6-tooth'),
+                MenuItem::make()
+                    ->label(trans('user_profile.my_profile'))
+                    ->url(fn (): string => UserProfile::getUrl())
+                    ->icon('tabler-user'),
             ]);
     }
 }

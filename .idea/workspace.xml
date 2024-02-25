@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e4d53e00-5d28-4e29-a5ae-ee3dc216b1d7" name="Changes" comment="feat: adds employee type model">
+    <list default="true" id="e4d53e00-5d28-4e29-a5ae-ee3dc216b1d7" name="Changes" comment="feat: adds bi panel link to system-settings panel">
+      <change afterPath="$PROJECT_DIR$/app/Filament/Pages/UserProfile.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lang/en/user_profile.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lang/tr/user_profile.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/filament/pages/user-profile.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Providers/Filament/BiPanelProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/Filament/BiPanelProvider.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Providers/Filament/SystemManagementPanelProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/Filament/SystemManagementPanelProvider.php" afterDir="false" />
@@ -259,7 +263,7 @@
       <updated>1697567793625</updated>
       <workItem from="1708799065308" duration="10896000" />
       <workItem from="1708849495075" duration="10371000" />
-      <workItem from="1708872364600" duration="3411000" />
+      <workItem from="1708872364600" duration="5507000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Setup with Sail">
       <option name="closed" value="true" />
@@ -413,7 +417,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708875961742</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="feat: adds bi panel link to system-settings panel">
+      <option name="closed" value="true" />
+      <created>1708876326856</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1708876326856</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -452,14 +464,15 @@
     <MESSAGE value="feat: adds tabler icons package" />
     <MESSAGE value="feat: move departments link under the human resources scope" />
     <MESSAGE value="feat: adds employee type model" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: adds employee type model" />
+    <MESSAGE value="feat: adds bi panel link to system-settings panel" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: adds bi panel link to system-settings panel" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Providers/Filament/BiPanelProvider.php</url>
-          <line>27</line>
+          <line>28</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
