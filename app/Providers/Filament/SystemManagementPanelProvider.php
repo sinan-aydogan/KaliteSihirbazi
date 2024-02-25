@@ -57,6 +57,7 @@ class SystemManagementPanelProvider extends PanelProvider
             ->plugins([
                 FilamentSpatieRolesPermissionsPlugin::make(),
                 SpatieLaravelTranslatablePlugin::make()
+                    ->defaultLocales(explode(',', env('LOCALES', 'tr,bg,en')))
             ])
             ->topNavigation();
     }
