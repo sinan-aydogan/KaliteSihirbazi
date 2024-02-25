@@ -4,15 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e4d53e00-5d28-4e29-a5ae-ee3dc216b1d7" name="Changes" comment="update: redirect home page from welcome to bi panel">
-      <change afterPath="$PROJECT_DIR$/lang/en/navigation.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lang/tr/navigation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="e4d53e00-5d28-4e29-a5ae-ee3dc216b1d7" name="Changes" comment="feat: move departments link under the human resources scope">
+      <change afterPath="$PROJECT_DIR$/app/Filament/Resources/Hr/EmployeeTypeResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Filament/Resources/Hr/EmployeeTypeResource/Pages/CreateEmployeeType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Filament/Resources/Hr/EmployeeTypeResource/Pages/EditEmployeeType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Filament/Resources/Hr/EmployeeTypeResource/Pages/ListEmployeeTypes.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Hr/EmployeeType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2024_02_25_151125_create_employee_types_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/EmployeeTypeSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lang/en/employee.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lang/tr/employee.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Filament/Resources/Hr/DepartmentResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Filament/Resources/Hr/DepartmentResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lang/en/navigation.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/en/navigation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lang/tr/navigation.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/tr/navigation.php" afterDir="false" />
     </list>
     <list id="f3b5643a-bda0-4561-af0b-248ca3f8640b" name="Unversion" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -262,7 +267,7 @@
       <updated>1697567793625</updated>
       <workItem from="1708799065308" duration="10896000" />
       <workItem from="1708849495075" duration="10371000" />
-      <workItem from="1708872364600" duration="1352000" />
+      <workItem from="1708872364600" duration="3084000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Setup with Sail">
       <option name="closed" value="true" />
@@ -392,7 +397,23 @@
       <option name="project" value="LOCAL" />
       <updated>1708872641285</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="feat: adds tabler icons package">
+      <option name="closed" value="true" />
+      <created>1708873771316</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1708873771316</updated>
+    </task>
+    <task id="LOCAL-00018" summary="feat: move departments link under the human resources scope">
+      <option name="closed" value="true" />
+      <created>1708873832866</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1708873832866</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -428,7 +449,9 @@
     <MESSAGE value="feat: adds human resource role and department permissions" />
     <MESSAGE value="update: dependencies" />
     <MESSAGE value="update: redirect home page from welcome to bi panel" />
-    <option name="LAST_COMMIT_MESSAGE" value="update: redirect home page from welcome to bi panel" />
+    <MESSAGE value="feat: adds tabler icons package" />
+    <MESSAGE value="feat: move departments link under the human resources scope" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: move departments link under the human resources scope" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
