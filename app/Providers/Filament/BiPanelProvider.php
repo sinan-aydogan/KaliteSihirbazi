@@ -65,6 +65,7 @@ class BiPanelProvider extends PanelProvider
             ->topNavigation()
             ->plugins([
                 SpatieLaravelTranslatablePlugin::make()
+                    ->defaultLocales(['tr', 'en'])
             ])
             ->userMenuItems([
                 MenuItem::make()
