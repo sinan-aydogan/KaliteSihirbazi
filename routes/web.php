@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/', '/bi');
 
 /*Filament login route*/
-Route::get(\Filament\Facades\Filament::getPanel('bi')->getLoginRouteSlug(), \Filament\Facades\Filament::getPanel('bi')->getLoginRouteAction())->name('login');
+Route::get('bi/login', \Filament\Facades\Filament::getPanel('bi')->getLoginRouteAction())->name('filament.bi.auth.login');
