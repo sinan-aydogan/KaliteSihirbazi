@@ -3,9 +3,11 @@
 namespace App\Providers\Filament;
 
 use Althinect\FilamentSpatieRolesPermissions\FilamentSpatieRolesPermissionsPlugin;
+use Filament\Facades\Filament;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\MenuItem;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -18,6 +20,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 class SystemManagementPanelProvider extends PanelProvider
@@ -28,7 +31,7 @@ class SystemManagementPanelProvider extends PanelProvider
             ->id('system-management')
             ->path('system-management')
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Blue,
             ])
             ->discoverResources(in: app_path('Filament/SystemManagement/Resources'), for: 'App\\Filament\\SystemManagement\\Resources')
             ->discoverPages(in: app_path('Filament/SystemManagement/Pages'), for: 'App\\Filament\\SystemManagement\\Pages')
@@ -59,6 +62,12 @@ class SystemManagementPanelProvider extends PanelProvider
                 SpatieLaravelTranslatablePlugin::make()
                     ->defaultLocales(explode(',', env('LOCALES', 'tr,bg,en')))
             ])
-            ->topNavigation();
+            ->topNavigation()
+            ->userMenuItems([
+                MenuItem::make()
+                    ->label(trans('navigation.bi_panel'))
+                    ->url(fn (): string => Filament::getPanel('bi')->getUrl())
+                    ->icon('tabler-brain'),
+            ]);
     }
 }

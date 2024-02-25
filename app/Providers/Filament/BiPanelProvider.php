@@ -70,10 +70,9 @@ class BiPanelProvider extends PanelProvider
             ->userMenuItems([
                 MenuItem::make()
                     ->visible(fn (): bool => Gate::check('viewSystemSettingsPanel'))
-                    ->label('Settings')
+                    ->label(trans('navigation.system_settings'))
                     ->url(fn (): string => Filament::getPanel('system-management')->getUrl())
                     ->icon('heroicon-o-cog-6-tooth'),
-                // ...
             ]);
     }
 }
