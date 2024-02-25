@@ -4,17 +4,18 @@ namespace App\Filament\Resources\Hr\DepartmentResource\Pages;
 
 use App\Filament\Resources\Hr\DepartmentResource;
 use Filament\Actions;
-use Filament\Resources\Pages\CreateRecord;
+use Filament\Resources\Pages\ListRecords;
 
-class CreateDepartment extends CreateRecord
+class ListDepartments extends ListRecords
 {
-    use CreateRecord\Concerns\Translatable;
+    use ListRecords\Concerns\Translatable;
 
     protected static string $resource = DepartmentResource::class;
 
     protected function getHeaderActions(): array
     {
         return [
+            Actions\CreateAction::make(),
             Actions\LocaleSwitcher::make()
         ];
     }
