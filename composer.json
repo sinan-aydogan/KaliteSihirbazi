@@ -11,11 +11,13 @@
         "php": "^8.1",
         "althinect/filament-spatie-roles-permissions": "^2.2",
         "filament/filament": "^3.2",
+        "filament/spatie-laravel-translatable-plugin": "^3.2",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
-        "spatie/laravel-permission": "^6.3"
+        "spatie/laravel-permission": "^6.3",
+        "spatie/laravel-translatable": "^6.6"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
