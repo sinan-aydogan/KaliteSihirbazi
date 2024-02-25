@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+/*Filament login route*/
+Route::get(\Filament\Facades\Filament::getPanel('bi')->getLoginRouteSlug(), \Filament\Facades\Filament::getPanel('bi')->getLoginRouteAction())->name('login');
