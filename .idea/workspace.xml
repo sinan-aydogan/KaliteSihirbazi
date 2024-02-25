@@ -4,21 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e4d53e00-5d28-4e29-a5ae-ee3dc216b1d7" name="Changes" comment="update: dependencies">
-      <change afterPath="$PROJECT_DIR$/app/Filament/Resources/Hr/DepartmentResource.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Filament/Resources/Hr/DepartmentResource/Pages/EditDepartment.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Filament/Resources/Hr/DepartmentResource/Pages/ListDepartments.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Hr/Department.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/DepartmentSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/UserSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lang/en/department.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lang/tr/department.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
+    <list default="true" id="e4d53e00-5d28-4e29-a5ae-ee3dc216b1d7" name="Changes" comment="update: redirect home page from welcome to bi panel">
+      <change afterPath="$PROJECT_DIR$/lang/en/navigation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lang/tr/navigation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Filament/Resources/Hr/DepartmentResource/Pages/CreateDepartment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Filament/Resources/Hr/DepartmentResource/Pages/CreateDepartment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/Filament/BiPanelProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/Filament/BiPanelProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/Filament/SystemManagementPanelProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/Filament/SystemManagementPanelProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Filament/Resources/Hr/DepartmentResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Filament/Resources/Hr/DepartmentResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <list id="f3b5643a-bda0-4561-af0b-248ca3f8640b" name="Unversion" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -207,6 +201,7 @@
       <path value="$PROJECT_DIR$/vendor/league/uri" />
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-translatable" />
       <path value="$PROJECT_DIR$/vendor/filament/spatie-laravel-translatable-plugin" />
+      <path value="$PROJECT_DIR$/vendor/ryangjchandler/blade-tabler-icons" />
     </include_path>
   </component>
   <component name="ProjectColorInfo">{
@@ -221,23 +216,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "filament",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "//wsl.localhost/Ubuntu/home/sinan/KaliteSihirbazi/lang/tr",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;filament&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;//wsl.localhost/Ubuntu/home/sinan/KaliteSihirbazi/lang/tr&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="\\wsl.localhost\Ubuntu\home\sinan\KaliteSihirbazi\lang\tr" />
@@ -267,6 +262,7 @@
       <updated>1697567793625</updated>
       <workItem from="1708799065308" duration="10896000" />
       <workItem from="1708849495075" duration="10371000" />
+      <workItem from="1708872364600" duration="1352000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Setup with Sail">
       <option name="closed" value="true" />
@@ -388,7 +384,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708862186856</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="update: redirect home page from welcome to bi panel">
+      <option name="closed" value="true" />
+      <created>1708872641285</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1708872641285</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -423,7 +427,8 @@
     <MESSAGE value="feat: adds spatie translatable lib" />
     <MESSAGE value="feat: adds human resource role and department permissions" />
     <MESSAGE value="update: dependencies" />
-    <option name="LAST_COMMIT_MESSAGE" value="update: dependencies" />
+    <MESSAGE value="update: redirect home page from welcome to bi panel" />
+    <option name="LAST_COMMIT_MESSAGE" value="update: redirect home page from welcome to bi panel" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

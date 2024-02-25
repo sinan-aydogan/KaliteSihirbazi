@@ -22,12 +22,25 @@ class DepartmentResource extends Resource
 
     protected static ?string $model = Department::class;
 
+    /*Navigation group*/
+    public static function getNavigationGroup(): string
+    {
+        return trans('navigation.human_resources');
+    }
+
+    /*Navigation label*/
+    public static function getNavigationLabel(): string
+    {
+        return trans('navigation.departments');
+    }
+
+    /*Model label*/
     public static function getModelLabel(): string
     {
         return trans_choice('department.model_label', 1);
     }
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'tabler-sitemap';
 
     public static function form(Form $form): Form
     {

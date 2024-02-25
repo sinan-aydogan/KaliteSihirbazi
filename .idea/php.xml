@@ -175,6 +175,7 @@
       <path value="$PROJECT_DIR$/vendor/league/uri" />
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-translatable" />
       <path value="$PROJECT_DIR$/vendor/filament/spatie-laravel-translatable-plugin" />
+      <path value="$PROJECT_DIR$/vendor/ryangjchandler/blade-tabler-icons" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1" />
