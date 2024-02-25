@@ -4,14 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e4d53e00-5d28-4e29-a5ae-ee3dc216b1d7" name="Changes" comment="feat: adds bi panel link to system-settings panel">
-      <change afterPath="$PROJECT_DIR$/app/Filament/Pages/UserProfile.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lang/en/user_profile.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lang/tr/user_profile.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/filament/pages/user-profile.blade.php" afterDir="false" />
+    <list default="true" id="e4d53e00-5d28-4e29-a5ae-ee3dc216b1d7" name="Changes" comment="feat: adds profile page">
+      <change afterPath="$PROJECT_DIR$/app/Filament/Resources/Hr/JobDescriptionResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Filament/Resources/Hr/JobDescriptionResource/Pages/CreateJobDescription.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Filament/Resources/Hr/JobDescriptionResource/Pages/EditJobDescription.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Filament/Resources/Hr/JobDescriptionResource/Pages/ListJobDescriptions.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Hr/JobDescription.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2024_02_25_201055_create_job_descriptions_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/JobDescriptionSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lang/en/job_description.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lang/tr/job_description.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/Filament/BiPanelProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/Filament/BiPanelProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/Filament/SystemManagementPanelProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/Filament/SystemManagementPanelProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lang/en/employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/en/employee.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lang/en/navigation.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/en/navigation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lang/tr/navigation.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/tr/navigation.php" afterDir="false" />
     </list>
@@ -263,7 +268,7 @@
       <updated>1697567793625</updated>
       <workItem from="1708799065308" duration="10896000" />
       <workItem from="1708849495075" duration="10371000" />
-      <workItem from="1708872364600" duration="5507000" />
+      <workItem from="1708872364600" duration="10765000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Setup with Sail">
       <option name="closed" value="true" />
@@ -425,7 +430,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708876326856</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="feat: adds profile page">
+      <option name="closed" value="true" />
+      <created>1708891451659</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1708891451659</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -465,7 +478,8 @@
     <MESSAGE value="feat: move departments link under the human resources scope" />
     <MESSAGE value="feat: adds employee type model" />
     <MESSAGE value="feat: adds bi panel link to system-settings panel" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: adds bi panel link to system-settings panel" />
+    <MESSAGE value="feat: adds profile page" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: adds profile page" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

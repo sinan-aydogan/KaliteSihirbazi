@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             BusinessBranchSeeder::class,
             DepartmentSeeder::class,
             EmployeeTypeSeeder::class,
+            JobDescriptionSeeder::class,
             RoleSeeder::class,
             PermissionSeeder::class,
             AdminSeeder::class,
