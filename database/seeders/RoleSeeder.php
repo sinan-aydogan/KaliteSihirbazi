@@ -26,5 +26,12 @@ class RoleSeeder extends Seeder
             'guard_name' => 'web',
         ]);
         $admin->save();
+
+        /*Human Resources*/
+        $hr = new Role([
+            'name' => 'Human Resources',
+            'guard_name' => 'web',
+        ]);
+        $hr->save();
     }
 }
