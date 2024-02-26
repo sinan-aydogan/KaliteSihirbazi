@@ -5,20 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e4d53e00-5d28-4e29-a5ae-ee3dc216b1d7" name="Changes" comment="feat: adds profile page">
-      <change afterPath="$PROJECT_DIR$/app/Filament/Resources/Hr/JobDescriptionResource.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Filament/Resources/Hr/JobDescriptionResource/Pages/CreateJobDescription.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Filament/Resources/Hr/JobDescriptionResource/Pages/EditJobDescription.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Filament/Resources/Hr/JobDescriptionResource/Pages/ListJobDescriptions.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Hr/JobDescription.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2024_02_25_201055_create_job_descriptions_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/JobDescriptionSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lang/en/job_description.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lang/tr/job_description.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Filament/Resources/Hr/EmployeeResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Filament/Resources/Hr/EmployeeResource/Pages/CreateEmployee.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Filament/Resources/Hr/EmployeeResource/Pages/EditEmployee.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Filament/Resources/Hr/EmployeeResource/Pages/ListEmployees.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Hr/Employee.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/Hr/EmployeeFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2024_02_26_182335_create_employees_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_02_25_151125_create_employee_types_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_02_25_151125_create_employee_types_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lang/en/employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/en/employee.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lang/en/navigation.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/en/navigation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lang/tr/employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/tr/employee.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lang/tr/navigation.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/tr/navigation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/app.css" afterDir="false" />
     </list>
     <list id="f3b5643a-bda0-4561-af0b-248ca3f8640b" name="Unversion" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,12 +29,27 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
+  </component>
   <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+  </component>
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="main" />
+      </list>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -208,6 +226,7 @@
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-translatable" />
       <path value="$PROJECT_DIR$/vendor/filament/spatie-laravel-translatable-plugin" />
       <path value="$PROJECT_DIR$/vendor/ryangjchandler/blade-tabler-icons" />
+      <path value="$PROJECT_DIR$/vendor/_laravel_idea" />
     </include_path>
   </component>
   <component name="ProjectColorInfo">{
@@ -227,6 +246,7 @@
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.laravel-idea.update-module-directories&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;filament&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;//wsl.localhost/Ubuntu/home/sinan/KaliteSihirbazi/lang/tr&quot;,
@@ -269,6 +289,10 @@
       <workItem from="1708799065308" duration="10896000" />
       <workItem from="1708849495075" duration="10371000" />
       <workItem from="1708872364600" duration="10765000" />
+      <workItem from="1708971464212" duration="49000" />
+      <workItem from="1708971533536" duration="2761000" />
+      <workItem from="1708974325757" duration="661000" />
+      <workItem from="1708975357910" duration="1896000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Setup with Sail">
       <option name="closed" value="true" />

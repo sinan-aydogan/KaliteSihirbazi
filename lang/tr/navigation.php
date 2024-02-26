@@ -3,6 +3,7 @@
 return array(
     'human_resources' => 'İnsan Kaynakları',
     'departments' => 'Departmanlar',
+    'employees' => 'Çalışanlar',
     'employee_types' => 'Çalışan Türleri',
     'job_descriptions' => 'Görev Tanımları',
     'system_settings' => 'Sistem Ayarları',

@@ -1,6 +1,13 @@
 <?php
 
 return array(
+    'model_label' => 'Employee|Employees',
+    'full_name' => 'Employee Full Name',
+    'first_name' => 'First Name',
+    'last_name' => 'Last Name',
+    'date_of_birth' => 'Date of Birth',
+    'gender' => 'Gender',
+    'citizenship_number' => 'Citizenship Number',
     'type' => array(
         'model_label' => 'Employee Type',
         'code' => 'Employee Type Code',
