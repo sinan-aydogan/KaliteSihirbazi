@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Hr\Employee;
 use Database\Factories\Hr\EmployeeFactory;
+use Database\Seeders\Dm\DeviceTypeSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -22,7 +23,8 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             PermissionSeeder::class,
             AdminSeeder::class,
-            UserSeeder::class
+            UserSeeder::class,
+            DeviceTypeSeeder::class,
         ]);
 
         Employee::factory(20)->create();
