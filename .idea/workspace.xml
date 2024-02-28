@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e4d53e00-5d28-4e29-a5ae-ee3dc216b1d7" name="Changes" comment="feat: adds supplier type model">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Filament/Resources/Purchase/SupplierTypeResource/Pages/CreateSupplierType.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Filament/Resources/Purchase/SupplierTypeResource/Pages/CreateSupplierType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Filament/Resources/Purchase/SupplierTypeResource/Pages/EditSupplierType.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Filament/Resources/Purchase/SupplierTypeResource/Pages/EditSupplierType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Filament/Resources/Purchase/SupplierTypeResource/Pages/ListSupplierTypes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Filament/Resources/Purchase/SupplierTypeResource/Pages/ListSupplierTypes.php" afterDir="false" />
+    <list default="true" id="e4d53e00-5d28-4e29-a5ae-ee3dc216b1d7" name="Changes" comment="feat: translatable support to adds supplier type pages">
+      <change beforePath="$PROJECT_DIR$/lang/tr/supplier.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/tr/supplier.php" afterDir="false" />
     </list>
     <list id="f3b5643a-bda0-4561-af0b-248ca3f8640b" name="Unversion" comment="Unversion" />
     <option name="SHOW_DIALOG" value="false" />
@@ -285,7 +282,7 @@
       <workItem from="1708974325757" duration="661000" />
       <workItem from="1708975357910" duration="1896000" />
       <workItem from="1709062907511" duration="1659000" />
-      <workItem from="1709144021622" duration="4774000" />
+      <workItem from="1709144021622" duration="4884000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Setup with Sail">
       <option name="closed" value="true" />
@@ -463,7 +460,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709149067201</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="feat: translatable support to adds supplier type pages">
+      <option name="closed" value="true" />
+      <created>1709149217510</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1709149217510</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -506,7 +511,8 @@
     <MESSAGE value="feat: adds profile page" />
     <MESSAGE value="Unversion" />
     <MESSAGE value="feat: adds supplier type model" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: adds supplier type model" />
+    <MESSAGE value="feat: translatable support to adds supplier type pages" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: translatable support to adds supplier type pages" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
