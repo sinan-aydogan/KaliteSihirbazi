@@ -4,23 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e4d53e00-5d28-4e29-a5ae-ee3dc216b1d7" name="Changes" comment="feat: adds profile page">
-      <change afterPath="$PROJECT_DIR$/database/seeders/Purchase/SupplierTypeSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/RoleManagement/Permissions/SupplierTypePermissions.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lang/en/supplier.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lang/tr/supplier.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/PermissionSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/RoleManagement/PermissionSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/Permissions/DepartmentPermissions.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/RoleManagement/Permissions/DepartmentPermissions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/RoleSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/RoleManagement/RoleSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lang/en/navigation.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/en/navigation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lang/tr/navigation.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/tr/navigation.php" afterDir="false" />
-    </list>
-    <list id="f3b5643a-bda0-4561-af0b-248ca3f8640b" name="Unversion" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Models/Purchase/SupplierType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2024_02_28_182047_create_supplier_types_table.php" afterDir="false" />
+    <list default="true" id="e4d53e00-5d28-4e29-a5ae-ee3dc216b1d7" name="Changes" comment="feat: adds supplier type model">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Filament/Resources/Purchase/SupplierTypeResource/Pages/CreateSupplierType.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Filament/Resources/Purchase/SupplierTypeResource/Pages/CreateSupplierType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Filament/Resources/Purchase/SupplierTypeResource/Pages/EditSupplierType.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Filament/Resources/Purchase/SupplierTypeResource/Pages/EditSupplierType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Filament/Resources/Purchase/SupplierTypeResource/Pages/ListSupplierTypes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Filament/Resources/Purchase/SupplierTypeResource/Pages/ListSupplierTypes.php" afterDir="false" />
     </list>
+    <list id="f3b5643a-bda0-4561-af0b-248ca3f8640b" name="Unversion" comment="Unversion" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -295,7 +285,7 @@
       <workItem from="1708974325757" duration="661000" />
       <workItem from="1708975357910" duration="1896000" />
       <workItem from="1709062907511" duration="1659000" />
-      <workItem from="1709144021622" duration="4538000" />
+      <workItem from="1709144021622" duration="4774000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Setup with Sail">
       <option name="closed" value="true" />
@@ -465,7 +455,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708891451659</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="feat: adds supplier type model">
+      <option name="closed" value="true" />
+      <created>1709149067201</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1709149067201</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -506,7 +504,9 @@
     <MESSAGE value="feat: adds employee type model" />
     <MESSAGE value="feat: adds bi panel link to system-settings panel" />
     <MESSAGE value="feat: adds profile page" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: adds profile page" />
+    <MESSAGE value="Unversion" />
+    <MESSAGE value="feat: adds supplier type model" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: adds supplier type model" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

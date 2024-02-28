@@ -8,12 +8,15 @@ use Filament\Resources\Pages\EditRecord;
 
 class EditSupplierType extends EditRecord
 {
+    use EditRecord\Concerns\Translatable;
+
     protected static string $resource = SupplierTypeResource::class;
 
     protected function getHeaderActions(): array
     {
         return [
             Actions\DeleteAction::make(),
+            Actions\LocaleSwitcher::make()
         ];
     }
 }
