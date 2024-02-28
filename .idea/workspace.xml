@@ -5,25 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e4d53e00-5d28-4e29-a5ae-ee3dc216b1d7" name="Changes" comment="feat: adds profile page">
-      <change afterPath="$PROJECT_DIR$/app/Filament/Resources/Hr/EmployeeResource.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Filament/Resources/Hr/EmployeeResource/Pages/CreateEmployee.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Filament/Resources/Hr/EmployeeResource/Pages/EditEmployee.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Filament/Resources/Hr/EmployeeResource/Pages/ListEmployees.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Hr/Employee.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/Hr/EmployeeFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2024_02_26_182335_create_employees_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2024_02_25_151125_create_employee_types_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_02_25_151125_create_employee_types_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/Purchase/SupplierTypeSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/RoleManagement/Permissions/SupplierTypePermissions.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lang/en/supplier.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lang/tr/supplier.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lang/en/employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/en/employee.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/PermissionSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/RoleManagement/PermissionSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/Permissions/DepartmentPermissions.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/RoleManagement/Permissions/DepartmentPermissions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/RoleSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/RoleManagement/RoleSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lang/en/navigation.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/en/navigation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lang/tr/employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/tr/employee.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lang/tr/navigation.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/tr/navigation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/app.css" afterDir="false" />
     </list>
-    <list id="f3b5643a-bda0-4561-af0b-248ca3f8640b" name="Unversion" comment="" />
+    <list id="f3b5643a-bda0-4561-af0b-248ca3f8640b" name="Unversion" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Models/Purchase/SupplierType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2024_02_28_182047_create_supplier_types_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -241,27 +238,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.laravel-idea.update-module-directories&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;filament&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;//wsl.localhost/Ubuntu/home/sinan/KaliteSihirbazi/lang/tr&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.laravel-idea.update-module-directories": "true",
+    "git-widget-placeholder": "filament",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "//wsl.localhost/Ubuntu/home/sinan/KaliteSihirbazi/lang/tr",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "discord-application",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="\\wsl.localhost\Ubuntu\home\sinan\KaliteSihirbazi\lang\tr" />
+      <recent name="\\wsl.localhost\Ubuntu\home\sinan\KaliteSihirbazi\database\seeders\Permissions" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="\\wsl.localhost\Ubuntu\home\sinan\KaliteSihirbazi\database\seeders\RoleManagement" />
     </key>
   </component>
   <component name="RunManager">
@@ -293,6 +294,8 @@
       <workItem from="1708971533536" duration="2761000" />
       <workItem from="1708974325757" duration="661000" />
       <workItem from="1708975357910" duration="1896000" />
+      <workItem from="1709062907511" duration="1659000" />
+      <workItem from="1709144021622" duration="4538000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Setup with Sail">
       <option name="closed" value="true" />

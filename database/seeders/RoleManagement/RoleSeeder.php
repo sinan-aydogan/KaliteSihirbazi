@@ -1,8 +1,7 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\RoleManagement;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 
@@ -30,6 +29,13 @@ class RoleSeeder extends Seeder
         /*Human Resources*/
         $hr = new Role([
             'name' => 'Human Resources',
+            'guard_name' => 'web',
+        ]);
+        $hr->save();
+
+        /*Purchase*/
+        $hr = new Role([
+            'name' => 'Purchase',
             'guard_name' => 'web',
         ]);
         $hr->save();
