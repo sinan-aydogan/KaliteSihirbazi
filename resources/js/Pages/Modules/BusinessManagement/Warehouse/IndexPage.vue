@@ -266,8 +266,8 @@ const handleDelete = (id) => {
         </FormSection>
       </Form>
       <template #footer>
-        <SimpleButton :label="tm('action.reset')" color="orange" @click="form.reset()" />
-        <SimpleButton :label="tm('action.create')" color="green" @click="handleSubmit" :loading="form.processing"/>
+        <SimpleButton :label="t('action.reset')" color="orange" @click="form.reset()" />
+        <SimpleButton :label="t(`action.${formType === 'create' ? 'create' : 'update'}`)" color="green" @click="handleSubmit" :loading="form.processing"/>
       </template>
     </Modal>
   </teleport>
