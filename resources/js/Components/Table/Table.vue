@@ -141,7 +141,7 @@ const indeterminate = computed(() => selectedItems.value.length > 0 && selectedI
 
 /*Outside click*/
 const targetFilter = ref();
-onClickOutside(targetFilter, (event) => {
+onClickOutside(targetFilter, () => {
   filterSelectForm.reset()
   showFilter.value = false
 });
@@ -177,10 +177,10 @@ const search = useForm({
 debouncedWatch(() => cloneDeep(search.query), () => {
   search.post(route('department.search'), data, {}, {
     only: dataKey.value,
-    onBefore: visit => {
+    onBefore: () => {
       dataLoading.value = true;
     },
-    onFinish: visit => {
+    onFinish: () => {
       dataLoading.value = false;
     },
   })
@@ -192,7 +192,7 @@ debouncedWatch(() => cloneDeep(search.query), () => {
 <template>
   <!--Table-->
   <div class="relative">
-    <div class="flex space-x-2 inline-flex justify-between items-center min-w-full">
+    <div class="flex space-x-2 justify-between items-center min-w-full">
       <!--Left Side-->
       <div class="flex space-x-2">
         <!--Search-->
@@ -270,7 +270,7 @@ debouncedWatch(() => cloneDeep(search.query), () => {
     </div>
 
     <div
-        class="p-2 -m-2 overflow-x-scroll overscroll-x-auto scrollbar-thin scrollbar-thumb-rose-500 scrollbar-track-transparent">
+        class="flex p-2 -m-2 overscroll-x-auto scrollbar-thin scrollbar-thumb-rose-500 scrollbar-track-transparent">
       <!--Table-->
       <table class="w-full mt-4 text-sm">
         <!--Header-->
@@ -351,7 +351,7 @@ debouncedWatch(() => cloneDeep(search.query), () => {
                         selectedItems.includes(row[uniqueIdKey]) ? 'bg-rose-50 border-rose-300 group-hover:bg-rose-100' : 'bg-slate-100 dark:bg-slate-500 group-odd:bg-slate-50 dark:group-odd:bg-slate-600 group-hover:bg-slate-200 dark:group-hover:bg-slate-700 border-slate-300'
                         ]">
               <div
-                  class="flex flex-shrink-0 justify-center items-center space-x-3 pr-2  min-h-[2.5rem] items-center">
+                  class="flex flex-shrink-0 justify-center items-center space-x-3 pr-2  min-h-[2.5rem]">
                 <font-awesome-icon
                     v-if="showAction"
                     @click="$emit('view', row)"
@@ -457,7 +457,7 @@ debouncedWatch(() => cloneDeep(search.query), () => {
             <span
 
                 v-if="link.url === null && index >0 && index < (data['meta'] ? data.meta.links.length-1 : data.links.length-1)"
-                class="relative inline-flex items-center px-3 py-1 border ark:bg-slate-600 border dark:border-t-0 dark:border-b-0 border-gray-300 bg-white dark:border-slate-800 text-slate-800 dark:text-slate-200 text-sm font-medium"> ... </span>
+                class="relative inline-flex items-center px-3 py-1 border ark:bg-slate-600 dark:border-t-0 dark:border-b-0 border-gray-300 bg-white dark:border-slate-800 text-slate-800 dark:text-slate-200 text-sm font-medium"> ... </span>
 
             <!--Next-->
             <Link v-if="data['meta'] ? data.meta.links.length === index+1 : data.links.length === index+1"
