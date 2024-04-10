@@ -179,7 +179,7 @@ const handleDelete = (id) => {
         <span v-text="$t('term.deletedItems')"/>
       </simple-button>
 
-      <simple-button @click="showModal = true; formType = 'create'" color="green">
+      <simple-button @click="showModal = true; form.reset(); formType = 'create'" color="green">
         <font-awesome-icon icon="plus" class="mr-2"/>
         <span v-text="$t('action.addNew')"/>
       </simple-button>
