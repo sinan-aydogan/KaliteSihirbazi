@@ -1,60 +1,68 @@
 <script setup>
-import {ref, onBeforeMount} from "vue";
+import {ref, reactive, onMounted} from "vue";
 import {onClickOutside} from '@vueuse/core'
 import {Link} from "@inertiajs/vue3";
 
 const props = defineProps({
-  links: Array
+    links: Array
 })
 
 /*Show SubMenu*/
 const subMenu = ref(null)
 const showingSubMenu = ref()
 const toggle = (id) => {
-  if (showingSubMenu.value === id) {
-    showingSubMenu.value = null
-  } else {
-    showingSubMenu.value = id
-  }
-};
-onClickOutside(subMenu, (event) => showSubMenu.value = false)
-
-/*Active Main Menu*/
-const activeMainLink = ref();
-onBeforeMount(() => {
-  let activePage;
-  props.links.forEach(ml => {
-
-    if (ml.links) {
-      ml.links.find(sl => {
-        if (sl.link === route().current()) {
-          activePage = sl
-        }
-      })
+    if (showingSubMenu.value === id) {
+        showingSubMenu.value = null
+    } else {
+        showingSubMenu.value = id
     }
-  })
+};
+onClickOutside(subMenu, () => showSubMenu.value = false)
 
-  if (activePage) {
-    activeMainLink.value = activePage.id.split('-')[0]
-  }
+/*Active Menu Links*/
+const activeLinks = reactive({
+    parent: null,
+    child: null
+});
+
+onMounted(() => {
+    props.links.forEach(linkGroup => {
+
+        linkGroup.items.forEach(parent => {
+            /*Dropdown*/
+            if (parent.links) {
+                parent.links.forEach(child => {
+                    if (child.link === route().current()) {
+                        activeLinks.parent = parent.id
+                        activeLinks.child = child.id
+                        showingSubMenu.value = parent.id
+                    }
+                })
+                /*Route*/
+            } else {
+                if (parent.link === route().current()) {
+                    activeLinks.parent = parent.id
+                }
+            }
+        })
+    })
 })
 </script>
 
 <template>
     <div>
         <template v-for="link in links">
-
             <!-- Links-->
             <div class="flex flex-col flex-grow overflow-y-auto select-none space-y-1">
                 <!-- Link -->
                 <template v-for="mainLink in link.items" :key="mainLink.id">
                     <!--MainMenu Links-->
                     <component :is="mainLink.link ? Link : 'a'"
-                               @click="activeMainLink = mainLink.id; toggle(mainLink.id)"
+                               @click="activeLinks.parent = mainLink.id; toggle(mainLink.id)"
                                :href="mainLink.link ? route(mainLink.link) : '#'"
                                class="flex flex-shrink-0 px-2 py-[.4rem] justify-between items-center rounded-md hover:bg-slate-600 text-center cursor-pointer"
                                :class="[
-                        { 'bg-rose-500 text-gray-50': activeMainLink === mainLink.id && !mainLink.links },
+                        { 'bg-rose-500 text-gray-50': activeLinks.parent === mainLink.id },
                         'transition duration-300',
                         ]"
                     >
@@ -73,9 +81,13 @@ onBeforeMount(() => {
                     <!--SubMenu Links-->
                     <div v-if="mainLink.links && showingSubMenu === mainLink.id" class="flex flex-col justify-start">
                         <template v-for="subLink in mainLink.links" :key="subLink.id">
-                            <component :is="subLink.link ? 'Link' : 'a'"
+                            <component :is="subLink.link ? Link : 'a'"
                                        :href="subLink.link ? route(subLink.link) : '#'"
                                        class="flex items-center hover:bg-slate-300 dark:hover:bg-slate-600 cursor-pointer px-2 py-1 rounded-md pl-8"
+                                       :class="[
+                            { 'border border-rose-500/25 bg-rose-500/10 text-gray-50': activeLinks.child === subLink.id },
+                            'transition duration-300',
+                            ]"
                             >
                                 <!-- Label -->
                                 <span v-text="subLink.label" class="text-xs le"></span>
