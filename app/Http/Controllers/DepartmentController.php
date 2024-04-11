@@ -82,10 +82,11 @@ class DepartmentController extends Controller
             'name' => $department->name,
         ];
         $data['manager'] = $department->manager()->select('id', 'name')->first();
-        $data['mainDepartment'] = $department->mainDepartment()->select('id', 'name')->first();
+        $data['mainDepartment'] = $department->mainDepartment()->select('id', 'code', 'name')->first();
+        $data['employees'] = $department->employees()->select('id', 'name')->get();
 
         return Inertia::render('Modules/BusinessManagement/Department/ShowPage', [
-            'data' => $data
+            'department' => $data,
         ]);
     }
 
@@ -118,6 +119,19 @@ class DepartmentController extends Controller
         $department->save();
 
         session()->flash('message', ['type'=> 'success', 'content'=>__('messages.department.updated', ['department' => $department->name])]);
+
+        return redirect()->back();
+    }
+
+    /**
+     * Attach an employee to the department
+    **/
+    public function attachEmployee(Department $department, Employee $employee)
+    {
+        $employee->department_id = $department->id;
+        $employee->save();
+
+        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.department.employeeAttached', ['employee' => $employee->name, 'department' => $department->name])]);
 
         return redirect()->back();
     }

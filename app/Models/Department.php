@@ -31,7 +31,7 @@ class Department extends Model
         'deleted_at' => 'datetime',
     ];
 
-    // The manager of the depertment
+    // The manager of the department
     public function manager():BelongsTo
     {
         return $this->belongsTo(Employee::class, 'employee_id',);
@@ -40,12 +40,18 @@ class Department extends Model
     // The main department of the department
     public function mainDepartment():BelongsTo
     {
-        return $this->belongsTo(Department::class, 'department_id');
+        return $this->belongsTo(__CLASS__, 'department_id');
     }
 
     // Sub-departments of the department
     public function subDepartments():HasMany
     {
-        return $this->hasMany(Department::class);
+        return $this->hasMany(__CLASS__);
+    }
+
+    // Employees of the department
+    public function employees():HasMany
+    {
+        return $this->hasMany(Employee::class);
     }
 }

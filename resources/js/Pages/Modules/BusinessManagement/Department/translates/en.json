@@ -1,34 +1,37 @@
 {
-  "title": {
-    "indexPage": {
-      "title": "Departments",
-      "subTitle": "You can manage departments from this module"
+    "title": {
+        "indexPage": {
+            "title": "Departments",
+            "subTitle": "You can manage departments from this module"
+        },
+        "createPage": {
+            "title": "Create a New Department",
+            "subTitle": "Create a new department for your business"
+        },
+        "deletedPage": {
+            "title": "Deleted Departments",
+            "subTitle": "You can restore deleted departments or permanent delete them"
+        }
     },
-    "createPage": {
-      "title": "Create a New Department",
-      "subTitle": "Create a new department for your business"
+    "term": {
+        "department": "Department | Departments",
+        "code": "Department Code",
+        "name": "Department Name",
+        "type": "Department Type",
+        "manager": "Manager",
+        "mainDepartment": "Main Department",
+        "subDepartment": "Sub Department",
+        "noManagerAppointed": "No Manager Appointed",
+        "employees": "Employees",
+        "employeeCode": "Identification No",
+        "employeeName": "Employee Name"
     },
-    "deletedPage": {
-      "title": "Deleted Departments",
-      "subTitle": "You can restore deleted departments or permanent delete them"
+    "action": {
+        "attachEmployee": "Add an Employee to Department"
+    },
+    "message": {
+        "feedback": {
+            "noAttachedEmployee": "No personnel has been assigned to this department yet."
+        }
     }
-  },
-  "term": {
-    "department": "Department | Departments",
-    "code": "Department Code",
-    "name": "Department Name",
-    "type": "Department Type",
-    "manager": "Manager",
-    "mainDepartment": "Main Department",
-    "subDepartment": "Sub Department",
-    "noManagerAppointed": "No Manager Appointed"
-  },
-  "action": {
-    "attachEmployee": "Add an Employee to Department"
-  },
-  "message": {
-    "feedback": {
-      "noAttachedEmployee": "No personnel has been assigned to this department yet."
-    }
-  }
 }
