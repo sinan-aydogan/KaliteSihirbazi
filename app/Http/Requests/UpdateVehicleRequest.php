@@ -13,7 +13,7 @@ class UpdateVehicleRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return auth()->check();
     }
 
     /**
@@ -24,7 +24,18 @@ class UpdateVehicleRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'code' => 'sometimes|string|max:50|unique:vehicles,code,' . $this->id,
+            'vehicle_type_id' => 'sometimes|exists:vehicle_types,id',
+            'vehicle_status_id' => 'nullable|exists:vehicle_statuses,id',
+            'brand' => 'nullable|string|max:50',
+            'model' => 'nullable|string|max:50',
+            'production_year' => 'nullable|string|max:4',
+            'purchase_date' => 'nullable|date',
+            'purchase_description' => 'nullable|string',
+            'disposing_date' => 'nullable|date',
+            'disposing_reason' => 'nullable|string|max:50',
+            'disposing_description' => 'nullable|string',
+            'notes' => 'nullable|string',
         ];
     }
 }
