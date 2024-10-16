@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Database\Seeders\BusinessManagement\Vehicle\VehicleStatusSeeder;
+use Database\Seeders\BusinessManagement\Vehicle\VehicleTypeSeeder;
 use Database\Seeders\Document\DocumentTypeSeeder;
 use Database\Seeders\HumanResources\JobDescription\JobDescriptionSeeder;
 use Database\Seeders\MeasurementDevice\Calibration\CalibrationFirmSeeder;
@@ -40,6 +42,8 @@ class DatabaseSeeder extends Seeder
             CalibrationFirmSeeder::class,
             DocumentTypeSeeder::class,
             SettingSeeder::class,
+            VehicleStatusSeeder::class,
+            VehicleTypeSeeder::class,
         ]);
     }
 }

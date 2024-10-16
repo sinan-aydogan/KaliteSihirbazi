@@ -15,6 +15,13 @@ return [
         'restored' => 'The department named :department restored successfully',
         'updated' => 'The department named :department has been updated successfully'
     ],
+    'vehicle' => [
+        'created' => 'The new vehicle with licence plate :vehicle has been created successfully',
+        'deleted' => 'The vehicle with licence plate :vehicle deleted successfully',
+        'permanentDeleted' => 'The vehicle with licence plate :vehicle permanently deleted successfully',
+        'restored' => 'The vehicle with licence plate :vehicle restored successfully',
+        'updated' => 'The vehicle with licence plate :vehicle has been updated successfully'
+    ],
     'jobDescription' => [
         'created' => 'The new job description named :jobDescription has been created successfully',
         'deleted' => 'The job description named :jobDescription deleted successfully',

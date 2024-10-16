@@ -15,6 +15,13 @@ return [
         'restored' => ':department isimli departman geri getirildi.',
         'updated' => ':department isimli departman güncellendi.'
     ],
+    'vehicle' => [
+        'created' => ':vehicle plakalı araç oluşturuldu.',
+        'deleted' => ':vehicle plakalı araç silindi.',
+        'permanentDeleted' => ':vehicle plakalı araç kalıcı olarak silindi.',
+        'restored' => ':vehicle plakalı araç geri getirildi.',
+        'updated' => ':vehicle plakalı araç güncellendi.'
+    ],
     'jobDescription' => [
         'created' => ':jobDescription isimli görev tanımı oluşturuldu.',
         'deleted' => ':jobDescription isimli görev tanımı silindi.',

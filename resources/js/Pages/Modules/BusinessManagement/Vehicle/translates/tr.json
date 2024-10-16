@@ -1,0 +1,39 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Taşıtlar",
+            "subTitle": "Taşıtlarınızı buradan yönetebilirsiniz"
+        },
+        "createPage": {
+            "title": "Taşıt Oluştur",
+            "subTitle": "İşletmeniz için yeni bir taşıt oluşturun"
+        },
+        "deletedPage": {
+            "title": "Silinmiş Taşıtlar",
+            "subTitle": "Silinen taşıtları kurtarabilir veya kalıcı olarak silebiliriniz"
+        }
+    },
+    "term": {
+        "vehicle": "Taşıt | Taşıtlar",
+        "code": "Taşıt Plakası",
+        "type": "Taşıt Tipi",
+        "brand": "Marka",
+        "model": "Model",
+        "productionYear": "Üretim Yılı",
+        "purchaseDate": "Satın Alma Tarihi",
+        "purchaseDescription": "Satın Alma Açıklaması",
+        "disposingDate": "Elden Çıkarma Tarihi",
+        "disposingReason": "Elden Çıkarma Nedeni",
+        "disposingDescription": "Elden Çıkarma Açıklaması",
+        "notes": "Notlar",
+        "status": "Taşıt Durumu"
+    },
+    "action": {
+        "attachEmployee": "Departmana Personel Ekle"
+    },
+    "message": {
+        "feedback": {
+            "noAttachedEmployee": "Bu departmana henüz personel ataması gerçekleşmemiş."
+        }
+    }
+}

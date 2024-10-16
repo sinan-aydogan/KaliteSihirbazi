@@ -1,0 +1,39 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Vehicles",
+            "subTitle": "You can manage vehicles from this module"
+        },
+        "createPage": {
+            "title": "Create a New Vehicle",
+            "subTitle": "Create a new vehicle for your business"
+        },
+        "deletedPage": {
+            "title": "Deleted Vehicles",
+            "subTitle": "You can restore deleted vehicles or permanent delete them"
+        }
+    },
+    "term": {
+        "vehicle": "Vehicle | Vehicles",
+        "code": "License Plate",
+        "type": "Vehicle Type",
+        "brand": "Brand",
+        "model": "Model",
+        "productionYear": "Production Year",
+        "purchaseDate": "Purchase Date",
+        "purchaseDescription": "Purchase Price",
+        "disposingDate": "Disposing Date",
+        "disposingReason": "Disposing Reason",
+        "disposingDescription": "Disposing Description",
+        "notes": "Notes",
+        "status": "Vehicle Status"
+    },
+    "action": {
+        "attachEmployee": "Add an Employee to Department"
+    },
+    "message": {
+        "feedback": {
+            "noAttachedEmployee": "No personnel has been assigned to this department yet."
+        }
+    }
+}
