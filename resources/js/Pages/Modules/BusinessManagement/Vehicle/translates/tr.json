@@ -28,6 +28,12 @@
         "notes": "Notlar",
         "status": "Taşıt Durumu"
     },
+    "setting": {
+        "vehicle": {
+            "title": "Taşıt Modülü Ayarları",
+            "subTitle": "Taşıt modülünün ayarlarını buradan yönetebilirsiniz"
+        }
+    },
     "action": {
         "attachEmployee": "Departmana Personel Ekle"
     },

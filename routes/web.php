@@ -47,7 +47,7 @@ Route::middleware([
     $mRoutes = [
         ['uri'=>'department', 'model'=>'department', 'controller'=> \App\Http\Controllers\DepartmentController::class],
         ['uri'=>'warehouse', 'model'=>'warehouse', 'controller'=> \App\Http\Controllers\Warehouse\WarehouseController::class, 'settingController' => \App\Http\Controllers\Warehouse\WarehouseSettingController::class],
-        ['uri'=>'vehicles', 'model'=>'vehicles', 'controller'=>\App\Http\Controllers\VehicleController::class],
+        ['uri'=>'vehicle', 'model'=>'vehicle', 'controller'=>\App\Http\Controllers\VehicleController::class, 'settingController' => \App\Http\Controllers\BusinessManagement\Vehicle\VehicleSettingController::class],
         ['uri'=>'device', 'model'=>'device', 'controller'=>\App\Http\Controllers\DeviceController::class],
         ['uri'=>'machine', 'model'=>'machine', 'controller'=>\App\Http\Controllers\MachineController::class],
         ['uri'=>'customer', 'model'=>'customer', 'controller'=>\App\Http\Controllers\CustomerController::class],

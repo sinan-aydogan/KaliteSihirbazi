@@ -7,13 +7,17 @@ use App\Http\Requests\UpdateVehicleRequest;
 use App\Models\BusinessManagement\Vehicle\Vehicle;
 use App\Models\BusinessManagement\Vehicle\VehicleStatus;
 use App\Models\BusinessManagement\Vehicle\VehicleType;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class VehicleController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Inertia\Response|\Inertia\ResponseFactory
+     * @return Response|\Inertia\ResponseFactory
      */
     public function index()
     {
@@ -25,9 +29,21 @@ class VehicleController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function deleted()
+    {
+        return Inertia::render("Modules/BusinessManagement/Vehicle/DeletedPage", [
+            'tableData' => Vehicle::onlyTrashed()->with('vehicleType:id,name')->latest('deleted_at')->paginate(10),
+        ]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function create()
     {
@@ -37,8 +53,8 @@ class VehicleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreVehicleRequest  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param StoreVehicleRequest $request
+     * @return RedirectResponse
      */
     public function store(StoreVehicleRequest $request)
     {
@@ -53,8 +69,8 @@ class VehicleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\BusinessManagement\Vehicle\Vehicle  $vehicle
-     * @return \Illuminate\Http\Response
+     * @param Vehicle $vehicle
+     * @return void
      */
     public function show(Vehicle $vehicle)
     {
@@ -64,8 +80,8 @@ class VehicleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\BusinessManagement\Vehicle\Vehicle  $vehicle
-     * @return \Illuminate\Http\JsonResponse
+     * @param Vehicle $vehicle
+     * @return JsonResponse
      */
     public function edit(Vehicle $vehicle)
     {
@@ -77,9 +93,9 @@ class VehicleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateVehicleRequest  $request
-     * @param  \App\Models\BusinessManagement\Vehicle\Vehicle  $vehicle
-     * @return \Illuminate\Http\RedirectResponse
+     * @param UpdateVehicleRequest $request
+     * @param Vehicle $vehicle
+     * @return RedirectResponse
      */
     public function update(UpdateVehicleRequest $request, Vehicle $vehicle)
     {
@@ -93,8 +109,8 @@ class VehicleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\BusinessManagement\Vehicle\Vehicle  $vehicle
-     * @return \Illuminate\Http\RedirectResponse
+     * @param Vehicle $vehicle
+     * @return RedirectResponse
      */
     public function destroy(Vehicle $vehicle)
     {
@@ -102,6 +118,37 @@ class VehicleController extends Controller
 
         $vehicle->delete();
 
-        return redirect()->route('vehicles.index');
+        return redirect()->route('vehicle.index');
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Vehicle $vehicle
+     * @return RedirectResponse
+     */
+    public function permanentDestroy(Vehicle $vehicle)
+    {
+        session()->flash('message', ['type'=> 'danger', 'content'=>__('messages.vehicle.permanentDeleted', ['vehicle' => $vehicle->code])]);
+
+        $vehicle->forceDelete();
+
+        return redirect()->route('vehicle.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Vehicle $vehicle
+     * @return RedirectResponse
+     */
+    public function restore(Vehicle $vehicle)
+    {
+        $vehicle->restore();
+
+        session()->flash('message', ['type'=> 'info', 'content'=>__('messages.vehicle.restored', ['vehicle' => $vehicle->code])]);
+
+        return redirect()->route('vehicle.index');
+    }
+
 }
