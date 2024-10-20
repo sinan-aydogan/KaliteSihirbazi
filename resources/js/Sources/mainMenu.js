@@ -38,7 +38,7 @@ export default function ({roles, permissions}) {
                         label: t('mainMenu.vehicles'),
                         icon: 'van-shuttle',
                         type: "route",
-                        link: 'vehicles.index'
+                        link: 'vehicle.index'
                     },
                     /*Devices*/
                     {

@@ -28,6 +28,12 @@
         "notes": "Notes",
         "status": "Vehicle Status"
     },
+    "setting": {
+        "document": {
+            "title": "Vehicle Module Settings",
+            "subTitle": "Manage your vehicle module settings"
+        }
+    },
     "action": {
         "attachEmployee": "Add an Employee to Department"
     },

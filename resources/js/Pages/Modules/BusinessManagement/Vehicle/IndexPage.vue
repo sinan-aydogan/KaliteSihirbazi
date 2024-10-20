@@ -131,7 +131,7 @@ const handleSubmit = async () => {
     if (!isValidated) return
 
     if (formType.value === 'create') {
-        form.post(route('vehicles.store'), {
+        form.post(route('vehicle.store'), {
             onSuccess: () => {
                 form.reset();
                 v$.value.$reset();
@@ -139,7 +139,7 @@ const handleSubmit = async () => {
             }
         })
     } else {
-        form.put(route('vehicles.update', {id: form.id}), {
+        form.put(route('vehicle.update', {id: form.id}), {
             onSuccess: () => {
                 form.reset();
                 v$.value.$reset();
@@ -151,7 +151,7 @@ const handleSubmit = async () => {
 
 /*Update*/
 const getRowInfo = (id) => {
-    axios.get(route("vehicles.edit", {id: id})).then(response => {
+    axios.get(route("vehicle.edit", {id: id})).then(response => {
         form.id = response.data.id;
         form.code = response.data.code;
         form.vehicle_type_id = response.data?.vehicle_type?.id;
@@ -172,7 +172,7 @@ const getRowInfo = (id) => {
 
 /*Delete*/
 const handleDelete = (id) => {
-    router.delete(route("vehicles.destroy", id), {
+    router.delete(route("vehicle.destroy", id), {
         preserveState: true,
     });
 }
@@ -182,11 +182,19 @@ const handleDelete = (id) => {
 <template>
     <app-layout :title="tm('title.indexPage.title')" :sub-title="tm('title.indexPage.subTitle')">
         <template #actionArea>
-            <simple-button type="route" :link="route('vehicles.deleted')" color="red">
+            <!--Deleted-->
+            <simple-button type="route" :link="route('vehicle.deleted')" color="red">
                 <font-awesome-icon icon="trash-can" class="mr-2"/>
                 <span v-text="$t('term.deletedItems')"/>
             </simple-button>
 
+            <!--Manage Module-->
+            <simple-button type="route" :link="route('vehicle-setting.index')" color="blue">
+                <font-awesome-icon icon="fa-solid fa-cog" class="mr-2"/>
+                <span v-text="tm('term.manageModule')"/>
+            </simple-button>
+
+            <!--Add new-->
             <simple-button @click="showModal = true; form.reset(); formType = 'create'" color="green">
                 <font-awesome-icon icon="plus" class="mr-2"/>
                 <span v-text="$t('action.addNew')"/>
