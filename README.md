@@ -98,10 +98,11 @@ Demo Bilgileri
 Daha fazla bilgiye veya desteğe ihtiyacın varsa:
 - Discord kanalımıza katılabilirsin: [Discord Channel](https://discord.gg/TnjA2GqYmw)
 
-### Sponsorlar
+### Reklamlar
 
-><a href="https://cleavr.io/" target="_blank"><h3>Cleavr</h3>
-Cleavr hepsi bir arada proje(kod) yönetim sistemidir. Birden fazla server'ı ekleyebilir, içlerine bir çok özelliği tek tık ile kurabilir, yedek alabilir ve projelerinizi canlı olarak test edebilirsiniz.</a>
+<!-- GitAds-Verify: ANNWBW1FK1K2OFGD3RL8TB6KALNMNSQ3 -->
+
+### Sponsorlar
 
 > :metal: Eğer beni desteklemek istiyorsanız [admin@tailadmin.dev](mailto:admin@tailadmin.dev) üzerinden benimle iletişime geçebilir veya [Github üzerinden Sponsorum Olabilirsiniz](https://github.com/sponsors/sinan-aydogan)
 
@@ -135,3 +136,5 @@ Kalite Sihirbazı ve Laraquality [MIT license](https://opensource.org/licenses/M
     <img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=sinanaydogan&button_colour=FFDD00&font_colour=000000&font_family=Lato&outline_colour=000000&coffee_colour=ffffff">
 </a>
 </p>
+
+<!-- GitAds-Verify: ANNWBW1FK1K2OFGD3RL8TB6KALNMNSQ3 -->
