@@ -98,9 +98,9 @@ Demo Bilgileri
 Daha fazla bilgiye veya desteğe ihtiyacın varsa:
 - Discord kanalımıza katılabilirsin: [Discord Channel](https://discord.gg/TnjA2GqYmw)
 
-### Reklamlar
-
 <!-- GitAds-Verify: ANNWBW1FK1K2OFGD3RL8TB6KALNMNSQ3 -->
+## GitAds Sponsorlu
+[![Sponsored by GitAds](https://gitads.dev/v1/ad-serve?source=sinan-aydogan/kalitesihirbazi@github)](https://gitads.dev/v1/ad-track?source=sinan-aydogan/kalitesihirbazi@github)
 
 ### Sponsorlar
 
