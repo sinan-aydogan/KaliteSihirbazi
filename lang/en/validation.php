@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Validation Language Lines
@@ -152,8 +151,16 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'vehicle' => [
+            'disposing_date' => [
+                'after_or_equal_purchase_date' => 'The disposing date cannot be earlier than the purchase date.',
+            ],
+            'disposing_reason' => [
+                'required_with_disposing_date' => 'Disposing reason is required if disposing date is filled.',
+            ],
+            'purchase_date' => [
+                'required_with_disposing_date' => 'Purchase date is required if disposing date is filled.',
+            ],
         ],
     ],
 
@@ -169,5 +176,4 @@ return [
     */
 
     'attributes' => [],
-
 ];

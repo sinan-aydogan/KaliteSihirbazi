@@ -160,12 +160,12 @@ const getRowInfo = (id) => {
         form.brand = response.data.brand;
         form.model = response.data.model;
         form.production_year = response.data.production_year;
-        form.purchase_date = response.data.production_year;
-        form.purchase_description = response.data.production_year;
-        form.disposing_date = response.data.production_year;
-        form.disposing_reason = response.data.production_year;
-        form.disposing_description = response.data.production_year;
-        form.notes = response.data.production_year;
+        form.purchase_date = response.data.purchase_date;
+        form.purchase_description = response.data.purchase_description;
+        form.disposing_date = response.data.disposing_date;
+        form.disposing_reason = response.data.disposing_reason;
+        form.disposing_description = response.data.disposing_description;
+        form.notes = response.data.notes;
     })
     showModal.value = true;
     formType.value = "update"

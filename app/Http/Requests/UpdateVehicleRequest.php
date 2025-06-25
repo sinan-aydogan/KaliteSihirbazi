@@ -30,10 +30,32 @@ class UpdateVehicleRequest extends FormRequest
             'brand' => 'nullable|string|max:50',
             'model' => 'nullable|string|max:50',
             'production_year' => 'nullable|string|max:4',
-            'purchase_date' => 'nullable|date',
+            'purchase_date' => [
+                function ($attribute, $value, $fail) {
+                    if ($this->input('disposing_date') && empty($value)) {
+                        $fail(__('validation.custom.vehicle.purchase_date.required_with_disposing_date'));
+                    }
+                },
+                'date_format:Y-m-d',
+            ],
             'purchase_description' => 'nullable|string',
-            'disposing_date' => 'nullable|date',
-            'disposing_reason' => 'nullable|string|max:50',
+            'disposing_date' => [
+                'nullable',
+                'date_format:Y-m-d',
+                function ($attribute, $value, $fail) {
+                    $purchaseDate = $this->input('purchase_date');
+                    if ($purchaseDate && $value && $value < $purchaseDate) {
+                        $fail(__('validation.custom.vehicle.disposing_date.after_or_equal_purchase_date'));
+                    }
+                },
+            ],
+            'disposing_reason' => [
+                function ($attribute, $value, $fail) {
+                    if ($this->input('disposing_date') && empty($value)) {
+                        $fail(__('validation.custom.vehicle.disposing_reason.required_with_disposing_date'));
+                    }
+                },
+            ],
             'disposing_description' => 'nullable|string',
             'notes' => 'nullable|string',
         ];

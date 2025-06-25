@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Doğrulama Mesajları
@@ -154,8 +153,16 @@ return [
     */
 
     'custom' => [
-        'x' => [
-            'regex' => 'x alanı için "a-b.c" formatında veri girmelisiniz.',
+        'vehicle' => [
+            'disposing_date' => [
+                'after_or_equal_purchase_date' => 'Elden çıkarma tarihi, satın alma tarihinden önce olamaz.',
+            ],
+            'disposing_reason' => [
+                'required_with_disposing_date' => 'Elden çıkarma tarihi girildiyse, elden çıkarma nedeni alanı zorunludur.',
+            ],
+            'purchase_date' => [
+                'required_with_disposing_date' => 'Elden çıkarma tarihi girildiyse, satın alma tarihi alanı zorunludur.',
+            ],
         ],
     ],
 
@@ -176,5 +183,4 @@ return [
     */
 
     'attributes' => [],
-
 ];
