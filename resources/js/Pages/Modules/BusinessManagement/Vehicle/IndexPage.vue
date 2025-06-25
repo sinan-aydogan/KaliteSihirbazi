@@ -60,7 +60,8 @@ const tableHeaders = [
     },
     {
         id: "purchase_date",
-        label: tm('term.purchaseDate')
+        label: tm('term.purchaseDate'),
+        value: (row) => !!row?.purchase_date ? new Date(row.purchase_date).toLocaleDateString('tr-TR') : ''
     }
 ]
 const showModal = ref(false);
@@ -255,7 +256,7 @@ const handleDelete = (id) => {
 
                     <!-- Purchase Date -->
                     <input-group class="col-span-6" labelFor="purchase_date" :label="tm('term.purchaseDate')">
-                        <text-input input-type="date" v-model.number="form.purchase_date"/>
+                        <text-input input-type="date" v-model="form.purchase_date"/>
                     </input-group>
 
                     <!-- Purchase Description -->
@@ -265,7 +266,7 @@ const handleDelete = (id) => {
 
                     <!-- Disposing Date -->
                     <input-group class="col-span-6" labelFor="disposing_date" :label="tm('term.disposingDate')">
-                        <text-input input-type="date" v-model.number="form.disposing_date"/>
+                        <text-input input-type="date" v-model="form.disposing_date"/>
                     </input-group>
 
                     <!-- Disposing Reason -->
