@@ -11,7 +11,24 @@
         "deletedPage": {
             "title": "Silinmiş Taşıtlar",
             "subTitle": "Silinen taşıtları kurtarabilir veya kalıcı olarak silebiliriniz"
+        },
+        "typeIndexPage": {
+            "title": "Taşıt Tipleri",
+            "subTitle": "Taşıt tiplerinizi buradan yönetebilirsiniz"
+        },
+        "statusIndexPage": {
+            "title": "Taşıt Durumları",
+            "subTitle": "Taşıt durumlarınızı buradan yönetebilirsiniz"
+        },
+        "typeCreatePage": {
+            "title": "Taşıt Tipi Oluştur",
+            "subTitle": "İşletmenizdeki taşıtlar için yeni bir taşıt tipi oluşturun"
+        },
+        "statusCreatePage": {
+            "title": "Taşıt Durumu Oluştur",
+            "subTitle": "İşletmenizdeki taşıtlar için yeni bir taşıt durumu oluşturun"
         }
+
     },
     "term": {
         "vehicle": "Taşıt | Taşıtlar",
@@ -19,6 +36,8 @@
         "type": "Taşıt Tipi",
         "brand": "Marka",
         "model": "Model",
+        "typeName": "Taşıt Tipi",
+        "statusName": "Taşıt Durumu",
         "productionYear": "Üretim Yılı",
         "purchaseDate": "Satın Alma Tarihi",
         "purchaseDescription": "Satın Alma Açıklaması",

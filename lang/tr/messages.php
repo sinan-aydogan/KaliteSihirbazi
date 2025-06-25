@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Sistem bildirim mesajı metinleri
@@ -96,5 +95,19 @@ return [
     ],
     'documentSettings' => [
         'updated' => 'Döküman modülü ayarları güncellendi.'
+    ],
+    'vehicleType' => [
+        'created' => ':vehicleType isimli araç tipi oluşturuldu.',
+        'deleted' => ':vehicleType isimli araç tipi silindi.',
+        'permanentDeleted' => ':vehicleType isimli araç tipi kalıcı olarak silindi.',
+        'restored' => ':vehicleType isimli araç tipi geri getirildi.',
+        'updated' => ':vehicleType isimli araç tipi güncellendi.'
+    ],
+    'vehicleStatus' => [
+        'created' => ':vehicleStatus isimli araç durumu oluşturuldu.',
+        'deleted' => ':vehicleStatus isimli araç durumu silindi.',
+        'permanentDeleted' => ':vehicleStatus isimli araç durumu kalıcı olarak silindi.',
+        'restored' => ':vehicleStatus isimli araç durumu geri getirildi.',
+        'updated' => ':vehicleStatus isimli araç durumu güncellendi.'
     ]
 ];

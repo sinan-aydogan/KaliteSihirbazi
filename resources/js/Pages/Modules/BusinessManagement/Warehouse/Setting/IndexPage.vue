@@ -2,6 +2,7 @@
 import SettingLayout from "@/Layouts/SettingLayout.vue";
 import SimpleButton from "@/Components/Button/SimpleButton.vue"
 import Menu from "@/Pages/Modules/BusinessManagement/Warehouse/Setting/menu";
+import Alert from "@/Components/Alert/Alert.vue";
 
 const {links} = Menu()
 </script>
@@ -18,5 +19,9 @@ const {links} = Menu()
         <span v-text="tm('action.goBack')" />
       </simple-button>
     </template>
+
+    <Alert>
+        Genel ayarlar bölümünde henüz özel ayarlar bulunmamaktadır. Sol menüden diğer ayarları yapabilirsiniz.
+    </Alert>
   </SettingLayout>
 </template>

@@ -115,6 +115,9 @@ Route::middleware([
     Route::get('measurement-device/{measurementDevice}/device-info', [\App\Http\Controllers\MeasurementDevice\DeviceInfoController::class, 'index'])->name('measurement-device-info.index');
     Route::get('measurement-device/{measurementDevice}/calibration-tasks', [\App\Http\Controllers\MeasurementDevice\Calibration\CalibrationTaskController::class, 'index'])->name('measurement-device-calibrations.index');
     Route::get('measurement-device/{measurementDevice}/device-actions', [\App\Http\Controllers\MeasurementDevice\Action\DeviceActionController::class, 'index'])->name('measurement-device-actions.index');
+    /*Vehicle Setting Pages*/
+    Route::resource('vehicle-type', \App\Http\Controllers\BusinessManagement\Vehicle\VehicleTypeController::class);
+    Route::resource('vehicle-status', \App\Http\Controllers\BusinessManagement\Vehicle\VehicleStatusController::class);
 });
 
 // Test Route

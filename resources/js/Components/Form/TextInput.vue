@@ -30,10 +30,6 @@ const props = defineProps({
         type: Number,
         default: null
     },
-    maxLength: {
-        type: Number,
-        default: null
-    },
     maxlength: {
         type: Number,
         default: null
@@ -86,7 +82,7 @@ const errorStatus = inject('errorStatus')
                     <slot name="prepend"></slot>
                 </span>
             </div>
-            <input maxlength="4" :value="disabled ? '' : modelValue" :disabled="disabled"
+            <input :maxlength="maxlength" :value="disabled ? '' : modelValue" :disabled="disabled"
                    @input="$emit('update:modelValue', $event.target.value)" :type="inputType" :name="inputId"
                    :id="inputId"
                    class=" block h-10 w-full sm:text-sm dark:bg-slate-900/30 border-slate-300 dark:border-slate-600 rounded-md"

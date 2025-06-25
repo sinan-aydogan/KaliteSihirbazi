@@ -11,6 +11,22 @@
         "deletedPage": {
             "title": "Deleted Vehicles",
             "subTitle": "You can restore deleted vehicles or permanent delete them"
+        },
+        "typeIndexPage": {
+            "title": "Vehicle Types",
+            "subTitle": "Manage your vehicle types from here"
+        },
+        "statusIndexPage": {
+            "title": "Vehicle Statuses",
+            "subTitle": "Manage your vehicle statuses from here"
+        },
+        "typeCreatePage": {
+            "title": "Create a Vehicle Type",
+            "subTitle": "Create a new vehicle type for your business"
+        },
+        "statusCreatePage": {
+            "title": "Create a Vehicle Status",
+            "subTitle": "Create a new vehicle status for your business"
         }
     },
     "term": {
@@ -19,6 +35,8 @@
         "type": "Vehicle Type",
         "brand": "Brand",
         "model": "Model",
+        "typeName": "Vehicle Type",
+        "statusName": "Vehicle Status",
         "productionYear": "Production Year",
         "purchaseDate": "Purchase Date",
         "purchaseDescription": "Purchase Price",

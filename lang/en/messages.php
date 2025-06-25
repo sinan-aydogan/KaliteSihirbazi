@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | System Message Language Lines
@@ -96,5 +95,19 @@ return [
     ],
     'documentSettings' => [
         'updated' => 'The document settings has been updated successfully.'
+    ],
+    'vehicleType' => [
+        'created' => 'The new vehicle type named :vehicleType has been created successfully',
+        'deleted' => 'The vehicle type named :vehicleType deleted successfully',
+        'permanentDeleted' => 'The vehicle type named :vehicleType permanently deleted successfully',
+        'restored' => 'The vehicle type named :vehicleType restored successfully',
+        'updated' => 'The vehicle type named :vehicleType has been updated successfully'
+    ],
+    'vehicleStatus' => [
+        'created' => 'The new vehicle status named :vehicleStatus has been created successfully',
+        'deleted' => 'The vehicle status named :vehicleStatus deleted successfully',
+        'permanentDeleted' => 'The vehicle status named :vehicleStatus permanently deleted successfully',
+        'restored' => 'The vehicle status named :vehicleStatus restored successfully',
+        'updated' => 'The vehicle status named :vehicleStatus has been updated successfully'
     ]
 ];

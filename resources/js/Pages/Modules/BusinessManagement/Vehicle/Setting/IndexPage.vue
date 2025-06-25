@@ -2,14 +2,11 @@
 import SettingLayout from "@/Layouts/SettingLayout.vue";
 import SimpleButton from "@/Components/Button/SimpleButton.vue"
 import Menu from "./menu";
-import InputGroup from "@/Components/Form/InputGroup.vue";
-import SelectInput from "@/Components/Form/SelectInput.vue";
 import {useForm} from "@inertiajs/vue3";
-import FormSection from "@/Components/Form/FormSection.vue";
+import Alert from "@/Components/Alert/Alert.vue";
 
 // Multi-lang
 import Translates from "../translates"
-import FormActionMessage from "@/Components/Form/FormActionMessage.vue";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 
 const {t, tm} = Translates();
@@ -20,7 +17,6 @@ const props = defineProps({
         required: true,
     },
 })
-
 
 const settingObject = ()=>{
     let obj = {};
@@ -57,8 +53,8 @@ const updateSettings = () => {
             </simple-button>
         </template>
 
-        <div class="divide-y divide-amber-500">
-            Ayarlar
-        </div>
+        <Alert>
+            Genel ayarlar bölümünde henüz özel ayarlar bulunmamaktadır. Sol menüden diğer ayarları yapabilirsiniz.
+        </Alert>
     </SettingLayout>
 </template>
