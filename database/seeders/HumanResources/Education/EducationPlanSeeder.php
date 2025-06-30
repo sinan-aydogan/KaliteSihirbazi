@@ -2,6 +2,7 @@
 
 namespace Database\Seeders\HumanResources\Education;
 
+use App\Models\HumanResources\Education\EducationPlan;
 use Illuminate\Database\Seeder;
 
 class EducationPlanSeeder extends Seeder
@@ -13,6 +14,6 @@ class EducationPlanSeeder extends Seeder
      */
     public function run()
     {
-        //
+        EducationPlan::factory()->count(5)->create();
     }
 }

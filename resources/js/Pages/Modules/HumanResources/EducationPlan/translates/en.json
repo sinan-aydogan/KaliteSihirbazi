@@ -1,0 +1,37 @@
+{
+  "title": {
+    "indexPage": {
+      "title": "Education Plans",
+      "subTitle": "You can manage your education plans from here"
+    },
+    "createPage": {
+      "title": "Create Education Plan",
+      "subTitle": "Create a new education plan"
+    },
+    "deletedPage": {
+      "title": "Deleted Education Plans",
+      "subTitle": "You can restore deleted education plans or permanently delete them"
+    }
+  },
+  "term": {
+    "educationPlan": "Education Plan | Education Plans",
+    "name": "Plan Name",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "description": "Description",
+    "educations": "Educations",
+    "status": "Status"
+  },
+  "action": {
+    "returnToList": "Return to List",
+    "delete": "Delete",
+    "goBack": "Go Back",
+    "addEducation": "Add Education"
+  },
+  "message": {
+    "feedback": {
+      "noDescription": "No description has been added to this education plan yet.",
+      "noEducationsInPlan": "There are no educations in this education plan yet."
+    }
+  }
+} 

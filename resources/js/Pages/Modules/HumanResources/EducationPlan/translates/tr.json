@@ -1,0 +1,37 @@
+{
+  "title": {
+    "indexPage": {
+      "title": "Eğitim Planları",
+      "subTitle": "Eğitim planlarınızı buradan yönetebilirsiniz"
+    },
+    "createPage": {
+      "title": "Eğitim Planı Oluştur",
+      "subTitle": "Yeni bir eğitim planı oluşturun"
+    },
+    "deletedPage": {
+      "title": "Silinmiş Eğitim Planları",
+      "subTitle": "Silinen eğitim planlarını kurtarabilir veya kalıcı olarak silebilirsiniz"
+    }
+  },
+  "term": {
+    "educationPlan": "Eğitim Planı | Eğitim Planları",
+    "name": "Plan Adı",
+    "startDate": "Başlangıç Tarihi",
+    "endDate": "Bitiş Tarihi",
+    "description": "Açıklama",
+    "educations": "Eğitimler",
+    "status": "Durum"
+  },
+  "action": {
+    "returnToList": "Listeye Dön",
+    "delete": "Sil",
+    "goBack": "Geri Dön",
+    "addEducation": "Eğitim Ekle"
+  },
+  "message": {
+    "feedback": {
+      "noDescription": "Bu eğitim planı için henüz açıklama eklenmemiş.",
+      "noEducationsInPlan": "Bu eğitim planında henüz hiç eğitim bulunmamaktadır."
+    }
+  }
+} 

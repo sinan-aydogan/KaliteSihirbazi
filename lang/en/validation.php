@@ -162,6 +162,11 @@ return [
                 'required_with_disposing_date' => 'Purchase date is required if disposing date is filled.',
             ],
         ],
+        'educationPlan' => [
+            'end_date' => [
+                'after_or_equal' => 'The end date cannot be earlier than the start date.',
+            ],
+        ],
     ],
 
     /*

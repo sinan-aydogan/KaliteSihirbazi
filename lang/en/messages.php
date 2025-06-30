@@ -109,5 +109,12 @@ return [
         'permanentDeleted' => 'The vehicle status named :vehicleStatus permanently deleted successfully',
         'restored' => 'The vehicle status named :vehicleStatus restored successfully',
         'updated' => 'The vehicle status named :vehicleStatus has been updated successfully'
+    ],
+    'educationPlan' => [
+        'created' => 'The new education plan named :educationPlan has been created successfully',
+        'deleted' => 'The education plan named :educationPlan deleted successfully',
+        'permanentDeleted' => 'The education plan named :educationPlan permanently deleted successfully',
+        'restored' => 'The education plan named :educationPlan restored successfully',
+        'updated' => 'The education plan named :educationPlan has been updated successfully'
     ]
 ];

@@ -109,5 +109,12 @@ return [
         'permanentDeleted' => ':vehicleStatus isimli araç durumu kalıcı olarak silindi.',
         'restored' => ':vehicleStatus isimli araç durumu geri getirildi.',
         'updated' => ':vehicleStatus isimli araç durumu güncellendi.'
+    ],
+    'educationPlan' => [
+        'created' => ':educationPlan isimli eğitim planı oluşturuldu.',
+        'deleted' => ':educationPlan isimli eğitim planı silindi.',
+        'permanentDeleted' => ':educationPlan isimli eğitim planı kalıcı olarak silindi.',
+        'restored' => ':educationPlan isimli eğitim planı geri getirildi.',
+        'updated' => ':educationPlan isimli eğitim planı güncellendi.'
     ]
 ];

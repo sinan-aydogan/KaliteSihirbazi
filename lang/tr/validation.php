@@ -164,6 +164,11 @@ return [
                 'required_with_disposing_date' => 'Elden çıkarma tarihi girildiyse, satın alma tarihi alanı zorunludur.',
             ],
         ],
+        'educationPlan' => [
+            'end_date' => [
+                'after_or_equal' => 'Bitiş tarihi başlangıç tarihinden önce olamaz.',
+            ],
+        ],
     ],
 
     /*
