@@ -140,32 +140,58 @@ const {staffTypes, locationTypes} = Terms()
 
 /*Create*/
 const handleSubmit = async () => {
+  try {
+    const isValidated = await v$.value.$validate()
+    if (!isValidated) return
 
-  const isValidated = await v$.value.$validate()
-  if (!isValidated) return
-  // Correction Main Department
-  if (form.type === 'main') {
-    form.department_id = null
-  }
+    const formData = {
+      code: form.code,
+      name: form.name,
+      description: form.description,
+      staff_type: form.staff_type,
+      department_id: form.department_id,
+      responsibilities: form.responsibilities.length ? form.responsibilities : [''],
+      powers: form.powers.length ? form.powers : [''],
+      requirements: form.requirements.length ? form.requirements : [''],
+      skills: form.skills.length ? form.skills : [''],
+      working_conditions: form.working_conditions.length ? form.working_conditions : [''],
+      working_tools: form.working_tools.length ? form.working_tools : [''],
+      working_hours: form.working_hours.length ? form.working_hours : [''],
+      overtime_status: form.overtime_status.length ? form.overtime_status : [''],
+      travel_status: form.travel_status ?
+                   (Array.isArray(form.travel_status) ? form.travel_status : [form.travel_status])
+                   : [{}],
+      status: form.status
+    }
 
-  if (formType.value === 'create') {
-    form.post(route('job-description.store'), {
-      onSuccess: () => {
-        form.reset();
-        v$.value.$reset();
-        showModal.value = false;
-      }
-    })
-  } else {
-    form.put(route('job-description.update', {id: form.id}), {
-      onSuccess: () => {
-        form.reset();
-        v$.value.$reset();
-        showModal.value = false;
-      }
-    })
+    if (formType.value === 'create') {
+      await form.post(route('job-description.store'), {
+        data: formData,
+        onSuccess: () => {
+          form.reset()
+          v$.value.$reset()
+          showModal.value = false
+        },
+        onError: (errors) => {
+          console.error('Validation errors:', errors)
+        }
+      })
+    } else {
+      await form.put(route('job-description.update', { id: form.id }), {
+        data: formData,
+        onSuccess: () => {
+          form.reset()
+          v$.value.$reset()
+          showModal.value = false
+        }
+      })
+    }
+  } catch (error) {
+    console.error('Submission error:', error)
+    alert('İşlem sırasında bir hata oluştu. Lütfen tekrar deneyin.')
   }
 }
+
 
 /*Update*/
 const getRowInfo = (id) => {
