@@ -69,7 +69,6 @@ class WarehouseController extends Controller
             return redirect()->back();
 
         } catch (\Exception $e) {
-            Log::error('Warehouse creation failed: ' . $e->getMessage());
 
             session()->flash('message', [
                 'type' => 'error',
