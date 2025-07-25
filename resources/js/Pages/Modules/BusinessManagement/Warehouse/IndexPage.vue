@@ -2,6 +2,7 @@
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {ref} from "vue";
 import {useForm, router} from "@inertiajs/vue3";
+import axios from 'axios';
 
 // Components
 import Modal from "@/Components/Modal/Modal.vue"
@@ -119,42 +120,80 @@ const rules = ref({
 
 const v$ = useVuelidate(rules, form)
 
+const resetForm = () => {
+  form.reset();
+  v$.value.$reset();
+  formType.value = 'create';
+}
+
 /*Create*/
 const handleSubmit = async () => {
-  const isValidated = await v$.value.$validate()
-  if (!isValidated) return
+  try {
+    const isValidated = await v$.value.$validate()
+    if (!isValidated) return
 
-  if (formType.value === 'create') {
-    form.post(route('warehouse.store'), {
-      onSuccess: () => {
-        form.reset();
-        v$.value.$reset();
-        showModal.value = false;
-      }
-    })
-  } else {
-    form.put(route('warehouse.update', {id: form.id}), {
-      onSuccess: () => {
-        form.reset();
-        v$.value.$reset();
-        showModal.value = false;
-      }
-    })
+    if (formType.value === 'create') {
+      form.post(route('warehouse.store'), {
+        onSuccess: () => {
+          resetForm();
+          showModal.value = false;
+        },
+        onError: (errors) => {
+          console.error('Create Error:', errors);
+        }
+      })
+    } else if (formType.value === 'update') {
+
+      form.put(route('warehouse.update', {id: form.id}), {
+        onSuccess: () => {
+          resetForm();
+          showModal.value = false;
+        },
+        onError: (errors) => {
+          console.error('Update Error:', errors);
+        }
+      })
+    }
+  } catch (error) {
+    console.error('Submit error:', error);
   }
+}
+
+// Add New button handler
+const handleAddNew = () => {
+  resetForm();
+  showModal.value = true;
+  formType.value = 'create';
 }
 
 /*Update*/
 const getRowInfo = (id) => {
-  axios.get(route("warehouse.edit", {id: id})).then(response => {
-    form.id = response.data.id;
-    form.code = response.data.code;
-    form.name = response.data.name;
-    form.warehouse_type_id = response.data.warehouse_type_id;
-    form.department_id = response.data.department_id;
-    form.employee_id = response.data.employee_id;
-  })
-  showModal.value = true;
-  formType.value = "update"
+  try {
+    // Find the warehouse data from table data instead of API call
+    const warehouse = props.tableData.data.find(item => item.id === id);
+
+    if (warehouse) {
+      formType.value = "update";
+      showModal.value = true;
+
+      form.id = warehouse.id;
+      form.code = warehouse.code;
+      form.name = warehouse.name;
+      form.warehouse_type_id = warehouse.warehouse_type_id;
+      form.department_id = warehouse.department_id;
+      form.employee_id = warehouse.supervisor_id;
+    } else {
+      console.error('Warehouse not found in table data');
+    }
+
+  } catch (error) {
+    console.error('Error setting warehouse data:', error);
+  }
+}
+
+// Modal closed handler
+const handleModalClosed = () => {
+  resetForm();
 }
 
 /*Delete*/
@@ -182,7 +221,7 @@ const handleDelete = (id) => {
       </simple-button>
 
       <!--Add New Button-->
-      <simple-button @click="showModal = true; formType = 'create'" color="green">
+      <simple-button @click="handleAddNew" color="green">
         <font-awesome-icon icon="plus" class="mr-2"/>
         <span v-text="tm('action.addNew')"/>
       </simple-button>
@@ -228,7 +267,7 @@ const handleDelete = (id) => {
         :subHeader="tm('title.createPage.subTitle')"
         closeable
         close-button
-        @closed="form.reset()"
+        @closed="handleModalClosed"
     >
       <Form full-size>
         <FormSection
@@ -266,7 +305,7 @@ const handleDelete = (id) => {
         </FormSection>
       </Form>
       <template #footer>
-        <SimpleButton :label="t('action.reset')" color="orange" @click="form.reset()" />
+        <SimpleButton :label="t('action.reset')" color="orange" @click="resetForm" />
         <SimpleButton :label="t(`action.${formType === 'create' ? 'create' : 'update'}`)" color="green" @click="handleSubmit" :loading="form.processing"/>
       </template>
     </Modal>
