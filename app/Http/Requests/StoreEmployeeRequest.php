@@ -14,7 +14,7 @@ class StoreEmployeeRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return auth()->check();
     }
 
     /**
@@ -109,6 +109,6 @@ class StoreEmployeeRequest extends FormRequest
         ];
     }
 
-    
+
 
 }
