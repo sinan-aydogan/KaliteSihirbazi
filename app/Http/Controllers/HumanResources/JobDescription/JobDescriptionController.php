@@ -9,18 +9,9 @@ use App\Models\Department;
 use App\Models\HumanResources\JobDescription\JobDescription;
 use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
-use App\Traits\Document\HasJsonColumns;
 
 class JobDescriptionController extends Controller
 {
-    use HasJsonColumns;
-
-    protected array $jsonFields = [
-        'responsibilities', 'powers', 'requirements', 'skills',
-        'working_conditions', 'working_tools', 'working_hours',
-        'overtime_status', 'travel_status'
-    ];
-
     public function index()
     {
         return Inertia::render("Modules/HumanResources/JobDescription/IndexPage", [
@@ -32,23 +23,35 @@ class JobDescriptionController extends Controller
     public function store(StoreJobDescriptionRequest $request)
     {
         try {
-            $validated = $this->prepareJsonFields($request->validated(), $this->jsonFields);
-
-            JobDescription::create($validated);
+            JobDescription::create($request->validated());
 
             return $this->redirectWithMessage('success', __('messages.jobDescription.created'));
 
         } catch (\Exception $e) {
             Log::error('Job Description creation failed: ' . $e->getMessage());
-            Log::error('Request data: ' . print_r($request->all(), true));
-
             return $this->redirectWithMessage('danger', __('messages.jobDescription.error'), true);
         }
     }
 
     public function show(JobDescription $jobDescription)
     {
-        $data = $this->decodeJsonFields($jobDescription, $this->jsonFields);
+        $data = [
+            'id' => $jobDescription->id,
+            'code' => $jobDescription->code,
+            'name' => $jobDescription->name,
+            'description' => $jobDescription->description,
+            'staff_type' => $jobDescription->staff_type,
+            'department_id' => $jobDescription->department_id,
+            'responsibilities' => $jobDescription->responsibilities,
+            'powers' => $jobDescription->powers,
+            'requirements' => $jobDescription->requirements,
+            'skills' => $jobDescription->skills,
+            'working_conditions' => $jobDescription->working_conditions,
+            'working_tools' => $jobDescription->working_tools,
+            'working_hours' => $jobDescription->working_hours,
+            'overtime_status' => $jobDescription->overtime_status,
+            'travel_status' => $jobDescription->travel_status,
+        ];
 
         return Inertia::render('Modules/HumanResources/JobDescription/ShowPage', [
             'data' => $data
@@ -57,13 +60,13 @@ class JobDescriptionController extends Controller
 
     public function edit(JobDescription $jobDescription)
     {
-        return response()->json($this->decodeJsonFields($jobDescription, $this->jsonFields));
+        return response()->json($jobDescription);
     }
 
     public function update(UpdateJobDescriptionRequest $request, JobDescription $jobDescription)
     {
         try {
-            $validated = $this->prepareJsonFields($request->validated(), $this->jsonFields);
+            $validated = $$request->validated();
 
             $jobDescription->update($validated);
 
