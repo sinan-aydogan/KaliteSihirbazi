@@ -1,11 +1,12 @@
 import './bootstrap';
-import "../sass/app.sass";
+import "../css/app.css";
 
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import { createPinia } from "pinia";
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
 /*Font Awesome*/
 import {
@@ -33,6 +34,7 @@ const i18n = createI18n({
 
 /*Pinia*/
 const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
 
 /*Dayjs*/
 import dayjs from "dayjs";

@@ -7,19 +7,17 @@
     "type": "module",
     "devDependencies": {
         "@inertiajs/vue3": "^1.0.15",
-        "@tailwindcss/forms": "^0.5.7",
-        "@tailwindcss/typography": "^0.5.12",
+        "@tailwindcss/forms": "^0.5.10",
+        "@tailwindcss/typography": "^0.5.16",
         "@vitejs/plugin-vue": "^5.0.4",
         "autoprefixer": "^10.4.19",
         "axios": "^1.6.8",
         "laravel-vite-plugin": "^1.0.2",
         "lodash": "^4.17.21",
-        "postcss": "^8.4.38",
+        "postcss": "^8.5.6",
         "prettier": "^3.2.5",
         "sass": "^1.74.1",
         "sass-loader": "^14.1.1",
-        "tailwind-scrollbar": "^3.1.0",
-        "tailwindcss": "^3.4.3",
         "vite": "^5.2.8",
         "vue": "^3.4.21"
     },
@@ -28,6 +26,7 @@
         "@fortawesome/free-regular-svg-icons": "^7.0.0",
         "@fortawesome/free-solid-svg-icons": "^7.0.0",
         "@fortawesome/vue-fontawesome": "^3.1.1",
+        "@tailwindcss/vite": "^4.1.12",
         "@vuelidate/core": "^2.0.3",
         "@vuelidate/validators": "^2.0.4",
         "@vueuse/core": "^10.9.0",
@@ -35,6 +34,7 @@
         "floating-vue": "^5.2.2",
         "pinia": "^3.0.3",
         "pinia-plugin-persistedstate": "^4.5.0",
+        "tailwindcss": "^4.1.12",
         "vue-i18n": "^9.11.0",
         "vuedraggable": "^4.1.0"
     }
