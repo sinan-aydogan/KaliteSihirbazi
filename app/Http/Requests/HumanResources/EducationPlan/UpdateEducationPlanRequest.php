@@ -24,7 +24,7 @@ class UpdateEducationPlanRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'sometimes|string|max:255|unique:education_plans,name,' . $this->route('educationPlan'),
+            'name' => 'sometimes|string|max:255|unique:education_plans,name,' . $this->id,
             'start_date' => 'sometimes|date|date_format:Y-m-d',
             'end_date' => [
                 'sometimes',
@@ -47,4 +47,4 @@ class UpdateEducationPlanRequest extends FormRequest
             'end_date.after_or_equal' => __('validation.custom.educationPlan.end_date.after_or_equal'),
         ];
     }
-} 
+}
