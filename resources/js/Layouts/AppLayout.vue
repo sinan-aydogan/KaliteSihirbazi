@@ -2,7 +2,7 @@
 /*Functions*/
 import { onBeforeMount, onUpdated, ref, watch} from "vue";
 import {Head, usePage} from "@inertiajs/vue3";
-import {useFullscreen, useBreakpoints, breakpointsTailwind} from '@vueuse/core'
+import {useBreakpoints, breakpointsTailwind} from '@vueuse/core'
 import Theme from "@/Functions/Theme";
 import Notification from "@/Components/Notification/Notification.vue"
 
@@ -15,7 +15,9 @@ import {useI18n} from "vue-i18n";
 
 /*Stores*/
 import {useNotification} from "@/Stores/useNotification.js";
+import {useFullscreenStore} from "@/Stores/useFullscreen.js";
 import dayjs from "dayjs";
+import { storeToRefs } from "pinia";
 
 defineProps({
   title: String,
@@ -41,8 +43,8 @@ onUpdated(() => {
 });
 
 /*Expand Window*/
-const globalContainer = ref();
-const {isFullscreen, toggle} = useFullscreen(globalContainer)
+const fullscreen = useFullscreenStore();
+const {globalContainer, isFullscreen} = storeToRefs(fullscreen);
 
 /*Hamburger Menu*/
 const showMenu = ref();
@@ -119,7 +121,7 @@ watch(()=>usePage().props.flash.message, ()=>{
               <!--Right Side-->
               <div v-if="!smallScreen" class="flex items-center space-x-4">
                 <!--Full-size-->
-                <font-awesome-icon @click="toggle" :icon="isFullscreen ? 'compress' : 'expand'"
+                <font-awesome-icon @click="fullscreen.toggle" :icon="isFullscreen ? 'compress' : 'expand'"
                                    class="w-6 h-6 text-gray-600 hover:scale-125 active:scale-90 cursor-pointer transition duration-300"/>
                 <!--Action Area-->
                 <div v-if="$slots.actionArea" class="flex space-x-2">
@@ -133,7 +135,7 @@ watch(()=>usePage().props.flash.message, ()=>{
         <!--Right Side-->
         <div v-if="smallScreen" class="flex flex-wrap justify-center items-center space-x-4">
           <!--Full-size-->
-          <font-awesome-icon v-if="!smallScreen" @click="toggle" :icon="isFullscreen ? 'compress' : 'expand'"
+          <font-awesome-icon v-if="!smallScreen" @click="fullscreen.toggle" :icon="isFullscreen ? 'compress' : 'expand'"
                              class="w-6 h-6 text-gray-600 hover:scale-125 active:scale-90 cursor-pointer transition duration-300"/>
           <!--Action Area-->
           <div v-if="$slots.actionArea" class="flex space-x-2">
