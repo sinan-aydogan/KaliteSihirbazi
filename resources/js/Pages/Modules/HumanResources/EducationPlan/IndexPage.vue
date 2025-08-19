@@ -30,6 +30,9 @@ const {t, tm} = Translates();
 import {useVuelidate} from "@vuelidate/core"
 import {required, maxLength, helpers} from "@vuelidate/validators"
 
+// Helpers
+import dayjs from "dayjs";
+
 /*Table*/
 const tableHeaders = [
     {
@@ -105,8 +108,8 @@ const getRowInfo = (id) => {
     axios.get(route("education-plan.edit", {id: id})).then(response => {
         form.id = response.data.id;
         form.name = response.data.name;
-        form.start_date = response.data.start_date;
-        form.end_date = response.data.end_date;
+        form.start_date = dayjs(response.data.start_date).format('YYYY-MM-DD');
+        form.end_date = dayjs(response.data.end_date).format('YYYY-MM-DD');
         form.description = response.data.description;
     })
     showModal.value = true;
@@ -191,4 +194,4 @@ const handleDelete = (id) => {
             </template>
         </Modal>
     </teleport>
-</template> 
+</template>
