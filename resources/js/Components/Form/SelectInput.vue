@@ -176,6 +176,8 @@ watch(() => props.modelValue, () => {
 </template>
 
 <style scoped lang="sass">
+@reference "../../../css/app.css";
+
 .select-option
     @apply flex justify-between items-center border-b dark:border-slate-600 last:border-b-0 last:rounded-b first:rounded-t py-1 px-2 hover:bg-slate-100 dark:hover:bg-slate-600/75 cursor-pointer transition-all whitespace-nowrap
 

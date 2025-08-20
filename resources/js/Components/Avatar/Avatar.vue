@@ -17,6 +17,8 @@ defineProps({
 </template>
 
 <style lang="sass">
+@reference "../../../css/app.css";
+
 .avatar
   @apply flex justify-center items-center rounded-full border-2 p-0.5
 

@@ -66,6 +66,8 @@ const hasActions = computed(() => !!useSlots().actions);
 </template>
 
 <style lang="sass">
+@reference "../../../css/app.css";
+
 .form-wrapper
   @apply flex flex-col space-y-4
 

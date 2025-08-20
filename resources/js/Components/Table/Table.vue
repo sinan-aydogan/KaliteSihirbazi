@@ -494,6 +494,8 @@ debouncedWatch(() => cloneDeep(search.query), () => {
 
 
 <style lang="sass" scoped>
+@reference "../../../css/app.css";
+
 tbody > tr:first-child > td:first-child
     border-top-left-radius: 0.50rem
 

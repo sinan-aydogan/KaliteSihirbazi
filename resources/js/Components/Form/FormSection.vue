@@ -70,6 +70,8 @@ const fullSize = inject('fullSize', false)
 </template>
 
 <style lang="sass">
+@reference "../../../css/app.css";
+
 .section-header
   @apply flex justify-between
 
