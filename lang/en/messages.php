@@ -116,5 +116,31 @@ return [
         'permanentDeleted' => 'The education plan named :educationPlan permanently deleted successfully',
         'restored' => 'The education plan named :educationPlan restored successfully',
         'updated' => 'The education plan named :educationPlan has been updated successfully'
+    ],
+    'educationType' => [
+        'created' => 'The new education type named :educationType has been created successfully',
+        'deleted' => 'The education type named :educationType deleted successfully',
+        'permanentDeleted' => 'The education type named :educationType permanently deleted successfully',
+        'restored' => 'The education type named :educationType restored successfully',
+        'updated' => 'The education type named :educationType has been updated successfully'
+    ],
+    'educationInstructor' => [
+        'created' => 'The new education instructor named :educationInstructor has been created successfully',
+        'deleted' => 'The education instructor named :educationInstructor deleted successfully',
+        'permanentDeleted' => 'The education instructor named :educationInstructor permanently deleted successfully',
+        'restored' => 'The education instructor named :educationInstructor restored successfully',
+        'updated' => 'The education instructor named :educationInstructor has been updated successfully',
+        'mediaDeleted' => 'Media file has been deleted successfully'
+    ],
+    'education' => [
+        'created' => 'The new education named :education has been created successfully',
+        'deleted' => 'The education named :education deleted successfully',
+        'permanentDeleted' => 'The education named :education permanently deleted successfully',
+        'restored' => 'The education named :education restored successfully',
+        'updated' => 'The education named :education has been updated successfully',
+        'participantAdded' => 'Participant has been added to the education successfully',
+        'participantUpdated' => 'Participant information has been updated successfully',
+        'participantRemoved' => 'Participant has been removed from the education successfully',
+        'mediaDeleted' => 'Media file has been deleted successfully'
     ]
 ];

@@ -116,5 +116,31 @@ return [
         'permanentDeleted' => ':educationPlan isimli eğitim planı kalıcı olarak silindi.',
         'restored' => ':educationPlan isimli eğitim planı geri getirildi.',
         'updated' => ':educationPlan isimli eğitim planı güncellendi.'
+    ],
+    'educationType' => [
+        'created' => ':educationType isimli eğitim türü oluşturuldu.',
+        'deleted' => ':educationType isimli eğitim türü silindi.',
+        'permanentDeleted' => ':educationType isimli eğitim türü kalıcı olarak silindi.',
+        'restored' => ':educationType isimli eğitim türü geri getirildi.',
+        'updated' => ':educationType isimli eğitim türü güncellendi.'
+    ],
+    'educationInstructor' => [
+        'created' => ':educationInstructor isimli eğitmen oluşturuldu.',
+        'deleted' => ':educationInstructor isimli eğitmen silindi.',
+        'permanentDeleted' => ':educationInstructor isimli eğitmen kalıcı olarak silindi.',
+        'restored' => ':educationInstructor isimli eğitmen geri getirildi.',
+        'updated' => ':educationInstructor isimli eğitmen güncellendi.',
+        'mediaDeleted' => 'Medya dosyası başarıyla silindi.'
+    ],
+    'education' => [
+        'created' => ':education isimli eğitim oluşturuldu.',
+        'deleted' => ':education isimli eğitim silindi.',
+        'permanentDeleted' => ':education isimli eğitim kalıcı olarak silindi.',
+        'restored' => ':education isimli eğitim geri getirildi.',
+        'updated' => ':education isimli eğitim güncellendi.',
+        'participantAdded' => 'Katılımcı eğitime başarıyla eklendi.',
+        'participantUpdated' => 'Katılımcı bilgileri başarıyla güncellendi.',
+        'participantRemoved' => 'Katılımcı eğitimden başarıyla çıkarıldı.',
+        'mediaDeleted' => 'Medya dosyası başarıyla silindi.'
     ]
 ];

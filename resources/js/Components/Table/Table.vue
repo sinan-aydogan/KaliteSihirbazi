@@ -415,16 +415,16 @@ debouncedWatch(() => cloneDeep(search.query), () => {
     <!--Pagination-->
     <div v-if="data['data'] && data.total>data.per_page" class="py-3 flex items-center justify-between">
         <div class="grid grid-cols-2 w-full sm:hidden select-none">
-            <Link :href="data['meta'] ? data.meta.links[0].url : data.prev_page_url"
+            <Link :href="data?.meta?.links ? data.meta.links[0].url : data.prev_page_url"
                   class="col-span-1 space-x-2 inline-flex place-self-start items-center px-4 py-2 border dark:border-transparent border-gray-300 text-sm font-medium rounded-md text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-700 hover:bg-gray-50"
-                  :class="{'opacity-25 pointer-events-none': data['meta'] ? data.meta.links[0].url === null : data.prev_page_url  === null}"
+                  :class="{'opacity-25 pointer-events-none': data?.meta?.links ? data.meta.links[0].url === null : data.prev_page_url  === null}"
             >
                 <font-awesome-icon icon="chevron-left" size="sm" aria-hidden="true"/>
                 <span v-text="t('term.previous')"></span>
             </Link>
-            <Link :href="data['meta'] ? data.meta.links[data.meta.links.length-1].url : data.next_page_url"
+            <Link :href="data?.meta?.links ? data.meta.links[data.meta.links.length-1].url : data.next_page_url"
                   class="col-span-1 ml-3 space-x-2 relative inline-flex  place-self-end items-center px-4 py-2 border dark:border-transparent border-gray-300 text-sm font-medium rounded-md text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-700 hover:bg-gray-50"
-                  :class="{'opacity-25 pointer-events-none': data['meta'] ? data.meta.links[data.meta.links.length-1].url === null : data.next_page_url  === null}"
+                  :class="{'opacity-25 pointer-events-none': data?.meta?.links ? data.meta.links[data.meta.links.length-1].url === null : data.next_page_url  === null}"
             >
                 <span v-text="('term.next')"></span>
                 <font-awesome-icon icon="chevron-right" size="sm" aria-hidden="true"/>
@@ -435,13 +435,13 @@ debouncedWatch(() => cloneDeep(search.query), () => {
                 <p class="text-sm text-slate-800 dark:text-slate-200">
                     <i18n-t keypath="table.paginationDetail" tag="span">
                         <template v-slot:total>
-                            <span v-text="data['meta'] ? data.meta.total : data.total" class="font-bold"></span>
+                            <span v-text="data?.meta?.links ? data.meta.total : data.total" class="font-bold"></span>
                         </template>
                         <template v-slot:from>
-                            <span v-text="data['meta'] ? data.meta.from : data.from" class="font-bold"></span>
+                            <span v-text="data?.meta?.links ? data.meta.from : data.from" class="font-bold"></span>
                         </template>
                         <template v-slot:to>
-                            <span v-text="data['meta'] ? data.meta.to : data.to" class="font-bold"></span>
+                            <span v-text="data?.meta?.links ? data.meta.to : data.to" class="font-bold"></span>
                         </template>
                     </i18n-t>
                 </p>
@@ -449,7 +449,7 @@ debouncedWatch(() => cloneDeep(search.query), () => {
             <div>
                 <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
 
-                    <template v-for="(link,index) in data['meta'] ? data.meta.links : data.links" :key="index">
+                    <template v-for="(link,index) in data?.meta?.links ? data.meta.links : data.links" :key="index">
                         <!--Previous-->
                         <Link v-if="index === 0" :href="link.url" :disabled="link.url"
                               class="relative inline-flex items-center px-1 rounded-l-md border dark:border-0 dark:border-r dark:border-slate-800 border-gray-300 bg-white dark:bg-slate-600 text-sm font-medium text-slate-800 dark:text-slate-200 hover:bg-gray-50 dark:hover:bg-slate-800 disabled:opacity-25"
@@ -461,10 +461,13 @@ debouncedWatch(() => cloneDeep(search.query), () => {
 
                         <!--Page-->
                         <Link
-                            v-if="index> 0 && (data['meta'] ? data.meta.links.length !== index+1 : data.links.length !== index+1)"
+                            v-if="index> 0 && (data?.meta?.links ? data.meta.links.length !== index+1 : data.links.length !== index+1)"
                             :href="link.url" aria-current="page"
-                            class="relative inline-flex items-center px-3 py-1 bg-white dark:bg-slate-600 border dark:border-t-0 dark:border-b-0 border-gray-300 dark:border-slate-800 text-slate-800 dark:text-slate-200 hover:bg-gray-50 dark:hover:bg-slate-800 text-sm font-medium"
-                            :class="{'z-10 bg-rose-50 border-rose-500 text-rose-600' : link.active}"
+                            class="relative inline-flex items-center px-3 py-1  border dark:border-t-0 dark:border-b-0 dark:text-slate-200 text-sm font-medium"
+                            :class="{
+                                'z-10 bg-rose-50 dark:bg-rose-500 border-rose-500 text-rose-600 dark:text-white' : link.active,
+                                'bg-white hover:bg-gray-50 border-gray-300 text-slate-800 dark:bg-slate-600 dark:hover:bg-slate-800 dark:border-slate-800': !link.active
+                                }"
                         >
                             {{ link.label }}
                         </Link>
@@ -472,7 +475,7 @@ debouncedWatch(() => cloneDeep(search.query), () => {
                         <!--Filler-->
                         <span
 
-                            v-if="link.url === null && index >0 && index < (data['meta'] ? data.meta.links.length-1 : data.links.length-1)"
+                            v-if="link.url === null && index >0 && index < (data?.meta?.links ? data.meta.links.length-1 : data.links.length-1)"
                             class="relative inline-flex items-center px-3 py-1 border ark:bg-slate-600 dark:border-t-0 dark:border-b-0 border-gray-300 bg-white dark:border-slate-800 text-slate-800 dark:text-slate-200 text-sm font-medium"> ... </span>
 
                         <!--Next-->

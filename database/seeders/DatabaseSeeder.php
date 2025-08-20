@@ -44,6 +44,8 @@ class DatabaseSeeder extends Seeder
             SettingSeeder::class,
             VehicleStatusSeeder::class,
             VehicleTypeSeeder::class,
+            // Education Module Seeders
+            EducationTypeSeeder::class,
         ]);
     }
 }
