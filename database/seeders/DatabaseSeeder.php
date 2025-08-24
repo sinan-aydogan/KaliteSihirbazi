@@ -46,6 +46,7 @@ class DatabaseSeeder extends Seeder
             VehicleTypeSeeder::class,
             // Education Module Seeders
             EducationTypeSeeder::class,
+            EducationInstructorSeeder::class,
         ]);
     }
 }

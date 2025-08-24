@@ -107,11 +107,19 @@ export default function ({roles, permissions}) {
                     },
                     /*Education Planning*/
                     {
-                        id: 'hr-edu',
+                        id: 'hr-edu-plan',
                         label: t('mainMenu.educationPlaning'),
-                        icon: 'chalkboard-user',
+                        icon: 'timeline',
                         type: "route",
                         link: 'education-plan.index'
+                    },
+                    /*Education*/
+                    {
+                        id: 'hr-edu',
+                        label: t('mainMenu.education'),
+                        icon: 'chalkboard-user',
+                        type: "route",
+                        link: 'education.index'
                     },
                     /*Leave Management*/
                     {

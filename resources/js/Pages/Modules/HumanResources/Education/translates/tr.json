@@ -1,0 +1,90 @@
+{
+  "title": {
+    "indexPage": {
+      "title": "Eğitimler",
+      "subTitle": "Burada eğitimlerinizi yönetebilirsiniz"
+    },
+    "createPage": {
+      "title": "Eğitim Ekle",
+      "subTitle": "Yeni bir eğitim oluşturun"
+    },
+    "deletedPage": {
+      "title": "Silinmiş Eğitimler",
+      "subTitle": "Silinmiş eğitimleri geri getirebilir veya kalıcı olarak silebilirsiniz"
+    },
+    "showPage": {
+      "title": "Eğitim Detayları",
+      "subTitle": "Eğitim hakkında detaylı bilgiler"
+    },
+    "settingsPage": {
+      "title": "Eğitim Ayarları",
+      "subTitle": "Eğitim modülü ayarlarını yapılandırın"
+    }
+  },
+  "term": {
+    "createdAt": "Oluşturulma Tarihi",
+    "education": "Eğitim | Eğitimler",
+    "educationsCount": "Eğitim Sayısı",
+    "educationPlan": "Eğitim Planı",
+    "educationTypes": "Eğitim Türleri",
+    "educationType": "Eğitim Türü",
+    "educationInstructors": "Eğitmenler",
+    "educationInstructor": "Eğitmen",
+    "participants": "Katılımcılar",
+    "participant": "Katılımcı",
+    "name": "Eğitim Adı",
+    "description": "Açıklama",
+    "plannedDate": "Planlanan Tarih",
+    "performedDate": "Gerçekleşen Tarih",
+    "duration": "Süre",
+    "durationPlaceholder": "Dakika cinsinden süre",
+    "isCompleted": "Tamamlandı",
+    "isCancelled": "İptal Edildi",
+    "cancelReason": "İptal Nedeni",
+    "status": "Durum",
+    "planned": "Planlandı",
+    "completed": "Tamamlandı",
+    "cancelled": "İptal Edildi",
+    "instructorRole": "Eğitmen Rolü",
+    "isAttend": "Katıldı",
+    "score": "Puan",
+    "participantStatus": "Katılımcı Durumu",
+    "documents": "Belgeler",
+    "photo": "Fotoğraf",
+    "addParticipant": "Katılımcı Ekle",
+    "removeParticipant": "Katılımcıyı Çıkar",
+    "updateParticipant": "Katılımcıyı Güncelle",
+    "educationSettings": "Eğitim Ayarları",
+    "manageModule": "Modül Yönetimi"
+  },
+  "action": {
+    "returnToList": "Listeye Dön",
+    "delete": "Sil",
+    "goBack": "Geri Git",
+    "addEducation": "Eğitim Ekle",
+    "addInstructor": "Eğitmen Ekle",
+    "addEducationType": "Eğitim Türü Ekle",
+    "manageParticipants": "Katılımcıları Yönet",
+    "viewDetails": "Detayları Gör",
+    "editEducation": "Eğitimi Düzenle",
+    "completeEducation": "Eğitimi Tamamla",
+    "cancelEducation": "Eğitimi İptal Et"
+  },
+  "message": {
+    "feedback": {
+      "noDescription": "Bu eğitime henüz açıklama eklenmemiş.",
+      "noParticipants": "Bu eğitime henüz katılımcı eklenmemiş.",
+      "noInstructors": "Bu eğitime henüz eğitmen atanmamış.",
+      "noDocuments": "Bu eğitime henüz doküman eklenmemiş.",
+      "noEducationTypes": "Bu eğitime henüz eğitim türü atanmamış.",
+      "educationCompleted": "Bu eğitim tamamlanmıştır.",
+      "educationCancelled": "Bu eğitim iptal edilmiştir.",
+      "educationPlanned": "Bu eğitim planlanmış durumda."
+    },
+    "validation": {
+      "cancelReasonRequired": "Eğitim iptal edildiğinde iptal nedeni belirtilmelidir.",
+      "performedDateRequired": "Eğitim tamamlandığında gerçekleşen tarih belirtilmelidir.",
+      "performedDateAfterPlanned": "Gerçekleşen tarih, planlanan tarihten sonra olmalıdır."
+    }
+  }
+}

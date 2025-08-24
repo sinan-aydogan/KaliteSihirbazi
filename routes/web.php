@@ -56,8 +56,10 @@ Route::middleware([
         ['uri'=>'employee', 'model'=>'employee', 'controller'=> \App\Http\Controllers\HumanResources\Employee\EmployeeController::class],
         ['uri'=>'job-description', 'model'=>'jobDescription', 'controller'=> \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::class],
         ['uri'=>'job-description-assignment', 'model'=>'jobDescriptionAssignment', 'controller'=> \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionAssignmentController::class],
-        ['uri'=>'education', 'model'=>'education', 'controller'=> \App\Http\Controllers\HumanResources\Education\EducationController::class],
+        ['uri'=>'education', 'model'=>'education', 'controller'=> \App\Http\Controllers\HumanResources\Education\EducationController::class, 'settingController' => \App\Http\Controllers\HumanResources\Education\EducationSettingController::class],
         ['uri'=>'education-plan', 'model'=>'educationPlan', 'controller'=> \App\Http\Controllers\HumanResources\Education\EducationPlanController::class],
+        ['uri'=>'education-type', 'model'=>'educationType', 'controller'=> \App\Http\Controllers\HumanResources\Education\EducationTypeController::class],
+        ['uri'=>'education-instructor', 'model'=>'educationInstructor', 'controller'=> \App\Http\Controllers\HumanResources\Education\EducationInstructorController::class],
         ['uri'=>'take-time-off', 'model'=>'takeTime', 'controller'=> \App\Http\Controllers\HumanResources\Employee\TakeTimeOffController::class],
         ['uri'=>'problem', 'model'=>'problem', 'controller'=>App\Http\Controllers\ProblemController::class],
         ['uri'=>'capa-action', 'model'=>'capaAction', 'controller'=>\App\Http\Controllers\CapaActionController::class],
@@ -107,6 +109,15 @@ Route::middleware([
     Route::get('employee/{employee}/time-off', [\App\Http\Controllers\HumanResources\Employee\TimeOffController::class, 'index'])->name('employee-time-off.index');
     Route::get('employee/{employee}/debt', [\App\Http\Controllers\HumanResources\Employee\DebtController::class, 'index'])->name('employee-debt.index');
     Route::get('employee/{employee}/education', [\App\Http\Controllers\HumanResources\Employee\EducationController::class, 'index'])->name('employee-education.index');
+
+    // Education Participant Management
+    Route::post('education/{education}/participants', [\App\Http\Controllers\HumanResources\Education\EducationController::class, 'addParticipant'])->name('education.add-participant');
+    Route::put('education/{education}/participants/{user}', [\App\Http\Controllers\HumanResources\Education\EducationController::class, 'updateParticipant'])->name('education.update-participant');
+    Route::delete('education/{education}/participants/{user}', [\App\Http\Controllers\HumanResources\Education\EducationController::class, 'removeParticipant'])->name('education.remove-participant');
+    
+    // Education Media Management
+    Route::delete('education/{education}/media/{mediaId}', [\App\Http\Controllers\HumanResources\Education\EducationController::class, 'deleteMedia'])->name('education.delete-media');
+    Route::delete('education-instructor/{educationInstructor}/media/{mediaId}', [\App\Http\Controllers\HumanResources\Education\EducationInstructorController::class, 'deleteMedia'])->name('education-instructor.delete-media');
 
     /*Warehouse Setting Pages*/
     Route::resource('warehouse-type', \App\Http\Controllers\Warehouse\WarehouseTypeController::class);

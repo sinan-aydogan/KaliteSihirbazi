@@ -33,7 +33,7 @@ import {required, maxLength, helpers} from "@vuelidate/validators"
 const tableHeaders = [
     {
         id: 'name',
-        label: tm('term.name')
+        label: tm('term.educationType')
     },
     {
         id: 'educations_count',

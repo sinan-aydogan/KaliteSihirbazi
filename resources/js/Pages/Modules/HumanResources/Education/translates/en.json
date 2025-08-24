@@ -1,0 +1,90 @@
+{
+  "title": {
+    "indexPage": {
+      "title": "Educations",
+      "subTitle": "You can manage your educations from here"
+    },
+    "createPage": {
+      "title": "Add Education",
+      "subTitle": "Create a new education"
+    },
+    "deletedPage": {
+      "title": "Deleted Educations",
+      "subTitle": "You can restore deleted educations or permanently delete them"
+    },
+    "showPage": {
+      "title": "Education Details",
+      "subTitle": "Detailed information about the education"
+    },
+    "settingsPage": {
+      "title": "Education Settings",
+      "subTitle": "Configure education module settings"
+    }
+  },
+  "term": {
+    "createdAt": "Created At",
+    "education": "Education | Educations",
+    "educationsCount": "Education Count",
+    "educationPlan": "Education Plan",
+    "educationTypes": "Education Types",
+    "educationType": "Education Type",
+    "educationInstructors": "Instructors",
+    "educationInstructor": "Instructor",
+    "participants": "Participants",
+    "participant": "Participant",
+    "name": "Education Name",
+    "description": "Description",
+    "plannedDate": "Planned Date",
+    "performedDate": "Performed Date",
+    "duration": "Duration",
+    "durationPlaceholder": "Duration in minutes",
+    "isCompleted": "Completed",
+    "isCancelled": "Cancelled",
+    "cancelReason": "Cancel Reason",
+    "status": "Status",
+    "planned": "Planned",
+    "completed": "Completed",
+    "cancelled": "Cancelled",
+    "instructorRole": "Instructor Role",
+    "isAttend": "Attended",
+    "score": "Score",
+    "participantStatus": "Participant Status",
+    "documents": "Documents",
+    "photo": "Photo",
+    "addParticipant": "Add Participant",
+    "removeParticipant": "Remove Participant",
+    "updateParticipant": "Update Participant",
+    "educationSettings": "Education Settings",
+    "manageModule": "Manage Module"
+  },
+  "action": {
+    "returnToList": "Return to List",
+    "delete": "Delete",
+    "goBack": "Go Back",
+    "addEducation": "Add Education",
+    "addInstructor": "Add Instructor",
+    "addEducationType": "Add Education Type",
+    "manageParticipants": "Manage Participants",
+    "viewDetails": "View Details",
+    "editEducation": "Edit Education",
+    "completeEducation": "Complete Education",
+    "cancelEducation": "Cancel Education"
+  },
+  "message": {
+    "feedback": {
+      "noDescription": "No description has been added to this education yet.",
+      "noParticipants": "No participants have been added to this education yet.",
+      "noInstructors": "No instructors have been assigned to this education yet.",
+      "noDocuments": "No documents have been added to this education yet.",
+      "noEducationTypes": "No education types have been assigned to this education yet.",
+      "educationCompleted": "This education has been completed.",
+      "educationCancelled": "This education has been cancelled.",
+      "educationPlanned": "This education is planned."
+    },
+    "validation": {
+      "cancelReasonRequired": "Cancel reason is required when education is cancelled.",
+      "performedDateRequired": "Performed date is required when education is completed.",
+      "performedDateAfterPlanned": "Performed date must be after the planned date."
+    }
+  }
+}
