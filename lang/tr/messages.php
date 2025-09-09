@@ -77,6 +77,13 @@ return [
         'restored' => '#:measurementDeviceCalibration kodlu kalibrasyon emri geri getirildi.',
         'updated' => '#:measurementDeviceCalibration kodlu kalibrasyon emri güncellendi.'
     ],
+    'document' => [
+        'created' => ':document isimli döküman oluşturuldu.',
+        'deleted' => ':document isimli döküman silindi.',
+        'permanentDeleted' => ':document isimli döküman kalıcı olarak silindi.',
+        'restored' => ':document isimli döküman geri getirildi.',
+        'updated' => ':document isimli döküman güncellendi.'
+    ],
     'documentType' => [
         'created' => ':documentType isimli döküman tipi oluşturuldu.',
         'deleted' => ':documentType isimli döküman tipi silindi.',

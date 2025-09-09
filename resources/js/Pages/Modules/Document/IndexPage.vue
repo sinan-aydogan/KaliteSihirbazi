@@ -200,6 +200,10 @@ const showDistributionPoints = (points) => {
     selectedDocument.value = points.distribution_points;
 }
 
+const handleFileChange = (files) => {
+   form.file = files[0] || null;
+}
+
 </script>
 
 <template>
@@ -308,7 +312,11 @@ const showDistributionPoints = (points) => {
 
                     <!-- File -->
                     <input-group class="col-span-3" labelFor="type" :label="tm('term.file')">
-                        <file-input v-model="form.file"/>
+                        <file-input
+                            @change="handleFileChange"
+                            accept=".pdf,.doc,.docx,.xlsx,.xlx"
+                            browse-label="Belge Seçin"
+                        />
                     </input-group>
                 </FormSection>
             </Form>

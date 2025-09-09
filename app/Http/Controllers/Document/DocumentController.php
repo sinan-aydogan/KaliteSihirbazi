@@ -82,9 +82,11 @@ class DocumentController extends Controller
         /*Sync Distribution Points*/
         $document->distributionPoints()->sync($request['distribution_points']);
 
-        /*TODO: Attachment*/
-        $document->addMedia($request->file('file'))
-        ->toMediaCollection('document');
+        /*Attachment kontrolü*/
+        if ($request->hasFile('file')) {
+            $document->addMedia($request->file('file'))
+                ->toMediaCollection('document');
+        }
 
         /*Revison Creating*/
         $this->createVersion($document, $request);
