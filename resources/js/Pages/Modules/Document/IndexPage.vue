@@ -204,6 +204,12 @@ const handleFileChange = (files) => {
    form.file = files[0] || null;
 }
 
+const handleCloseModal = () => {
+    v$.value.$reset();
+    form.reset();
+    showModal.value = false;
+}
+
 </script>
 
 <template>
@@ -222,11 +228,12 @@ const handleFileChange = (files) => {
             </simple-button>
 
             <!--Add New Button-->
-            <simple-button @click="showModal = true; formType = 'create'" color="green">
+            <simple-button @click="showModal = true; formType = 'create'; form.reset()" color="green">
                 <font-awesome-icon icon="plus" class="mr-2"/>
                 <span v-text="$t('action.addNew')"/>
             </simple-button>
         </template>
+        sss
         <Table
             :data="tableData"
             :headers="tableHeaders"
@@ -264,6 +271,7 @@ const handleFileChange = (files) => {
             :subHeader="tm('title.createPage.subTitle')"
             closeable
             close-button
+            @closed="handleCloseModal"
         >
             <Form full-size multipart>
                 <FormSection grid>

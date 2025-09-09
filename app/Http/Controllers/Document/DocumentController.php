@@ -121,7 +121,7 @@ class DocumentController extends Controller
      */
     public function edit(Document $document)
     {
-        //
+        return response()->json($document);
     }
 
     /**

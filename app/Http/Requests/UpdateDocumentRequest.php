@@ -13,7 +13,7 @@ class UpdateDocumentRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return auth()->check();
     }
 
     /**
@@ -24,7 +24,12 @@ class UpdateDocumentRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'code' => ['nullable', 'string', 'max:255', 'unique:documents,code,' . $this->id],
+            'name' => ['required', 'string', 'max:255'],
+            'department_id' => ['required', 'exists:departments,id'],
+            'document_type_id' => ['required', 'exists:document_types,id'],
+            'description' => ['nullable', 'string'],
+            'file' => ['nullable', 'file', 'mimes:pdf,doc,docx,xls,xlsx'],
         ];
     }
 }
