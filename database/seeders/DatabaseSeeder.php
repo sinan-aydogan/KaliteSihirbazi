@@ -3,16 +3,17 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Database\Seeders\BusinessManagement\Vehicle\VehicleStatusSeeder;
-use Database\Seeders\BusinessManagement\Vehicle\VehicleTypeSeeder;
+use Illuminate\Database\Seeder;
+use Database\Seeders\Warehouse\WarehouseSeeder;
 use Database\Seeders\Document\DocumentTypeSeeder;
+use Database\Seeders\Warehouse\WarehouseTypeSeeder;
+use Database\Seeders\HumanResources\Education\EducationSeeder;
+use Database\Seeders\MeasurementDevice\MeasurementDeviceSeeder;
+use Database\Seeders\BusinessManagement\Vehicle\VehicleTypeSeeder;
+use Database\Seeders\MeasurementDevice\MeasurementDeviceTypeSeeder;
+use Database\Seeders\BusinessManagement\Vehicle\VehicleStatusSeeder;
 use Database\Seeders\HumanResources\JobDescription\JobDescriptionSeeder;
 use Database\Seeders\MeasurementDevice\Calibration\CalibrationFirmSeeder;
-use Database\Seeders\MeasurementDevice\MeasurementDeviceSeeder;
-use Database\Seeders\MeasurementDevice\MeasurementDeviceTypeSeeder;
-use Database\Seeders\Warehouse\WarehouseSeeder;
-use Database\Seeders\Warehouse\WarehouseTypeSeeder;
-use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -47,6 +48,7 @@ class DatabaseSeeder extends Seeder
             // Education Module Seeders
             EducationTypeSeeder::class,
             EducationInstructorSeeder::class,
+            EducationSeeder::class,
         ]);
     }
 }
