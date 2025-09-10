@@ -78,16 +78,24 @@
         "yesDeleteIt": "Evet, sil!"
     },
     "auth": {
-        "alreadyRegistered": "Zaten hesabın varmı??",
+        "alreadyRegistered": "Zaten hesabın varmı?",
+        "dontHaveAnAccountLetsGetStarted": "Hesabın yok mu? Hadi başlayalım",
         "disempower": "Yetkiyi Kaldır",
+        "name": "İsim",
         "email": "E-Posta",
         "forgotYourPassword": "Şifreni unuttun mu?",
+        "forgotPasswordDescription": "Hesabınızı kurtarmak için e-posta adresinizi girin. Size şifre sıfırlama bağlantısı içeren bir e-posta göndereceğiz.",
+        "requestPasswordResetEmail": "Şifre Sıfırlama E-Postası İste",
+        "areYouRememberedYourPassword": "Şifrenizi hatırladınız mı?",
         "login": "Giriş",
+        "loginDescription": "Hesabınıza giriş yapmak için bilgilerinizi girin.",
         "logOut": "Çıkış",
         "password": "Şifre",
         "register": "Kayıt Ol",
+        "registerDescription": "Yeni bir hesap oluşturmak için bilgilerinizi girin.",
         "rememberMe": "Beni Hatırla",
-        "resetPassword": "Şifreni Sıfırla"
+        "resetPassword": "Şifreni Sıfırla",
+        "confirmPassword": "Şifreyi Onayla"
     },
     "department": {
         "create": {

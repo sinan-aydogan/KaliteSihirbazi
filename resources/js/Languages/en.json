@@ -79,15 +79,24 @@
     },
     "auth": {
         "alreadyRegistered": "Already registered?",
+        "dontHaveAnAccountLetsGetStarted": "Don't have an account? Let's get started",
         "disempower": "Dis-empower",
+        "name": "Name",
         "email": "Email",
         "forgotYourPassword": "Forgot your password?",
+        "forgotPasswordDescription": "Enter your email address to recover your account. We will send you an email with a password reset link.",
+        "requestPasswordResetEmail": "Request Password Reset Email",
+        "areYouRememberedYourPassword": "Are you remembered your password?",
         "login": "Log in",
+        "loginDescription": "Enter your details to log in to your account.",
         "logOut": "Logout",
         "password": "Password",
         "register": "Register",
+        "createAccount": "Create Account",
+        "registerDescription": "Fill in your details to register a new account.",
         "rememberMe": "Remember me",
-        "resetPassword": "Reset Password"
+        "resetPassword": "Reset Password",
+        "confirmPassword": "Confirm Password"
     },
     "department": {
         "create": {
