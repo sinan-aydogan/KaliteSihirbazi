@@ -9,7 +9,7 @@
                  :src="urlGenerator(files[0])"/>
         </div>
         <!--Input-->
-        <div class="flex h-10 w-full sm:text-sm dark:bg-slate-900/30 border items-center border-slate-300 dark:border-slate-600 overflow-hidden rounded-md">
+        <div class="flex h-10 w-full sm:text-sm dark:bg-slate-900/30 border items-center border-slate-300 dark:border-slate-600 bg-white overflow-hidden rounded-md">
             <input ref="inputRef" class="hidden" type="file" :multiple="multiple" :accept="accept" @change="updateFile"/>
             <!--Single File Title & Size-->
             <div v-if="!multiple && files.length>0"
@@ -28,7 +28,7 @@
                 {{ files.length === 0 ? $t('action.chooseFile') : $t('action.chooseFile', { count: files.length }) }}
             </div>
             <!--Buttons-->
-            <div class="flex flex-grow-0 flex-shrink-0 items-center space-x-2">
+            <div class="flex flex-grow-0 flex-shrink-0 items-center space-x-2 bg-white hover:bg-gray-300 dark:bg-gray-900 hover:dark:bg-gray-800">
                 <button
                     v-if="files[0]"
                     class="input-clear-button"
@@ -40,7 +40,7 @@
                   </svg>
                 </button>
                 <button
-                    class="form-control min-h-10 px-2 border-l dark:border-slate-600 outline-none focus:outline-none whitespace-nowrap"
+                    class="form-control cursor-pointer min-h-10 px-4 border-l border-slate-200 dark:border-slate-600 outline-none focus:outline-none whitespace-nowrap"
                     type="button"
                     @click="inputRef.click()"
                 >
