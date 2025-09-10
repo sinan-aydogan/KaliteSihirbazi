@@ -43,18 +43,32 @@ class HandleInertiaRequests extends Middleware
             $activeTheme = auth()->user()->theme;
         }
 
-        // Aktif tema için ayarları çek
-        $backgroundImage = \App\Models\Setting::where('code', "theme.$activeTheme.login.backgroundImage")->value('value');
-        $logoImage = \App\Models\Setting::where('code', "theme.$activeTheme.logoImage")->value('value');
+            // Aktif tema için ayarları çek
+            $backgroundImage = \App\Models\Setting::where('code', "theme.$activeTheme.login.backgroundImage")->value('value');
+            $logoSetting = \App\Models\Setting::where('code', "theme.$activeTheme.logoImage")->first();
+            $logoImage = null;
+            if ($logoSetting && $logoSetting->value) {
+                // Media id'den url al
+                $media = $logoSetting->media()->find($logoSetting->value);
+                if ($media) {
+                    $logoImage = $media->getUrl();
+                }
+            }
 
         // Fallback: Eğer aktif tema için görsel yoksa diğer temadan al
         if (empty($backgroundImage)) {
             $otherTheme = $activeTheme === 'dark' ? 'light' : 'dark';
             $backgroundImage = \App\Models\Setting::where('code', "theme.$otherTheme.login.backgroundImage")->value('value');
         }
-        if (empty($logoImage)) {
-            $otherTheme = $activeTheme === 'dark' ? 'light' : 'dark';
-            $logoImage = \App\Models\Setting::where('code', "theme.$otherTheme.logoImage")->value('value');
+            if (empty($logoImage)) {
+                $otherTheme = $activeTheme === 'dark' ? 'light' : 'dark';
+                $logoSettingOther = \App\Models\Setting::where('code', "theme.$otherTheme.logoImage")->first();
+                if ($logoSettingOther && $logoSettingOther->value) {
+                    $mediaOther = $logoSettingOther->media()->find($logoSettingOther->value);
+                    if ($mediaOther) {
+                        $logoImage = $mediaOther->getUrl();
+                    }
+                }
         }
 
         $theme = [

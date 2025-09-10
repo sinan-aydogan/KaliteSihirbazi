@@ -1,38 +1,112 @@
 <script setup>
+import { onMounted, ref } from 'vue';
+import { useForm } from '@inertiajs/vue3';
+
+// Layouts
 import SettingLayout from "@/Layouts/SettingLayout.vue";
+
+// Components
 import ContentCard from "@/Layouts/ContentCard.vue";
 import InputGroup from "@/Components/Form/InputGroup.vue";
 import TextInput from "@/Components/Form/TextInput.vue";
 import Menu from "@/Sources/settingMenu"
+import FileInput from "@/Components/Form/FileInput.vue";
 
 const {links} = Menu()
 
 const superAdmins = [
-  {
-    id: 1,
-    name: "Sinan AYDOĞAN",
-    title: "Business Manager",
-    profile_photo_url: "https://i.pravatar.cc/150/21",
-    assignedDate: '03.09.2021',
-    assignedBy: 0
-  },
-  {
-    id: 2,
-    name: "Hamdi KAYA",
-    title: "IT Manager",
-    profile_photo_url: "https://i.pravatar.cc/150/25",
-    assignedDate: '01.03.2022',
-    assignedBy: 1
-  },
-  {
-    id: 3,
-    name: "Zuhal TAŞÇI",
-    title: "Factory Manager",
-    profile_photo_url: "https://i.pravatar.cc/150/25",
-    assignedDate: '05.01.2022',
-    assignedBy: 1
-  }
+    {
+        id: 1,
+        name: "Sinan AYDOĞAN",
+        title: "Business Manager",
+        profile_photo_url: "https://i.pravatar.cc/150/21",
+        assignedDate: '03.09.2021',
+        assignedBy: 0
+    },
+    {
+        id: 2,
+        name: "Hamdi KAYA",
+        title: "IT Manager",
+        profile_photo_url: "https://i.pravatar.cc/150/25",
+        assignedDate: '01.03.2022',
+        assignedBy: 1
+    },
+    {
+        id: 3,
+        name: "Zuhal TAŞÇI",
+        title: "Factory Manager",
+        profile_photo_url: "https://i.pravatar.cc/150/25",
+        assignedDate: '05.01.2022',
+        assignedBy: 1
+    }
 ]
+
+// Logo upload state
+const lightLogoFile = ref(null);
+const darkLogoFile = ref(null);
+
+const logoForm = useForm({
+    theme: null,
+    logo: null,
+});
+
+const logoMedia = ref({
+    light: [],
+    dark: []
+});
+
+function onLightLogoChange(files) {
+    lightLogoFile.value = files[0] || null;
+    logoForm.logo = lightLogoFile.value;
+    logoForm.theme = 'light';
+}
+
+function onDarkLogoChange(files) {
+    darkLogoFile.value = files[0] || null;
+    logoForm.logo = darkLogoFile.value;
+    logoForm.theme = 'dark';
+}
+
+function saveLogo(mode) {
+    // mode: 'light' veya 'dark'
+    const data = new FormData();
+    if (mode === 'light' && lightLogoFile.value) {
+        data.append('logo', lightLogoFile.value);
+        data.append('theme', 'light');
+    }
+    if (mode === 'dark' && darkLogoFile.value) {
+        data.append('logo', darkLogoFile.value);
+        data.append('theme', 'dark');
+    }
+    logoForm.post(route('global-setting.logo-upload'), {
+        preserveScroll: true,
+        onSuccess: () => {
+            lightLogoFile.value = null;
+            darkLogoFile.value = null;
+            logoMedia.value.light = [];
+            logoMedia.value.dark = [];
+            fetchLogoSetting();
+            logoForm.reset();
+        }
+    });
+}
+
+function fetchLogoSetting() {
+    ['light', 'dark'].forEach(mode => {
+        axios.get(route('global-setting.get-setting'), {
+            params: {
+                code: `theme.${mode}.logoImage`,
+                media_collection: 'theme.logo'
+            }
+        }).then(res => {
+            logoMedia.value[mode] = res.data.media || [];
+        });
+    });
+}
+
+onMounted(() => {
+    fetchLogoSetting();
+});
 
 </script>
 
@@ -50,31 +124,25 @@ const superAdmins = [
                 class="mb-6"
             >
                 <div class="flex border bg-gray-900/25 dark:border-slate-600 rounded-md m-4">
-                    <div class="flex flex-col w-full justify-center items-center border-r dark:border-slate-600">
-                        <span class="text-sm mb-4">
-                            {{ $t('settingMenu.lightLogo') }}
-                        </span>
-                        <img src="img/light-logo.svg" class="h-20 w-20 cover"/>
-                        <div class="flex w-full rounded-br-md mt-4">
-                            <button
-                                class="bg-slate-500 text-slate-900 text-sm py-1 font-semibold hover:bg-slate-200 hover:text-slate-700 w-full rounded-bl-md">
-                                {{ $t('global.change') }}
+                    <!-- Light Logo -->
+                    <div class="flex flex-col w-full justify-center items-center border-r dark:border-slate-600 p-4">
+                        <span class="text-sm mb-4">{{ $t('settingMenu.lightLogo') }}</span>
+                        <img :src="logoMedia.light[0]?.url" v-if="logoMedia.light.length" class="h-20 w-20 object-cover rounded-md mb-2"/>
+                        <file-input accept="image/*" @change="onLightLogoChange" preview/>
+                        <div class="flex w-full mt-4">
+                            <button class="bg-sky-500 text-sky-900 text-sm py-1 font-semibold hover:bg-sky-200 w-full rounded-md cursor-pointer" @click="saveLogo('light')">
+                                {{ $t('action.save') }}
                             </button>
                         </div>
                     </div>
-                    <div class="flex flex-col w-full justify-center items-center">
-                        <span class="text-sm mb-4">
-                            {{ $t('settingMenu.darkLogo') }}
-                        </span>
-                        <img src="img/dark-logo.svg" class="h-20 w-20 cover"/>
-                        <div class="flex w-full rounded-br-md mt-4">
-                            <button
-                                class="bg-amber-500 text-amber-900 text-sm py-1 font-semibold hover:bg-amber-200 w-full ">
-                                {{ $t('global.cancel') }}
-                            </button>
-                            <button
-                                class="bg-sky-500 text-sky-900 text-sm py-1 font-semibold hover:bg-sky-200 w-full rounded-br-md">
-                                {{ $t('global.save') }}
+                    <!-- Dark Logo -->
+                    <div class="flex flex-col w-full justify-center items-center p-4">
+                        <span class="text-sm mb-4">{{ $t('settingMenu.darkLogo') }}</span>
+                        <img :src="logoMedia.dark[0]?.url" v-if="logoMedia.dark.length" class="h-20 w-20 object-cover rounded-md mb-2"/>
+                        <file-input accept="image/*" @change="onDarkLogoChange" preview/>
+                        <div class="flex w-full mt-4">
+                            <button class="bg-sky-500 text-sky-900 text-sm py-1 font-semibold hover:bg-sky-200 w-full rounded-md cursor-pointer" @click="saveLogo('dark')">
+                                {{ $t('action.save') }}
                             </button>
                         </div>
                     </div>

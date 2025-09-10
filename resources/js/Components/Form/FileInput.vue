@@ -13,9 +13,9 @@
             <input ref="inputRef" class="hidden" type="file" :multiple="multiple" :accept="accept" @change="updateFile"/>
             <!--Single File Title & Size-->
             <div v-if="!multiple && files.length>0"
-                 class="flex flex-wrap flex-grow overflow-hidden p-2 justify-between items-center">
+                 class="flex flex-grow overflow-hidden p-2 justify-between items-center space-x-2">
                 <!--File Title-->
-                <div class="flex overflow-hidden whitespace-nowrap">
+                <div class="flex overflow-hidden whitespace-nowrap text-clip max-w-36">
                     {{ files[0].name }}
                 </div>
                 <!--File Size-->
@@ -28,19 +28,17 @@
                 {{ files.length === 0 ? $t('action.chooseFile') : $t('action.chooseFile', { count: files.length }) }}
             </div>
             <!--Buttons-->
-            <div class="flex flex-grow-0 flex-shrink-0 items-center space-x-2 bg-white hover:bg-gray-300 dark:bg-gray-900 hover:dark:bg-gray-800">
+            <div class="flex flex-grow-0 flex-shrink-0 items-center space-x-2  text-white font-semibold">
                 <button
                     v-if="files[0]"
-                    class="input-clear-button"
                     type="button"
+                    class="cursor-pointer"
                     @click="clearFile"
                 >
-                  <svg class="input-clear-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
+                    <font-awesome-icon icon="fa-solid fa-xmark" />
                 </button>
                 <button
-                    class="form-control cursor-pointer min-h-10 px-4 border-l border-slate-200 dark:border-slate-600 outline-none focus:outline-none whitespace-nowrap"
+                    class="cursor-pointer min-h-10 px-4 border-l border-slate-200 dark:border-slate-600 outline-none focus:outline-none whitespace-nowrap bg-blue-500 dark:bg-blue-900 hover:bg-gray-300 hover:dark:bg-gray-800"
                     type="button"
                     @click="inputRef.click()"
                 >
@@ -126,24 +124,43 @@ const files = ref([]);
 const inputRef = ref(null);
 
 const clearFile = () => {
-    inputRef.value = null
-    files.value = []
-    emit('change', null)
+    // Revoke object URLs for preview
+    files.value.forEach(f => {
+        if (f._previewUrl) {
+            URL.revokeObjectURL(f._previewUrl);
+        }
+    });
+    inputRef.value = null;
+    files.value = [];
+    emit('change', null);
 }
 
 const deleteFile = (index) => {
-    files.value.splice(index, 1)
-    inputRef.value.files = null
-    emit('change', files.value)
+    const file = files.value[index];
+    if (file && file._previewUrl) {
+        URL.revokeObjectURL(file._previewUrl);
+    }
+    files.value.splice(index, 1);
+    inputRef.value.files = null;
+    emit('change', files.value);
 }
 
 const updateFile = () => {
+    // Revoke previous preview URLs
+    files.value.forEach(f => {
+        if (f._previewUrl) {
+            URL.revokeObjectURL(f._previewUrl);
+        }
+    });
+    files.value = [];
     let x = 0;
     for (x = 0; x < inputRef.value.files.length; x++) {
-        inputRef.value.files[x].index = x
-        files.value.push(inputRef.value.files[x])
+        const file = inputRef.value.files[x];
+        file.index = x;
+        file._previewUrl = URL.createObjectURL(file);
+        files.value.push(file);
     }
-    emit('change', files.value)
+    emit('change', files.value);
 }
 
 const sizeCalculator = (value) => {
@@ -154,8 +171,8 @@ const sizeCalculator = (value) => {
 }
 
 const urlGenerator = (value) => {
-    console.log(value)
-    return URL.createObjectURL(value)
+    // Use cached preview URL if available
+    return value._previewUrl || URL.createObjectURL(value);
 }
 
 const upperCase = (value) => {

@@ -36,6 +36,10 @@ Route::middleware([
         /*Property Management*/
         Route::resource('property', \App\Http\Controllers\Setting\PropertyController::class);
         Route::resource('property-type', \App\Http\Controllers\Setting\PropertyTypeController::class);
+        /*Logo Upload*/
+        Route::post('logo-upload', [\App\Http\Controllers\Setting\GlobalSettingController::class, 'logoUpload'])->name('global-setting.logo-upload');
+        /*Get Setting*/
+        Route::get('get-setting', [\App\Http\Controllers\Setting\GlobalSettingController::class, 'getSetting'])->name('global-setting.get-setting');
     });
 
     /*User Functions*/
@@ -114,7 +118,7 @@ Route::middleware([
     Route::post('education/{education}/participants', [\App\Http\Controllers\HumanResources\Education\EducationController::class, 'addParticipant'])->name('education.add-participant');
     Route::put('education/{education}/participants/{user}', [\App\Http\Controllers\HumanResources\Education\EducationController::class, 'updateParticipant'])->name('education.update-participant');
     Route::delete('education/{education}/participants/{user}', [\App\Http\Controllers\HumanResources\Education\EducationController::class, 'removeParticipant'])->name('education.remove-participant');
-    
+
     // Education Media Management
     Route::delete('education/{education}/media/{mediaId}', [\App\Http\Controllers\HumanResources\Education\EducationController::class, 'deleteMedia'])->name('education.delete-media');
     Route::delete('education-instructor/{educationInstructor}/media/{mediaId}', [\App\Http\Controllers\HumanResources\Education\EducationInstructorController::class, 'deleteMedia'])->name('education-instructor.delete-media');
