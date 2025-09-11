@@ -97,10 +97,10 @@
 <script setup>
 import SimpleButton from "@/Components/Button/SimpleButton.vue";
 import Badge from "@/Components/Badge/Badge.vue";
-import { ref } from "vue";
+import { computed, ref, watch } from "vue";
 
-defineProps({
-    value: {},
+const props = defineProps({
+    modelValue: {},
     accept: {
         type: String,
         default: ''
@@ -178,6 +178,12 @@ const urlGenerator = (value) => {
 const upperCase = (value) => {
     return value.toUpperCase().split('.')[value.toUpperCase().split('.').length-1]
 }
+
+watch(() => props.modelValue, (newVal) => {
+    if (!newVal) {
+        clearFile();
+    }
+}, { immediate: true });
 </script>
 
 <style scoped>
