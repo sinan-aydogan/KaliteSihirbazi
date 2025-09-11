@@ -44,9 +44,12 @@ class HandleInertiaRequests extends Middleware
         }
 
             // Aktif tema için ayarları çek
-            $backgroundImage = \App\Models\Setting::where('code', "theme.$activeTheme.login.backgroundImage")->value('value');
+            $authBackgroundImageSetting = \App\Models\Setting::where('code', "theme.$activeTheme.auth.backgroundImage")->first();
             $logoSetting = \App\Models\Setting::where('code', "theme.$activeTheme.logoImage")->first();
+
             $logoImage = null;
+            $authBackgroundImage = null;
+
             if ($logoSetting && $logoSetting->value) {
                 // Media id'den url al
                 $media = $logoSetting->media()->find($logoSetting->value);
@@ -55,25 +58,42 @@ class HandleInertiaRequests extends Middleware
                 }
             }
 
-        // Fallback: Eğer aktif tema için görsel yoksa diğer temadan al
-        if (empty($backgroundImage)) {
-            $otherTheme = $activeTheme === 'dark' ? 'light' : 'dark';
-            $backgroundImage = \App\Models\Setting::where('code', "theme.$otherTheme.login.backgroundImage")->value('value');
-        }
-            if (empty($logoImage)) {
-                $otherTheme = $activeTheme === 'dark' ? 'light' : 'dark';
-                $logoSettingOther = \App\Models\Setting::where('code', "theme.$otherTheme.logoImage")->first();
-                if ($logoSettingOther && $logoSettingOther->value) {
-                    $mediaOther = $logoSettingOther->media()->find($logoSettingOther->value);
-                    if ($mediaOther) {
-                        $logoImage = $mediaOther->getUrl();
-                    }
+            if ($authBackgroundImageSetting && $authBackgroundImageSetting->value) {
+                // Media id'den url al
+                $media = $authBackgroundImageSetting->media()->find($authBackgroundImageSetting->value);
+                if ($media) {
+                    $authBackgroundImage = $media->getUrl();
                 }
+            }
+
+        // Fallback: Eğer aktif tema için görsel yoksa diğer temadan al
+        if (empty($authBackgroundImage)) {
+            $otherTheme = $activeTheme === 'dark' ? 'light' : 'dark';
+            $authBackgroundImageSetting = \App\Models\Setting::where('code', "theme.$otherTheme.auth.backgroundImage")->first();
+            if ($authBackgroundImageSetting && $authBackgroundImageSetting->value) {
+                // Media id'den url al
+                $media = $authBackgroundImageSetting->media()->find($authBackgroundImageSetting->value);
+                if ($media) {
+                    $authBackgroundImage= $media->getUrl();
+                }
+            }
+        }
+
+        if (empty($logoImage)) {
+            $otherTheme = $activeTheme === 'dark' ? 'light' : 'dark';
+            $logoSetting = \App\Models\Setting::where('code', "theme.$otherTheme.logoImage")->first();
+            if ($logoSetting && $logoSetting->value) {
+                // Media id'den url al
+                $media = $logoSetting->media()->find($logoSetting->value);
+                if ($media) {
+                    $logoImage = $media->getUrl();
+                }
+            }
         }
 
         $theme = [
-            'login' => [
-                'backgroundImage' => $backgroundImage,
+            'auth' => [
+                'backgroundImage' => $authBackgroundImage,
             ],
             'logoImage' => $logoImage,
             'mode' => $activeTheme,

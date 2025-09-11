@@ -48,33 +48,37 @@ class GlobalSettingController extends Controller
     }
 
     /**
-     * Logo yükleme işlemi
+     * Media yükleme işlemi
      */
-    public function logoUpload(Request $request)
+    public function mediaUpload(Request $request, $type)
     {
+        $types = [
+            'image' =>  'required|file|mimes:jpg,jpeg,png,svg,svg+xml,txt,text,plain'
+        ];
+        
         $request->validate([
-            'logo' => 'required|file|mimes:jpg,jpeg,png,svg,svg+xml,txt,text,plain',
-            'theme' => 'required|in:light,dark',
+            'file' => $types[$type] ?? 'required|file',
+            'code' => 'required|string',
+            'collection' => 'required|string', // ör: theme.logo
         ]);
 
         // Setting modelini bul veya oluştur
-        $code = "theme.{$request->theme}.logoImage";
         $setting = \App\Models\Setting::firstOrCreate(
-            ['code' => $code],
-            ['type' => 'theme', 'module' => 'global']
+            ['code' => $request->code],
+            ['type' => $request->type, 'module' => $request->module ?? 'global']
         );
 
         // Eski medyayı sil
         if (method_exists($setting, 'clearMediaCollection')) {
-            $setting->clearMediaCollection('theme.logo');
+            $setting->clearMediaCollection($request->collection);
         }
 
         // Yeni dosyayı ekle
-        $media = $setting->addMediaFromRequest('logo')
+        $media = $setting->addMediaFromRequest('file')
             ->sanitizingFileName(function($fileName) {
                 return strtolower(str_replace(['#', '/', '\\', ' '], '-', $fileName));
             })
-            ->toMediaCollection('theme.logo');
+            ->toMediaCollection($request->collection);
 
         // Setting tablosunda media id'sini sakla
         $setting->value = $media->id;

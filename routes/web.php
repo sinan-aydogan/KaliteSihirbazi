@@ -37,7 +37,7 @@ Route::middleware([
         Route::resource('property', \App\Http\Controllers\Setting\PropertyController::class);
         Route::resource('property-type', \App\Http\Controllers\Setting\PropertyTypeController::class);
         /*Logo Upload*/
-        Route::post('logo-upload', [\App\Http\Controllers\Setting\GlobalSettingController::class, 'logoUpload'])->name('global-setting.logo-upload');
+        Route::post('media-upload/{type}', [\App\Http\Controllers\Setting\GlobalSettingController::class, 'mediaUpload'])->name('global-setting.media-upload');
         /*Get Setting*/
         Route::get('get-setting', [\App\Http\Controllers\Setting\GlobalSettingController::class, 'getSetting'])->name('global-setting.get-setting');
     });

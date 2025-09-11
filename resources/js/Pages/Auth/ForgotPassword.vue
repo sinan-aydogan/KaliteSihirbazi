@@ -8,7 +8,7 @@ import PrimaryButton from '@/Jetstream/PrimaryButton.vue';
 import TextInput from '@/Jetstream/TextInput.vue';
 
 const backgroundImage = computed(() => {
-    return usePage().props.theme.login.backgroundImage || '/assets/images/default/authBackground.jpg';
+    return usePage().props.theme.auth.backgroundImage || '/assets/images/default/authBackground.jpg';
 });
 
 const logoImage = computed(() => {

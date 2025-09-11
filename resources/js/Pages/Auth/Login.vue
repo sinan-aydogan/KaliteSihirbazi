@@ -1,7 +1,5 @@
 <script setup>
 import { Head, Link, useForm } from '@inertiajs/vue3';
-import AuthenticationCard from '@/Jetstream/AuthenticationCard.vue';
-import AuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo.vue';
 import Checkbox from '@/Jetstream/Checkbox.vue';
 import InputError from '@/Jetstream/InputError.vue';
 import InputLabel from '@/Jetstream/InputLabel.vue';
@@ -22,7 +20,7 @@ const form = useForm({
 });
 
 const backgroundImage = computed(() => {
-    return usePage().props.theme.login.backgroundImage || '/assets/images/default/authBackground.jpg';
+    return usePage().props.theme.auth.backgroundImage || '/assets/images/default/authBackground.jpg';
 });
 
 const logoImage = computed(() => {
