@@ -48,11 +48,18 @@ onBeforeMount(() => {
     }
 })
 
+/*Logo Image*/
+import { useDark, useToggle } from '@vueuse/core'
+const isDark = useDark()
 const logoImage = computed(() => {
     let defaultLogos = {
         light: '/assets/images/default/darkLogo.svg',
         dark: '/assets/images/default/lightLogo.svg'
     };
+
+    if (usePage().props.theme.mod === 'auto' || usePage().props.theme.mod === undefined) {
+        return defaultLogos[isDark.value ? 'dark' : 'light'];
+    }
 
     return usePage().props.theme.logoImage || defaultLogos[usePage().props.theme.mode];
 });
