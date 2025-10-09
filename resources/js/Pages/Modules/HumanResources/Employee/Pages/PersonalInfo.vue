@@ -67,18 +67,18 @@ import {required, maxLength, numeric, helpers} from "@vuelidate/validators"
 import {cloneDeep} from "lodash";
 
 const rules = ref({
-  code: {
-    required: helpers.withMessage(t('message.validation.required'), required),
-    maxLength: helpers.withMessage(t('message.validation.maxLength', [10]), maxLength(10))
-  },
-  name: {
-    required: helpers.withMessage(t('message.validation.required'), required),
-    maxLength: helpers.withMessage(t('message.validation.maxLength', [255]), maxLength(255))
-  },
-  birthday: {required: helpers.withMessage(t('message.validation.required'), required)},
-  sex: {required: helpers.withMessage(t('message.validation.required'), required)},
-  is_married: {required: helpers.withMessage(t('message.validation.required'), required)},
-  children_count: {numeric: helpers.withMessage(t('message.validation.number'), numeric)},
+      code: {
+            required: helpers.withMessage(t('message.validation.required'), required),
+            maxLength: helpers.withMessage(t('message.validation.maxLength', [11]), maxLength(11))
+      },
+      name: {
+            required: helpers.withMessage(t('message.validation.required'), required),
+            maxLength: helpers.withMessage(t('message.validation.maxLength', [255]), maxLength(255))
+      },
+    birthday: {required: helpers.withMessage(t('message.validation.required'), required)},
+    sex: {required: helpers.withMessage(t('message.validation.required'), required)},
+    is_married: {required: helpers.withMessage(t('message.validation.required'), required)},
+    children_count: {numeric: helpers.withMessage(t('message.validation.number'), numeric)},
 })
 const v$ = useVuelidate(rules, form)
 

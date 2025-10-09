@@ -37,10 +37,11 @@ return [
     ],
     'employee' => [
         'created' => 'The new employee named :employee has been created successfully',
+        'creation_failed' => 'The employee named :employee has been creation failed',
         'deleted' => 'The employee named :employee deleted successfully',
         'permanentDeleted' => 'The employee named :employee permanently deleted successfully',
         'restored' => 'The employee named :employee restored successfully',
-        'updated' => 'The employee named :employee has been updated successfully'
+        'updated' => 'The employee named :employee has been updated successfully',
     ],
     'warehouse' => [
         'created' => 'The new warehouse named :warehouse has been created successfully',

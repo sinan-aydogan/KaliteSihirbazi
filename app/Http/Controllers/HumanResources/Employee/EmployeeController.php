@@ -43,18 +43,23 @@ class EmployeeController extends Controller
     public function store(StoreEmployeeRequest $request)
     {
          try {
-        $employee = Employee::create($request->validated());
+            $employee = Employee::create($request->validated());
 
-        session()->flash('message', [
-            'type' => 'success',
-            'content' => __('messages.employee.created', ['employee' => $employee->name])
-        ]);
+            session()->flash('message', [
+                'type' => 'success',
+                'content' => __('messages.employee.created', ['employee' => $employee->name])
+            ]);
 
-        return redirect()->back();
-
-    }
+             return redirect()->back()->with([
+                 'employee' => $employee,
+             ]);
+        }
         catch (\Exception $e) {
-            session()->flash('message', ['type'=> 'error', 'content'=>__('messages.employee.store_error')]);
+            session()->flash('message', [
+                'type'=> 'error',
+                'content'=>__('messages.employee.creation_failed')
+            ]);
+
             return redirect()->back();
         }
     }
@@ -95,14 +100,31 @@ class EmployeeController extends Controller
      */
     public function update(UpdateEmployeeRequest $request, Employee $employee)
     {
-        $employee->update($request->all());
-        if($employee->account && $request->name){
-            $employee->account->name = $request->name;
-            $employee->push();
-        }
-        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.employee.updated', ['employee' => $employee->employeeName])]);
+        try{
+            $employee->update($request->validated());
 
-        return redirect()->back()->with('employee',$employee);
+            if($employee->account && $request->name){
+                $employee->account->name = $request->name;
+                $employee->push();
+            }
+
+            session()->flash('message', [
+                'type'=> 'success',
+                'content'=>__('messages.employee.updated', ['employee' => $employee->employeeName])
+            ]);
+
+            return redirect()->back()->with([
+                'employee' => $employee,
+            ]);
+        }catch (\Exception $e){
+            session()->flash('message', [
+                'type'=> 'error',
+                'content'=>__('messages.employee.update_failed')
+            ]);
+
+            return redirect()->back();
+        }
+
     }
 
     /**

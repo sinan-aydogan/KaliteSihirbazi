@@ -23,10 +23,12 @@ return [
     ],
     'jobDescription' => [
         'created' => ':jobDescription isimli görev tanımı oluşturuldu.',
+        'creation_failed' => ':jobDescription isimli görev tanımı oluşturulamadı.',
         'deleted' => ':jobDescription isimli görev tanımı silindi.',
         'permanentDeleted' => ':jobDescription isimli görev tanımı kalıcı olarak silindi.',
         'restored' => ':jobDescription isimli görev tanımı geri getirildi.',
-        'updated' => ':jobDescription isimli görev tanımı güncellendi.'
+        'updated' => ':jobDescription isimli görev tanımı güncellendi.',
+        'update_failed' => ':jobDescription isimli görev tanımı güncellenemedi.',
     ],
     'jobDescriptionAssignment' => [
         'created' => ':employee personeli :jobDescription olarak atandı.',
@@ -37,10 +39,12 @@ return [
     ],
     'employee' => [
         'created' => ':employee isimli personel oluşturuldu.',
+        'creation_failed' => ':employee isimli personel oluşturulamadı.',
         'deleted' => ':employee isimli personel silindi.',
         'permanentDeleted' => ':employee isimli personel kalıcı olarak silindi.',
         'restored' => ':employee isimli personel geri getirildi.',
-        'updated' => ':employee isimli personelin bilgileri güncellendi.'
+        'updated' => ':employee isimli personelin bilgileri güncellendi.',
+        'update_failed' => ':employee isimli personelin bilgileri güncellenemedi.',
     ],
     'warehouse' => [
         'created' => ':warehouse isimli depo oluşturuldu.',
