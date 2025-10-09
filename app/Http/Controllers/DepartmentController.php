@@ -54,19 +54,16 @@ class DepartmentController extends Controller
      */
     public function store(StoreDepartmentRequest $request)
     {
-        $department = new Department;
-        $department->code = $request->code;
-        $department->name = $request->name;
-        $department->department_id = $request->department_id;
-        $department->type = $request->type;
-        $department->employee_id = $request->employee_id;
+        try{
+            $department = Department::create($request->validated());
 
-        $department->save();
-
-        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.department.created', ['department' => $department->name])]);
-
-        return redirect()->back();
-    }
+            session()->flash('message', ['type'=> 'success', 'content'=>__('Departman başarıyla oluşturuldu', ['department' => $department->name])]);
+        }
+        catch (\Exception $e) {
+            session()->flash('message', ['type'=> 'danger', 'content'=>__('Departman oluşturulurken bir hata oluştu: :error', ['error' => $e->getMessage()])]);
+            return redirect()->back();
+        }
+}
 
     /**
      * Display the specified resource.
@@ -110,17 +107,19 @@ class DepartmentController extends Controller
      */
     public function update(UpdateDepartmentRequest $request, Department $department)
     {
-        $department->code = $request->code;
-        $department->name = $request->name;
-        $department->department_id = $request->department_id;
-        $department->type = $request->type;
-        $department->employee_id = $request->employee_id;
+        try {
+            $department->update($request->validated());
 
-        $department->save();
+            return redirect()->route('department.index')->with('message', [
+                'type' => 'success',
+                'content' => __('Departman başarıyla güncellenndi', ['department' => $department->name])
+            ]);
 
-        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.department.updated', ['department' => $department->name])]);
+        } catch (\Exception $e) {
+            session()->flash('message', ['type'=> 'danger', 'content'=>__('Departman güncellenirken bir sorun oluştu: ', ['error' => $e->getMessage()])]);
+            return redirect()->back();
+        }
 
-        return redirect()->back();
     }
 
     /**

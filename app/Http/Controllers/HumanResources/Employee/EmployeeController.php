@@ -42,28 +42,21 @@ class EmployeeController extends Controller
      */
     public function store(StoreEmployeeRequest $request)
     {
-        $employee = new Employee;
-        $employee->has_account = $request->has_account;
-        $employee->code = $request->code;
-        $employee->name = $request->name;
-        $employee->department_id = $request->department_id;
-        $employee->employment_type = $request->employment_type;
-        $employee->sex = $request->sex;
-        $employee->is_married = $request->is_married;
-        $employee->contact_info = $request->contact_info;
-        $employee->children_count = $request->children_count;
-        $employee->birthday = $request->birthday;
-        $employee->employment_date = $request->employment_date;
-        $employee->leaving_date = $request->leaving_date;
-        $employee->leaving_detail = $request->leaving_detail;
-        $employee->blood_type = $request->blood_type;
-        $employee->status = $request->status;
+         try {
+        $employee = Employee::create($request->validated());
 
-        $employee->save();
-
-        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.employee.created', ['employee' => $employee->employeeName])]);
+        session()->flash('message', [
+            'type' => 'success',
+            'content' => __('messages.employee.created', ['employee' => $employee->name])
+        ]);
 
         return redirect()->back();
+
+    }
+        catch (\Exception $e) {
+            session()->flash('message', ['type'=> 'error', 'content'=>__('messages.employee.store_error')]);
+            return redirect()->back();
+        }
     }
 
     /**

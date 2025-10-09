@@ -2,6 +2,7 @@
 import { reactive, ref} from "vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {useForm, router} from "@inertiajs/vue3";
+import axios from 'axios';
 import SimpleButton from "@/Components/Button/SimpleButton.vue";
 import Table from "@/Components/Table/Table.vue";
 import Form from "@/Components/Form/Form.vue";
@@ -10,11 +11,12 @@ import FormSection from "@/Components/Form/FormSection.vue";
 import Modal from "@/Components/Modal/Modal.vue";
 import TextInput from "@/Components/Form/TextInput.vue";
 import SelectInput from "@/Components/Form/SelectInput.vue";
+
 // Props
 const props = defineProps({
     supplierTableData: {
-        type: Object,
-        default: {}
+        type: [Object, Array],
+        default: () => []
     },
     supplierTypeTableData: {
         type: Object,
@@ -76,7 +78,6 @@ const form = useForm({
     notes: {},
 })
 
-
 /*Related Data with select*/
 const loading = ref(false)
 const getDataModel = ref()
@@ -99,14 +100,7 @@ const getData = (query) => {
     }
 }
 
-/*Validation*/
-const checkDepartment = (rule, value, callback) => {
-    if (!value && form.type === "sub") {
-        return callback(new Error(t('global.messages.validation.required')))
-    } else {
-        return callback()
-    }
-}
+// Rules
 const rules = reactive({
     code: {
         required: helpers.withMessage(t('message.validation.required'), required),
@@ -116,39 +110,58 @@ const rules = reactive({
         required: helpers.withMessage(t('message.validation.required'), required),
         maxLength: helpers.withMessage(t('message.validation.maxLength', [255]), maxLength(255))
     },
-    /*supplier_types: [
-        {required: true, message: t('global.messages.validation.required'), trigger: 'blur'},
-    ],
-    is_active: [
-        {required: true, message: t('global.messages.validation.required'), trigger: 'focus'},
-    ]*/
 });
 
 const v$ = useVuelidate(rules, form)
 
+const resetForm = () => {
+    form.reset();
+    v$.value.$reset();
+    formType.value = 'create';
+}
+
 /*Create*/
 const handleSubmit = async () => {
-    const isValidated = await v$.value.$validate()
-    if (!isValidated) return
+    try {
+        const isValidated = await v$.value.$validate()
+        if (!isValidated) return
 
+        console.log('Form Type:', formType.value);
+        console.log('Form Data:', form.data());
 
-    if (formType.value === 'create') {
-        form.post(route('supplier.store'), {
-            onSuccess: () => {
-                form.reset();
-                v$.value.$reset();
-                showModal.value = false;
-            }
-        })
-    } else {
-        form.put(route('supplier.update', {id: form.id}), {
-            onSuccess: () => {
-                form.reset();
-                v$.value.$reset();
-                showModal.value = false;
-            }
-        })
+        if (formType.value === 'create') {
+            form.post(route('supplier.store'), {
+                onSuccess: () => {
+                    resetForm();
+                    showModal.value = false;
+                },
+                onError: (errors) => {
+                    console.error('Create Error:', errors);
+                }
+            })
+        } else if (formType.value === 'update') {
+            console.log('Update route:', route('supplier.update', {id: form.id}));
+
+            form.put(route('supplier.update', {id: form.id}), {
+                onSuccess: () => {
+                    resetForm();
+                    showModal.value = false;
+                },
+                onError: (errors) => {
+                    console.error('Update Error:', errors);
+                }
+            })
+        }
+    } catch (error) {
+        console.error('Submit error:', error);
     }
+}
+
+// Add New button handler
+const handleAddNew = () => {
+    resetForm();
+    showModal.value = true;
+    formType.value = 'create';
 }
 
 const createContactField = (type) => {
@@ -188,18 +201,38 @@ const deleteContactField= (id) => {
 
 /*Update*/
 const getRowInfo = (id) => {
-    axios.get(route("supplier.edit", {id: id})).then(response => {
-        form.id = response.data.id;
-        form.code = response.data.code;
-        form.name = response.data.name;
-        form.supplier_types = response.data.supplier_types;
-        form.contact_info = response.data.contact_info;
-        form.is_active = response.data.is_active;
-        form.notes = response.data.notes;
-    })
-    showModal.value = true;
-    formType.value = "update"
+    try {
+        // Check if supplierTableData has data property or is direct array
+        const suppliers = props.supplierTableData.data || props.supplierTableData;
+        const supplier = suppliers.find(item => item.id === id);
+
+        if (supplier) {
+            formType.value = "update";
+            showModal.value = true;
+
+            form.id = supplier.id;
+            form.code = supplier.code;
+            form.name = supplier.name;
+            form.types = supplier.types?.map(type => type.id) || [];
+            form.tags = supplier.tags?.map(tag => tag.id) || [];
+            form.contact_info = supplier.contact_info || {};
+            form.is_active = supplier.is_active;
+            form.notes = supplier.notes || {};
+        } else {
+            console.error('Supplier not found in table data');
+        }
+
+    } catch (error) {
+        console.error('Error setting supplier data:', error);
+        console.log('supplierTableData structure:', props.supplierTableData);
+    }
 }
+
+// Modal closed handler
+const handleModalClosed = () => {
+    resetForm();
+}
+
 /*Delete*/
 const handleDelete = (id) => {
     router.delete(route("supplier.destroy", id), {
@@ -211,12 +244,14 @@ const handleDelete = (id) => {
 <template>
     <app-layout :title="$t('supplier.main.index.title')" :sub-title="$t('supplier.main.index.subTitle')">
         <template #actionArea>
-            <simple-button type="route" :link="route('department.deleted')" color="red">
+            <!--
+            <simple-button type="route" :link="route('supplier.deleted')" color="red">
                 <font-awesome-icon icon="trash-can" class="mr-2"/>
                 <span v-text="$t('term.deletedItems')"/>
             </simple-button>
+            -->
 
-            <simple-button @click="showModal = true; formType = 'create'" color="green">
+            <simple-button @click="handleAddNew" color="green">
                 <font-awesome-icon icon="plus" class="mr-2"/>
                 <span v-text="$t('action.addNew')"/>
             </simple-button>
@@ -240,291 +275,24 @@ const handleDelete = (id) => {
                 {{ props.tags.map((tag) => tag.name).join(', ')}}
             </template>
         </Table>
-        <!--<template #actionArea>-->
-
-        <!--    &lt;!&ndash;Deleted Items&ndash;&gt;-->
-        <!--    <el-button @click="showModal = true;formType='create'">-->
-        <!--        <font-awesome-icon icon="trash-can" class="mr-2"/>-->
-        <!--        <span v-text="$t('global.deletedItems')"/>-->
-        <!--    </el-button>-->
-
-        <!--    &lt;!&ndash;Manage Types&ndash;&gt;-->
-        <!--    <el-button type="primary" @click="showModal = true;">-->
-        <!--        <font-awesome-icon icon="layer-group" class="mr-2"/>-->
-        <!--        <span v-text="$t('supplier.type.global.manage')"/>-->
-        <!--    </el-button>-->
-
-        <!--    &lt;!&ndash;Add New&ndash;&gt;-->
-        <!--    <el-button type="primary" @click="showModal = true;">-->
-        <!--        <font-awesome-icon icon="plus" class="mr-2"/>-->
-        <!--        <span v-text="$t('global.addNew')"/>-->
-        <!--    </el-button>-->
-        <!--</template>-->
-        <!--&lt;!&ndash;Table&ndash;&gt;-->
-        <!--<el-table :data="supplierTableData.data" style="width: 100%" :empty-text="$t('global.noData')">-->
-        <!--    <el-table-column :label="$t('global.code')" prop="code" width="125px"/>-->
-        <!--    <el-table-column :label="$t('supplier.main.global.name')" prop="name"/>-->
-
-        <!--    &lt;!&ndash;Types&ndash;&gt;-->
-        <!--    <el-table-column :label="$t('supplier.type.global.supplierType')" prop="types" align="center">-->
-        <!--        <template #default="scope">-->
-        <!--            <div class="flex flex-wrap space-x-1">-->
-        <!--                <template v-for="(t,index) in scope.row.types">-->
-        <!--                    <el-tag v-text="index"/>-->
-        <!--                </template>-->
-        <!--            </div>-->
-        <!--        </template>-->
-        <!--    </el-table-column>-->
-
-        <!--    &lt;!&ndash;Status&ndash;&gt;-->
-        <!--    <el-table-column :label="$t('global.status')" prop="is_active" align="center" width="150px">-->
-        <!--        <template #default="scope">-->
-        <!--            <el-tag v-if="scope.row.is_active" type="success" size="mini" v-text="$t('global.active')"/>-->
-        <!--            <el-tag v-else type="danger" size="mini" v-text="$t('global.inactive')"/>-->
-        <!--        </template>-->
-        <!--    </el-table-column>-->
-        <!--    <el-table-column align="right">-->
-
-        <!--        <template #default="scope">-->
-        <!--            &lt;!&ndash;Edit&ndash;&gt;-->
-        <!--            <el-button size="small" @click="getRowInfo(scope.row.id)">-->
-        <!--                {{ $t('global.edit') }}-->
-        <!--            </el-button>-->
-        <!--            &lt;!&ndash;Delete&ndash;&gt;-->
-        <!--            <el-popconfirm-->
-        <!--                :title="$t('global.questions.deleteConfirm')"-->
-        <!--                :cancel-button-text="$t('global.no')"-->
-        <!--                :confirm-button-text="$t('global.yes')"-->
-        <!--                @confirm="handleDelete(scope.row.id)"-->
-        <!--            >-->
-        <!--                <template #reference>-->
-        <!--                    <el-button-->
-        <!--                        size="small"-->
-        <!--                        type="danger"-->
-        <!--                    >-->
-        <!--                        {{ $t('global.delete') }}-->
-        <!--                    </el-button>-->
-        <!--                </template>-->
-        <!--            </el-popconfirm>-->
-        <!--        </template>-->
-        <!--    </el-table-column>-->
-        <!--</el-table>-->
-
-        <!--&lt;!&ndash;Modal&ndash;&gt;-->
-        <!--<el-dialog :title="$t('supplier.main.create.title')" v-model="showModal">-->
-        <!--    <el-form-->
-        <!--        ref="formRef"-->
-        <!--        :model="form"-->
-        <!--        label-width="auto"-->
-        <!--        :rules="rules"-->
-        <!--    >-->
-        <!--        <el-tabs tab-position="top" class="demo-tabs">-->
-        <!--            <el-tab-pane :label="$t('global.generalDetails')">-->
-        <!--                &lt;!&ndash;Code&ndash;&gt;-->
-        <!--                <el-form-item-->
-        <!--                    :label="$t('global.code')"-->
-        <!--                    prop="code"-->
-        <!--                >-->
-        <!--                    <el-input-->
-        <!--                        v-model="form.code"-->
-        <!--                        type="text"-->
-        <!--                        autocomplete="off"-->
-        <!--                        :formatter="(value) => value.toUpperCase()"-->
-        <!--                        :maxlength="10"-->
-        <!--                        show-word-limit-->
-        <!--                    />-->
-        <!--                </el-form-item>-->
-
-        <!--                &lt;!&ndash;Name&ndash;&gt;-->
-        <!--                <el-form-item-->
-        <!--                    :label="$t('supplier.main.global.name')"-->
-        <!--                    prop="name"-->
-        <!--                >-->
-        <!--                    <el-input-->
-        <!--                        v-model="form.name"-->
-        <!--                        type="text"-->
-        <!--                        autocomplete="off"-->
-        <!--                        :maxlength="100"-->
-        <!--                        show-word-limit-->
-        <!--                    />-->
-        <!--                </el-form-item>-->
-
-        <!--                &lt;!&ndash;Type&ndash;&gt;-->
-        <!--                <el-form-item-->
-        <!--                    :label="$t('supplier.type.global.supplierType')"-->
-        <!--                    prop="supplier_types"-->
-        <!--                >-->
-        <!--                    <el-select-->
-        <!--                        v-model="form.supplier_types"-->
-        <!--                        multiple-->
-        <!--                        filterable-->
-        <!--                        clearable-->
-        <!--                        :loading="loading"-->
-        <!--                        :no-data-text="$t('global.noData')"-->
-        <!--                        :no-match-text="$t('global.noMatches')"-->
-        <!--                        :loading-text="$t('global.loading')"-->
-        <!--                        :placeholder="$t('global.selectType')"-->
-        <!--                    >-->
-        <!--                        <el-option-->
-        <!--                            v-for="item in types"-->
-        <!--                            :key="item.id"-->
-        <!--                            :label="item.name"-->
-        <!--                            :value="item.id"-->
-        <!--                        />-->
-        <!--                    </el-select>-->
-        <!--                </el-form-item>-->
-
-        <!--                &lt;!&ndash;Tags&ndash;&gt;-->
-        <!--                <el-form-item-->
-        <!--                    :label="$t('global.tags')"-->
-        <!--                    prop="tags"-->
-        <!--                >-->
-        <!--                    <el-select-->
-        <!--                        v-model="form.tags"-->
-        <!--                        multiple-->
-        <!--                        filterable-->
-        <!--                        clearable-->
-        <!--                        :loading="loading"-->
-        <!--                        :no-data-text="$t('global.noData')"-->
-        <!--                        :no-match-text="$t('global.noMatches')"-->
-        <!--                        :loading-text="$t('global.loading')"-->
-        <!--                        :placeholder="$t('global.selectType')"-->
-        <!--                    >-->
-        <!--                        <el-option-->
-        <!--                            v-for="item in tags"-->
-        <!--                            :key="item.id"-->
-        <!--                            :label="item.name"-->
-        <!--                            :value="item.id"-->
-        <!--                        />-->
-        <!--                    </el-select>-->
-        <!--                </el-form-item>-->
-
-        <!--                &lt;!&ndash;Status&ndash;&gt;-->
-        <!--                <el-form-item-->
-        <!--                    :label="$t('global.status')"-->
-        <!--                    prop="is_active"-->
-        <!--                >-->
-        <!--                    <el-radio-group v-model="form.is_active">-->
-        <!--                        <el-radio-button :label="true">{{ $t('global.active') }}</el-radio-button>-->
-        <!--                        <el-radio-button :label="false">{{ $t('global.inactive') }}</el-radio-button>-->
-        <!--                    </el-radio-group>-->
-        <!--                </el-form-item>-->
-        <!--            </el-tab-pane>-->
-        <!--            <el-tab-pane>-->
-        <!--                <template #label>-->
-        <!--                    <font-awesome-icon icon="at" class="mr-1"/>-->
-        <!--                    <span v-text="$t('global.contactDetails')"/>-->
-        <!--                </template>-->
-        <!--                &lt;!&ndash;Button of contact adding&ndash;&gt;-->
-        <!--                <div class="flex justify-end mt-1">-->
-        <!--                    <el-dropdown type="primary" trigger="click">-->
-        <!--                        <span-->
-        <!--                            class="flex justify-center cursor-pointer bg-emerald-500 text-white p-2 space-x-2 rounded-lg tems-center">-->
-        <!--                            <font-awesome-icon icon="plus"/>-->
-        <!--                            <span v-text="$t('supplier.main.create.selectContactType')"></span>-->
-        <!--                        </span>-->
-        <!--                        <template #dropdown>-->
-        <!--                            <el-dropdown-menu>-->
-        <!--                                <el-dropdown-item @click="createContactField('phone')">-->
-        <!--                                    <font-awesome-icon icon="phone" class="mr-2"/>-->
-        <!--                                    <span v-text="$t('global.phoneNumber')"/>-->
-        <!--                                </el-dropdown-item>-->
-        <!--                                <el-dropdown-item @click="createContactField('email')">-->
-        <!--                                    <font-awesome-icon icon="at" class="mr-2"/>-->
-        <!--                                    <span v-text="$t('auth.email')"/>-->
-        <!--                                </el-dropdown-item>-->
-        <!--                                <el-dropdown-item @click="createContactField('address')">-->
-        <!--                                    <font-awesome-icon icon="map-location-dot" class="mr-2"/>-->
-        <!--                                    <span v-text="$t('global.address')"/>-->
-        <!--                                </el-dropdown-item>-->
-        <!--                            </el-dropdown-menu>-->
-        <!--                        </template>-->
-        <!--                    </el-dropdown>-->
-        <!--                </div>-->
-
-        <!--                &lt;!&ndash;Contact Details&ndash;&gt;-->
-        <!--                <div class="space-y-2 py-4" v-if="Object.keys(form.contact_info).length>0">-->
-        <!--                    <template v-for="(field,index) in form.contact_info" :key="field">-->
-
-        <!--                        <div class="flex border rounded-lg space-x-2 p-2 w-full justify-between items-center h-full">-->
-        <!--                           <div class="flex flex-col space-y-1 w-full">-->
-        <!--                               &lt;!&ndash;Title&ndash;&gt;-->
-        <!--                               <el-input v-model="form.contact_info[index].title" :placeholder="$t('global.title')"/>-->
-
-        <!--                               &lt;!&ndash;Value&ndash;&gt;-->
-        <!--                               <el-input v-model="form.contact_info[index].value"  :placeholder="$t('global.value')">-->
-        <!--                                   <template #prepend>-->
-        <!--                                       <font-awesome-icon :icon="-->
-        <!--                                    field.type === 'phone' ? 'phone' :-->
-        <!--                                    field.type === 'email' ? 'at' :-->
-        <!--                                    field.type === 'address' ? 'map-location-dot' : ''-->
-        <!--                                "/>-->
-        <!--                                   </template>-->
-        <!--                               </el-input>-->
-        <!--                           </div>-->
-
-        <!--                            &lt;!&ndash;Delete Icon&ndash;&gt;-->
-        <!--                            <div class="flex flex-col justify-between space-y-3 h-full ">-->
-        <!--                                &lt;!&ndash;Delete&ndash;&gt;-->
-        <!--                                <div @click="deleteContactField(index)" class="flex h-6 w-6 items-center justify-center bg-rose-500 text-white rounded-full cursor-pointer active:scale-95">-->
-        <!--                                    <font-awesome-icon icon="x"/>-->
-        <!--                                </div>-->
-        <!--                                &lt;!&ndash;Make Default&ndash;&gt;-->
-        <!--                                <el-popconfirm-->
-        <!--                                    :title="$t('supplier.main.question.'+ (form.contact_info[index].is_primary ? 'areYouSureRemoveDefaultContact' : 'areYouSureMakeDefaultContact'))"-->
-        <!--                                    :confirm-button-text="$t('global.yes')"-->
-        <!--                                    :cancel-button-text="$t('global.no')"-->
-        <!--                                    @confirm="makeDefaultContactField(index)">-->
-        <!--                                    <template #reference>-->
-        <!--                                    <font-awesome-icon-->
-        <!--                                        icon="circle-check"-->
-        <!--                                        class="h-6 w-6 cursor-pointer active:scale-95"-->
-        <!--                                        :class="form.contact_info[index].is_primary ? 'text-emerald-500' : 'text-slate-500 hover:text-emerald-600 hover:animate-pulse'"-->
-        <!--                                    />-->
-        <!--                                    </template>-->
-        <!--                                </el-popconfirm>-->
-        <!--                            </div>-->
-        <!--                        </div>-->
-
-        <!--                    </template>-->
-        <!--                </div>-->
-
-        <!--                <el-empty v-else :description="$t('global.noData')"/>-->
-
-        <!--            </el-tab-pane>-->
-
-        <!--        </el-tabs>-->
-        <!--        &lt;!&ndash;Action Buttons&ndash;&gt;-->
-        <!--        <el-form-item label-width="0">-->
-        <!--            <div class="flex justify-between w-full -mb-8">-->
-        <!--                <el-button v-if="formType==='create'" @click="form.reset()">-->
-        <!--                    {{ $t('global.reset') }}-->
-        <!--                </el-button>-->
-
-        <!--                <el-button type="primary" @click="submit(formRef)">-->
-        <!--                    {{ $t(formType === 'create' ? 'global.create' : 'global.update') }}-->
-        <!--                </el-button>-->
-        <!--            </div>-->
-        <!--        </el-form-item>-->
-        <!--    </el-form>-->
-        <!--</el-dialog>-->
     </app-layout>
 
     <teleport to="body">
         <!--Modal-->
         <Modal
             v-model="showModal"
-            :header="tm('title.createPage.title')"
-            :subHeader="tm('title.createPage.subTitle')"
+            :header="formType === 'create' ? 'Tedarikçi Oluştur' : 'Tedarikçi Güncelle'"
+            :subHeader="formType === 'create' ? 'Yeni tedarikçi oluşturun' : 'Tedarikçi bilgilerini güncelleyin'"
             closeable
             close-button
+            @closed="handleModalClosed"
         >
             <Form full-size>
                 <FormSection
                     bg-less
                 >
                     <!-- Code -->
-                    <input-group class="col-span-2" labelFor="code" :label="tm('term.code')" :errors="v$.code.$errors">
+                    <input-group class="col-span-2" labelFor="code" label="Tedarikçi Kodu" :errors="v$.code.$errors">
                         <text-input v-model="form.code"/>
                     </input-group>
 
@@ -532,26 +300,26 @@ const handleDelete = (id) => {
                     <div class="col-span-4"></div>
 
                     <!-- Name -->
-                    <input-group class="col-span-6" labelFor="name" :label="tm('term.name')"
+                    <input-group class="col-span-6" labelFor="name" label="Tedarikçi Adı"
                                  :errors="v$.name.$errors">
                         <text-input v-model="form.name"/>
                     </input-group>
 
                     <!-- Type -->
-                    <input-group class="col-span-3" labelFor="type" :label="tm('term.type')">
-                        <select-input v-model="form.types" :options="supplierTypes" option-label="name"/>
+                    <input-group class="col-span-3" labelFor="types" label="Tedarikçi Tipi">
+                        <select-input v-model="form.types" :options="supplierTypes" option-label="name" multiple/>
                     </input-group>
 
                     <!-- Tags -->
-                    <input-group class="col-span-3" labelFor="type" :label="tm('term.tag')">
-                        <select-input v-model="form.tags" :options="supplierTags" option-label="name"/>
+                    <input-group class="col-span-3" labelFor="tags" label="Tedarikçi Etiketi">
+                        <select-input v-model="form.tags" :options="supplierTags" option-label="name" multiple/>
                     </input-group>
 
                 </FormSection>
             </Form>
             <template #footer>
-                <SimpleButton :label="t('action.reset')" color="orange" @click="form.reset()" />
-                <SimpleButton :label="t('action.create')" color="green" @click="handleSubmit" :loading="form.processing"/>
+                <SimpleButton :label="t('action.reset')" color="orange" @click="resetForm" />
+                <SimpleButton :label="t(`action.${formType === 'create' ? 'create' : 'update'}`)" color="green" @click="handleSubmit" :loading="form.processing"/>
             </template>
         </Modal>
     </teleport>

@@ -22,7 +22,7 @@ return new class extends Migration
             $table->foreignIdFor(\App\Models\Department::class)->nullable();
             $table->json('responsibilities');
             $table->json('powers');
-            $table->json('requirements');
+            $table->json('requirements')->nullable();
             $table->json('skills');
             $table->json('working_conditions');
             $table->json('working_tools');

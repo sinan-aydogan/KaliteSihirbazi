@@ -23,7 +23,9 @@ class SupplierController extends Controller
         $supplierTags = SupplierTag::all();
 
         return Inertia::render('Modules/BusinessManagement/Supplier/IndexPage', [
-            'supplierTableData' => $suppliers,
+            'supplierTableData' => [
+                'data' => $suppliers
+            ],
             'supplierTypes' => $supplierTypes,
             'supplierTags' => $supplierTags,
         ]);
@@ -47,20 +49,29 @@ class SupplierController extends Controller
      */
     public function store(StoreSupplierRequest $request)
     {
-        $supplier = new Supplier;
-        $supplier->code = $request->code;
-        $supplier->name = $request->name;
-        $supplier->save();
+        try {
+            $supplier = Supplier::create($request->validated());
 
-        /*Types*/
-        $supplier->types()->sync($request->types);
-        $supplier->tags()->sync($request->tags);
+            if ($request->types) {
+                $supplier->types()->sync($request->types);
+            }
+            if ($request->tags) {
+                $supplier->tags()->sync($request->tags);
+            }
 
-        $supplier->save();
+            session()->flash('message', [
+                'type' => 'success',
+                'content' => __('Tedarikçi başarıyla oluşturuldu', ['supplier' => $supplier->name])
+            ]);
 
-        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.department.created', ['supplier' => $supplier->name])]);
-
-        return redirect()->back();
+            return redirect()->back();
+        } catch (\Exception $e) {
+            session()->flash('message', [
+                'type' => 'error',
+                'content' => 'Tedarikçi oluşturulurken bir hata oluştu: ' . $e->getMessage()
+            ]);
+            return redirect()->back()->withInput();
+        }
     }
 
     /**
@@ -82,7 +93,8 @@ class SupplierController extends Controller
      */
     public function edit(Supplier $supplier)
     {
-        //
+        $supplier->load('types', 'tags');
+        return response()->json($supplier);
     }
 
     /**
@@ -93,9 +105,29 @@ class SupplierController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateSupplierRequest $request, Supplier $supplier)
-    {
-        //
+{
+    try {
+        $supplier->update($request->validated());
+
+        // Update relationships
+        $supplier->types()->sync($request->types ?? []);
+        $supplier->tags()->sync($request->tags ?? []);
+
+        session()->flash('message', [
+            'type' => 'success',
+            'content' => __('Tedarikçi başarıyla güncellendi: ', ['supplier' => $supplier->name])
+        ]);
+
+        return redirect()->back();
+    } catch (\Exception $e) {
+        session()->flash('message', [
+            'type' => 'error',
+            'content' => __('Tedarikçi güncellenirken bir hata oluştu: ' . $e->getMessage())
+        ]);
+        return redirect()->back()->withInput();
     }
+}
+
 
     /**
      * Remove the specified resource from storage.
@@ -105,6 +137,22 @@ class SupplierController extends Controller
      */
     public function destroy(Supplier $supplier)
     {
-        //
+        try {
+            $supplier->delete();
+
+            session()->flash('message', [
+                'type' => 'success',
+                'content' => __('Tedariköi başarıyla silindi', ['supplier' => $supplier->name])
+            ]);
+
+            return redirect()->back();
+        } catch (\Exception $e) {
+            session()->flash('message', [
+                'type' => 'error',
+                'content' => __('Tedarikçi silinirken bir hata oluştu: ' . $e->getMessage())
+            ]);
+
+            return redirect()->back();
+        }
     }
 }

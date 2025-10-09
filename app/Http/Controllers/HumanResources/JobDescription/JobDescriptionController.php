@@ -7,15 +7,11 @@ use App\Http\Requests\StoreJobDescriptionRequest;
 use App\Http\Requests\UpdateJobDescriptionRequest;
 use App\Models\Department;
 use App\Models\HumanResources\JobDescription\JobDescription;
+use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 
 class JobDescriptionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Inertia\Response
-     */
     public function index()
     {
         return Inertia::render("Modules/HumanResources/JobDescription/IndexPage", [
@@ -24,53 +20,19 @@ class JobDescriptionController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \App\Http\Requests\StoreJobDescriptionRequest $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function store(StoreJobDescriptionRequest $request)
     {
-        $jobDescription = new JobDescription;
-        $jobDescription->code = $request->code;
-        $jobDescription->name = $request->name;
-        $jobDescription->description = $request->description;
-        $jobDescription->staff_type = $request->staff_type;
-        $jobDescription->department_id = $request->department_id;
-        $jobDescription->responsibilities = $request->responsibilities;
-        $jobDescription->powers = $request->powers;
-        $jobDescription->requirements = $request->requirements;
-        $jobDescription->skills = $request->skills;
-        $jobDescription->working_conditions = $request->working_conditions;
-        $jobDescription->working_tools = $request->working_tools;
-        $jobDescription->working_hours = $request->working_hours;
-        $jobDescription->overtime_status = $request->overtime_status;
-        $jobDescription->travel_status = $request->travel_status;
+        try {
+            JobDescription::create($request->validated());
 
-        $jobDescription->save();
+            return $this->redirectWithMessage('success', __('messages.jobDescription.created'));
 
-        session()->flash('message', ['type' => 'success', 'content' => __('messages.jobDescription.created', ['jobDescription' => $jobDescription->name])]);
-
-        return redirect()->back();
+        } catch (\Exception $e) {
+            Log::error('Job Description creation failed: ' . $e->getMessage());
+            return $this->redirectWithMessage('danger', __('messages.jobDescription.error'), true);
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Models\HumanResources\JobDescription\JobDescription $jobDescription
-     * @return \Inertia\Response
-     */
     public function show(JobDescription $jobDescription)
     {
         $data = [
@@ -96,81 +58,51 @@ class JobDescriptionController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Models\HumanResources\JobDescription\JobDescription $jobDescription
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function edit(JobDescription $jobDescription)
     {
         return response()->json($jobDescription);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \App\Http\Requests\UpdateJobDescriptionRequest $request
-     * @param \App\Models\HumanResources\JobDescription\JobDescription $jobDescription
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function update(UpdateJobDescriptionRequest $request, JobDescription $jobDescription)
     {
-        $jobDescription->code = $request->code;
-        $jobDescription->name = $request->name;
-        $jobDescription->department_id = $request->department_id;
-        $jobDescription->type = $request->type;
-        $jobDescription->employee_id = $request->employee_id;
+        try {
+            $validated = $$request->validated();
 
-        $jobDescription->save();
+            $jobDescription->update($validated);
 
-        session()->flash('message', ['type' => 'success', 'content' => __('messages.jobDescription.updated', ['jobDescription' => $jobDescription->name])]);
+            return $this->redirectWithMessage('success',
+                __('messages.jobDescription.updated', ['jobDescription' => $jobDescription->name]));
 
-        return redirect()->back();
+        } catch (\Exception $e) {
+            Log::error('Job Description update failed: ' . $e->getMessage());
+            return $this->redirectWithMessage('danger', __('messages.jobDescription.error'), true);
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param \App\Models\HumanResources\JobDescription\JobDescription $jobDescription
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function destroy(JobDescription $jobDescription)
     {
-        session()->flash('message', ['type' => 'danger', 'content' => __('messages.jobDescription.deleted', ['jobDescription' => $jobDescription->name])]);
-
         $jobDescription->delete();
-
-        return redirect()->route('job-description.index');
+        return $this->redirectWithMessage('danger',
+            __('messages.jobDescription.deleted', ['jobDescription' => $jobDescription->name]));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param \App\Models\HumanResources\JobDescription\JobDescription $jobDescription
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function permanentDestroy(JobDescription $jobDescription)
     {
-        session()->flash('message', ['type' => 'danger', 'content' => __('messages.jobDescription.permanentDeleted', ['jobDescription' => $jobDescription->name])]);
-
         $jobDescription->forceDelete();
-
-        return redirect()->route('job-description.index');
+        return $this->redirectWithMessage('danger',
+            __('messages.jobDescription.permanentDeleted', ['jobDescription' => $jobDescription->name]));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param \App\Models\HumanResources\JobDescription\JobDescription $jobDescription
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function restore(JobDescription $jobDescription)
     {
-        session()->flash('message', ['type' => 'info', 'content' => __('messages.jobDescription.restored', ['jobDescription' => $jobDescription->name])]);
-
         $jobDescription->restore();
+        return $this->redirectWithMessage('info',
+            __('messages.jobDescription.restored', ['jobDescription' => $jobDescription->name]));
+    }
 
-        return redirect()->route('job-description.index');
+    protected function redirectWithMessage(string $type, string $content, bool $withInput = false)
+    {
+        session()->flash('message', compact('type', 'content'));
+        return $withInput ? back()->withInput() : redirect()->back();
     }
 }
