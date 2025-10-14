@@ -202,6 +202,18 @@ const getRowInfo = (id) => {
     form.type = response.data.type;
     form.department_id = response.data.department_id;
     form.employee_id = response.data.employee_id;
+    form.description = response.data.description;
+    form.staff_type = response.data.staff_type;
+    form.responsibilities = response.data.responsibilities ? response.data.responsibilities : [];
+    form.powers = response.data.powers ? response.data.powers : [];
+    form.requirements = response.data.requirements ? response.data.requirements : [];
+    form.skills = response.data.skills ? response.data.skills : [];
+    form.working_conditions = response.data.working_conditions ? response.data.working_conditions : [];
+    form.working_tools = response.data.working_tools ? response.data.working_tools : [];
+    form.working_hours = response.data.working_hours ? response.data.working_hours : [];
+    form.overtime_status = response.data.overtime_status ? response.data.overtime_status : [];
+    form.travel_status = response.data.travel_status ? response.data.travel_status : [];
+    form.status = response.data.status;
   })
   showModal.value = true;
   formType.value = "update"

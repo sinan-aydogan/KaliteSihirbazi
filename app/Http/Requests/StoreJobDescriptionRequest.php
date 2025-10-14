@@ -15,7 +15,7 @@ class StoreJobDescriptionRequest extends FormRequest
     public function rules()
     {
         return [
-            'code' => 'required|string|max:10|unique:job_descriptions',
+            'code' => 'required|string|max:10|unique:job_descriptions,code',
             'name' => 'required|string|max:150',
             'description' => 'nullable|string|max:750',
             'staff_type' => 'nullable|string|max:10|in:blue,white,other',
@@ -30,7 +30,16 @@ class StoreJobDescriptionRequest extends FormRequest
             'overtime_status' => 'required|array|min:1',
             'travel_status' => 'required|array|min:1',
             'status' => 'sometimes|boolean',
+            'responsibilities.*' => 'required|string|max:500',
+            'powers.*' => 'required|string|max:500',
             'requirements.*' => 'required|string|max:500',
+            'skills.*' => 'required|string|max:500',
+            'working_conditions.*' => 'required|string|max:500',
+            'working_tools.*' => 'required|string|max:500',
+            'working_hours.*' => 'required|string|max:500',
+            'overtime_status.*' => 'required|string|max:500',
+            'travel_status.*.reason' => 'required|string|max:500',
+            'travel_status.*.location' => 'required|string|max:500',
         ];
     }
 

@@ -17,12 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('code', 10)->unique();
             $table->string('name',150);
-            $table->string('description',750);
+            $table->string('description',750)->nullable();
             $table->string('staff_type',10)->default('blue')->nullable();
             $table->foreignIdFor(\App\Models\Department::class)->nullable();
             $table->json('responsibilities');
             $table->json('powers');
-            $table->json('requirements')->nullable();
+            $table->json('requirements');
             $table->json('skills');
             $table->json('working_conditions');
             $table->json('working_tools');

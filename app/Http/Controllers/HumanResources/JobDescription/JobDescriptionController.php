@@ -38,16 +38,21 @@ class JobDescriptionController extends Controller
 
             session()->flash('message', [
                 'type' => 'success',
-                'content' => __('messages.employee.created', ['jobDescription' => $jobDescription->name])
+                'content' => __('messages.jobDescription.created', ['jobDescription' => $jobDescription->name])
+            ]);
+
+            return redirect()->back()->with([
+                'jobDescription' => $jobDescription,
             ]);
         } catch (\Exception $e) {
+            dd($e->getMessage());
             session()->flash('message', [
                 'type'=> 'error',
                 'content'=>__('messages.jobDescription.creation_failed')
             ]);
-        }
 
-        return redirect()->back();
+            return redirect()->back();
+        }
     }
 
     /**
@@ -102,48 +107,62 @@ class JobDescriptionController extends Controller
     public function update(UpdateJobDescriptionRequest $request, JobDescription $jobDescription)
     {
         try {
-            $validated = $request->validated();
-
-            $jobDescription->update($validated);
+            $jobDescription->update($request->validated());
 
             session()->flash('message', [
                 'type' => 'success',
-                'content' => __('messages.employee.updated', ['jobDescription' => $jobDescription->name])
+                'content' => __('messages.jobDescription.updated', ['jobDescription' => $jobDescription->name])
+            ]);
+
+            return redirect()->back()->with([
+                'jobDescription' => $jobDescription,
             ]);
         } catch (\Exception $e) {
             session()->flash('message', [
                 'type'=> 'error',
                 'content'=>__('messages.jobDescription.update_failed')
             ]);
-        }
 
-        return redirect()->back();
+            return redirect()->back();
+        }
     }
 
     public function destroy(JobDescription $jobDescription)
     {
+        session()->flash('message',
+        [
+            'type' => 'danger',
+            'content' => __('messages.jobDescription.deleted', ['jobDescription' => $jobDescription->name])
+        ]);
+
         $jobDescription->delete();
-        return $this->redirectWithMessage('danger',
-            __('messages.jobDescription.deleted', ['jobDescription' => $jobDescription->name]));
+
+         return redirect()->route('job-description.index');
     }
 
     public function permanentDestroy(JobDescription $jobDescription)
     {
+        session()->flash('message',
+        [
+            'type' => 'danger',
+            'content' => __('messages.jobDescription.permanentDeleted', ['jobDescription' => $jobDescription->name])
+        ]);
+
         $jobDescription->forceDelete();
-        return $this->redirectWithMessage('danger',
-            __('messages.jobDescription.permanentDeleted', ['jobDescription' => $jobDescription->name]));
+
+        return redirect()->route('job-description.index');
     }
 
     public function restore(JobDescription $jobDescription)
     {
-        $jobDescription->restore();
-        return $this->redirectWithMessage('info',
-            __('messages.jobDescription.restored', ['jobDescription' => $jobDescription->name]));
-    }
+        session()->flash('message',
+        [
+            'type' => 'info',
+            'content' => __('messages.jobDescription.restored', ['jobDescription' => $jobDescription->name])
+        ]);
 
-    protected function redirectWithMessage(string $type, string $content, bool $withInput = false)
-    {
-        session()->flash('message', compact('type', 'content'));
-        return $withInput ? back()->withInput() : redirect()->back();
+        $jobDescription->restore();
+
+        return redirect()->route('job-description.index');
     }
 }

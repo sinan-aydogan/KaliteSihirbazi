@@ -25,10 +25,12 @@ return [
     ],
     'jobDescription' => [
         'created' => 'The new job description named :jobDescription has been created successfully',
+        'creation_failed' => 'The job description named :jobDescription has been creation failed',
         'deleted' => 'The job description named :jobDescription deleted successfully',
         'permanentDeleted' => 'The job description named :jobDescription permanently deleted successfully',
         'restored' => 'The job description named :jobDescription restored successfully',
-        'updated' => 'The job description named :jobDescription has been updated successfully'
+        'updated' => 'The job description named :jobDescription has been updated successfully',
+        'update_failed' => 'The job description named :jobDescription has been update failed',
     ],
     'jobDescriptionAssignment' => [
         'created' => ':employee assigned as a :jobDescription successfully',
