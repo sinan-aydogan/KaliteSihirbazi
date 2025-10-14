@@ -9,10 +9,12 @@ return [
 
     'department' => [
         'created' => ':department isimli departman oluşturuldu.',
+        'creation_failed' => ':department isimli departman oluşturulamadı.',
         'deleted' => ':department isimli departman silindi.',
         'permanentDeleted' => ':department isimli departman kalıcı olarak silindi.',
         'restored' => ':department isimli departman geri getirildi.',
-        'updated' => ':department isimli departman güncellendi.'
+        'updated' => ':department isimli departman güncellendi.',
+        'update_failed' => ':department isimli departman güncellenemedi.',
     ],
     'vehicle' => [
         'created' => ':vehicle plakalı araç oluşturuldu.',

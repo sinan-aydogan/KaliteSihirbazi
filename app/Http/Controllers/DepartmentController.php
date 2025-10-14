@@ -57,10 +57,22 @@ class DepartmentController extends Controller
         try{
             $department = Department::create($request->validated());
 
-            session()->flash('message', ['type'=> 'success', 'content'=>__('Departman başarıyla oluşturuldu', ['department' => $department->name])]);
+            session()->flash('message',
+            [
+                'type'=> 'success',
+                'content'=>__('messages.department.created', ['department' => $department->name])
+            ]);
+
+            return redirect()->back()->with([
+                 'department' => $department,
+             ]);
         }
         catch (\Exception $e) {
-            session()->flash('message', ['type'=> 'danger', 'content'=>__('Departman oluşturulurken bir hata oluştu: :error', ['error' => $e->getMessage()])]);
+            session()->flash('message', [
+                'type'=> 'error',
+                'content'=>__('messages.department.creation_failed')
+            ]);
+
             return redirect()->back();
         }
 }
@@ -110,13 +122,20 @@ class DepartmentController extends Controller
         try {
             $department->update($request->validated());
 
-            return redirect()->route('department.index')->with('message', [
-                'type' => 'success',
-                'content' => __('Departman başarıyla güncellenndi', ['department' => $department->name])
+            session()->flash('message', [
+                'type'=> 'success',
+                'content'=>__('messages.department.updated', ['department' => $department->name])
             ]);
 
+            return redirect()->back()->with([
+                'department' => $department,
+            ]);
         } catch (\Exception $e) {
-            session()->flash('message', ['type'=> 'danger', 'content'=>__('Departman güncellenirken bir sorun oluştu: ', ['error' => $e->getMessage()])]);
+            session()->flash('message', [
+                'type'=> 'error',
+                'content'=>__('messages.department.update_failed')
+            ]);
+
             return redirect()->back();
         }
 

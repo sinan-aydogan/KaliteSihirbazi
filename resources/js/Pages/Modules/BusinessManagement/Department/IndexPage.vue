@@ -103,6 +103,7 @@ const rules = ref({
   },
   type: {required: helpers.withMessage(t('message.validation.required'), required)},
   department_id: {departmentValidation: helpers.withMessage(t('message.validation.required'), departmentValidation)},
+  employee_id: {required: helpers.withMessage(t('message.validation.required'), required)},
 })
 
 const v$ = useVuelidate(rules, form)
@@ -229,12 +230,12 @@ const handleDelete = (id) => {
           </input-group>
 
           <!-- Manager -->
-          <input-group class="col-span-6" labelFor="employee_id" :label="tm('term.manager')">
+          <input-group class="col-span-6" labelFor="employee_id" :label="tm('term.manager')" :errors="v$.employee_id.$errors">
             <select-input v-model="form.employee_id" :options="employees" optionLabel="employeeName"/>
           </input-group>
 
           <!-- Type -->
-          <input-group class="col-span-3" labelFor="type" :label="tm('term.type')">
+          <input-group class="col-span-3" labelFor="type" :label="tm('term.type')" :errors="v$.type.$errors">
             <select-input v-model="form.type" :options="departmentTypes"/>
           </input-group>
 

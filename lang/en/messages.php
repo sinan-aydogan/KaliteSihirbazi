@@ -9,10 +9,12 @@ return [
 
     'department' => [
         'created' => 'The new department named :department has been created successfully',
+        'creation_failed' => 'The department named :department has been creation failed',
         'deleted' => 'The department named :department deleted successfully',
         'permanentDeleted' => 'The department named :department permanently deleted successfully',
         'restored' => 'The department named :department restored successfully',
-        'updated' => 'The department named :department has been updated successfully'
+        'updated' => 'The department named :department has been updated successfully',
+        'update_failed' => 'The department named :department has been update failed',
     ],
     'vehicle' => [
         'created' => 'The new vehicle with licence plate :vehicle has been created successfully',
