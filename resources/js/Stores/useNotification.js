@@ -11,6 +11,13 @@ export const useNotification = defineStore("notification", {
 
             this.notifications.push(value);
         },
+        addStatic(value) {
+            let id = Math.floor(new Date().getTime() / 1000);
+            value["id"] = id;
+            value["_token"] = id;
+
+            this.notifications.push(value);
+        },
         delete(value) {
             let index = this.notifications.findIndex((i) => i.id === value.id);
 

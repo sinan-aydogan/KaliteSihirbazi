@@ -154,5 +154,15 @@ return [
         'participantUpdated' => 'Participant information has been updated successfully',
         'participantRemoved' => 'Participant has been removed from the education successfully',
         'mediaDeleted' => 'Media file has been deleted successfully'
-    ]
+    ],
+    'supplier' => [
+        'created' => 'The new supplier named :supplier has been created successfully',
+        'creation_failed' => 'The supplier named :supplier has been creation failed',
+        'deleted' => 'The supplier named :supplier deleted successfully',
+        'delete_failed' => 'The supplier named :supplier has been delete failed',
+        'permanentDeleted' => 'The supplier named :supplier permanently deleted successfully',
+        'restored' => 'The supplier named :supplier restored successfully',
+        'updated' => 'The supplier named :supplier has been updated successfully',
+        'update_failed' => 'The supplier named :supplier has been update failed',
+    ],
 ];

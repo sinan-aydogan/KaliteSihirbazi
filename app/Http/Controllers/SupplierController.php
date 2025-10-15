@@ -23,9 +23,7 @@ class SupplierController extends Controller
         $supplierTags = SupplierTag::all();
 
         return Inertia::render('Modules/BusinessManagement/Supplier/IndexPage', [
-            'supplierTableData' => [
-                'data' => $suppliers
-            ],
+            'tableData' => $suppliers,
             'supplierTypes' => $supplierTypes,
             'supplierTags' => $supplierTags,
         ]);
@@ -52,25 +50,28 @@ class SupplierController extends Controller
         try {
             $supplier = Supplier::create($request->validated());
 
-            if ($request->types) {
+            if ($request->has('types')) {
                 $supplier->types()->sync($request->types);
             }
-            if ($request->tags) {
+            if ($request->has('tags')) {
                 $supplier->tags()->sync($request->tags);
             }
 
             session()->flash('message', [
                 'type' => 'success',
-                'content' => __('Tedarikçi başarıyla oluşturuldu', ['supplier' => $supplier->name])
+                'content' => __('messages.supplier.created', ['supplier' => $supplier->name])
+            ]);
+
+            return redirect()->back()->with([
+                'supplier' => $supplier,
+            ]);
+        } catch (\Exception $e) {
+            session()->flash('message', [
+                'type'=> 'error',
+                'content'=>__('messages.supplier.creation_failed')
             ]);
 
             return redirect()->back();
-        } catch (\Exception $e) {
-            session()->flash('message', [
-                'type' => 'error',
-                'content' => 'Tedarikçi oluşturulurken bir hata oluştu: ' . $e->getMessage()
-            ]);
-            return redirect()->back()->withInput();
         }
     }
 
@@ -105,28 +106,35 @@ class SupplierController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateSupplierRequest $request, Supplier $supplier)
-{
-    try {
-        $supplier->update($request->validated());
+    {
+        try {
+            $supplier->update($request->validated());
 
-        // Update relationships
-        $supplier->types()->sync($request->types ?? []);
-        $supplier->tags()->sync($request->tags ?? []);
+            // Update relationships
+            if ($request->has('types')) {
+                $supplier->types()->sync($request->types);
+            }
+            if ($request->has('tags')) {
+                $supplier->tags()->sync($request->tags);
+            }
 
-        session()->flash('message', [
-            'type' => 'success',
-            'content' => __('Tedarikçi başarıyla güncellendi: ', ['supplier' => $supplier->name])
-        ]);
+            session()->flash('message', [
+                'type'=> 'success',
+                'content'=>__('messages.supplier.updated', ['supplier' => $supplier->name])
+            ]);
 
-        return redirect()->back();
-    } catch (\Exception $e) {
-        session()->flash('message', [
-            'type' => 'error',
-            'content' => __('Tedarikçi güncellenirken bir hata oluştu: ' . $e->getMessage())
-        ]);
-        return redirect()->back()->withInput();
+            return redirect()->back()->with([
+                'supplier' => $supplier,
+            ]);
+        } catch (\Exception $e) {
+            session()->flash('message', [
+                'type'=> 'error',
+                'content'=>__('messages.supplier.update_failed')
+            ]);
+
+            return redirect()->back();
+        }
     }
-}
 
 
     /**
@@ -141,15 +149,15 @@ class SupplierController extends Controller
             $supplier->delete();
 
             session()->flash('message', [
-                'type' => 'success',
-                'content' => __('Tedariköi başarıyla silindi', ['supplier' => $supplier->name])
+                'type'=> 'success',
+                'content'=>__('messages.supplier.deleted', ['supplier' => $supplier->name])
             ]);
 
             return redirect()->back();
         } catch (\Exception $e) {
             session()->flash('message', [
                 'type' => 'error',
-                'content' => __('Tedarikçi silinirken bir hata oluştu: ' . $e->getMessage())
+                'content' => __('messages.supplier.delete_failed', ['supplier' => $supplier->name])
             ]);
 
             return redirect()->back();

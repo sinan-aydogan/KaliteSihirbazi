@@ -2,7 +2,6 @@
 import { reactive, ref} from "vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {useForm, router} from "@inertiajs/vue3";
-import axios from 'axios';
 import SimpleButton from "@/Components/Button/SimpleButton.vue";
 import Table from "@/Components/Table/Table.vue";
 import Form from "@/Components/Form/Form.vue";
@@ -11,10 +10,11 @@ import FormSection from "@/Components/Form/FormSection.vue";
 import Modal from "@/Components/Modal/Modal.vue";
 import TextInput from "@/Components/Form/TextInput.vue";
 import SelectInput from "@/Components/Form/SelectInput.vue";
+import {useNotification} from "@/Stores/useNotification.js";
 
 // Props
 const props = defineProps({
-    supplierTableData: {
+    tableData: {
         type: [Object, Array],
         default: () => []
     },
@@ -122,38 +122,23 @@ const resetForm = () => {
 
 /*Create*/
 const handleSubmit = async () => {
-    try {
-        const isValidated = await v$.value.$validate()
-        if (!isValidated) return
+    const isValidated = await v$.value.$validate()
+    if (!isValidated) return
 
-        console.log('Form Type:', formType.value);
-        console.log('Form Data:', form.data());
-
-        if (formType.value === 'create') {
-            form.post(route('supplier.store'), {
-                onSuccess: () => {
-                    resetForm();
-                    showModal.value = false;
-                },
-                onError: (errors) => {
-                    console.error('Create Error:', errors);
-                }
-            })
-        } else if (formType.value === 'update') {
-            console.log('Update route:', route('supplier.update', {id: form.id}));
-
-            form.put(route('supplier.update', {id: form.id}), {
-                onSuccess: () => {
-                    resetForm();
-                    showModal.value = false;
-                },
-                onError: (errors) => {
-                    console.error('Update Error:', errors);
-                }
-            })
-        }
-    } catch (error) {
-        console.error('Submit error:', error);
+    if (formType.value === 'create') {
+        form.post(route('supplier.store'), {
+            onSuccess: () => {
+                resetForm();
+                showModal.value = false;
+            }
+        })
+    } else if (formType.value === 'update') {
+        form.put(route('supplier.update', {id: form.id}), {
+            onSuccess: () => {
+                resetForm();
+                showModal.value = false;
+            }
+        })
     }
 }
 
@@ -201,30 +186,28 @@ const deleteContactField= (id) => {
 
 /*Update*/
 const getRowInfo = (id) => {
-    try {
-        // Check if supplierTableData has data property or is direct array
-        const suppliers = props.supplierTableData.data || props.supplierTableData;
-        const supplier = suppliers.find(item => item.id === id);
+    // Check if tableData has data property or is direct array
+    const suppliers = props.tableData.data || props.tableData;
+    const supplier = suppliers.find(item => item.id === id);
 
-        if (supplier) {
-            formType.value = "update";
-            showModal.value = true;
+    if (supplier) {
+        formType.value = "update";
+        showModal.value = true;
 
-            form.id = supplier.id;
-            form.code = supplier.code;
-            form.name = supplier.name;
-            form.types = supplier.types?.map(type => type.id) || [];
-            form.tags = supplier.tags?.map(tag => tag.id) || [];
-            form.contact_info = supplier.contact_info || {};
-            form.is_active = supplier.is_active;
-            form.notes = supplier.notes || {};
-        } else {
-            console.error('Supplier not found in table data');
-        }
-
-    } catch (error) {
-        console.error('Error setting supplier data:', error);
-        console.log('supplierTableData structure:', props.supplierTableData);
+        form.id = supplier.id;
+        form.code = supplier.code;
+        form.name = supplier.name;
+        form.types = supplier.types?.[0]?.id || [];
+        form.tags = supplier.tags?.[0]?.id || [];
+        form.contact_info = supplier.contact_info || {};
+        form.is_active = supplier.is_active;
+        form.notes = supplier.notes || {};
+    } else {
+        useNotification().addStatic({
+            type: 'danger',
+            content: tm()('message.feedback.suppliersListEmpty'),
+            _token: Date.now()
+        });
     }
 }
 
@@ -258,7 +241,7 @@ const handleDelete = (id) => {
         </template>
 
         <Table
-            :data="supplierTableData"
+            :data="tableData"
             :headers="tableHeaders"
             @view="router.visit(route('supplier.show', $event.id))"
             @edit="getRowInfo($event.id)"
@@ -281,8 +264,8 @@ const handleDelete = (id) => {
         <!--Modal-->
         <Modal
             v-model="showModal"
-            :header="formType === 'create' ? 'Tedarikçi Oluştur' : 'Tedarikçi Güncelle'"
-            :subHeader="formType === 'create' ? 'Yeni tedarikçi oluşturun' : 'Tedarikçi bilgilerini güncelleyin'"
+            :header="formType === 'create' ? tm('title.createPage.title') : tm('title.updatePage.title')"
+            :subHeader="formType === 'create' ? tm('title.createPage.subTitle') : tm('title.updatePage.subTitle')"
             closeable
             close-button
             @closed="handleModalClosed"
@@ -292,7 +275,7 @@ const handleDelete = (id) => {
                     bg-less
                 >
                     <!-- Code -->
-                    <input-group class="col-span-2" labelFor="code" label="Tedarikçi Kodu" :errors="v$.code.$errors">
+                    <input-group class="col-span-2" labelFor="code" :label="tm('term.code')" :errors="v$.code.$errors">
                         <text-input v-model="form.code"/>
                     </input-group>
 
@@ -300,19 +283,18 @@ const handleDelete = (id) => {
                     <div class="col-span-4"></div>
 
                     <!-- Name -->
-                    <input-group class="col-span-6" labelFor="name" label="Tedarikçi Adı"
-                                 :errors="v$.name.$errors">
+                    <input-group class="col-span-6" labelFor="name" :label="tm('term.name')" :errors="v$.name.$errors">
                         <text-input v-model="form.name"/>
                     </input-group>
 
                     <!-- Type -->
-                    <input-group class="col-span-3" labelFor="types" label="Tedarikçi Tipi">
-                        <select-input v-model="form.types" :options="supplierTypes" option-label="name" multiple/>
+                    <input-group class="col-span-3" labelFor="types" :label="tm('term.type')">
+                        <select-input v-model="form.types" :options="supplierTypes" option-label="name"/>
                     </input-group>
 
                     <!-- Tags -->
-                    <input-group class="col-span-3" labelFor="tags" label="Tedarikçi Etiketi">
-                        <select-input v-model="form.tags" :options="supplierTags" option-label="name" multiple/>
+                    <input-group class="col-span-3" labelFor="tags" :label="tm('term.tag')">
+                        <select-input v-model="form.tags" :options="supplierTags" option-label="name"/>
                     </input-group>
 
                 </FormSection>

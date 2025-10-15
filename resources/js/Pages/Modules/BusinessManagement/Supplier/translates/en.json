@@ -8,6 +8,10 @@
       "title": "Create a new supplier",
       "subTitle": "You can create a new supplier here"
     },
+    "updatePage": {
+      "title": "Update Supplier",
+      "subTitle": "You can update supplier information here"
+    },
     "deletedPage": {
       "title": "Deleted Suppliers",
       "subTitle": "You can manage your deleted suppliers here"
@@ -24,6 +28,7 @@
   },
   "message": {
     "feedback": {
+        "suppliersListEmpty": "There are no suppliers to display. You can add a new supplier by clicking the 'Add Supplier' button."
     }
   }
 }

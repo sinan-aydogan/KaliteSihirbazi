@@ -155,5 +155,15 @@ return [
         'participantUpdated' => 'Katılımcı bilgileri başarıyla güncellendi.',
         'participantRemoved' => 'Katılımcı eğitimden başarıyla çıkarıldı.',
         'mediaDeleted' => 'Medya dosyası başarıyla silindi.'
-    ]
+    ],
+    'supplier' => [
+        'created' => ':supplier isimli tedarikçi oluşturuldu.',
+        'creation_failed' => ':supplier isimli tedarikçi oluşturulamadı.',
+        'deleted' => ':supplier isimli tedarikçi silindi.',
+        'delete_failed' => ':supplier isimli tedarikçi silinemedi.',
+        'permanentDeleted' => ':supplier isimli tedarikçi kalıcı olarak silindi.',
+        'restored' => ':supplier isimli tedarikçi geri getirildi.',
+        'updated' => ':supplier isimli tedarikçi güncellendi.',
+        'update_failed' => ':supplier isimli tedarikçi güncellenemedi.',
+    ],
 ];

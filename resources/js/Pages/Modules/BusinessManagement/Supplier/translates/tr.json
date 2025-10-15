@@ -8,6 +8,10 @@
       "title": "Yeni Tedarikçi",
       "subTitle": "Yeni bir tedarikçi oluşturun"
     },
+    "updatePage": {
+      "title": "Tedarikçiyi Güncelle",
+      "subTitle": "Tedarikçi bilgilerini güncelleyin"
+    },
     "deletedPage": {
       "title": "Silinen Tedarikçiler",
       "subTitle": "Silinen tedarikçi listesini görüntüleyin"
@@ -24,6 +28,7 @@
   },
   "message": {
     "feedback": {
+        "suppliersListEmpty": "Görüntülenecek tedarikçi yok. 'Tedarikçi Ekle' butonuna tıklayarak yeni bir tedarikçi ekleyebilirsiniz."
     }
   }
 }
