@@ -113,53 +113,79 @@ const rules = ref({
     required: helpers.withMessage(t('message.validation.required'), required),
     maxLength: helpers.withMessage(t('message.validation.maxLength', [255]), maxLength(255))
   },
-  warehouse_type_id: {required: helpers.withMessage(t('message.validation.required'), required)},
   department_id: {required: helpers.withMessage(t('message.validation.required'), required)},
 })
 
 const v$ = useVuelidate(rules, form)
 
+const resetForm = () => {
+  form.reset();
+  v$.value.$reset();
+  formType.value = 'create';
+}
+
 /*Create*/
 const handleSubmit = async () => {
-  const isValidated = await v$.value.$validate()
-  if (!isValidated) return
+  try {
+    const isValidated = await v$.value.$validate()
+    if (!isValidated) return
 
-  if (formType.value === 'create') {
-    form.post(route('warehouse.store'), {
-      onSuccess: () => {
-        form.reset();
-        v$.value.$reset();
-        showModal.value = false;
-      }
-    })
-  } else {
-    form.put(route('warehouse.update', {id: form.id}), {
-      onSuccess: () => {
-        form.reset();
-        v$.value.$reset();
-        showModal.value = false;
-      }
-    })
+    if (formType.value === 'create') {
+      form.post(route('warehouse.store'), {
+        onSuccess: () => {
+          resetForm();
+          showModal.value = false;
+        },
+        onError: (errors) => {
+          console.error('Create Error:', errors);
+        }
+      })
+    } else if (formType.value === 'update') {
+
+      form.put(route('warehouse.update', {id: form.id}), {
+        onSuccess: () => {
+          resetForm();
+          showModal.value = false;
+        },
+        onError: (errors) => {
+          console.error('Update Error:', errors);
+        }
+      })
+    }
+  } catch (error) {
+    console.error('Submit error:', error);
   }
+}
+
+// Add New button handler
+const handleAddNew = () => {
+  resetForm();
+  showModal.value = true;
+  formType.value = 'create';
 }
 
 /*Update*/
 const getRowInfo = (id) => {
-  axios.get(route("warehouse.edit", {id: id})).then(response => {
-    form.id = response.data.id;
-    form.code = response.data.code;
-    form.name = response.data.name;
-    form.warehouse_type_id = response.data.warehouse_type_id;
-    form.department_id = response.data.department_id;
-    form.employee_id = response.data.employee_id;
-  })
-  showModal.value = true;
-  formType.value = "update"
+    axios.get(route("warehouse.edit", {id: id})).then(response => {
+        form.id = response.data.id;
+        form.code = response.data.code;
+        form.name = response.data.name;
+        form.warehouse_type_id = response.data.warehouse_type_id;
+        form.department_id = response.data.department_id;
+        form.employee_id = response.data.employee_id;
+    })
+    showModal.value = true;
+    formType.value = "update"
+}
+
+// Modal closed handler
+const handleModalClosed = () => {
+  resetForm();
 }
 
 /*Delete*/
 const handleDelete = (id) => {
-  router.delete(route("department.destroy", id), {
+  router.delete(route("warehouse.destroy", id), {
     preserveState: true,
   });
 }
@@ -182,7 +208,7 @@ const handleDelete = (id) => {
       </simple-button>
 
       <!--Add New Button-->
-      <simple-button @click="showModal = true; formType = 'create'" color="green">
+      <simple-button @click="handleAddNew" color="green">
         <font-awesome-icon icon="plus" class="mr-2"/>
         <span v-text="tm('action.addNew')"/>
       </simple-button>
@@ -193,8 +219,10 @@ const handleDelete = (id) => {
         :headers="tableHeaders"
         @view="router.visit(route('warehouse.show', $event.id))"
         @edit="getRowInfo($event.id)"
+        @delete="handleDelete($event.id)"
         show-action
         edit-action
+        delete-action
     >
       <!--Warehouse Type-->
       <template #warehouse_type_id="{props}">
@@ -228,7 +256,7 @@ const handleDelete = (id) => {
         :subHeader="tm('title.createPage.subTitle')"
         closeable
         close-button
-        @closed="form.reset()"
+        @closed="handleModalClosed"
     >
       <Form full-size>
         <FormSection
@@ -266,7 +294,7 @@ const handleDelete = (id) => {
         </FormSection>
       </Form>
       <template #footer>
-        <SimpleButton :label="t('action.reset')" color="orange" @click="form.reset()" />
+        <SimpleButton :label="t('action.reset')" color="orange" @click="resetForm" />
         <SimpleButton :label="t(`action.${formType === 'create' ? 'create' : 'update'}`)" color="green" @click="handleSubmit" :loading="form.processing"/>
       </template>
     </Modal>

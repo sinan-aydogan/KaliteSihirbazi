@@ -31,4 +31,25 @@ class StoreDepartmentRequest extends FormRequest
             'department_id' => 'required_if:type,sub|exclude_if:type,main|exists:departments,id',
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'code.required' => 'Departman kodu gereklidir.',
+            'code.string' => 'Departman kodu metin olmalıdır.',
+            'code.unique' => 'Departman kodu benzersiz olmalıdır.',
+            'code.max' => 'Departman kodu en fazla 10 karakter olabilir.',
+            'name.required' => 'Departman adı gereklidir.',
+            'name.string' => 'Departman adı metin olmalıdır.',
+            'name.max' => 'Departman adı en fazla 255 karakter olabilir.',
+            'employee_id.required' => 'Departman yöneticisi gereklidir.',
+            'employee_id.exists' => 'Seçilen departman yöneticisi geçersizdir.',
+            'type.required' => 'Departman tipi gereklidir.',
+        ];
+    }
 }

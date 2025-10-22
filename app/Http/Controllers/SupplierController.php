@@ -23,7 +23,7 @@ class SupplierController extends Controller
         $supplierTags = SupplierTag::all();
 
         return Inertia::render('Modules/BusinessManagement/Supplier/IndexPage', [
-            'supplierTableData' => $suppliers,
+            'tableData' => $suppliers,
             'supplierTypes' => $supplierTypes,
             'supplierTags' => $supplierTags,
         ]);
@@ -47,20 +47,32 @@ class SupplierController extends Controller
      */
     public function store(StoreSupplierRequest $request)
     {
-        $supplier = new Supplier;
-        $supplier->code = $request->code;
-        $supplier->name = $request->name;
-        $supplier->save();
+        try {
+            $supplier = Supplier::create($request->validated());
 
-        /*Types*/
-        $supplier->types()->sync($request->types);
-        $supplier->tags()->sync($request->tags);
+            if ($request->has('types')) {
+                $supplier->types()->sync($request->types);
+            }
+            if ($request->has('tags')) {
+                $supplier->tags()->sync($request->tags);
+            }
 
-        $supplier->save();
+            session()->flash('message', [
+                'type' => 'success',
+                'content' => __('messages.supplier.created', ['supplier' => $supplier->name])
+            ]);
 
-        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.department.created', ['supplier' => $supplier->name])]);
+            return redirect()->back()->with([
+                'supplier' => $supplier,
+            ]);
+        } catch (\Exception $e) {
+            session()->flash('message', [
+                'type'=> 'error',
+                'content'=>__('messages.supplier.creation_failed')
+            ]);
 
-        return redirect()->back();
+            return redirect()->back();
+        }
     }
 
     /**
@@ -82,7 +94,8 @@ class SupplierController extends Controller
      */
     public function edit(Supplier $supplier)
     {
-        //
+        $supplier->load('types', 'tags');
+        return response()->json($supplier);
     }
 
     /**
@@ -94,8 +107,35 @@ class SupplierController extends Controller
      */
     public function update(UpdateSupplierRequest $request, Supplier $supplier)
     {
-        //
+        try {
+            $supplier->update($request->validated());
+
+            // Update relationships
+            if ($request->has('types')) {
+                $supplier->types()->sync($request->types);
+            }
+            if ($request->has('tags')) {
+                $supplier->tags()->sync($request->tags);
+            }
+
+            session()->flash('message', [
+                'type'=> 'success',
+                'content'=>__('messages.supplier.updated', ['supplier' => $supplier->name])
+            ]);
+
+            return redirect()->back()->with([
+                'supplier' => $supplier,
+            ]);
+        } catch (\Exception $e) {
+            session()->flash('message', [
+                'type'=> 'error',
+                'content'=>__('messages.supplier.update_failed')
+            ]);
+
+            return redirect()->back();
+        }
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -105,6 +145,22 @@ class SupplierController extends Controller
      */
     public function destroy(Supplier $supplier)
     {
-        //
+        try {
+            $supplier->delete();
+
+            session()->flash('message', [
+                'type'=> 'success',
+                'content'=>__('messages.supplier.deleted', ['supplier' => $supplier->name])
+            ]);
+
+            return redirect()->back();
+        } catch (\Exception $e) {
+            session()->flash('message', [
+                'type' => 'error',
+                'content' => __('messages.supplier.delete_failed', ['supplier' => $supplier->name])
+            ]);
+
+            return redirect()->back();
+        }
     }
 }

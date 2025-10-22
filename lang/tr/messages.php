@@ -9,10 +9,12 @@ return [
 
     'department' => [
         'created' => ':department isimli departman oluşturuldu.',
+        'creation_failed' => ':department isimli departman oluşturulamadı.',
         'deleted' => ':department isimli departman silindi.',
         'permanentDeleted' => ':department isimli departman kalıcı olarak silindi.',
         'restored' => ':department isimli departman geri getirildi.',
-        'updated' => ':department isimli departman güncellendi.'
+        'updated' => ':department isimli departman güncellendi.',
+        'update_failed' => ':department isimli departman güncellenemedi.',
     ],
     'vehicle' => [
         'created' => ':vehicle plakalı araç oluşturuldu.',
@@ -23,10 +25,12 @@ return [
     ],
     'jobDescription' => [
         'created' => ':jobDescription isimli görev tanımı oluşturuldu.',
+        'creation_failed' => ':jobDescription isimli görev tanımı oluşturulamadı.',
         'deleted' => ':jobDescription isimli görev tanımı silindi.',
         'permanentDeleted' => ':jobDescription isimli görev tanımı kalıcı olarak silindi.',
         'restored' => ':jobDescription isimli görev tanımı geri getirildi.',
-        'updated' => ':jobDescription isimli görev tanımı güncellendi.'
+        'updated' => ':jobDescription isimli görev tanımı güncellendi.',
+        'update_failed' => ':jobDescription isimli görev tanımı güncellenemedi.',
     ],
     'jobDescriptionAssignment' => [
         'created' => ':employee personeli :jobDescription olarak atandı.',
@@ -37,17 +41,21 @@ return [
     ],
     'employee' => [
         'created' => ':employee isimli personel oluşturuldu.',
+        'creation_failed' => ':employee isimli personel oluşturulamadı.',
         'deleted' => ':employee isimli personel silindi.',
         'permanentDeleted' => ':employee isimli personel kalıcı olarak silindi.',
         'restored' => ':employee isimli personel geri getirildi.',
-        'updated' => ':employee isimli personelin bilgileri güncellendi.'
+        'updated' => ':employee isimli personelin bilgileri güncellendi.',
+        'update_failed' => ':employee isimli personelin bilgileri güncellenemedi.',
     ],
     'warehouse' => [
         'created' => ':warehouse isimli depo oluşturuldu.',
+        'creation_failed' => ':warehouse isimli depo oluşturulamadı.',
         'deleted' => ':warehouse isimli depo silindi.',
         'permanentDeleted' => ':warehouse isimli depo kalıcı olarak silindi.',
         'restored' => ':warehouse isimli depo geri getirildi.',
-        'updated' => ':warehouse isimli depo güncellendi.'
+        'updated' => ':warehouse isimli depo güncellendi.',
+        'update_failed' => ':warehouse isimli depo güncellenemedi.'
     ],
     'warehouseType' => [
         'created' => ':warehouseType isimli depo tipi oluşturuldu.',
@@ -149,5 +157,15 @@ return [
         'participantUpdated' => 'Katılımcı bilgileri başarıyla güncellendi.',
         'participantRemoved' => 'Katılımcı eğitimden başarıyla çıkarıldı.',
         'mediaDeleted' => 'Medya dosyası başarıyla silindi.'
-    ]
+    ],
+    'supplier' => [
+        'created' => ':supplier isimli tedarikçi oluşturuldu.',
+        'creation_failed' => ':supplier isimli tedarikçi oluşturulamadı.',
+        'deleted' => ':supplier isimli tedarikçi silindi.',
+        'delete_failed' => ':supplier isimli tedarikçi silinemedi.',
+        'permanentDeleted' => ':supplier isimli tedarikçi kalıcı olarak silindi.',
+        'restored' => ':supplier isimli tedarikçi geri getirildi.',
+        'updated' => ':supplier isimli tedarikçi güncellendi.',
+        'update_failed' => ':supplier isimli tedarikçi güncellenemedi.',
+    ],
 ];

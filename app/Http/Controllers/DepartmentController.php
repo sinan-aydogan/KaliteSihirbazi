@@ -54,18 +54,27 @@ class DepartmentController extends Controller
      */
     public function store(StoreDepartmentRequest $request)
     {
-        $department = new Department;
-        $department->code = $request->code;
-        $department->name = $request->name;
-        $department->department_id = $request->department_id;
-        $department->type = $request->type;
-        $department->employee_id = $request->employee_id;
+        try{
+            $department = Department::create($request->validated());
 
-        $department->save();
+            session()->flash('message',
+            [
+                'type'=> 'success',
+                'content'=>__('messages.department.created', ['department' => $department->name])
+            ]);
 
-        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.department.created', ['department' => $department->name])]);
+            return redirect()->back()->with([
+                 'department' => $department,
+             ]);
+        }
+        catch (\Exception $e) {
+            session()->flash('message', [
+                'type'=> 'error',
+                'content'=>__('messages.department.creation_failed')
+            ]);
 
-        return redirect()->back();
+            return redirect()->back();
+        }
     }
 
     /**
@@ -110,17 +119,26 @@ class DepartmentController extends Controller
      */
     public function update(UpdateDepartmentRequest $request, Department $department)
     {
-        $department->code = $request->code;
-        $department->name = $request->name;
-        $department->department_id = $request->department_id;
-        $department->type = $request->type;
-        $department->employee_id = $request->employee_id;
+        try {
+            $department->update($request->validated());
 
-        $department->save();
+            session()->flash('message', [
+                'type'=> 'success',
+                'content'=>__('messages.department.updated', ['department' => $department->name])
+            ]);
 
-        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.department.updated', ['department' => $department->name])]);
+            return redirect()->back()->with([
+                'department' => $department,
+            ]);
+        } catch (\Exception $e) {
+            session()->flash('message', [
+                'type'=> 'error',
+                'content'=>__('messages.department.update_failed')
+            ]);
 
-        return redirect()->back();
+            return redirect()->back();
+        }
+
     }
 
     /**

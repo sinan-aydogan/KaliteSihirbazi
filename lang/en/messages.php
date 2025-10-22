@@ -9,10 +9,12 @@ return [
 
     'department' => [
         'created' => 'The new department named :department has been created successfully',
+        'creation_failed' => 'The department named :department has been creation failed',
         'deleted' => 'The department named :department deleted successfully',
         'permanentDeleted' => 'The department named :department permanently deleted successfully',
         'restored' => 'The department named :department restored successfully',
-        'updated' => 'The department named :department has been updated successfully'
+        'updated' => 'The department named :department has been updated successfully',
+        'update_failed' => 'The department named :department has been update failed',
     ],
     'vehicle' => [
         'created' => 'The new vehicle with licence plate :vehicle has been created successfully',
@@ -23,10 +25,12 @@ return [
     ],
     'jobDescription' => [
         'created' => 'The new job description named :jobDescription has been created successfully',
+        'creation_failed' => 'The job description named :jobDescription has been creation failed',
         'deleted' => 'The job description named :jobDescription deleted successfully',
         'permanentDeleted' => 'The job description named :jobDescription permanently deleted successfully',
         'restored' => 'The job description named :jobDescription restored successfully',
-        'updated' => 'The job description named :jobDescription has been updated successfully'
+        'updated' => 'The job description named :jobDescription has been updated successfully',
+        'update_failed' => 'The job description named :jobDescription has been update failed',
     ],
     'jobDescriptionAssignment' => [
         'created' => ':employee assigned as a :jobDescription successfully',
@@ -37,17 +41,20 @@ return [
     ],
     'employee' => [
         'created' => 'The new employee named :employee has been created successfully',
+        'creation_failed' => 'The employee named :employee has been creation failed',
         'deleted' => 'The employee named :employee deleted successfully',
         'permanentDeleted' => 'The employee named :employee permanently deleted successfully',
         'restored' => 'The employee named :employee restored successfully',
-        'updated' => 'The employee named :employee has been updated successfully'
+        'updated' => 'The employee named :employee has been updated successfully',
     ],
     'warehouse' => [
         'created' => 'The new warehouse named :warehouse has been created successfully',
+        'creation_failed' => 'The warehouse named :warehouse has been creation failed',
         'deleted' => 'The warehouse named :warehouse deleted successfully',
         'permanentDeleted' => 'The warehouse named :warehouse permanently deleted successfully',
         'restored' => 'The warehouse named :warehouse restored successfully',
-        'updated' => 'The warehouse named :warehouse has been updated successfully'
+        'updated' => 'The warehouse named :warehouse has been updated successfully',
+        'update_failed' => 'The warehouse named :warehouse has been update failed'
     ],
     'warehouseType' => [
         'created' => 'The new warehouse type named :warehouseType has been created successfully',
@@ -149,5 +156,15 @@ return [
         'participantUpdated' => 'Participant information has been updated successfully',
         'participantRemoved' => 'Participant has been removed from the education successfully',
         'mediaDeleted' => 'Media file has been deleted successfully'
-    ]
+    ],
+    'supplier' => [
+        'created' => 'The new supplier named :supplier has been created successfully',
+        'creation_failed' => 'The supplier named :supplier has been creation failed',
+        'deleted' => 'The supplier named :supplier deleted successfully',
+        'delete_failed' => 'The supplier named :supplier has been delete failed',
+        'permanentDeleted' => 'The supplier named :supplier permanently deleted successfully',
+        'restored' => 'The supplier named :supplier restored successfully',
+        'updated' => 'The supplier named :supplier has been updated successfully',
+        'update_failed' => 'The supplier named :supplier has been update failed',
+    ],
 ];

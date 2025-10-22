@@ -128,16 +128,19 @@ const getData = (query) => {
 const lengthValidation = (value) => value.length > 0
 
 const rules = ref({
-  code: {
-    required: helpers.withMessage(t('message.validation.required'), required),
-    maxLength: helpers.withMessage(t('message.validation.maxLength', [10]), maxLength(10))
-  },
-  name: {
-    required: helpers.withMessage(t('message.validation.required'), required),
-    maxLength: helpers.withMessage(t('message.validation.maxLength', [255]), maxLength(255))
-  },
-  department_id: {required: helpers.withMessage(t('message.validation.required'), required)},
-  children_count: {numeric: helpers.withMessage(t('message.validation.number'), numeric)},
+      code: {
+        required: helpers.withMessage(t('message.validation.required'), required),
+        maxLength: helpers.withMessage(t('message.validation.maxLength', [11]), maxLength(11))
+      },
+      name: {
+        required: helpers.withMessage(t('message.validation.required'), required),
+        maxLength: helpers.withMessage(t('message.validation.maxLength', [255]), maxLength(255))
+      },
+    department_id: {required: helpers.withMessage(t('message.validation.required'), required)},
+    birthday: {required: helpers.withMessage(t('message.validation.required'), required)},
+    is_married: {required: helpers.withMessage(t('message.validation.required'), required)},
+    employment_date: {required: helpers.withMessage(t('message.validation.required'), required)},
+    children_count: {numeric: helpers.withMessage(t('message.validation.number'), numeric)},
 })
 
 const v$ = useVuelidate(rules, form)
@@ -193,28 +196,6 @@ const handleSubmit = async () => {
     })
   }
 }
-
-/*Update*/
-const getRowInfo = (id) => {
-  axios.get(route("employee.edit", {id: id})).then(response => {
-    form.id = response.data.id;
-    form.code = response.data.code;
-    form.name = response.data.name;
-    form.type = response.data.type;
-    form.department_id = response.data.department_id;
-    form.employee_id = response.data.employee_id;
-  })
-  showModal.value = true;
-  formType.value = "update"
-}
-
-/*Delete*/
-const handleDelete = (id) => {
-  router.delete(route("employee.destroy", id), {
-    preserveState: true,
-  });
-}
-
 </script>
 
 <template>
@@ -234,9 +215,7 @@ const handleDelete = (id) => {
         :data="tableData"
         :headers="tableHeaders"
         @view="router.visit(route('employee-personal-info.index', $event.id))"
-        @edit="getRowInfo($event.id)"
         show-action
-        edit-action
     >
 
       <!--Employee Name-->
@@ -316,12 +295,12 @@ const handleDelete = (id) => {
           </input-group>
 
           <!-- Is Married? -->
-          <input-group class="col-span-6 sm:col-span-4" labelFor="is_married" :label="tm('term.isMarried')">
+          <input-group class="col-span-6 sm:col-span-4" labelFor="is_married" :label="tm('term.isMarried')" :errors="v$.is_married.$errors">
             <select-input v-model="form.is_married" :options="yesNoQuestions"/>
           </input-group>
 
           <!-- Children Count -->
-          <input-group class="col-span-6 sm:col-span-4" labelFor="name" :label="tm('term.childrenCount')"
+          <input-group class="col-span-6 sm:col-span-4" labelFor="children_count" :label="tm('term.childrenCount')"
                        :errors="v$.children_count.$errors">
             <text-input input-type="number" v-model="form.children_count"/>
           </input-group>
@@ -453,7 +432,7 @@ const handleDelete = (id) => {
           </input-group>
 
           <!-- Employment Date -->
-          <input-group class="col-span-12 sm:col-span-6" labelFor="employmentDate" :label="tm('term.employmentDate')">
+          <input-group class="col-span-12 sm:col-span-6" labelFor="employment_date" :label="tm('term.employmentDate')" :errors="v$.employment_date.$errors">
             <text-input v-model="form.employment_date" inputType="date"/>
           </input-group>
 

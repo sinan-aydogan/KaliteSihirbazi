@@ -32,7 +32,8 @@ class JobDescription extends Model
         'working_hours',
         'overtime_status',
         'travel_status',
-        'status'
+        'status',
+        'requirements'
     ];
 
     /**

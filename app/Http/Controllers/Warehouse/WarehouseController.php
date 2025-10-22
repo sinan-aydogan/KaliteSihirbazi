@@ -22,7 +22,7 @@ class WarehouseController extends Controller
     {
         return Inertia::render("Modules/BusinessManagement/Warehouse/IndexPage", [
             'tableData' => Warehouse::with('supervisor:id,name,has_account','supervisor.account:accountable_id,name', 'type:id,name' ,'department:id,name')->latest('id')->paginate(10),
-            'employees' => Employee::all(['id']),
+            'employees' => Employee::all(['id', 'name']),
             'warehouseTypes' => WarehouseType::all(['id','name']),
             'departments' => Department::all(['id', 'name'])
         ]);
@@ -58,18 +58,25 @@ class WarehouseController extends Controller
      */
     public function store(StoreWarehouseRequest $request)
     {
-        $warehouse = new Warehouse;
-        $warehouse->code = $request->code;
-        $warehouse->name = $request->name;
-        $warehouse->department_id = $request->department_id;
-        $warehouse->warehouse_type_id = $request->warehouse_type_id;
-        $warehouse->employee_id = $request->employee_id;
+        try {
+            $warehouse = Warehouse::create($request->validated());
 
-        $warehouse->save();
+            session()->flash('message', [
+                'type' => 'success',
+                'content' => __('messages.warehouse.created', ['warehouse' => $warehouse->name])
+            ]);
 
-        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.warehouse.created', ['warehouse' => $warehouse->name])]);
+            return redirect()->back()->with([
+                 'warehouse' => $warehouse,
+             ]);
+        } catch (\Exception $e) {
+            session()->flash('message', [
+                'type' => 'error',
+                'content' => __('messages.warehouse.creation_failed')
+            ]);
 
-        return redirect()->back();
+            return redirect()->back();
+        }
     }
 
     /**
@@ -85,7 +92,7 @@ class WarehouseController extends Controller
             'code' => $warehouse->code,
             'name' => $warehouse->name,
             'department_id' => $warehouse->department_id,
-            'warehouse_type_id' => $warehouse->employee_id,
+            'warehouse_type_id' => $warehouse->warehouse_type_id,
             'employee_id' => $warehouse->employee_id,
         ];
 
@@ -114,11 +121,29 @@ class WarehouseController extends Controller
      *
      * @param  \App\Http\Requests\UpdateWarehouseRequest  $request
      * @param  \App\Models\Warehouse\Warehouse  $warehouse
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateWarehouseRequest $request, Warehouse $warehouse)
     {
-        //
+        try {
+            $warehouse->update($request->validated());
+
+            session()->flash('message', [
+                'type'=> 'success',
+                'content'=>__('messages.warehouse.updated', ['warehouse' => $warehouse->name])
+            ]);
+
+            return redirect()->back()->with([
+                'warehouse' => $warehouse,
+            ]);
+        } catch (\Exception $e) {
+            session()->flash('message', [
+                'type'=> 'error',
+                'content'=>__('messages.warehouse.update_failed')
+            ]);
+
+            return redirect()->back();
+        }
     }
 
     /**
@@ -129,7 +154,10 @@ class WarehouseController extends Controller
      */
     public function destroy(Warehouse $warehouse)
     {
-        session()->flash('message', ['type'=> 'danger', 'content'=>__('messages.warehouse.deleted', ['warehouse' => $warehouse->name])]);
+        session()->flash('message', [
+            'type' => 'danger',
+            'content' => __('messages.warehouse.deleted', ['warehouse' => $warehouse->name])
+        ]);
 
         $warehouse->delete();
 
@@ -144,7 +172,10 @@ class WarehouseController extends Controller
      */
     public function permanentDestroy(Warehouse $warehouse)
     {
-        session()->flash('message', ['type'=> 'danger', 'content'=>__('messages.warehouse.permanentDeleted', ['warehouse' => $warehouse->name])]);
+        session()->flash('message', [
+            'type' => 'danger',
+            'content' => __('messages.warehouse.permanentDeleted', ['warehouse' => $warehouse->name])
+        ]);
 
         $warehouse->forceDelete();
 
@@ -159,7 +190,10 @@ class WarehouseController extends Controller
      */
     public function restore(Warehouse $warehouse)
     {
-        session()->flash('message', ['type'=> 'info', 'content'=>__('messages.warehouse.restored', ['warehouse' => $warehouse->name])]);
+        session()->flash('message', [
+            'type' => 'info',
+            'content' => __('messages.warehouse.restored', ['warehouse' => $warehouse->name])
+        ]);
 
         $warehouse->restore();
 
