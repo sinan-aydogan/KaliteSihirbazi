@@ -50,10 +50,12 @@ return [
     ],
     'warehouse' => [
         'created' => ':warehouse isimli depo oluşturuldu.',
+        'creation_failed' => ':warehouse isimli depo oluşturulamadı.',
         'deleted' => ':warehouse isimli depo silindi.',
         'permanentDeleted' => ':warehouse isimli depo kalıcı olarak silindi.',
         'restored' => ':warehouse isimli depo geri getirildi.',
-        'updated' => ':warehouse isimli depo güncellendi.'
+        'updated' => ':warehouse isimli depo güncellendi.',
+        'update_failed' => ':warehouse isimli depo güncellenemedi.'
     ],
     'warehouseType' => [
         'created' => ':warehouseType isimli depo tipi oluşturuldu.',

@@ -24,10 +24,42 @@ class StoreWarehouseRequest extends FormRequest
     public function rules()
     {
         return [
-            'code' => 'required|string|unique:warehouses|max:10',
-            'name' => 'required|string|max:255',
-            'employee_id' => 'required|exists:employees,id',
-            'department_id' => 'required',
+            'code' => 'required|string|unique:warehouses,code|max:10',
+            'name' => 'required|string|max:100',
+            'warehouse_type_id' => 'nullable|exists:warehouse_types,id',
+            'employee_id' => 'nullable|exists:employees,id',
+            'department_id' => 'required|exists:departments,id',
+        ];
+    }
+
+    /**
+     * Get custom error messages for validation rules.
+     */
+    public function messages(): array
+    {
+        return [
+            'code.required' => 'Depo kodu zorunludur.',
+            'code.unique' => 'Bu depo kodu zaten kullanılmaktadır.',
+            'code.max' => 'Depo kodu en fazla 10 karakter olabilir.',
+            'name.required' => 'Depo adı zorunludur.',
+            'name.max' => 'Depo adı en fazla 100 karakter olabilir.',
+            'warehouse_type_id.exists' => 'Seçilen depo türü geçerli değil.',
+            'employee_id.exists' => 'Seçilen çalışan geçerli değil.',
+            'department_id.exists' => 'Seçilen departman geçerli değil.',
+        ];
+    }
+
+    /**
+     * Get custom attribute names for error messages.
+     */
+    public function attributes(): array
+    {
+        return [
+            'code' => 'depo kodu',
+            'name' => 'depo adı',
+            'warehouse_type_id' => 'depo türü',
+            'employee_id' => 'sorumlu çalışan',
+            'department_id' => 'departman',
         ];
     }
 }

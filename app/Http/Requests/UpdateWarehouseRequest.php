@@ -25,16 +25,11 @@ class UpdateWarehouseRequest extends FormRequest
     public function rules()
     {
         return [
-            'code' => [
-                'required',
-                'string',
-                'max:10',
-                Rule::unique('warehouses', 'code')->ignore($this->warehouse)
-            ],
+            'code' => 'required|string|max:10|unique:warehouses,code,'.$this->id,
             'name' => 'required|string|max:100',
             'warehouse_type_id' => 'nullable|exists:warehouse_types,id',
             'employee_id' => 'nullable|exists:employees,id',
-            'department_id' => 'nullable|exists:departments,id',
+            'department_id' => 'required|exists:departments,id',
         ];
     }
 

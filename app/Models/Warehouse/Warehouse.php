@@ -23,7 +23,9 @@ class Warehouse extends Model
         'code',
         'name',
         'type',
-        'user_id'
+        'department_id',
+        'warehouse_type_id',
+        'employee_id',
     ];
 
     // The supervisor of the warehouse

@@ -66,16 +66,16 @@ class WarehouseController extends Controller
                 'content' => __('messages.warehouse.created', ['warehouse' => $warehouse->name])
             ]);
 
-            return redirect()->back();
-
+            return redirect()->back()->with([
+                 'warehouse' => $warehouse,
+             ]);
         } catch (\Exception $e) {
-
             session()->flash('message', [
                 'type' => 'error',
                 'content' => __('messages.warehouse.creation_failed')
             ]);
 
-            return redirect()->back()->withInput();
+            return redirect()->back();
         }
     }
 
@@ -129,20 +129,20 @@ class WarehouseController extends Controller
             $warehouse->update($request->validated());
 
             session()->flash('message', [
-                'type' => 'success',
-                'content' => 'Depo başarıyla güncellendi: ' . $warehouse->name
+                'type'=> 'success',
+                'content'=>__('messages.warehouse.updated', ['warehouse' => $warehouse->name])
+            ]);
+
+            return redirect()->back()->with([
+                'warehouse' => $warehouse,
+            ]);
+        } catch (\Exception $e) {
+            session()->flash('message', [
+                'type'=> 'error',
+                'content'=>__('messages.warehouse.update_failed')
             ]);
 
             return redirect()->back();
-
-        } catch (\Exception $e) {
-
-            session()->flash('message', [
-                'type' => 'error',
-                'content' => __('messages.warehouse.update_failed')
-            ]);
-
-            return redirect()->back()->withInput();
         }
     }
 

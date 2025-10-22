@@ -49,10 +49,12 @@ return [
     ],
     'warehouse' => [
         'created' => 'The new warehouse named :warehouse has been created successfully',
+        'creation_failed' => 'The warehouse named :warehouse has been creation failed',
         'deleted' => 'The warehouse named :warehouse deleted successfully',
         'permanentDeleted' => 'The warehouse named :warehouse permanently deleted successfully',
         'restored' => 'The warehouse named :warehouse restored successfully',
-        'updated' => 'The warehouse named :warehouse has been updated successfully'
+        'updated' => 'The warehouse named :warehouse has been updated successfully',
+        'update_failed' => 'The warehouse named :warehouse has been update failed'
     ],
     'warehouseType' => [
         'created' => 'The new warehouse type named :warehouseType has been created successfully',

@@ -2,7 +2,6 @@
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {ref} from "vue";
 import {useForm, router} from "@inertiajs/vue3";
-import axios from 'axios';
 
 // Components
 import Modal from "@/Components/Modal/Modal.vue"
@@ -114,7 +113,6 @@ const rules = ref({
     required: helpers.withMessage(t('message.validation.required'), required),
     maxLength: helpers.withMessage(t('message.validation.maxLength', [255]), maxLength(255))
   },
-  warehouse_type_id: {required: helpers.withMessage(t('message.validation.required'), required)},
   department_id: {required: helpers.withMessage(t('message.validation.required'), required)},
 })
 
@@ -168,27 +166,16 @@ const handleAddNew = () => {
 
 /*Update*/
 const getRowInfo = (id) => {
-  try {
-    // Find the warehouse data from table data instead of API call
-    const warehouse = props.tableData.data.find(item => item.id === id);
-
-    if (warehouse) {
-      formType.value = "update";
-      showModal.value = true;
-
-      form.id = warehouse.id;
-      form.code = warehouse.code;
-      form.name = warehouse.name;
-      form.warehouse_type_id = warehouse.warehouse_type_id;
-      form.department_id = warehouse.department_id;
-      form.employee_id = warehouse.supervisor_id;
-    } else {
-      console.error('Warehouse not found in table data');
-    }
-
-  } catch (error) {
-    console.error('Error setting warehouse data:', error);
-  }
+    axios.get(route("warehouse.edit", {id: id})).then(response => {
+        form.id = response.data.id;
+        form.code = response.data.code;
+        form.name = response.data.name;
+        form.warehouse_type_id = response.data.warehouse_type_id;
+        form.department_id = response.data.department_id;
+        form.employee_id = response.data.employee_id;
+    })
+    showModal.value = true;
+    formType.value = "update"
 }
 
 // Modal closed handler
@@ -198,7 +185,7 @@ const handleModalClosed = () => {
 
 /*Delete*/
 const handleDelete = (id) => {
-  router.delete(route("department.destroy", id), {
+  router.delete(route("warehouse.destroy", id), {
     preserveState: true,
   });
 }
@@ -232,8 +219,10 @@ const handleDelete = (id) => {
         :headers="tableHeaders"
         @view="router.visit(route('warehouse.show', $event.id))"
         @edit="getRowInfo($event.id)"
+        @delete="handleDelete($event.id)"
         show-action
         edit-action
+        delete-action
     >
       <!--Warehouse Type-->
       <template #warehouse_type_id="{props}">
