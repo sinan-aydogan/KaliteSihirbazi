@@ -233,7 +233,6 @@ const handleCloseModal = () => {
                 <span v-text="$t('action.addNew')"/>
             </simple-button>
         </template>
-        sss
         <Table
             :data="tableData"
             :headers="tableHeaders"
