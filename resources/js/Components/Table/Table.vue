@@ -303,14 +303,14 @@ debouncedWatch(filters, (value) => {
     <!--Pagination-->
     <div v-if="data['data'] && data.total>data.per_page" class="py-3 flex items-center justify-between">
         <div class="grid grid-cols-2 w-full sm:hidden select-none">
-            <Link :href="data?.meta?.links ? data.meta.links[0].url : data.prev_page_url"
+            <Link :href="(data?.meta?.links ? data.meta.links[0].url : data.prev_page_url) ?? '#table'"
                   class="col-span-1 space-x-2 inline-flex place-self-start items-center px-4 py-2 border dark:border-transparent border-gray-300 text-sm font-medium rounded-md text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-700 hover:bg-gray-50"
                   :class="{'opacity-25 pointer-events-none': data?.meta?.links ? data.meta.links[0].url === null : data.prev_page_url  === null}"
             >
                 <font-awesome-icon icon="chevron-left" size="sm" aria-hidden="true"/>
                 <span v-text="t('term.previous')"></span>
             </Link>
-            <Link :href="data?.meta?.links ? data.meta.links[data.meta.links.length-1].url : data.next_page_url"
+            <Link :href="(data?.meta?.links ? data.meta.links[data.meta.links.length-1].url : data.next_page_url) ?? '#table'"
                   class="col-span-1 ml-3 space-x-2 relative inline-flex  place-self-end items-center px-4 py-2 border dark:border-transparent border-gray-300 text-sm font-medium rounded-md text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-700 hover:bg-gray-50"
                   :class="{'opacity-25 pointer-events-none': data?.meta?.links ? data.meta.links[data.meta.links.length-1].url === null : data.next_page_url  === null}"
             >
@@ -339,7 +339,7 @@ debouncedWatch(filters, (value) => {
 
                     <template v-for="(link,index) in data?.meta?.links ? data.meta.links : data.links" :key="index">
                         <!--Previous-->
-                        <Link v-if="index === 0" :href="link.url" :disabled="link.url"
+                        <Link v-if="index === 0" :href="link.url ?? '#table'"
                               class="relative inline-flex items-center px-1 rounded-l-md border dark:border-0 dark:border-r dark:border-slate-800 border-gray-300 bg-white dark:bg-slate-600 text-sm font-medium text-slate-800 dark:text-slate-200 hover:bg-gray-50 dark:hover:bg-slate-800 disabled:opacity-25"
                               :class="{'opacity-25 pointer-events-none' : !link.url}"
                         >
@@ -349,7 +349,7 @@ debouncedWatch(filters, (value) => {
 
                         <!--Page-->
                         <Link
-                            v-if="index> 0 && (data?.meta?.links ? data.meta.links.length !== index+1 : data.links.length !== index+1)"
+                            v-if="link.url && index> 0 && (data?.meta?.links ? data.meta.links.length !== index+1 : data.links.length !== index+1)"
                             :href="link.url" aria-current="page"
                             class="relative inline-flex items-center px-3 py-1  border dark:border-t-0 dark:border-b-0 dark:text-slate-200 text-sm font-medium"
                             :class="{
@@ -368,7 +368,7 @@ debouncedWatch(filters, (value) => {
 
                         <!--Next-->
                         <Link v-if="data['meta'] ? data.meta.links.length === index+1 : data.links.length === index+1"
-                              :href="link.url"
+                              :href="link.url ?? '#table'"
                               class="relative inline-flex items-center px-1 rounded-r-md border dark:border-0 dark:border-l dark:border-slate-800 border-gray-300 bg-white dark:bg-slate-600 text-sm font-medium text-slate-800 dark:text-slate-200 dark:hover:bg-slate-800 hover:bg-gray-50"
                               :class="{'opacity-25 pointer-events-none' : !link.url}"
                         >

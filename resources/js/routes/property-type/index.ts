@@ -420,7 +420,7 @@ edit.form = editForm
 * @see app/Http/Controllers/Setting/PropertyTypeController.php:28
 * @route '/settings/property-type/{property_type}'
 */
-export const update = (args: { property_type: number | { id: number } } | [property_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { property_type: string | number | { id: string | number } } | [property_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -435,7 +435,7 @@ update.definition = {
 * @see app/Http/Controllers/Setting/PropertyTypeController.php:28
 * @route '/settings/property-type/{property_type}'
 */
-update.url = (args: { property_type: number | { id: number } } | [property_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+update.url = (args: { property_type: string | number | { id: string | number } } | [property_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { property_type: args }
     }
@@ -468,7 +468,7 @@ update.url = (args: { property_type: number | { id: number } } | [property_type:
 * @see app/Http/Controllers/Setting/PropertyTypeController.php:28
 * @route '/settings/property-type/{property_type}'
 */
-update.put = (args: { property_type: number | { id: number } } | [property_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { property_type: string | number | { id: string | number } } | [property_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -478,7 +478,7 @@ update.put = (args: { property_type: number | { id: number } } | [property_type:
 * @see app/Http/Controllers/Setting/PropertyTypeController.php:28
 * @route '/settings/property-type/{property_type}'
 */
-update.patch = (args: { property_type: number | { id: number } } | [property_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update.patch = (args: { property_type: string | number | { id: string | number } } | [property_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
@@ -488,7 +488,7 @@ update.patch = (args: { property_type: number | { id: number } } | [property_typ
 * @see app/Http/Controllers/Setting/PropertyTypeController.php:28
 * @route '/settings/property-type/{property_type}'
 */
-const updateForm = (args: { property_type: number | { id: number } } | [property_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateForm = (args: { property_type: string | number | { id: string | number } } | [property_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -503,7 +503,7 @@ const updateForm = (args: { property_type: number | { id: number } } | [property
 * @see app/Http/Controllers/Setting/PropertyTypeController.php:28
 * @route '/settings/property-type/{property_type}'
 */
-updateForm.put = (args: { property_type: number | { id: number } } | [property_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.put = (args: { property_type: string | number | { id: string | number } } | [property_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -518,7 +518,7 @@ updateForm.put = (args: { property_type: number | { id: number } } | [property_t
 * @see app/Http/Controllers/Setting/PropertyTypeController.php:28
 * @route '/settings/property-type/{property_type}'
 */
-updateForm.patch = (args: { property_type: number | { id: number } } | [property_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.patch = (args: { property_type: string | number | { id: string | number } } | [property_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -535,7 +535,7 @@ update.form = updateForm
 * @see app/Http/Controllers/Setting/PropertyTypeController.php:35
 * @route '/settings/property-type/{property_type}'
 */
-export const destroy = (args: { property_type: number | { id: number } } | [property_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { property_type: string | number | { id: string | number } } | [property_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -550,7 +550,7 @@ destroy.definition = {
 * @see app/Http/Controllers/Setting/PropertyTypeController.php:35
 * @route '/settings/property-type/{property_type}'
 */
-destroy.url = (args: { property_type: number | { id: number } } | [property_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { property_type: string | number | { id: string | number } } | [property_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { property_type: args }
     }
@@ -583,7 +583,7 @@ destroy.url = (args: { property_type: number | { id: number } } | [property_type
 * @see app/Http/Controllers/Setting/PropertyTypeController.php:35
 * @route '/settings/property-type/{property_type}'
 */
-destroy.delete = (args: { property_type: number | { id: number } } | [property_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { property_type: string | number | { id: string | number } } | [property_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -593,7 +593,7 @@ destroy.delete = (args: { property_type: number | { id: number } } | [property_t
 * @see app/Http/Controllers/Setting/PropertyTypeController.php:35
 * @route '/settings/property-type/{property_type}'
 */
-const destroyForm = (args: { property_type: number | { id: number } } | [property_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { property_type: string | number | { id: string | number } } | [property_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -608,7 +608,7 @@ const destroyForm = (args: { property_type: number | { id: number } } | [propert
 * @see app/Http/Controllers/Setting/PropertyTypeController.php:35
 * @route '/settings/property-type/{property_type}'
 */
-destroyForm.delete = (args: { property_type: number | { id: number } } | [property_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { property_type: string | number | { id: string | number } } | [property_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',

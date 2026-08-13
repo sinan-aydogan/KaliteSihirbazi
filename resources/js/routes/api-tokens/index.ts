@@ -141,7 +141,7 @@ store.form = storeForm
 * @see app/Http/Controllers/ApiTokenController.php:43
 * @route '/user/api-tokens/{token}'
 */
-export const update = (args: { token: number | { id: number } } | [token: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { token: string | number | { id: string | number } } | [token: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -156,7 +156,7 @@ update.definition = {
 * @see app/Http/Controllers/ApiTokenController.php:43
 * @route '/user/api-tokens/{token}'
 */
-update.url = (args: { token: number | { id: number } } | [token: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+update.url = (args: { token: string | number | { id: string | number } } | [token: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { token: args }
     }
@@ -189,7 +189,7 @@ update.url = (args: { token: number | { id: number } } | [token: number | { id: 
 * @see app/Http/Controllers/ApiTokenController.php:43
 * @route '/user/api-tokens/{token}'
 */
-update.put = (args: { token: number | { id: number } } | [token: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { token: string | number | { id: string | number } } | [token: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -199,7 +199,7 @@ update.put = (args: { token: number | { id: number } } | [token: number | { id: 
 * @see app/Http/Controllers/ApiTokenController.php:43
 * @route '/user/api-tokens/{token}'
 */
-const updateForm = (args: { token: number | { id: number } } | [token: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateForm = (args: { token: string | number | { id: string | number } } | [token: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -214,7 +214,7 @@ const updateForm = (args: { token: number | { id: number } } | [token: number | 
 * @see app/Http/Controllers/ApiTokenController.php:43
 * @route '/user/api-tokens/{token}'
 */
-updateForm.put = (args: { token: number | { id: number } } | [token: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.put = (args: { token: string | number | { id: string | number } } | [token: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -231,7 +231,7 @@ update.form = updateForm
 * @see app/Http/Controllers/ApiTokenController.php:58
 * @route '/user/api-tokens/{token}'
 */
-export const destroy = (args: { token: number | { id: number } } | [token: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { token: string | number | { id: string | number } } | [token: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -246,7 +246,7 @@ destroy.definition = {
 * @see app/Http/Controllers/ApiTokenController.php:58
 * @route '/user/api-tokens/{token}'
 */
-destroy.url = (args: { token: number | { id: number } } | [token: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { token: string | number | { id: string | number } } | [token: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { token: args }
     }
@@ -279,7 +279,7 @@ destroy.url = (args: { token: number | { id: number } } | [token: number | { id:
 * @see app/Http/Controllers/ApiTokenController.php:58
 * @route '/user/api-tokens/{token}'
 */
-destroy.delete = (args: { token: number | { id: number } } | [token: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { token: string | number | { id: string | number } } | [token: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -289,7 +289,7 @@ destroy.delete = (args: { token: number | { id: number } } | [token: number | { 
 * @see app/Http/Controllers/ApiTokenController.php:58
 * @route '/user/api-tokens/{token}'
 */
-const destroyForm = (args: { token: number | { id: number } } | [token: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { token: string | number | { id: string | number } } | [token: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -304,7 +304,7 @@ const destroyForm = (args: { token: number | { id: number } } | [token: number |
 * @see app/Http/Controllers/ApiTokenController.php:58
 * @route '/user/api-tokens/{token}'
 */
-destroyForm.delete = (args: { token: number | { id: number } } | [token: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { token: string | number | { id: string | number } } | [token: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',

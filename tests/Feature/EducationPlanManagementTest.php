@@ -3,9 +3,18 @@
 use App\Models\HumanResources\Education\Education;
 use App\Models\HumanResources\Education\EducationPlan;
 use App\Models\User;
+use Inertia\Testing\AssertableInertia as Assert;
 
 beforeEach(function () {
     $this->actingAs(User::factory()->create());
+});
+
+test('education plan index renders its inertia page', function () {
+    $this->get(route('education-plan.index'))
+        ->assertOk()
+        ->assertInertia(fn (Assert $page) => $page
+            ->component('Modules/HumanResources/EducationPlan/IndexPage', false)
+            ->has('tableData.data'));
 });
 
 test('education plan validates chronology and unique names', function () {

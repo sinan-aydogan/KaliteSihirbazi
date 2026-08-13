@@ -271,9 +271,10 @@ watch(
 <template>
   <teleport to="body">
     <transition leave-active-class="duration-200">
-      <div v-show="modelValue" class="fixed flex inset-0 overflow-y-auto sm:px-0 z-50" :class="[
+      <div v-show="modelValue" class="fixed inset-0 z-50 flex justify-center overflow-hidden p-3 sm:p-6" :class="[
                 {
-                    'items-center justify-center': position === 'center',
+                    'items-center': position === 'center',
+                    'items-start': position !== 'center',
                 },
             ]" scroll-region>
         <transition enter-active-class="ease-out duration-300" enter-from-class="opacity-0"
@@ -291,8 +292,8 @@ watch(
                     leave-from-class="opacity-100 translate-y-0 sm:scale-100"
                     leave-to-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
           <div id="draggable " v-if="modelValue"
-               class="relative mx-auto flex h-min w-full max-w-[calc(100%-1.5rem)] transform flex-col overflow-hidden rounded-xl border border-slate-300 bg-white shadow-2xl shadow-slate-950/25 transition-all dark:border-slate-500 dark:bg-slate-700"
-               :class="[!isExpanded ? maxWidthClass + ' m-6' : '']" :draggable="draggable"
+               class="relative mx-auto flex max-h-[calc(100dvh-1.5rem)] w-full transform flex-col overflow-hidden rounded-xl border border-slate-300 bg-white shadow-2xl shadow-slate-950/25 transition-all sm:max-h-[calc(100dvh-3rem)] dark:border-slate-500 dark:bg-slate-700"
+               :class="[!isExpanded ? maxWidthClass : 'h-full max-h-full']" :draggable="draggable"
                @dragstart="dragStart($event)" @dragend="dragEnd($event)" ref="modalContainer">
             <!--Header-->
             <div
@@ -334,10 +335,10 @@ updateSize();
 
             <!--Body-->
             <div
-                class="flex bg-white px-5 pt-1 pb-4 text-slate-700 dark:bg-slate-700 dark:text-slate-100"
+                class="min-h-0 flex-1 overflow-y-auto bg-white px-5 pt-1 pb-4 text-slate-700 dark:bg-slate-700 dark:text-slate-100"
                 :class="[
                                 {
-                                    'flex-grow': isExpanded,
+                                    'flex': notification,
                                 },
                             ]">
               <!--Special Content for Type-->

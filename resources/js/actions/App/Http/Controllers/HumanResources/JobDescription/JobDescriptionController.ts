@@ -228,7 +228,7 @@ create.form = createForm
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::store
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:37
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:47
 * @route '/job-description'
 */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -243,7 +243,7 @@ store.definition = {
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::store
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:37
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:47
 * @route '/job-description'
 */
 store.url = (options?: RouteQueryOptions) => {
@@ -252,7 +252,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::store
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:37
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:47
 * @route '/job-description'
 */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -262,7 +262,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::store
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:37
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:47
 * @route '/job-description'
 */
 const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -272,7 +272,7 @@ const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => 
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::store
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:37
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:47
 * @route '/job-description'
 */
 storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -284,10 +284,10 @@ store.form = storeForm
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::show
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:54
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:64
 * @route '/job-description/{job_description}'
 */
-export const show = (args: { job_description: number | { id: number } } | [job_description: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { job_description: string | number | { id: string | number } } | [job_description: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -299,10 +299,10 @@ show.definition = {
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::show
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:54
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:64
 * @route '/job-description/{job_description}'
 */
-show.url = (args: { job_description: number | { id: number } } | [job_description: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+show.url = (args: { job_description: string | number | { id: string | number } } | [job_description: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { job_description: args }
     }
@@ -332,50 +332,50 @@ show.url = (args: { job_description: number | { id: number } } | [job_descriptio
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::show
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:54
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:64
 * @route '/job-description/{job_description}'
 */
-show.get = (args: { job_description: number | { id: number } } | [job_description: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { job_description: string | number | { id: string | number } } | [job_description: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::show
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:54
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:64
 * @route '/job-description/{job_description}'
 */
-show.head = (args: { job_description: number | { id: number } } | [job_description: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { job_description: string | number | { id: string | number } } | [job_description: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::show
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:54
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:64
 * @route '/job-description/{job_description}'
 */
-const showForm = (args: { job_description: number | { id: number } } | [job_description: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const showForm = (args: { job_description: string | number | { id: string | number } } | [job_description: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::show
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:54
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:64
 * @route '/job-description/{job_description}'
 */
-showForm.get = (args: { job_description: number | { id: number } } | [job_description: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.get = (args: { job_description: string | number | { id: string | number } } | [job_description: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::show
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:54
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:64
 * @route '/job-description/{job_description}'
 */
-showForm.head = (args: { job_description: number | { id: number } } | [job_description: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.head = (args: { job_description: string | number | { id: string | number } } | [job_description: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -389,10 +389,10 @@ show.form = showForm
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::edit
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:84
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:94
 * @route '/job-description/{job_description}/edit'
 */
-export const edit = (args: { job_description: number | { id: number } } | [job_description: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { job_description: string | number | { id: string | number } } | [job_description: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -404,10 +404,10 @@ edit.definition = {
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::edit
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:84
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:94
 * @route '/job-description/{job_description}/edit'
 */
-edit.url = (args: { job_description: number | { id: number } } | [job_description: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+edit.url = (args: { job_description: string | number | { id: string | number } } | [job_description: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { job_description: args }
     }
@@ -437,50 +437,50 @@ edit.url = (args: { job_description: number | { id: number } } | [job_descriptio
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::edit
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:84
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:94
 * @route '/job-description/{job_description}/edit'
 */
-edit.get = (args: { job_description: number | { id: number } } | [job_description: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { job_description: string | number | { id: string | number } } | [job_description: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::edit
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:84
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:94
 * @route '/job-description/{job_description}/edit'
 */
-edit.head = (args: { job_description: number | { id: number } } | [job_description: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { job_description: string | number | { id: string | number } } | [job_description: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::edit
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:84
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:94
 * @route '/job-description/{job_description}/edit'
 */
-const editForm = (args: { job_description: number | { id: number } } | [job_description: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const editForm = (args: { job_description: string | number | { id: string | number } } | [job_description: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::edit
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:84
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:94
 * @route '/job-description/{job_description}/edit'
 */
-editForm.get = (args: { job_description: number | { id: number } } | [job_description: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.get = (args: { job_description: string | number | { id: string | number } } | [job_description: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::edit
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:84
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:94
 * @route '/job-description/{job_description}/edit'
 */
-editForm.head = (args: { job_description: number | { id: number } } | [job_description: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.head = (args: { job_description: string | number | { id: string | number } } | [job_description: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -494,10 +494,10 @@ edit.form = editForm
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::update
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:94
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:104
 * @route '/job-description/{job_description}'
 */
-export const update = (args: { job_description: number | { id: number } } | [job_description: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { job_description: string | number | { id: string | number } } | [job_description: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -509,10 +509,10 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::update
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:94
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:104
 * @route '/job-description/{job_description}'
 */
-update.url = (args: { job_description: number | { id: number } } | [job_description: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+update.url = (args: { job_description: string | number | { id: string | number } } | [job_description: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { job_description: args }
     }
@@ -542,30 +542,30 @@ update.url = (args: { job_description: number | { id: number } } | [job_descript
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::update
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:94
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:104
 * @route '/job-description/{job_description}'
 */
-update.put = (args: { job_description: number | { id: number } } | [job_description: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { job_description: string | number | { id: string | number } } | [job_description: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::update
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:94
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:104
 * @route '/job-description/{job_description}'
 */
-update.patch = (args: { job_description: number | { id: number } } | [job_description: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update.patch = (args: { job_description: string | number | { id: string | number } } | [job_description: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::update
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:94
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:104
 * @route '/job-description/{job_description}'
 */
-const updateForm = (args: { job_description: number | { id: number } } | [job_description: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateForm = (args: { job_description: string | number | { id: string | number } } | [job_description: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -577,10 +577,10 @@ const updateForm = (args: { job_description: number | { id: number } } | [job_de
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::update
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:94
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:104
 * @route '/job-description/{job_description}'
 */
-updateForm.put = (args: { job_description: number | { id: number } } | [job_description: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.put = (args: { job_description: string | number | { id: string | number } } | [job_description: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -592,10 +592,10 @@ updateForm.put = (args: { job_description: number | { id: number } } | [job_desc
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::update
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:94
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:104
 * @route '/job-description/{job_description}'
 */
-updateForm.patch = (args: { job_description: number | { id: number } } | [job_description: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.patch = (args: { job_description: string | number | { id: string | number } } | [job_description: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -609,10 +609,10 @@ update.form = updateForm
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::destroy
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:106
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:116
 * @route '/job-description/{job_description}'
 */
-export const destroy = (args: { job_description: number | { id: number } } | [job_description: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { job_description: string | number | { id: string | number } } | [job_description: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -624,10 +624,10 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::destroy
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:106
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:116
 * @route '/job-description/{job_description}'
 */
-destroy.url = (args: { job_description: number | { id: number } } | [job_description: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { job_description: string | number | { id: string | number } } | [job_description: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { job_description: args }
     }
@@ -657,20 +657,20 @@ destroy.url = (args: { job_description: number | { id: number } } | [job_descrip
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::destroy
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:106
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:116
 * @route '/job-description/{job_description}'
 */
-destroy.delete = (args: { job_description: number | { id: number } } | [job_description: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { job_description: string | number | { id: string | number } } | [job_description: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::destroy
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:106
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:116
 * @route '/job-description/{job_description}'
 */
-const destroyForm = (args: { job_description: number | { id: number } } | [job_description: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { job_description: string | number | { id: string | number } } | [job_description: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -682,10 +682,10 @@ const destroyForm = (args: { job_description: number | { id: number } } | [job_d
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::destroy
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:106
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:116
 * @route '/job-description/{job_description}'
 */
-destroyForm.delete = (args: { job_description: number | { id: number } } | [job_description: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { job_description: string | number | { id: string | number } } | [job_description: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -698,11 +698,92 @@ destroyForm.delete = (args: { job_description: number | { id: number } } | [job_
 destroy.form = destroyForm
 
 /**
+* @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::deleted
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:32
+* @route '/job-description-deleted'
+*/
+export const deleted = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: deleted.url(options),
+    method: 'get',
+})
+
+deleted.definition = {
+    methods: ["get","head"],
+    url: '/job-description-deleted',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::deleted
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:32
+* @route '/job-description-deleted'
+*/
+deleted.url = (options?: RouteQueryOptions) => {
+    return deleted.definition.url + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::deleted
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:32
+* @route '/job-description-deleted'
+*/
+deleted.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: deleted.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::deleted
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:32
+* @route '/job-description-deleted'
+*/
+deleted.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: deleted.url(options),
+    method: 'head',
+})
+
+/**
+* @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::deleted
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:32
+* @route '/job-description-deleted'
+*/
+const deletedForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: deleted.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::deleted
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:32
+* @route '/job-description-deleted'
+*/
+deletedForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: deleted.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::deleted
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:32
+* @route '/job-description-deleted'
+*/
+deletedForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: deleted.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+deleted.form = deletedForm
+
+/**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::permanentDestroy
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:119
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:129
 * @route '/job-description-permanent-delete/{jobDescription}'
 */
-export const permanentDestroy = (args: { jobDescription: number | { id: number } } | [jobDescription: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const permanentDestroy = (args: { jobDescription: string | number | { id: string | number } } | [jobDescription: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: permanentDestroy.url(args, options),
     method: 'delete',
 })
@@ -714,10 +795,10 @@ permanentDestroy.definition = {
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::permanentDestroy
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:119
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:129
 * @route '/job-description-permanent-delete/{jobDescription}'
 */
-permanentDestroy.url = (args: { jobDescription: number | { id: number } } | [jobDescription: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+permanentDestroy.url = (args: { jobDescription: string | number | { id: string | number } } | [jobDescription: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { jobDescription: args }
     }
@@ -747,20 +828,20 @@ permanentDestroy.url = (args: { jobDescription: number | { id: number } } | [job
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::permanentDestroy
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:119
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:129
 * @route '/job-description-permanent-delete/{jobDescription}'
 */
-permanentDestroy.delete = (args: { jobDescription: number | { id: number } } | [jobDescription: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+permanentDestroy.delete = (args: { jobDescription: string | number | { id: string | number } } | [jobDescription: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: permanentDestroy.url(args, options),
     method: 'delete',
 })
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::permanentDestroy
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:119
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:129
 * @route '/job-description-permanent-delete/{jobDescription}'
 */
-const permanentDestroyForm = (args: { jobDescription: number | { id: number } } | [jobDescription: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const permanentDestroyForm = (args: { jobDescription: string | number | { id: string | number } } | [jobDescription: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: permanentDestroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -772,10 +853,10 @@ const permanentDestroyForm = (args: { jobDescription: number | { id: number } } 
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::permanentDestroy
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:119
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:129
 * @route '/job-description-permanent-delete/{jobDescription}'
 */
-permanentDestroyForm.delete = (args: { jobDescription: number | { id: number } } | [jobDescription: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+permanentDestroyForm.delete = (args: { jobDescription: string | number | { id: string | number } } | [jobDescription: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: permanentDestroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -789,10 +870,10 @@ permanentDestroy.form = permanentDestroyForm
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::restore
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:132
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:142
 * @route '/job-description-restore/{jobDescription}'
 */
-export const restore = (args: { jobDescription: number | { id: number } } | [jobDescription: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const restore = (args: { jobDescription: string | number | { id: string | number } } | [jobDescription: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: restore.url(args, options),
     method: 'get',
 })
@@ -804,10 +885,10 @@ restore.definition = {
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::restore
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:132
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:142
 * @route '/job-description-restore/{jobDescription}'
 */
-restore.url = (args: { jobDescription: number | { id: number } } | [jobDescription: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+restore.url = (args: { jobDescription: string | number | { id: string | number } } | [jobDescription: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { jobDescription: args }
     }
@@ -837,50 +918,50 @@ restore.url = (args: { jobDescription: number | { id: number } } | [jobDescripti
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::restore
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:132
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:142
 * @route '/job-description-restore/{jobDescription}'
 */
-restore.get = (args: { jobDescription: number | { id: number } } | [jobDescription: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+restore.get = (args: { jobDescription: string | number | { id: string | number } } | [jobDescription: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: restore.url(args, options),
     method: 'get',
 })
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::restore
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:132
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:142
 * @route '/job-description-restore/{jobDescription}'
 */
-restore.head = (args: { jobDescription: number | { id: number } } | [jobDescription: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+restore.head = (args: { jobDescription: string | number | { id: string | number } } | [jobDescription: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: restore.url(args, options),
     method: 'head',
 })
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::restore
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:132
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:142
 * @route '/job-description-restore/{jobDescription}'
 */
-const restoreForm = (args: { jobDescription: number | { id: number } } | [jobDescription: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const restoreForm = (args: { jobDescription: string | number | { id: string | number } } | [jobDescription: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: restore.url(args, options),
     method: 'get',
 })
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::restore
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:132
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:142
 * @route '/job-description-restore/{jobDescription}'
 */
-restoreForm.get = (args: { jobDescription: number | { id: number } } | [jobDescription: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+restoreForm.get = (args: { jobDescription: string | number | { id: string | number } } | [jobDescription: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: restore.url(args, options),
     method: 'get',
 })
 
 /**
 * @see \App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController::restore
-* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:132
+* @see app/Http/Controllers/HumanResources/JobDescription/JobDescriptionController.php:142
 * @route '/job-description-restore/{jobDescription}'
 */
-restoreForm.head = (args: { jobDescription: number | { id: number } } | [jobDescription: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+restoreForm.head = (args: { jobDescription: string | number | { id: string | number } } | [jobDescription: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: restore.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -892,6 +973,6 @@ restoreForm.head = (args: { jobDescription: number | { id: number } } | [jobDesc
 
 restore.form = restoreForm
 
-const JobDescriptionController = { index, create, store, show, edit, update, destroy, permanentDestroy, restore }
+const JobDescriptionController = { index, create, store, show, edit, update, destroy, deleted, permanentDestroy, restore }
 
 export default JobDescriptionController

@@ -29,7 +29,7 @@ const handleDelete = ()=>{
       <span v-text="tm('action.delete')" />
     </simple-button>
 
-    <simple-button type="route" :link="route('department.index')">
+    <simple-button type="route" :link="route('job-description.index')">
       <font-awesome-icon icon="fa-solid fa-left-long" class="mr-2" />
       <span v-text="tm('action.goBack')" />
     </simple-button>

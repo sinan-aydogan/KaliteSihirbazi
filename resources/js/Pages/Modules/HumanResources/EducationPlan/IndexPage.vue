@@ -17,7 +17,7 @@ import TextAreaInput from "@/Components/Form/TextAreaInput.vue"
 const props = defineProps({
     tableData: {
         type: Object,
-        default: {}
+        default: () => ({data: []})
     }
 })
 
@@ -56,6 +56,13 @@ const tableHeaders = [
     }
 ]
 const showModal = ref(false);
+
+const openCreateModal = () => {
+    form.reset();
+    v$.value.$reset();
+    formType.value = 'create';
+    showModal.value = true;
+};
 
 /*Form*/
 const formType = ref("create");
@@ -116,6 +123,12 @@ const getRowInfo = (id) => {
     formType.value = "update"
 }
 
+const closeModal = () => {
+    showModal.value = false;
+    form.reset();
+    v$.value.$reset();
+};
+
 /*Delete*/
 const handleDelete = (id) => {
     router.delete(route("education-plan.destroy", id), {
@@ -135,7 +148,7 @@ const handleDelete = (id) => {
             </simple-button>
 
             <!--Add new-->
-            <simple-button @click="showModal = true; form.reset(); formType = 'create'" color="green">
+            <simple-button @click="openCreateModal" color="green">
                 <font-awesome-icon icon="plus" class="mr-2"/>
                 <span v-text="$t('action.addNew')"/>
             </simple-button>
@@ -152,7 +165,7 @@ const handleDelete = (id) => {
         />
     </app-layout>
 
-    <teleport to="body">
+    <teleport v-if="showModal" to="body">
         <!--Modal-->
         <Modal
             v-model="showModal"
@@ -160,6 +173,7 @@ const handleDelete = (id) => {
             :subHeader="tm('title.createPage.subTitle')"
             closeable
             close-button
+            @closed="closeModal"
         >
             <Form full-size>
                 <FormSection

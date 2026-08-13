@@ -32,6 +32,25 @@
     "abroad": "Yurt dışı",
     "domestic": "Yurt içi",
     "whiteCollar": "Beyaz Yaka",
-    "blueCollar": "Mavi Yaka"
+    "blueCollar": "Mavi Yaka",
+    "extraSections": "Ek Bölümler",
+    "extraSectionsDescription": "Görev tanımına ihtiyaç duyduğunuz ayrıntı bölümlerini ekleyin.",
+    "addSection": "Ekle",
+    "addExtraSection": "Ek Bölüm Ekle",
+    "addExtraSectionDescription": "Eklemek istediğiniz bölümü seçin.",
+    "removeSection": "Bölümü kaldır",
+    "noExtraSections": "Hiç ek bölüm yok",
+    "noExtraSectionsDescription": "Ek bölüm eklemek için bu karta tıklayın.",
+    "allSectionsAdded": "Eklenebilecek tüm bölümler forma eklendi.",
+    "selectDirection": "Yön Seçin",
+    "requirementsDescription": "Bu görev için gerekli eğitim, deneyim ve diğer nitelikler.",
+    "responsibilitiesDescription": "Pozisyonun yerine getirmesi beklenen temel sorumluluklar.",
+    "powersDescription": "Pozisyona tanınan karar alma ve onay yetkileri.",
+    "skillsDescription": "Görevi yerine getirmek için gereken teknik ve davranışsal yetenekler.",
+    "workingConditionsDescription": "Çalışma ortamının fiziksel ve operasyonel koşulları.",
+    "workingToolsDescription": "Görev sırasında kullanılan ekipman, araç ve yazılımlar.",
+    "workingHoursDescription": "Pozisyonun çalışma düzeni, vardiya ve saat bilgileri.",
+    "overtimeStatusDescription": "Fazla mesai gereksinimleri ve uygulanma koşulları.",
+    "travelStatusDescription": "Yurt içi veya yurt dışı seyahat gerekçeleri ve kapsamı."
   }
 }

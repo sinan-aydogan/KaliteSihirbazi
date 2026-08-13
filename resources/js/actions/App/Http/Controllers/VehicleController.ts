@@ -287,7 +287,7 @@ store.form = storeForm
 * @see app/Http/Controllers/VehicleController.php:79
 * @route '/vehicle/{vehicle}'
 */
-export const show = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -302,7 +302,7 @@ show.definition = {
 * @see app/Http/Controllers/VehicleController.php:79
 * @route '/vehicle/{vehicle}'
 */
-show.url = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+show.url = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { vehicle: args }
     }
@@ -335,7 +335,7 @@ show.url = (args: { vehicle: number | { id: number } } | [vehicle: number | { id
 * @see app/Http/Controllers/VehicleController.php:79
 * @route '/vehicle/{vehicle}'
 */
-show.get = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -345,7 +345,7 @@ show.get = (args: { vehicle: number | { id: number } } | [vehicle: number | { id
 * @see app/Http/Controllers/VehicleController.php:79
 * @route '/vehicle/{vehicle}'
 */
-show.head = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -355,7 +355,7 @@ show.head = (args: { vehicle: number | { id: number } } | [vehicle: number | { i
 * @see app/Http/Controllers/VehicleController.php:79
 * @route '/vehicle/{vehicle}'
 */
-const showForm = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const showForm = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -365,7 +365,7 @@ const showForm = (args: { vehicle: number | { id: number } } | [vehicle: number 
 * @see app/Http/Controllers/VehicleController.php:79
 * @route '/vehicle/{vehicle}'
 */
-showForm.get = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.get = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -375,7 +375,7 @@ showForm.get = (args: { vehicle: number | { id: number } } | [vehicle: number | 
 * @see app/Http/Controllers/VehicleController.php:79
 * @route '/vehicle/{vehicle}'
 */
-showForm.head = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.head = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -392,7 +392,7 @@ show.form = showForm
 * @see app/Http/Controllers/VehicleController.php:90
 * @route '/vehicle/{vehicle}/edit'
 */
-export const edit = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -407,7 +407,7 @@ edit.definition = {
 * @see app/Http/Controllers/VehicleController.php:90
 * @route '/vehicle/{vehicle}/edit'
 */
-edit.url = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+edit.url = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { vehicle: args }
     }
@@ -440,7 +440,7 @@ edit.url = (args: { vehicle: number | { id: number } } | [vehicle: number | { id
 * @see app/Http/Controllers/VehicleController.php:90
 * @route '/vehicle/{vehicle}/edit'
 */
-edit.get = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -450,7 +450,7 @@ edit.get = (args: { vehicle: number | { id: number } } | [vehicle: number | { id
 * @see app/Http/Controllers/VehicleController.php:90
 * @route '/vehicle/{vehicle}/edit'
 */
-edit.head = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
@@ -460,7 +460,7 @@ edit.head = (args: { vehicle: number | { id: number } } | [vehicle: number | { i
 * @see app/Http/Controllers/VehicleController.php:90
 * @route '/vehicle/{vehicle}/edit'
 */
-const editForm = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const editForm = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -470,7 +470,7 @@ const editForm = (args: { vehicle: number | { id: number } } | [vehicle: number 
 * @see app/Http/Controllers/VehicleController.php:90
 * @route '/vehicle/{vehicle}/edit'
 */
-editForm.get = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.get = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -480,7 +480,7 @@ editForm.get = (args: { vehicle: number | { id: number } } | [vehicle: number | 
 * @see app/Http/Controllers/VehicleController.php:90
 * @route '/vehicle/{vehicle}/edit'
 */
-editForm.head = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.head = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -497,7 +497,7 @@ edit.form = editForm
 * @see app/Http/Controllers/VehicleController.php:104
 * @route '/vehicle/{vehicle}'
 */
-export const update = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -512,7 +512,7 @@ update.definition = {
 * @see app/Http/Controllers/VehicleController.php:104
 * @route '/vehicle/{vehicle}'
 */
-update.url = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+update.url = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { vehicle: args }
     }
@@ -545,7 +545,7 @@ update.url = (args: { vehicle: number | { id: number } } | [vehicle: number | { 
 * @see app/Http/Controllers/VehicleController.php:104
 * @route '/vehicle/{vehicle}'
 */
-update.put = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -555,7 +555,7 @@ update.put = (args: { vehicle: number | { id: number } } | [vehicle: number | { 
 * @see app/Http/Controllers/VehicleController.php:104
 * @route '/vehicle/{vehicle}'
 */
-update.patch = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update.patch = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
@@ -565,7 +565,7 @@ update.patch = (args: { vehicle: number | { id: number } } | [vehicle: number | 
 * @see app/Http/Controllers/VehicleController.php:104
 * @route '/vehicle/{vehicle}'
 */
-const updateForm = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateForm = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -580,7 +580,7 @@ const updateForm = (args: { vehicle: number | { id: number } } | [vehicle: numbe
 * @see app/Http/Controllers/VehicleController.php:104
 * @route '/vehicle/{vehicle}'
 */
-updateForm.put = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.put = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -595,7 +595,7 @@ updateForm.put = (args: { vehicle: number | { id: number } } | [vehicle: number 
 * @see app/Http/Controllers/VehicleController.php:104
 * @route '/vehicle/{vehicle}'
 */
-updateForm.patch = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.patch = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -612,7 +612,7 @@ update.form = updateForm
 * @see app/Http/Controllers/VehicleController.php:119
 * @route '/vehicle/{vehicle}'
 */
-export const destroy = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -627,7 +627,7 @@ destroy.definition = {
 * @see app/Http/Controllers/VehicleController.php:119
 * @route '/vehicle/{vehicle}'
 */
-destroy.url = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { vehicle: args }
     }
@@ -660,7 +660,7 @@ destroy.url = (args: { vehicle: number | { id: number } } | [vehicle: number | {
 * @see app/Http/Controllers/VehicleController.php:119
 * @route '/vehicle/{vehicle}'
 */
-destroy.delete = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -670,7 +670,7 @@ destroy.delete = (args: { vehicle: number | { id: number } } | [vehicle: number 
 * @see app/Http/Controllers/VehicleController.php:119
 * @route '/vehicle/{vehicle}'
 */
-const destroyForm = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -685,7 +685,7 @@ const destroyForm = (args: { vehicle: number | { id: number } } | [vehicle: numb
 * @see app/Http/Controllers/VehicleController.php:119
 * @route '/vehicle/{vehicle}'
 */
-destroyForm.delete = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -783,7 +783,7 @@ deleted.form = deletedForm
 * @see app/Http/Controllers/VehicleController.php:134
 * @route '/vehicle-permanent-delete/{vehicle}'
 */
-export const permanentDestroy = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const permanentDestroy = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: permanentDestroy.url(args, options),
     method: 'delete',
 })
@@ -798,7 +798,7 @@ permanentDestroy.definition = {
 * @see app/Http/Controllers/VehicleController.php:134
 * @route '/vehicle-permanent-delete/{vehicle}'
 */
-permanentDestroy.url = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+permanentDestroy.url = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { vehicle: args }
     }
@@ -831,7 +831,7 @@ permanentDestroy.url = (args: { vehicle: number | { id: number } } | [vehicle: n
 * @see app/Http/Controllers/VehicleController.php:134
 * @route '/vehicle-permanent-delete/{vehicle}'
 */
-permanentDestroy.delete = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+permanentDestroy.delete = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: permanentDestroy.url(args, options),
     method: 'delete',
 })
@@ -841,7 +841,7 @@ permanentDestroy.delete = (args: { vehicle: number | { id: number } } | [vehicle
 * @see app/Http/Controllers/VehicleController.php:134
 * @route '/vehicle-permanent-delete/{vehicle}'
 */
-const permanentDestroyForm = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const permanentDestroyForm = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: permanentDestroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -856,7 +856,7 @@ const permanentDestroyForm = (args: { vehicle: number | { id: number } } | [vehi
 * @see app/Http/Controllers/VehicleController.php:134
 * @route '/vehicle-permanent-delete/{vehicle}'
 */
-permanentDestroyForm.delete = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+permanentDestroyForm.delete = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: permanentDestroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -873,7 +873,7 @@ permanentDestroy.form = permanentDestroyForm
 * @see app/Http/Controllers/VehicleController.php:149
 * @route '/vehicle-restore/{vehicle}'
 */
-export const restore = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const restore = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: restore.url(args, options),
     method: 'get',
 })
@@ -888,7 +888,7 @@ restore.definition = {
 * @see app/Http/Controllers/VehicleController.php:149
 * @route '/vehicle-restore/{vehicle}'
 */
-restore.url = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+restore.url = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { vehicle: args }
     }
@@ -921,7 +921,7 @@ restore.url = (args: { vehicle: number | { id: number } } | [vehicle: number | {
 * @see app/Http/Controllers/VehicleController.php:149
 * @route '/vehicle-restore/{vehicle}'
 */
-restore.get = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+restore.get = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: restore.url(args, options),
     method: 'get',
 })
@@ -931,7 +931,7 @@ restore.get = (args: { vehicle: number | { id: number } } | [vehicle: number | {
 * @see app/Http/Controllers/VehicleController.php:149
 * @route '/vehicle-restore/{vehicle}'
 */
-restore.head = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+restore.head = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: restore.url(args, options),
     method: 'head',
 })
@@ -941,7 +941,7 @@ restore.head = (args: { vehicle: number | { id: number } } | [vehicle: number | 
 * @see app/Http/Controllers/VehicleController.php:149
 * @route '/vehicle-restore/{vehicle}'
 */
-const restoreForm = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const restoreForm = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: restore.url(args, options),
     method: 'get',
 })
@@ -951,7 +951,7 @@ const restoreForm = (args: { vehicle: number | { id: number } } | [vehicle: numb
 * @see app/Http/Controllers/VehicleController.php:149
 * @route '/vehicle-restore/{vehicle}'
 */
-restoreForm.get = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+restoreForm.get = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: restore.url(args, options),
     method: 'get',
 })
@@ -961,7 +961,7 @@ restoreForm.get = (args: { vehicle: number | { id: number } } | [vehicle: number
 * @see app/Http/Controllers/VehicleController.php:149
 * @route '/vehicle-restore/{vehicle}'
 */
-restoreForm.head = (args: { vehicle: number | { id: number } } | [vehicle: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+restoreForm.head = (args: { vehicle: string | number | { id: string | number } } | [vehicle: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: restore.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',

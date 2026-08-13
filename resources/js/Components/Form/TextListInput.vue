@@ -38,7 +38,13 @@ const deleteItem = (item)=>{
           <!--Value-->
           <span v-text="i"></span>
           <!--Delete-->
-          <font-awesome-icon @click="deleteItem(i)" icon="fa-solid fa-trash" class="cursor-pointer"/>
+          <button
+              type="button"
+              class="grid h-8 w-8 shrink-0 place-items-center rounded-md text-slate-500 transition hover:bg-rose-50 hover:text-rose-600 dark:text-slate-300 dark:hover:bg-rose-950/40 dark:hover:text-rose-400"
+              @click="deleteItem(i)"
+          >
+            <font-awesome-icon icon="fa-solid fa-trash"/>
+          </button>
         </div>
       </template>
     </div>
@@ -53,7 +59,12 @@ const deleteItem = (item)=>{
           ref="input"
       />
       <!--Add Button-->
-      <button @click="addItem" class="flex justify-center bg-emerald-700 items-center border border-l-0 dark:border-slate-600 w-10 h-10" :class="modelValue.length===0 ? 'rounded-r-lg': 'rounded-br-lg'">
+      <button
+          type="button"
+          @click="addItem"
+          class="flex h-10 w-10 items-center justify-center border border-l-0 border-green-600 bg-green-600 text-white transition hover:border-green-500 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-1 dark:border-green-600 dark:bg-green-600 dark:hover:border-green-500 dark:hover:bg-green-500"
+          :class="modelValue.length===0 ? 'rounded-r-lg': 'rounded-br-lg'"
+      >
         <font-awesome-icon icon="fa-solid fa-plus"/>
       </button>
     </div>

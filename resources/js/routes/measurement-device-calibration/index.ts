@@ -585,7 +585,7 @@ update.form = updateForm
 * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:85
 * @route '/measurement-device-calibration/{measurement_device_calibration}'
 */
-export const destroy = (args: { measurement_device_calibration: number | { id: number } } | [measurement_device_calibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { measurement_device_calibration: string | number | { id: string | number } } | [measurement_device_calibration: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -600,7 +600,7 @@ destroy.definition = {
 * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:85
 * @route '/measurement-device-calibration/{measurement_device_calibration}'
 */
-destroy.url = (args: { measurement_device_calibration: number | { id: number } } | [measurement_device_calibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { measurement_device_calibration: string | number | { id: string | number } } | [measurement_device_calibration: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { measurement_device_calibration: args }
     }
@@ -633,7 +633,7 @@ destroy.url = (args: { measurement_device_calibration: number | { id: number } }
 * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:85
 * @route '/measurement-device-calibration/{measurement_device_calibration}'
 */
-destroy.delete = (args: { measurement_device_calibration: number | { id: number } } | [measurement_device_calibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { measurement_device_calibration: string | number | { id: string | number } } | [measurement_device_calibration: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -643,7 +643,7 @@ destroy.delete = (args: { measurement_device_calibration: number | { id: number 
 * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:85
 * @route '/measurement-device-calibration/{measurement_device_calibration}'
 */
-const destroyForm = (args: { measurement_device_calibration: number | { id: number } } | [measurement_device_calibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { measurement_device_calibration: string | number | { id: string | number } } | [measurement_device_calibration: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -658,7 +658,7 @@ const destroyForm = (args: { measurement_device_calibration: number | { id: numb
 * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:85
 * @route '/measurement-device-calibration/{measurement_device_calibration}'
 */
-destroyForm.delete = (args: { measurement_device_calibration: number | { id: number } } | [measurement_device_calibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { measurement_device_calibration: string | number | { id: string | number } } | [measurement_device_calibration: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',

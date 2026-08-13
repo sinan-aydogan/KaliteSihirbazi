@@ -19,15 +19,15 @@ class StoreJobDescriptionRequest extends FormRequest
             'description' => 'nullable|string|max:750',
             'staff_type' => 'nullable|string|max:10|in:blue,white,other',
             'department_id' => 'nullable|exists:departments,id',
-            'responsibilities' => 'required|array|min:1',
-            'powers' => 'required|array|min:1',
-            'requirements' => 'required|array|min:1',
-            'skills' => 'required|array|min:1',
-            'working_conditions' => 'required|array|min:1',
-            'working_tools' => 'required|array|min:1',
-            'working_hours' => 'required|array|min:1',
-            'overtime_status' => 'required|array|min:1',
-            'travel_status' => 'required|array|min:1',
+            'responsibilities' => 'array',
+            'powers' => 'array',
+            'requirements' => 'array',
+            'skills' => 'array',
+            'working_conditions' => 'array',
+            'working_tools' => 'array',
+            'working_hours' => 'array',
+            'overtime_status' => 'array',
+            'travel_status' => 'array',
             'status' => 'sometimes|boolean',
             'responsibilities.*' => 'required|string|max:500',
             'powers.*' => 'required|string|max:500',
@@ -60,7 +60,7 @@ class StoreJobDescriptionRequest extends FormRequest
     private function prepareJsonField($value)
     {
         if (empty($value)) {
-            return [''];
+            return [];
         }
 
         return is_array($value) ? $value : [json_decode($value, true)];
@@ -69,7 +69,7 @@ class StoreJobDescriptionRequest extends FormRequest
     private function prepareTravelStatus($value)
     {
         if (empty($value)) {
-            return [['reason' => '', 'location' => '']];
+            return [];
         }
 
         if (is_string($value)) {

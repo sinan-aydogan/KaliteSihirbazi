@@ -32,6 +32,25 @@
     "abroad": "Abroad",
     "domestic": "Domestic",
     "whiteCollar": "White Collar",
-    "blueCollar": "Blue Collar"
+    "blueCollar": "Blue Collar",
+    "extraSections": "Additional Sections",
+    "extraSectionsDescription": "Add the detail sections needed for this job description.",
+    "addSection": "Add",
+    "addExtraSection": "Add Additional Section",
+    "addExtraSectionDescription": "Choose the section you want to add.",
+    "removeSection": "Remove section",
+    "noExtraSections": "No additional sections",
+    "noExtraSectionsDescription": "Click this card to add an additional section.",
+    "allSectionsAdded": "All available sections have been added to the form.",
+    "selectDirection": "Select Direction",
+    "requirementsDescription": "Education, experience, and other qualifications required for this role.",
+    "responsibilitiesDescription": "Core responsibilities expected to be fulfilled by the position.",
+    "powersDescription": "Decision-making and approval authorities assigned to the position.",
+    "skillsDescription": "Technical and behavioral skills needed to perform the role.",
+    "workingConditionsDescription": "Physical and operational conditions of the working environment.",
+    "workingToolsDescription": "Equipment, tools, and software used while performing the role.",
+    "workingHoursDescription": "Working schedule, shifts, and hours for the position.",
+    "overtimeStatusDescription": "Overtime requirements and the conditions under which they apply.",
+    "travelStatusDescription": "Reasons and scope for domestic or international travel."
   }
 }

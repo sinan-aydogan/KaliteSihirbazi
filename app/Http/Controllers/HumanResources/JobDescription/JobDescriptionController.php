@@ -29,6 +29,16 @@ class JobDescriptionController extends Controller
         ]);
     }
 
+    public function deleted(): Response
+    {
+        return Inertia::render('Modules/HumanResources/JobDescription/DeletedPage', [
+            'tableData' => $this->tableFilter(JobDescription::onlyTrashed())
+                ->latest('deleted_at')
+                ->paginate(10)
+                ->withQueryString(),
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

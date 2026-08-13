@@ -222,7 +222,7 @@ store.form = storeForm
 * @see app/Http/Controllers/Warehouse/WarehouseTypeController.php:59
 * @route '/warehouse-type/{warehouse_type}'
 */
-export const show = (args: { warehouse_type: number | { id: number } } | [warehouse_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { warehouse_type: string | number | { id: string | number } } | [warehouse_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -237,7 +237,7 @@ show.definition = {
 * @see app/Http/Controllers/Warehouse/WarehouseTypeController.php:59
 * @route '/warehouse-type/{warehouse_type}'
 */
-show.url = (args: { warehouse_type: number | { id: number } } | [warehouse_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+show.url = (args: { warehouse_type: string | number | { id: string | number } } | [warehouse_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { warehouse_type: args }
     }
@@ -270,7 +270,7 @@ show.url = (args: { warehouse_type: number | { id: number } } | [warehouse_type:
 * @see app/Http/Controllers/Warehouse/WarehouseTypeController.php:59
 * @route '/warehouse-type/{warehouse_type}'
 */
-show.get = (args: { warehouse_type: number | { id: number } } | [warehouse_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { warehouse_type: string | number | { id: string | number } } | [warehouse_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -280,7 +280,7 @@ show.get = (args: { warehouse_type: number | { id: number } } | [warehouse_type:
 * @see app/Http/Controllers/Warehouse/WarehouseTypeController.php:59
 * @route '/warehouse-type/{warehouse_type}'
 */
-show.head = (args: { warehouse_type: number | { id: number } } | [warehouse_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { warehouse_type: string | number | { id: string | number } } | [warehouse_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -290,7 +290,7 @@ show.head = (args: { warehouse_type: number | { id: number } } | [warehouse_type
 * @see app/Http/Controllers/Warehouse/WarehouseTypeController.php:59
 * @route '/warehouse-type/{warehouse_type}'
 */
-const showForm = (args: { warehouse_type: number | { id: number } } | [warehouse_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const showForm = (args: { warehouse_type: string | number | { id: string | number } } | [warehouse_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -300,7 +300,7 @@ const showForm = (args: { warehouse_type: number | { id: number } } | [warehouse
 * @see app/Http/Controllers/Warehouse/WarehouseTypeController.php:59
 * @route '/warehouse-type/{warehouse_type}'
 */
-showForm.get = (args: { warehouse_type: number | { id: number } } | [warehouse_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.get = (args: { warehouse_type: string | number | { id: string | number } } | [warehouse_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -310,7 +310,7 @@ showForm.get = (args: { warehouse_type: number | { id: number } } | [warehouse_t
 * @see app/Http/Controllers/Warehouse/WarehouseTypeController.php:59
 * @route '/warehouse-type/{warehouse_type}'
 */
-showForm.head = (args: { warehouse_type: number | { id: number } } | [warehouse_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.head = (args: { warehouse_type: string | number | { id: string | number } } | [warehouse_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -327,7 +327,7 @@ show.form = showForm
 * @see app/Http/Controllers/Warehouse/WarehouseTypeController.php:70
 * @route '/warehouse-type/{warehouse_type}/edit'
 */
-export const edit = (args: { warehouse_type: number | { id: number } } | [warehouse_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { warehouse_type: string | number | { id: string | number } } | [warehouse_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -342,7 +342,7 @@ edit.definition = {
 * @see app/Http/Controllers/Warehouse/WarehouseTypeController.php:70
 * @route '/warehouse-type/{warehouse_type}/edit'
 */
-edit.url = (args: { warehouse_type: number | { id: number } } | [warehouse_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+edit.url = (args: { warehouse_type: string | number | { id: string | number } } | [warehouse_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { warehouse_type: args }
     }
@@ -375,7 +375,7 @@ edit.url = (args: { warehouse_type: number | { id: number } } | [warehouse_type:
 * @see app/Http/Controllers/Warehouse/WarehouseTypeController.php:70
 * @route '/warehouse-type/{warehouse_type}/edit'
 */
-edit.get = (args: { warehouse_type: number | { id: number } } | [warehouse_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { warehouse_type: string | number | { id: string | number } } | [warehouse_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -385,7 +385,7 @@ edit.get = (args: { warehouse_type: number | { id: number } } | [warehouse_type:
 * @see app/Http/Controllers/Warehouse/WarehouseTypeController.php:70
 * @route '/warehouse-type/{warehouse_type}/edit'
 */
-edit.head = (args: { warehouse_type: number | { id: number } } | [warehouse_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { warehouse_type: string | number | { id: string | number } } | [warehouse_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
@@ -395,7 +395,7 @@ edit.head = (args: { warehouse_type: number | { id: number } } | [warehouse_type
 * @see app/Http/Controllers/Warehouse/WarehouseTypeController.php:70
 * @route '/warehouse-type/{warehouse_type}/edit'
 */
-const editForm = (args: { warehouse_type: number | { id: number } } | [warehouse_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const editForm = (args: { warehouse_type: string | number | { id: string | number } } | [warehouse_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -405,7 +405,7 @@ const editForm = (args: { warehouse_type: number | { id: number } } | [warehouse
 * @see app/Http/Controllers/Warehouse/WarehouseTypeController.php:70
 * @route '/warehouse-type/{warehouse_type}/edit'
 */
-editForm.get = (args: { warehouse_type: number | { id: number } } | [warehouse_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.get = (args: { warehouse_type: string | number | { id: string | number } } | [warehouse_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -415,7 +415,7 @@ editForm.get = (args: { warehouse_type: number | { id: number } } | [warehouse_t
 * @see app/Http/Controllers/Warehouse/WarehouseTypeController.php:70
 * @route '/warehouse-type/{warehouse_type}/edit'
 */
-editForm.head = (args: { warehouse_type: number | { id: number } } | [warehouse_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.head = (args: { warehouse_type: string | number | { id: string | number } } | [warehouse_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -432,7 +432,7 @@ edit.form = editForm
 * @see app/Http/Controllers/Warehouse/WarehouseTypeController.php:82
 * @route '/warehouse-type/{warehouse_type}'
 */
-export const update = (args: { warehouse_type: number | { id: number } } | [warehouse_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { warehouse_type: string | number | { id: string | number } } | [warehouse_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -447,7 +447,7 @@ update.definition = {
 * @see app/Http/Controllers/Warehouse/WarehouseTypeController.php:82
 * @route '/warehouse-type/{warehouse_type}'
 */
-update.url = (args: { warehouse_type: number | { id: number } } | [warehouse_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+update.url = (args: { warehouse_type: string | number | { id: string | number } } | [warehouse_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { warehouse_type: args }
     }
@@ -480,7 +480,7 @@ update.url = (args: { warehouse_type: number | { id: number } } | [warehouse_typ
 * @see app/Http/Controllers/Warehouse/WarehouseTypeController.php:82
 * @route '/warehouse-type/{warehouse_type}'
 */
-update.put = (args: { warehouse_type: number | { id: number } } | [warehouse_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { warehouse_type: string | number | { id: string | number } } | [warehouse_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -490,7 +490,7 @@ update.put = (args: { warehouse_type: number | { id: number } } | [warehouse_typ
 * @see app/Http/Controllers/Warehouse/WarehouseTypeController.php:82
 * @route '/warehouse-type/{warehouse_type}'
 */
-update.patch = (args: { warehouse_type: number | { id: number } } | [warehouse_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update.patch = (args: { warehouse_type: string | number | { id: string | number } } | [warehouse_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
@@ -500,7 +500,7 @@ update.patch = (args: { warehouse_type: number | { id: number } } | [warehouse_t
 * @see app/Http/Controllers/Warehouse/WarehouseTypeController.php:82
 * @route '/warehouse-type/{warehouse_type}'
 */
-const updateForm = (args: { warehouse_type: number | { id: number } } | [warehouse_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateForm = (args: { warehouse_type: string | number | { id: string | number } } | [warehouse_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -515,7 +515,7 @@ const updateForm = (args: { warehouse_type: number | { id: number } } | [warehou
 * @see app/Http/Controllers/Warehouse/WarehouseTypeController.php:82
 * @route '/warehouse-type/{warehouse_type}'
 */
-updateForm.put = (args: { warehouse_type: number | { id: number } } | [warehouse_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.put = (args: { warehouse_type: string | number | { id: string | number } } | [warehouse_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -530,7 +530,7 @@ updateForm.put = (args: { warehouse_type: number | { id: number } } | [warehouse
 * @see app/Http/Controllers/Warehouse/WarehouseTypeController.php:82
 * @route '/warehouse-type/{warehouse_type}'
 */
-updateForm.patch = (args: { warehouse_type: number | { id: number } } | [warehouse_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.patch = (args: { warehouse_type: string | number | { id: string | number } } | [warehouse_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -547,7 +547,7 @@ update.form = updateForm
 * @see app/Http/Controllers/Warehouse/WarehouseTypeController.php:100
 * @route '/warehouse-type/{warehouse_type}'
 */
-export const destroy = (args: { warehouse_type: number | { id: number } } | [warehouse_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { warehouse_type: string | number | { id: string | number } } | [warehouse_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -562,7 +562,7 @@ destroy.definition = {
 * @see app/Http/Controllers/Warehouse/WarehouseTypeController.php:100
 * @route '/warehouse-type/{warehouse_type}'
 */
-destroy.url = (args: { warehouse_type: number | { id: number } } | [warehouse_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { warehouse_type: string | number | { id: string | number } } | [warehouse_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { warehouse_type: args }
     }
@@ -595,7 +595,7 @@ destroy.url = (args: { warehouse_type: number | { id: number } } | [warehouse_ty
 * @see app/Http/Controllers/Warehouse/WarehouseTypeController.php:100
 * @route '/warehouse-type/{warehouse_type}'
 */
-destroy.delete = (args: { warehouse_type: number | { id: number } } | [warehouse_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { warehouse_type: string | number | { id: string | number } } | [warehouse_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -605,7 +605,7 @@ destroy.delete = (args: { warehouse_type: number | { id: number } } | [warehouse
 * @see app/Http/Controllers/Warehouse/WarehouseTypeController.php:100
 * @route '/warehouse-type/{warehouse_type}'
 */
-const destroyForm = (args: { warehouse_type: number | { id: number } } | [warehouse_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { warehouse_type: string | number | { id: string | number } } | [warehouse_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -620,7 +620,7 @@ const destroyForm = (args: { warehouse_type: number | { id: number } } | [wareho
 * @see app/Http/Controllers/Warehouse/WarehouseTypeController.php:100
 * @route '/warehouse-type/{warehouse_type}'
 */
-destroyForm.delete = (args: { warehouse_type: number | { id: number } } | [warehouse_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { warehouse_type: string | number | { id: string | number } } | [warehouse_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',

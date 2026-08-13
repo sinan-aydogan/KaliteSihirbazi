@@ -287,7 +287,7 @@ store.form = storeForm
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:112
 * @route '/education/{education}'
 */
-export const show = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -302,7 +302,7 @@ show.definition = {
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:112
 * @route '/education/{education}'
 */
-show.url = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+show.url = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { education: args }
     }
@@ -335,7 +335,7 @@ show.url = (args: { education: number | { id: number } } | [education: number | 
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:112
 * @route '/education/{education}'
 */
-show.get = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -345,7 +345,7 @@ show.get = (args: { education: number | { id: number } } | [education: number | 
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:112
 * @route '/education/{education}'
 */
-show.head = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -355,7 +355,7 @@ show.head = (args: { education: number | { id: number } } | [education: number |
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:112
 * @route '/education/{education}'
 */
-const showForm = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const showForm = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -365,7 +365,7 @@ const showForm = (args: { education: number | { id: number } } | [education: num
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:112
 * @route '/education/{education}'
 */
-showForm.get = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.get = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -375,7 +375,7 @@ showForm.get = (args: { education: number | { id: number } } | [education: numbe
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:112
 * @route '/education/{education}'
 */
-showForm.head = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.head = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -392,7 +392,7 @@ show.form = showForm
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:130
 * @route '/education/{education}/edit'
 */
-export const edit = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -407,7 +407,7 @@ edit.definition = {
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:130
 * @route '/education/{education}/edit'
 */
-edit.url = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+edit.url = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { education: args }
     }
@@ -440,7 +440,7 @@ edit.url = (args: { education: number | { id: number } } | [education: number | 
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:130
 * @route '/education/{education}/edit'
 */
-edit.get = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -450,7 +450,7 @@ edit.get = (args: { education: number | { id: number } } | [education: number | 
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:130
 * @route '/education/{education}/edit'
 */
-edit.head = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
@@ -460,7 +460,7 @@ edit.head = (args: { education: number | { id: number } } | [education: number |
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:130
 * @route '/education/{education}/edit'
 */
-const editForm = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const editForm = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -470,7 +470,7 @@ const editForm = (args: { education: number | { id: number } } | [education: num
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:130
 * @route '/education/{education}/edit'
 */
-editForm.get = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.get = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -480,7 +480,7 @@ editForm.get = (args: { education: number | { id: number } } | [education: numbe
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:130
 * @route '/education/{education}/edit'
 */
-editForm.head = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.head = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -497,7 +497,7 @@ edit.form = editForm
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:145
 * @route '/education/{education}'
 */
-export const update = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -512,7 +512,7 @@ update.definition = {
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:145
 * @route '/education/{education}'
 */
-update.url = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+update.url = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { education: args }
     }
@@ -545,7 +545,7 @@ update.url = (args: { education: number | { id: number } } | [education: number 
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:145
 * @route '/education/{education}'
 */
-update.put = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -555,7 +555,7 @@ update.put = (args: { education: number | { id: number } } | [education: number 
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:145
 * @route '/education/{education}'
 */
-update.patch = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update.patch = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
@@ -565,7 +565,7 @@ update.patch = (args: { education: number | { id: number } } | [education: numbe
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:145
 * @route '/education/{education}'
 */
-const updateForm = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateForm = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -580,7 +580,7 @@ const updateForm = (args: { education: number | { id: number } } | [education: n
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:145
 * @route '/education/{education}'
 */
-updateForm.put = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.put = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -595,7 +595,7 @@ updateForm.put = (args: { education: number | { id: number } } | [education: num
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:145
 * @route '/education/{education}'
 */
-updateForm.patch = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.patch = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -612,7 +612,7 @@ update.form = updateForm
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:181
 * @route '/education/{education}'
 */
-export const destroy = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -627,7 +627,7 @@ destroy.definition = {
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:181
 * @route '/education/{education}'
 */
-destroy.url = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { education: args }
     }
@@ -660,7 +660,7 @@ destroy.url = (args: { education: number | { id: number } } | [education: number
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:181
 * @route '/education/{education}'
 */
-destroy.delete = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -670,7 +670,7 @@ destroy.delete = (args: { education: number | { id: number } } | [education: num
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:181
 * @route '/education/{education}'
 */
-const destroyForm = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -685,7 +685,7 @@ const destroyForm = (args: { education: number | { id: number } } | [education: 
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:181
 * @route '/education/{education}'
 */
-destroyForm.delete = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -783,7 +783,7 @@ deleted.form = deletedForm
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:195
 * @route '/education-permanent-delete/{education}'
 */
-export const permanentDestroy = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const permanentDestroy = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: permanentDestroy.url(args, options),
     method: 'delete',
 })
@@ -798,7 +798,7 @@ permanentDestroy.definition = {
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:195
 * @route '/education-permanent-delete/{education}'
 */
-permanentDestroy.url = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+permanentDestroy.url = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { education: args }
     }
@@ -831,7 +831,7 @@ permanentDestroy.url = (args: { education: number | { id: number } } | [educatio
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:195
 * @route '/education-permanent-delete/{education}'
 */
-permanentDestroy.delete = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+permanentDestroy.delete = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: permanentDestroy.url(args, options),
     method: 'delete',
 })
@@ -841,7 +841,7 @@ permanentDestroy.delete = (args: { education: number | { id: number } } | [educa
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:195
 * @route '/education-permanent-delete/{education}'
 */
-const permanentDestroyForm = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const permanentDestroyForm = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: permanentDestroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -856,7 +856,7 @@ const permanentDestroyForm = (args: { education: number | { id: number } } | [ed
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:195
 * @route '/education-permanent-delete/{education}'
 */
-permanentDestroyForm.delete = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+permanentDestroyForm.delete = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: permanentDestroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -873,7 +873,7 @@ permanentDestroy.form = permanentDestroyForm
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:212
 * @route '/education-restore/{education}'
 */
-export const restore = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const restore = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: restore.url(args, options),
     method: 'get',
 })
@@ -888,7 +888,7 @@ restore.definition = {
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:212
 * @route '/education-restore/{education}'
 */
-restore.url = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+restore.url = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { education: args }
     }
@@ -921,7 +921,7 @@ restore.url = (args: { education: number | { id: number } } | [education: number
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:212
 * @route '/education-restore/{education}'
 */
-restore.get = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+restore.get = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: restore.url(args, options),
     method: 'get',
 })
@@ -931,7 +931,7 @@ restore.get = (args: { education: number | { id: number } } | [education: number
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:212
 * @route '/education-restore/{education}'
 */
-restore.head = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+restore.head = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: restore.url(args, options),
     method: 'head',
 })
@@ -941,7 +941,7 @@ restore.head = (args: { education: number | { id: number } } | [education: numbe
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:212
 * @route '/education-restore/{education}'
 */
-const restoreForm = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const restoreForm = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: restore.url(args, options),
     method: 'get',
 })
@@ -951,7 +951,7 @@ const restoreForm = (args: { education: number | { id: number } } | [education: 
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:212
 * @route '/education-restore/{education}'
 */
-restoreForm.get = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+restoreForm.get = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: restore.url(args, options),
     method: 'get',
 })
@@ -961,7 +961,7 @@ restoreForm.get = (args: { education: number | { id: number } } | [education: nu
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:212
 * @route '/education-restore/{education}'
 */
-restoreForm.head = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+restoreForm.head = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: restore.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -978,7 +978,7 @@ restore.form = restoreForm
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:226
 * @route '/education/{education}/participants'
 */
-export const addParticipant = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const addParticipant = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: addParticipant.url(args, options),
     method: 'post',
 })
@@ -993,7 +993,7 @@ addParticipant.definition = {
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:226
 * @route '/education/{education}/participants'
 */
-addParticipant.url = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+addParticipant.url = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { education: args }
     }
@@ -1026,7 +1026,7 @@ addParticipant.url = (args: { education: number | { id: number } } | [education:
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:226
 * @route '/education/{education}/participants'
 */
-addParticipant.post = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+addParticipant.post = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: addParticipant.url(args, options),
     method: 'post',
 })
@@ -1036,7 +1036,7 @@ addParticipant.post = (args: { education: number | { id: number } } | [education
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:226
 * @route '/education/{education}/participants'
 */
-const addParticipantForm = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const addParticipantForm = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: addParticipant.url(args, options),
     method: 'post',
 })
@@ -1046,7 +1046,7 @@ const addParticipantForm = (args: { education: number | { id: number } } | [educ
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:226
 * @route '/education/{education}/participants'
 */
-addParticipantForm.post = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+addParticipantForm.post = (args: { education: string | number | { id: string | number } } | [education: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: addParticipant.url(args, options),
     method: 'post',
 })
@@ -1058,7 +1058,7 @@ addParticipant.form = addParticipantForm
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:250
 * @route '/education/{education}/participants/{user}'
 */
-export const updateParticipant = (args: { education: number | { id: number }, user: number | { id: number } } | [education: number | { id: number }, user: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const updateParticipant = (args: { education: string | number | { id: string | number }, user: string | number | { id: string | number } } | [education: string | number | { id: string | number }, user: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: updateParticipant.url(args, options),
     method: 'put',
 })
@@ -1073,7 +1073,7 @@ updateParticipant.definition = {
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:250
 * @route '/education/{education}/participants/{user}'
 */
-updateParticipant.url = (args: { education: number | { id: number }, user: number | { id: number } } | [education: number | { id: number }, user: number | { id: number } ], options?: RouteQueryOptions) => {
+updateParticipant.url = (args: { education: string | number | { id: string | number }, user: string | number | { id: string | number } } | [education: string | number | { id: string | number }, user: string | number | { id: string | number } ], options?: RouteQueryOptions) => {
     if (Array.isArray(args)) {
         args = {
             education: args[0],
@@ -1103,7 +1103,7 @@ updateParticipant.url = (args: { education: number | { id: number }, user: numbe
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:250
 * @route '/education/{education}/participants/{user}'
 */
-updateParticipant.put = (args: { education: number | { id: number }, user: number | { id: number } } | [education: number | { id: number }, user: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+updateParticipant.put = (args: { education: string | number | { id: string | number }, user: string | number | { id: string | number } } | [education: string | number | { id: string | number }, user: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: updateParticipant.url(args, options),
     method: 'put',
 })
@@ -1113,7 +1113,7 @@ updateParticipant.put = (args: { education: number | { id: number }, user: numbe
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:250
 * @route '/education/{education}/participants/{user}'
 */
-const updateParticipantForm = (args: { education: number | { id: number }, user: number | { id: number } } | [education: number | { id: number }, user: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateParticipantForm = (args: { education: string | number | { id: string | number }, user: string | number | { id: string | number } } | [education: string | number | { id: string | number }, user: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: updateParticipant.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -1128,7 +1128,7 @@ const updateParticipantForm = (args: { education: number | { id: number }, user:
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:250
 * @route '/education/{education}/participants/{user}'
 */
-updateParticipantForm.put = (args: { education: number | { id: number }, user: number | { id: number } } | [education: number | { id: number }, user: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateParticipantForm.put = (args: { education: string | number | { id: string | number }, user: string | number | { id: string | number } } | [education: string | number | { id: string | number }, user: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: updateParticipant.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -1145,7 +1145,7 @@ updateParticipant.form = updateParticipantForm
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:276
 * @route '/education/{education}/participants/{user}'
 */
-export const removeParticipant = (args: { education: number | { id: number }, user: number | { id: number } } | [education: number | { id: number }, user: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const removeParticipant = (args: { education: string | number | { id: string | number }, user: string | number | { id: string | number } } | [education: string | number | { id: string | number }, user: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: removeParticipant.url(args, options),
     method: 'delete',
 })
@@ -1160,7 +1160,7 @@ removeParticipant.definition = {
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:276
 * @route '/education/{education}/participants/{user}'
 */
-removeParticipant.url = (args: { education: number | { id: number }, user: number | { id: number } } | [education: number | { id: number }, user: number | { id: number } ], options?: RouteQueryOptions) => {
+removeParticipant.url = (args: { education: string | number | { id: string | number }, user: string | number | { id: string | number } } | [education: string | number | { id: string | number }, user: string | number | { id: string | number } ], options?: RouteQueryOptions) => {
     if (Array.isArray(args)) {
         args = {
             education: args[0],
@@ -1190,7 +1190,7 @@ removeParticipant.url = (args: { education: number | { id: number }, user: numbe
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:276
 * @route '/education/{education}/participants/{user}'
 */
-removeParticipant.delete = (args: { education: number | { id: number }, user: number | { id: number } } | [education: number | { id: number }, user: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+removeParticipant.delete = (args: { education: string | number | { id: string | number }, user: string | number | { id: string | number } } | [education: string | number | { id: string | number }, user: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: removeParticipant.url(args, options),
     method: 'delete',
 })
@@ -1200,7 +1200,7 @@ removeParticipant.delete = (args: { education: number | { id: number }, user: nu
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:276
 * @route '/education/{education}/participants/{user}'
 */
-const removeParticipantForm = (args: { education: number | { id: number }, user: number | { id: number } } | [education: number | { id: number }, user: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const removeParticipantForm = (args: { education: string | number | { id: string | number }, user: string | number | { id: string | number } } | [education: string | number | { id: string | number }, user: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: removeParticipant.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -1215,7 +1215,7 @@ const removeParticipantForm = (args: { education: number | { id: number }, user:
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:276
 * @route '/education/{education}/participants/{user}'
 */
-removeParticipantForm.delete = (args: { education: number | { id: number }, user: number | { id: number } } | [education: number | { id: number }, user: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+removeParticipantForm.delete = (args: { education: string | number | { id: string | number }, user: string | number | { id: string | number } } | [education: string | number | { id: string | number }, user: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: removeParticipant.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -1232,7 +1232,7 @@ removeParticipant.form = removeParticipantForm
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:292
 * @route '/education/{education}/media/{mediaId}'
 */
-export const deleteMedia = (args: { education: number | { id: number }, mediaId: string | number } | [education: number | { id: number }, mediaId: string | number ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const deleteMedia = (args: { education: string | number | { id: string | number }, mediaId: string | number } | [education: string | number | { id: string | number }, mediaId: string | number ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: deleteMedia.url(args, options),
     method: 'delete',
 })
@@ -1247,7 +1247,7 @@ deleteMedia.definition = {
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:292
 * @route '/education/{education}/media/{mediaId}'
 */
-deleteMedia.url = (args: { education: number | { id: number }, mediaId: string | number } | [education: number | { id: number }, mediaId: string | number ], options?: RouteQueryOptions) => {
+deleteMedia.url = (args: { education: string | number | { id: string | number }, mediaId: string | number } | [education: string | number | { id: string | number }, mediaId: string | number ], options?: RouteQueryOptions) => {
     if (Array.isArray(args)) {
         args = {
             education: args[0],
@@ -1275,7 +1275,7 @@ deleteMedia.url = (args: { education: number | { id: number }, mediaId: string |
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:292
 * @route '/education/{education}/media/{mediaId}'
 */
-deleteMedia.delete = (args: { education: number | { id: number }, mediaId: string | number } | [education: number | { id: number }, mediaId: string | number ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+deleteMedia.delete = (args: { education: string | number | { id: string | number }, mediaId: string | number } | [education: string | number | { id: string | number }, mediaId: string | number ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: deleteMedia.url(args, options),
     method: 'delete',
 })
@@ -1285,7 +1285,7 @@ deleteMedia.delete = (args: { education: number | { id: number }, mediaId: strin
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:292
 * @route '/education/{education}/media/{mediaId}'
 */
-const deleteMediaForm = (args: { education: number | { id: number }, mediaId: string | number } | [education: number | { id: number }, mediaId: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const deleteMediaForm = (args: { education: string | number | { id: string | number }, mediaId: string | number } | [education: string | number | { id: string | number }, mediaId: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: deleteMedia.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -1300,7 +1300,7 @@ const deleteMediaForm = (args: { education: number | { id: number }, mediaId: st
 * @see app/Http/Controllers/HumanResources/Education/EducationController.php:292
 * @route '/education/{education}/media/{mediaId}'
 */
-deleteMediaForm.delete = (args: { education: number | { id: number }, mediaId: string | number } | [education: number | { id: number }, mediaId: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+deleteMediaForm.delete = (args: { education: string | number | { id: string | number }, mediaId: string | number } | [education: string | number | { id: string | number }, mediaId: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: deleteMedia.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',

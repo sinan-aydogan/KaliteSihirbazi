@@ -287,7 +287,7 @@ store.form = storeForm
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:50
 * @route '/calibration-firm/{calibration_firm}'
 */
-export const show = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { calibration_firm: string | number | { id: string | number } } | [calibration_firm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -302,7 +302,7 @@ show.definition = {
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:50
 * @route '/calibration-firm/{calibration_firm}'
 */
-show.url = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+show.url = (args: { calibration_firm: string | number | { id: string | number } } | [calibration_firm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { calibration_firm: args }
     }
@@ -335,7 +335,7 @@ show.url = (args: { calibration_firm: number | { id: number } } | [calibration_f
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:50
 * @route '/calibration-firm/{calibration_firm}'
 */
-show.get = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { calibration_firm: string | number | { id: string | number } } | [calibration_firm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -345,7 +345,7 @@ show.get = (args: { calibration_firm: number | { id: number } } | [calibration_f
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:50
 * @route '/calibration-firm/{calibration_firm}'
 */
-show.head = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { calibration_firm: string | number | { id: string | number } } | [calibration_firm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -355,7 +355,7 @@ show.head = (args: { calibration_firm: number | { id: number } } | [calibration_
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:50
 * @route '/calibration-firm/{calibration_firm}'
 */
-const showForm = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const showForm = (args: { calibration_firm: string | number | { id: string | number } } | [calibration_firm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -365,7 +365,7 @@ const showForm = (args: { calibration_firm: number | { id: number } } | [calibra
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:50
 * @route '/calibration-firm/{calibration_firm}'
 */
-showForm.get = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.get = (args: { calibration_firm: string | number | { id: string | number } } | [calibration_firm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -375,7 +375,7 @@ showForm.get = (args: { calibration_firm: number | { id: number } } | [calibrati
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:50
 * @route '/calibration-firm/{calibration_firm}'
 */
-showForm.head = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.head = (args: { calibration_firm: string | number | { id: string | number } } | [calibration_firm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -392,7 +392,7 @@ show.form = showForm
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:60
 * @route '/calibration-firm/{calibration_firm}/edit'
 */
-export const edit = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { calibration_firm: string | number | { id: string | number } } | [calibration_firm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -407,7 +407,7 @@ edit.definition = {
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:60
 * @route '/calibration-firm/{calibration_firm}/edit'
 */
-edit.url = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+edit.url = (args: { calibration_firm: string | number | { id: string | number } } | [calibration_firm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { calibration_firm: args }
     }
@@ -440,7 +440,7 @@ edit.url = (args: { calibration_firm: number | { id: number } } | [calibration_f
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:60
 * @route '/calibration-firm/{calibration_firm}/edit'
 */
-edit.get = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { calibration_firm: string | number | { id: string | number } } | [calibration_firm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -450,7 +450,7 @@ edit.get = (args: { calibration_firm: number | { id: number } } | [calibration_f
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:60
 * @route '/calibration-firm/{calibration_firm}/edit'
 */
-edit.head = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { calibration_firm: string | number | { id: string | number } } | [calibration_firm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
@@ -460,7 +460,7 @@ edit.head = (args: { calibration_firm: number | { id: number } } | [calibration_
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:60
 * @route '/calibration-firm/{calibration_firm}/edit'
 */
-const editForm = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const editForm = (args: { calibration_firm: string | number | { id: string | number } } | [calibration_firm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -470,7 +470,7 @@ const editForm = (args: { calibration_firm: number | { id: number } } | [calibra
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:60
 * @route '/calibration-firm/{calibration_firm}/edit'
 */
-editForm.get = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.get = (args: { calibration_firm: string | number | { id: string | number } } | [calibration_firm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -480,7 +480,7 @@ editForm.get = (args: { calibration_firm: number | { id: number } } | [calibrati
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:60
 * @route '/calibration-firm/{calibration_firm}/edit'
 */
-editForm.head = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.head = (args: { calibration_firm: string | number | { id: string | number } } | [calibration_firm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -497,7 +497,7 @@ edit.form = editForm
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:70
 * @route '/calibration-firm/{calibration_firm}'
 */
-export const update = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { calibration_firm: string | number | { id: string | number } } | [calibration_firm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -512,7 +512,7 @@ update.definition = {
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:70
 * @route '/calibration-firm/{calibration_firm}'
 */
-update.url = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+update.url = (args: { calibration_firm: string | number | { id: string | number } } | [calibration_firm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { calibration_firm: args }
     }
@@ -545,7 +545,7 @@ update.url = (args: { calibration_firm: number | { id: number } } | [calibration
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:70
 * @route '/calibration-firm/{calibration_firm}'
 */
-update.put = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { calibration_firm: string | number | { id: string | number } } | [calibration_firm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -555,7 +555,7 @@ update.put = (args: { calibration_firm: number | { id: number } } | [calibration
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:70
 * @route '/calibration-firm/{calibration_firm}'
 */
-update.patch = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update.patch = (args: { calibration_firm: string | number | { id: string | number } } | [calibration_firm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
@@ -565,7 +565,7 @@ update.patch = (args: { calibration_firm: number | { id: number } } | [calibrati
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:70
 * @route '/calibration-firm/{calibration_firm}'
 */
-const updateForm = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateForm = (args: { calibration_firm: string | number | { id: string | number } } | [calibration_firm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -580,7 +580,7 @@ const updateForm = (args: { calibration_firm: number | { id: number } } | [calib
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:70
 * @route '/calibration-firm/{calibration_firm}'
 */
-updateForm.put = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.put = (args: { calibration_firm: string | number | { id: string | number } } | [calibration_firm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -595,7 +595,7 @@ updateForm.put = (args: { calibration_firm: number | { id: number } } | [calibra
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:70
 * @route '/calibration-firm/{calibration_firm}'
 */
-updateForm.patch = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.patch = (args: { calibration_firm: string | number | { id: string | number } } | [calibration_firm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -612,7 +612,7 @@ update.form = updateForm
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:82
 * @route '/calibration-firm/{calibration_firm}'
 */
-export const destroy = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { calibration_firm: string | number | { id: string | number } } | [calibration_firm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -627,7 +627,7 @@ destroy.definition = {
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:82
 * @route '/calibration-firm/{calibration_firm}'
 */
-destroy.url = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { calibration_firm: string | number | { id: string | number } } | [calibration_firm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { calibration_firm: args }
     }
@@ -660,7 +660,7 @@ destroy.url = (args: { calibration_firm: number | { id: number } } | [calibratio
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:82
 * @route '/calibration-firm/{calibration_firm}'
 */
-destroy.delete = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { calibration_firm: string | number | { id: string | number } } | [calibration_firm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -670,7 +670,7 @@ destroy.delete = (args: { calibration_firm: number | { id: number } } | [calibra
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:82
 * @route '/calibration-firm/{calibration_firm}'
 */
-const destroyForm = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { calibration_firm: string | number | { id: string | number } } | [calibration_firm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -685,7 +685,7 @@ const destroyForm = (args: { calibration_firm: number | { id: number } } | [cali
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:82
 * @route '/calibration-firm/{calibration_firm}'
 */
-destroyForm.delete = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { calibration_firm: string | number | { id: string | number } } | [calibration_firm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -783,7 +783,7 @@ deleted.form = deletedForm
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:94
 * @route '/calibration-firm-permanent-delete/{calibrationFirm}'
 */
-export const permanentDestroy = (args: { calibrationFirm: number | { id: number } } | [calibrationFirm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const permanentDestroy = (args: { calibrationFirm: string | number | { id: string | number } } | [calibrationFirm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: permanentDestroy.url(args, options),
     method: 'delete',
 })
@@ -798,7 +798,7 @@ permanentDestroy.definition = {
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:94
 * @route '/calibration-firm-permanent-delete/{calibrationFirm}'
 */
-permanentDestroy.url = (args: { calibrationFirm: number | { id: number } } | [calibrationFirm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+permanentDestroy.url = (args: { calibrationFirm: string | number | { id: string | number } } | [calibrationFirm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { calibrationFirm: args }
     }
@@ -831,7 +831,7 @@ permanentDestroy.url = (args: { calibrationFirm: number | { id: number } } | [ca
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:94
 * @route '/calibration-firm-permanent-delete/{calibrationFirm}'
 */
-permanentDestroy.delete = (args: { calibrationFirm: number | { id: number } } | [calibrationFirm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+permanentDestroy.delete = (args: { calibrationFirm: string | number | { id: string | number } } | [calibrationFirm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: permanentDestroy.url(args, options),
     method: 'delete',
 })
@@ -841,7 +841,7 @@ permanentDestroy.delete = (args: { calibrationFirm: number | { id: number } } | 
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:94
 * @route '/calibration-firm-permanent-delete/{calibrationFirm}'
 */
-const permanentDestroyForm = (args: { calibrationFirm: number | { id: number } } | [calibrationFirm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const permanentDestroyForm = (args: { calibrationFirm: string | number | { id: string | number } } | [calibrationFirm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: permanentDestroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -856,7 +856,7 @@ const permanentDestroyForm = (args: { calibrationFirm: number | { id: number } }
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:94
 * @route '/calibration-firm-permanent-delete/{calibrationFirm}'
 */
-permanentDestroyForm.delete = (args: { calibrationFirm: number | { id: number } } | [calibrationFirm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+permanentDestroyForm.delete = (args: { calibrationFirm: string | number | { id: string | number } } | [calibrationFirm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: permanentDestroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -873,7 +873,7 @@ permanentDestroy.form = permanentDestroyForm
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:103
 * @route '/calibration-firm-restore/{calibrationFirm}'
 */
-export const restore = (args: { calibrationFirm: number | { id: number } } | [calibrationFirm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const restore = (args: { calibrationFirm: string | number | { id: string | number } } | [calibrationFirm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: restore.url(args, options),
     method: 'get',
 })
@@ -888,7 +888,7 @@ restore.definition = {
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:103
 * @route '/calibration-firm-restore/{calibrationFirm}'
 */
-restore.url = (args: { calibrationFirm: number | { id: number } } | [calibrationFirm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+restore.url = (args: { calibrationFirm: string | number | { id: string | number } } | [calibrationFirm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { calibrationFirm: args }
     }
@@ -921,7 +921,7 @@ restore.url = (args: { calibrationFirm: number | { id: number } } | [calibration
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:103
 * @route '/calibration-firm-restore/{calibrationFirm}'
 */
-restore.get = (args: { calibrationFirm: number | { id: number } } | [calibrationFirm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+restore.get = (args: { calibrationFirm: string | number | { id: string | number } } | [calibrationFirm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: restore.url(args, options),
     method: 'get',
 })
@@ -931,7 +931,7 @@ restore.get = (args: { calibrationFirm: number | { id: number } } | [calibration
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:103
 * @route '/calibration-firm-restore/{calibrationFirm}'
 */
-restore.head = (args: { calibrationFirm: number | { id: number } } | [calibrationFirm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+restore.head = (args: { calibrationFirm: string | number | { id: string | number } } | [calibrationFirm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: restore.url(args, options),
     method: 'head',
 })
@@ -941,7 +941,7 @@ restore.head = (args: { calibrationFirm: number | { id: number } } | [calibratio
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:103
 * @route '/calibration-firm-restore/{calibrationFirm}'
 */
-const restoreForm = (args: { calibrationFirm: number | { id: number } } | [calibrationFirm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const restoreForm = (args: { calibrationFirm: string | number | { id: string | number } } | [calibrationFirm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: restore.url(args, options),
     method: 'get',
 })
@@ -951,7 +951,7 @@ const restoreForm = (args: { calibrationFirm: number | { id: number } } | [calib
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:103
 * @route '/calibration-firm-restore/{calibrationFirm}'
 */
-restoreForm.get = (args: { calibrationFirm: number | { id: number } } | [calibrationFirm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+restoreForm.get = (args: { calibrationFirm: string | number | { id: string | number } } | [calibrationFirm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: restore.url(args, options),
     method: 'get',
 })
@@ -961,7 +961,7 @@ restoreForm.get = (args: { calibrationFirm: number | { id: number } } | [calibra
 * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:103
 * @route '/calibration-firm-restore/{calibrationFirm}'
 */
-restoreForm.head = (args: { calibrationFirm: number | { id: number } } | [calibrationFirm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+restoreForm.head = (args: { calibrationFirm: string | number | { id: string | number } } | [calibrationFirm: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: restore.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',

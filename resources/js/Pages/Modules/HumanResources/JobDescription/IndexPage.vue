@@ -1,6 +1,6 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
-import {ref} from "vue";
+import {computed, ref} from "vue";
 import {useForm, router} from "@inertiajs/vue3";
 
 // Components
@@ -21,11 +21,11 @@ import SwitchInput from "@/Components/Form/SwitchInput.vue"
 const props = defineProps({
   tableData: {
     type: Object,
-    default: {}
+    default: () => ({data: []})
   },
   departments: {
     type: Array,
-    default: []
+    default: () => []
   }
 })
 
@@ -63,6 +63,26 @@ const tableHeaders = [
   }
 ]
 const showModal = ref(false);
+const showSectionPicker = ref(false);
+const selectedSections = ref([]);
+const staffTypeLabel = (value) => staffTypes.find((type) => type.id === value)?.label ?? value ?? '—';
+
+const openCreateModal = () => {
+  form.reset();
+  v$.value.$reset();
+  selectedSections.value = [];
+  showSectionPicker.value = false;
+  formType.value = 'create';
+  showModal.value = true;
+};
+
+const closeModal = () => {
+  showModal.value = false;
+  showSectionPicker.value = false;
+  selectedSections.value = [];
+  form.reset();
+  v$.value.$reset();
+};
 
 /*Form*/
 const formType = ref("create");
@@ -107,9 +127,6 @@ const getData = (query) => {
   }
 }
 
-// Rules
-const lengthValidation = (value) => value.length > 0
-
 const rules = ref({
   code: {
     required: helpers.withMessage(t('message.validation.required'), required),
@@ -120,15 +137,6 @@ const rules = ref({
     maxLength: helpers.withMessage(t('message.validation.maxLength', [255]), maxLength(255))
   },
   department_id: {required: helpers.withMessage(t('message.validation.required'), required)},
-  responsibilities: {lengthValidation: helpers.withMessage(t('message.validation.required'), lengthValidation)},
-  powers: {lengthValidation: helpers.withMessage(t('message.validation.required'), lengthValidation)},
-  requirements: {lengthValidation: helpers.withMessage(t('message.validation.required'), lengthValidation)},
-  skills: {lengthValidation: helpers.withMessage(t('message.validation.required'), lengthValidation)},
-  working_conditions: {lengthValidation: helpers.withMessage(t('message.validation.required'), lengthValidation)},
-  working_tools: {lengthValidation: helpers.withMessage(t('message.validation.required'), lengthValidation)},
-  working_hours: {lengthValidation: helpers.withMessage(t('message.validation.required'), lengthValidation)},
-  overtime_status: {lengthValidation: helpers.withMessage(t('message.validation.required'), lengthValidation)},
-  travel_status: {lengthValidation: helpers.withMessage(t('message.validation.required'), lengthValidation)},
 })
 
 const v$ = useVuelidate(rules, form)
@@ -137,6 +145,55 @@ const v$ = useVuelidate(rules, form)
 import Terms from "./terms"
 
 const {staffTypes, locationTypes} = Terms()
+
+const sectionDefinitions = computed(() => [
+  {key: 'requirements', label: tm('term.requirements'), description: tm('term.requirementsDescription'), type: 'list'},
+  {key: 'responsibilities', label: tm('term.responsibilities'), description: tm('term.responsibilitiesDescription'), type: 'list'},
+  {key: 'powers', label: tm('term.powers'), description: tm('term.powersDescription'), type: 'list'},
+  {key: 'skills', label: tm('term.skills'), description: tm('term.skillsDescription'), type: 'list'},
+  {key: 'working_conditions', label: tm('term.workingConditions'), description: tm('term.workingConditionsDescription'), type: 'list'},
+  {key: 'working_tools', label: tm('term.workingTools'), description: tm('term.workingToolsDescription'), type: 'list'},
+  {key: 'working_hours', label: tm('term.workingHours'), description: tm('term.workingHoursDescription'), type: 'list'},
+  {key: 'overtime_status', label: tm('term.overtimeStatus'), description: tm('term.overtimeStatusDescription'), type: 'list'},
+  {key: 'travel_status', label: tm('term.travelStatus'), description: tm('term.travelStatusDescription'), type: 'travel'},
+]);
+
+const activeSections = computed(() => sectionDefinitions.value.filter(({key}) => selectedSections.value.includes(key)));
+const availableSections = computed(() => sectionDefinitions.value.filter(({key}) => !selectedSections.value.includes(key)));
+
+const hasSectionValue = (section) => {
+  const values = form[section.key];
+  if (!Array.isArray(values)) return false;
+
+  if (section.type === 'travel') {
+    return values.some((item) => item && (item.reason || item.location));
+  }
+
+  return values.some((item) => String(item ?? '').trim());
+};
+
+const syncSelectedSections = () => {
+  selectedSections.value = sectionDefinitions.value.filter(hasSectionValue).map(({key}) => key);
+};
+
+const addSection = (key) => {
+  if (!selectedSections.value.includes(key)) selectedSections.value.push(key);
+  showSectionPicker.value = false;
+};
+
+const removeSection = (key) => {
+  selectedSections.value = selectedSections.value.filter((sectionKey) => sectionKey !== key);
+  form[key] = [];
+};
+
+const sectionData = (key) => selectedSections.value.includes(key) ? form[key] : [];
+
+const resetForm = () => {
+  form.reset();
+  selectedSections.value = [];
+  showSectionPicker.value = false;
+  v$.value.$reset();
+};
 
 /*Create*/
 const handleSubmit = async () => {
@@ -155,17 +212,15 @@ const handleSubmit = async () => {
         description: form.description,
         staff_type: form.staff_type,
         department_id: form.department_id,
-        responsibilities: form.responsibilities.length ? form.responsibilities : [''],
-        powers: form.powers.length ? form.powers : [''],
-        requirements: form.requirements.length ? form.requirements : [''],
-        skills: form.skills.length ? form.skills : [''],
-        working_conditions: form.working_conditions.length ? form.working_conditions : [''],
-        working_tools: form.working_tools.length ? form.working_tools : [''],
-        working_hours: form.working_hours.length ? form.working_hours : [''],
-        overtime_status: form.overtime_status.length ? form.overtime_status : [''],
-        travel_status: form.travel_status ?
-                    (Array.isArray(form.travel_status) ? form.travel_status : [form.travel_status])
-                    : [{}],
+        responsibilities: sectionData('responsibilities'),
+        powers: sectionData('powers'),
+        requirements: sectionData('requirements'),
+        skills: sectionData('skills'),
+        working_conditions: sectionData('working_conditions'),
+        working_tools: sectionData('working_tools'),
+        working_hours: sectionData('working_hours'),
+        overtime_status: sectionData('overtime_status'),
+        travel_status: sectionData('travel_status'),
         status: form.status
     }
 
@@ -219,9 +274,10 @@ const getRowInfo = (id) => {
     form.overtime_status = response.data.overtime_status ? response.data.overtime_status : [];
     form.travel_status = response.data.travel_status ? response.data.travel_status : [];
     form.status = response.data.status;
+    syncSelectedSections();
+    showModal.value = true;
+    formType.value = "update";
   })
-  showModal.value = true;
-  formType.value = "update"
 }
 
 /*Delete*/
@@ -241,7 +297,7 @@ const handleDelete = (id) => {
         <span v-text="$t('term.deletedItems')"/>
       </simple-button>
 
-      <simple-button @click="showModal = true; formType = 'create'" color="green">
+      <simple-button @click="openCreateModal" color="green">
         <font-awesome-icon icon="plus" class="mr-2"/>
         <span v-text="$t('action.addNew')"/>
       </simple-button>
@@ -271,13 +327,13 @@ const handleDelete = (id) => {
             />
           </div>
 
-          <span v-text="staffTypes.find(i=>i.id === props.staff_type).label"/>
+          <span v-text="staffTypeLabel(props.staff_type)"/>
         </div>
       </template>
 
       <!--Department-->
       <template #department_id="{props}">
-        {{ props.department_id ? props.department.name : '' }}
+        {{ props.department?.name ?? '' }}
       </template>
 
       <!--Status-->
@@ -287,7 +343,7 @@ const handleDelete = (id) => {
     </Table>
   </app-layout>
 
-  <teleport to="body">
+  <teleport v-if="showModal" to="body">
     <!--Modal-->
     <Modal
         v-model="showModal"
@@ -295,6 +351,7 @@ const handleDelete = (id) => {
         :subHeader="tm('title.createPage.subTitle')"
         closeable
         closeButton
+        @closed="closeModal"
     >
       <Form full-size>
         <FormSection bg-less>
@@ -326,64 +383,69 @@ const handleDelete = (id) => {
                           :disabled="form.type === 'main'"/>
           </input-group>
 
-          <!-- Requirements -->
-          <input-group class="col-span-6" labelFor="requirements" :label="tm('term.requirements')"
-                       :errors="v$.requirements.$errors">
-            <text-list-input :rows="4" v-model="form.requirements"/>
-          </input-group>
+          <section class="rounded-xl border border-slate-300 bg-slate-50/70 p-4 dark:border-slate-600 dark:bg-slate-800/45">
+            <div class="mb-4 flex items-center justify-between gap-3">
+              <div>
+                <h3 class="font-semibold text-slate-800 dark:text-slate-100" v-text="tm('term.extraSections')"/>
+                <p class="mt-0.5 text-xs text-slate-500 dark:text-slate-400" v-text="tm('term.extraSectionsDescription')"/>
+              </div>
+              <SimpleButton
+                  v-if="availableSections.length"
+                  :label="tm('term.addSection')"
+                  color="green"
+                  @click="showSectionPicker = true"
+              />
+            </div>
 
-          <!-- Responsibilities -->
-          <input-group class="col-span-6" labelFor="responsibilities" :label="tm('term.responsibilities')"
-                       :errors="v$.responsibilities.$errors">
-            <text-list-input :rows="4" v-model="form.responsibilities"/>
-          </input-group>
+            <button
+                v-if="!activeSections.length"
+                type="button"
+                class="flex w-full flex-col items-center justify-center rounded-xl border border-dashed border-slate-400 bg-white px-5 py-8 text-center transition hover:border-sky-500 hover:bg-sky-50 dark:border-slate-500 dark:bg-slate-700/60 dark:hover:border-sky-400 dark:hover:bg-slate-700"
+                @click="showSectionPicker = true"
+            >
+              <font-awesome-icon icon="plus" class="mb-3 text-xl text-sky-600 dark:text-sky-400"/>
+              <span class="font-semibold text-slate-700 dark:text-slate-100" v-text="tm('term.noExtraSections')"/>
+              <span class="mt-1 text-sm text-slate-500 dark:text-slate-400" v-text="tm('term.noExtraSectionsDescription')"/>
+            </button>
 
-          <!-- Powers -->
-          <input-group class="col-span-6" labelFor="powers" :label="tm('term.powers')" :errors="v$.powers.$errors">
-            <text-list-input :rows="4" v-model="form.powers"/>
-          </input-group>
+            <div v-else class="grid grid-cols-1 gap-4">
+              <article
+                  v-for="section in activeSections"
+                  :key="section.key"
+                  class="rounded-xl border border-slate-300 bg-white p-4 shadow-sm dark:border-slate-600 dark:bg-slate-700"
+              >
+                <div class="mb-3 flex items-start justify-between gap-3">
+                  <div>
+                    <h4 class="font-semibold text-slate-800 dark:text-slate-100" v-text="section.label"/>
+                    <p class="mt-0.5 text-xs text-slate-500 dark:text-slate-400" v-text="section.description"/>
+                  </div>
+                  <button
+                      type="button"
+                      class="grid h-8 w-8 shrink-0 place-items-center rounded-lg text-slate-500 transition hover:bg-red-50 hover:text-red-600 dark:text-slate-300 dark:hover:bg-red-950/40 dark:hover:text-red-400"
+                      :title="tm('term.removeSection')"
+                      @click="removeSection(section.key)"
+                  >
+                    <font-awesome-icon icon="trash-can"/>
+                  </button>
+                </div>
 
-          <!-- Skills -->
-          <input-group class="col-span-6" labelFor="skills" :label="tm('term.skills')" :errors="v$.skills.$errors">
-            <text-list-input :rows="4" v-model="form.skills"/>
-          </input-group>
-
-          <!-- Working Conditions -->
-          <input-group class="col-span-6" labelFor="working_conditions" :label="tm('term.workingConditions')"
-                       :errors="v$.working_conditions.$errors">
-            <text-list-input :rows="4" v-model="form.working_conditions"/>
-          </input-group>
-
-          <!-- Working Tools -->
-          <input-group class="col-span-6" labelFor="working_tools" :label="tm('term.workingTools')"
-                       :errors="v$.working_tools.$errors">
-            <text-list-input :rows="4" v-model="form.working_tools"/>
-          </input-group>
-
-          <!-- Working Hours -->
-          <input-group class="col-span-6" labelFor="working_hours" :label="tm('term.workingHours')"
-                       :errors="v$.working_hours.$errors">
-            <text-list-input :rows="4" v-model="form.working_hours"/>
-          </input-group>
-
-          <!-- Overtime Status -->
-          <input-group class="col-span-6" labelFor="overtime_status" :label="tm('term.overtimeStatus')"
-                       :errors="v$.overtime_status.$errors">
-            <text-list-input :rows="4" v-model="form.overtime_status"/>
-          </input-group>
-
-          <!-- Travel Status -->
-          <input-group class="col-span-6" labelFor="travel_status" :label="tm('term.travelStatus')"
-                       :errors="v$.travel_status.$errors">
-            <text-list-input-with-select
-                v-model="form.travel_status"
-                :options="locationTypes"
-                label-key="label"
-                text-key="reason"
-                select-key="location"
-                select-placeholder="Yön Seçini"
-            />
-          </input-group>
+                <text-list-input
+                    v-if="section.type === 'list'"
+                    :rows="4"
+                    v-model="form[section.key]"
+                />
+                <text-list-input-with-select
+                    v-else
+                    v-model="form[section.key]"
+                    :options="locationTypes"
+                    label-key="label"
+                    text-key="reason"
+                    select-key="location"
+                    :select-placeholder="tm('term.selectDirection')"
+                />
+              </article>
+            </div>
+          </section>
 
           <!-- Status -->
           <input-group class="col-span-6" labelFor="status" :label="tm('term.status')">
@@ -393,9 +455,40 @@ const handleDelete = (id) => {
       </Form>
 
       <template #footer>
-        <SimpleButton :label="t('action.reset')" color="orange" @click="form.reset()" />
+        <SimpleButton :label="t('action.reset')" color="orange" @click="resetForm" />
         <SimpleButton :label="t('action.create')" color="green" @click="handleSubmit" :loading="form.processing"/>
       </template>
+    </Modal>
+  </teleport>
+
+  <teleport v-if="showSectionPicker" to="body">
+    <Modal
+        v-model="showSectionPicker"
+        :header="tm('term.addExtraSection')"
+        :subHeader="tm('term.addExtraSectionDescription')"
+        closeable
+        closeButton
+    >
+      <div v-if="availableSections.length" class="grid grid-cols-1 gap-3 p-4 sm:grid-cols-2">
+        <button
+            v-for="section in availableSections"
+            :key="section.key"
+            type="button"
+            class="group rounded-xl border border-slate-300 bg-white p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-sky-500 hover:shadow-md dark:border-slate-600 dark:bg-slate-700 dark:hover:border-sky-400"
+            @click="addSection(section.key)"
+        >
+          <span class="flex items-start justify-between gap-3">
+            <span>
+              <span class="block font-semibold text-slate-800 dark:text-slate-100" v-text="section.label"/>
+              <span class="mt-1 block text-sm leading-5 text-slate-500 dark:text-slate-400" v-text="section.description"/>
+            </span>
+            <span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-sky-50 text-sky-600 transition group-hover:bg-sky-600 group-hover:text-white dark:bg-slate-600 dark:text-sky-300 dark:group-hover:bg-sky-500">
+              <font-awesome-icon icon="plus"/>
+            </span>
+          </span>
+        </button>
+      </div>
+      <div v-else class="p-8 text-center text-slate-500 dark:text-slate-400" v-text="tm('term.allSectionsAdded')"/>
     </Modal>
   </teleport>
 </template>

@@ -176,7 +176,7 @@ const handleDelete = (id) => {
 <template>
   <app-layout :title="tm('title.deletedPage.title')" :sub-title="tm('title.deletedPage.subTitle')">
     <template #actionArea>
-      <simple-button type="route" :link="route('department.index')" color="blue">
+      <simple-button type="route" :link="route('job-description.index')" color="blue">
         <font-awesome-icon icon="fa-solid fa-left-long" class="mr-2" />
         <span v-text="tm('action.returnToList')" />
       </simple-button>
@@ -184,8 +184,8 @@ const handleDelete = (id) => {
     <Table
         :data="tableData"
         :headers="tableHeaders"
-        @delete="router.delete(route('department.permanent-delete', $event.id))"
-        @restore="router.visit(route('department.restore', $event.id))"
+        @delete="router.delete(route('job-description.permanent-delete', $event.id))"
+        @restore="router.visit(route('job-description.restore', $event.id))"
         restore-action
         delete-action
     >

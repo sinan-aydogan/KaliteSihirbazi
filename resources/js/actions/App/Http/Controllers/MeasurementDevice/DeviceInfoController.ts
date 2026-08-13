@@ -4,7 +4,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFo
 * @see app/Http/Controllers/MeasurementDevice/DeviceInfoController.php:14
 * @route '/measurement-device/{measurementDevice}/device-info'
 */
-export const index = (args: { measurementDevice: number | { id: number } } | [measurementDevice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const index = (args: { measurementDevice: string | number | { id: string | number } } | [measurementDevice: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: index.url(args, options),
     method: 'get',
 })
@@ -19,7 +19,7 @@ index.definition = {
 * @see app/Http/Controllers/MeasurementDevice/DeviceInfoController.php:14
 * @route '/measurement-device/{measurementDevice}/device-info'
 */
-index.url = (args: { measurementDevice: number | { id: number } } | [measurementDevice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+index.url = (args: { measurementDevice: string | number | { id: string | number } } | [measurementDevice: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { measurementDevice: args }
     }
@@ -52,7 +52,7 @@ index.url = (args: { measurementDevice: number | { id: number } } | [measurement
 * @see app/Http/Controllers/MeasurementDevice/DeviceInfoController.php:14
 * @route '/measurement-device/{measurementDevice}/device-info'
 */
-index.get = (args: { measurementDevice: number | { id: number } } | [measurementDevice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+index.get = (args: { measurementDevice: string | number | { id: string | number } } | [measurementDevice: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: index.url(args, options),
     method: 'get',
 })
@@ -62,7 +62,7 @@ index.get = (args: { measurementDevice: number | { id: number } } | [measurement
 * @see app/Http/Controllers/MeasurementDevice/DeviceInfoController.php:14
 * @route '/measurement-device/{measurementDevice}/device-info'
 */
-index.head = (args: { measurementDevice: number | { id: number } } | [measurementDevice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+index.head = (args: { measurementDevice: string | number | { id: string | number } } | [measurementDevice: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(args, options),
     method: 'head',
 })
@@ -72,7 +72,7 @@ index.head = (args: { measurementDevice: number | { id: number } } | [measuremen
 * @see app/Http/Controllers/MeasurementDevice/DeviceInfoController.php:14
 * @route '/measurement-device/{measurementDevice}/device-info'
 */
-const indexForm = (args: { measurementDevice: number | { id: number } } | [measurementDevice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const indexForm = (args: { measurementDevice: string | number | { id: string | number } } | [measurementDevice: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: index.url(args, options),
     method: 'get',
 })
@@ -82,7 +82,7 @@ const indexForm = (args: { measurementDevice: number | { id: number } } | [measu
 * @see app/Http/Controllers/MeasurementDevice/DeviceInfoController.php:14
 * @route '/measurement-device/{measurementDevice}/device-info'
 */
-indexForm.get = (args: { measurementDevice: number | { id: number } } | [measurementDevice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+indexForm.get = (args: { measurementDevice: string | number | { id: string | number } } | [measurementDevice: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: index.url(args, options),
     method: 'get',
 })
@@ -92,7 +92,7 @@ indexForm.get = (args: { measurementDevice: number | { id: number } } | [measure
 * @see app/Http/Controllers/MeasurementDevice/DeviceInfoController.php:14
 * @route '/measurement-device/{measurementDevice}/device-info'
 */
-indexForm.head = (args: { measurementDevice: number | { id: number } } | [measurementDevice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+indexForm.head = (args: { measurementDevice: string | number | { id: string | number } } | [measurementDevice: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: index.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
