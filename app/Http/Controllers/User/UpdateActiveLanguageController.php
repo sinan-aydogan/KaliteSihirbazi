@@ -3,30 +3,26 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class UpdateActiveLanguageController extends Controller
 {
     /**
      * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request)
+    public function __invoke(Request $request): RedirectResponse
     {
-        Validator::make($request->all(), [
-            'activeLanguage' => ['required'],
-        ])->after(function ($validator) use ($request) {
-            if (! isset($request['activeLanguage'])) {
-                $validator->errors()->add('activeLanguage', __('There has been occurred undefined problem, please reload page'));
-            }
-        })->validateWithBag('activeLanguage');
+        $validated = $request->validateWithBag('activeLanguage', [
+            'activeLanguage' => ['required', 'string', Rule::in(['tr', 'en'])],
+        ]);
 
-        $user = auth()->user();
+        /** @var User $user */
+        $user = $request->user();
         $user->forceFill([
-            'language' => $request->input('activeLanguage'),
+            'language' => $validated['activeLanguage'],
         ])->save();
 
         return redirect()->back();

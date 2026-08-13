@@ -2,6 +2,7 @@
 
 namespace App\Models\Document;
 
+use App\Models\Department;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -12,19 +13,19 @@ class DistributionPoint extends Model
     use HasFactory;
 
     protected $fillable = [
-        'code',
         'name',
-        'department_id'
-        ];
+        'department_id',
+    ];
 
-    /*Related department with Distribution Point's*/
-    public function department():BelongsTo{
-        return $this->belongsTo('App\Models\Department');
+    /* Related department with Distribution Point's */
+    public function department(): BelongsTo
+    {
+        return $this->belongsTo(Department::class);
     }
 
-    /*Related documents with Distribution Point's*/
-    public function documents():BelongsToMany
+    /* Related documents with Distribution Point's */
+    public function documents(): BelongsToMany
     {
-        return $this->belongsToMany(Document::class);
+        return $this->belongsToMany(Document::class)->withTimestamps();
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\MeasurementDevice\Calibration\CalibrationFirm;
+use App\Models\MeasurementDevice\MeasurementDevice;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,10 +19,10 @@ return new class extends Migration
             $table->id();
             $table->date('planned_date');
             $table->date('accomplished_date')->nullable();
-            $table->foreignIdFor(\App\Models\MeasurementDevice\MeasurementDevice::class);
-            $table->foreignIdFor(\App\Models\MeasurementDevice\Calibration\CalibrationFirm::class);
-            $table->float('price')->nullable();
-            $table->string('currency')->nullable();
+            $table->foreignIdFor(MeasurementDevice::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(CalibrationFirm::class)->constrained()->restrictOnDelete();
+            $table->decimal('price', 12, 2)->nullable();
+            $table->char('currency', 3)->nullable();
             $table->boolean('status')->default(0);
             $table->softDeletes();
             $table->timestamps();

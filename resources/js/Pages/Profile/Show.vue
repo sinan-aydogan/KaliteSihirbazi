@@ -28,21 +28,21 @@ defineProps({
 
             <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
                 <!-- User Info -->
-                <div v-if="usePage().props.jetstream.canUpdateProfileInformation">
+                <div v-if="usePage().props.features.canUpdateProfileInformation">
                     <UpdateProfileInformationForm :user="usePage().props.auth.user" />
 
                     <Divider />
                 </div>
 
                 <!-- Update Password -->
-                <div v-if="usePage().props.jetstream.canUpdatePassword">
+                <div v-if="usePage().props.features.canUpdatePassword">
                     <UpdatePasswordForm class="mt-10 sm:mt-0" />
 
                     <Divider />
                 </div>
 
                 <!-- Two Factor Authentication -->
-                <div v-if="usePage().props.jetstream.canManageTwoFactorAuthentication">
+                <div v-if="usePage().props.features.canManageTwoFactorAuthentication">
                     <TwoFactorAuthenticationForm
                         :requires-confirmation="confirmsTwoFactorAuthentication"
                         class="mt-10 sm:mt-0"
@@ -71,7 +71,7 @@ defineProps({
                 </div>
 
                 <!-- Delete Account -->
-                <template v-if="usePage().props.jetstream.hasAccountDeletionFeatures">
+                <template v-if="usePage().props.features.hasAccountDeletionFeatures">
                     <Divider />
 
                     <DeleteUserForm class="mt-10 sm:mt-0" />

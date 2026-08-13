@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Setting\PropertyType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,9 +16,9 @@ return new class extends Migration
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
-            $table->string('name',255);
-            $table->json('feature');
-            $table->foreignIdFor(\App\Models\Setting\PropertyType::class)->nullable();
+            $table->string('name', 255);
+            $table->jsonb('feature');
+            $table->foreignIdFor(PropertyType::class)->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -3,8 +3,8 @@
 namespace App\Models\HumanResources\Education;
 
 use App\Models\User;
-use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
@@ -25,6 +25,7 @@ class EducationParticipation extends Pivot implements HasMedia
     protected $casts = [
         'is_attend' => 'boolean',
         'status' => 'boolean',
+        'score' => 'integer',
     ];
 
     /**

@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
 use App\Models\Department;
+use App\Models\HumanResources\Employee\Employee;
+use Illuminate\Database\Seeder;
 
 class DepartmentSeeder extends Seeder
 {
@@ -15,60 +15,62 @@ class DepartmentSeeder extends Seeder
      */
     public function run()
     {
-        /*Production*/
+        $employeeId = Employee::where('code', '12345678910')->value('id');
+
+        /* Production */
         Department::create([
-            'code'=>'URT',
-            'name'=>'Üretim',
-            'type'=> 'main',
-            'employee_id'=>1
+            'code' => 'URT',
+            'name' => 'Üretim',
+            'type' => 'main',
+            'employee_id' => $employeeId,
         ]);
 
-        /*Quality*/
+        /* Quality */
         Department::create([
-            'code'=>'KLT',
-            'name'=>'Kalite',
-            'type'=> 'main',
-            'employee_id'=>1,
+            'code' => 'KLT',
+            'name' => 'Kalite',
+            'type' => 'main',
+            'employee_id' => $employeeId,
         ]);
 
-        /*Sales*/
+        /* Sales */
         Department::create([
-            'code'=>'STP',
-            'name'=>'Satış & Pazarlama',
-            'type'=> 'main',
-            'employee_id'=>1,
+            'code' => 'STP',
+            'name' => 'Satış & Pazarlama',
+            'type' => 'main',
+            'employee_id' => $employeeId,
         ]);
 
-        /*Purchase*/
+        /* Purchase */
         Department::create([
-            'code'=>'STA',
-            'name'=>'Satın Alma',
-            'type'=> 'main',
-            'employee_id'=>1,
+            'code' => 'STA',
+            'name' => 'Satın Alma',
+            'type' => 'main',
+            'employee_id' => $employeeId,
         ]);
 
-        /*Accountant*/
+        /* Accountant */
         Department::create([
-            'code'=>'MUH',
-            'name'=>'Muhasebe',
-            'type'=> 'main',
-            'employee_id'=>1,
+            'code' => 'MUH',
+            'name' => 'Muhasebe',
+            'type' => 'main',
+            'employee_id' => $employeeId,
         ]);
 
-        /*Loading*/
+        /* Loading */
         Department::create([
-            'code'=>'SEV',
-            'name'=>'Sevkiyat',
-            'type'=> 'main',
-            'employee_id'=>1,
+            'code' => 'SEV',
+            'name' => 'Sevkiyat',
+            'type' => 'main',
+            'employee_id' => $employeeId,
         ]);
 
-        /*Maintenance*/
+        /* Maintenance */
         Department::create([
-            'code'=>'BKM',
-            'name'=>'Bakım',
-            'type'=> 'main',
-            'employee_id'=>1,
+            'code' => 'BKM',
+            'name' => 'Bakım',
+            'type' => 'main',
+            'employee_id' => $employeeId,
         ]);
     }
 }

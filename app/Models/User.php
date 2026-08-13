@@ -2,27 +2,34 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
-use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Spatie\Image\Enums\Fit;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
     use HasApiTokens;
+
+    /** @use HasFactory<UserFactory> */
     use HasFactory;
-    use HasProfilePhoto;
+
+    use InteractsWithMedia;
     use Notifiable;
     use TwoFactorAuthenticatable;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * @var list<string>
      */
     protected $fillable = [
         'name',
@@ -33,7 +40,7 @@ class User extends Authenticatable
     /**
      * The attributes that should be hidden for serialization.
      *
-     * @var array<int, string>
+     * @var list<string>
      */
     protected $hidden = [
         'password',
@@ -51,19 +58,52 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array<int, string>
-     */
     protected $appends = [
+        'profile_photo_path',
         'profile_photo_url',
     ];
 
+    public const AVATAR_COLLECTION = 'UseAvatars';
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection(self::AVATAR_COLLECTION)
+            ->singleFile()
+            ->acceptsMimeTypes([
+                'image/jpeg',
+                'image/png',
+                'image/webp',
+            ]);
+    }
+
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        $this->addMediaConversion('avatar')
+            ->nonQueued()
+            ->performOnCollections(self::AVATAR_COLLECTION)
+            ->fit(Fit::Crop, 512, 512)
+            ->format('webp')
+            ->quality(82);
+    }
+
+    public function getProfilePhotoPathAttribute(): ?string
+    {
+        return $this->getFirstMedia(self::AVATAR_COLLECTION)?->getPath();
+    }
+
+    public function getProfilePhotoUrlAttribute(): string
+    {
+        $avatar = $this->getFirstMedia(self::AVATAR_COLLECTION);
+
+        return $avatar?->getUrl('avatar') ?? asset('assets/images/default/user-avatar.svg');
+    }
+
     /**
      * Get the parent accountable model (staff, customer or vendor).
+     *
+     * @return MorphTo<Model, $this>
      */
-    public function accountable()
+    public function accountable(): MorphTo
     {
         return $this->morphTo();
     }

@@ -16,7 +16,7 @@ class VehicleTypeController extends Controller
     public function index()
     {
         return inertia('Modules/BusinessManagement/Vehicle/Setting/TypePage', [
-            'tableData' => VehicleType::select(['id', 'name'])->paginate(10)
+            'tableData' => $this->tableFilter(VehicleType::query())->select(['id', 'name'])->paginate(10)->withQueryString()
         ]);
     }
 

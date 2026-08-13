@@ -30,7 +30,7 @@ class UpdateEmployeeRequest extends FormRequest
                 'required',
                 'string',
                 'max:25',
-                'unique:employees,code,'.request()->id,
+                Rule::unique('employees')->ignore($this->route('employee')),
             ],
             'name' => 'nullable|string|max:250',
             'department_id' => 'nullable|exists:departments,id',
@@ -45,8 +45,8 @@ class UpdateEmployeeRequest extends FormRequest
                     'contracted',
                     'dailyWage',
                     'handicappedStaff',
-                    'convictStaff'
-                ])
+                    'convictStaff',
+                ]),
             ],
             'sex' => [
                 'nullable',
@@ -54,8 +54,8 @@ class UpdateEmployeeRequest extends FormRequest
                 Rule::in([
                     'male',
                     'female',
-                    'other'
-                ])
+                    'other',
+                ]),
             ],
             'is_married' => 'boolean',
             'contact_info' => 'nullable|array',
@@ -68,7 +68,7 @@ class UpdateEmployeeRequest extends FormRequest
                 'nullable',
                 'string',
                 'max:3',
-                Rule::in(['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'])
+                Rule::in(['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-']),
             ],
             'status' => [
                 'nullable',
@@ -78,9 +78,9 @@ class UpdateEmployeeRequest extends FormRequest
                     'working',
                     'left',
                     'retired',
-                    'fired'
-                ])
-            ]
+                    'fired',
+                ]),
+            ],
         ];
     }
 
@@ -102,7 +102,7 @@ class UpdateEmployeeRequest extends FormRequest
             'leaving_date.after' => 'İşten ayrılma tarihi, işe başlama tarihinden sonra olmalıdır.',
             'leaving_detail.max' => 'Ayrılma detayı en fazla 250 karakter olabilir.',
             'blood_type.in' => 'Geçersiz kan grubu.',
-            'status.in' => 'Geçersiz durum.'
+            'status.in' => 'Geçersiz durum.',
         ];
     }
 
@@ -123,7 +123,7 @@ class UpdateEmployeeRequest extends FormRequest
             'leaving_date' => 'işten ayrılma tarihi',
             'leaving_detail' => 'ayrılma detayı',
             'blood_type' => 'kan grubu',
-            'status' => 'durum'
+            'status' => 'durum',
         ];
     }
 }

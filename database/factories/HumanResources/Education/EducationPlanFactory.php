@@ -2,10 +2,11 @@
 
 namespace Database\Factories\HumanResources\Education;
 
+use App\Models\HumanResources\Education\EducationPlan;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\HumanResources\Education\EducationPlan>
+ * @extends Factory<EducationPlan>
  */
 class EducationPlanFactory extends Factory
 {
@@ -20,7 +21,7 @@ class EducationPlanFactory extends Factory
         $endDate = $this->faker->dateTimeBetween($startDate, '+1 year');
 
         return [
-            'name' => $this->faker->year() . ' Yılı ' . $this->faker->randomElement(['Teknik', 'Yönetimsel', 'Kişisel Gelişim', 'İSG', 'Kalite']) . ' Eğitim Planı',
+            'name' => $this->faker->unique()->numerify('####').' Yılı '.$this->faker->randomElement(['Teknik', 'Yönetimsel', 'Kişisel Gelişim', 'İSG', 'Kalite']).' Eğitim Planı',
             'start_date' => $startDate->format('Y-m-d'),
             'end_date' => $endDate->format('Y-m-d'),
             'description' => $this->faker->paragraph(3),

@@ -20,12 +20,17 @@ class Module extends Model
         'name',
         'description',
         'licence_key',
-        'status'
+        'status',
     ];
 
-    // Property Types associated with the module
-    public function propertyTypes():BelongsToMany
+    protected function casts(): array
     {
-        return $this->belongsToMany(PropertyType::class);
+        return ['status' => 'boolean'];
+    }
+
+    // Property Types associated with the module
+    public function propertyTypes(): BelongsToMany
+    {
+        return $this->belongsToMany(PropertyType::class, 'property_type_module')->withTimestamps();
     }
 }

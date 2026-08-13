@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-
 class CalibrationFirm extends Model
 {
     use HasFactory;
@@ -17,12 +16,12 @@ class CalibrationFirm extends Model
         'name',
         'email',
         'phone',
-        'address'
+        'address',
     ];
 
     // Sub-departments of the department
-    public function tasks():HasMany
+    public function tasks(): HasMany
     {
-        return $this->hasMany(CalibrationTask::class);
+        return $this->hasMany(MeasurementDeviceCalibrationTask::class);
     }
 }

@@ -29,7 +29,7 @@ class StoreVehicleRequest extends FormRequest
             'vehicle_status_id' => 'nullable|exists:vehicle_statuses,id',
             'brand' => 'nullable|string|max:50',
             'model' => 'nullable|string|max:50',
-            'production_year' => 'nullable|string|max:4',
+            'production_year' => 'nullable|integer|min:1886|max:2100',
             'purchase_date' => [
                 function ($attribute, $value, $fail) {
                     if ($this->input('disposing_date') && empty($value)) {

@@ -2,23 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Supplier;
 use App\Http\Requests\StoreSupplierRequest;
 use App\Http\Requests\UpdateSupplierRequest;
+use App\Models\Supplier;
 use App\Models\SupplierTag;
 use App\Models\SupplierType;
+use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class SupplierController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Inertia\Response
+     * @return Response
      */
     public function index()
     {
-        $suppliers = Supplier::with('types', 'tags')->get();
+        $suppliers = $this->tableFilter(Supplier::with('types', 'tags'), [
+            'types' => ['relation' => 'types', 'column' => 'name'],
+            'tags' => ['relation' => 'tags', 'column' => 'name'],
+        ])->latest('id')->paginate(10)->withQueryString();
         $supplierTypes = SupplierType::all();
         $supplierTags = SupplierTag::all();
 
@@ -42,43 +47,27 @@ class SupplierController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreSupplierRequest  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function store(StoreSupplierRequest $request)
     {
-        try {
-            $supplier = Supplier::create($request->validated());
+        $validated = $request->validated();
+        $supplier = Supplier::create($validated);
 
-            if ($request->has('types')) {
-                $supplier->types()->sync($request->types);
-            }
-            if ($request->has('tags')) {
-                $supplier->tags()->sync($request->tags);
-            }
+        $supplier->types()->sync($validated['types'] ?? []);
+        $supplier->tags()->sync($validated['tags'] ?? []);
 
-            session()->flash('message', [
-                'type' => 'success',
-                'content' => __('messages.supplier.created', ['supplier' => $supplier->name])
-            ]);
+        session()->flash('message', [
+            'type' => 'success',
+            'content' => __('messages.supplier.created', ['supplier' => $supplier->name]),
+        ]);
 
-            return redirect()->back()->with([
-                'supplier' => $supplier,
-            ]);
-        } catch (\Exception $e) {
-            session()->flash('message', [
-                'type'=> 'error',
-                'content'=>__('messages.supplier.creation_failed')
-            ]);
-
-            return redirect()->back();
-        }
+        return redirect()->back()->with(['supplier' => $supplier]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Supplier  $supplier
      * @return \Illuminate\Http\Response
      */
     public function show(Supplier $supplier)
@@ -89,58 +78,39 @@ class SupplierController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Supplier  $supplier
      * @return \Illuminate\Http\Response
      */
     public function edit(Supplier $supplier)
     {
         $supplier->load('types', 'tags');
+
         return response()->json($supplier);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateSupplierRequest  $request
-     * @param  \App\Models\Supplier  $supplier
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateSupplierRequest $request, Supplier $supplier)
     {
-        try {
-            $supplier->update($request->validated());
+        $validated = $request->validated();
+        $supplier->update($validated);
 
-            // Update relationships
-            if ($request->has('types')) {
-                $supplier->types()->sync($request->types);
-            }
-            if ($request->has('tags')) {
-                $supplier->tags()->sync($request->tags);
-            }
+        $supplier->types()->sync($validated['types'] ?? []);
+        $supplier->tags()->sync($validated['tags'] ?? []);
 
-            session()->flash('message', [
-                'type'=> 'success',
-                'content'=>__('messages.supplier.updated', ['supplier' => $supplier->name])
-            ]);
+        session()->flash('message', [
+            'type' => 'success',
+            'content' => __('messages.supplier.updated', ['supplier' => $supplier->name]),
+        ]);
 
-            return redirect()->back()->with([
-                'supplier' => $supplier,
-            ]);
-        } catch (\Exception $e) {
-            session()->flash('message', [
-                'type'=> 'error',
-                'content'=>__('messages.supplier.update_failed')
-            ]);
-
-            return redirect()->back();
-        }
+        return redirect()->back()->with(['supplier' => $supplier]);
     }
-
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Supplier  $supplier
      * @return \Illuminate\Http\Response
      */
     public function destroy(Supplier $supplier)
@@ -149,15 +119,15 @@ class SupplierController extends Controller
             $supplier->delete();
 
             session()->flash('message', [
-                'type'=> 'success',
-                'content'=>__('messages.supplier.deleted', ['supplier' => $supplier->name])
+                'type' => 'success',
+                'content' => __('messages.supplier.deleted', ['supplier' => $supplier->name]),
             ]);
 
             return redirect()->back();
         } catch (\Exception $e) {
             session()->flash('message', [
                 'type' => 'error',
-                'content' => __('messages.supplier.delete_failed', ['supplier' => $supplier->name])
+                'content' => __('messages.supplier.delete_failed', ['supplier' => $supplier->name]),
             ]);
 
             return redirect()->back();

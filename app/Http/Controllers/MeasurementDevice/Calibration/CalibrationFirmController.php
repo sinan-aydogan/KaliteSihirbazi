@@ -6,23 +6,24 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCalibrationFirmRequest;
 use App\Http\Requests\UpdateCalibrationFirmRequest;
 use App\Models\MeasurementDevice\Calibration\CalibrationFirm;
+use Illuminate\Http\Response;
 
 class CalibrationFirmController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
-        //
+        return response()->json(CalibrationFirm::latest('id')->paginate(10));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -32,56 +33,77 @@ class CalibrationFirmController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreCalibrationFirmRequest  $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(StoreCalibrationFirmRequest $request)
     {
-        //
+        CalibrationFirm::create($request->validated());
+
+        return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\MeasurementDevice\Calibration\CalibrationFirm  $calibrationFirm
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show(CalibrationFirm $calibrationFirm)
     {
-        //
+        return response()->json($calibrationFirm->load('tasks'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\MeasurementDevice\Calibration\CalibrationFirm  $calibrationFirm
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit(CalibrationFirm $calibrationFirm)
     {
-        //
+        return response()->json($calibrationFirm);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateCalibrationFirmRequest  $request
-     * @param  \App\Models\MeasurementDevice\Calibration\CalibrationFirm  $calibrationFirm
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(UpdateCalibrationFirmRequest $request, CalibrationFirm $calibrationFirm)
     {
-        //
+        $calibrationFirm->update($request->validated());
+
+        return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\MeasurementDevice\Calibration\CalibrationFirm  $calibrationFirm
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(CalibrationFirm $calibrationFirm)
     {
-        //
+        $calibrationFirm->delete();
+
+        return redirect()->back();
+    }
+
+    public function deleted()
+    {
+        return response()->json(CalibrationFirm::onlyTrashed()->latest('deleted_at')->paginate(10));
+    }
+
+    public function permanentDestroy(CalibrationFirm $calibrationFirm)
+    {
+        abort_if($calibrationFirm->tasks()->exists(), 409, 'Kalibrasyon kaydı bulunan firma kalıcı olarak silinemez.');
+
+        $calibrationFirm->forceDelete();
+
+        return redirect()->back();
+    }
+
+    public function restore(CalibrationFirm $calibrationFirm)
+    {
+        $calibrationFirm->restore();
+
+        return redirect()->back();
     }
 }

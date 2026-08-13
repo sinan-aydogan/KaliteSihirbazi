@@ -1,19 +1,19 @@
 <script setup>
 import { ref } from 'vue';
 import { useForm } from '@inertiajs/vue3';
-import ActionMessage from '@/Jetstream/ActionMessage.vue';
-import ActionSection from '@/Jetstream/ActionSection.vue';
-import Checkbox from '@/Jetstream/Checkbox.vue';
-import ConfirmationModal from '@/Jetstream/ConfirmationModal.vue';
-import DangerButton from '@/Jetstream/DangerButton.vue';
-import DialogModal from '@/Jetstream/DialogModal.vue';
-import FormSection from '@/Jetstream/FormSection.vue';
-import InputError from '@/Jetstream/InputError.vue';
-import InputLabel from '@/Jetstream/InputLabel.vue';
-import PrimaryButton from '@/Jetstream/PrimaryButton.vue';
-import SecondaryButton from '@/Jetstream/SecondaryButton.vue';
-import SectionBorder from '@/Jetstream/SectionBorder.vue';
-import TextInput from '@/Jetstream/TextInput.vue';
+import ActionMessage from '@/Components/Account/ActionMessage.vue';
+import ActionSection from '@/Components/Account/ActionSection.vue';
+import Checkbox from '@/Components/Account/Checkbox.vue';
+import ConfirmationModal from '@/Components/Account/ConfirmationModal.vue';
+import DangerButton from '@/Components/Account/DangerButton.vue';
+import DialogModal from '@/Components/Account/DialogModal.vue';
+import FormSection from '@/Components/Account/FormSection.vue';
+import InputError from '@/Components/Account/InputError.vue';
+import InputLabel from '@/Components/Account/InputLabel.vue';
+import PrimaryButton from '@/Components/Account/PrimaryButton.vue';
+import SecondaryButton from '@/Components/Account/SecondaryButton.vue';
+import SectionBorder from '@/Components/Account/SectionBorder.vue';
+import TextInput from '@/Components/Account/TextInput.vue';
 
 const props = defineProps({
     tokens: Array,
@@ -181,8 +181,8 @@ const deleteApiToken = () => {
                     Please copy your new API token. For your security, it won't be shown again.
                 </div>
 
-                <div v-if="$page.props.jetstream.flash.token" class="mt-4 bg-gray-100 dark:bg-gray-900 px-4 py-2 rounded font-mono text-sm text-gray-500 break-all">
-                    {{ $page.props.jetstream.flash.token }}
+                <div v-if="$page.props.accountFlash.token" class="mt-4 bg-gray-100 dark:bg-gray-900 px-4 py-2 rounded font-mono text-sm text-gray-500 break-all">
+                    {{ $page.props.accountFlash.token }}
                 </div>
             </template>
 

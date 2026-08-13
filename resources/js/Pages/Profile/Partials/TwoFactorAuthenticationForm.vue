@@ -3,7 +3,7 @@ import {ref, computed, watch} from 'vue';
 import {useForm, usePage, router} from '@inertiajs/vue3';
 import FormSection from '@/Components/Form/FormSection.vue';
 import SimpleButton from '@/Components/Button/SimpleButton.vue';
-import JetConfirmsPassword from '@/Jetstream/ConfirmsPassword.vue';
+import ConfirmsPassword from '@/Components/Account/ConfirmsPassword.vue';
 import InputGroup from "@/Components/Form/InputGroup.vue";
 import TextInput from "@/Components/Form/TextInput.vue";
 
@@ -167,50 +167,50 @@ const disableTwoFactorAuthentication = () => {
 
         <div class="flex space-x-2 justify-end mt-4">
             <div v-if="!twoFactorEnabled">
-                <JetConfirmsPassword @confirmed="enableTwoFactorAuthentication"
+                <ConfirmsPassword @confirmed="enableTwoFactorAuthentication"
                                      :title="t('account.confirmPasswordModalTitle')"
                                      :content="t('account.confirmPasswordModalDesc')"
                                      :button="t('action.confirm')">
                     <SimpleButton :label="t('action.enable')" :loading="enabling" :disabled="enabling"/>
-                </JetConfirmsPassword>
+                </ConfirmsPassword>
             </div>
 
             <div v-else class="flex justify-end">
-                <JetConfirmsPassword @confirmed="confirmTwoFactorAuthentication"
+                <ConfirmsPassword @confirmed="confirmTwoFactorAuthentication"
                                      :title="t('account.confirmPasswordModalTitle')"
                                      :content="t('account.confirmPasswordModalDesc')"
                                      :button="t('action.confirm')">
                     <SimpleButton v-if="confirming" class="mr-3" :label="t('action.confirm')" :loading="enabling"
                                   :disabled="enabling"/>
-                </JetConfirmsPassword>
+                </ConfirmsPassword>
 
-                <JetConfirmsPassword @confirmed="regenerateRecoveryCodes"
+                <ConfirmsPassword @confirmed="regenerateRecoveryCodes"
                                      :title="t('account.confirmPasswordModalTitle')"
                                      :content="t('account.confirmPasswordModalDesc')"
                                      :button="t('action.confirm')">
                     <SimpleButton v-if="recoveryCodes.length > 0 && !confirming" class="mr-3"
                                   :label="t('account.regenerateRecoveryCodes')"/>
-                </JetConfirmsPassword>
+                </ConfirmsPassword>
 
-                <JetConfirmsPassword @confirmed="showRecoveryCodes" :title="t('account.confirmPasswordModalTitle')"
+                <ConfirmsPassword @confirmed="showRecoveryCodes" :title="t('account.confirmPasswordModalTitle')"
                                      :content="t('account.confirmPasswordModalDesc')" :button="t('action.confirm')">
                     <SimpleButton v-if="recoveryCodes.length === 0 && !confirming" class="mr-3"
                                   :label="t('account.showRecoveryCodes')"/>
-                </JetConfirmsPassword>
+                </ConfirmsPassword>
 
-                <JetConfirmsPassword @confirmed="disableTwoFactorAuthentication"
+                <ConfirmsPassword @confirmed="disableTwoFactorAuthentication"
                                      :title="t('account.confirmPasswordModalTitle')"
                                      :content="t('account.confirmPasswordModalDesc')"
                                      :button="t('action.confirm')">
                     <SimpleButton v-if="confirming" :label="t('action.cancel')" color="orange" :loading="disabling" :disabled="disabling"/>
-                </JetConfirmsPassword>
+                </ConfirmsPassword>
 
-                <JetConfirmsPassword @confirmed="disableTwoFactorAuthentication"
+                <ConfirmsPassword @confirmed="disableTwoFactorAuthentication"
                                      :title="t('account.confirmPasswordModalTitle')"
                                      :content="t('account.confirmPasswordModalDesc')"
                                      :button="t('action.confirm')">
                     <SimpleButton v-if="!confirming" :label="t('action.disable')" :loading="disabling" :disabled="disabling"/>
-                </JetConfirmsPassword>
+                </ConfirmsPassword>
             </div>
         </div>
     </FormSection>

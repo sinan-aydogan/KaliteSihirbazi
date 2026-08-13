@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateSupplierTagRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class UpdateSupplierTagRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return auth()->check();
     }
 
     /**
@@ -24,7 +25,7 @@ class UpdateSupplierTagRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => ['required', 'string', 'max:100', Rule::unique('supplier_tags')->ignore($this->route('supplier_tag'))],
         ];
     }
 }

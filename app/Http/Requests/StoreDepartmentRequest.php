@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreDepartmentRequest extends FormRequest
 {
@@ -26,9 +27,9 @@ class StoreDepartmentRequest extends FormRequest
         return [
             'code' => 'required|string|unique:departments|max:10',
             'name' => 'required|string|max:255',
-            'employee_id' => 'required|exists:employees,id',
-            'type' => 'required|string|max:10',
-            'department_id' => 'required_if:type,sub|exclude_if:type,main|exists:departments,id',
+            'employee_id' => 'nullable|exists:employees,id',
+            'type' => ['required', Rule::in(['main', 'sub'])],
+            'department_id' => 'nullable|required_if:type,sub|exclude_if:type,main|exists:departments,id',
         ];
     }
 

@@ -25,7 +25,14 @@ class StoreSupplierRequest extends FormRequest
     {
         return [
             'code' => 'required|string|max:10|unique:suppliers,code',
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:150',
+            'contact_info' => 'nullable|array',
+            'notes' => 'nullable|array',
+            'is_active' => 'boolean',
+            'types' => 'nullable|array',
+            'types.*' => 'integer|distinct|exists:supplier_types,id',
+            'tags' => 'nullable|array',
+            'tags.*' => 'integer|distinct|exists:supplier_tags,id',
         ];
     }
 }

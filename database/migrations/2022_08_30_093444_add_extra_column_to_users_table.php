@@ -15,11 +15,9 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('language')
-                ->after('profile_photo_path')
                 ->default('tr')
                 ->nullable();
             $table->string('theme')
-                ->after('language')
                 ->default('auto')
                 ->nullable();
         });

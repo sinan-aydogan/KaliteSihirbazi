@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Setting\Property;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,8 +16,11 @@ return new class extends Migration
     {
         Schema::create('propertiables', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\App\Models\Setting\Property::class);
-            $table->morphs('propertiables');
+            $table->foreignIdFor(Property::class)
+                ->constrained()
+                ->cascadeOnDelete();
+            $table->morphs('propertiable');
+            $table->unique(['property_id', 'propertiable_type', 'propertiable_id']);
             $table->timestamps();
         });
     }

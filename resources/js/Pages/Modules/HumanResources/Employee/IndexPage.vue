@@ -201,11 +201,6 @@ const handleSubmit = async () => {
 <template>
   <app-layout :title="tm('title.indexPage.title')" :sub-title="tm('title.indexPage.subTitle')">
     <template #actionArea>
-      <simple-button type="route" :link="route('employee.deleted')" color="red">
-        <font-awesome-icon icon="trash-can" class="mr-2"/>
-        <span v-text="$t('term.deletedItems')"/>
-      </simple-button>
-
       <simple-button @click="showModal = true; formType = 'create'" color="green">
         <font-awesome-icon icon="plus" class="mr-2"/>
         <span v-text="$t('action.addNew')"/>
@@ -330,7 +325,7 @@ const handleSubmit = async () => {
 
           <!-- Emergency Contact -->
           <h3 v-text="tm('term.emergencyContacts')"
-              class="col-span-12 font-bold -mb-2 pb-2 border-b border-slate-500"></h3>
+              class="col-span-12 mb-1 font-semibold text-slate-700 dark:text-slate-200"></h3>
 
           <div class="col-span-12">
             <!--List-->
@@ -365,15 +360,16 @@ const handleSubmit = async () => {
             </div>
             <!--Empty Message-->
             <div v-else-if="form.contact_info.emergencyContacts.length===0 && !showEmergencyContactForm"
-                 class="flex flex-col bg-slate-600 p-6 space-y-6 justify-center items-center rounded w-full border border-dashed">
-              <span v-text="tm('message.feedback.emptyEmergencyContactsList')"></span>
+                 class="flex w-full flex-col items-center justify-center gap-4 rounded-lg border border-dashed border-slate-300 bg-slate-50 p-6 text-slate-500 dark:border-slate-500 dark:bg-slate-800/60 dark:text-slate-300">
+              <font-awesome-icon icon="address-book" class="size-7 text-slate-400 dark:text-slate-500"/>
+              <span v-text="tm('message.feedback.emptyEmergencyContactsList')" class="text-sm"></span>
               <simple-button @click="showEmergencyContactForm=true" :label="$t('action.addNew')" full-size size="slim"/>
             </div>
           </div>
 
           <!--Emergency Contact Add Form-->
           <div v-if="showEmergencyContactForm"
-               class="col-span-12 flex flex-col border border-slate-500 p-2 rounded-lg">
+               class="col-span-12 flex flex-col rounded-lg border border-slate-300 bg-slate-50 p-3 shadow-sm dark:border-slate-500 dark:bg-slate-800/50">
             <div class="relative flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-2">
 
               <!--Name-->
@@ -393,7 +389,7 @@ const handleSubmit = async () => {
 
               <!--Close Button-->
               <div @click="showEmergencyContactForm = false"
-                   class="absolute -right-4 -top-8 sm:-top-4 flex items-center justify-center w-6 h-6 bg-rose-500 rounded cursor-pointer hover:scale-105 active:scale-95 transition-all">
+                   class="absolute right-0 top-0 flex size-7 cursor-pointer items-center justify-center rounded-md bg-rose-500 text-white transition-all hover:bg-rose-600 active:scale-95">
                 <font-awesome-icon icon="fa-solid fa-xmark" class=""/>
               </div>
             </div>

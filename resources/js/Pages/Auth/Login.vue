@@ -1,10 +1,10 @@
 <script setup>
 import { Head, Link, useForm } from '@inertiajs/vue3';
-import Checkbox from '@/Jetstream/Checkbox.vue';
-import InputError from '@/Jetstream/InputError.vue';
-import InputLabel from '@/Jetstream/InputLabel.vue';
-import PrimaryButton from '@/Jetstream/PrimaryButton.vue';
-import TextInput from '@/Jetstream/TextInput.vue';
+import Checkbox from '@/Components/Account/Checkbox.vue';
+import InputError from '@/Components/Account/InputError.vue';
+import InputLabel from '@/Components/Account/InputLabel.vue';
+import PrimaryButton from '@/Components/Account/PrimaryButton.vue';
+import TextInput from '@/Components/Account/TextInput.vue';
 import { computed } from 'vue';
 import { usePage } from '@inertiajs/vue3';
 
@@ -24,15 +24,15 @@ const backgroundImage = computed(() => {
 });
 
 /*Logo Image*/
-import { useDark, useToggle } from '@vueuse/core'
-const isDark = useDark()
+import { usePreferredDark } from '@vueuse/core'
+const isDark = usePreferredDark()
 const logoImage = computed(() => {
     let defaultLogos = {
         light: '/assets/images/default/darkLogo.svg',
-        dark: '/assets/images/default/lightLogo.svg'
+        dark: '/assets/images/default/lightlogo.svg'
     };
 
-    if (usePage().props.theme.mod === 'auto' || usePage().props.theme.mod === undefined) {
+    if (usePage().props.theme.mode === 'auto' || usePage().props.theme.mode === undefined) {
         return defaultLogos[isDark.value ? 'dark' : 'light'];
     }
 

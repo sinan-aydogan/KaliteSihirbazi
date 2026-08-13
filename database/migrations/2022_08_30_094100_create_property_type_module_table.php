@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('property_type_module', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('module_id');
-            $table->foreignId('property_type_id');
+            $table->foreignId('module_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('property_type_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
+            $table->unique(['module_id', 'property_type_id']);
         });
     }
 

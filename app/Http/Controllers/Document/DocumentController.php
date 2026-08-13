@@ -25,7 +25,12 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        $documents = Document::with('documentType:id,name', 'distributionPoints:id,name', 'department:id,name', 'creator:id,name')->latest('id')->paginate(10);
+        $documents = $this->tableFilter(Document::with('documentType:id,name', 'distributionPoints:id,name', 'department:id,name', 'creator:id,name'), [
+            'document_type' => ['relation' => 'documentType', 'column' => 'name'],
+            'department' => ['relation' => 'department', 'column' => 'name'],
+            'creator' => ['relation' => 'creator', 'column' => 'name'],
+            'distributionPoints' => ['relation' => 'distributionPoints', 'column' => 'name'],
+        ])->latest('id')->paginate(10)->withQueryString();
         $types = DocumentType::all(['id', 'name']);
         $departments = Department::all(['id', 'name']);
         $distributionPoints = DistributionPoint::all(['id', 'name']);

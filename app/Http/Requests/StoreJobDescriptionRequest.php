@@ -3,13 +3,12 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class StoreJobDescriptionRequest extends FormRequest
 {
     public function authorize()
     {
-        return true;
+        return auth()->check();
     }
 
     public function rules()
@@ -63,6 +62,7 @@ class StoreJobDescriptionRequest extends FormRequest
         if (empty($value)) {
             return [''];
         }
+
         return is_array($value) ? $value : [json_decode($value, true)];
     }
 

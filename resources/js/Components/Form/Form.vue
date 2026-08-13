@@ -65,23 +65,30 @@ const hasActions = computed(() => !!useSlots().actions);
   </div>
 </template>
 
-<style lang="sass">
+<style>
 @reference "../../../css/app.css";
 
-.form-wrapper
-  @apply flex flex-col space-y-4
+.form-wrapper {
+  @apply flex flex-col space-y-4;
+}
 
-.form-header
-  @apply flex flex-col sm:flex-row sm:justify-between
+.form-header {
+  @apply flex flex-col sm:flex-row sm:justify-between;
+}
 
-.title
-  @apply text-lg font-medium text-slate-700 dark:text-slate-100
+.title {
+  @apply text-lg font-medium text-slate-700 dark:text-slate-100;
+}
 
-.description
-  @apply mt-1 text-xs text-slate-500 dark:text-slate-400
+.description {
+  @apply mt-1 text-xs text-slate-500 dark:text-slate-400;
+}
 
-.aside
-  @apply mt-1 sm:mt-0 flex items-center
-.form-actions
-  @apply flex items-center justify-center sm:justify-end mt-4 space-x-2 dark:text-slate-100
+.aside {
+  @apply mt-1 sm:mt-0 flex items-center;
+}
+
+.form-actions {
+  @apply flex items-center justify-center sm:justify-end mt-4 space-x-2 dark:text-slate-100;
+}
 </style>

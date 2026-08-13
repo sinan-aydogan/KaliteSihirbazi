@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateSupplierTypeRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class UpdateSupplierTypeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return auth()->check();
     }
 
     /**
@@ -24,7 +25,8 @@ class UpdateSupplierTypeRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'code' => ['required', 'string', 'max:10', Rule::unique('supplier_types')->ignore($this->route('supplier_type'))],
+            'name' => 'required|string|max:150',
         ];
     }
 }

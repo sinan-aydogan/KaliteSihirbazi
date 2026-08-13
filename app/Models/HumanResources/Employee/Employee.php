@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Employee extends Model
 {
@@ -33,8 +34,9 @@ class Employee extends Model
         'leaving_date',
         'leaving_detail',
         'blood_type',
-        'status'
+        'status',
     ];
+
     /**
      * The attributes that should be cast.
      *
@@ -44,19 +46,18 @@ class Employee extends Model
         'birthday' => 'date',
         'employment_date' => 'date',
         'leaving_date' => 'date',
-        'staffName' => 'string',
         'contact_info' => 'array',
         'is_married' => 'boolean',
         'has_account' => 'boolean',
     ];
 
-    public function getemployeeNameAttribute()
+    public function getEmployeeNameAttribute(): ?string
     {
         if ($this->account) {
             return $this->account->name;
-        } else {
-            return $this->name;
         }
+
+        return $this->name;
     }
 
     /**
@@ -69,7 +70,7 @@ class Employee extends Model
     /**
      * Get the staff account.
      */
-    public function account()
+    public function account(): MorphOne
     {
         return $this->morphOne(User::class, 'accountable');
     }

@@ -9,19 +9,26 @@ use App\Models\Department;
 use App\Models\HumanResources\Employee\Employee;
 use App\Models\MeasurementDevice\MeasurementDevice;
 use App\Models\MeasurementDevice\MeasurementDeviceType;
+use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class MeasurementDeviceController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Inertia\Response
+     * @return Response
      */
     public function index()
     {
-        return Inertia::render("Modules/MeasurementDevice/Device/IndexPage", [
-            'tableData' => MeasurementDevice::with('department:id,name','type:id,name', 'calibrationSupervisor:id,name', 'deviceSupervisor:id,name', 'calibrationSupervisor.account:accountable_id,name', 'deviceSupervisor.account:accountable_id,name')->latest('id')->paginate(10),
+        return Inertia::render('Modules/MeasurementDevice/Device/IndexPage', [
+            'tableData' => $this->tableFilter(MeasurementDevice::with('department:id,name', 'type:id,name', 'calibrationSupervisor:id,name', 'deviceSupervisor:id,name', 'calibrationSupervisor.account:accountable_id,name', 'deviceSupervisor.account:accountable_id,name'), [
+                'measurement_type_id' => ['relation' => 'type', 'column' => 'name'],
+                'department_id' => ['relation' => 'department', 'column' => 'name'],
+                'device_supervisor_id' => ['relation' => 'deviceSupervisor', 'column' => 'name'],
+                'calibration_supervisor_id' => ['relation' => 'calibrationSupervisor', 'column' => 'name'],
+            ])->latest('id')->paginate(10)->withQueryString(),
             'measurementDeviceTypes' => MeasurementDeviceType::all(['id', 'name']),
             'departments' => Department::all(['id', 'name']),
             'employees' => Employee::all(['id']),
@@ -41,28 +48,13 @@ class MeasurementDeviceController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreMeasurementDeviceRequest  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function store(StoreMeasurementDeviceRequest $request)
     {
-        $measurementDevice = new MeasurementDevice;
-        $measurementDevice->code = $request->code;
-        $measurementDevice->brand = $request->brand;
-        $measurementDevice->model = $request->model;
-        $measurementDevice->serial_no = $request->serial_no;
-        $measurementDevice->properties = $request->properties;
-        $measurementDevice->purchase_date = $request->purchase_date;
-        $measurementDevice->purchase_price = $request->purchase_price;
-        $measurementDevice->purchase_price_unit = $request->purchase_price_unit;
-        $measurementDevice->device_supervisor_id = $request->device_supervisor_id;
-        $measurementDevice->calibration_supervisor_id = $request->calibration_supervisor_id;
-        $measurementDevice->department_id = $request->department_id;
-        $measurementDevice->measurement_device_type_id = $request->measurement_device_type_id;
+        $measurementDevice = MeasurementDevice::create($request->validated());
 
-        $measurementDevice->save();
-
-        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.measurementDevice.created', ['measurementDeviceCode' => $measurementDevice->code, 'measurementDeviceType' => MeasurementDeviceType::find($measurementDevice->measurement_device_type_id)->name])]);
+        session()->flash('message', ['type' => 'success', 'content' => __('messages.measurementDevice.created', ['measurementDeviceCode' => $measurementDevice->code, 'measurementDeviceType' => MeasurementDeviceType::find($measurementDevice->measurement_device_type_id)->name])]);
 
         return redirect()->back();
     }
@@ -70,8 +62,7 @@ class MeasurementDeviceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\MeasurementDevice\MeasurementDevice  $measurementDevice
-     * @return \Inertia\Response
+     * @return Response
      */
     public function show(MeasurementDevice $measurementDevice)
     {
@@ -80,7 +71,8 @@ class MeasurementDeviceController extends Controller
         $data['type'] = $measurementDevice->type;
         $data['calibrationSupervisor'] = $measurementDevice->calibrationSupervisor;
         $data['deviceSupervisor'] = $measurementDevice->deviceSupervisor;
-        return Inertia::render("Modules/MeasurementDevice/Device/ShowPage", [
+
+        return Inertia::render('Modules/MeasurementDevice/Device/ShowPage', [
             'measurementDevice' => $measurementDevice,
         ]);
     }
@@ -88,39 +80,23 @@ class MeasurementDeviceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\MeasurementDevice\MeasurementDevice  $measurementDevice
      * @return \Illuminate\Http\Response
      */
     public function edit(MeasurementDevice $measurementDevice)
     {
-        //
+        return response()->json($measurementDevice);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateMeasurementDeviceRequest  $request
-     * @param  \App\Models\MeasurementDevice\MeasurementDevice  $measurementDevice
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function update(UpdateMeasurementDeviceRequest $request, MeasurementDevice $measurementDevice)
     {
-        $measurementDevice->code = $request->code;
-        $measurementDevice->brand = $request->brand;
-        $measurementDevice->model = $request->model;
-        $measurementDevice->serial_no = $request->serial_no;
-        $measurementDevice->properties = $request->properties;
-        $measurementDevice->purchase_date = $request->purchase_date;
-        $measurementDevice->purchase_price = $request->purchase_price;
-        $measurementDevice->purchase_price_unit = $request->purchase_price_unit;
-        $measurementDevice->device_supervisor_id = $request->device_supervisor_id;
-        $measurementDevice->calibration_supervisor_id = $request->calibration_supervisor_id;
-        $measurementDevice->department_id = $request->department_id;
-        $measurementDevice->measurement_device_type_id = $request->measurement_device_type_id;
+        $measurementDevice->update($request->validated());
 
-        $measurementDevice->save();
-
-        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.measurementDevice.updated', ['measurementDeviceCode' => $measurementDevice->code, 'measurementDeviceType' => MeasurementDeviceType::find($measurementDevice->measurement_device_type_id)->name])]);
+        session()->flash('message', ['type' => 'success', 'content' => __('messages.measurementDevice.updated', ['measurementDeviceCode' => $measurementDevice->code, 'measurementDeviceType' => MeasurementDeviceType::find($measurementDevice->measurement_device_type_id)->name])]);
 
         return redirect()->back();
     }
@@ -128,11 +104,34 @@ class MeasurementDeviceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\MeasurementDevice\MeasurementDevice  $measurementDevice
      * @return \Illuminate\Http\Response
      */
     public function destroy(MeasurementDevice $measurementDevice)
     {
-        //
+        $measurementDevice->delete();
+
+        return redirect()->route('measurement-device.index');
+    }
+
+    public function deleted()
+    {
+        return Inertia::render('Modules/MeasurementDevice/Device/DeletedPage', [
+            'tableData' => $this->tableFilter(MeasurementDevice::onlyTrashed())->latest('deleted_at')->paginate(10)->withQueryString(),
+        ]);
+    }
+
+    public function permanentDestroy(MeasurementDevice $measurementDevice)
+    {
+        abort_if($measurementDevice->calibrationTasks()->exists(), 409);
+        $measurementDevice->forceDelete();
+
+        return redirect()->route('measurement-device.index');
+    }
+
+    public function restore(MeasurementDevice $measurementDevice)
+    {
+        $measurementDevice->restore();
+
+        return redirect()->route('measurement-device.index');
     }
 }

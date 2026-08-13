@@ -1,5 +1,5 @@
 <template>
-    <div class="relative flex items-center space-x-3 bg-white rounded-lg shadow p-3 text-slate-700 select-none" ref="dataWidget">
+    <div class="relative flex items-center gap-3 rounded-xl border border-slate-300 bg-white p-3 text-slate-700 shadow-md shadow-slate-300/40 select-none dark:border-slate-500 dark:bg-slate-700 dark:text-slate-100 dark:shadow-black/20" ref="dataWidget">
 
         <div class="flex items-center space-x-2">
             <span v-if="$slots.value || value" class="text-4xl font-bold">
@@ -14,7 +14,7 @@
                 <span v-if="title" v-text="title"/>
                 <slot name="title"></slot>
             </p>
-            <p v-if="$slots.subTitle || subTitle" class="text-xs text-slate-500">
+            <p v-if="$slots.subTitle || subTitle" class="text-xs text-slate-500 dark:text-slate-300">
                 <span v-if="subTitle" v-text="subTitle"/>
                 <slot name="subTitle"></slot>
             </p>
@@ -32,7 +32,7 @@
 
         <!--Limit-->
         <div v-if="limit" class="absolute z-20 right-0.5 bottom-1 text-xs italic mt-1 group">
-            <span class="flex items-center space-x-1 overflow-hidden group-hover:bg-white group-hover:border px-1 group-hover:rounded-lg sm:border-none sm:border-transparent">
+            <span class="flex items-center gap-1 overflow-hidden px-1 group-hover:rounded-lg group-hover:border group-hover:bg-white dark:group-hover:border-slate-500 dark:group-hover:bg-slate-800 sm:border-none sm:border-transparent">
                 <font-awesome-icon icon="info-circle" class="block sm:hidden"/>
                 <span v-text="limit" class="hidden sm:block group-hover:block"></span>
             </span>
@@ -40,9 +40,9 @@
 
 
         <!--Options Trigger-->
-        <div v-if="$slots.options || options" class="absolute flex justify-center items-center right-2 top-0 cursor-pointer text-slate-600">
+        <div v-if="$slots.options || options" class="absolute right-2 top-0 flex cursor-pointer items-center justify-center text-slate-600 dark:text-slate-300">
             <font-awesome-icon @click="toggle" icon="ellipsis-vertical" class="rotate-90 p-2 hover:text-rose-700"/>
-            <div v-if="showOptions" class="absolute z-50 top-full right-full bg-white border shadow rounded-lg min-w-[6rem]">
+            <div v-if="showOptions" class="absolute top-full right-full z-50 min-w-[6rem] overflow-hidden rounded-lg border border-slate-300 bg-white shadow-xl dark:border-slate-500 dark:bg-slate-800">
                 <!--Warning-->
                 <span v-if="$slots.options && title" class="text-xs text-center p-2 ">
                     Please, use single source that prop or slot
@@ -54,7 +54,7 @@
                 <!--Prop Source-->
                 <div v-else class="py-2">
                     <template v-for="option in options" :key="option.id">
-                        <p class="hover:bg-rose-500 hover:text-gray-50 px-2 text-sm" @click="option.callBack(toggle)">{{option.label}}</p>
+                        <p class="px-3 py-1.5 text-sm hover:bg-rose-500 hover:text-gray-50" @click="option.callBack(toggle)">{{option.label}}</p>
                     </template>
                 </div>
             </div>

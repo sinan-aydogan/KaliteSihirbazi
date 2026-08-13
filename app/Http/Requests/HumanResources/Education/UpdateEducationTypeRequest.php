@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\HumanResources\Education;
 
+use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateEducationTypeRequest extends FormRequest
 {
@@ -17,19 +19,17 @@ class UpdateEducationTypeRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array<string, ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
         return [
-            'name' => 'sometimes|string|max:255|unique:education_types,name,' . $this->route('educationType'),
+            'name' => ['required', 'string', 'max:255', Rule::unique('education_types')->ignore($this->route('education_type'))],
         ];
     }
 
     /**
      * Get custom messages for validator errors.
-     *
-     * @return array
      */
     public function messages(): array
     {

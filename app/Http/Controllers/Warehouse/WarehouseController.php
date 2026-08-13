@@ -9,34 +9,45 @@ use App\Models\Department;
 use App\Models\HumanResources\Employee\Employee;
 use App\Models\Warehouse\Warehouse;
 use App\Models\Warehouse\WarehouseType;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class WarehouseController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Inertia\Response
+     * @return Response
      */
     public function index()
     {
-        return Inertia::render("Modules/BusinessManagement/Warehouse/IndexPage", [
-            'tableData' => Warehouse::with('supervisor:id,name,has_account','supervisor.account:accountable_id,name', 'type:id,name' ,'department:id,name')->latest('id')->paginate(10),
+        return Inertia::render('Modules/BusinessManagement/Warehouse/IndexPage', [
+            'tableData' => $this->tableFilter(Warehouse::with('supervisor:id,name,has_account', 'supervisor.account:accountable_id,name', 'type:id,name', 'department:id,name'), [
+                'warehouse_type_id' => ['relation' => 'type', 'column' => 'name'],
+                'department_id' => ['relation' => 'department', 'column' => 'name'],
+                'supervisor_id' => ['relation' => 'supervisor', 'column' => 'name'],
+            ])->latest('id')->paginate(10)->withQueryString(),
             'employees' => Employee::all(['id', 'name']),
-            'warehouseTypes' => WarehouseType::all(['id','name']),
-            'departments' => Department::all(['id', 'name'])
+            'warehouseTypes' => WarehouseType::all(['id', 'name']),
+            'departments' => Department::all(['id', 'name']),
         ]);
     }
 
     /**
      * Display a listing of the resource.
      *
-     * @return \Inertia\Response
+     * @return Response
      */
     public function deleted()
     {
-        return Inertia::render("Modules/BusinessManagement/Warehouse/DeletedPage", [
-            'tableData' => Warehouse::onlyTrashed()->with('supervisor:id,name,has_account','supervisor.account:accountable_id,name', 'type:id,name' ,'department:id,name')->latest('deleted_at')->paginate(10),
+        return Inertia::render('Modules/BusinessManagement/Warehouse/DeletedPage', [
+            'tableData' => $this->tableFilter(Warehouse::onlyTrashed()->with('supervisor:id,name,has_account', 'supervisor.account:accountable_id,name', 'type:id,name', 'department:id,name'), [
+                'warehouse_type_id' => ['relation' => 'type', 'column' => 'name'],
+                'department_id' => ['relation' => 'department', 'column' => 'name'],
+                'supervisor_id' => ['relation' => 'supervisor', 'column' => 'name'],
+            ])->latest('deleted_at')->paginate(10)->withQueryString(),
         ]);
     }
 
@@ -53,37 +64,24 @@ class WarehouseController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreWarehouseRequest  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function store(StoreWarehouseRequest $request)
     {
-        try {
-            $warehouse = Warehouse::create($request->validated());
+        $warehouse = Warehouse::create($request->validated());
 
-            session()->flash('message', [
-                'type' => 'success',
-                'content' => __('messages.warehouse.created', ['warehouse' => $warehouse->name])
-            ]);
+        session()->flash('message', [
+            'type' => 'success',
+            'content' => __('messages.warehouse.created', ['warehouse' => $warehouse->name]),
+        ]);
 
-            return redirect()->back()->with([
-                 'warehouse' => $warehouse,
-             ]);
-        } catch (\Exception $e) {
-            session()->flash('message', [
-                'type' => 'error',
-                'content' => __('messages.warehouse.creation_failed')
-            ]);
-
-            return redirect()->back();
-        }
+        return redirect()->back()->with(['warehouse' => $warehouse]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Warehouse\Warehouse  $warehouse
-     * @return \Inertia\Response
+     * @return Response
      */
     public function show(Warehouse $warehouse)
     {
@@ -101,15 +99,14 @@ class WarehouseController extends Controller
         $data['type'] = $warehouse->type()->select('id', 'name')->first();
 
         return Inertia::render('Modules/BusinessManagement/Warehouse/ShowPage', [
-            'data' => $data
+            'data' => $data,
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Warehouse\Warehouse  $warehouse
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function edit(Warehouse $warehouse)
     {
@@ -119,44 +116,30 @@ class WarehouseController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateWarehouseRequest  $request
-     * @param  \App\Models\Warehouse\Warehouse  $warehouse
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function update(UpdateWarehouseRequest $request, Warehouse $warehouse)
     {
-        try {
-            $warehouse->update($request->validated());
+        $warehouse->update($request->validated());
 
-            session()->flash('message', [
-                'type'=> 'success',
-                'content'=>__('messages.warehouse.updated', ['warehouse' => $warehouse->name])
-            ]);
+        session()->flash('message', [
+            'type' => 'success',
+            'content' => __('messages.warehouse.updated', ['warehouse' => $warehouse->name]),
+        ]);
 
-            return redirect()->back()->with([
-                'warehouse' => $warehouse,
-            ]);
-        } catch (\Exception $e) {
-            session()->flash('message', [
-                'type'=> 'error',
-                'content'=>__('messages.warehouse.update_failed')
-            ]);
-
-            return redirect()->back();
-        }
+        return redirect()->back()->with(['warehouse' => $warehouse]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Warehouse\Warehouse  $warehouse
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function destroy(Warehouse $warehouse)
     {
         session()->flash('message', [
             'type' => 'danger',
-            'content' => __('messages.warehouse.deleted', ['warehouse' => $warehouse->name])
+            'content' => __('messages.warehouse.deleted', ['warehouse' => $warehouse->name]),
         ]);
 
         $warehouse->delete();
@@ -167,14 +150,13 @@ class WarehouseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Warehouse\Warehouse  $warehouse
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function permanentDestroy(Warehouse $warehouse)
     {
         session()->flash('message', [
             'type' => 'danger',
-            'content' => __('messages.warehouse.permanentDeleted', ['warehouse' => $warehouse->name])
+            'content' => __('messages.warehouse.permanentDeleted', ['warehouse' => $warehouse->name]),
         ]);
 
         $warehouse->forceDelete();
@@ -185,14 +167,13 @@ class WarehouseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Warehouse\Warehouse  $warehouse
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function restore(Warehouse $warehouse)
     {
         session()->flash('message', [
             'type' => 'info',
-            'content' => __('messages.warehouse.restored', ['warehouse' => $warehouse->name])
+            'content' => __('messages.warehouse.restored', ['warehouse' => $warehouse->name]),
         ]);
 
         $warehouse->restore();

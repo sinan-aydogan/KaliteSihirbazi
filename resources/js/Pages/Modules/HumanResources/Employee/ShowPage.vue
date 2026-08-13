@@ -98,10 +98,10 @@ const handleDelete = () => {
       <div class="hidden md:flex select-none pb-3 -mb-3 scrollbar-thin scrollbar-thumb-rose-500">
         <template v-for="i in tabs">
           <Link :href="route(i.route, employee.id)"
-               class="flex justify-center items-center text-sm font-medium mr-0.5 first:rounded-l-md last:rounded-r-md  px-4 py-2 whitespace-nowrap transition cursor-pointer"
+               class="mr-1 flex cursor-pointer items-center justify-center whitespace-nowrap rounded-md border px-4 py-2 text-sm font-medium transition"
                 :class="{
-                  'bg-rose-500/75 hover:bg-rose-800' : route().current() === i.route,
-                  'bg-slate-700 hover:bg-rose-500/50' : route().current() !== i.route
+                  'border-rose-500 bg-rose-500 text-white shadow-sm hover:bg-rose-600 dark:border-rose-500 dark:bg-rose-600' : route().current() === i.route,
+                  'border-slate-300 bg-white text-slate-600 hover:border-rose-300 hover:bg-rose-50 hover:text-rose-700 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-200 dark:hover:border-rose-500 dark:hover:bg-slate-600' : route().current() !== i.route
                 }"
           >
             <span v-text="i.label"></span>

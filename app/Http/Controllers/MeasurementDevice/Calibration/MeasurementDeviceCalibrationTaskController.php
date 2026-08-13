@@ -6,13 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreMeasurementDeviceCalibrationTaskRequest;
 use App\Http\Requests\UpdateMeasurementDeviceCalibrationTaskRequest;
 use App\Models\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTask;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
 
 class MeasurementDeviceCalibrationTaskController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -22,7 +24,7 @@ class MeasurementDeviceCalibrationTaskController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -32,21 +34,13 @@ class MeasurementDeviceCalibrationTaskController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreMeasurementDeviceCalibrationTaskRequest  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function store(StoreMeasurementDeviceCalibrationTaskRequest $request)
     {
-        $measurementDeviceCalibration = new MeasurementDeviceCalibrationTask;
-        $measurementDeviceCalibration->planned_date = $request->planned_date;
-        $measurementDeviceCalibration->measurement_device_id = $request->measurement_device_id;
-        $measurementDeviceCalibration->calibration_firm_id = $request->calibration_firm_id;
-        $measurementDeviceCalibration->price = $request->price;
-        $measurementDeviceCalibration->currency = $request->currency;
+        $measurementDeviceCalibration = MeasurementDeviceCalibrationTask::create($request->validated());
 
-        $measurementDeviceCalibration->save();
-
-        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.measurementDeviceCalibration.created', ['measurementDeviceCalibration' => $measurementDeviceCalibration->id])]);
+        session()->flash('message', ['type' => 'success', 'content' => __('messages.measurementDeviceCalibration.created', ['measurementDeviceCalibration' => $measurementDeviceCalibration->id])]);
 
         return redirect()->back();
     }
@@ -54,46 +48,43 @@ class MeasurementDeviceCalibrationTaskController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTask  $measurementDeviceCalibrationTask
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show(MeasurementDeviceCalibrationTask $measurementDeviceCalibrationTask)
     {
-        //
+        return response()->json($measurementDeviceCalibrationTask->load(['device', 'firm']));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTask  $measurementDeviceCalibrationTask
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit(MeasurementDeviceCalibrationTask $measurementDeviceCalibrationTask)
     {
-        //
+        return response()->json($measurementDeviceCalibrationTask);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateMeasurementDeviceCalibrationTaskRequest  $request
-     * @param  \App\Models\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTask  $measurementDeviceCalibrationTask
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(UpdateMeasurementDeviceCalibrationTaskRequest $request, MeasurementDeviceCalibrationTask $measurementDeviceCalibrationTask)
     {
-        //
+        $measurementDeviceCalibrationTask->update($request->validated());
+
+        return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTask  $measurementDeviceCalibration
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function destroy(MeasurementDeviceCalibrationTask $measurementDeviceCalibration)
     {
-        session()->flash('message', ['type'=> 'danger', 'content'=>__('messages.measurementDeviceCalibration.deleted', ['measurementDeviceCalibration' => $measurementDeviceCalibration->id])]);
+        session()->flash('message', ['type' => 'danger', 'content' => __('messages.measurementDeviceCalibration.deleted', ['measurementDeviceCalibration' => $measurementDeviceCalibration->id])]);
 
         $measurementDeviceCalibration->delete();
 

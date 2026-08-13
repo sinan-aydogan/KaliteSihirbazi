@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Department;
+use App\Models\HumanResources\Employee\Employee;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,11 +17,11 @@ return new class extends Migration
     {
         Schema::create('departments', function (Blueprint $table) {
             $table->id();
-            $table->string('code',10)->unique();
-            $table->string('name',255);
-            $table->string('type',10)->default('main');
-            $table->foreignIdFor(\App\Models\HumanResources\Employee\Employee::class)->nullable();
-            $table->foreignIdFor(\App\Models\Department::class)->nullable();
+            $table->string('code', 10)->unique();
+            $table->string('name', 255);
+            $table->string('type', 10)->default('main');
+            $table->foreignIdFor(Employee::class)->nullable();
+            $table->foreignIdFor(Department::class)->nullable()->constrained('departments')->nullOnDelete();
             $table->softDeletes();
             $table->timestamps();
         });

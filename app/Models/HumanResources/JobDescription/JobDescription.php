@@ -10,8 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class JobDescription extends Model
 {
-    use HasFactory;
-    use SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -33,7 +32,7 @@ class JobDescription extends Model
         'overtime_status',
         'travel_status',
         'status',
-        'requirements'
+        'requirements',
     ];
 
     /**
@@ -42,20 +41,20 @@ class JobDescription extends Model
      * @var array
      */
     protected $casts = [
-        'responsibilities'  => 'array',
-        'powers'  => 'array',
-        'requirements'  => 'array',
-        'skills'  => 'array',
-        'working_conditions'  => 'array',
-        'working_tools'  => 'array',
-        'working_hours'  => 'array',
-        'overtime_status'  => 'array',
-        'travel_status'  => 'array',
-        'status' => 'boolean'
+        'responsibilities' => 'array',
+        'powers' => 'array',
+        'requirements' => 'array',
+        'skills' => 'array',
+        'working_conditions' => 'array',
+        'working_tools' => 'array',
+        'working_hours' => 'array',
+        'overtime_status' => 'array',
+        'travel_status' => 'array',
+        'status' => 'boolean',
     ];
 
     // The department of the job description
-    public function department():BelongsTo
+    public function department(): BelongsTo
     {
         return $this->belongsTo(Department::class, 'department_id');
     }

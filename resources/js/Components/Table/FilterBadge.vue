@@ -1,14 +1,14 @@
 <template>
-    <div class="flex h-8 items-center justify-center border dark:border-0 rounded-lg px-2 py-1 space-x-1 bg-white dark:bg-slate-700">
+    <div class="flex h-8 items-center justify-center gap-1 rounded-lg border border-slate-300 bg-white px-2 py-1 shadow-sm dark:border-slate-600 dark:bg-slate-700">
         <!--Key-->
         <span class="text-sm text-slate-500 dark:text-slate-400 after:content[':']" v-text="filterKey"></span>
         <!--Comparator-->
         <font-awesome-icon v-if="filterComparator" :icon="filterComparator" size="xs" class="mt-0.5"/>
         <!--Value-->
-        <span class="text-sm font-semibold after:content[':']" v-text="filterValue"></span>
-        <div @click="$emit('deleteFilter', filterIndex)" class="flex items-center justify-center mt-0.5 w-4 h-4 text-slate-600 dark:text-rose-500 hover:bg-rose-600 dark:hover:text-slate-200 rounded-full hover:text-slate-50 cursor-pointer">
+        <span class="max-w-40 truncate text-sm font-semibold" v-text="filterValue"></span>
+        <button type="button" @click="$emit('deleteFilter')" class="flex size-5 cursor-pointer items-center justify-center rounded-full text-slate-500 hover:bg-rose-600 hover:text-white dark:text-rose-400">
             <font-awesome-icon icon="x" size="xs"/>
-        </div>
+        </button>
     </div>
 </template>
 
@@ -16,11 +16,12 @@
 export default {
     name: "FilterBadge",
 
+    emits: ['deleteFilter'],
+
     props: {
-        filterIndex: [Number, String],
         filterKey: String,
         filterComparator: String,
-        filterValue: String
+        filterValue: [String, Number]
     }
 
 }

@@ -18,7 +18,9 @@ class DepartmentController extends Controller
     public function index()
     {
         return Inertia::render("Modules/BusinessManagement/Department/IndexPage", [
-            'tableData' => Department::with('manager:id,has_account')->latest('id')->paginate(10),
+            'tableData' => $this->tableFilter(Department::with('manager:id,has_account'), [
+                'manager' => ['relation' => 'manager', 'column' => 'name'],
+            ])->latest('id')->paginate(10)->withQueryString(),
             'employees' => Employee::all(['id']),
             'departments' => Department::all(['id', 'name'])
         ]);
@@ -32,7 +34,9 @@ class DepartmentController extends Controller
     public function deleted()
     {
         return Inertia::render("Modules/BusinessManagement/Department/DeletedPage", [
-            'tableData' => Department::onlyTrashed()->with('manager:id,has_account')->latest('deleted_at')->paginate(10),
+            'tableData' => $this->tableFilter(Department::onlyTrashed()->with('manager:id,has_account'), [
+                'manager' => ['relation' => 'manager', 'column' => 'name'],
+            ])->latest('deleted_at')->paginate(10)->withQueryString(),
         ]);
     }
 
@@ -92,7 +96,11 @@ class DepartmentController extends Controller
         ];
         $data['manager'] = $department->manager()->select('id', 'name')->first();
         $data['mainDepartment'] = $department->mainDepartment()->select('id', 'code', 'name')->first();
-        $data['employees'] = $department->employees()->select('id', 'name')->get();
+        $data['employees'] = $department->employees()
+            ->with('account:id,accountable_id,accountable_type,name')
+            ->select('id', 'code', 'name', 'department_id', 'sex', 'employment_type', 'status', 'has_account')
+            ->orderBy('name')
+            ->get();
 
         return Inertia::render('Modules/BusinessManagement/Department/ShowPage', [
             'department' => $data,

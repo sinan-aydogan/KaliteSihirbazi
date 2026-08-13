@@ -18,7 +18,7 @@
         </div>
     </div>
     <!--Content-->
-    <div class="p-4 bg-white dark:bg-slate-800/50 rounded-lg shadow border dark:border-slate-600">
+    <div class="rounded-xl border border-slate-300 bg-white p-4 shadow-md shadow-slate-300/40 dark:border-slate-500 dark:bg-slate-700 dark:shadow-black/20">
         <slot></slot>
     </div>
 </template>

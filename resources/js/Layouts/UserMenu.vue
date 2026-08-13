@@ -3,13 +3,13 @@
 import { onMounted, onUnmounted, ref } from "vue";
 
 /* Components */
-import JetDropdownLink from "@/Jetstream/DropdownLink.vue";
+import DropdownLink from "@/Components/Account/DropdownLink.vue";
 import {router, usePage} from "@inertiajs/vue3";
 
 defineProps({
   contentClasses: {
     type: Array,
-    default: () => ["py-1", "bg-white"],
+    default: () => ["bg-white", "dark:bg-slate-800"],
   },
 })
 
@@ -34,7 +34,7 @@ const logout = () => {
     <!-- User Menu -->
     <div @click="open = !open">
       <button
-        v-if="usePage().props.jetstream.managesProfilePhotos"
+        v-if="usePage().props.features.managesProfilePhotos"
         class="
           flex
           text-sm
@@ -102,54 +102,43 @@ const logout = () => {
     >
       <div
         v-show="open"
-        class="
-          absolute
-          -translate-y-full
-          left-16
-          w-[10rem]
-          bg-red-500
-          z-50
-          rounded-md
-          shadow-lg
-        "
+        class="absolute bottom-0 left-full z-50 ml-3 w-48 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-xl dark:border-slate-600 dark:bg-slate-800"
         style="display: none"
         @click="open = false"
       >
         <div
-          class="rounded-md ring-1 ring-black ring-opacity-5"
+          class="divide-y divide-slate-100 dark:divide-slate-700"
           :class="contentClasses"
         >
           <!-- Account Management -->
-          <div class="block px-4 py-2 text-xs text-gray-400">
+          <div class="px-3 py-2.5 text-xs font-medium text-slate-500 dark:text-slate-400">
             {{ $t("account.manageAccount") }}
           </div>
 
-          <jet-dropdown-link :href="route('profile.show')">
+          <DropdownLink :href="route('profile.show')">
             <font-awesome-icon icon="user-circle" class="mr-1" />
 
             {{ $t("account.account") }}
-          </jet-dropdown-link>
+          </DropdownLink>
 
-          <jet-dropdown-link
+          <DropdownLink
             :href="route('api-tokens.index')"
-            v-if="usePage().props.jetstream.hasApiFeatures"
+            v-if="usePage().props.features.hasApiFeatures"
           >
             API Tokens
-          </jet-dropdown-link>
-
-          <div class="border-t border-gray-100"></div>
+          </DropdownLink>
 
           <!-- Authentication -->
           <form @submit.prevent="logout">
-            <jet-dropdown-link as="button">
-              <span class="text-rose-700">
+            <DropdownLink as="button">
+              <span class="text-rose-700 dark:text-rose-400">
                 <font-awesome-icon
                   icon="arrow-right-from-bracket"
                   class="mr-1"
                 />
                 {{ $t("auth.logOut") }}
               </span>
-            </jet-dropdown-link>
+            </DropdownLink>
           </form>
         </div>
       </div>

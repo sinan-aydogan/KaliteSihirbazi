@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('modules', function (Blueprint $table) {
             $table->id();
-            $table->string('code',100);
-            $table->string('name',100);
-            $table->string('description',255);
-            $table->string('licence_key',255)->default('core');
-            $table->boolean('status');
+            $table->string('code', 100)->unique();
+            $table->string('name', 100);
+            $table->string('description', 255)->nullable();
+            $table->string('licence_key', 255)->default('core');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

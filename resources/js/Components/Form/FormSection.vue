@@ -45,16 +45,17 @@ const fullSize = inject('fullSize', false)
 
     <!--Content-->
     <div :class="{
-      'col-span-9': !fullSize
+      'col-span-9': !fullSize,
+      'overflow-hidden rounded-xl border border-slate-300 bg-white shadow-md shadow-slate-300/40 dark:border-slate-500 dark:bg-slate-700 dark:shadow-black/20': !bgLess
     }">
       <div
           class="section-content"
           :class="{
-             'p-4 rounded-lg' : !$slots['actions'],
-             'px-4 pt-4 rounded-t-lg' : $slots['actions'],
+             'p-4' : !$slots['actions'],
+             'px-4 pt-4 pb-2' : $slots['actions'],
              'grid grid-cols-12 gap-2' : grid,
              'space-y-4' : !grid,
-             'bg-white dark:bg-slate-600 shadow' : !bgLess,
+             'bg-white dark:bg-slate-700' : !bgLess,
              'p-0': bgLess
           }"
       >
@@ -69,21 +70,26 @@ const fullSize = inject('fullSize', false)
   </div>
 </template>
 
-<style lang="sass">
+<style>
 @reference "../../../css/app.css";
 
-.section-header
-  @apply flex justify-between
+.section-header {
+  @apply flex justify-between;
+}
 
-.title
-  @apply text-lg font-medium text-slate-700 dark:text-slate-100
+.title {
+  @apply text-lg font-medium text-slate-700 dark:text-slate-100;
+}
 
-.description
-  @apply mt-1 text-xs text-slate-500 dark:text-slate-400
+.description {
+  @apply mt-1 text-xs text-slate-500 dark:text-slate-400;
+}
 
-.section-content
-  @apply text-slate-700 dark:text-slate-100
+.section-content {
+  @apply text-slate-700 dark:text-slate-100;
+}
 
-.section-action
-  @apply flex items-center justify-center sm:justify-end space-x-2 p-4 rounded-b-lg bg-white dark:bg-slate-600 dark:text-slate-100
+.section-action {
+  @apply flex items-center justify-center sm:justify-end gap-2 border-t border-slate-200 bg-slate-50 p-4 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100;
+}
 </style>

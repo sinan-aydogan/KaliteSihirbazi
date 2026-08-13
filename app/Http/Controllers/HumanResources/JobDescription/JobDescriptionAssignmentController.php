@@ -6,13 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreJobDescriptionAssignmentRequest;
 use App\Http\Requests\UpdateJobDescriptionAssignmentRequest;
 use App\Models\HumanResources\JobDescription\JobDescriptionAssignment;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
 
 class JobDescriptionAssignmentController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -22,7 +24,7 @@ class JobDescriptionAssignmentController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -32,28 +34,21 @@ class JobDescriptionAssignmentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreJobDescriptionAssignmentRequest  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function store(StoreJobDescriptionAssignmentRequest $request)
     {
-        $assigment = JobDescriptionAssignment::create([
-            'employee_id' => $request->employee_id,
-            'job_description_id' => $request->job_description_id,
-            'assignment_date' => $request->assignment_date,
-            'appointer_id' => $request->appointer_id,
-        ]);
+        $assignment = JobDescriptionAssignment::create($request->validated());
 
-        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.jobDescriptionAssignment.created', ['employee'=> $assigment->employee->employeeName, 'jobDescription' => $assigment->jobDescription->name])]);
+        session()->flash('message', ['type' => 'success', 'content' => __('messages.jobDescriptionAssignment.created', ['employee' => $assignment->employee->employeeName, 'jobDescription' => $assignment->jobDescription->name])]);
 
-        return to_route('employee-jd-assignment.index',$request->employee_id);
+        return to_route('employee-jd-assignment.index', $request->employee_id);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\HumanResources\JobDescription\JobDescriptionAssignment  $jobDescriptionAssignment
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show(JobDescriptionAssignment $jobDescriptionAssignment)
     {
@@ -63,39 +58,37 @@ class JobDescriptionAssignmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\HumanResources\JobDescription\JobDescriptionAssignment  $jobDescriptionAssignment
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit(JobDescriptionAssignment $jobDescriptionAssignment)
     {
-        //
+        return response()->json($jobDescriptionAssignment);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateJobDescriptionAssignmentRequest  $request
-     * @param  \App\Models\HumanResources\JobDescription\JobDescriptionAssignment  $jobDescriptionAssignment
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(UpdateJobDescriptionAssignmentRequest $request, JobDescriptionAssignment $jobDescriptionAssignment)
     {
-        //
+        $jobDescriptionAssignment->update($request->validated());
+
+        return to_route('employee-jd-assignment.index', $jobDescriptionAssignment->employee_id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\HumanResources\JobDescription\JobDescriptionAssignment  $jobDescriptionAssignment
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function destroy(JobDescriptionAssignment $jobDescriptionAssignment)
     {
         $employee_id = $jobDescriptionAssignment->employee->id;
-        session()->flash('message', ['type'=> 'danger', 'content'=>__('messages.jobDescriptionAssignment.deleted', ['employee'=> $jobDescriptionAssignment->employee->employeeName, 'jobDescription' => $jobDescriptionAssignment->jobDescription->name])]);
+        session()->flash('message', ['type' => 'danger', 'content' => __('messages.jobDescriptionAssignment.deleted', ['employee' => $jobDescriptionAssignment->employee->employeeName, 'jobDescription' => $jobDescriptionAssignment->jobDescription->name])]);
 
         $jobDescriptionAssignment->delete();
 
-        return to_route('employee-jd-assignment.index',$employee_id);
+        return to_route('employee-jd-assignment.index', $employee_id);
     }
 }

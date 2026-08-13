@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateMeasurementDeviceRequest extends FormRequest
 {
@@ -24,7 +25,14 @@ class UpdateMeasurementDeviceRequest extends FormRequest
     public function rules()
     {
         return [
-            'code' => 'required|string|max:10|unique:departments,id,'.$this->id,
+            'code' => ['required', 'string', 'max:10', Rule::unique('measurement_devices')->ignore($this->route('measurement_device'))],
+            'brand' => 'nullable|string|max:255',
+            'model' => 'nullable|string|max:255',
+            'serial_no' => 'nullable|string|max:255',
+            'properties' => 'nullable|array',
+            'purchase_date' => 'nullable|date',
+            'purchase_price' => 'nullable|numeric|min:0',
+            'purchase_price_unit' => 'nullable|string|max:20',
             'device_supervisor_id' => 'required|exists:employees,id',
             'calibration_supervisor_id' => 'required|exists:employees,id',
             'department_id' => 'required|exists:departments,id',

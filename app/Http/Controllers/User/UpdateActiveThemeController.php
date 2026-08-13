@@ -3,31 +3,26 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class UpdateActiveThemeController extends Controller
 {
     /**
      * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
      */
-
-    public function __invoke(Request $request)
+    public function __invoke(Request $request): RedirectResponse
     {
-        Validator::make($request->all(), [
-            'activeTheme' => ['required'],
-        ])->after(function ($validator) use ($request) {
-            if (! isset($request['activeTheme'])) {
-                $validator->errors()->add('activeTheme', __('There has been occurred undefined problem, please reload page'));
-            }
-        })->validateWithBag('activeTheme');
+        $validated = $request->validateWithBag('activeTheme', [
+            'activeTheme' => ['required', 'string', Rule::in(['light', 'dark', 'auto'])],
+        ]);
 
-        $user = auth()->user();
+        /** @var User $user */
+        $user = $request->user();
         $user->forceFill([
-            'Theme' => $request->input('activeTheme'),
+            'theme' => $validated['activeTheme'],
         ])->save();
 
         return redirect()->back();

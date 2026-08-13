@@ -24,10 +24,28 @@
         "noManagerAppointed": "Yönetici Ataması Yapılmamış",
         "employees": "Personeller",
         "employeeCode": "Kimlik No",
-        "employeeName": "Personel Adı"
+        "employeeName": "Personel Adı",
+        "gender": "Cinsiyet",
+        "women": "Kadın",
+        "men": "Erkek",
+        "genderDistribution": "Cinsiyet Dağılımı",
+        "onLeaveEmployees": "İzinli Personeller",
+        "employmentType": "Kadro Türü",
+        "employmentTypes": "Kadro Türleri",
+        "fullTime": "Tam Zamanlı",
+        "partTime": "Yarı Zamanlı",
+        "seasonal": "Dönemsel",
+        "intern": "Stajyer",
+        "contracted": "Sözleşmeli",
+        "dailyWage": "Yevmiyeli",
+        "handicappedStaff": "Engelli Kadrosu",
+        "convictStaff": "Yükümlü Kadrosu",
+        "status": "Çalışma Durumu",
+        "noEmploymentType": "Kadro türü bilgisi bulunmuyor"
     },
     "action": {
-        "attachEmployee": "Departmana Personel Ekle"
+        "attachEmployee": "Departmana Personel Ekle",
+        "clearFilter": "Filtreyi Temizle"
     },
     "message": {
         "feedback": {

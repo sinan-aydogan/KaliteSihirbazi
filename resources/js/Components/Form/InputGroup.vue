@@ -29,10 +29,24 @@ const props = defineProps({
 })
 
 /*Error Management*/
+const page = usePage();
+const clientErrors = computed(() => Array.isArray(props.errors) ? props.errors : []);
+const directError = computed(() => {
+    if (typeof props.errors === 'string' && props.errors.length > 0) {
+        return props.errors;
+    }
+
+    return page.props.errors?.[props.labelFor] ?? null;
+});
+const bagErrors = computed(() => {
+    const errors = page.props.errorBags?.[props.errorBag]?.[props.labelFor];
+
+    if (!errors) return [];
+
+    return Array.isArray(errors) ? errors : [errors];
+});
 const errorStatus = computed(() => {
-    return props.errors.length > 0 ||
-        usePage().props.errors[props.labelFor] ||
-        (usePage().props.errorBags.hasOwnProperty(props.errorBag) && usePage().props.errorBags[props.errorBag].hasOwnProperty(props.labelFor));
+    return clientErrors.value.length > 0 || Boolean(directError.value) || bagErrors.value.length > 0;
 })
 
 
@@ -63,22 +77,21 @@ provide('errorStatus', errorStatus);
         <!--Error-->
         <div>
             <!--Front End Error-->
-            <div v-if="errors.length > 0">
-                <template v-for="error in errors" :key="error.$uid">
+            <div v-if="clientErrors.length > 0">
+                <template v-for="error in clientErrors" :key="error.$uid">
                     <p class="text-sm text-red-600 dark:text-rose-400 mt-1 ml-1 whitespace-nowrap">{{  error.$message  }}</p>
                 </template>
             </div>
 
             <!--Backend Error-->
-            <div v-if="$page.props.errors.hasOwnProperty(labelFor)">
+            <div v-if="directError">
                 <p class="text-sm text-rose-600 dark:text-rose-400 mt-1 ml-1 whitespace-nowrap">
-                    {{  $page.props.errors[labelFor]  }}
+                    {{ directError }}
                 </p>
             </div>
 
-            <div
-                v-if="$page.props.errorBags.hasOwnProperty(errorBag) && $page.props.errorBags[errorBag].hasOwnProperty(labelFor)">
-                <template v-for="error in $page.props.errorBags[errorBag][labelFor]">
+            <div v-if="bagErrors.length > 0">
+                <template v-for="error in bagErrors" :key="error">
                     <p class="text-xs text-rose-600 dark:text-rose-400 mt-1 ml-1 whitespace-nowrap">
                         {{  error  }}
                     </p>

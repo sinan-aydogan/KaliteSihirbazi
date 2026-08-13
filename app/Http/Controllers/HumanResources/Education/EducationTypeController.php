@@ -21,7 +21,7 @@ class EducationTypeController extends Controller
     public function index()
     {
         return Inertia::render('Modules/HumanResources/Education/Setting/EducationTypePage', [
-            'tableData' => EducationType::latest('id')->paginate(10),
+            'tableData' => $this->tableFilter(EducationType::query())->latest('id')->paginate(10)->withQueryString(),
         ]);
     }
 
@@ -33,7 +33,7 @@ class EducationTypeController extends Controller
     public function deleted()
     {
         return Inertia::render("Modules/HumanResources/Education/Setting/EducationTypeDeletedPage", [
-            'tableData' => EducationType::onlyTrashed()->latest('deleted_at')->paginate(10),
+            'tableData' => $this->tableFilter(EducationType::onlyTrashed())->latest('deleted_at')->paginate(10)->withQueryString(),
         ]);
     }
 

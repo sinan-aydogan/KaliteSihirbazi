@@ -3,6 +3,7 @@
 namespace App\Http\Requests\HumanResources\EducationPlan;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateEducationPlanRequest extends FormRequest
 {
@@ -24,10 +25,10 @@ class UpdateEducationPlanRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'sometimes|string|max:255|unique:education_plans,name,' . $this->id,
-            'start_date' => 'sometimes|date|date_format:Y-m-d',
+            'name' => ['required', 'string', 'max:255', Rule::unique('education_plans')->ignore($this->route('education_plan'))],
+            'start_date' => 'required|date|date_format:Y-m-d',
             'end_date' => [
-                'sometimes',
+                'required',
                 'date',
                 'date_format:Y-m-d',
                 'after_or_equal:start_date',

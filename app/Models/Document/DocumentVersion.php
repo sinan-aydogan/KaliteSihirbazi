@@ -18,18 +18,25 @@ class DocumentVersion extends Model
         'version',
         'revision_reason',
         'revision_detail',
-        'status'
+        'status',
     ];
 
-    public function document():BelongsTo{
+    protected $casts = [
+        'version' => 'integer',
+    ];
+
+    public function document(): BelongsTo
+    {
         return $this->belongsTo(Document::class);
     }
 
-    public function revisedBy():BelongsTo{
+    public function revisedBy(): BelongsTo
+    {
         return $this->belongsTo(User::class, 'revised_by');
     }
 
-    public function approvedBy():BelongsTo{
+    public function approvedBy(): BelongsTo
+    {
         return $this->belongsTo(User::class, 'approved_by');
     }
 }

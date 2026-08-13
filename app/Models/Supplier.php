@@ -29,20 +29,20 @@ class Supplier extends Model
      * @var array
      */
     protected $casts = [
-        "contact_info" => "array",
-        "notes" => "array",
+        'contact_info' => 'array',
+        'notes' => 'array',
         'is_active' => 'boolean',
     ];
 
     // Supplier's types
-    public function types():BelongsToMany
+    public function types(): BelongsToMany
     {
-        return $this->belongsToMany(SupplierType::class, 'supplier_type_supplier', 'supplier_id', 'supplier_type_id');
+        return $this->belongsToMany(SupplierType::class, 'supplier_type_supplier', 'supplier_id', 'supplier_type_id')->withTimestamps();
     }
 
     // Supplier's Tags
-    public function tags():BelongsToMany
+    public function tags(): BelongsToMany
     {
-        return $this->belongsToMany(SupplierTag::class, 'supplier_tag_supplier', 'supplier_id', 'supplier_tag_id');
+        return $this->belongsToMany(SupplierTag::class, 'supplier_tag_supplier', 'supplier_id', 'supplier_tag_id')->withTimestamps();
     }
 }

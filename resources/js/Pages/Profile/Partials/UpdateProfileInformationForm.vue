@@ -2,7 +2,7 @@
 import {ref} from 'vue';
 import {useForm, router} from '@inertiajs/vue3';
 import FormSection from "@/Components/Form/FormSection.vue";
-import JetInputError from '@/Jetstream/InputError.vue';
+import InputError from '@/Components/Account/InputError.vue';
 import FormActionMessage from '@/Components/Form/FormActionMessage.vue';
 import InputGroup from "@/Components/Form/InputGroup.vue";
 import TextInput from "@/Components/Form/TextInput.vue";
@@ -95,9 +95,9 @@ const clearPhotoFileInput = () => {
         :description="t('account.accountInformationDesc')"
     >
         <!-- Profile Photo -->
-        <div v-if="$page.props.jetstream.managesProfilePhotos" class="col-span-6 sm:col-span-4">
+        <div v-if="$page.props.features.managesProfilePhotos" class="col-span-6 sm:col-span-4">
             <!-- Profile Photo File Input -->
-            <input ref="photoInput" type="file" class="hidden" @change="updatePhotoPreview">
+            <input ref="photoInput" type="file" accept="image/jpeg,image/png,image/webp" class="hidden" @change="updatePhotoPreview">
 
             <h4 v-text="t('account.profilePhoto')"></h4>
 
@@ -118,7 +118,7 @@ const clearPhotoFileInput = () => {
                 <SimpleButton v-if="user.profile_photo_path" :label="t('account.removeAvatar')" size="slim"  @click.prevent="deletePhoto"/>
             </div>
 
-            <JetInputError :message="form.errors.photo" class="mt-2"/>
+            <InputError :message="form.errors.photo" class="mt-2"/>
         </div>
 
         <!-- Name -->

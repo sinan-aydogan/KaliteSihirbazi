@@ -24,7 +24,14 @@ class StoreMeasurementDeviceRequest extends FormRequest
     public function rules()
     {
         return [
-            'code' => 'required|string|unique:departments|max:10',
+            'code' => 'required|string|max:10|unique:measurement_devices,code',
+            'brand' => 'nullable|string|max:255',
+            'model' => 'nullable|string|max:255',
+            'serial_no' => 'nullable|string|max:255',
+            'properties' => 'nullable|array',
+            'purchase_date' => 'nullable|date',
+            'purchase_price' => 'nullable|numeric|min:0',
+            'purchase_price_unit' => 'nullable|string|max:20',
             'device_supervisor_id' => 'required|exists:employees,id',
             'calibration_supervisor_id' => 'required|exists:employees,id',
             'department_id' => 'required|exists:departments,id',

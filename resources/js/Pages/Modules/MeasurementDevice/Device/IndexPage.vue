@@ -150,12 +150,21 @@ const handleSubmit = async () => {
   }
 }
 
+const getRowInfo = async (id) => {
+  const response = await axios.get(route('measurement-device.edit', id))
+  form.defaults(response.data)
+  form.reset()
+  form.id = response.data.id
+  formType.value = 'update'
+  showModal.value = true
+}
+
 </script>
 
 <template>
   <app-layout :title="tm('title.indexPage.title')" :sub-title="tm('title.indexPage.subTitle')">
     <template #actionArea>
-      <simple-button type="route" :link="route('employee.deleted')" color="red">
+      <simple-button type="route" :link="route('measurement-device.deleted')" color="red">
         <font-awesome-icon icon="trash-can" class="mr-2"/>
         <span v-text="$t('term.deletedItems')"/>
       </simple-button>
@@ -264,7 +273,7 @@ const handleSubmit = async () => {
 
           <!-- Purchase Price -->
           <input-group class="col-span-12 sm:col-span-4" labelFor="purchase_date" :label="tm('term.purchasingPrice')">
-            <text-input v-model="form.purchase_date" inputType="number"/>
+            <text-input v-model="form.purchase_price" inputType="number"/>
           </input-group>
 
           <!-- Purchase Price Unit-->

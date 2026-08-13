@@ -10,8 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class JobDescriptionAssignment extends Model
 {
-    use HasFactory;
-    use SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -23,7 +22,7 @@ class JobDescriptionAssignment extends Model
         'job_description_id',
         'appointer_id',
         'assignment_date',
-        'status'
+        'status',
     ];
 
     /**
@@ -32,28 +31,31 @@ class JobDescriptionAssignment extends Model
      * @var array
      */
     protected $casts = [
-        'assignment_date'  => 'date',
-        'status' => 'boolean'
+        'assignment_date' => 'date',
+        'status' => 'boolean',
     ];
 
     /**
      * Get the employee.
      */
-    public function employee():BelongsTo{
+    public function employee(): BelongsTo
+    {
         return $this->belongsTo(Employee::class);
     }
 
     /**
      * Get the job description.
      */
-    public function jobDescription():BelongsTo{
+    public function jobDescription(): BelongsTo
+    {
         return $this->belongsTo(JobDescription::class);
     }
 
     /**
      * Get the appointer.
      */
-    public function appointer():BelongsTo{
-        return $this->belongsTo(Employee::class);
+    public function appointer(): BelongsTo
+    {
+        return $this->belongsTo(Employee::class, 'appointer_id');
     }
 }

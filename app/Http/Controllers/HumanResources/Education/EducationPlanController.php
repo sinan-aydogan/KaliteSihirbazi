@@ -21,7 +21,7 @@ class EducationPlanController extends Controller
     public function index()
     {
         return Inertia::render('Modules/HumanResources/EducationPlan/IndexPage', [
-            'tableData' => EducationPlan::latest('id')->paginate(10),
+            'tableData' => $this->tableFilter(EducationPlan::query())->latest('id')->paginate(10)->withQueryString(),
         ]);
     }
 
@@ -32,8 +32,8 @@ class EducationPlanController extends Controller
      */
     public function deleted()
     {
-        return Inertia::render("Modules/HumanResources/EducationPlan/DeletedPage", [
-            'tableData' => EducationPlan::onlyTrashed()->latest('deleted_at')->paginate(10),
+        return Inertia::render('Modules/HumanResources/EducationPlan/DeletedPage', [
+            'tableData' => $this->tableFilter(EducationPlan::onlyTrashed())->latest('deleted_at')->paginate(10)->withQueryString(),
         ]);
     }
 
@@ -50,7 +50,6 @@ class EducationPlanController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param StoreEducationPlanRequest $request
      * @return RedirectResponse
      */
     public function store(StoreEducationPlanRequest $request)
@@ -58,7 +57,7 @@ class EducationPlanController extends Controller
         $educationPlan = new EducationPlan($request->validated());
         $educationPlan->save();
 
-        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.educationPlan.created', ['educationPlan' => $educationPlan->name])]);
+        session()->flash('message', ['type' => 'success', 'content' => __('messages.educationPlan.created', ['educationPlan' => $educationPlan->name])]);
 
         return redirect()->back();
     }
@@ -66,7 +65,6 @@ class EducationPlanController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param EducationPlan $educationPlan
      * @return Response
      */
     public function show(EducationPlan $educationPlan)
@@ -79,7 +77,6 @@ class EducationPlanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param EducationPlan $educationPlan
      * @return JsonResponse
      */
     public function edit(EducationPlan $educationPlan)
@@ -90,15 +87,13 @@ class EducationPlanController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param UpdateEducationPlanRequest $request
-     * @param EducationPlan $educationPlan
      * @return RedirectResponse
      */
     public function update(UpdateEducationPlanRequest $request, EducationPlan $educationPlan)
     {
         $educationPlan->update($request->validated());
 
-        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.educationPlan.updated', ['educationPlan' => $educationPlan->name])]);
+        session()->flash('message', ['type' => 'success', 'content' => __('messages.educationPlan.updated', ['educationPlan' => $educationPlan->name])]);
 
         return redirect()->back();
     }
@@ -106,12 +101,11 @@ class EducationPlanController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param EducationPlan $educationPlan
      * @return RedirectResponse
      */
     public function destroy(EducationPlan $educationPlan)
     {
-        session()->flash('message', ['type'=> 'danger', 'content'=>__('messages.educationPlan.deleted', ['educationPlan' => $educationPlan->name])]);
+        session()->flash('message', ['type' => 'danger', 'content' => __('messages.educationPlan.deleted', ['educationPlan' => $educationPlan->name])]);
 
         $educationPlan->delete();
 
@@ -121,12 +115,13 @@ class EducationPlanController extends Controller
     /**
      * Permanently delete the specified resource from storage.
      *
-     * @param EducationPlan $educationPlan
      * @return RedirectResponse
      */
     public function permanentDestroy(EducationPlan $educationPlan)
     {
-        session()->flash('message', ['type'=> 'danger', 'content'=>__('messages.educationPlan.permanentDeleted', ['educationPlan' => $educationPlan->name])]);
+        abort_if($educationPlan->educations()->withTrashed()->exists(), 409, 'Eğitim içeren plan kalıcı olarak silinemez.');
+
+        session()->flash('message', ['type' => 'danger', 'content' => __('messages.educationPlan.permanentDeleted', ['educationPlan' => $educationPlan->name])]);
 
         $educationPlan->forceDelete();
 
@@ -136,14 +131,13 @@ class EducationPlanController extends Controller
     /**
      * Restore the specified resource from storage.
      *
-     * @param EducationPlan $educationPlan
      * @return RedirectResponse
      */
     public function restore(EducationPlan $educationPlan)
     {
         $educationPlan->restore();
 
-        session()->flash('message', ['type'=> 'info', 'content'=>__('messages.educationPlan.restored', ['educationPlan' => $educationPlan->name])]);
+        session()->flash('message', ['type' => 'info', 'content' => __('messages.educationPlan.restored', ['educationPlan' => $educationPlan->name])]);
 
         return redirect()->route('education-plan.index');
     }

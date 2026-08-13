@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateJobDescriptionRequest extends FormRequest
 {
@@ -24,11 +25,11 @@ class UpdateJobDescriptionRequest extends FormRequest
     public function rules()
     {
         return [
-            'code' => 'required|string|max:10|unique:job_descriptions,code,'.$this->id,
+            'code' => ['required', 'string', 'max:10', Rule::unique('job_descriptions')->ignore($this->route('job_description'))],
             'name' => 'required|string|max:150',
             'description' => 'nullable|string|max:750',
             'staff_type' => 'nullable|string|max:10|in:blue,white,other',
-            'department_id' => 'required|exists:departments,id',
+            'department_id' => 'nullable|exists:departments,id',
             'responsibilities' => 'required|array|min:1',
             'powers' => 'required|array|min:1',
             'requirements' => 'required|array|min:1',
@@ -72,6 +73,7 @@ class UpdateJobDescriptionRequest extends FormRequest
         if (empty($value)) {
             return [''];
         }
+
         return is_array($value) ? $value : [json_decode($value, true)];
     }
 

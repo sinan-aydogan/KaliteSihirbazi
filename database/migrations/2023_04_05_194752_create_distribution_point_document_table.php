@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('distribution_point_document', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('document_id');
-            $table->foreignId('distribution_point_id');
+            $table->foreignId('document_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('distribution_point_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
+            $table->unique(['document_id', 'distribution_point_id']);
         });
     }
 

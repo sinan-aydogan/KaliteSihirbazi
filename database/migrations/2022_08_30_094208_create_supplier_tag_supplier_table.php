@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('supplier_tag_id')->constrained('supplier_tags')->onDelete('cascade');
             $table->foreignId('supplier_id')->constrained('suppliers')->onDelete('cascade');
             $table->timestamps();
+            $table->unique(['supplier_tag_id', 'supplier_id']);
         });
     }
 

@@ -10,8 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class MeasurementDeviceCalibrationTask extends Model
 {
-    use HasFactory;
-    use SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'planned_date',
@@ -31,19 +30,19 @@ class MeasurementDeviceCalibrationTask extends Model
     protected $casts = [
         'planned_date' => 'date',
         'accomplished_date' => 'date',
-        'price' => 'float',
+        'price' => 'decimal:2',
         'status' => 'boolean',
     ];
 
     // The related measurement device of the task
-    public function device():BelongsTo
+    public function device(): BelongsTo
     {
-        return $this->belongsTo(MeasurementDevice::class, 'measurement_device_id',);
+        return $this->belongsTo(MeasurementDevice::class, 'measurement_device_id');
     }
 
     // The related calibration firm of the task
-    public function firm():BelongsTo
+    public function firm(): BelongsTo
     {
-        return $this->belongsTo(CalibrationFirm::class, 'calibration_firm_id',);
+        return $this->belongsTo(CalibrationFirm::class, 'calibration_firm_id');
     }
 }

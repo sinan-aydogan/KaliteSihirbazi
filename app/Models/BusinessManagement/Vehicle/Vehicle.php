@@ -26,6 +26,12 @@ class Vehicle extends Model
         'notes',
     ];
 
+    protected $casts = [
+        'production_year' => 'integer',
+        'purchase_date' => 'date',
+        'disposing_date' => 'date',
+    ];
+
     public function vehicleType(): BelongsTo
     {
         return $this->belongsTo(VehicleType::class);

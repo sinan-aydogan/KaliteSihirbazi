@@ -2,10 +2,10 @@
 import { computed } from 'vue';
 import { usePage, Link } from '@inertiajs/vue3';
 import { Head, useForm } from '@inertiajs/vue3';
-import InputError from '@/Jetstream/InputError.vue';
-import InputLabel from '@/Jetstream/InputLabel.vue';
-import PrimaryButton from '@/Jetstream/PrimaryButton.vue';
-import TextInput from '@/Jetstream/TextInput.vue';
+import InputError from '@/Components/Account/InputError.vue';
+import InputLabel from '@/Components/Account/InputLabel.vue';
+import PrimaryButton from '@/Components/Account/PrimaryButton.vue';
+import TextInput from '@/Components/Account/TextInput.vue';
 
 const backgroundImage = computed(() => {
     return usePage().props.theme.auth.backgroundImage || '/assets/images/default/authBackground.jpg';
@@ -14,7 +14,7 @@ const backgroundImage = computed(() => {
 const logoImage = computed(() => {
     let defaultLogos = {
         light: '/assets/images/default/darkLogo.svg',
-        dark: '/assets/images/default/lightLogo.svg'
+        dark: '/assets/images/default/lightlogo.svg'
     };
     return usePage().props.theme.logoImage || defaultLogos[usePage().props.theme.mode];
 });

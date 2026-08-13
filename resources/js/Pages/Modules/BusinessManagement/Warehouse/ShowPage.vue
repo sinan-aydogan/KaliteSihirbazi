@@ -51,7 +51,7 @@ const handleDelete = ()=>{
       <div v-if="data['supervisor']" class="flex items-center space-x-1">
         <font-awesome-icon icon="fa-solid fa-user-shield" :class="`before:content-['${tm('term.manager')}']`"/>
         <!--Manager Name-->
-        <Link :href="route('employee.show', data.supervisor.id)" v-text="data.supervisor.employeeName"/>
+        <Link :href="route('employee-personal-info.index', data.supervisor.id)" v-text="data.supervisor.employeeName"/>
       </div>
       <!--Type-->
       <div v-if="data['type']" class="flex items-center space-x-1">

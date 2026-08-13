@@ -5,16 +5,16 @@ namespace App\Models\HumanResources\Education;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
 class Education extends Model implements HasMedia
 {
-    use HasFactory, SoftDeletes, InteractsWithMedia;
+    use HasFactory, InteractsWithMedia, SoftDeletes;
 
     protected $table = 'education';
 
@@ -50,7 +50,7 @@ class Education extends Model implements HasMedia
      */
     public function educationTypes(): BelongsToMany
     {
-        return $this->belongsToMany(EducationType::class, 'education_education_types');
+        return $this->belongsToMany(EducationType::class, 'education_education_types')->withTimestamps();
     }
 
     /**
@@ -81,7 +81,7 @@ class Education extends Model implements HasMedia
             ->withPivot([
                 'is_attend',
                 'status',
-                'score'
+                'score',
             ])
             ->withTimestamps();
     }

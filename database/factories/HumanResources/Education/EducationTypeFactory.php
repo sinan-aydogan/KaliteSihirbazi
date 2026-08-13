@@ -2,10 +2,11 @@
 
 namespace Database\Factories\HumanResources\Education;
 
+use App\Models\HumanResources\Education\EducationType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\HumanResources\Education\EducationType>
+ * @extends Factory<EducationType>
  */
 class EducationTypeFactory extends Factory
 {
@@ -17,7 +18,7 @@ class EducationTypeFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->randomElement([
+            'name' => $this->faker->unique()->randomElement([
                 'İş Sağlığı ve Güvenliği',
                 'Teknik Eğitim',
                 'Yönetimsel Eğitim',
@@ -32,7 +33,7 @@ class EducationTypeFactory extends Factory
                 'Satış ve Pazarlama',
                 'Finansal Okuryazarlık',
                 'Dijital Dönüşüm',
-                'Yaratıcılık ve İnovasyon'
+                'Yaratıcılık ve İnovasyon',
             ]),
         ];
     }

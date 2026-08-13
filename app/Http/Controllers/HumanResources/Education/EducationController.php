@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\HumanResources\Education\StoreEducationRequest;
 use App\Http\Requests\HumanResources\Education\UpdateEducationRequest;
 use App\Models\HumanResources\Education\Education;
+use App\Models\HumanResources\Education\EducationInstructor;
 use App\Models\HumanResources\Education\EducationPlan;
 use App\Models\HumanResources\Education\EducationType;
-use App\Models\HumanResources\Education\EducationInstructor;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -29,12 +29,15 @@ class EducationController extends Controller
         $educationPlans = EducationPlan::where('end_date', '>=', now())->select('id', 'name')->get();
 
         return Inertia::render('Modules/HumanResources/Education/IndexPage', [
-            'tableData' => Education::with(['educationPlan', 'educationTypes', 'instructors'])
+            'tableData' => $this->tableFilter(Education::with(['educationPlan', 'educationTypes', 'instructors']), [
+                'education_plan.name' => ['relation' => 'educationPlan', 'column' => 'name'],
+                'education_types' => ['relation' => 'educationTypes', 'column' => 'name'],
+            ])
                 ->latest('id')
-                ->paginate(10),
+                ->paginate(10)->withQueryString(),
             'educationPlans' => $educationPlans,
             'instructors' => EducationInstructor::all(['id', 'name']),
-            'educationTypes' => EducationType::all(['id', 'name'])
+            'educationTypes' => EducationType::all(['id', 'name']),
         ]);
     }
 
@@ -45,11 +48,12 @@ class EducationController extends Controller
      */
     public function deleted()
     {
-        return Inertia::render("Modules/HumanResources/Education/DeletedPage", [
-            'tableData' => Education::onlyTrashed()
+        return Inertia::render('Modules/HumanResources/Education/DeletedPage', [
+            'tableData' => $this->tableFilter(Education::onlyTrashed()
                 ->with(['educationPlan', 'educationTypes'])
+            , ['education_plan.name' => ['relation' => 'educationPlan', 'column' => 'name']])
                 ->latest('deleted_at')
-                ->paginate(10),
+                ->paginate(10)->withQueryString(),
         ]);
     }
 
@@ -66,7 +70,6 @@ class EducationController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param StoreEducationRequest $request
      * @return RedirectResponse
      */
     public function store(StoreEducationRequest $request)
@@ -96,7 +99,7 @@ class EducationController extends Controller
             }
         }
 
-        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.education.created', ['education' => $education->name])]);
+        session()->flash('message', ['type' => 'success', 'content' => __('messages.education.created', ['education' => $education->name])]);
 
         return redirect()->back();
     }
@@ -104,7 +107,6 @@ class EducationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param Education $education
      * @return Response
      */
     public function show(Education $education)
@@ -115,7 +117,7 @@ class EducationController extends Controller
                 'educationTypes',
                 'instructors.media',
                 'participations.user',
-                'media'
+                'media',
             ]),
         ]);
     }
@@ -123,7 +125,6 @@ class EducationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Education $education
      * @return JsonResponse
      */
     public function edit(Education $education)
@@ -132,15 +133,13 @@ class EducationController extends Controller
             'educationPlan:id,name',
             'educationTypes',
             'instructors',
-            'media'
+            'media',
         ]));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param UpdateEducationRequest $request
-     * @param Education $education
      * @return RedirectResponse
      */
     public function update(UpdateEducationRequest $request, Education $education)
@@ -169,7 +168,7 @@ class EducationController extends Controller
             }
         }
 
-        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.education.updated', ['education' => $education->name])]);
+        session()->flash('message', ['type' => 'success', 'content' => __('messages.education.updated', ['education' => $education->name])]);
 
         return redirect()->back();
     }
@@ -177,12 +176,11 @@ class EducationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Education $education
      * @return RedirectResponse
      */
     public function destroy(Education $education)
     {
-        session()->flash('message', ['type'=> 'danger', 'content'=>__('messages.education.deleted', ['education' => $education->name])]);
+        session()->flash('message', ['type' => 'danger', 'content' => __('messages.education.deleted', ['education' => $education->name])]);
 
         $education->delete();
 
@@ -192,7 +190,6 @@ class EducationController extends Controller
     /**
      * Permanently delete the specified resource from storage.
      *
-     * @param Education $education
      * @return RedirectResponse
      */
     public function permanentDestroy(Education $education)
@@ -200,7 +197,7 @@ class EducationController extends Controller
         // Medya dosyalarını da sil
         $education->clearMediaCollection('documents');
 
-        session()->flash('message', ['type'=> 'danger', 'content'=>__('messages.education.permanentDeleted', ['education' => $education->name])]);
+        session()->flash('message', ['type' => 'danger', 'content' => __('messages.education.permanentDeleted', ['education' => $education->name])]);
 
         $education->forceDelete();
 
@@ -210,14 +207,13 @@ class EducationController extends Controller
     /**
      * Restore the specified resource from storage.
      *
-     * @param Education $education
      * @return RedirectResponse
      */
     public function restore(Education $education)
     {
         $education->restore();
 
-        session()->flash('message', ['type'=> 'info', 'content'=>__('messages.education.restored', ['education' => $education->name])]);
+        session()->flash('message', ['type' => 'info', 'content' => __('messages.education.restored', ['education' => $education->name])]);
 
         return redirect()->route('education.index');
     }
@@ -225,8 +221,6 @@ class EducationController extends Controller
     /**
      * Eğitime katılımcı ekle
      *
-     * @param Request $request
-     * @param Education $education
      * @return RedirectResponse
      */
     public function addParticipant(Request $request, Education $education)
@@ -240,10 +234,10 @@ class EducationController extends Controller
                 'is_attend' => false,
                 'status' => false,
                 'score' => null,
-            ]
+            ],
         ]);
 
-        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.education.participantAdded')]);
+        session()->flash('message', ['type' => 'success', 'content' => __('messages.education.participantAdded')]);
 
         return redirect()->back();
     }
@@ -251,9 +245,6 @@ class EducationController extends Controller
     /**
      * Katılımcı bilgilerini güncelle
      *
-     * @param Request $request
-     * @param Education $education
-     * @param User $user
      * @return RedirectResponse
      */
     public function updateParticipant(Request $request, Education $education, User $user)
@@ -264,13 +255,15 @@ class EducationController extends Controller
             'score' => 'nullable|integer|min:0|max:100',
         ]);
 
+        abort_unless($education->participants()->whereKey($user->id)->exists(), 404);
+
         $education->participants()->updateExistingPivot($user->id, [
             'is_attend' => $request->is_attend,
             'status' => $request->status,
             'score' => $request->score,
         ]);
 
-        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.education.participantUpdated')]);
+        session()->flash('message', ['type' => 'success', 'content' => __('messages.education.participantUpdated')]);
 
         return redirect()->back();
     }
@@ -278,15 +271,15 @@ class EducationController extends Controller
     /**
      * Katılımcıyı eğitimden çıkar
      *
-     * @param Education $education
-     * @param User $user
      * @return RedirectResponse
      */
     public function removeParticipant(Education $education, User $user)
     {
+        abort_unless($education->participants()->whereKey($user->id)->exists(), 404);
+
         $education->participants()->detach($user->id);
 
-        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.education.participantRemoved')]);
+        session()->flash('message', ['type' => 'success', 'content' => __('messages.education.participantRemoved')]);
 
         return redirect()->back();
     }
@@ -294,8 +287,6 @@ class EducationController extends Controller
     /**
      * Belirli bir medya dosyasını sil
      *
-     * @param Education $education
-     * @param int $mediaId
      * @return RedirectResponse
      */
     public function deleteMedia(Education $education, int $mediaId)
@@ -304,7 +295,7 @@ class EducationController extends Controller
 
         if ($media) {
             $media->delete();
-            session()->flash('message', ['type'=> 'success', 'content'=>__('messages.education.mediaDeleted')]);
+            session()->flash('message', ['type' => 'success', 'content' => __('messages.education.mediaDeleted')]);
         }
 
         return redirect()->back();

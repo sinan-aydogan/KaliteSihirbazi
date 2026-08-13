@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('code', 10)->unique();
             $table->string('name', 150);
-            $table->json('contact_info')->nullable();
-            $table->json('notes')->nullable();
+            $table->jsonb('contact_info')->nullable();
+            $table->jsonb('notes')->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

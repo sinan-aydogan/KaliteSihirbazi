@@ -25,8 +25,12 @@ class StoreMeasurementDeviceCalibrationTaskRequest extends FormRequest
     {
         return [
             'planned_date' => 'required|date',
+            'accomplished_date' => 'nullable|date|after_or_equal:planned_date',
             'measurement_device_id' => 'required|exists:measurement_devices,id',
-            'calibration_firm_id' => 'required|exists:calibration_firms,id'
+            'calibration_firm_id' => 'required|exists:calibration_firms,id',
+            'price' => 'nullable|numeric|min:0',
+            'currency' => 'nullable|required_with:price|string|size:3',
+            'status' => 'sometimes|boolean',
         ];
     }
 }

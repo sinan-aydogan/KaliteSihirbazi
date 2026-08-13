@@ -13,9 +13,15 @@ return new class extends Migration
     {
         Schema::create('document_types', function (Blueprint $table) {
             $table->id();
-            $table->string('code', 10);
+            $table->string('code', 10)->unique();
             $table->string('name', 255);
             $table->timestamps();
+        });
+
+        Schema::table('documents', function (Blueprint $table) {
+            $table->foreign('department_id')->references('id')->on('departments')->restrictOnDelete();
+            $table->foreign('document_type_id')->references('id')->on('document_types')->restrictOnDelete();
+            $table->foreign('creator_id')->references('id')->on('users')->restrictOnDelete();
         });
     }
 
@@ -24,6 +30,12 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('documents', function (Blueprint $table) {
+            $table->dropForeign(['department_id']);
+            $table->dropForeign(['document_type_id']);
+            $table->dropForeign(['creator_id']);
+        });
+
         Schema::dropIfExists('document_types');
     }
 };

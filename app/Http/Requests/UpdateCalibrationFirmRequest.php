@@ -13,7 +13,7 @@ class UpdateCalibrationFirmRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return auth()->check();
     }
 
     /**
@@ -24,7 +24,10 @@ class UpdateCalibrationFirmRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'address' => 'required|string|max:750',
+            'phone' => 'required|string|max:25',
         ];
     }
 }

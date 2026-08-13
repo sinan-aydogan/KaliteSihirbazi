@@ -50,7 +50,7 @@ const handleDelete = ()=>{
     <div v-if="data['manager']" class="flex items-center space-x-1 text-xs mt-1">
       <font-awesome-icon icon="fa-solid fa-user-shield" :class="`before:content-['${tm('term.manager')}']`"/>
       <!--Manager Name-->
-      <Link :href="route('employee.show', data.manager.id)" v-text="data.manager.employeeName"/>
+      <Link :href="route('employee-personal-info.index', data.manager.id)" v-text="data.manager.employeeName"/>
     </div>
     <div v-else>
       {{tm('term.noManagerAppointed')}}

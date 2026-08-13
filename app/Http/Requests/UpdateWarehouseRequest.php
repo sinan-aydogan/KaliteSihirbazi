@@ -14,7 +14,7 @@ class UpdateWarehouseRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return auth()->check();
     }
 
     /**
@@ -25,7 +25,7 @@ class UpdateWarehouseRequest extends FormRequest
     public function rules()
     {
         return [
-            'code' => 'required|string|max:10|unique:warehouses,code,'.$this->id,
+            'code' => ['required', 'string', 'max:10', Rule::unique('warehouses')->ignore($this->route('warehouse'))],
             'name' => 'required|string|max:100',
             'warehouse_type_id' => 'nullable|exists:warehouse_types,id',
             'employee_id' => 'nullable|exists:employees,id',

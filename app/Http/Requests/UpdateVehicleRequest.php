@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateVehicleRequest extends FormRequest
 {
@@ -24,12 +25,12 @@ class UpdateVehicleRequest extends FormRequest
     public function rules()
     {
         return [
-            'code' => 'sometimes|string|max:50|unique:vehicles,code,' . $this->id,
+            'code' => ['required', 'string', 'max:50', Rule::unique('vehicles')->ignore($this->route('vehicle'))],
             'vehicle_type_id' => 'sometimes|exists:vehicle_types,id',
             'vehicle_status_id' => 'nullable|exists:vehicle_statuses,id',
             'brand' => 'nullable|string|max:50',
             'model' => 'nullable|string|max:50',
-            'production_year' => 'nullable|string|max:4',
+            'production_year' => 'nullable|integer|min:1886|max:2100',
             'purchase_date' => [
                 function ($attribute, $value, $fail) {
                     if ($this->input('disposing_date') && empty($value)) {

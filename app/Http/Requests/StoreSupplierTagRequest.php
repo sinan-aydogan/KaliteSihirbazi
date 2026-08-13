@@ -13,7 +13,7 @@ class StoreSupplierTagRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return auth()->check();
     }
 
     /**
@@ -24,7 +24,7 @@ class StoreSupplierTagRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string|max:100|unique:supplier_tags,name',
         ];
     }
 }

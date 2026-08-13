@@ -6,13 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTakeTimeOffRequest;
 use App\Http\Requests\UpdateTakeTimeOffRequest;
 use App\Models\HumanResources\Employee\TakeTimeOff;
+use Illuminate\Http\Response;
 
 class TakeTimeOffController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -22,7 +23,7 @@ class TakeTimeOffController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -32,8 +33,7 @@ class TakeTimeOffController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreTakeTimeOffRequest  $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(StoreTakeTimeOffRequest $request)
     {
@@ -43,8 +43,7 @@ class TakeTimeOffController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\HumanResources\Employee\TakeTimeOff  $takeTimeOff
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show(TakeTimeOff $takeTimeOff)
     {
@@ -54,8 +53,7 @@ class TakeTimeOffController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\HumanResources\Employee\TakeTimeOff  $takeTimeOff
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit(TakeTimeOff $takeTimeOff)
     {
@@ -65,9 +63,7 @@ class TakeTimeOffController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateTakeTimeOffRequest  $request
-     * @param  \App\Models\HumanResources\Employee\TakeTimeOff  $takeTimeOff
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(UpdateTakeTimeOffRequest $request, TakeTimeOff $takeTimeOff)
     {
@@ -77,8 +73,7 @@ class TakeTimeOffController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\HumanResources\Employee\TakeTimeOff  $takeTimeOff
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(TakeTimeOff $takeTimeOff)
     {

@@ -13,7 +13,7 @@ class UpdateJobDescriptionAssignmentRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return auth()->check();
     }
 
     /**
@@ -24,7 +24,11 @@ class UpdateJobDescriptionAssignmentRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'employee_id' => 'required|exists:employees,id',
+            'job_description_id' => 'required|exists:job_descriptions,id',
+            'appointer_id' => 'required|different:employee_id|exists:employees,id',
+            'assignment_date' => 'required|date',
+            'status' => 'required|boolean',
         ];
     }
 }

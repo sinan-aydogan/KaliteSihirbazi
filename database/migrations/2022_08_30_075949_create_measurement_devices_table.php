@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Department;
+use App\Models\MeasurementDevice\MeasurementDeviceType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,18 +17,18 @@ return new class extends Migration
     {
         Schema::create('measurement_devices', function (Blueprint $table) {
             $table->id();
-            $table->string('code',10)->unique();
-            $table->string('brand',255)->nullable();
-            $table->string('model',255)->nullable();
-            $table->string('serial_no',255)->nullable();
+            $table->string('code', 10)->unique();
+            $table->string('brand', 255)->nullable();
+            $table->string('model', 255)->nullable();
+            $table->string('serial_no', 255)->nullable();
             $table->json('properties')->nullable();
             $table->date('purchase_date')->nullable();
-            $table->float('purchase_price')->nullable();
+            $table->decimal('purchase_price', 12, 2)->nullable();
             $table->string('purchase_price_unit')->nullable();
             $table->foreignId('device_supervisor_id')->nullable();
             $table->foreignId('calibration_supervisor_id')->nullable();
-            $table->foreignIdFor(\App\Models\Department::class)->nullable();
-            $table->foreignIdFor(\App\Models\MeasurementDevice\MeasurementDeviceType::class)->nullable();
+            $table->foreignIdFor(Department::class)->nullable();
+            $table->foreignIdFor(MeasurementDeviceType::class)->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

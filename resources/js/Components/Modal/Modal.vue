@@ -281,7 +281,7 @@ watch(
                     leave-from-class="opacity-100" leave-to-class="opacity-0">
           <div v-show="modelValue" class="fixed inset-0 transform transition-all"
                @click="closeable ? close() : ''">
-            <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+            <div class="absolute inset-0 bg-slate-900/55 backdrop-blur-[2px]"></div>
           </div>
         </transition>
 
@@ -291,12 +291,12 @@ watch(
                     leave-from-class="opacity-100 translate-y-0 sm:scale-100"
                     leave-to-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
           <div id="draggable " v-if="modelValue"
-               class="relative flex h-min max-w-[calc(100%-25px)] flex-col mx-auto transform transition-all w-full"
+               class="relative mx-auto flex h-min w-full max-w-[calc(100%-1.5rem)] transform flex-col overflow-hidden rounded-xl border border-slate-300 bg-white shadow-2xl shadow-slate-950/25 transition-all dark:border-slate-500 dark:bg-slate-700"
                :class="[!isExpanded ? maxWidthClass + ' m-6' : '']" :draggable="draggable"
                @dragstart="dragStart($event)" @dragend="dragEnd($event)" ref="modalContainer">
             <!--Header-->
             <div
-                class="flex space-y-1 border-b dark:border-slate-500/75 items-center px-4 py-2 bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200 first:rounded-t-lg select-none"
+                class="relative z-10 flex min-h-14 items-center bg-slate-100 px-5 py-3 pr-14 text-slate-800 shadow-sm shadow-slate-300/60 select-none dark:bg-slate-800 dark:text-slate-100 dark:shadow-black/20"
                 :class="[{ 'cursor-move': draggable }]">
               <div>
                 <!--Header-->
@@ -305,14 +305,14 @@ watch(
                   <slot v-else name="header"></slot>
                 </div>
                 <!--Sub-header-->
-                <div v-if="subHeader || $slots.subHeader" class="text-xs text-slate-500 dark:text-slate-400">
+                <div v-if="subHeader || $slots.subHeader" class="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
                   <span v-if="subHeader" v-text="subHeader"></span>
                   <slot v-else name="subHeader"></slot>
                 </div>
               </div>
 
               <!--Top Action Icons-->
-              <div class="absolute flex justify-center items-center z-10 right-4 top-2 items-center space-x-2"
+              <div class="absolute right-3 top-1/2 z-10 flex -translate-y-1/2 items-center justify-center gap-1"
                    :class="[{ 'pr-2 pt-2': isExpanded }]">
                 <!--Maximize Icon-->
                 <div v-if="expandable" @click="
@@ -325,16 +325,16 @@ updateSize();
                 </div>
 
                 <!--Close Button-->
-                <div v-if="modelValue && closeButton" @click="close()"
-                     class="flex justify-center items-center w-6 h-6 hover:bg-slate-200 rounded-full dark:hover:bg-rose-600 cursor-pointer">
-                  <font-awesome-icon icon="x" class="w-4 h-4 text-slate-600 hover:text-rose-600 dark:text-slate-200 hover:dark:text-slate-200"/>
-                </div>
+                <button v-if="modelValue && closeButton" type="button" aria-label="Close" @click="close()"
+                     class="flex size-9 cursor-pointer items-center justify-center rounded-full text-slate-500 transition hover:bg-slate-200 hover:text-rose-600 focus:outline-none focus:ring-2 focus:ring-rose-400/50 dark:text-slate-300 dark:hover:bg-slate-600 dark:hover:text-rose-300">
+                  <font-awesome-icon icon="x" class="size-4"/>
+                </button>
               </div>
             </div>
 
             <!--Body-->
             <div
-                class="flex p-4 first:rounded-t-lg last:rounded-b-lg bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200"
+                class="flex bg-white px-5 pt-1 pb-4 text-slate-700 dark:bg-slate-700 dark:text-slate-100"
                 :class="[
                                 {
                                     'flex-grow': isExpanded,
@@ -372,7 +372,7 @@ updateSize();
 
             <!--Footer-->
             <div v-if="$slots.footer || actionButtons.length > 0"
-                 class="flex flex-row justify-center sm:justify-end space-x-2 px-4 py-4 border-t bg-white dark:bg-slate-700 border-slate-300/75 dark:border-slate-500/75 text-right last:rounded-b-lg">
+                 class="flex flex-row justify-center gap-2 border-t border-slate-200 bg-slate-50 px-5 py-4 text-right sm:justify-end dark:border-slate-600 dark:bg-slate-800/70">
               <slot v-if="$slots.footer" name="footer"></slot>
               <div v-else class="flex justify-between items-center">
                 <simple-button v-if="

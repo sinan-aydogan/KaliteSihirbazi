@@ -17,7 +17,7 @@ class WarehouseTypeController extends Controller
      */
     public function index(){
         return Inertia::render('Modules/BusinessManagement/Warehouse/Setting/TypePage',[
-            'tableData' => WarehouseType::select(['id', 'code', 'name'])->paginate('10')
+            'tableData' => $this->tableFilter(WarehouseType::query())->select(['id', 'code', 'name'])->paginate(10)->withQueryString()
         ]);
     }
 

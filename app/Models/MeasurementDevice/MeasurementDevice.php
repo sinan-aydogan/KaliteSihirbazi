@@ -13,8 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class MeasurementDevice extends Model
 {
-    use HasFactory;
-    use SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -33,7 +32,7 @@ class MeasurementDevice extends Model
         'device_supervisor_id',
         'calibration_supervisor_id',
         'department_id',
-        'measurement_device_type_id'
+        'measurement_device_type_id',
     ];
 
     /**
@@ -44,34 +43,35 @@ class MeasurementDevice extends Model
     protected $casts = [
         'properties' => 'array',
         'purchase_date' => 'date',
+        'purchase_price' => 'decimal:2',
     ];
 
     // The supervisor of the device
-    public function deviceSupervisor():BelongsTo
+    public function deviceSupervisor(): BelongsTo
     {
-        return $this->belongsTo(Employee::class, 'device_supervisor_id',);
+        return $this->belongsTo(Employee::class, 'device_supervisor_id');
     }
 
     // The supervisor of the calibration
-    public function calibrationSupervisor():BelongsTo
+    public function calibrationSupervisor(): BelongsTo
     {
-        return $this->belongsTo(Employee::class, 'calibration_supervisor_id',);
+        return $this->belongsTo(Employee::class, 'calibration_supervisor_id');
     }
 
     // The department of the device
-    public function department():BelongsTo
+    public function department(): BelongsTo
     {
-        return $this->belongsTo(Department::class, 'department_id',);
+        return $this->belongsTo(Department::class, 'department_id');
     }
 
     // The department of the device
-    public function type():BelongsTo
+    public function type(): BelongsTo
     {
-        return $this->belongsTo(MeasurementDeviceType::class, 'measurement_device_type_id',);
+        return $this->belongsTo(MeasurementDeviceType::class, 'measurement_device_type_id');
     }
 
     // Calibration Tasks
-    public function calibrationTasks():hasMany
+    public function calibrationTasks(): HasMany
     {
         return $this->hasMany(MeasurementDeviceCalibrationTask::class);
     }

@@ -11,8 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Department extends Model
 {
-    use HasFactory;
-    use SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'code',
@@ -32,25 +31,25 @@ class Department extends Model
     ];
 
     // The manager of the department
-    public function manager():BelongsTo
+    public function manager(): BelongsTo
     {
-        return $this->belongsTo(Employee::class, 'employee_id',);
+        return $this->belongsTo(Employee::class, 'employee_id');
     }
 
     // The main department of the department
-    public function mainDepartment():BelongsTo
+    public function mainDepartment(): BelongsTo
     {
         return $this->belongsTo(__CLASS__, 'department_id');
     }
 
     // Sub-departments of the department
-    public function subDepartments():HasMany
+    public function subDepartments(): HasMany
     {
-        return $this->hasMany(__CLASS__);
+        return $this->hasMany(self::class, 'department_id');
     }
 
     // Employees of the department
-    public function employees():HasMany
+    public function employees(): HasMany
     {
         return $this->hasMany(Employee::class);
     }

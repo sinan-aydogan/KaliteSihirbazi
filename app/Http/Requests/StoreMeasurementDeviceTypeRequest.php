@@ -26,6 +26,7 @@ class StoreMeasurementDeviceTypeRequest extends FormRequest
         return [
             'code' => 'required|string|unique:measurement_device_types|max:10',
             'name' => 'required|string|max:255',
+            'description' => 'nullable|string|max:750',
         ];
     }
 }

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Document;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreDocumentTypeRequest;
+use App\Http\Requests\UpdateDocumentTypeRequest;
 use App\Models\Document\DocumentType;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class DocumentTypeController extends Controller
@@ -14,8 +15,9 @@ class DocumentTypeController extends Controller
      */
     public function index()
     {
-        $types = DocumentType::all();
-        return Inertia::render("Modules/Document/Setting/TypePage", [
+        $types = $this->tableFilter(DocumentType::query())->latest('id')->paginate(10)->withQueryString();
+
+        return Inertia::render('Modules/Document/Setting/TypePage', [
             'tableData' => $types,
         ]);
     }
@@ -31,15 +33,11 @@ class DocumentTypeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreDocumentTypeRequest $request)
     {
-        $documentType = new DocumentType();
-        $documentType->code = $request->code;
-        $documentType->name = $request->name;
+        $documentType = DocumentType::create($request->validated());
 
-        $documentType->save();
-
-        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.documentType.created', ['documentType' => $documentType->name])]);
+        session()->flash('message', ['type' => 'success', 'content' => __('messages.documentType.created', ['documentType' => $documentType->name])]);
 
         return redirect()->back();
     }
@@ -63,14 +61,11 @@ class DocumentTypeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, DocumentType $documentType)
+    public function update(UpdateDocumentTypeRequest $request, DocumentType $documentType)
     {
-        $documentType->code = $request->code;
-        $documentType->name = $request->name;
+        $documentType->update($request->validated());
 
-        $documentType->save();
-
-        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.documentType.updated', ['documentType' => $documentType->name])]);
+        session()->flash('message', ['type' => 'success', 'content' => __('messages.documentType.updated', ['documentType' => $documentType->name])]);
 
         return redirect()->back();
     }
@@ -80,12 +75,13 @@ class DocumentTypeController extends Controller
      */
     public function destroy(DocumentType $documentType)
     {
-        if($documentType->documents->count() > 0){
-            session()->flash('message', ['type'=> 'danger', 'content'=>__('messages.documentType.deletedError', ['documentType' => $documentType->name])]);
+        if ($documentType->documents()->exists()) {
+            session()->flash('message', ['type' => 'danger', 'content' => __('messages.documentType.deletedError', ['documentType' => $documentType->name])]);
+
             return redirect()->back();
         }
 
-        session()->flash('message', ['type'=> 'danger', 'content'=>__('messages.documentType.deleted', ['documentType' => $documentType->name])]);
+        session()->flash('message', ['type' => 'danger', 'content' => __('messages.documentType.deleted', ['documentType' => $documentType->name])]);
 
         $documentType->delete();
 

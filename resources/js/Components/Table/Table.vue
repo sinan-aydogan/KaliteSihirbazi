@@ -1,26 +1,22 @@
 <script setup>
 /*Functions*/
 import {ref, computed, toRefs} from 'vue'
-import {onClickOutside} from "@vueuse/core";
-import {Link, useForm} from "@inertiajs/vue3";
-import {cloneDeep} from "lodash";
+import {debouncedWatch} from '@vueuse/core'
+import {Link, router, usePage} from "@inertiajs/vue3";
 import {useI18n} from "vue-i18n";
 
 /*Components*/
-import TextInput from "@/Components/Form/TextInput.vue";
 import SimpleButton from "@/Components/Button/SimpleButton.vue";
-import FilterBadge from "@/Components/Table/FilterBadge.vue";
-import SelectInput from "@/Components/Form/SelectInput.vue";
-import {debouncedWatch} from "@vueuse/core";
+import TableFilters from "@/Components/Table/TableFilters.vue";
 
 const props = defineProps({
     data: {
         type: [Array, Object],
-        default: []
+        default: () => []
     },
     dataKey: {
         type: String,
-        default: 'data'
+        default: 'tableData'
     },
     uniqueIdKey: {
         type: String,
@@ -28,7 +24,7 @@ const props = defineProps({
     },
     headers: {
         type: [Array, Object],
-        default: []
+        default: () => []
     },
     simpleSearch: {
         type: Boolean,
@@ -71,126 +67,71 @@ const {t} = useI18n();
 
 /*Data states*/
 const {data, dataKey, headers} = toRefs(props)
-const gData = computed(() => {
-    return data.value['data'] ? data.value['data'] : data.value;
+const page = usePage()
+const sourceData = computed(() => {
+    const rows = data.value?.data ?? data.value;
+    return Array.isArray(rows) ? rows : [];
 })
+const getInitialFilters = () => {
+    try {
+        const value = new URL(page.url, 'http://localhost').searchParams.get('tableFilters')
+        return value ? JSON.parse(value) : []
+    } catch {
+        return []
+    }
+}
+const filters = ref(getInitialFilters())
+const serverFiltered = computed(() => Array.isArray(data.value?.data) && data.value?.current_page !== undefined)
+const flattenValue = (value) => {
+    if (Array.isArray(value)) {
+        return value.map(flattenValue).join(' ')
+    }
 
-const comparators = [
-    {
-        label: t('table.comparators.contains'),
-        value: 'co',
-        icon: 'arrows-left-right-to-line'
-    },
-    {
-        label: t('table.comparators.notContains'),
-        value: 'nco',
-        icon: 'stop'
-    },
-    {
-        label: t('table.comparators.equal'),
-        value: 'eq',
-        icon: 'equals'
-    },
-    {
-        label: t('table.comparators.notEqual'),
-        value: 'neq',
-        icon: 'not-equal'
-    },
-    {
-        label: t('table.comparators.greaterThan'),
-        value: 'gt',
-        icon: 'greater-than'
-    },
-    {
-        label: t('table.comparators.greaterThanOrEqual'),
-        value: 'gte',
-        icon: 'greater-than-equal'
-    },
-    {
-        label: t('table.comparators.lessThan'),
-        value: 'lt',
-        icon: 'less-than'
-    },
-    {
-        label: t('table.comparators.lessThanOrEqual'),
-        value: 'lte',
-        icon: 'less-than-equal'
-    },
-    {
-        label: t('table.comparators.between'),
-        value: 'bt',
-        icon: 'long-arrow-right'
-    },
-    {
-        label: t('table.comparators.notBetween'),
-        value: 'nbt',
-        icon: 'long-arrow-left'
-    },
+    if (value && typeof value === 'object') {
+        return Object.values(value).map(flattenValue).join(' ')
+    }
 
-    {
-        label: t('table.comparators.startsWith'),
-        value: 'sw',
-        icon: 'right-long'
-    },
-    {
-        label: t('table.comparators.endsWith'),
-        value: 'ew',
-        icon: 'left-long'
-    },
-]
+    return value ?? ''
+}
+const resolveValue = (row, header) => flattenValue(header?.filterValue
+    ? header.filterValue(row)
+    : header?.value
+        ? header.value(row)
+        : header?.id.split('.').reduce((value, key) => value?.[key], row))
+const matches = (actual, filter) => {
+    const left = String(actual ?? '').toLocaleLowerCase();
+    const right = String(filter.value ?? '').toLocaleLowerCase();
+    const leftNumber = Number(actual);
+    const rightNumber = Number(filter.value);
+    return {
+        co: () => left.includes(right), nco: () => !left.includes(right),
+        eq: () => left === right, neq: () => left !== right,
+        sw: () => left.startsWith(right), ew: () => left.endsWith(right),
+        gt: () => leftNumber > rightNumber, gte: () => leftNumber >= rightNumber,
+        lt: () => leftNumber < rightNumber, lte: () => leftNumber <= rightNumber,
+    }[filter.comparator]?.() ?? true;
+}
+const gData = computed(() => sourceData.value.filter((row) => filters.value.every((filter) => {
+    const header = headers.value.find((item) => item.id === filter.key);
+    return matches(resolveValue(row, header), filter);
+})))
 
 const selectedItems = ref([])
-const checked = ref(false)
 const indeterminate = computed(() => selectedItems.value.length > 0 && selectedItems.value.length < gData.value.length)
 
-/*Outside click*/
-const targetFilter = ref();
-onClickOutside(targetFilter, () => {
-    filterSelectForm.reset()
-    showFilter.value = false
-});
-/*Filter*/
-const showFilter = ref(false);
-const filterSelectForm = useForm({
-    key: null,
-    comparator: null,
-    value: null,
-})
+debouncedWatch(filters, (value) => {
+    if (!serverFiltered.value) return
 
-const unSelectedFilters = ref(cloneDeep(headers.value))
-const addFilter = () => {
-    search.query.push(cloneDeep(filterSelectForm))
-    unSelectedFilters.value.splice(unSelectedFilters.value.findIndex(f => f.id === filterSelectForm.value.key), 1)
-    filterSelectForm.reset()
-    showFilter.value = false
-}
-const deleteFilter = (index) => {
-    unSelectedFilters.value.push(headers.value.find(h => h.id === search.query[index].key))
-    search.query.splice(index, 1)
-}
-
-/*Search*/
-const dataLoading = ref(false);
-const search = useForm({
-    query: [],
-    perPager: 10,
-    sortDirection: 'asc',
-    sortBy: null,
-})
-
-debouncedWatch(() => cloneDeep(search.query), () => {
-    search.post(route('department.search'), data, {}, {
-        only: dataKey.value,
-        onBefore: () => {
-            dataLoading.value = true;
-        },
-        onFinish: () => {
-            dataLoading.value = false;
-        },
+    router.get(page.url.split('?')[0], {
+        tableFilters: value.length ? JSON.stringify(value) : undefined,
+    }, {
+        only: [dataKey.value],
+        preserveScroll: true,
+        preserveState: true,
+        replace: true,
     })
-}, {
-    debounce: 500
-});
+}, {deep: true, debounce: 350})
+
 </script>
 
 <template>
@@ -200,61 +141,8 @@ debouncedWatch(() => cloneDeep(search.query), () => {
             <!--Left Side-->
             <div class="flex space-x-2">
                 <!--Search-->
-                <div v-if="simpleSearch" class="relative">
-                    <text-input input-id="table-search">
-                        <template #append>
-                            <font-awesome-icon icon="search"/>
-                        </template>
-                    </text-input>
-                </div>
-
                 <!--Advanced Search: Filter-->
-                <div ref="targetFilter" class="relative flex space-x-1 items-center">
-                    <simple-button class="mr-2 select-none" :class="{
-            'pointer-events-none': search.query.length === headers.length
-          }" color="neutral" size="slim" @click="showFilter = !showFilter"
-                                   :disabled="search.query.length === headers.length">
-                        <font-awesome-icon icon="filter"/>
-                        <span v-text="t('term.filters')"></span>
-                    </simple-button>
-
-                    <div v-if="showFilter"
-                         class="absolute space-y-2 -left-2 top-10 z-50 bg-white dark:bg-slate-700  dark:border-transparent dark:shadow-slate-500 rounded-lg p-4 shadow-lg dark:shadow-sm border">
-                        <!--Select Key-->
-                        <select-input :options="unSelectedFilters" v-model="filterSelectForm.key"
-                                      :select-text="t('table.selectField')"></select-input>
-
-                        <!--Select Comparator-->
-                        <select-input
-                            v-if="filterSelectForm.key && headers.find(i=>i.id === filterSelectForm.key).filterType === 'text'"
-                            v-model="filterSelectForm.comparator"
-                            option-key="value"
-                            :options="comparators"
-                            :select-text="t('table.selectComparator')"
-                        ></select-input>
-
-                        <!--Filter Value-->
-                        <text-input v-model="filterSelectForm.value"
-                                    v-if="filterSelectForm.key && headers.find(i=>i.id === filterSelectForm.key).filterType === 'text'"/>
-                        <select-input v-model="filterSelectForm.value" :options="headers"
-                                      v-if="filterSelectForm.key && headers.find(i=>i.id === filterSelectForm.key).filterType === 'select'"></select-input>
-
-                        <!--Add Filter-->
-                        <simple-button @click="addFilter" full-size>{{ t('table.addFilter') }}</simple-button>
-                    </div>
-
-                    <!--Filters-->
-                    <template v-for="(filter,index) in search.query" :key="filter">
-                        <filter-badge
-                            :filterId="index"
-                            :filter-key="headers.find(i=>i.id === filter.key).label"
-                            :filter-comparator="filter.comparator ? comparators.find(i=>i.value === filter.comparator).icon : null"
-                            :filter-value="filter.value"
-                            @deleteFilter="deleteFilter(index)"
-                        />
-                    </template>
-
-                </div>
+                <TableFilters v-model="filters" :headers="headers" />
             </div>
 
             <!--Right Side-->
@@ -496,25 +384,26 @@ debouncedWatch(() => cloneDeep(search.query), () => {
 </template>
 
 
-<style lang="sass" scoped>
+<style scoped>
 @reference "../../../css/app.css";
 
-tbody > tr:first-child > td:first-child
-    border-top-left-radius: 0.50rem
+tbody > tr:first-child > td:first-child {
+    border-top-left-radius: 0.5rem;
+}
 
+tbody > tr:first-child > td:last-child {
+    border-top-right-radius: 0.5rem;
+}
 
-tbody > tr:first-child > td:last-child
-    border-top-right-radius: 0.50rem
+tbody > tr:last-child > td:first-child {
+    border-bottom-left-radius: 0.5rem;
+}
 
+tbody > tr:last-child > td:last-child {
+    border-bottom-right-radius: 0.5rem;
+}
 
-tbody > tr:last-child > td:first-child
-    border-bottom-left-radius: 0.50rem
-
-
-tbody > tr:last-child > td:last-child
-    border-bottom-right-radius: 0.50rem
-
-
-.action-button
-    @apply hover:scale-110 active:scale-90 dark:p-1 dark:rounded cursor-pointer transition
+.action-button {
+    @apply hover:scale-110 active:scale-90 dark:p-1 dark:rounded cursor-pointer transition;
+}
 </style>

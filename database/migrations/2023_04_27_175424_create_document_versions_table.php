@@ -13,14 +13,15 @@ return new class extends Migration
     {
         Schema::create('document_versions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('document_id');
-            $table->foreignId('revised_by');
-            $table->foreignId('approved_by')->nullable();
+            $table->foreignId('document_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('revised_by')->constrained('users')->restrictOnDelete();
+            $table->foreignId('approved_by')->nullable()->constrained('users')->nullOnDelete();
             $table->unsignedTinyInteger('version')->default(0);
             $table->longText('revision_reason')->nullable();
             $table->longText('revision_detail')->nullable();
             $table->string('status')->default('pending');
             $table->timestamps();
+            $table->unique(['document_id', 'version']);
         });
     }
 

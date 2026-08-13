@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateWarehouseTypeRequest extends FormRequest
 {
@@ -24,7 +25,7 @@ class UpdateWarehouseTypeRequest extends FormRequest
     public function rules()
     {
         return [
-            'code' => 'required|string|max:10|unique:warehouse_types,id,'.$this->id,
+            'code' => ['required', 'string', 'max:10', Rule::unique('warehouse_types')->ignore($this->route('warehouse_type'))],
             'name' => 'required|string|max:255',
         ];
     }

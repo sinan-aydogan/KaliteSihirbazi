@@ -22,7 +22,9 @@ class VehicleController extends Controller
     public function index()
     {
         return inertia('Modules/BusinessManagement/Vehicle/IndexPage', [
-            'tableData' => Vehicle::with('vehicleType:id,name')->latest('id')->paginate(10),
+            'tableData' => $this->tableFilter(Vehicle::with('vehicleType:id,name'), [
+                'type' => ['relation' => 'vehicleType', 'column' => 'name'],
+            ])->latest('id')->paginate(10)->withQueryString(),
             'vehicleTypes' => VehicleType::all(['id', 'name']),
             'vehicleStatuses' => VehicleStatus::all(['id', 'name']),
         ]);
@@ -36,7 +38,9 @@ class VehicleController extends Controller
     public function deleted()
     {
         return Inertia::render("Modules/BusinessManagement/Vehicle/DeletedPage", [
-            'tableData' => Vehicle::onlyTrashed()->with('vehicleType:id,name')->latest('deleted_at')->paginate(10),
+            'tableData' => $this->tableFilter(Vehicle::onlyTrashed()->with('vehicleType:id,name'), [
+                'type' => ['relation' => 'vehicleType', 'column' => 'name'],
+            ])->latest('deleted_at')->paginate(10)->withQueryString(),
         ]);
     }
 

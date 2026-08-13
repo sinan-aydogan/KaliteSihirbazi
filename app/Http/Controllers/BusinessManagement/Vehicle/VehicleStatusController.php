@@ -17,7 +17,7 @@ class VehicleStatusController extends Controller
     public function index()
     {
         return Inertia::render('Modules/BusinessManagement/Vehicle/Setting/StatusPage',[
-            'tableData' => VehicleStatus::select(['id', 'name'])->paginate('10')
+            'tableData' => $this->tableFilter(VehicleStatus::query())->select(['id', 'name'])->paginate(10)->withQueryString()
         ]);
     }
 

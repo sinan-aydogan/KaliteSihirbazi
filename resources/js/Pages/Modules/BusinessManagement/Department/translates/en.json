@@ -24,10 +24,28 @@
         "noManagerAppointed": "No Manager Appointed",
         "employees": "Employees",
         "employeeCode": "Identification No",
-        "employeeName": "Employee Name"
+        "employeeName": "Employee Name",
+        "gender": "Gender",
+        "women": "Women",
+        "men": "Men",
+        "genderDistribution": "Gender Distribution",
+        "onLeaveEmployees": "Employees on Leave",
+        "employmentType": "Employment Type",
+        "employmentTypes": "Employment Types",
+        "fullTime": "Full Time",
+        "partTime": "Part Time",
+        "seasonal": "Seasonal",
+        "intern": "Intern",
+        "contracted": "Contracted",
+        "dailyWage": "Daily Wage",
+        "handicappedStaff": "Staff with Disabilities",
+        "convictStaff": "Former Convict Staff",
+        "status": "Employment Status",
+        "noEmploymentType": "No employment type information"
     },
     "action": {
-        "attachEmployee": "Add an Employee to Department"
+        "attachEmployee": "Add an Employee to Department",
+        "clearFilter": "Clear Filter"
     },
     "message": {
         "feedback": {

@@ -7,7 +7,7 @@ import Theme from "@/Functions/Theme";
 import Notification from "@/Components/Notification/Notification.vue"
 
 /*Components*/
-import JetBanner from "@/Jetstream/Banner.vue";
+import Banner from "@/Components/Account/Banner.vue";
 import SideMenu from "@/Layouts/SideMenu.vue"
 
 /*Sources*/
@@ -76,16 +76,16 @@ watch(()=>usePage().props.flash.message, ()=>{
 
     <Head :title="title"/>
 
-    <jet-banner/>
+    <Banner />
     <!-- Global Container -->
-    <div class="flex h-screen min-w-screen bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-100 overflow-hidden">
+    <div class="flex h-screen w-full bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-100 overflow-hidden">
       <!-- Side Menu Area -->
       <div :class="showMenu && smallScreen ? '-ml-[7rem]' : ''"
-           class="absolute sm:relative min-w-[7rem] flex flex-shrink-0 justify-center transition-all duration-300">
+           class="absolute sm:relative z-30 w-28 min-w-28 max-w-28 flex-none transition-all duration-300">
         <side-menu @hide="showMenu=true"/>
       </div>
       <!-- Content Area -->
-      <div class="w-full pt-4 px-4 overflow-y-scroll overscroll-x-none space-y-6">
+      <div class="min-w-0 flex-1 pt-4 px-4 overflow-y-scroll overscroll-x-none space-y-6">
         <!-- Top Area -->
         <nav class="bg-white dark:bg-slate-600 border dark:border-transparent rounded-lg">
           <!-- Primary Navigation Menu -->

@@ -11,8 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Warehouse extends Model
 {
-    use HasFactory;
-    use SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -22,27 +21,26 @@ class Warehouse extends Model
     protected $fillable = [
         'code',
         'name',
-        'type',
         'department_id',
         'warehouse_type_id',
         'employee_id',
     ];
 
     // The supervisor of the warehouse
-    public function supervisor():BelongsTo
+    public function supervisor(): BelongsTo
     {
-        return $this->belongsTo(Employee::class, 'employee_id',);
+        return $this->belongsTo(Employee::class, 'employee_id');
     }
 
     // The supervisor of the warehouse
-    public function type():BelongsTo
+    public function type(): BelongsTo
     {
-        return $this->belongsTo(WarehouseType::class, 'warehouse_type_id',);
+        return $this->belongsTo(WarehouseType::class, 'warehouse_type_id');
     }
 
     // The related department of the warehouse
-    public function department():BelongsTo
+    public function department(): BelongsTo
     {
-        return $this->belongsTo(Department::class, 'department_id',);
+        return $this->belongsTo(Department::class, 'department_id');
     }
 }

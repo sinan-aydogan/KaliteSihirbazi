@@ -59,7 +59,7 @@ const componentType = computed(() => {
             :is="componentType"
             :type="type"
             :href="link ? link : ''"
-            class="flex min-h-[2rem] items-center justify-center whitespace-nowrap rounded-md border border-transparent space-x-2 px-4 py-2 text-sm font-medium text-white shadow-sm tracking-widest focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-25 disabled:cursor-not-allowed transition"
+            class="flex min-h-[2rem] items-center justify-center gap-2 whitespace-nowrap rounded-md border border-transparent px-4 py-2 text-sm font-medium text-white shadow-sm tracking-widest transition focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:border-slate-300 disabled:bg-slate-200 disabled:text-slate-500 disabled:opacity-100 disabled:shadow-none dark:disabled:border-slate-600 dark:disabled:bg-slate-700 dark:disabled:text-slate-400"
             :class="[
                     colors[color],
                     {
@@ -83,4 +83,3 @@ const componentType = computed(() => {
         </component>
     </div>
 </template>
-

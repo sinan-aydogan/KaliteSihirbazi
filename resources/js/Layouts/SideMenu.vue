@@ -49,15 +49,15 @@ onBeforeMount(() => {
 })
 
 /*Logo Image*/
-import { useDark, useToggle } from '@vueuse/core'
-const isDark = useDark()
+import { usePreferredDark } from '@vueuse/core'
+const isDark = usePreferredDark()
 const logoImage = computed(() => {
     let defaultLogos = {
         light: '/assets/images/default/darkLogo.svg',
-        dark: '/assets/images/default/lightLogo.svg'
+        dark: '/assets/images/default/lightlogo.svg'
     };
 
-    if (usePage().props.theme.mod === 'auto' || usePage().props.theme.mod === undefined) {
+    if (usePage().props.theme.mode === 'auto' || usePage().props.theme.mode === undefined) {
         return defaultLogos[isDark.value ? 'dark' : 'light'];
     }
 
@@ -68,8 +68,9 @@ const logoImage = computed(() => {
 
 
 <template>
-    <div class="relative py-4 bg-slate-50 dark:bg-slate-800 z-20 flex flex-col border-r border-slate-300 dark:border-slate-600 px-4 h-screen"
-        ref="subMenu">
+  <div ref="subMenu" class="contents">
+    <div class="relative box-border w-28 py-4 bg-slate-50 dark:bg-slate-800 z-20 flex flex-col border-r border-slate-300 dark:border-slate-600 px-4 h-screen"
+    >
         <!-- Logo -->
         <Link :href="route('dashboard')" class="h-16 w-16 text-rose-600 mb-4 mx-auto">
         <img :src="logoImage" alt="Logo" class="h-16 w-16 object-cover"/>
@@ -126,7 +127,7 @@ const logoImage = computed(() => {
     </div>
     <!-- Sub Links -->
 
-    <div class="absolute z-10 flex h-full flex-col border-r border-t border-b dark:border-slate-600 px-4 -mb-4 w-56 bg-gradient-to-tl from-gray-800/75 to-gray-800  text-gray-50 rounded-r-md"
+    <div class="fixed top-0 z-10 flex h-screen flex-col border-r border-t border-b dark:border-slate-600 px-4 w-56 bg-gradient-to-tl from-gray-800/75 to-gray-800 text-gray-50 rounded-r-md"
         :class="[
             showSubMenu ? 'left-28' : '-left-56',
             'transition-all duration-700'
@@ -158,4 +159,5 @@ const logoImage = computed(() => {
             </template>
         </div>
     </div>
+  </div>
 </template>

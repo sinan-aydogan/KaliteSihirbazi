@@ -197,8 +197,8 @@ const getRowInfo = (id) => {
         form.id = supplier.id;
         form.code = supplier.code;
         form.name = supplier.name;
-        form.types = supplier.types?.[0]?.id || [];
-        form.tags = supplier.tags?.[0]?.id || [];
+        form.types = supplier.types?.map(type => type.id) || [];
+        form.tags = supplier.tags?.map(tag => tag.id) || [];
         form.contact_info = supplier.contact_info || {};
         form.is_active = supplier.is_active;
         form.notes = supplier.notes || {};

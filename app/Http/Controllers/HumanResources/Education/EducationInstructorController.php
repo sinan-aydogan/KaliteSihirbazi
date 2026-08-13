@@ -21,7 +21,7 @@ class EducationInstructorController extends Controller
     public function index()
     {
         return Inertia::render('Modules/HumanResources/Education/Setting/EducationInstructorPage', [
-            'tableData' => EducationInstructor::latest('id')->paginate(10),
+            'tableData' => $this->tableFilter(EducationInstructor::query())->latest('id')->paginate(10)->withQueryString(),
         ]);
     }
 
@@ -32,8 +32,8 @@ class EducationInstructorController extends Controller
      */
     public function deleted()
     {
-        return Inertia::render("Modules/HumanResources/Education/Setting/EducationInstructorDeletedPage", [
-            'tableData' => EducationInstructor::onlyTrashed()->latest('deleted_at')->paginate(10),
+        return Inertia::render('Modules/HumanResources/Education/Setting/EducationInstructorDeletedPage', [
+            'tableData' => $this->tableFilter(EducationInstructor::onlyTrashed())->latest('deleted_at')->paginate(10)->withQueryString(),
         ]);
     }
 
@@ -50,7 +50,6 @@ class EducationInstructorController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param StoreEducationInstructorRequest $request
      * @return RedirectResponse
      */
     public function store(StoreEducationInstructorRequest $request)
@@ -61,7 +60,7 @@ class EducationInstructorController extends Controller
         // Fotoğraf yükleme
         if ($request->hasFile('photo')) {
             $educationInstructor->addMediaFromRequest('photo')
-                ->sanitizingFileName(function($fileName) {
+                ->sanitizingFileName(function ($fileName) {
                     return strtolower(str_replace(['#', '/', '\\', ' '], '-', $fileName));
                 })
                 ->toMediaCollection('education_instructor_photo');
@@ -71,14 +70,14 @@ class EducationInstructorController extends Controller
         if ($request->hasFile('documents')) {
             foreach ($request->file('documents') as $document) {
                 $educationInstructor->addMedia($document)
-                    ->sanitizingFileName(function($fileName) {
+                    ->sanitizingFileName(function ($fileName) {
                         return strtolower(str_replace(['#', '/', '\\', ' '], '-', $fileName));
                     })
                     ->toMediaCollection('education_instructor_documents');
             }
         }
 
-        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.educationInstructor.created', ['educationInstructor' => $educationInstructor->name])]);
+        session()->flash('message', ['type' => 'success', 'content' => __('messages.educationInstructor.created', ['educationInstructor' => $educationInstructor->name])]);
 
         return redirect()->back();
     }
@@ -86,7 +85,6 @@ class EducationInstructorController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param EducationInstructor $educationInstructor
      * @return Response
      */
     public function show(EducationInstructor $educationInstructor)
@@ -99,7 +97,6 @@ class EducationInstructorController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param EducationInstructor $educationInstructor
      * @return JsonResponse
      */
     public function edit(EducationInstructor $educationInstructor)
@@ -107,7 +104,7 @@ class EducationInstructorController extends Controller
         $photo = $educationInstructor->getFirstMedia('education_instructor_photo');
         $documents = $educationInstructor->getMedia('education_instructor_documents');
         // documents bilgisini array'e çevir
-        $documents = $documents->map(function($media) {
+        $documents = $documents->map(function ($media) {
             return [
                 'id' => $media->id,
                 'name' => $media->name,
@@ -122,15 +119,13 @@ class EducationInstructorController extends Controller
         return response()->json([
             'education_instructor' => $educationInstructor,
             'photo' => $photo,
-            'documents' => $documents
+            'documents' => $documents,
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param UpdateEducationInstructorRequest $request
-     * @param EducationInstructor $educationInstructor
      * @return RedirectResponse
      */
     public function update(UpdateEducationInstructorRequest $request, EducationInstructor $educationInstructor)
@@ -143,7 +138,7 @@ class EducationInstructorController extends Controller
             // remove existing photo and add new one
             $educationInstructor->clearMediaCollection('education_instructor_photo');
             $educationInstructor->addMediaFromRequest('photo')
-                ->sanitizingFileName(function($fileName) {
+                ->sanitizingFileName(function ($fileName) {
                     return strtolower(str_replace(['#', '/', '\\', ' '], '-', $fileName));
                 })
                 ->toMediaCollection('education_instructor_photo');
@@ -153,20 +148,20 @@ class EducationInstructorController extends Controller
         if ($request->hasFile('documents')) {
             $documents = $request->file('documents');
             // normalize single file to array
-            if (!is_array($documents)) {
+            if (! is_array($documents)) {
                 $documents = [$documents];
             }
 
             foreach ($documents as $document) {
                 $educationInstructor->addMedia($document)
-                    ->sanitizingFileName(function($fileName) {
+                    ->sanitizingFileName(function ($fileName) {
                         return strtolower(str_replace(['#', '/', '\\', ' '], '-', $fileName));
                     })
                     ->toMediaCollection('education_instructor_documents');
             }
         }
 
-        session()->flash('message', ['type'=> 'success', 'content'=>__('messages.educationInstructor.updated', ['educationInstructor' => $educationInstructor->name])]);
+        session()->flash('message', ['type' => 'success', 'content' => __('messages.educationInstructor.updated', ['educationInstructor' => $educationInstructor->name])]);
 
         return redirect()->back();
     }
@@ -174,12 +169,11 @@ class EducationInstructorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param EducationInstructor $educationInstructor
      * @return RedirectResponse
      */
     public function destroy(EducationInstructor $educationInstructor)
     {
-        session()->flash('message', ['type'=> 'danger', 'content'=>__('messages.educationInstructor.deleted', ['educationInstructor' => $educationInstructor->name])]);
+        session()->flash('message', ['type' => 'danger', 'content' => __('messages.educationInstructor.deleted', ['educationInstructor' => $educationInstructor->name])]);
 
         $educationInstructor->delete();
 
@@ -189,7 +183,6 @@ class EducationInstructorController extends Controller
     /**
      * Permanently delete the specified resource from storage.
      *
-     * @param EducationInstructor $educationInstructor
      * @return RedirectResponse
      */
     public function permanentDestroy(EducationInstructor $educationInstructor)
@@ -198,7 +191,7 @@ class EducationInstructorController extends Controller
         $educationInstructor->clearMediaCollection('education_instructor_photo');
         $educationInstructor->clearMediaCollection('education_instructor_documents');
 
-        session()->flash('message', ['type'=> 'danger', 'content'=>__('messages.educationInstructor.permanentDeleted', ['educationInstructor' => $educationInstructor->name])]);
+        session()->flash('message', ['type' => 'danger', 'content' => __('messages.educationInstructor.permanentDeleted', ['educationInstructor' => $educationInstructor->name])]);
 
         $educationInstructor->forceDelete();
 
@@ -208,14 +201,13 @@ class EducationInstructorController extends Controller
     /**
      * Restore the specified resource from storage.
      *
-     * @param EducationInstructor $educationInstructor
      * @return RedirectResponse
      */
     public function restore(EducationInstructor $educationInstructor)
     {
         $educationInstructor->restore();
 
-        session()->flash('message', ['type'=> 'info', 'content'=>__('messages.educationInstructor.restored', ['educationInstructor' => $educationInstructor->name])]);
+        session()->flash('message', ['type' => 'info', 'content' => __('messages.educationInstructor.restored', ['educationInstructor' => $educationInstructor->name])]);
 
         return redirect()->route('education-instructor.index');
     }
@@ -223,8 +215,6 @@ class EducationInstructorController extends Controller
     /**
      * Belirli bir medya dosyasını sil
      *
-     * @param EducationInstructor $educationInstructor
-     * @param int $mediaId
      * @return RedirectResponse
      */
     public function deleteMedia(EducationInstructor $educationInstructor, int $mediaId)
@@ -233,7 +223,9 @@ class EducationInstructorController extends Controller
 
         if ($media) {
             $media->delete();
-            session()->flash('message', ['type'=> 'success', 'content'=>__('messages.educationInstructor.mediaDeleted')]);
+            session()->flash('message', ['type' => 'success', 'content' => __('messages.educationInstructor.mediaDeleted')]);
         }
+
+        return response()->noContent();
     }
 }
