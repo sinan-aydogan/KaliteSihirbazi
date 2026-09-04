@@ -4,6 +4,8 @@ import SimpleButton from "@/Components/Button/SimpleButton.vue"
 import Menu from "./menu";
 import InputGroup from "@/Components/Form/InputGroup.vue";
 import SelectInput from "@/Components/Form/SelectInput.vue";
+import FileTypeSelectInput from "@/Components/Form/FileTypeSelectInput.vue";
+import FileSizeInput from "@/Components/Form/FileSizeInput.vue";
 import {useForm} from "@inertiajs/vue3";
 import FormSection from "@/Components/Form/FormSection.vue";
 
@@ -26,7 +28,7 @@ const settingObject = ()=>{
     let obj = {};
     props.settings.forEach(setting => {
         obj[setting.code] = {
-            value: setting.value,
+            value: setting.type === 'json' ? JSON.parse(setting.value) : setting.value,
             type: setting.type,
         };
     })
@@ -70,7 +72,7 @@ const updateSettings = () => {
             </simple-button>
         </template>
 
-        <div class="divide-y divide-amber-500">
+        <div class="space-y-4">
             <FormSection
                 :title="tm('setting.document.namingRule.title')"
                 :description="tm('setting.document.namingRule.subTitle')"
@@ -94,6 +96,66 @@ const updateSettings = () => {
                             <!--Save Button-->
                             <SimpleButton
                                 v-if="form.document_naming_rule.value !== settingObject().document_naming_rule.value"
+                                :label="t('action.saveChanges')"
+                                :loading="form.processing"
+                                :disabled="form.processing"
+                                @click="updateSettings"
+                            />
+                            <!--Success Message-->
+                            <FormActionMessage v-else :on="form.recentlySuccessful">
+                                {{ t('message.feedback.saved') }}
+                            </FormActionMessage>
+                        </transition>
+                    </div>
+                </div>
+            </FormSection>
+
+            <FormSection
+                :title="tm('setting.document.allowedFileTypes.title')"
+                :description="tm('setting.document.allowedFileTypes.subTitle')"
+            >
+                <div class="flex justify-between items-center">
+                    <div class="flex-grow mr-4">
+                        <input-group>
+                            <file-type-select-input v-model="form.document_allowed_file_types.value"/>
+                        </input-group>
+                    </div>
+
+                    <div class="flex items-center space-x-2">
+                        <transition mode="out-in" name="fade">
+                            <!--Save Button-->
+                            <SimpleButton
+                                v-if="JSON.stringify(form.document_allowed_file_types.value) !== JSON.stringify(settingObject().document_allowed_file_types.value)"
+                                :label="t('action.saveChanges')"
+                                :loading="form.processing"
+                                :disabled="form.processing"
+                                @click="updateSettings"
+                            />
+                            <!--Success Message-->
+                            <FormActionMessage v-else :on="form.recentlySuccessful">
+                                {{ t('message.feedback.saved') }}
+                            </FormActionMessage>
+                        </transition>
+                    </div>
+                </div>
+            </FormSection>
+
+            <FormSection
+                :title="tm('setting.document.maxFileSize.title')"
+                :description="tm('setting.document.maxFileSize.subTitle')"
+            >
+                <div class="flex justify-between items-center">
+                    <div class="mr-4">
+                        <input-group>
+                            <file-size-input v-model="form.document_max_file_size.value"/>
+                        </input-group>
+                    </div>
+
+                    <div class="flex items-center space-x-2">
+                        <transition mode="out-in" name="fade">
+                            <!--Save Button-->
+                            <SimpleButton
+                                v-if="JSON.stringify(form.document_max_file_size.value) !== JSON.stringify(settingObject().document_max_file_size.value)"
                                 :label="t('action.saveChanges')"
                                 :loading="form.processing"
                                 :disabled="form.processing"

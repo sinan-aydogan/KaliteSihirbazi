@@ -10,8 +10,10 @@ import Translates from "./translates"
 import {computed} from "vue";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import SimpleButton from "@/Components/Button/SimpleButton.vue";
+import {useFormat} from "@/Stores/useFormat.js";
 
 const {t, tm} = Translates();
+const format = useFormat();
 
 const documentIcon = computed(()=>{
     if(showDocument.document?.media){
@@ -40,22 +42,22 @@ const documentIcon = computed(()=>{
             <!--Creating Info-->
             <div class="flex flex-col gap-2">
                 <div class="flex gap-2">
-                    <span class="font-bold" v-text="$t('term.createdBy')"></span>
+                    <span class="font-bold" v-text="tm('term.createdBy')"></span>
                     <span v-text="showDocument.document?.created_by?.name"></span>
                 </div>
                 <div class="flex gap-2">
-                    <span class="font-bold" v-text="$t('term.createdAt')"></span>
-                    <span v-text="showDocument.document?.created_at"></span>
+                    <span class="font-bold" v-text="tm('term.createdAt')"></span>
+                    <span v-text="format.dateTime(showDocument.document?.created_at)"></span>
                 </div>
             </div>
 
             <!--Revisions-->
             <div>
-                <h5>Revizyonlar</h5>
+                <h5 v-text="tm('term.revisions')"></h5>
                 <ul>
-                    <li v-for="revision in showDocument.document.revisions" v-bind="revision" :key="revision.id">
+                    <li class="flex gap-2" v-for="revision in showDocument.document.revisions" v-bind="revision" :key="revision.id">
                         <span v-text="revision.version"></span>
-                        <span v-text="revision.created_at"></span>
+                        <span v-text="format.dateTime(revision.created_at)"></span>
                     </li>
                 </ul>
 

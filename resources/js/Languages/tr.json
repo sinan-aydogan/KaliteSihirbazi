@@ -128,6 +128,27 @@
             "updateSuccessfully": "Departman başarıyla güncellendi"
         }
     },
+    "fileType": {
+        "csv": "CSV Dosyası (.csv)",
+        "doc": "Word Belgesi (.doc)",
+        "docx": "Word Belgesi (.docx)",
+        "gif": "GIF Görseli (.gif)",
+        "jpeg": "JPEG Görseli (.jpeg)",
+        "jpg": "JPEG Görseli (.jpg)",
+        "mp3": "MP3 Ses Dosyası (.mp3)",
+        "mp4": "MP4 Video (.mp4)",
+        "pdf": "PDF Belgesi (.pdf)",
+        "png": "PNG Görseli (.png)",
+        "ppt": "PowerPoint Sunumu (.ppt)",
+        "pptx": "PowerPoint Sunumu (.pptx)",
+        "rar": "Rar Arşivi (.rar)",
+        "svg": "SVG Vektör Görseli (.svg)",
+        "txt": "Metin Dosyası (.txt)",
+        "webp": "WebP Görseli (.webp)",
+        "xls": "Excel Tablosu (.xls)",
+        "xlsx": "Excel Tablosu (.xlsx)",
+        "zip": "Zip Arşivi (.zip)"
+    },
     "form": {
         "selectInput": {
             "selectOption": "Seçenek Seçiniz"
@@ -222,6 +243,12 @@
         "authorizationManagement": "Yetkilendirme Yönetimi",
         "darkBackground": "Koyu Tema Arka Plan",
         "darkLogo": "Koyu Tema Logosu",
+        "dateFormat": "Tarih Formatı",
+        "dateFormatDesc": "Uygulama genelinde tarihlerin gösterileceği format",
+        "timeFormat": "Saat Formatı",
+        "timeFormatDesc": "Uygulama genelinde saatlerin gösterileceği format",
+        "timeSettings": "Zaman Ayarı",
+        "timeSettingsDesc": "Uygulama genelinde kullanılacak tarih ve saat formatını buradan belirleyebilirsiniz",
         "educationInstructors": "Eğitim Eğitmenleri",
         "educationManagement": "Eğitim Yönetimi",
         "educationTypes": "Eğitim Tipleri",

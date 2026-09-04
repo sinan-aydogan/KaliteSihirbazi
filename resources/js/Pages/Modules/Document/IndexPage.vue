@@ -1,6 +1,6 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
-import {ref} from "vue";
+import {computed, ref} from "vue";
 import {useForm, router} from "@inertiajs/vue3";
 
 // Components
@@ -40,6 +40,10 @@ const props = defineProps({
         type: String,
         required: true
     },
+    allowedFileTypes: {
+        type: Array,
+        default: () => []
+    },
 })
 
 // Multi-lang
@@ -55,6 +59,9 @@ import FileInput from "@/Components/Form/FileInput.vue";
 import MultiSelectInput from "@/Components/Form/MultiSelectInput.vue";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import ShowModal from "@/Pages/Modules/Document/ShowModal.vue";
+import {fileTypesToAcceptAttribute} from "@/Components/Form/FileTypeSelectInput.vue";
+
+const fileAccept = computed(() => fileTypesToAcceptAttribute(props.allowedFileTypes))
 
 /*Table*/
 const tableHeaders = [
@@ -233,7 +240,6 @@ const handleCloseModal = () => {
                 <span v-text="$t('action.addNew')"/>
             </simple-button>
         </template>
-        sss
         <Table
             :data="tableData"
             :headers="tableHeaders"
@@ -322,7 +328,7 @@ const handleCloseModal = () => {
                     <input-group class="col-span-3" labelFor="type" :label="tm('term.file')">
                         <file-input
                             @change="handleFileChange"
-                            accept=".pdf,.doc,.docx,.xlsx,.xlx"
+                            :accept="fileAccept"
                             browse-label="Belge Seçin"
                         />
                     </input-group>

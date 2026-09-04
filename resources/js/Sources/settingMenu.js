@@ -25,6 +25,13 @@ export default function () {
                         type: "dropdown",
                         link: "module.index",
                     },
+                    {
+                        id: "gb-ts",
+                        label: t("settingMenu.timeSettings"),
+                        icon: "clock",
+                        type: "dropdown",
+                        link: "global-setting.time",
+                    },
                 ],
             },
             {

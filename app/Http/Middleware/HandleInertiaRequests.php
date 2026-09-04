@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Models\Setting;
+use App\Services\FormatService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
@@ -134,6 +135,9 @@ class HandleInertiaRequests extends Middleware
 
             // Uygulama bilgileri
             'app' => $appData,
+
+            // Uygulama genelinde kullanılacak tarih/saat formatı
+            'formatSettings' => app(FormatService::class)->settingsForFrontend(),
 
             // Flash Message
             'flash' => [

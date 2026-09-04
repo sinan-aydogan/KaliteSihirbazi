@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Enums\DateFormat;
+use App\Enums\TimeFormat;
 use App\Models\Setting;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -20,16 +22,39 @@ class SettingSeeder extends Seeder
                 'module' => 'document',
                 'type' => 'string',
                 'value' => 'auto'
-            ]
+            ],
+            [
+                'code' => 'document_allowed_file_types',
+                'module' => 'document',
+                'type' => 'json',
+                'value' => json_encode(['pdf', 'doc', 'docx', 'xls', 'xlsx'])
+            ],
+            [
+                'code' => 'document_max_file_size',
+                'module' => 'document',
+                'type' => 'json',
+                'value' => json_encode(['size' => 10, 'unit' => 'MB'])
+            ],
+            /*Global Settings*/
+            [
+                'code' => 'global_date_format',
+                'module' => 'global',
+                'type' => 'string',
+                'value' => DateFormat::DMY_DOT->value
+            ],
+            [
+                'code' => 'global_time_format',
+                'module' => 'global',
+                'type' => 'string',
+                'value' => TimeFormat::H24->value
+            ],
         ];
 
         foreach ($settings as $s) {
-            $setting = new Setting();
-            $setting['code'] = $s['code'];
-            $setting['module'] = $s['module'];
-            $setting['type'] = $s['type'];
-            $setting['value'] = $s['value'];
-            $setting->save();
+            Setting::updateOrCreate(
+                ['code' => $s['code']],
+                ['module' => $s['module'], 'type' => $s['type'], 'value' => $s['value']]
+            );
         }
     }
 }

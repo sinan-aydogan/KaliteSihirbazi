@@ -42,6 +42,9 @@
         "creator": "Creator",
         "file": "File",
         "createdDate": "Created Date",
+        "createdBy": "Created By",
+        "createdAt": "Created At",
+        "revisions": "Revisions",
         "makeRevisionRequest": "Make Revision Request"
     },
     "setting": {
@@ -55,6 +58,14 @@
                 "autoDesc": "Auto generate document code when creating a new document",
                 "manual": "Manual",
                 "manualDesc": "Manually enter document code when creating a new document"
+            },
+            "allowedFileTypes": {
+                "title": "Allowed File Types",
+                "subTitle": "Limit which file types can be selected when uploading a document"
+            },
+            "maxFileSize": {
+                "title": "Maximum File Size",
+                "subTitle": "Set the maximum size allowed for an uploaded document file"
             }
         }
     },

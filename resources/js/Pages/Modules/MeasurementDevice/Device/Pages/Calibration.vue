@@ -16,11 +16,13 @@ import relativeTime from "dayjs/plugin/relativeTime";
 // Multi-lang
 import Translates from "../translates"
 import dayjs from "dayjs";
+import {useFormat} from "@/Stores/useFormat.js";
 // Validation
 import {useVuelidate} from "@vuelidate/core"
 import {helpers, required} from "@vuelidate/validators"
 
 const {t, tm} = Translates();
+const format = useFormat();
 
 const props = defineProps({
   measurementDevice: Object,
@@ -100,11 +102,11 @@ dayjs.extend(relativeTime)
         </template>
 
         <template #planned_date="{props}">
-          {{ dayjs(props.planned_date).format('DD-MMMM-YY') }} ({{ dayjs(props.planned_date).from(Date.now()) }})
+          {{ format.date(props.planned_date) }} ({{ dayjs(props.planned_date).from(Date.now()) }})
         </template>
 
         <template #accomplished_date="{props}">
-          {{ dayjs(props.accomplished_date).format('DD-MMMM-YY') }}
+          {{ format.date(props.accomplished_date) }}
         </template>
 
         <template #calibrationFirm="{props}">

@@ -42,6 +42,9 @@
         "creator": "Oluşturan",
         "file": "Dosya",
         "createdDate": "Oluşturulma Tarihi",
+        "createdBy": "Oluşturan",
+        "createdAt": "Oluşturulma Zamanı",
+        "revisions": "Revizyonlar",
         "makeRevisionRequest": "Revizyon Talebi Yap"
     },
     "setting": {
@@ -55,6 +58,14 @@
                 "autoDesc": "Sistem otomatik olarak döküman kodu ataması yapacaktır",
                 "manual": "Manuel",
                 "manualDesc": "Döküman kodunu manuel olarak kendiniz belirleyebilirsiniz"
+            },
+            "allowedFileTypes": {
+                "title": "İzin Verilen Dosya Türleri",
+                "subTitle": "Döküman yüklenirken seçilebilecek dosya türlerini buradan sınırlayabilirsiniz"
+            },
+            "maxFileSize": {
+                "title": "Maksimum Dosya Boyutu",
+                "subTitle": "Yüklenebilecek döküman dosyasının maksimum boyutunu buradan belirleyebilirsiniz"
             }
         }
     },

@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\Setting;
 
+use App\Enums\DateFormat;
+use App\Enums\TimeFormat;
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
+use App\Services\Setting\SettingBulkUpdater;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Enum;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -19,6 +23,35 @@ class GlobalSettingController extends Controller
     public function index(): Response
     {
         return Inertia::render('Setting/Index');
+    }
+
+    /**
+     * Display the app-wide date/time format settings page.
+     */
+    public function time(): Response
+    {
+        $settings = Setting::where('module', 'global')
+            ->whereIn('code', ['global_date_format', 'global_time_format'])
+            ->get();
+
+        return Inertia::render('Setting/TimeSetting', [
+            'settings' => $settings,
+        ]);
+    }
+
+    /**
+     * Persist the app-wide date/time format settings.
+     */
+    public function updateTime(Request $request, SettingBulkUpdater $settingBulkUpdater): RedirectResponse
+    {
+        $request->validate([
+            'global_date_format.value' => ['sometimes', new Enum(DateFormat::class)],
+            'global_time_format.value' => ['sometimes', new Enum(TimeFormat::class)],
+        ]);
+
+        $settingBulkUpdater->update($request->all());
+
+        return back()->with('message', ['type' => 'success', 'content' => __('messages.timeSettings.updated')]);
     }
 
     /**

@@ -129,6 +129,27 @@
             "updateSuccessfully": "Department updated successfully"
         }
     },
+    "fileType": {
+        "csv": "CSV File (.csv)",
+        "doc": "Word Document (.doc)",
+        "docx": "Word Document (.docx)",
+        "gif": "GIF Image (.gif)",
+        "jpeg": "JPEG Image (.jpeg)",
+        "jpg": "JPEG Image (.jpg)",
+        "mp3": "MP3 Audio (.mp3)",
+        "mp4": "MP4 Video (.mp4)",
+        "pdf": "PDF Document (.pdf)",
+        "png": "PNG Image (.png)",
+        "ppt": "PowerPoint Presentation (.ppt)",
+        "pptx": "PowerPoint Presentation (.pptx)",
+        "rar": "Rar Archive (.rar)",
+        "svg": "SVG Vector Image (.svg)",
+        "txt": "Text File (.txt)",
+        "webp": "WebP Image (.webp)",
+        "xls": "Excel Spreadsheet (.xls)",
+        "xlsx": "Excel Spreadsheet (.xlsx)",
+        "zip": "Zip Archive (.zip)"
+    },
     "jobDescription": {
         "create": {
             "subTitle": "Create a new department for your business",
@@ -247,6 +268,12 @@
         "authorizationManagement": "Authorization Management",
         "darkBackgroundImage": "Dark Background Image",
         "darkLogo": "Dark Theme Logo",
+        "dateFormat": "Date Format",
+        "dateFormatDesc": "The format used to display dates throughout the application",
+        "timeFormat": "Time Format",
+        "timeFormatDesc": "The format used to display times throughout the application",
+        "timeSettings": "Time Setting",
+        "timeSettingsDesc": "Set the date and time format used throughout the application",
         "educationInstructors": "Education Instructors",
         "educationManagement": "Education Management",
         "educationTypes": "Education Types",

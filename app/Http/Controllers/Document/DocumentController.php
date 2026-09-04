@@ -10,6 +10,7 @@ use App\Models\Document\DistributionPoint;
 use App\Models\Document\Document;
 use App\Models\Document\DocumentType;
 use App\Models\User;
+use App\Services\Document\DocumentFileSettingService;
 use Inertia\Inertia;
 use App\Traits\Document\DocumentCodeTrait;
 use App\Traits\Document\DocumentVersionTrait;
@@ -18,6 +19,10 @@ class DocumentController extends Controller
 {
     use DocumentCodeTrait;
     use DocumentVersionTrait;
+
+    public function __construct(private readonly DocumentFileSettingService $documentFileSettingService)
+    {
+    }
     /**
      * Display a listing of the resource.
      *
@@ -41,6 +46,8 @@ class DocumentController extends Controller
             'departments' => $departments,
             'namingRule' => $this->namingRule(),
             'distributionPoints' => $distributionPoints,
+            'allowedFileTypes' => $this->documentFileSettingService->allowedFileTypes(),
+            'maxFileSize' => $this->documentFileSettingService->maxFileSize(),
         ]);
     }
 
@@ -62,6 +69,8 @@ class DocumentController extends Controller
             'distributionPoints' => DistributionPoint::all(['id', 'name']),
             'namingRule' => $this->namingRule(),
             'users' => User::all(['id', 'name']),
+            'allowedFileTypes' => $this->documentFileSettingService->allowedFileTypes(),
+            'maxFileSize' => $this->documentFileSettingService->maxFileSize(),
         ]);
     }
 

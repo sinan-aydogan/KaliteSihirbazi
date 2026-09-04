@@ -37,6 +37,10 @@ const props = defineProps({
         type: String,
         required: true
     },
+    allowedFileTypes: {
+        type: Array,
+        default: () => []
+    },
 })
 
 // Store
@@ -44,9 +48,11 @@ import {useCreateDocumentStore} from "@/Pages/Modules/Document/stores/createDocu
 import {computed, onBeforeMount, ref} from "vue";
 import SimpleButton from "@/Components/Button/SimpleButton.vue";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+import {fileTypesToAcceptAttribute} from "@/Components/Form/FileTypeSelectInput.vue";
 
 const createDocumentStore = useCreateDocumentStore()
 const drag = ref(false)
+const fileAccept = computed(() => fileTypesToAcceptAttribute(props.allowedFileTypes))
 
 const approverList = computed(()=>{
     return props.users.filter((user)=>{
@@ -124,7 +130,7 @@ onBeforeMount(() => {
 
                 <!-- File -->
                 <input-group class="col-span-3" labelFor="type" :label="tm('term.file')">
-                    <file-input v-model="createDocumentStore.form.file"/>
+                    <file-input v-model="createDocumentStore.form.file" :accept="fileAccept"/>
                 </input-group>
             </FormSection>
         </Form>

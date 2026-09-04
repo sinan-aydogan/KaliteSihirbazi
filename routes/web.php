@@ -91,6 +91,9 @@ Route::middleware([
         Route::post('media-upload/{type}', [GlobalSettingController::class, 'mediaUpload'])->name('global-setting.media-upload');
         /* Get Setting */
         Route::get('get-setting', [GlobalSettingController::class, 'getSetting'])->name('global-setting.get-setting');
+        /* Time Setting */
+        Route::get('time', [GlobalSettingController::class, 'time'])->name('global-setting.time');
+        Route::post('time', [GlobalSettingController::class, 'updateTime'])->name('global-setting.time.update');
     });
 
     /* User Functions */

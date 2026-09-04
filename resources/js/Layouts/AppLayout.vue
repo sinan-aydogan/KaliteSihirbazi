@@ -16,6 +16,7 @@ import {useI18n} from "vue-i18n";
 /*Stores*/
 import {useNotification} from "@/Stores/useNotification.js";
 import {useFullscreenStore} from "@/Stores/useFullscreen.js";
+import {useFormat} from "@/Stores/useFormat.js";
 import dayjs from "dayjs";
 import { storeToRefs } from "pinia";
 
@@ -35,6 +36,7 @@ const {locale, t} = useI18n({
 onBeforeMount(() => {
   locale.value = usePage().props.auth.user.language;
   dayjs.locale(locale.value)
+  useFormat().init(usePage().props.formatSettings);
   addNotification();
 });
 

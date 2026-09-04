@@ -111,6 +111,9 @@ return [
     'documentSettings' => [
         'updated' => 'Döküman modülü ayarları güncellendi.'
     ],
+    'timeSettings' => [
+        'updated' => 'Zaman ayarları güncellendi.'
+    ],
     'vehicleType' => [
         'created' => ':vehicleType isimli araç tipi oluşturuldu.',
         'deleted' => ':vehicleType isimli araç tipi silindi.',

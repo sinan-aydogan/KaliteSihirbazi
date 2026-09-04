@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Services\Document\DocumentFileSettingService;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreDocumentRequest extends FormRequest
@@ -29,7 +30,7 @@ class StoreDocumentRequest extends FormRequest
             'department_id' => ['required', 'exists:departments,id'],
             'document_type_id' => ['required', 'exists:document_types,id'],
             'description' => ['nullable', 'string'],
-            'file' => ['nullable', 'file', 'mimes:pdf,doc,docx,xls,xlsx'],
+            'file' => app(DocumentFileSettingService::class)->fileValidationRules(),
         ];
     }
 }

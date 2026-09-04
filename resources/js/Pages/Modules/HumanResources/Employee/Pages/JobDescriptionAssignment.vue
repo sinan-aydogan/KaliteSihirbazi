@@ -16,8 +16,10 @@ import ShowPage from "@/Pages/Modules/HumanResources/Employee/ShowPage.vue"
 // Multi-lang
 import Translates from "../translates"
 import dayjs from "dayjs";
+import {useFormat} from "@/Stores/useFormat.js";
 
 const {t, tm} = Translates();
+const format = useFormat();
 
 const props = defineProps({
   employee: Object,
@@ -99,7 +101,7 @@ dayjs.extend(relativeTime)
         </template>
 
         <template #assignment_date="{props}">
-          {{ dayjs(props.assignment_date).format('DD-MMMM-YY') }} ({{ dayjs(props.assignment_date).from(Date.now()) }})
+          {{ format.date(props.assignment_date) }} ({{ dayjs(props.assignment_date).from(Date.now()) }})
         </template>
 
         <template #appointer="{props}">

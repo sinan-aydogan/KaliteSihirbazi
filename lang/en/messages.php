@@ -110,6 +110,9 @@ return [
     'documentSettings' => [
         'updated' => 'The document settings has been updated successfully.'
     ],
+    'timeSettings' => [
+        'updated' => 'The time settings have been updated successfully.'
+    ],
     'vehicleType' => [
         'created' => 'The new vehicle type named :vehicleType has been created successfully',
         'deleted' => 'The vehicle type named :vehicleType deleted successfully',
