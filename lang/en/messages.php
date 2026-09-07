@@ -156,6 +156,22 @@ return [
         'updated' => 'Accreditation record updated.',
         'deleted' => 'Accreditation record deleted.'
     ],
+    'capa' => [
+        'created' => 'CAPA :capa created.',
+        'updated' => 'CAPA :capa updated.',
+        'deleted' => 'CAPA :capa deleted.',
+        'deletedError' => 'CAPA :capa cannot be deleted because it has actions defined.',
+        'submittedForVerification' => 'CAPA submitted for verification.',
+        'verified' => 'CAPA verification recorded.',
+        'reopened' => 'CAPA reopened.'
+    ],
+    'capaAction' => [
+        'created' => 'Action created.',
+        'updated' => 'Action updated.',
+        'deleted' => 'Action deleted.',
+        'started' => 'Action started.',
+        'completed' => 'Action completed.'
+    ],
     'vehicleType' => [
         'created' => 'The new vehicle type named :vehicleType has been created successfully',
         'deleted' => 'The vehicle type named :vehicleType deleted successfully',

@@ -12,7 +12,10 @@ import HumanResources from './HumanResources'
 import Document from './Document'
 import MeasurementDevice from './MeasurementDevice'
 import StandardController from './StandardController'
+import CapaController from './CapaController'
 import CompanyAccreditationController from './CompanyAccreditationController'
+import CapaActionController from './CapaActionController'
+import CapaWorkflowController from './CapaWorkflowController'
 const Controllers = {
     AccountController: Object.assign(AccountController, AccountController),
 ApiTokenController: Object.assign(ApiTokenController, ApiTokenController),
@@ -28,7 +31,10 @@ HumanResources: Object.assign(HumanResources, HumanResources),
 Document: Object.assign(Document, Document),
 MeasurementDevice: Object.assign(MeasurementDevice, MeasurementDevice),
 StandardController: Object.assign(StandardController, StandardController),
+CapaController: Object.assign(CapaController, CapaController),
 CompanyAccreditationController: Object.assign(CompanyAccreditationController, CompanyAccreditationController),
+CapaActionController: Object.assign(CapaActionController, CapaActionController),
+CapaWorkflowController: Object.assign(CapaWorkflowController, CapaWorkflowController),
 }
 
 export default Controllers

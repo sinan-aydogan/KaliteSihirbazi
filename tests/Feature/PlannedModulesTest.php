@@ -15,7 +15,6 @@ test('unimplemented module menu routes render a coming soon page without exposin
 })->with([
     'audit-firm',
     'problem',
-    'capa-action',
     'product-tree',
     'audit',
     'improvement-work',

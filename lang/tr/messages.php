@@ -157,6 +157,22 @@ return [
         'updated' => 'Akreditasyon kaydı güncellendi.',
         'deleted' => 'Akreditasyon kaydı silindi.'
     ],
+    'capa' => [
+        'created' => ':capa kodlu DÖF kaydı oluşturuldu.',
+        'updated' => ':capa kodlu DÖF kaydı güncellendi.',
+        'deleted' => ':capa kodlu DÖF kaydı silindi.',
+        'deletedError' => ':capa kodlu DÖF kaydı silinemez çünkü üzerinde tanımlı aksiyonlar var.',
+        'submittedForVerification' => 'DÖF doğrulamaya gönderildi.',
+        'verified' => 'DÖF doğrulama kaydı oluşturuldu.',
+        'reopened' => 'DÖF yeniden açıldı.'
+    ],
+    'capaAction' => [
+        'created' => 'Aksiyon oluşturuldu.',
+        'updated' => 'Aksiyon güncellendi.',
+        'deleted' => 'Aksiyon silindi.',
+        'started' => 'Aksiyon başlatıldı.',
+        'completed' => 'Aksiyon tamamlandı.'
+    ],
     'vehicleType' => [
         'created' => ':vehicleType isimli araç tipi oluşturuldu.',
         'deleted' => ':vehicleType isimli araç tipi silindi.',

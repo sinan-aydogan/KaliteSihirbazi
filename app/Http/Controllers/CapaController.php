@@ -2,85 +2,87 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Capa;
 use App\Http\Requests\StoreCapaRequest;
 use App\Http\Requests\UpdateCapaRequest;
+use App\Models\Capa;
+use App\Models\User;
+use App\Services\Capa\CapaWorkflowService;
+use Inertia\Inertia;
 
 class CapaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function __construct(private readonly CapaWorkflowService $capaWorkflowService)
     {
-        //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function index()
+    {
+        $capas = $this->tableFilter(Capa::withCount('actions')->with(['responsible:id,name', 'openedBy:id,name']))
+            ->latest('id')
+            ->paginate(10)
+            ->withQueryString();
+
+        return Inertia::render('Modules/Capa/IndexPage', [
+            'tableData' => $capas,
+            'users' => User::all(['id', 'name']),
+        ]);
+    }
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreCapaRequest  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(StoreCapaRequest $request)
     {
-        //
+        $capa = $this->capaWorkflowService->create($request->validated(), auth()->user());
+
+        session()->flash('message', ['type' => 'success', 'content' => __('messages.capa.created', ['capa' => $capa->code])]);
+
+        return redirect()->back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Capa  $capa
-     * @return \Illuminate\Http\Response
-     */
     public function show(Capa $capa)
     {
-        //
+        $capa->load([
+            'responsible:id,name',
+            'openedBy:id,name',
+            'actions.responsible:id,name',
+            'verifications.verifiedBy:id,name',
+        ]);
+
+        return Inertia::render('Modules/Capa/ShowPage', [
+            'capa' => $capa,
+            'users' => User::all(['id', 'name']),
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Capa  $capa
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Capa $capa)
     {
-        //
+        return response()->json($capa);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateCapaRequest  $request
-     * @param  \App\Models\Capa  $capa
-     * @return \Illuminate\Http\Response
-     */
     public function update(UpdateCapaRequest $request, Capa $capa)
     {
-        //
+        $capa->update($request->validated());
+
+        session()->flash('message', ['type' => 'success', 'content' => __('messages.capa.updated', ['capa' => $capa->code])]);
+
+        return redirect()->back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Capa  $capa
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Capa $capa)
     {
-        //
+        if ($capa->actions()->exists()) {
+            session()->flash('message', ['type' => 'danger', 'content' => __('messages.capa.deletedError', ['capa' => $capa->code])]);
+
+            return redirect()->back();
+        }
+
+        session()->flash('message', ['type' => 'success', 'content' => __('messages.capa.deleted', ['capa' => $capa->code])]);
+
+        $capa->delete();
+
+        return redirect()->route('capa.index');
     }
 }

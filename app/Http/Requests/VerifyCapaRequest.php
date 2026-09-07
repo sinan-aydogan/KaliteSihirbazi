@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateCapaActionRequest extends FormRequest
+class VerifyCapaRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -14,9 +14,8 @@ class UpdateCapaActionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'description' => 'required|string',
-            'responsible_id' => 'required|exists:users,id',
-            'due_date' => 'required|date',
+            'is_effective' => 'required|boolean',
+            'notes' => 'nullable|string',
         ];
     }
 }

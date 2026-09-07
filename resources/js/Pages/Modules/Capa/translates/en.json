@@ -1,0 +1,82 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "CAPA Records",
+            "subTitle": "Manage Corrective and Preventive Actions"
+        },
+        "createPage": {
+            "title": "Create CAPA Record",
+            "subTitle": "Open a new corrective/preventive action record"
+        },
+        "showPage": {
+            "title": "CAPA Detail",
+            "subTitle": "Manage the action plan and verification process"
+        },
+        "createActionPage": {
+            "title": "Add Action",
+            "subTitle": "Plan a new action for this CAPA"
+        },
+        "verifyPage": {
+            "title": "Effectiveness Verification",
+            "subTitle": "Assess whether the actions were effective"
+        }
+    },
+    "term": {
+        "code": "CAPA No",
+        "title": "Title",
+        "type": "Type",
+        "description": "Nonconformity / Opportunity Description",
+        "sourceType": "Source",
+        "rootCause": "Root Cause",
+        "status": "Status",
+        "responsible": "Responsible",
+        "openedBy": "Opened By",
+        "dueDate": "Due Date",
+        "closedAt": "Closed At",
+        "actionCount": "Actions",
+        "capaType": {
+            "corrective": "Corrective",
+            "preventive": "Preventive"
+        },
+        "capaSourceType": {
+            "document_revision_request": "Document Revision Request",
+            "audit_finding": "Audit Finding",
+            "customer_complaint": "Customer Complaint",
+            "internal": "Internal",
+            "other": "Other"
+        },
+        "capaStatus": {
+            "open": "Open",
+            "action_plan": "Action Planned",
+            "in_progress": "In Progress",
+            "pending_verification": "Pending Verification",
+            "closed_effective": "Closed (Effective)",
+            "closed_ineffective": "Closed (Ineffective)"
+        },
+        "overdue": "Overdue",
+        "action": "Action Description",
+        "actionResponsible": "Action Owner",
+        "actionDueDate": "Action Due Date",
+        "completedAt": "Completed At",
+        "actionStatus": {
+            "pending": "Pending",
+            "in_progress": "In Progress",
+            "done": "Done"
+        },
+        "verificationDate": "Verification Date",
+        "verifiedBy": "Verified By",
+        "isEffective": "Were the actions effective?",
+        "notes": "Notes"
+    },
+    "action": {
+        "viewDetails": "Details / Manage",
+        "addAction": "Add Action",
+        "startAction": "Start",
+        "completeAction": "Complete",
+        "submitForVerification": "Submit for Verification",
+        "verify": "Verify",
+        "reopen": "Reopen",
+        "effective": "Effective",
+        "ineffective": "Ineffective"
+    }
+}

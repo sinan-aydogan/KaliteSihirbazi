@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\CapaActionController::store
  * @see app/Http/Controllers/CapaActionController.php:18
@@ -414,12 +414,6 @@ complete.post = (args: { capaAction: number | { id: number } } | [capaAction: nu
         })
     
     complete.form = completeForm
-const capaAction = {
-    store: Object.assign(store, store),
-update: Object.assign(update, update),
-destroy: Object.assign(destroy, destroy),
-start: Object.assign(start, start),
-complete: Object.assign(complete, complete),
-}
+const CapaActionController = { store, update, destroy, start, complete }
 
-export default capaAction
+export default CapaActionController

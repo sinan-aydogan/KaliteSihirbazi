@@ -281,7 +281,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
  * @see app/Http/Controllers/StandardController.php:38
  * @route '/standard/{standard}'
  */
-export const show = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -296,7 +296,7 @@ show.definition = {
  * @see app/Http/Controllers/StandardController.php:38
  * @route '/standard/{standard}'
  */
-show.url = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+show.url = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { standard: args }
     }
@@ -329,7 +329,7 @@ show.url = (args: { standard: string | number | { id: string | number } } | [sta
  * @see app/Http/Controllers/StandardController.php:38
  * @route '/standard/{standard}'
  */
-show.get = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -338,7 +338,7 @@ show.get = (args: { standard: string | number | { id: string | number } } | [sta
  * @see app/Http/Controllers/StandardController.php:38
  * @route '/standard/{standard}'
  */
-show.head = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -348,7 +348,7 @@ show.head = (args: { standard: string | number | { id: string | number } } | [st
  * @see app/Http/Controllers/StandardController.php:38
  * @route '/standard/{standard}'
  */
-    const showForm = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    const showForm = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
         action: show.url(args, options),
         method: 'get',
     })
@@ -358,7 +358,7 @@ show.head = (args: { standard: string | number | { id: string | number } } | [st
  * @see app/Http/Controllers/StandardController.php:38
  * @route '/standard/{standard}'
  */
-        showForm.get = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        showForm.get = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: show.url(args, options),
             method: 'get',
         })
@@ -367,7 +367,7 @@ show.head = (args: { standard: string | number | { id: string | number } } | [st
  * @see app/Http/Controllers/StandardController.php:38
  * @route '/standard/{standard}'
  */
-        showForm.head = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        showForm.head = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: show.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'HEAD',
@@ -383,7 +383,7 @@ show.head = (args: { standard: string | number | { id: string | number } } | [st
  * @see app/Http/Controllers/StandardController.php:43
  * @route '/standard/{standard}/edit'
  */
-export const edit = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -398,7 +398,7 @@ edit.definition = {
  * @see app/Http/Controllers/StandardController.php:43
  * @route '/standard/{standard}/edit'
  */
-edit.url = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+edit.url = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { standard: args }
     }
@@ -431,7 +431,7 @@ edit.url = (args: { standard: string | number | { id: string | number } } | [sta
  * @see app/Http/Controllers/StandardController.php:43
  * @route '/standard/{standard}/edit'
  */
-edit.get = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -440,7 +440,7 @@ edit.get = (args: { standard: string | number | { id: string | number } } | [sta
  * @see app/Http/Controllers/StandardController.php:43
  * @route '/standard/{standard}/edit'
  */
-edit.head = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
@@ -450,7 +450,7 @@ edit.head = (args: { standard: string | number | { id: string | number } } | [st
  * @see app/Http/Controllers/StandardController.php:43
  * @route '/standard/{standard}/edit'
  */
-    const editForm = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    const editForm = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
         action: edit.url(args, options),
         method: 'get',
     })
@@ -460,7 +460,7 @@ edit.head = (args: { standard: string | number | { id: string | number } } | [st
  * @see app/Http/Controllers/StandardController.php:43
  * @route '/standard/{standard}/edit'
  */
-        editForm.get = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        editForm.get = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: edit.url(args, options),
             method: 'get',
         })
@@ -469,7 +469,7 @@ edit.head = (args: { standard: string | number | { id: string | number } } | [st
  * @see app/Http/Controllers/StandardController.php:43
  * @route '/standard/{standard}/edit'
  */
-        editForm.head = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        editForm.head = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: edit.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'HEAD',
@@ -485,7 +485,7 @@ edit.head = (args: { standard: string | number | { id: string | number } } | [st
  * @see app/Http/Controllers/StandardController.php:48
  * @route '/standard/{standard}'
  */
-export const update = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -500,7 +500,7 @@ update.definition = {
  * @see app/Http/Controllers/StandardController.php:48
  * @route '/standard/{standard}'
  */
-update.url = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+update.url = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { standard: args }
     }
@@ -533,7 +533,7 @@ update.url = (args: { standard: string | number | { id: string | number } } | [s
  * @see app/Http/Controllers/StandardController.php:48
  * @route '/standard/{standard}'
  */
-update.put = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -542,7 +542,7 @@ update.put = (args: { standard: string | number | { id: string | number } } | [s
  * @see app/Http/Controllers/StandardController.php:48
  * @route '/standard/{standard}'
  */
-update.patch = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update.patch = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
@@ -552,7 +552,7 @@ update.patch = (args: { standard: string | number | { id: string | number } } | 
  * @see app/Http/Controllers/StandardController.php:48
  * @route '/standard/{standard}'
  */
-    const updateForm = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const updateForm = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: update.url(args, {
                     [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                         _method: 'PUT',
@@ -567,7 +567,7 @@ update.patch = (args: { standard: string | number | { id: string | number } } | 
  * @see app/Http/Controllers/StandardController.php:48
  * @route '/standard/{standard}'
  */
-        updateForm.put = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        updateForm.put = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: update.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'PUT',
@@ -581,7 +581,7 @@ update.patch = (args: { standard: string | number | { id: string | number } } | 
  * @see app/Http/Controllers/StandardController.php:48
  * @route '/standard/{standard}'
  */
-        updateForm.patch = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        updateForm.patch = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: update.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'PATCH',
@@ -597,7 +597,7 @@ update.patch = (args: { standard: string | number | { id: string | number } } | 
  * @see app/Http/Controllers/StandardController.php:57
  * @route '/standard/{standard}'
  */
-export const destroy = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -612,7 +612,7 @@ destroy.definition = {
  * @see app/Http/Controllers/StandardController.php:57
  * @route '/standard/{standard}'
  */
-destroy.url = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { standard: args }
     }
@@ -645,7 +645,7 @@ destroy.url = (args: { standard: string | number | { id: string | number } } | [
  * @see app/Http/Controllers/StandardController.php:57
  * @route '/standard/{standard}'
  */
-destroy.delete = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -655,7 +655,7 @@ destroy.delete = (args: { standard: string | number | { id: string | number } } 
  * @see app/Http/Controllers/StandardController.php:57
  * @route '/standard/{standard}'
  */
-    const destroyForm = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const destroyForm = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: destroy.url(args, {
                     [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                         _method: 'DELETE',
@@ -670,7 +670,7 @@ destroy.delete = (args: { standard: string | number | { id: string | number } } 
  * @see app/Http/Controllers/StandardController.php:57
  * @route '/standard/{standard}'
  */
-        destroyForm.delete = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        destroyForm.delete = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: destroy.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'DELETE',

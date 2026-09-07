@@ -150,9 +150,9 @@ export default function ({roles, permissions}) {
                     {
                         id: 'capa-ac',
                         label: t('mainMenu.actions'),
-                        icon: 'arrow-right-arrow-left',
+                        icon: 'list-check',
                         type: "route",
-                        link: 'capa-action.index'
+                        link: 'capa.index'
                     }
                 ]
             },
