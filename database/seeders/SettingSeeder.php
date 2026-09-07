@@ -48,6 +48,19 @@ class SettingSeeder extends Seeder
                 'type' => 'string',
                 'value' => TimeFormat::H24->value
             ],
+            /*Education Settings*/
+            [
+                'code' => 'education_allowed_file_types',
+                'module' => 'education',
+                'type' => 'json',
+                'value' => json_encode(['pdf', 'doc', 'docx', 'xls', 'xlsx', 'jpg', 'jpeg', 'png'])
+            ],
+            [
+                'code' => 'education_max_file_size',
+                'module' => 'education',
+                'type' => 'json',
+                'value' => json_encode(['size' => 10, 'unit' => 'MB'])
+            ],
         ];
 
         foreach ($settings as $s) {

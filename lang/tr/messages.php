@@ -143,6 +143,9 @@ return [
     'timeSettings' => [
         'updated' => 'Zaman ayarları güncellendi.'
     ],
+    'educationSettings' => [
+        'updated' => 'Eğitim modülü ayarları güncellendi.'
+    ],
     'vehicleType' => [
         'created' => ':vehicleType isimli araç tipi oluşturuldu.',
         'deleted' => ':vehicleType isimli araç tipi silindi.',

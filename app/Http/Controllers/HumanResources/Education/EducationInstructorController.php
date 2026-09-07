@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\HumanResources\Education\StoreEducationInstructorRequest;
 use App\Http\Requests\HumanResources\Education\UpdateEducationInstructorRequest;
 use App\Models\HumanResources\Education\EducationInstructor;
+use App\Services\FileUploadSettingService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
@@ -13,6 +14,12 @@ use Inertia\Response;
 
 class EducationInstructorController extends Controller
 {
+    private const DEFAULT_ALLOWED_FILE_TYPES = ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'jpg', 'jpeg', 'png'];
+
+    public function __construct(private readonly FileUploadSettingService $fileUploadSettingService)
+    {
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -22,6 +29,9 @@ class EducationInstructorController extends Controller
     {
         return Inertia::render('Modules/HumanResources/Education/Setting/EducationInstructorPage', [
             'tableData' => $this->tableFilter(EducationInstructor::query())->latest('id')->paginate(10)->withQueryString(),
+            'allowedFileTypes' => $this->fileUploadSettingService->allowedFileTypes(
+                'education_allowed_file_types', self::DEFAULT_ALLOWED_FILE_TYPES,
+            ),
         ]);
     }
 

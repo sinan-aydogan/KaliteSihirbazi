@@ -70,6 +70,22 @@
     "completeEducation": "Complete Education",
     "cancelEducation": "Cancel Education"
   },
+  "setting": {
+    "education": {
+      "generalSettings": {
+        "title": "General Settings",
+        "subTitle": "Manage the education module's general settings"
+      },
+      "allowedFileTypes": {
+        "title": "Allowed File Types",
+        "subTitle": "Limit which file types can be selected when uploading an instructor or education document"
+      },
+      "maxFileSize": {
+        "title": "Maximum File Size",
+        "subTitle": "Set the maximum size allowed for an uploaded education document file"
+      }
+    }
+  },
   "message": {
     "feedback": {
       "noDescription": "No description has been added to this education yet.",

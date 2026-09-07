@@ -2,10 +2,15 @@
 
 namespace App\Http\Requests\HumanResources\Education;
 
+use App\Services\FileUploadSettingService;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateEducationRequest extends FormRequest
 {
+    private const DEFAULT_ALLOWED_FILE_TYPES = ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'jpg', 'jpeg', 'png'];
+
+    private const DEFAULT_MAX_FILE_SIZE = ['size' => 10, 'unit' => 'MB'];
+
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -36,7 +41,10 @@ class UpdateEducationRequest extends FormRequest
             'instructors' => 'nullable|array',
             'instructors.*' => 'nullable|string|max:255', // Role bilgisi
             'documents' => 'nullable|array',
-            'documents.*' => 'file|mimes:pdf,doc,docx,jpeg,png,jpg|max:10240', // 10MB max per file
+            'documents.*' => app(FileUploadSettingService::class)->fileValidationRules(
+                'education_allowed_file_types', self::DEFAULT_ALLOWED_FILE_TYPES,
+                'education_max_file_size', self::DEFAULT_MAX_FILE_SIZE,
+            ),
         ];
     }
 
@@ -64,8 +72,6 @@ class UpdateEducationRequest extends FormRequest
             'education_types.*.exists' => __('validation.exists'),
             'instructors.*.max' => __('validation.max.string', ['max' => 255]),
             'documents.*.file' => __('validation.file'),
-            'documents.*.mimes' => __('validation.mimes', ['values' => 'pdf, doc, docx, jpeg, png, jpg']),
-            'documents.*.max' => __('validation.max.file', ['max' => '10MB']),
         ];
     }
 }

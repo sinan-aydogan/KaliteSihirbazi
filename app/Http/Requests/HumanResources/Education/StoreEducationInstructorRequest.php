@@ -2,10 +2,15 @@
 
 namespace App\Http\Requests\HumanResources\Education;
 
+use App\Services\FileUploadSettingService;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreEducationInstructorRequest extends FormRequest
 {
+    private const DEFAULT_ALLOWED_FILE_TYPES = ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'jpg', 'jpeg', 'png'];
+
+    private const DEFAULT_MAX_FILE_SIZE = ['size' => 10, 'unit' => 'MB'];
+
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -25,7 +30,10 @@ class StoreEducationInstructorRequest extends FormRequest
             'name' => 'required|string|max:255',
             'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048', // 2MB max
             'documents' => 'nullable|array',
-            'documents.*' => 'file|mimes:pdf,doc,docx,jpeg,png,jpg,xlsx,xls|max:5120', // 5MB max per file
+            'documents.*' => app(FileUploadSettingService::class)->fileValidationRules(
+                'education_allowed_file_types', self::DEFAULT_ALLOWED_FILE_TYPES,
+                'education_max_file_size', self::DEFAULT_MAX_FILE_SIZE,
+            ),
         ];
     }
 
@@ -43,8 +51,6 @@ class StoreEducationInstructorRequest extends FormRequest
             'photo.mimes' => __('validation.mimes', ['values' => 'jpeg, png, jpg']),
             'photo.max' => __('validation.max.file', ['max' => '2MB']),
             'documents.*.file' => __('validation.file'),
-            'documents.*.mimes' => __('validation.mimes', ['values' => 'pdf, doc, docx, jpeg, png, jpg, xlsx, xls']),
-            'documents.*.max' => __('validation.max.file', ['max' => '5MB']),
         ];
     }
 }

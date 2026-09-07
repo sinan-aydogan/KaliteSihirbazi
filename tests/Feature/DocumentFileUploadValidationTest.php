@@ -1,8 +1,10 @@
 <?php
 
+use App\Enums\Document\DocumentAuthorityRole;
 use App\Models\Department;
 use App\Models\Document\Document;
 use App\Models\Document\DocumentType;
+use App\Models\Document\DocumentTypeAuthority;
 use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\UploadedFile;
@@ -10,10 +12,18 @@ use Illuminate\Support\Facades\Storage;
 
 beforeEach(function () {
     Storage::fake('public');
-    $this->actingAs(User::factory()->create());
+    $this->user = User::factory()->create();
+    $this->actingAs($this->user);
 
     $this->department = Department::create(['code' => 'QUALITY', 'name' => 'Quality', 'type' => 'main']);
     $this->documentType = DocumentType::create(['code' => 'PROC', 'name' => 'Procedure']);
+
+    DocumentTypeAuthority::create([
+        'document_type_id' => $this->documentType->id,
+        'user_id' => $this->user->id,
+        'role' => DocumentAuthorityRole::Author,
+        'granted_by' => $this->user->id,
+    ]);
 
     Setting::create([
         'code' => 'document_naming_rule',
@@ -63,9 +73,10 @@ test('it accepts a file within the configured allowed types and size', function 
     $this->post(route('document.store'), [
         ...baseDocumentPayload($this),
         'file' => $file,
-    ])->assertSessionHasNoErrors();
+    ])->assertSessionHasNoErrors()->assertRedirect();
 
     expect(Document::count())->toBe(1);
+    expect(Document::first()->versions()->count())->toBe(1);
 });
 
 test('it rejects a file larger than the configured max file size', function () {

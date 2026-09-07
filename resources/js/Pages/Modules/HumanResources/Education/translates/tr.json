@@ -70,6 +70,22 @@
     "completeEducation": "Eğitimi Tamamla",
     "cancelEducation": "Eğitimi İptal Et"
   },
+  "setting": {
+    "education": {
+      "generalSettings": {
+        "title": "Genel Ayarlar",
+        "subTitle": "Eğitim modülünün genel ayarlarını buradan yönetebilirsiniz"
+      },
+      "allowedFileTypes": {
+        "title": "İzin Verilen Dosya Türleri",
+        "subTitle": "Eğitmen ve eğitim belgesi yüklenirken seçilebilecek dosya türlerini buradan sınırlayabilirsiniz"
+      },
+      "maxFileSize": {
+        "title": "Maksimum Dosya Boyutu",
+        "subTitle": "Yüklenebilecek eğitim belgesi dosyalarının maksimum boyutunu buradan belirleyebilirsiniz"
+      }
+    }
+  },
   "message": {
     "feedback": {
       "noDescription": "Bu eğitime henüz açıklama eklenmemiş.",

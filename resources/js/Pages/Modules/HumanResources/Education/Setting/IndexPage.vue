@@ -27,6 +27,14 @@ const settingsMenu = [
         iconWrapper: 'bg-green-600',
         route: 'education-instructor.index',
         color: 'green'
+    },
+    {
+        title: tm('setting.education.generalSettings.title'),
+        description: 'İzin verilen dosya türleri ve maksimum dosya boyutunu yönetin',
+        icon: 'gears',
+        iconWrapper: 'bg-slate-600',
+        route: 'education-setting.general',
+        color: 'neutral'
     }
 ]
 

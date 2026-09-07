@@ -1,6 +1,6 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
-import {ref} from "vue";
+import {computed, ref} from "vue";
 import {useForm, router} from "@inertiajs/vue3";
 
 // Components
@@ -12,14 +12,21 @@ import FormSection from "@/Components/Form/FormSection.vue"
 import InputGroup from "@/Components/Form/InputGroup.vue"
 import TextInput from "@/Components/Form/TextInput.vue"
 import FileInput from "@/Components/Form/FileInput.vue"
+import {fileTypesToAcceptAttribute} from "@/Components/Form/FileTypeSelectInput.vue";
 
 // Props
 const props = defineProps({
     tableData: {
         type: Object,
         default: {}
+    },
+    allowedFileTypes: {
+        type: Array,
+        default: () => []
     }
 })
+
+const documentsAccept = computed(() => fileTypesToAcceptAttribute(props.allowedFileTypes))
 
 // Multi-lang
 import Translates from "../translates"
@@ -302,7 +309,7 @@ const removeExistingPhoto = async () => {
                         <file-input
                             @change="handleDocumentsChange"
                             multiple
-                            accept=".pdf,.doc,.docx,.xlsx,.xlx,video/*,audio/*,image/*"
+                            :accept="documentsAccept"
                             browse-label="Belge Seçin"
                             placeholder=""
                             preview

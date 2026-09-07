@@ -200,6 +200,9 @@ Route::middleware([
     Route::delete('education/{education}/media/{mediaId}', [EducationController::class, 'deleteMedia'])->name('education.delete-media');
     Route::delete('education-instructor/{educationInstructor}/media/{mediaId}', [EducationInstructorController::class, 'deleteMedia'])->name('education-instructor.delete-media');
 
+    // Education Setting Pages
+    Route::get('education/setting/general', [EducationSettingController::class, 'general'])->name('education-setting.general');
+
     // Document Type Authorities (author/reviewer/approver/viewer grants)
     Route::get('document-type/{documentType}/authorities', [DocumentTypeAuthorityController::class, 'index'])->name('document-type-authority.index');
     Route::post('document-type/{documentType}/authorities', [DocumentTypeAuthorityController::class, 'store'])->name('document-type-authority.store');
