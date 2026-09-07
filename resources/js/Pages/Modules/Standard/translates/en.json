@@ -1,0 +1,44 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Standards",
+            "subTitle": "Manage the quality standards your company holds"
+        },
+        "createPage": {
+            "title": "Create a Standard",
+            "subTitle": "Create a new standard in the system"
+        },
+        "accreditationsPage": {
+            "title": "Accreditations",
+            "subTitle": "Track the accreditation/certification records held against this standard"
+        },
+        "createAccreditationPage": {
+            "title": "Add Accreditation Record",
+            "subTitle": "Register a new accreditation/certification record"
+        }
+    },
+    "term": {
+        "name": "Standard Name",
+        "description": "Description",
+        "accreditationCount": "Accreditations",
+        "certificationBody": "Certification Body",
+        "accreditationBody": "Accreditation Body",
+        "certificateNumber": "Certificate Number",
+        "scope": "Scope",
+        "issueDate": "Issue Date",
+        "expiryDate": "Expiry Date",
+        "status": "Status",
+        "notes": "Notes",
+        "certificateFile": "Certificate File",
+        "accreditationStatus": {
+            "active": "Active",
+            "suspended": "Suspended",
+            "withdrawn": "Withdrawn"
+        },
+        "expired": "Expired"
+    },
+    "action": {
+        "manageAccreditations": "Manage Accreditations",
+        "addAccreditation": "Add Accreditation"
+    }
+}

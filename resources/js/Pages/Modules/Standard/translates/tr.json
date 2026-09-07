@@ -1,0 +1,44 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Standartlar",
+            "subTitle": "Şirketinizin sahip olduğu kalite standartlarını buradan yönetebilirsiniz"
+        },
+        "createPage": {
+            "title": "Standart Oluştur",
+            "subTitle": "Sistemde yeni bir standart oluşturun"
+        },
+        "accreditationsPage": {
+            "title": "Akreditasyonlar",
+            "subTitle": "Bu standarda ait akreditasyon/sertifikasyon kayıtlarını buradan takip edebilirsiniz"
+        },
+        "createAccreditationPage": {
+            "title": "Akreditasyon Kaydı Ekle",
+            "subTitle": "Yeni bir akreditasyon/sertifikasyon kaydı oluşturun"
+        }
+    },
+    "term": {
+        "name": "Standart Adı",
+        "description": "Açıklama",
+        "accreditationCount": "Akreditasyon",
+        "certificationBody": "Sertifikasyon Kuruluşu",
+        "accreditationBody": "Akreditasyon Kuruluşu",
+        "certificateNumber": "Sertifika Numarası",
+        "scope": "Kapsam",
+        "issueDate": "Veriliş Tarihi",
+        "expiryDate": "Geçerlilik Tarihi",
+        "status": "Durum",
+        "notes": "Notlar",
+        "certificateFile": "Sertifika Dosyası",
+        "accreditationStatus": {
+            "active": "Aktif",
+            "suspended": "Askıya Alındı",
+            "withdrawn": "İptal Edildi"
+        },
+        "expired": "Süresi Dolmuş"
+    },
+    "action": {
+        "manageAccreditations": "Akreditasyonları Yönet",
+        "addAccreditation": "Akreditasyon Ekle"
+    }
+}

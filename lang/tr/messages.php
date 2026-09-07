@@ -146,6 +146,17 @@ return [
     'educationSettings' => [
         'updated' => 'Eğitim modülü ayarları güncellendi.'
     ],
+    'standard' => [
+        'created' => ':standard isimli standart oluşturuldu.',
+        'updated' => ':standard isimli standart güncellendi.',
+        'deleted' => ':standard isimli standart silindi.',
+        'deletedError' => ':standard isimli standart silinemez çünkü üzerinde kayıtlı akreditasyonlar var.'
+    ],
+    'companyAccreditation' => [
+        'created' => 'Akreditasyon kaydı oluşturuldu.',
+        'updated' => 'Akreditasyon kaydı güncellendi.',
+        'deleted' => 'Akreditasyon kaydı silindi.'
+    ],
     'vehicleType' => [
         'created' => ':vehicleType isimli araç tipi oluşturuldu.',
         'deleted' => ':vehicleType isimli araç tipi silindi.',

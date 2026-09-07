@@ -26,6 +26,5 @@ test('unimplemented module menu routes render a coming soon page without exposin
     'raw-material',
     'consumable-material',
     'certificate',
-    'standard',
     'take-time-off',
 ]);

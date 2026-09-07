@@ -1,70 +1,70 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
-* @see \App\Http\Controllers\StandardController::search
+* @see \App\Http\Controllers\StandardController::index
  * @see app/Http/Controllers/StandardController.php:12
  * @route '/standard/search'
  */
-export const search = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
-    url: search.url(options),
+const index6e3770cfb266f140e65baf407e5393fb = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: index6e3770cfb266f140e65baf407e5393fb.url(options),
     method: 'post',
 })
 
-search.definition = {
+index6e3770cfb266f140e65baf407e5393fb.definition = {
     methods: ["post"],
     url: '/standard/search',
 } satisfies RouteDefinition<["post"]>
 
 /**
-* @see \App\Http\Controllers\StandardController::search
+* @see \App\Http\Controllers\StandardController::index
  * @see app/Http/Controllers/StandardController.php:12
  * @route '/standard/search'
  */
-search.url = (options?: RouteQueryOptions) => {
-    return search.definition.url + queryParams(options)
+index6e3770cfb266f140e65baf407e5393fb.url = (options?: RouteQueryOptions) => {
+    return index6e3770cfb266f140e65baf407e5393fb.definition.url + queryParams(options)
 }
 
 /**
-* @see \App\Http\Controllers\StandardController::search
+* @see \App\Http\Controllers\StandardController::index
  * @see app/Http/Controllers/StandardController.php:12
  * @route '/standard/search'
  */
-search.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
-    url: search.url(options),
+index6e3770cfb266f140e65baf407e5393fb.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: index6e3770cfb266f140e65baf407e5393fb.url(options),
     method: 'post',
 })
 
     /**
-* @see \App\Http\Controllers\StandardController::search
+* @see \App\Http\Controllers\StandardController::index
  * @see app/Http/Controllers/StandardController.php:12
  * @route '/standard/search'
  */
-    const searchForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-        action: search.url(options),
+    const index6e3770cfb266f140e65baf407e5393fbForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        action: index6e3770cfb266f140e65baf407e5393fb.url(options),
         method: 'post',
     })
 
             /**
-* @see \App\Http\Controllers\StandardController::search
+* @see \App\Http\Controllers\StandardController::index
  * @see app/Http/Controllers/StandardController.php:12
  * @route '/standard/search'
  */
-        searchForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-            action: search.url(options),
+        index6e3770cfb266f140e65baf407e5393fbForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+            action: index6e3770cfb266f140e65baf407e5393fb.url(options),
             method: 'post',
         })
     
-    search.form = searchForm
-/**
+    index6e3770cfb266f140e65baf407e5393fb.form = index6e3770cfb266f140e65baf407e5393fbForm
+    /**
 * @see \App\Http\Controllers\StandardController::index
  * @see app/Http/Controllers/StandardController.php:12
  * @route '/standard'
  */
-export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: index.url(options),
+const indexb5221e5415208c171c8e486f0595576a = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: indexb5221e5415208c171c8e486f0595576a.url(options),
     method: 'get',
 })
 
-index.definition = {
+indexb5221e5415208c171c8e486f0595576a.definition = {
     methods: ["get","head"],
     url: '/standard',
 } satisfies RouteDefinition<["get","head"]>
@@ -74,8 +74,8 @@ index.definition = {
  * @see app/Http/Controllers/StandardController.php:12
  * @route '/standard'
  */
-index.url = (options?: RouteQueryOptions) => {
-    return index.definition.url + queryParams(options)
+indexb5221e5415208c171c8e486f0595576a.url = (options?: RouteQueryOptions) => {
+    return indexb5221e5415208c171c8e486f0595576a.definition.url + queryParams(options)
 }
 
 /**
@@ -83,8 +83,8 @@ index.url = (options?: RouteQueryOptions) => {
  * @see app/Http/Controllers/StandardController.php:12
  * @route '/standard'
  */
-index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: index.url(options),
+indexb5221e5415208c171c8e486f0595576a.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: indexb5221e5415208c171c8e486f0595576a.url(options),
     method: 'get',
 })
 /**
@@ -92,8 +92,8 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
  * @see app/Http/Controllers/StandardController.php:12
  * @route '/standard'
  */
-index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: index.url(options),
+indexb5221e5415208c171c8e486f0595576a.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: indexb5221e5415208c171c8e486f0595576a.url(options),
     method: 'head',
 })
 
@@ -102,8 +102,8 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
  * @see app/Http/Controllers/StandardController.php:12
  * @route '/standard'
  */
-    const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-        action: index.url(options),
+    const indexb5221e5415208c171c8e486f0595576aForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        action: indexb5221e5415208c171c8e486f0595576a.url(options),
         method: 'get',
     })
 
@@ -112,8 +112,8 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
  * @see app/Http/Controllers/StandardController.php:12
  * @route '/standard'
  */
-        indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: index.url(options),
+        indexb5221e5415208c171c8e486f0595576aForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: indexb5221e5415208c171c8e486f0595576a.url(options),
             method: 'get',
         })
             /**
@@ -121,8 +121,8 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
  * @see app/Http/Controllers/StandardController.php:12
  * @route '/standard'
  */
-        indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: index.url({
+        indexb5221e5415208c171c8e486f0595576aForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: indexb5221e5415208c171c8e486f0595576a.url({
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'HEAD',
                             ...(options?.query ?? options?.mergeQuery ?? {}),
@@ -131,7 +131,18 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
             method: 'get',
         })
     
-    index.form = indexForm
+    indexb5221e5415208c171c8e486f0595576a.form = indexb5221e5415208c171c8e486f0595576aForm
+
+/**
+* Multiple routes resolve to \App\Http\Controllers\StandardController::index, so this export is a
+* dictionary keyed by URI rather than a callable. Call a specific route with `index['<uri>'](...)`,
+* or import the route by name from your generated `routes/` directory.
+*/
+export const index = {
+    '/standard/search': index6e3770cfb266f140e65baf407e5393fb,
+    '/standard': indexb5221e5415208c171c8e486f0595576a,
+}
+
 /**
 * @see \App\Http\Controllers\StandardController::create
  * @see app/Http/Controllers/StandardController.php:24
@@ -670,15 +681,6 @@ destroy.delete = (args: { standard: string | number | { id: string | number } } 
         })
     
     destroy.form = destroyForm
-const standard = {
-    search: Object.assign(search, search),
-index: Object.assign(index, index),
-create: Object.assign(create, create),
-store: Object.assign(store, store),
-show: Object.assign(show, show),
-edit: Object.assign(edit, edit),
-update: Object.assign(update, update),
-destroy: Object.assign(destroy, destroy),
-}
+const StandardController = { index, create, store, show, edit, update, destroy }
 
-export default standard
+export default StandardController

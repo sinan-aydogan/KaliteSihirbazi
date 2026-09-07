@@ -11,6 +11,8 @@ import SupplierController from './SupplierController'
 import HumanResources from './HumanResources'
 import Document from './Document'
 import MeasurementDevice from './MeasurementDevice'
+import StandardController from './StandardController'
+import CompanyAccreditationController from './CompanyAccreditationController'
 const Controllers = {
     AccountController: Object.assign(AccountController, AccountController),
 ApiTokenController: Object.assign(ApiTokenController, ApiTokenController),
@@ -25,6 +27,8 @@ SupplierController: Object.assign(SupplierController, SupplierController),
 HumanResources: Object.assign(HumanResources, HumanResources),
 Document: Object.assign(Document, Document),
 MeasurementDevice: Object.assign(MeasurementDevice, MeasurementDevice),
+StandardController: Object.assign(StandardController, StandardController),
+CompanyAccreditationController: Object.assign(CompanyAccreditationController, CompanyAccreditationController),
 }
 
 export default Controllers

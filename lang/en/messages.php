@@ -145,6 +145,17 @@ return [
     'educationSettings' => [
         'updated' => 'The education module settings have been updated successfully.'
     ],
+    'standard' => [
+        'created' => 'The standard named :standard has been created successfully',
+        'updated' => 'The standard named :standard has been updated successfully',
+        'deleted' => 'The standard named :standard deleted successfully',
+        'deletedError' => 'The standard named :standard cannot be deleted because it has accreditation records'
+    ],
+    'companyAccreditation' => [
+        'created' => 'Accreditation record created.',
+        'updated' => 'Accreditation record updated.',
+        'deleted' => 'Accreditation record deleted.'
+    ],
     'vehicleType' => [
         'created' => 'The new vehicle type named :vehicleType has been created successfully',
         'deleted' => 'The vehicle type named :vehicleType deleted successfully',

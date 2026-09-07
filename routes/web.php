@@ -5,6 +5,7 @@ use App\Http\Controllers\ApiTokenController;
 use App\Http\Controllers\BusinessManagement\Vehicle\VehicleSettingController;
 use App\Http\Controllers\BusinessManagement\Vehicle\VehicleStatusController;
 use App\Http\Controllers\BusinessManagement\Vehicle\VehicleTypeController;
+use App\Http\Controllers\CompanyAccreditationController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\Document\DistributionPointController;
 use App\Http\Controllers\Document\DocumentActionController;
@@ -41,6 +42,7 @@ use App\Http\Controllers\Setting\GlobalSettingController;
 use App\Http\Controllers\Setting\ModuleController;
 use App\Http\Controllers\Setting\PropertyController;
 use App\Http\Controllers\Setting\PropertyTypeController;
+use App\Http\Controllers\StandardController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\Tag\TagController;
 use App\Http\Controllers\Tag\TagTypeController;
@@ -133,6 +135,7 @@ Route::middleware([
         ['uri' => 'measurement-device-calibration', 'model' => 'measurementDeviceCalibration', 'controller' => MeasurementDeviceCalibrationTaskController::class],
         ['uri' => 'calibration-firm', 'model' => 'calibrationFirm', 'controller' => CalibrationFirmController::class],
         ['uri' => 'measurement-device-action', 'model' => 'measurementDeviceAction', 'controller' => MeasurementDeviceActionController::class],
+        ['uri' => 'standard', 'model' => 'standard', 'controller' => StandardController::class],
     ];
 
     $plannedModules = [
@@ -149,7 +152,6 @@ Route::middleware([
         'raw-material',
         'consumable-material',
         'certificate',
-        'standard',
         'take-time-off',
     ];
 
@@ -231,6 +233,12 @@ Route::middleware([
     Route::post('document-version/{documentVersion}/approve', [DocumentVersionWorkflowController::class, 'approve'])->name('document-version.approve');
     Route::post('document-version/{documentVersion}/reject', [DocumentVersionWorkflowController::class, 'reject'])->name('document-version.reject');
     Route::post('document-version/{documentVersion}/acknowledge', [DocumentVersionWorkflowController::class, 'acknowledge'])->name('document-version.acknowledge');
+
+    // Company Accreditations (nested under a Standard)
+    Route::get('standard/{standard}/accreditations', [CompanyAccreditationController::class, 'index'])->name('company-accreditation.index');
+    Route::post('standard/{standard}/accreditations', [CompanyAccreditationController::class, 'store'])->name('company-accreditation.store');
+    Route::put('company-accreditation/{companyAccreditation}', [CompanyAccreditationController::class, 'update'])->name('company-accreditation.update');
+    Route::delete('company-accreditation/{companyAccreditation}', [CompanyAccreditationController::class, 'destroy'])->name('company-accreditation.destroy');
 
     /* Warehouse Setting Pages */
     Route::resource('warehouse-type', WarehouseTypeController::class);
