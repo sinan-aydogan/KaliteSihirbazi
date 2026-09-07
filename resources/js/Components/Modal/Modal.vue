@@ -270,7 +270,6 @@ watch(
 
 <template>
   <teleport to="body">
-    <transition leave-active-class="duration-200">
       <div v-show="modelValue" class="fixed inset-0 z-50 flex justify-center overflow-hidden p-3 sm:p-6" :class="[
                 {
                     'items-center': position === 'center',
@@ -410,7 +409,6 @@ updateSize();
           </div>
         </transition>
       </div>
-    </transition>
   </teleport>
 </template>
 
