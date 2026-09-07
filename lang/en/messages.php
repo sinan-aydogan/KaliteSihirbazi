@@ -89,7 +89,8 @@ return [
         'deleted' => 'The document named :document deleted successfully',
         'permanentDeleted' => 'The document named :document permanently deleted successfully',
         'restored' => 'The document named :document restored successfully',
-        'updated' => 'The document named :document has been updated successfully'
+        'updated' => 'The document named :document has been updated successfully',
+        'cancelled' => 'The document named :document has been cancelled.'
     ],
     'documentType' => [
         'created' => 'The document type named :documentType has been created successfully',
@@ -108,7 +109,35 @@ return [
         'updated' => 'The distribution point named :distributionPoint has been updated successfully'
     ],
     'documentSettings' => [
-        'updated' => 'The document settings has been updated successfully.'
+        'updated' => 'The document settings has been updated successfully.',
+        'tagsUpdated' => 'The tag types shown in the document module have been updated.'
+    ],
+    'tagType' => [
+        'created' => 'Tag type created.',
+        'updated' => 'Tag type updated.',
+        'deleted' => 'Tag type deleted.'
+    ],
+    'tag' => [
+        'created' => 'Tag created.',
+        'deleted' => 'Tag deleted.'
+    ],
+    'documentTypeAuthority' => [
+        'grantedToUsers' => 'Authority granted to :count user(s).',
+        'grantedToDepartment' => 'Authority granted to :count department member(s).',
+        'revoked' => 'Authority revoked.'
+    ],
+    'documentVersion' => [
+        'created' => 'A new document revision has been uploaded.',
+        'submitted' => 'The document version has been submitted for review.',
+        'reviewed' => 'The document version has been reviewed.',
+        'approved' => 'The document version has been approved and published.',
+        'rejected' => 'The document version has been rejected.',
+        'acknowledged' => 'The document has been marked as read.'
+    ],
+    'documentRevisionRequest' => [
+        'created' => 'Revision request created.',
+        'accepted' => 'Revision request accepted.',
+        'rejected' => 'Revision request rejected.'
     ],
     'timeSettings' => [
         'updated' => 'The time settings have been updated successfully.'

@@ -90,7 +90,8 @@ return [
         'deleted' => ':document isimli döküman silindi.',
         'permanentDeleted' => ':document isimli döküman kalıcı olarak silindi.',
         'restored' => ':document isimli döküman geri getirildi.',
-        'updated' => ':document isimli döküman güncellendi.'
+        'updated' => ':document isimli döküman güncellendi.',
+        'cancelled' => ':document isimli döküman iptal edildi.'
     ],
     'documentType' => [
         'created' => ':documentType isimli döküman tipi oluşturuldu.',
@@ -109,7 +110,35 @@ return [
         'updated' => ':distributionPoint isimli döküman dağıtım noktası güncellendi.'
     ],
     'documentSettings' => [
-        'updated' => 'Döküman modülü ayarları güncellendi.'
+        'updated' => 'Döküman modülü ayarları güncellendi.',
+        'tagsUpdated' => 'Döküman modülünde gösterilecek etiket tipleri güncellendi.'
+    ],
+    'tagType' => [
+        'created' => 'Etiket tipi oluşturuldu.',
+        'updated' => 'Etiket tipi güncellendi.',
+        'deleted' => 'Etiket tipi silindi.'
+    ],
+    'tag' => [
+        'created' => 'Etiket oluşturuldu.',
+        'deleted' => 'Etiket silindi.'
+    ],
+    'documentTypeAuthority' => [
+        'grantedToUsers' => ':count kişiye yetki verildi.',
+        'grantedToDepartment' => 'Departman üyelerinden :count kişiye yetki verildi.',
+        'revoked' => 'Yetki kaldırıldı.'
+    ],
+    'documentVersion' => [
+        'created' => 'Yeni döküman revizyonu yüklendi.',
+        'submitted' => 'Döküman versiyonu incelemeye gönderildi.',
+        'reviewed' => 'Döküman versiyonu incelendi.',
+        'approved' => 'Döküman versiyonu onaylandı ve yayınlandı.',
+        'rejected' => 'Döküman versiyonu reddedildi.',
+        'acknowledged' => 'Döküman okundu olarak işaretlendi.'
+    ],
+    'documentRevisionRequest' => [
+        'created' => 'Revizyon talebi oluşturuldu.',
+        'accepted' => 'Revizyon talebi kabul edildi.',
+        'rejected' => 'Revizyon talebi reddedildi.'
     ],
     'timeSettings' => [
         'updated' => 'Zaman ayarları güncellendi.'

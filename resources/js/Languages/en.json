@@ -301,7 +301,19 @@
         "relatedModules": "Related Modules",
         "role": "Role",
         "roles": "Roles",
-        "settings": "Settings"
+        "settings": "Settings",
+        "tagManagement": "Tag Management",
+        "tagManagementDesc": "Management of tag types and tags"
+    },
+    "tagManagement": {
+        "typeName": "Type Name",
+        "description": "Description",
+        "tagCount": "Tag Count",
+        "manageTags": "Manage Tags",
+        "createType": "Create Tag Type",
+        "editType": "Update Tag Type",
+        "noTags": "No tags yet for this type",
+        "newTagName": "New tag name"
     },
     "supplier": {
         "main": {

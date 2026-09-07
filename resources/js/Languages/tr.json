@@ -276,7 +276,19 @@
         "relatedModules": "İlgili Modüller",
         "role": "Rol",
         "roles": "Roller",
-        "settings": "Ayarlar"
+        "settings": "Ayarlar",
+        "tagManagement": "Etiket Yönetimi",
+        "tagManagementDesc": "Etiket tiplerinin ve etiketlerin yönetimi"
+    },
+    "tagManagement": {
+        "typeName": "Tip Adı",
+        "description": "Açıklama",
+        "tagCount": "Etiket Sayısı",
+        "manageTags": "Etiketleri Yönet",
+        "createType": "Etiket Tipi Oluştur",
+        "editType": "Etiket Tipini Güncelle",
+        "noTags": "Bu tipte henüz etiket yok",
+        "newTagName": "Yeni etiket adı"
     },
     "supplier": {
         "main": {
