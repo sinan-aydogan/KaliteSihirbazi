@@ -12,22 +12,21 @@ import ConfirmedTwoFactorAuthenticationController from './ConfirmedTwoFactorAuth
 import TwoFactorQrCodeController from './TwoFactorQrCodeController'
 import TwoFactorSecretKeyController from './TwoFactorSecretKeyController'
 import RecoveryCodeController from './RecoveryCodeController'
-
 const Controllers = {
     AuthenticatedSessionController: Object.assign(AuthenticatedSessionController, AuthenticatedSessionController),
-    PasswordResetLinkController: Object.assign(PasswordResetLinkController, PasswordResetLinkController),
-    NewPasswordController: Object.assign(NewPasswordController, NewPasswordController),
-    RegisteredUserController: Object.assign(RegisteredUserController, RegisteredUserController),
-    ProfileInformationController: Object.assign(ProfileInformationController, ProfileInformationController),
-    PasswordController: Object.assign(PasswordController, PasswordController),
-    ConfirmablePasswordController: Object.assign(ConfirmablePasswordController, ConfirmablePasswordController),
-    ConfirmedPasswordStatusController: Object.assign(ConfirmedPasswordStatusController, ConfirmedPasswordStatusController),
-    TwoFactorAuthenticatedSessionController: Object.assign(TwoFactorAuthenticatedSessionController, TwoFactorAuthenticatedSessionController),
-    TwoFactorAuthenticationController: Object.assign(TwoFactorAuthenticationController, TwoFactorAuthenticationController),
-    ConfirmedTwoFactorAuthenticationController: Object.assign(ConfirmedTwoFactorAuthenticationController, ConfirmedTwoFactorAuthenticationController),
-    TwoFactorQrCodeController: Object.assign(TwoFactorQrCodeController, TwoFactorQrCodeController),
-    TwoFactorSecretKeyController: Object.assign(TwoFactorSecretKeyController, TwoFactorSecretKeyController),
-    RecoveryCodeController: Object.assign(RecoveryCodeController, RecoveryCodeController),
+PasswordResetLinkController: Object.assign(PasswordResetLinkController, PasswordResetLinkController),
+NewPasswordController: Object.assign(NewPasswordController, NewPasswordController),
+RegisteredUserController: Object.assign(RegisteredUserController, RegisteredUserController),
+ProfileInformationController: Object.assign(ProfileInformationController, ProfileInformationController),
+PasswordController: Object.assign(PasswordController, PasswordController),
+ConfirmablePasswordController: Object.assign(ConfirmablePasswordController, ConfirmablePasswordController),
+ConfirmedPasswordStatusController: Object.assign(ConfirmedPasswordStatusController, ConfirmedPasswordStatusController),
+TwoFactorAuthenticatedSessionController: Object.assign(TwoFactorAuthenticatedSessionController, TwoFactorAuthenticatedSessionController),
+TwoFactorAuthenticationController: Object.assign(TwoFactorAuthenticationController, TwoFactorAuthenticationController),
+ConfirmedTwoFactorAuthenticationController: Object.assign(ConfirmedTwoFactorAuthenticationController, ConfirmedTwoFactorAuthenticationController),
+TwoFactorQrCodeController: Object.assign(TwoFactorQrCodeController, TwoFactorQrCodeController),
+TwoFactorSecretKeyController: Object.assign(TwoFactorSecretKeyController, TwoFactorSecretKeyController),
+RecoveryCodeController: Object.assign(RecoveryCodeController, RecoveryCodeController),
 }
 
 export default Controllers

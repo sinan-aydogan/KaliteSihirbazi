@@ -1,8 +1,9 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../wayfinder'
 /**
-* @see routes/web.php:144
-* @route '/document-action'
-*/
+* @see \App\Http\Controllers\Document\DocumentActionController::index
+ * @see app/Http/Controllers/Document/DocumentActionController.php:18
+ * @route '/document-actions'
+ */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: index.url(options),
     method: 'get',
@@ -10,69 +11,72 @@ export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 index.definition = {
     methods: ["get","head"],
-    url: '/document-action',
+    url: '/document-actions',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
-* @see routes/web.php:144
-* @route '/document-action'
-*/
+* @see \App\Http\Controllers\Document\DocumentActionController::index
+ * @see app/Http/Controllers/Document/DocumentActionController.php:18
+ * @route '/document-actions'
+ */
 index.url = (options?: RouteQueryOptions) => {
     return index.definition.url + queryParams(options)
 }
 
 /**
-* @see routes/web.php:144
-* @route '/document-action'
-*/
+* @see \App\Http\Controllers\Document\DocumentActionController::index
+ * @see app/Http/Controllers/Document/DocumentActionController.php:18
+ * @route '/document-actions'
+ */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: index.url(options),
     method: 'get',
 })
-
 /**
-* @see routes/web.php:144
-* @route '/document-action'
-*/
+* @see \App\Http\Controllers\Document\DocumentActionController::index
+ * @see app/Http/Controllers/Document/DocumentActionController.php:18
+ * @route '/document-actions'
+ */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
     method: 'head',
 })
 
-/**
-* @see routes/web.php:144
-* @route '/document-action'
-*/
-const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
+    /**
+* @see \App\Http\Controllers\Document\DocumentActionController::index
+ * @see app/Http/Controllers/Document/DocumentActionController.php:18
+ * @route '/document-actions'
+ */
+    const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        action: index.url(options),
+        method: 'get',
+    })
 
-/**
-* @see routes/web.php:144
-* @route '/document-action'
-*/
-indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see routes/web.php:144
-* @route '/document-action'
-*/
-indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-index.form = indexForm
-
+            /**
+* @see \App\Http\Controllers\Document\DocumentActionController::index
+ * @see app/Http/Controllers/Document/DocumentActionController.php:18
+ * @route '/document-actions'
+ */
+        indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: index.url(options),
+            method: 'get',
+        })
+            /**
+* @see \App\Http\Controllers\Document\DocumentActionController::index
+ * @see app/Http/Controllers/Document/DocumentActionController.php:18
+ * @route '/document-actions'
+ */
+        indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: index.url({
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'HEAD',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'get',
+        })
+    
+    index.form = indexForm
 const documentAction = {
     index: Object.assign(index, index),
 }
