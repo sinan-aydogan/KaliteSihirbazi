@@ -8,17 +8,28 @@ use App\Models\Capa;
 use App\Models\CapaAction;
 use App\Models\CapaVerification;
 use App\Models\User;
+use App\Services\Problem\ProblemWorkflowService;
 use RuntimeException;
 
 class CapaWorkflowService
 {
+    public function __construct(private readonly ProblemWorkflowService $problemWorkflowService)
+    {
+    }
+
     public function create(array $data, User $author): Capa
     {
-        return Capa::create([
+        $capa = Capa::create([
             ...$data,
             'status' => CapaStatus::Open,
             'opened_by_id' => $author->id,
         ]);
+
+        if ($capa->problem_id) {
+            $this->problemWorkflowService->markCapaRaised($capa->problem);
+        }
+
+        return $capa;
     }
 
     /**

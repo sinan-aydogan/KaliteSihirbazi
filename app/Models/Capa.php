@@ -15,6 +15,7 @@ class Capa extends Model
     use HasFactory;
 
     protected $fillable = [
+        'problem_id',
         'title',
         'type',
         'description',
@@ -51,6 +52,11 @@ class Capa extends Model
         $sequence = static::where('code', 'like', "DOF-{$year}-%")->count() + 1;
 
         return sprintf('DOF-%d-%03d', $year, $sequence);
+    }
+
+    public function problem(): BelongsTo
+    {
+        return $this->belongsTo(Problem::class);
     }
 
     public function actions(): HasMany

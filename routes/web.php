@@ -41,6 +41,8 @@ use App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrat
 use App\Http\Controllers\MeasurementDevice\DeviceInfoController;
 use App\Http\Controllers\MeasurementDevice\MeasurementDeviceController;
 use App\Http\Controllers\MeasurementDevice\MeasurementDeviceTypeController;
+use App\Http\Controllers\ProblemController;
+use App\Http\Controllers\ProblemWorkflowController;
 use App\Http\Controllers\Setting\GlobalSettingController;
 use App\Http\Controllers\Setting\ModuleController;
 use App\Http\Controllers\Setting\PropertyController;
@@ -140,11 +142,11 @@ Route::middleware([
         ['uri' => 'measurement-device-action', 'model' => 'measurementDeviceAction', 'controller' => MeasurementDeviceActionController::class],
         ['uri' => 'standard', 'model' => 'standard', 'controller' => StandardController::class],
         ['uri' => 'capa', 'model' => 'capa', 'controller' => CapaController::class],
+        ['uri' => 'problem', 'model' => 'problem', 'controller' => ProblemController::class],
     ];
 
     $plannedModules = [
         'audit-firm',
-        'problem',
         'product-tree',
         'audit',
         'improvement-work',
@@ -254,6 +256,11 @@ Route::middleware([
     Route::post('capa/{capa}/submit-for-verification', [CapaWorkflowController::class, 'submitForVerification'])->name('capa.submit-for-verification');
     Route::post('capa/{capa}/verify', [CapaWorkflowController::class, 'verify'])->name('capa.verify');
     Route::post('capa/{capa}/reopen', [CapaWorkflowController::class, 'reopen'])->name('capa.reopen');
+
+    // Problem (Uygunsuzluk) Workflow
+    Route::post('problem/{problem}/mark-under-review', [ProblemWorkflowController::class, 'markUnderReview'])->name('problem.mark-under-review');
+    Route::post('problem/{problem}/close-without-capa', [ProblemWorkflowController::class, 'closeWithoutCapa'])->name('problem.close-without-capa');
+    Route::post('problem/{problem}/close', [ProblemWorkflowController::class, 'close'])->name('problem.close');
 
     /* Warehouse Setting Pages */
     Route::resource('warehouse-type', WarehouseTypeController::class);

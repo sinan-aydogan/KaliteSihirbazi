@@ -2,85 +2,87 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Problem;
 use App\Http\Requests\StoreProblemRequest;
 use App\Http\Requests\UpdateProblemRequest;
+use App\Models\Department;
+use App\Models\Problem;
+use App\Models\User;
+use App\Services\Problem\ProblemWorkflowService;
+use Inertia\Inertia;
 
 class ProblemController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function __construct(private readonly ProblemWorkflowService $problemWorkflowService)
     {
-        //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function index()
+    {
+        $problems = $this->tableFilter(Problem::withCount('capas')->with(['detectedBy:id,name', 'department:id,name']))
+            ->latest('id')
+            ->paginate(10)
+            ->withQueryString();
+
+        return Inertia::render('Modules/Problem/IndexPage', [
+            'tableData' => $problems,
+            'departments' => Department::all(['id', 'name']),
+        ]);
+    }
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreProblemRequest  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(StoreProblemRequest $request)
     {
-        //
+        $problem = $this->problemWorkflowService->create($request->validated(), auth()->user());
+
+        session()->flash('message', ['type' => 'success', 'content' => __('messages.problem.created', ['problem' => $problem->code])]);
+
+        return redirect()->back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Problem  $problem
-     * @return \Illuminate\Http\Response
-     */
     public function show(Problem $problem)
     {
-        //
+        $problem->load([
+            'detectedBy:id,name',
+            'department:id,name',
+            'capas.responsible:id,name',
+        ]);
+
+        return Inertia::render('Modules/Problem/ShowPage', [
+            'problem' => $problem,
+            'users' => User::all(['id', 'name']),
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Problem  $problem
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Problem $problem)
     {
-        //
+        return response()->json($problem);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateProblemRequest  $request
-     * @param  \App\Models\Problem  $problem
-     * @return \Illuminate\Http\Response
-     */
     public function update(UpdateProblemRequest $request, Problem $problem)
     {
-        //
+        $this->problemWorkflowService->update($problem, $request->validated());
+
+        session()->flash('message', ['type' => 'success', 'content' => __('messages.problem.updated', ['problem' => $problem->code])]);
+
+        return redirect()->back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Problem  $problem
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Problem $problem)
     {
-        //
+        if ($problem->capas()->exists()) {
+            session()->flash('message', ['type' => 'danger', 'content' => __('messages.problem.deletedError', ['problem' => $problem->code])]);
+
+            return redirect()->back();
+        }
+
+        session()->flash('message', ['type' => 'success', 'content' => __('messages.problem.deleted', ['problem' => $problem->code])]);
+
+        $problem->delete();
+
+        return redirect()->route('problem.index');
     }
 }

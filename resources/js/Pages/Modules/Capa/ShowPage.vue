@@ -216,6 +216,12 @@ const submitVerify = () => {
                     <span class="px-2 py-0.5 rounded text-xs mt-2 inline-block"
                           :class="statusColorClasses[capa.status] ?? 'bg-slate-100 text-slate-700'"
                           v-text="tm(`term.capaStatus.${capa.status}`)"/>
+                    <div v-if="capa.problem" class="mt-2 text-xs text-slate-400">
+                        Uygunsuzluk:
+                        <span class="text-sky-600 cursor-pointer hover:underline" @click="router.visit(route('problem.show', capa.problem.id))">
+                            {{ capa.problem.code }} — {{ capa.problem.title }}
+                        </span>
+                    </div>
                 </div>
                 <div class="flex gap-2 flex-wrap">
                     <simple-button v-if="capa.status === 'in_progress'" color="green" @click="submitForVerification">

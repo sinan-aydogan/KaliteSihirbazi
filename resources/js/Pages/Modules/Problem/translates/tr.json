@@ -1,0 +1,60 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Uygunsuzluklar",
+            "subTitle": "Denetim, müşteri şikayeti veya iç gözlemlerden gelen uygunsuzluk kayıtlarını buradan yönetebilirsiniz"
+        },
+        "createPage": {
+            "title": "Uygunsuzluk Kaydı Oluştur",
+            "subTitle": "Yeni bir uygunsuzluk/bulgu kaydı açın"
+        },
+        "showPage": {
+            "title": "Uygunsuzluk Detayı",
+            "subTitle": "Bu uygunsuzluğa bağlı DÖF kayıtlarını buradan yönetin"
+        },
+        "raiseCapaPage": {
+            "title": "DÖF Aç",
+            "subTitle": "Bu uygunsuzluk için bir düzeltici/önleyici faaliyet kaydı açın"
+        }
+    },
+    "term": {
+        "code": "Uygunsuzluk No",
+        "title": "Başlık",
+        "description": "Açıklama",
+        "sourceType": "Kaynak",
+        "severity": "Önem Derecesi",
+        "status": "Durum",
+        "detectedBy": "Tespit Eden",
+        "department": "Birim",
+        "detectedDate": "Tespit Tarihi",
+        "closedAt": "Kapanış Tarihi",
+        "capaCount": "DÖF",
+        "problemSourceType": {
+            "audit_finding": "Denetim Bulgusu",
+            "customer_complaint": "Müşteri Şikayeti",
+            "internal_observation": "İç Gözlem",
+            "supplier": "Tedarikçi",
+            "other": "Diğer"
+        },
+        "problemSeverity": {
+            "low": "Düşük",
+            "medium": "Orta",
+            "high": "Yüksek",
+            "critical": "Kritik"
+        },
+        "problemStatus": {
+            "open": "Açık",
+            "under_review": "İnceleniyor",
+            "capa_raised": "DÖF Açıldı",
+            "closed_without_capa": "DÖF Gerektirmeden Kapatıldı",
+            "closed": "Kapatıldı"
+        }
+    },
+    "action": {
+        "viewDetails": "Detay / Yönet",
+        "markUnderReview": "İncelemeye Al",
+        "raiseCapa": "DÖF Aç",
+        "closeWithoutCapa": "DÖF Gerektirmeden Kapat",
+        "close": "Kapat"
+    }
+}

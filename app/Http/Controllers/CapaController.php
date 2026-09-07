@@ -47,6 +47,7 @@ class CapaController extends Controller
         $capa->load([
             'responsible:id,name',
             'openedBy:id,name',
+            'problem:id,code,title',
             'actions.responsible:id,name',
             'verifications.verifiedBy:id,name',
         ]);

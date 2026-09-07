@@ -1,0 +1,60 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Nonconformities",
+            "subTitle": "Manage nonconformity records from audits, customer complaints or internal observations"
+        },
+        "createPage": {
+            "title": "Create Nonconformity",
+            "subTitle": "Open a new nonconformity/finding record"
+        },
+        "showPage": {
+            "title": "Nonconformity Detail",
+            "subTitle": "Manage the CAPAs raised against this nonconformity"
+        },
+        "raiseCapaPage": {
+            "title": "Raise CAPA",
+            "subTitle": "Open a corrective/preventive action record for this nonconformity"
+        }
+    },
+    "term": {
+        "code": "Nonconformity No",
+        "title": "Title",
+        "description": "Description",
+        "sourceType": "Source",
+        "severity": "Severity",
+        "status": "Status",
+        "detectedBy": "Detected By",
+        "department": "Department",
+        "detectedDate": "Detected Date",
+        "closedAt": "Closed At",
+        "capaCount": "CAPAs",
+        "problemSourceType": {
+            "audit_finding": "Audit Finding",
+            "customer_complaint": "Customer Complaint",
+            "internal_observation": "Internal Observation",
+            "supplier": "Supplier",
+            "other": "Other"
+        },
+        "problemSeverity": {
+            "low": "Low",
+            "medium": "Medium",
+            "high": "High",
+            "critical": "Critical"
+        },
+        "problemStatus": {
+            "open": "Open",
+            "under_review": "Under Review",
+            "capa_raised": "CAPA Raised",
+            "closed_without_capa": "Closed Without CAPA",
+            "closed": "Closed"
+        }
+    },
+    "action": {
+        "viewDetails": "Details / Manage",
+        "markUnderReview": "Mark Under Review",
+        "raiseCapa": "Raise CAPA",
+        "closeWithoutCapa": "Close Without CAPA",
+        "close": "Close"
+    }
+}

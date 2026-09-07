@@ -173,6 +173,15 @@ return [
         'started' => 'Aksiyon başlatıldı.',
         'completed' => 'Aksiyon tamamlandı.'
     ],
+    'problem' => [
+        'created' => ':problem kodlu uygunsuzluk kaydı oluşturuldu.',
+        'updated' => ':problem kodlu uygunsuzluk kaydı güncellendi.',
+        'deleted' => ':problem kodlu uygunsuzluk kaydı silindi.',
+        'deletedError' => ':problem kodlu uygunsuzluk kaydı silinemez çünkü üzerinde açılmış DÖF kayıtları var.',
+        'markedUnderReview' => 'Uygunsuzluk inceleme durumuna alındı.',
+        'closedWithoutCapa' => 'Uygunsuzluk DÖF gerektirmeden kapatıldı.',
+        'closed' => 'Uygunsuzluk kapatıldı.'
+    ],
     'vehicleType' => [
         'created' => ':vehicleType isimli araç tipi oluşturuldu.',
         'deleted' => ':vehicleType isimli araç tipi silindi.',

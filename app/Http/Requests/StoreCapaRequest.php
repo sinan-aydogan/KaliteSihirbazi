@@ -17,6 +17,7 @@ class StoreCapaRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'problem_id' => 'nullable|exists:problems,id',
             'title' => 'required|string|max:255',
             'type' => ['required', Rule::enum(CapaType::class)],
             'description' => 'required|string',

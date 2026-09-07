@@ -1,70 +1,70 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
-* @see \App\Http\Controllers\ProblemController::search
+* @see \App\Http\Controllers\ProblemController::index
  * @see app/Http/Controllers/ProblemController.php:19
  * @route '/problem/search'
  */
-export const search = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
-    url: search.url(options),
+const indexd189b3b7729f692b7bd575bff877c078 = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: indexd189b3b7729f692b7bd575bff877c078.url(options),
     method: 'post',
 })
 
-search.definition = {
+indexd189b3b7729f692b7bd575bff877c078.definition = {
     methods: ["post"],
     url: '/problem/search',
 } satisfies RouteDefinition<["post"]>
 
 /**
-* @see \App\Http\Controllers\ProblemController::search
+* @see \App\Http\Controllers\ProblemController::index
  * @see app/Http/Controllers/ProblemController.php:19
  * @route '/problem/search'
  */
-search.url = (options?: RouteQueryOptions) => {
-    return search.definition.url + queryParams(options)
+indexd189b3b7729f692b7bd575bff877c078.url = (options?: RouteQueryOptions) => {
+    return indexd189b3b7729f692b7bd575bff877c078.definition.url + queryParams(options)
 }
 
 /**
-* @see \App\Http\Controllers\ProblemController::search
+* @see \App\Http\Controllers\ProblemController::index
  * @see app/Http/Controllers/ProblemController.php:19
  * @route '/problem/search'
  */
-search.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
-    url: search.url(options),
+indexd189b3b7729f692b7bd575bff877c078.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: indexd189b3b7729f692b7bd575bff877c078.url(options),
     method: 'post',
 })
 
     /**
-* @see \App\Http\Controllers\ProblemController::search
+* @see \App\Http\Controllers\ProblemController::index
  * @see app/Http/Controllers/ProblemController.php:19
  * @route '/problem/search'
  */
-    const searchForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-        action: search.url(options),
+    const indexd189b3b7729f692b7bd575bff877c078Form = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        action: indexd189b3b7729f692b7bd575bff877c078.url(options),
         method: 'post',
     })
 
             /**
-* @see \App\Http\Controllers\ProblemController::search
+* @see \App\Http\Controllers\ProblemController::index
  * @see app/Http/Controllers/ProblemController.php:19
  * @route '/problem/search'
  */
-        searchForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-            action: search.url(options),
+        indexd189b3b7729f692b7bd575bff877c078Form.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+            action: indexd189b3b7729f692b7bd575bff877c078.url(options),
             method: 'post',
         })
     
-    search.form = searchForm
-/**
+    indexd189b3b7729f692b7bd575bff877c078.form = indexd189b3b7729f692b7bd575bff877c078Form
+    /**
 * @see \App\Http\Controllers\ProblemController::index
  * @see app/Http/Controllers/ProblemController.php:19
  * @route '/problem'
  */
-export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: index.url(options),
+const index7235179c9e59b13ba187ea2287649b3d = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: index7235179c9e59b13ba187ea2287649b3d.url(options),
     method: 'get',
 })
 
-index.definition = {
+index7235179c9e59b13ba187ea2287649b3d.definition = {
     methods: ["get","head"],
     url: '/problem',
 } satisfies RouteDefinition<["get","head"]>
@@ -74,8 +74,8 @@ index.definition = {
  * @see app/Http/Controllers/ProblemController.php:19
  * @route '/problem'
  */
-index.url = (options?: RouteQueryOptions) => {
-    return index.definition.url + queryParams(options)
+index7235179c9e59b13ba187ea2287649b3d.url = (options?: RouteQueryOptions) => {
+    return index7235179c9e59b13ba187ea2287649b3d.definition.url + queryParams(options)
 }
 
 /**
@@ -83,8 +83,8 @@ index.url = (options?: RouteQueryOptions) => {
  * @see app/Http/Controllers/ProblemController.php:19
  * @route '/problem'
  */
-index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: index.url(options),
+index7235179c9e59b13ba187ea2287649b3d.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: index7235179c9e59b13ba187ea2287649b3d.url(options),
     method: 'get',
 })
 /**
@@ -92,8 +92,8 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
  * @see app/Http/Controllers/ProblemController.php:19
  * @route '/problem'
  */
-index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: index.url(options),
+index7235179c9e59b13ba187ea2287649b3d.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: index7235179c9e59b13ba187ea2287649b3d.url(options),
     method: 'head',
 })
 
@@ -102,8 +102,8 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
  * @see app/Http/Controllers/ProblemController.php:19
  * @route '/problem'
  */
-    const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-        action: index.url(options),
+    const index7235179c9e59b13ba187ea2287649b3dForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        action: index7235179c9e59b13ba187ea2287649b3d.url(options),
         method: 'get',
     })
 
@@ -112,8 +112,8 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
  * @see app/Http/Controllers/ProblemController.php:19
  * @route '/problem'
  */
-        indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: index.url(options),
+        index7235179c9e59b13ba187ea2287649b3dForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: index7235179c9e59b13ba187ea2287649b3d.url(options),
             method: 'get',
         })
             /**
@@ -121,8 +121,8 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
  * @see app/Http/Controllers/ProblemController.php:19
  * @route '/problem'
  */
-        indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: index.url({
+        index7235179c9e59b13ba187ea2287649b3dForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: index7235179c9e59b13ba187ea2287649b3d.url({
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'HEAD',
                             ...(options?.query ?? options?.mergeQuery ?? {}),
@@ -131,7 +131,18 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
             method: 'get',
         })
     
-    index.form = indexForm
+    index7235179c9e59b13ba187ea2287649b3d.form = index7235179c9e59b13ba187ea2287649b3dForm
+
+/**
+* Multiple routes resolve to \App\Http\Controllers\ProblemController::index, so this export is a
+* dictionary keyed by URI rather than a callable. Call a specific route with `index['<uri>'](...)`,
+* or import the route by name from your generated `routes/` directory.
+*/
+export const index = {
+    '/problem/search': indexd189b3b7729f692b7bd575bff877c078,
+    '/problem': index7235179c9e59b13ba187ea2287649b3d,
+}
+
 /**
 * @see \App\Http\Controllers\ProblemController::create
  * @see app/Http/Controllers/ProblemController.php:32
@@ -670,255 +681,6 @@ destroy.delete = (args: { problem: number | { id: number } } | [problem: number 
         })
     
     destroy.form = destroyForm
-/**
-* @see \App\Http\Controllers\ProblemWorkflowController::markUnderReview
- * @see app/Http/Controllers/ProblemWorkflowController.php:15
- * @route '/problem/{problem}/mark-under-review'
- */
-export const markUnderReview = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
-    url: markUnderReview.url(args, options),
-    method: 'post',
-})
+const ProblemController = { index, create, store, show, edit, update, destroy }
 
-markUnderReview.definition = {
-    methods: ["post"],
-    url: '/problem/{problem}/mark-under-review',
-} satisfies RouteDefinition<["post"]>
-
-/**
-* @see \App\Http\Controllers\ProblemWorkflowController::markUnderReview
- * @see app/Http/Controllers/ProblemWorkflowController.php:15
- * @route '/problem/{problem}/mark-under-review'
- */
-markUnderReview.url = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
-    if (typeof args === 'string' || typeof args === 'number') {
-        args = { problem: args }
-    }
-
-            if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
-            args = { problem: args.id }
-        }
-    
-    if (Array.isArray(args)) {
-        args = {
-                    problem: args[0],
-                }
-    }
-
-    args = applyUrlDefaults(args)
-
-    const parsedArgs = {
-                        problem: typeof args.problem === 'object'
-                ? args.problem.id
-                : args.problem,
-                }
-
-    return markUnderReview.definition.url
-            .replace('{problem}', parsedArgs.problem.toString())
-            .replace(/\/+$/, '') + queryParams(options)
-}
-
-/**
-* @see \App\Http\Controllers\ProblemWorkflowController::markUnderReview
- * @see app/Http/Controllers/ProblemWorkflowController.php:15
- * @route '/problem/{problem}/mark-under-review'
- */
-markUnderReview.post = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
-    url: markUnderReview.url(args, options),
-    method: 'post',
-})
-
-    /**
-* @see \App\Http\Controllers\ProblemWorkflowController::markUnderReview
- * @see app/Http/Controllers/ProblemWorkflowController.php:15
- * @route '/problem/{problem}/mark-under-review'
- */
-    const markUnderReviewForm = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-        action: markUnderReview.url(args, options),
-        method: 'post',
-    })
-
-            /**
-* @see \App\Http\Controllers\ProblemWorkflowController::markUnderReview
- * @see app/Http/Controllers/ProblemWorkflowController.php:15
- * @route '/problem/{problem}/mark-under-review'
- */
-        markUnderReviewForm.post = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-            action: markUnderReview.url(args, options),
-            method: 'post',
-        })
-    
-    markUnderReview.form = markUnderReviewForm
-/**
-* @see \App\Http\Controllers\ProblemWorkflowController::closeWithoutCapa
- * @see app/Http/Controllers/ProblemWorkflowController.php:23
- * @route '/problem/{problem}/close-without-capa'
- */
-export const closeWithoutCapa = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
-    url: closeWithoutCapa.url(args, options),
-    method: 'post',
-})
-
-closeWithoutCapa.definition = {
-    methods: ["post"],
-    url: '/problem/{problem}/close-without-capa',
-} satisfies RouteDefinition<["post"]>
-
-/**
-* @see \App\Http\Controllers\ProblemWorkflowController::closeWithoutCapa
- * @see app/Http/Controllers/ProblemWorkflowController.php:23
- * @route '/problem/{problem}/close-without-capa'
- */
-closeWithoutCapa.url = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
-    if (typeof args === 'string' || typeof args === 'number') {
-        args = { problem: args }
-    }
-
-            if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
-            args = { problem: args.id }
-        }
-    
-    if (Array.isArray(args)) {
-        args = {
-                    problem: args[0],
-                }
-    }
-
-    args = applyUrlDefaults(args)
-
-    const parsedArgs = {
-                        problem: typeof args.problem === 'object'
-                ? args.problem.id
-                : args.problem,
-                }
-
-    return closeWithoutCapa.definition.url
-            .replace('{problem}', parsedArgs.problem.toString())
-            .replace(/\/+$/, '') + queryParams(options)
-}
-
-/**
-* @see \App\Http\Controllers\ProblemWorkflowController::closeWithoutCapa
- * @see app/Http/Controllers/ProblemWorkflowController.php:23
- * @route '/problem/{problem}/close-without-capa'
- */
-closeWithoutCapa.post = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
-    url: closeWithoutCapa.url(args, options),
-    method: 'post',
-})
-
-    /**
-* @see \App\Http\Controllers\ProblemWorkflowController::closeWithoutCapa
- * @see app/Http/Controllers/ProblemWorkflowController.php:23
- * @route '/problem/{problem}/close-without-capa'
- */
-    const closeWithoutCapaForm = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-        action: closeWithoutCapa.url(args, options),
-        method: 'post',
-    })
-
-            /**
-* @see \App\Http\Controllers\ProblemWorkflowController::closeWithoutCapa
- * @see app/Http/Controllers/ProblemWorkflowController.php:23
- * @route '/problem/{problem}/close-without-capa'
- */
-        closeWithoutCapaForm.post = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-            action: closeWithoutCapa.url(args, options),
-            method: 'post',
-        })
-    
-    closeWithoutCapa.form = closeWithoutCapaForm
-/**
-* @see \App\Http\Controllers\ProblemWorkflowController::close
- * @see app/Http/Controllers/ProblemWorkflowController.php:31
- * @route '/problem/{problem}/close'
- */
-export const close = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
-    url: close.url(args, options),
-    method: 'post',
-})
-
-close.definition = {
-    methods: ["post"],
-    url: '/problem/{problem}/close',
-} satisfies RouteDefinition<["post"]>
-
-/**
-* @see \App\Http\Controllers\ProblemWorkflowController::close
- * @see app/Http/Controllers/ProblemWorkflowController.php:31
- * @route '/problem/{problem}/close'
- */
-close.url = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
-    if (typeof args === 'string' || typeof args === 'number') {
-        args = { problem: args }
-    }
-
-            if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
-            args = { problem: args.id }
-        }
-    
-    if (Array.isArray(args)) {
-        args = {
-                    problem: args[0],
-                }
-    }
-
-    args = applyUrlDefaults(args)
-
-    const parsedArgs = {
-                        problem: typeof args.problem === 'object'
-                ? args.problem.id
-                : args.problem,
-                }
-
-    return close.definition.url
-            .replace('{problem}', parsedArgs.problem.toString())
-            .replace(/\/+$/, '') + queryParams(options)
-}
-
-/**
-* @see \App\Http\Controllers\ProblemWorkflowController::close
- * @see app/Http/Controllers/ProblemWorkflowController.php:31
- * @route '/problem/{problem}/close'
- */
-close.post = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
-    url: close.url(args, options),
-    method: 'post',
-})
-
-    /**
-* @see \App\Http\Controllers\ProblemWorkflowController::close
- * @see app/Http/Controllers/ProblemWorkflowController.php:31
- * @route '/problem/{problem}/close'
- */
-    const closeForm = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-        action: close.url(args, options),
-        method: 'post',
-    })
-
-            /**
-* @see \App\Http\Controllers\ProblemWorkflowController::close
- * @see app/Http/Controllers/ProblemWorkflowController.php:31
- * @route '/problem/{problem}/close'
- */
-        closeForm.post = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-            action: close.url(args, options),
-            method: 'post',
-        })
-    
-    close.form = closeForm
-const problem = {
-    search: Object.assign(search, search),
-index: Object.assign(index, index),
-create: Object.assign(create, create),
-store: Object.assign(store, store),
-show: Object.assign(show, show),
-edit: Object.assign(edit, edit),
-update: Object.assign(update, update),
-destroy: Object.assign(destroy, destroy),
-markUnderReview: Object.assign(markUnderReview, markUnderReview),
-closeWithoutCapa: Object.assign(closeWithoutCapa, closeWithoutCapa),
-close: Object.assign(close, close),
-}
-
-export default problem
+export default ProblemController
