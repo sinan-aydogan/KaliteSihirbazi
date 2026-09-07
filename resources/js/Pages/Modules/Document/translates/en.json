@@ -27,10 +27,22 @@
         "distributionPointCreatePage": {
             "title": "Create a New Distribution Point",
             "subTitle": "Create a new distribution point in the system"
+        },
+        "authorityPage": {
+            "title": "Document Type Authorities",
+            "subTitle": "Manage the author, reviewer, approver and viewer grants for this document type"
+        },
+        "revisionRequestIndexPage": {
+            "title": "Revision Requests",
+            "subTitle": "Track the revision requests raised for documents"
         }
     },
     "term": {
         "document": "Document|Documents",
+        "documentColumn": "Document",
+        "requestedByLabel": "Requested By",
+        "requestReasonLabel": "Request Reason",
+        "requestStatusLabel": "Request Status",
         "code": "Document Code",
         "name": "Document Name",
         "type": "Document Type",
@@ -45,7 +57,39 @@
         "createdBy": "Created By",
         "createdAt": "Created At",
         "revisions": "Revisions",
-        "makeRevisionRequest": "Make Revision Request"
+        "revisionNumber": "Revision {0}",
+        "workflowActions": "Workflow",
+        "lifecycleActions": "Lifecycle",
+        "versionStatus": "Version Status",
+        "authorityUser": "User",
+        "authorityRole": "Role",
+        "authoritySource": "Source",
+        "authorityGrantedAt": "Granted At",
+        "authorityDirect": "Direct",
+        "grantTarget": "Target",
+        "grantTargetUser": "Grant to a User",
+        "grantTargetDepartment": "Bulk-grant to a Department",
+        "tags": "Tags",
+        "cancelled": "This document has been cancelled",
+        "supersededBy": "Superseded by",
+        "revisionRequestReason": "Your reason for requesting a revision",
+        "revisionReason": "Revision reason",
+        "revisionDetail": "Revision detail",
+        "cancellationReason": "Cancellation reason",
+        "supersededByOptional": "Replacement document (optional)",
+        "revisionRequests": "Revision Requests",
+        "revisionRequestStatus": {
+            "pending": "Pending",
+            "accepted": "Accepted",
+            "rejected": "Rejected",
+            "completed": "Completed"
+        },
+        "role": {
+            "author": "Author",
+            "reviewer": "Reviewer",
+            "approver": "Approver",
+            "viewer": "Viewer"
+        }
     },
     "setting": {
         "document": {
@@ -66,13 +110,39 @@
             "maxFileSize": {
                 "title": "Maximum File Size",
                 "subTitle": "Set the maximum size allowed for an uploaded document file"
+            },
+            "tags": {
+                "title": "Tag Settings",
+                "subTitle": "Choose which tag types are shown in the document module",
+                "noTypes": "No tag types defined yet. Create one first under Settings > Tag Management."
             }
         }
     },
     "action": {
+        "manageAuthorities": "Authorities",
+        "submitForReview": "Submit for Review",
+        "approveReview": "Approve Review",
+        "approveAndPublish": "Approve & Publish",
+        "reject": "Reject",
+        "confirmReject": "Confirm Rejection",
+        "acknowledge": "Mark as Read",
+        "grant": "Grant",
+        "revoke": "Revoke",
+        "requestRevision": "Request Revision",
+        "submitRevisionRequest": "Submit Request",
+        "uploadNewRevision": "Upload New Revision",
+        "submitNewVersion": "Upload Revision",
+        "fulfillRevisionRequest": "Fulfill This Request",
+        "accept": "Accept",
+        "cancelDocument": "Cancel Document",
+        "confirmCancel": "Confirm Cancellation"
     },
     "message": {
         "feedback": {
+        },
+        "confirm": {
+            "acceptRevisionRequestTitle": "Accept Revision Request",
+            "acceptRevisionRequestMessage": "Are you sure you want to accept this revision request? Once accepted, the requester will be able to upload a new revision."
         }
     }
 }

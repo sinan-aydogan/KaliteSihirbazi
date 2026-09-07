@@ -2,6 +2,8 @@
 
 namespace App\Traits\Document;
 
+use App\Enums\Document\DocumentVersionStatus;
+
 trait DocumentVersionTrait
 {
     public function getCurrentVersion($document): int
@@ -21,7 +23,7 @@ trait DocumentVersionTrait
             'version' => $this->newVersionNumber($document),
             'revision_reason' => $request->revision_reason,
             'revision_detail' => $request->revision_detail,
-            'status' => 'pending',
+            'status' => DocumentVersionStatus::Draft->value,
         ]);
     }
 }

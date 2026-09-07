@@ -23,10 +23,16 @@ export default function (){
                     link: 'document-type.index'
                 },
                 {
-                    'id': 'gb-type',
+                    'id': 'gb-distribution-point',
                     'label': tm('term.distributionPoints'),
                     type: "link",
                     link: 'distribution-point.index'
+                },
+                {
+                    'id': 'gb-tags',
+                    'label': tm('term.tags'),
+                    type: "link",
+                    link: 'document-tag-setting.index'
                 },
             ]
         },

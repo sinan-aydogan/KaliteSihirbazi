@@ -9,7 +9,12 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\Document\DistributionPointController;
 use App\Http\Controllers\Document\DocumentController;
 use App\Http\Controllers\Document\DocumentSettingController;
+use App\Http\Controllers\Document\DocumentRevisionRequestController;
+use App\Http\Controllers\Document\DocumentTagSettingController;
+use App\Http\Controllers\Document\DocumentTypeAuthorityController;
 use App\Http\Controllers\Document\DocumentTypeController;
+use App\Http\Controllers\Document\DocumentVersionController;
+use App\Http\Controllers\Document\DocumentVersionWorkflowController;
 use App\Http\Controllers\HumanResources\Education\EducationController;
 use App\Http\Controllers\HumanResources\Education\EducationInstructorController;
 use App\Http\Controllers\HumanResources\Education\EducationPlanController;
@@ -145,7 +150,6 @@ Route::middleware([
         'certificate',
         'standard',
         'take-time-off',
-        'document-revision-request',
         'document-action',
     ];
 
@@ -195,6 +199,32 @@ Route::middleware([
     // Education Media Management
     Route::delete('education/{education}/media/{mediaId}', [EducationController::class, 'deleteMedia'])->name('education.delete-media');
     Route::delete('education-instructor/{educationInstructor}/media/{mediaId}', [EducationInstructorController::class, 'deleteMedia'])->name('education-instructor.delete-media');
+
+    // Document Type Authorities (author/reviewer/approver/viewer grants)
+    Route::get('document-type/{documentType}/authorities', [DocumentTypeAuthorityController::class, 'index'])->name('document-type-authority.index');
+    Route::post('document-type/{documentType}/authorities', [DocumentTypeAuthorityController::class, 'store'])->name('document-type-authority.store');
+    Route::delete('document-type-authority/{documentTypeAuthority}', [DocumentTypeAuthorityController::class, 'destroy'])->name('document-type-authority.destroy');
+
+    // Document Tag Settings (which global tag types this module shows)
+    Route::get('document/setting/tags', [DocumentTagSettingController::class, 'index'])->name('document-tag-setting.index');
+    Route::post('document/setting/tags', [DocumentTagSettingController::class, 'update'])->name('document-tag-setting.update');
+
+    // Document Revision Requests (anyone with view access may ask for a revision)
+    Route::get('document-revision-requests', [DocumentRevisionRequestController::class, 'index'])->name('document-revision-request.index');
+    Route::post('document/{document}/revision-requests', [DocumentRevisionRequestController::class, 'store'])->name('document-revision-request.store');
+    Route::post('document-revision-request/{documentRevisionRequest}/accept', [DocumentRevisionRequestController::class, 'accept'])->name('document-revision-request.accept');
+    Route::post('document-revision-request/{documentRevisionRequest}/reject', [DocumentRevisionRequestController::class, 'reject'])->name('document-revision-request.reject');
+
+    // New document revisions (versions) and document cancellation/supersession
+    Route::post('document/{document}/versions', [DocumentVersionController::class, 'store'])->name('document-version.store');
+    Route::post('document/{document}/cancel', [DocumentController::class, 'cancel'])->name('document.cancel');
+
+    // Document Version Workflow (submit / review / approve / reject / acknowledge)
+    Route::post('document-version/{documentVersion}/submit', [DocumentVersionWorkflowController::class, 'submit'])->name('document-version.submit');
+    Route::post('document-version/{documentVersion}/review', [DocumentVersionWorkflowController::class, 'review'])->name('document-version.review');
+    Route::post('document-version/{documentVersion}/approve', [DocumentVersionWorkflowController::class, 'approve'])->name('document-version.approve');
+    Route::post('document-version/{documentVersion}/reject', [DocumentVersionWorkflowController::class, 'reject'])->name('document-version.reject');
+    Route::post('document-version/{documentVersion}/acknowledge', [DocumentVersionWorkflowController::class, 'acknowledge'])->name('document-version.acknowledge');
 
     /* Warehouse Setting Pages */
     Route::resource('warehouse-type', WarehouseTypeController::class);

@@ -57,11 +57,22 @@ const props = defineProps({
     customActions: {
         type: Array,
         default: () => []
+    },
+    deleteActionVisible: {
+        type: Function,
+        default: () => true
     }
 })
 
 defineEmits(['delete', 'edit', 'view', 'restore'])
 
+const iconActionColors = {
+    blue: 'text-sky-600 dark:bg-sky-500 dark:text-white hover:text-sky-900',
+    green: 'text-emerald-500 dark:bg-emerald-500 dark:text-white hover:text-emerald-900',
+    red: 'text-rose-500 dark:bg-rose-500 dark:text-white hover:text-rose-900',
+    orange: 'text-amber-500 dark:bg-amber-500 dark:text-white hover:text-amber-900',
+    neutral: 'text-slate-600 dark:bg-slate-300 dark:text-slate-700 hover:text-slate-900',
+}
 
 const {t} = useI18n();
 
@@ -248,7 +259,16 @@ debouncedWatch(filters, (value) => {
 
                                 <!--Custom Actions-->
                                 <template v-for="action in customActions">
-                                    <simple-button @click="action.action(row)"
+                                    <font-awesome-icon
+                                        v-if="action.icon"
+                                        @click="action.action(row)"
+                                        :icon="action.icon"
+                                        :title="action.label ?? ''"
+                                        class="action-button"
+                                        :class="iconActionColors[action.color] ?? iconActionColors.blue"
+                                    />
+                                    <simple-button v-else
+                                                   @click="action.action(row)"
                                                    :color="action.color"
                                                    :size="action.size"
                                                    :full-size="action.fullSize"
@@ -274,7 +294,7 @@ debouncedWatch(filters, (value) => {
                                     class="action-button text-emerald-500 dark:bg-emerald-500 dark:text-white hover:text-emerald-900"
                                 />
                                 <font-awesome-icon
-                                    v-if="deleteAction"
+                                    v-if="deleteAction && deleteActionVisible(row)"
                                     @click="$emit('delete', row)"
                                     icon="trash"
                                     class="action-button text-rose-500 dark:bg-rose-500 dark:text-white hover:text-rose-900"

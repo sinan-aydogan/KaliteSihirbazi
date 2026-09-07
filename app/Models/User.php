@@ -3,8 +3,14 @@
 namespace App\Models;
 
 use Database\Factories\UserFactory;
+use App\Enums\Document\DocumentAuthorityRole;
+use App\Models\Document\DistributionPoint;
+use App\Models\Document\DocumentType;
+use App\Models\Document\DocumentTypeAuthority;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -108,5 +114,33 @@ class User extends Authenticatable implements HasMedia
     public function accountable(): MorphTo
     {
         return $this->morphTo();
+    }
+
+    /**
+     * Document-type-scoped authorities (author/reviewer/approver/viewer) granted to this user.
+     *
+     * @return HasMany<DocumentTypeAuthority>
+     */
+    public function documentTypeAuthorities(): HasMany
+    {
+        return $this->hasMany(DocumentTypeAuthority::class);
+    }
+
+    public function hasDocumentAuthority(DocumentType $documentType, DocumentAuthorityRole $role): bool
+    {
+        return $this->documentTypeAuthorities()
+            ->where('document_type_id', $documentType->id)
+            ->where('role', $role)
+            ->exists();
+    }
+
+    /**
+     * Distribution points this user is a member of (view access + read-acknowledgment audience).
+     *
+     * @return BelongsToMany<DistributionPoint>
+     */
+    public function distributionPoints(): BelongsToMany
+    {
+        return $this->belongsToMany(DistributionPoint::class, 'distribution_point_user')->withTimestamps();
     }
 }

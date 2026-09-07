@@ -27,9 +27,21 @@
         "distributionPointCreatePage": {
             "title": "Dağıtım Noktası Oluştur",
             "subTitle": "Sistemde yeni bir dağıtım noktası oluşturun"
+        },
+        "authorityPage": {
+            "title": "Döküman Tipi Yetkilendirmeleri",
+            "subTitle": "Bu döküman tipi için yazar, inceleyen, onaylayan ve görüntüleyici yetkilerini yönetin"
+        },
+        "revisionRequestIndexPage": {
+            "title": "Revizyon Talepleri",
+            "subTitle": "Dökümanlar için açılan revizyon taleplerini buradan takip edebilirsiniz"
         }
     },
     "term": {
+        "documentColumn": "Döküman",
+        "requestedByLabel": "Talep Eden",
+        "requestReasonLabel": "Talep Sebebi",
+        "requestStatusLabel": "Talep Durumu",
         "department": "Departman",
         "code": "Döküman Kodu",
         "name": "Döküman Adı",
@@ -45,7 +57,39 @@
         "createdBy": "Oluşturan",
         "createdAt": "Oluşturulma Zamanı",
         "revisions": "Revizyonlar",
-        "makeRevisionRequest": "Revizyon Talebi Yap"
+        "revisionNumber": "Revizyon {0}",
+        "workflowActions": "İş Akışı",
+        "lifecycleActions": "Yaşam Döngüsü",
+        "versionStatus": "Versiyon Durumu",
+        "authorityUser": "Kullanıcı",
+        "authorityRole": "Yetki",
+        "authoritySource": "Kaynak",
+        "authorityGrantedAt": "Verilme Tarihi",
+        "authorityDirect": "Doğrudan",
+        "grantTarget": "Hedef",
+        "grantTargetUser": "Kişiye Ver",
+        "grantTargetDepartment": "Departmana Toplu Ver",
+        "tags": "Etiketler",
+        "cancelled": "Bu döküman iptal edilmiştir",
+        "supersededBy": "Yerine geçen döküman",
+        "revisionRequestReason": "Revizyon talep etme sebebiniz",
+        "revisionReason": "Revizyon sebebi",
+        "revisionDetail": "Revizyon detayı",
+        "cancellationReason": "İptal sebebi",
+        "supersededByOptional": "Yerine geçen döküman (opsiyonel)",
+        "revisionRequests": "Revizyon Talepleri",
+        "revisionRequestStatus": {
+            "pending": "Bekliyor",
+            "accepted": "Kabul Edildi",
+            "rejected": "Reddedildi",
+            "completed": "Tamamlandı"
+        },
+        "role": {
+            "author": "Yazar",
+            "reviewer": "İnceleyen",
+            "approver": "Onaylayan",
+            "viewer": "Görüntüleyici"
+        }
     },
     "setting": {
         "document": {
@@ -66,13 +110,39 @@
             "maxFileSize": {
                 "title": "Maksimum Dosya Boyutu",
                 "subTitle": "Yüklenebilecek döküman dosyasının maksimum boyutunu buradan belirleyebilirsiniz"
+            },
+            "tags": {
+                "title": "Etiket Ayarları",
+                "subTitle": "Döküman modülünde hangi etiket tiplerinin gösterileceğini buradan belirleyebilirsiniz",
+                "noTypes": "Henüz hiç etiket tipi tanımlanmamış. Önce Ayarlar > Etiket Yönetimi'nden bir tip oluşturun."
             }
         }
     },
     "action": {
+        "manageAuthorities": "Yetkilendirmeler",
+        "submitForReview": "İncelemeye Gönder",
+        "approveReview": "İncelemeyi Onayla",
+        "approveAndPublish": "Onayla ve Yayınla",
+        "reject": "Reddet",
+        "confirmReject": "Reddi Onayla",
+        "acknowledge": "Okundu Olarak İşaretle",
+        "grant": "Yetki Ver",
+        "revoke": "Kaldır",
+        "requestRevision": "Revizyon Talep Et",
+        "submitRevisionRequest": "Talebi Gönder",
+        "uploadNewRevision": "Yeni Revizyon Yükle",
+        "submitNewVersion": "Revizyonu Yükle",
+        "fulfillRevisionRequest": "Bu Talebi Karşıla",
+        "accept": "Kabul Et",
+        "cancelDocument": "Dökümanı İptal Et",
+        "confirmCancel": "İptali Onayla"
     },
     "message": {
         "feedback": {
+        },
+        "confirm": {
+            "acceptRevisionRequestTitle": "Revizyon Talebini Kabul Et",
+            "acceptRevisionRequestMessage": "Bu revizyon talebini kabul etmek istediğinizden emin misiniz? Kabul edildikten sonra talep sahibi yeni bir revizyon yükleyebilecektir."
         }
     }
 }

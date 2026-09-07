@@ -44,6 +44,10 @@ const props = defineProps({
         type: Array,
         default: () => []
     },
+    tagTypes: {
+        type: Array,
+        default: () => []
+    },
 })
 
 // Multi-lang
@@ -91,6 +95,10 @@ const tableHeaders = [
         id: 'distributionPoints',
         label: t('term.distributionPoints'),
         align: 'center',
+    },
+    {
+        id: 'tags',
+        label: tm('term.tags'),
     }
 ]
 const showModal = ref(false);
@@ -109,8 +117,16 @@ const form = useForm({
     publishing_status: 'draft',
     distribution_points: [],
     related_departments: [],
+    tag_ids: [],
     file: null
 })
+
+/*Tags: one multi-select per enabled tag type, merged into form.tag_ids*/
+const tagIdsForType = (tagType) => form.tag_ids.filter(id => tagType.tags.some(tag => tag.id === id))
+const setTagIdsForType = (tagType, value) => {
+    const typeTagIds = new Set(tagType.tags.map(tag => tag.id))
+    form.tag_ids = [...form.tag_ids.filter(id => !typeTagIds.has(id)), ...value]
+}
 
 /*Related Data with select*/
 const loading = ref(false)
@@ -249,6 +265,7 @@ const handleCloseModal = () => {
             show-action
             edit-action
             delete-action
+            :delete-action-visible="(row) => row.can_delete"
         >
             <!--Creator-->
             <template #creator="{props}">
@@ -265,6 +282,14 @@ const handleCloseModal = () => {
                     class="hover:scale-105 cursor-pointer transition-all"
                     @click="showDistributionPoints(props)"
                 />
+            </template>
+
+            <!--Tags-->
+            <template #tags="{props}">
+                <div class="flex flex-wrap gap-1">
+                    <span v-for="tag in props.tags" :key="tag.id" v-text="tag.name"
+                          class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-xs"/>
+                </div>
             </template>
         </Table>
     </app-layout>
@@ -314,6 +339,14 @@ const handleCloseModal = () => {
                                  :label="tm('term.distributionPoints')">
                         <multi-select-input v-model="form.distribution_points" :options="distributionPoints"
                                             optionLabel="name"/>
+                    </input-group>
+
+                    <!-- Tags: one multi-select per tag type enabled for this module -->
+                    <input-group v-for="tagType in tagTypes" :key="tagType.id" class="col-span-12"
+                                 :label="tagType.name">
+                        <multi-select-input :model-value="tagIdsForType(tagType)"
+                                            @update:model-value="(value) => setTagIdsForType(tagType, value)"
+                                            :options="tagType.tags" optionLabel="name"/>
                     </input-group>
                 </FormSection>
 
