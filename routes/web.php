@@ -36,6 +36,8 @@ use App\Http\Controllers\Setting\ModuleController;
 use App\Http\Controllers\Setting\PropertyController;
 use App\Http\Controllers\Setting\PropertyTypeController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\Tag\TagController;
+use App\Http\Controllers\Tag\TagTypeController;
 use App\Http\Controllers\User\UpdateActiveLanguageController;
 use App\Http\Controllers\User\UpdateActiveThemeController;
 use App\Http\Controllers\VehicleController;
@@ -94,6 +96,10 @@ Route::middleware([
         /* Time Setting */
         Route::get('time', [GlobalSettingController::class, 'time'])->name('global-setting.time');
         Route::post('time', [GlobalSettingController::class, 'updateTime'])->name('global-setting.time.update');
+        /* Tag Management (global pool: types + tags) */
+        Route::resource('tag-type', TagTypeController::class)->only(['index', 'store', 'update', 'destroy']);
+        Route::post('tag', [TagController::class, 'store'])->name('tag.store');
+        Route::delete('tag/{tag}', [TagController::class, 'destroy'])->name('tag.destroy');
     });
 
     /* User Functions */

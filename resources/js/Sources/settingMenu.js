@@ -56,6 +56,13 @@ export default function () {
                             },
                         ],
                     },
+                    {
+                        id: "cm-tm",
+                        label: t("settingMenu.tagManagement"),
+                        icon: "tags",
+                        type: "link",
+                        link: "tag-type.index",
+                    },
                 ],
             },
             {
