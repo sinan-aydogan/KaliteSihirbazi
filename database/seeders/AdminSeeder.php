@@ -33,5 +33,7 @@ class AdminSeeder extends Seeder
         ]);
 
         $employee->account()->save($account);
+
+        $account->assignRole('Sistem Yöneticisi');
     }
 }
