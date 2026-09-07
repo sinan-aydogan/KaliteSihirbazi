@@ -7,6 +7,7 @@ use App\Http\Controllers\BusinessManagement\Vehicle\VehicleStatusController;
 use App\Http\Controllers\BusinessManagement\Vehicle\VehicleTypeController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\Document\DistributionPointController;
+use App\Http\Controllers\Document\DocumentActionController;
 use App\Http\Controllers\Document\DocumentController;
 use App\Http\Controllers\Document\DocumentSettingController;
 use App\Http\Controllers\Document\DocumentRevisionRequestController;
@@ -150,7 +151,6 @@ Route::middleware([
         'certificate',
         'standard',
         'take-time-off',
-        'document-action',
     ];
 
     foreach ($plannedModules as $plannedModule) {
@@ -214,6 +214,9 @@ Route::middleware([
     Route::post('document/{document}/revision-requests', [DocumentRevisionRequestController::class, 'store'])->name('document-revision-request.store');
     Route::post('document-revision-request/{documentRevisionRequest}/accept', [DocumentRevisionRequestController::class, 'accept'])->name('document-revision-request.accept');
     Route::post('document-revision-request/{documentRevisionRequest}/reject', [DocumentRevisionRequestController::class, 'reject'])->name('document-revision-request.reject');
+
+    // Document Actions (read-only audit trail of workflow/lifecycle activity)
+    Route::get('document-actions', [DocumentActionController::class, 'index'])->name('document-action.index');
 
     // New document revisions (versions) and document cancellation/supersession
     Route::post('document/{document}/versions', [DocumentVersionController::class, 'store'])->name('document-version.store');

@@ -35,6 +35,10 @@
         "revisionRequestIndexPage": {
             "title": "Revision Requests",
             "subTitle": "Track the revision requests raised for documents"
+        },
+        "actionIndexPage": {
+            "title": "Actions",
+            "subTitle": "Track the history of every action performed on documents"
         }
     },
     "term": {
@@ -89,7 +93,10 @@
             "reviewer": "Reviewer",
             "approver": "Approver",
             "viewer": "Viewer"
-        }
+        },
+        "actionTypeLabel": "Action",
+        "performedByLabel": "Performed By",
+        "actionVersionLabel": "Version"
     },
     "setting": {
         "document": {

@@ -28,6 +28,4 @@ test('unimplemented module menu routes render a coming soon page without exposin
     'certificate',
     'standard',
     'take-time-off',
-    'document-revision-request',
-    'document-action',
 ]);

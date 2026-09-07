@@ -3,85 +3,34 @@
 namespace App\Http\Controllers\Document;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreDocumentActionRequest;
-use App\Http\Requests\UpdateDocumentActionRequest;
-use App\Models\Document\DocumentAction;
+use App\Models\Document\DocumentActivityLog;
+use Inertia\Inertia;
 
 class DocumentActionController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * A read-only audit trail of every workflow/lifecycle action recorded
+     * against documents (DocumentWorkflowService writes to this table on
+     * every transition), mirroring DocumentRevisionRequestController's
+     * visibility rule: admins and Quality Managers see everything, everyone
+     * else only sees logs for documents they can view.
      */
     public function index()
     {
-        //
-    }
+        $user = auth()->user();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+        $query = DocumentActivityLog::with('document:id,code,name', 'documentVersion:id,version', 'user:id,name');
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreDocumentActionRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreDocumentActionRequest $request)
-    {
-        //
-    }
+        if (! $user->hasRole(['Sistem Yöneticisi', 'Kalite Yöneticisi'])) {
+            $query->whereHas('document', fn ($q) => $q->visibleTo($user));
+        }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Document\DocumentAction  $documentAction
-     * @return \Illuminate\Http\Response
-     */
-    public function show(DocumentAction $documentAction)
-    {
-        //
-    }
+        $logs = $query->latest('id')->paginate(15)->withQueryString();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Document\DocumentAction  $documentAction
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(DocumentAction $documentAction)
-    {
-        //
-    }
+        $logs->through(fn (DocumentActivityLog $log) => tap($log, fn ($l) => $l['action_label'] = $log->action->label()));
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateDocumentActionRequest  $request
-     * @param  \App\Models\Document\DocumentAction  $documentAction
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateDocumentActionRequest $request, DocumentAction $documentAction)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Document\DocumentAction  $documentAction
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(DocumentAction $documentAction)
-    {
-        //
+        return Inertia::render('Modules/Document/Action/IndexPage', [
+            'tableData' => $logs,
+        ]);
     }
 }

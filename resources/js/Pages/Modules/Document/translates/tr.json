@@ -35,6 +35,10 @@
         "revisionRequestIndexPage": {
             "title": "Revizyon Talepleri",
             "subTitle": "Dökümanlar için açılan revizyon taleplerini buradan takip edebilirsiniz"
+        },
+        "actionIndexPage": {
+            "title": "Aksiyonlar",
+            "subTitle": "Dökümanlar üzerinde gerçekleştirilen tüm işlemlerin geçmişini buradan izleyebilirsiniz"
         }
     },
     "term": {
@@ -89,7 +93,10 @@
             "reviewer": "İnceleyen",
             "approver": "Onaylayan",
             "viewer": "Görüntüleyici"
-        }
+        },
+        "actionTypeLabel": "Aksiyon",
+        "performedByLabel": "Gerçekleştiren",
+        "actionVersionLabel": "Versiyon"
     },
     "setting": {
         "document": {
