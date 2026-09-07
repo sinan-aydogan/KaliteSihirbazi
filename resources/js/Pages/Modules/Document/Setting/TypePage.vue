@@ -148,6 +148,12 @@ const handleDelete = (id) => {
         @delete="handleDelete($event.id)"
         edit-action
         delete-action
+        :custom-actions="[{
+            action: (row) => router.visit(route('document-type-authority.index', row.id)),
+            color: 'blue',
+            icon: 'user-shield',
+            label: tm('action.manageAuthorities'),
+        }]"
     >
       <template #actionArea>
         <!--Add New Button-->
