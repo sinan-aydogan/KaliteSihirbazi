@@ -151,6 +151,12 @@ const submitRaiseCapa = async () => {
                         </span>
                         <span v-if="problem.checklist_answer">— Soru: "{{ problem.checklist_answer.question.question }}"</span>
                     </div>
+                    <div v-if="problem.risk" class="mt-2 text-xs text-slate-400">
+                        Risk:
+                        <span class="text-sky-600 cursor-pointer hover:underline" @click="router.visit(route('risk.show', problem.risk.id))">
+                            {{ problem.risk.code }} — {{ problem.risk.title }}
+                        </span>
+                    </div>
                 </div>
                 <div class="flex gap-2 flex-wrap">
                     <simple-button v-if="problem.status === 'open'" color="blue" @click="markUnderReview">

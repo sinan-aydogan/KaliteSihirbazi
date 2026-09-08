@@ -1,0 +1,132 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Risks",
+            "subTitle": "Manage departments' risks, hazard classes, mitigation controls and reviews"
+        },
+        "createPage": {
+            "title": "New Risk Record",
+            "subTitle": "Identify a risk and assess its probability/impact"
+        },
+        "showPage": {
+            "title": "Risk Detail",
+            "subTitle": "Manage controls, reviews and realized nonconformities here"
+        }
+    },
+    "term": {
+        "code": "Risk No",
+        "title": "Title",
+        "description": "Description",
+        "department": "Department",
+        "scopeNote": "Process / Asset / Equipment",
+        "riskCategory": "Risk Category",
+        "riskHazardClass": "Hazard Class",
+        "riskOwner": "Risk Owner",
+        "identifiedBy": "Identified By",
+        "identifiedDate": "Identified Date",
+        "probability": "Probability (1-5)",
+        "impact": "Impact (1-5)",
+        "score": "Score",
+        "level": "Level",
+        "initialAssessment": "Initial Assessment",
+        "residualAssessment": "Current (Residual) Assessment",
+        "treatmentStrategy": "Strategy",
+        "acceptanceJustification": "Acceptance Justification",
+        "status": "Status",
+        "nextReviewDate": "Next Review",
+        "closedAt": "Closed At",
+        "controlCount": "Controls",
+        "manageModule": "Manage Module",
+        "name": "Name",
+        "sortOrder": "Order",
+        "protected": "Protected",
+        "riskCount": "Risk Count",
+        "riskLevel": {
+            "low": "Low",
+            "medium": "Medium",
+            "high": "High",
+            "critical": "Critical"
+        },
+        "riskStatus": {
+            "identified": "Identified",
+            "under_analysis": "Under Analysis",
+            "treatment_planned": "Treatment Planned",
+            "treatment_in_progress": "Treatment In Progress",
+            "monitoring": "Monitoring",
+            "review_required": "Review Required",
+            "closed": "Closed"
+        },
+        "treatmentStrategyValue": {
+            "mitigate": "Mitigate",
+            "accept": "Accept",
+            "transfer": "Transfer",
+            "avoid": "Avoid"
+        },
+        "controls": {
+            "title": "Controls (Mitigation Actions)",
+            "description": "Description",
+            "responsible": "Responsible",
+            "dueDate": "Due Date",
+            "status": {
+                "planned": "Planned",
+                "in_progress": "In Progress",
+                "completed": "Completed"
+            },
+            "effectiveness": {
+                "not_evaluated": "Not Evaluated",
+                "ineffective": "Ineffective",
+                "partially_effective": "Partially Effective",
+                "effective": "Effective"
+            }
+        },
+        "reviews": {
+            "title": "Reviews",
+            "reviewDate": "Date",
+            "reviewedBy": "Reviewed By",
+            "trigger": {
+                "scheduled": "Scheduled",
+                "manual": "Manual",
+                "risk_realized": "Risk Realized"
+            },
+            "controlsAdequate": "Were the controls adequate?",
+            "conclusion": {
+                "controls_reinforced": "Controls Reinforced",
+                "risk_accepted_as_is": "Risk Accepted As-Is",
+                "risk_reclassified": "Risk Reclassified",
+                "no_change": "No Change"
+            },
+            "notes": "Notes",
+            "linkedProblem": "Triggering Nonconformity",
+            "pending": "Pending — not completed"
+        },
+        "realizedProblems": "Realized Nonconformities"
+    },
+    "action": {
+        "viewDetails": "Details / Manage",
+        "addControl": "Add Control",
+        "addReview": "Add Review",
+        "completeReview": "Complete Review",
+        "close": "Close",
+        "raiseRealization": "Raise Nonconformity Against This Risk"
+    },
+    "setting": {
+        "risk": {
+            "title": "Risk Module Settings",
+            "subTitle": "Risk scoring thresholds and the post-realization review rule",
+            "thresholds": {
+                "title": "Score Thresholds",
+                "subTitle": "The probability x impact score (1-25) maps to Low/Medium/High/Critical using these thresholds"
+            },
+            "realizationReview": {
+                "title": "Post-Realization Review",
+                "subTitle": "When a risk materializes into a nonconformity, should a mandatory review be opened?",
+                "toggleLabel": "Require it"
+            }
+        }
+    },
+    "menu": {
+        "general": "General Settings",
+        "categories": "Risk Categories",
+        "hazardClasses": "Hazard Classes"
+    }
+}

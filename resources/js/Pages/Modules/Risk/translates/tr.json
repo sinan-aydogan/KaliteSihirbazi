@@ -1,0 +1,132 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Riskler",
+            "subTitle": "Bölümlerin risklerini, tehlike sınıflarını, azaltma önlemlerini ve gözden geçirmelerini buradan yönetin"
+        },
+        "createPage": {
+            "title": "Yeni Risk Kaydı",
+            "subTitle": "Bir risk tanımlayın, olasılık/etki değerlendirmesi yapın"
+        },
+        "showPage": {
+            "title": "Risk Detayı",
+            "subTitle": "Önlemleri, gözden geçirmeleri ve gerçekleşen uygunsuzlukları buradan yönetin"
+        }
+    },
+    "term": {
+        "code": "Risk No",
+        "title": "Başlık",
+        "description": "Açıklama",
+        "department": "Birim",
+        "scopeNote": "Süreç / Varlık / Ekipman",
+        "riskCategory": "Risk Kategorisi",
+        "riskHazardClass": "Tehlike Sınıfı",
+        "riskOwner": "Risk Sahibi",
+        "identifiedBy": "Tanımlayan",
+        "identifiedDate": "Tanımlanma Tarihi",
+        "probability": "Olasılık (1-5)",
+        "impact": "Etki (1-5)",
+        "score": "Skor",
+        "level": "Seviye",
+        "initialAssessment": "İlk Değerlendirme",
+        "residualAssessment": "Güncel (Kalan) Değerlendirme",
+        "treatmentStrategy": "Yaklaşım",
+        "acceptanceJustification": "Kabul Gerekçesi",
+        "status": "Durum",
+        "nextReviewDate": "Sonraki Gözden Geçirme",
+        "closedAt": "Kapanış Tarihi",
+        "controlCount": "Önlem",
+        "manageModule": "Modülü Yönet",
+        "name": "Ad",
+        "sortOrder": "Sıra",
+        "protected": "Korumalı",
+        "riskCount": "Risk Sayısı",
+        "riskLevel": {
+            "low": "Düşük",
+            "medium": "Orta",
+            "high": "Yüksek",
+            "critical": "Kritik"
+        },
+        "riskStatus": {
+            "identified": "Tanımlandı",
+            "under_analysis": "Analiz Ediliyor",
+            "treatment_planned": "Önlem Planlandı",
+            "treatment_in_progress": "Önlem Uygulanıyor",
+            "monitoring": "İzleniyor",
+            "review_required": "Gözden Geçirme Gerekiyor",
+            "closed": "Kapandı"
+        },
+        "treatmentStrategyValue": {
+            "mitigate": "Azalt",
+            "accept": "Kabul Et",
+            "transfer": "Transfer Et",
+            "avoid": "Kaçın"
+        },
+        "controls": {
+            "title": "Önlemler (Azaltma Yöntemleri)",
+            "description": "Açıklama",
+            "responsible": "Sorumlu",
+            "dueDate": "Termin",
+            "status": {
+                "planned": "Planlandı",
+                "in_progress": "Devam Ediyor",
+                "completed": "Tamamlandı"
+            },
+            "effectiveness": {
+                "not_evaluated": "Değerlendirilmedi",
+                "ineffective": "Etkisiz",
+                "partially_effective": "Kısmen Etkili",
+                "effective": "Etkili"
+            }
+        },
+        "reviews": {
+            "title": "Gözden Geçirmeler",
+            "reviewDate": "Tarih",
+            "reviewedBy": "Gözden Geçiren",
+            "trigger": {
+                "scheduled": "Planlı",
+                "manual": "Manuel",
+                "risk_realized": "Risk Gerçekleşti"
+            },
+            "controlsAdequate": "Önlemler Yeterli miydi?",
+            "conclusion": {
+                "controls_reinforced": "Önlemler Güçlendirildi",
+                "risk_accepted_as_is": "Risk Olduğu Gibi Kabul Edildi",
+                "risk_reclassified": "Risk Yeniden Sınıflandırıldı",
+                "no_change": "Değişiklik Yok"
+            },
+            "notes": "Notlar",
+            "linkedProblem": "Tetikleyen Uygunsuzluk",
+            "pending": "Bekliyor — tamamlanmadı"
+        },
+        "realizedProblems": "Gerçekleşen Uygunsuzluklar"
+    },
+    "action": {
+        "viewDetails": "Detay / Yönet",
+        "addControl": "Önlem Ekle",
+        "addReview": "Gözden Geçirme Ekle",
+        "completeReview": "Gözden Geçirmeyi Tamamla",
+        "close": "Kapat",
+        "raiseRealization": "Bu Riske Bağlı Uygunsuzluk Aç"
+    },
+    "setting": {
+        "risk": {
+            "title": "Risk Modülü Ayarları",
+            "subTitle": "Risk skorlama eşikleri ve gerçekleşme sonrası gözden geçirme kuralı",
+            "thresholds": {
+                "title": "Skor Eşikleri",
+                "subTitle": "Olasılık × Etki skoru (1-25) bu eşiklere göre Düşük/Orta/Yüksek/Kritik seviyesine dönüştürülür"
+            },
+            "realizationReview": {
+                "title": "Gerçekleşme Sonrası Gözden Geçirme",
+                "subTitle": "Bir risk gerçekleşip uygunsuzluğa dönüştüğünde zorunlu gözden geçirme açılsın mı?",
+                "toggleLabel": "Zorunlu tut"
+            }
+        }
+    },
+    "menu": {
+        "general": "Genel Ayarlar",
+        "categories": "Risk Kategorileri",
+        "hazardClasses": "Tehlike Sınıfları"
+    }
+}

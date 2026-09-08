@@ -34,6 +34,7 @@
             "customer_complaint": "Customer Complaint",
             "internal_observation": "Internal Observation",
             "supplier": "Supplier",
+            "risk_realization": "Risk Realization",
             "other": "Other"
         },
         "problemSeverity": {

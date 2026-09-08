@@ -131,6 +131,39 @@ export default function ({roles, permissions}) {
                     }
                 ]
             },
+            /*Risk Management*/
+            {
+                id: 'risk',
+                label: t('mainMenu.riskManagement'),
+                icon: 'shield',
+                type: "dropdown",
+                links: [
+                    /*Risks*/
+                    {
+                        id: 'risk-rk',
+                        label: t('mainMenu.risks'),
+                        icon: 'triangle-exclamation',
+                        type: "route",
+                        link: 'risk.index'
+                    },
+                    /*Risk Categories*/
+                    {
+                        id: 'risk-cat',
+                        label: t('mainMenu.riskCategories'),
+                        icon: 'layer-group',
+                        type: "route",
+                        link: 'risk-category.index'
+                    },
+                    /*Risk Hazard Classes*/
+                    {
+                        id: 'risk-hc',
+                        label: t('mainMenu.riskHazardClasses'),
+                        icon: 'radiation',
+                        type: "route",
+                        link: 'risk-hazard-class.index'
+                    }
+                ]
+            },
             /*CAPA System*/
             {
                 id: 'capa',

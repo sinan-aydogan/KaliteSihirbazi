@@ -34,6 +34,7 @@
             "customer_complaint": "Müşteri Şikayeti",
             "internal_observation": "İç Gözlem",
             "supplier": "Tedarikçi",
+            "risk_realization": "Risk Gerçekleşmesi",
             "other": "Diğer"
         },
         "problemSeverity": {

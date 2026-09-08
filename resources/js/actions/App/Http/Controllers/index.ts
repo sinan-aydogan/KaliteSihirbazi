@@ -21,6 +21,10 @@ import AuditTypeController from './AuditTypeController'
 import AuditScopeController from './AuditScopeController'
 import InternalAuditorController from './InternalAuditorController'
 import AuditChecklistTemplateController from './AuditChecklistTemplateController'
+import RiskSettingController from './RiskSettingController'
+import RiskController from './RiskController'
+import RiskCategoryController from './RiskCategoryController'
+import RiskHazardClassController from './RiskHazardClassController'
 import CompanyAccreditationController from './CompanyAccreditationController'
 import CapaActionController from './CapaActionController'
 import CapaWorkflowController from './CapaWorkflowController'
@@ -31,6 +35,9 @@ import AuditChecklistQuestionController from './AuditChecklistQuestionController
 import AuditChecklistController from './AuditChecklistController'
 import AuditChecklistAnswerController from './AuditChecklistAnswerController'
 import AuditChecklistPrintController from './AuditChecklistPrintController'
+import RiskWorkflowController from './RiskWorkflowController'
+import RiskControlController from './RiskControlController'
+import RiskReviewController from './RiskReviewController'
 const Controllers = {
     AccountController: Object.assign(AccountController, AccountController),
 ApiTokenController: Object.assign(ApiTokenController, ApiTokenController),
@@ -55,6 +62,10 @@ AuditTypeController: Object.assign(AuditTypeController, AuditTypeController),
 AuditScopeController: Object.assign(AuditScopeController, AuditScopeController),
 InternalAuditorController: Object.assign(InternalAuditorController, InternalAuditorController),
 AuditChecklistTemplateController: Object.assign(AuditChecklistTemplateController, AuditChecklistTemplateController),
+RiskSettingController: Object.assign(RiskSettingController, RiskSettingController),
+RiskController: Object.assign(RiskController, RiskController),
+RiskCategoryController: Object.assign(RiskCategoryController, RiskCategoryController),
+RiskHazardClassController: Object.assign(RiskHazardClassController, RiskHazardClassController),
 CompanyAccreditationController: Object.assign(CompanyAccreditationController, CompanyAccreditationController),
 CapaActionController: Object.assign(CapaActionController, CapaActionController),
 CapaWorkflowController: Object.assign(CapaWorkflowController, CapaWorkflowController),
@@ -65,6 +76,9 @@ AuditChecklistQuestionController: Object.assign(AuditChecklistQuestionController
 AuditChecklistController: Object.assign(AuditChecklistController, AuditChecklistController),
 AuditChecklistAnswerController: Object.assign(AuditChecklistAnswerController, AuditChecklistAnswerController),
 AuditChecklistPrintController: Object.assign(AuditChecklistPrintController, AuditChecklistPrintController),
+RiskWorkflowController: Object.assign(RiskWorkflowController, RiskWorkflowController),
+RiskControlController: Object.assign(RiskControlController, RiskControlController),
+RiskReviewController: Object.assign(RiskReviewController, RiskReviewController),
 }
 
 export default Controllers

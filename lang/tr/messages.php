@@ -298,4 +298,37 @@ return [
         'updated' => ':supplier isimli tedarikçi güncellendi.',
         'update_failed' => ':supplier isimli tedarikçi güncellenemedi.',
     ],
+    'risk' => [
+        'created' => ':risk kodlu risk oluşturuldu.',
+        'updated' => ':risk kodlu risk güncellendi.',
+        'deleted' => ':risk kodlu risk silindi.',
+        'deletedError' => ':risk kodlu risk silinemez çünkü üzerinde kayıtlı uygunsuzluk kayıtları var.',
+        'closed' => ':risk kodlu risk kapatıldı.'
+    ],
+    'riskCategory' => [
+        'created' => 'Risk kategorisi oluşturuldu.',
+        'updated' => 'Risk kategorisi güncellendi.',
+        'deleted' => 'Risk kategorisi silindi.',
+        'deletedError' => 'Bu risk kategorisi silinemez çünkü üzerinde kayıtlı riskler var.',
+        'deletedErrorProtected' => 'Sistem varsayılanı olan bu risk kategorisi silinemez.'
+    ],
+    'riskHazardClass' => [
+        'created' => 'Tehlike sınıfı oluşturuldu.',
+        'updated' => 'Tehlike sınıfı güncellendi.',
+        'deleted' => 'Tehlike sınıfı silindi.',
+        'deletedError' => 'Bu tehlike sınıfı silinemez çünkü üzerinde kayıtlı riskler var.',
+        'deletedErrorProtected' => 'Sistem varsayılanı olan bu tehlike sınıfı silinemez.'
+    ],
+    'riskControl' => [
+        'created' => 'Önlem eklendi.',
+        'updated' => 'Önlem güncellendi.',
+        'deleted' => 'Önlem silindi.'
+    ],
+    'riskReview' => [
+        'created' => 'Gözden geçirme kaydedildi.',
+        'completed' => 'Gözden geçirme tamamlandı.'
+    ],
+    'riskSettings' => [
+        'updated' => 'Risk modülü ayarları güncellendi.'
+    ],
 ];

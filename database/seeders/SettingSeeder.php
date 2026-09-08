@@ -74,6 +74,20 @@ class SettingSeeder extends Seeder
                 'type' => 'json',
                 'value' => json_encode(365)
             ],
+
+            /*Risk Settings*/
+            [
+                'code' => 'risk_review_required_on_realization',
+                'module' => 'risk',
+                'type' => 'json',
+                'value' => json_encode(true)
+            ],
+            [
+                'code' => 'risk_score_thresholds',
+                'module' => 'risk',
+                'type' => 'json',
+                'value' => json_encode(['medium' => 6, 'high' => 12, 'critical' => 20])
+            ],
         ];
 
         foreach ($settings as $s) {
