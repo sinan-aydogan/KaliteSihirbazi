@@ -71,6 +71,7 @@ class ProblemController extends Controller
             'risk:id,code,title',
             'customerComplaint:id,code,title',
             'problemSourceType:id,name',
+            'immediateActionBy:id,name',
         ]);
 
         return Inertia::render('Modules/Problem/ShowPage', [

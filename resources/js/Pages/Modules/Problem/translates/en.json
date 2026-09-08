@@ -29,6 +29,7 @@
         "detectedDate": "Detected Date",
         "closedAt": "Closed At",
         "capaCount": "CAPAs",
+        "immediateAction": "Immediate Action (Correction)",
         "problemSeverity": {
             "low": "Low",
             "medium": "Medium",
@@ -45,6 +46,8 @@
     },
     "action": {
         "viewDetails": "Details / Manage",
+        "recordImmediateAction": "Record Immediate Action",
+        "editImmediateAction": "Edit Immediate Action",
         "markUnderReview": "Mark Under Review",
         "raiseCapa": "Raise CAPA",
         "closeWithoutCapa": "Close Without CAPA",

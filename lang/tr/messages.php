@@ -178,6 +178,7 @@ return [
         'updated' => ':problem kodlu uygunsuzluk kaydı güncellendi.',
         'deleted' => ':problem kodlu uygunsuzluk kaydı silindi.',
         'deletedError' => ':problem kodlu uygunsuzluk kaydı silinemez çünkü üzerinde açılmış DÖF kayıtları var.',
+        'immediateActionRecorded' => 'Anlık aksiyon kaydedildi.',
         'markedUnderReview' => 'Uygunsuzluk inceleme durumuna alındı.',
         'closedWithoutCapa' => 'Uygunsuzluk DÖF gerektirmeden kapatıldı.',
         'closed' => 'Uygunsuzluk kapatıldı.'

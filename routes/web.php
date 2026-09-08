@@ -294,6 +294,7 @@ Route::middleware([
     Route::post('capa/{capa}/reopen', [CapaWorkflowController::class, 'reopen'])->name('capa.reopen');
 
     // Problem (Uygunsuzluk) Workflow
+    Route::post('problem/{problem}/immediate-action', [ProblemWorkflowController::class, 'recordImmediateAction'])->name('problem.immediate-action');
     Route::post('problem/{problem}/mark-under-review', [ProblemWorkflowController::class, 'markUnderReview'])->name('problem.mark-under-review');
     Route::post('problem/{problem}/close-without-capa', [ProblemWorkflowController::class, 'closeWithoutCapa'])->name('problem.close-without-capa');
     Route::post('problem/{problem}/close', [ProblemWorkflowController::class, 'close'])->name('problem.close');

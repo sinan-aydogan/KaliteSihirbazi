@@ -177,6 +177,7 @@ return [
         'updated' => 'Problem :problem updated.',
         'deleted' => 'Problem :problem deleted.',
         'deletedError' => 'Problem :problem cannot be deleted because it has CAPAs raised against it.',
+        'immediateActionRecorded' => 'Immediate action recorded.',
         'markedUnderReview' => 'Problem marked under review.',
         'closedWithoutCapa' => 'Problem closed without a CAPA.',
         'closed' => 'Problem closed.'

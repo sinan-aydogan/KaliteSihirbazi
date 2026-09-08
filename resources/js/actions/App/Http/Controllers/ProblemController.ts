@@ -380,7 +380,7 @@ show.head = (args: { problem: number | { id: number } } | [problem: number | { i
     show.form = showForm
 /**
 * @see \App\Http\Controllers\ProblemController::edit
- * @see app/Http/Controllers/ProblemController.php:82
+ * @see app/Http/Controllers/ProblemController.php:83
  * @route '/problem/{problem}/edit'
  */
 export const edit = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -395,7 +395,7 @@ edit.definition = {
 
 /**
 * @see \App\Http\Controllers\ProblemController::edit
- * @see app/Http/Controllers/ProblemController.php:82
+ * @see app/Http/Controllers/ProblemController.php:83
  * @route '/problem/{problem}/edit'
  */
 edit.url = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -428,7 +428,7 @@ edit.url = (args: { problem: number | { id: number } } | [problem: number | { id
 
 /**
 * @see \App\Http\Controllers\ProblemController::edit
- * @see app/Http/Controllers/ProblemController.php:82
+ * @see app/Http/Controllers/ProblemController.php:83
  * @route '/problem/{problem}/edit'
  */
 edit.get = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -437,7 +437,7 @@ edit.get = (args: { problem: number | { id: number } } | [problem: number | { id
 })
 /**
 * @see \App\Http\Controllers\ProblemController::edit
- * @see app/Http/Controllers/ProblemController.php:82
+ * @see app/Http/Controllers/ProblemController.php:83
  * @route '/problem/{problem}/edit'
  */
 edit.head = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -447,7 +447,7 @@ edit.head = (args: { problem: number | { id: number } } | [problem: number | { i
 
     /**
 * @see \App\Http\Controllers\ProblemController::edit
- * @see app/Http/Controllers/ProblemController.php:82
+ * @see app/Http/Controllers/ProblemController.php:83
  * @route '/problem/{problem}/edit'
  */
     const editForm = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -457,7 +457,7 @@ edit.head = (args: { problem: number | { id: number } } | [problem: number | { i
 
             /**
 * @see \App\Http\Controllers\ProblemController::edit
- * @see app/Http/Controllers/ProblemController.php:82
+ * @see app/Http/Controllers/ProblemController.php:83
  * @route '/problem/{problem}/edit'
  */
         editForm.get = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -466,7 +466,7 @@ edit.head = (args: { problem: number | { id: number } } | [problem: number | { i
         })
             /**
 * @see \App\Http\Controllers\ProblemController::edit
- * @see app/Http/Controllers/ProblemController.php:82
+ * @see app/Http/Controllers/ProblemController.php:83
  * @route '/problem/{problem}/edit'
  */
         editForm.head = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -482,7 +482,7 @@ edit.head = (args: { problem: number | { id: number } } | [problem: number | { i
     edit.form = editForm
 /**
 * @see \App\Http\Controllers\ProblemController::update
- * @see app/Http/Controllers/ProblemController.php:87
+ * @see app/Http/Controllers/ProblemController.php:88
  * @route '/problem/{problem}'
  */
 export const update = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -497,7 +497,7 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\ProblemController::update
- * @see app/Http/Controllers/ProblemController.php:87
+ * @see app/Http/Controllers/ProblemController.php:88
  * @route '/problem/{problem}'
  */
 update.url = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -530,7 +530,7 @@ update.url = (args: { problem: number | { id: number } } | [problem: number | { 
 
 /**
 * @see \App\Http\Controllers\ProblemController::update
- * @see app/Http/Controllers/ProblemController.php:87
+ * @see app/Http/Controllers/ProblemController.php:88
  * @route '/problem/{problem}'
  */
 update.put = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -539,7 +539,7 @@ update.put = (args: { problem: number | { id: number } } | [problem: number | { 
 })
 /**
 * @see \App\Http\Controllers\ProblemController::update
- * @see app/Http/Controllers/ProblemController.php:87
+ * @see app/Http/Controllers/ProblemController.php:88
  * @route '/problem/{problem}'
  */
 update.patch = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -549,7 +549,7 @@ update.patch = (args: { problem: number | { id: number } } | [problem: number | 
 
     /**
 * @see \App\Http\Controllers\ProblemController::update
- * @see app/Http/Controllers/ProblemController.php:87
+ * @see app/Http/Controllers/ProblemController.php:88
  * @route '/problem/{problem}'
  */
     const updateForm = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -564,7 +564,7 @@ update.patch = (args: { problem: number | { id: number } } | [problem: number | 
 
             /**
 * @see \App\Http\Controllers\ProblemController::update
- * @see app/Http/Controllers/ProblemController.php:87
+ * @see app/Http/Controllers/ProblemController.php:88
  * @route '/problem/{problem}'
  */
         updateForm.put = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -578,7 +578,7 @@ update.patch = (args: { problem: number | { id: number } } | [problem: number | 
         })
             /**
 * @see \App\Http\Controllers\ProblemController::update
- * @see app/Http/Controllers/ProblemController.php:87
+ * @see app/Http/Controllers/ProblemController.php:88
  * @route '/problem/{problem}'
  */
         updateForm.patch = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -594,7 +594,7 @@ update.patch = (args: { problem: number | { id: number } } | [problem: number | 
     update.form = updateForm
 /**
 * @see \App\Http\Controllers\ProblemController::destroy
- * @see app/Http/Controllers/ProblemController.php:96
+ * @see app/Http/Controllers/ProblemController.php:97
  * @route '/problem/{problem}'
  */
 export const destroy = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -609,7 +609,7 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\ProblemController::destroy
- * @see app/Http/Controllers/ProblemController.php:96
+ * @see app/Http/Controllers/ProblemController.php:97
  * @route '/problem/{problem}'
  */
 destroy.url = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -642,7 +642,7 @@ destroy.url = (args: { problem: number | { id: number } } | [problem: number | {
 
 /**
 * @see \App\Http\Controllers\ProblemController::destroy
- * @see app/Http/Controllers/ProblemController.php:96
+ * @see app/Http/Controllers/ProblemController.php:97
  * @route '/problem/{problem}'
  */
 destroy.delete = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -652,7 +652,7 @@ destroy.delete = (args: { problem: number | { id: number } } | [problem: number 
 
     /**
 * @see \App\Http\Controllers\ProblemController::destroy
- * @see app/Http/Controllers/ProblemController.php:96
+ * @see app/Http/Controllers/ProblemController.php:97
  * @route '/problem/{problem}'
  */
     const destroyForm = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -667,7 +667,7 @@ destroy.delete = (args: { problem: number | { id: number } } | [problem: number 
 
             /**
 * @see \App\Http\Controllers\ProblemController::destroy
- * @see app/Http/Controllers/ProblemController.php:96
+ * @see app/Http/Controllers/ProblemController.php:97
  * @route '/problem/{problem}'
  */
         destroyForm.delete = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({

@@ -25,6 +25,24 @@ class ProblemWorkflowService
         return $problem;
     }
 
+    /**
+     * The "correction" — a containment action taken right when the
+     * nonconformity is detected, independent of and prior to any root-cause
+     * analysis/CAPA. Not status-gated: it can be recorded or amended at any
+     * point in the problem's lifecycle since it documents what actually
+     * happened, not a workflow transition.
+     */
+    public function recordImmediateAction(Problem $problem, string $immediateAction, User $author): Problem
+    {
+        $problem->update([
+            'immediate_action' => $immediateAction,
+            'immediate_action_at' => now(),
+            'immediate_action_by_id' => $author->id,
+        ]);
+
+        return $problem;
+    }
+
     public function markUnderReview(Problem $problem): Problem
     {
         $this->assertStatus($problem, [ProblemStatus::Open]);

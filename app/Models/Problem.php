@@ -21,6 +21,9 @@ class Problem extends Model
         'customer_complaint_id',
         'title',
         'description',
+        'immediate_action',
+        'immediate_action_at',
+        'immediate_action_by_id',
         'problem_source_type_id',
         'severity',
         'status',
@@ -35,6 +38,7 @@ class Problem extends Model
         'status' => ProblemStatus::class,
         'detected_date' => 'date',
         'closed_at' => 'datetime',
+        'immediate_action_at' => 'datetime',
     ];
 
     protected static function booted(): void
@@ -84,6 +88,11 @@ class Problem extends Model
     public function detectedBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'detected_by_id');
+    }
+
+    public function immediateActionBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'immediate_action_by_id');
     }
 
     public function department(): BelongsTo
