@@ -1,0 +1,14 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "CAPA Source Types",
+            "subTitle": "The classification list of where CAPA records originate from"
+        }
+    },
+    "term": {
+        "name": "Name",
+        "sortOrder": "Sort Order",
+        "protected": "Protected",
+        "capaCount": "CAPA Count"
+    }
+}

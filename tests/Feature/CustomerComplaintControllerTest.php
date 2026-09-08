@@ -71,7 +71,7 @@ test('a complaint with linked root-cause problems cannot be deleted', function (
     $complaint->problems()->create([
         'title' => 'Kök neden araştırması',
         'description' => 'Açıklama',
-        'source_type' => 'customer_complaint',
+        'problem_source_type_id' => problemSourceTypeId('customer_complaint'),
         'severity' => 'low',
         'status' => 'open',
         'detected_by_id' => $user->id,

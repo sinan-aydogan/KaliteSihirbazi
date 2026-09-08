@@ -184,7 +184,7 @@ const submitRaiseCapa = async () => {
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4 text-sm">
-                <div><span class="text-slate-400 block" v-text="tm('term.sourceType')"/>{{ tm(`term.problemSourceType.${problem.source_type}`) }}</div>
+                <div><span class="text-slate-400 block" v-text="tm('term.sourceType')"/>{{ problem.problem_source_type?.name ?? '-' }}</div>
                 <div><span class="text-slate-400 block" v-text="tm('term.detectedBy')"/>{{ problem.detected_by?.name ?? '-' }}</div>
                 <div><span class="text-slate-400 block" v-text="tm('term.department')"/>{{ problem.department?.name ?? '-' }}</div>
                 <div><span class="text-slate-400 block" v-text="tm('term.detectedDate')"/>{{ formatDate(problem.detected_date) }}</div>

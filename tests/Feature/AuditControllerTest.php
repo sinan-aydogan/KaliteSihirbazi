@@ -119,7 +119,7 @@ test('an audit with findings cannot be deleted', function () {
     $audit->findings()->create([
         'title' => 'Kalite el kitabı güncel değil',
         'description' => 'Açıklama',
-        'source_type' => 'audit_finding',
+        'problem_source_type_id' => problemSourceTypeId('audit_finding'),
         'severity' => 'medium',
         'detected_by_id' => $author->id,
         'detected_date' => now(),

@@ -31,6 +31,10 @@ const props = defineProps({
     users: {
         type: Array,
         default: () => []
+    },
+    capaSourceTypes: {
+        type: Array,
+        default: () => []
     }
 })
 
@@ -39,13 +43,7 @@ const typeOptions = computed(() => [
     {id: 'preventive', label: tm('term.capaType.preventive')},
 ])
 
-const sourceTypeOptions = computed(() => [
-    {id: 'document_revision_request', label: tm('term.capaSourceType.document_revision_request')},
-    {id: 'audit_finding', label: tm('term.capaSourceType.audit_finding')},
-    {id: 'customer_complaint', label: tm('term.capaSourceType.customer_complaint')},
-    {id: 'internal', label: tm('term.capaSourceType.internal')},
-    {id: 'other', label: tm('term.capaSourceType.other')},
-])
+const sourceTypeOptions = computed(() => props.capaSourceTypes.map(t => ({id: t.id, label: t.name})))
 
 const userOptions = computed(() => props.users.map(u => ({id: u.id, label: u.name})))
 
@@ -78,7 +76,7 @@ const form = useForm({
     title: "",
     type: "corrective",
     description: "",
-    source_type: null,
+    capa_source_type_id: null,
     root_cause: "",
     responsible_id: null,
     due_date: "",
@@ -95,7 +93,7 @@ const rules = ref({
     description: {
         required: helpers.withMessage(t('message.validation.required'), required),
     },
-    source_type: {},
+    capa_source_type_id: {},
     root_cause: {},
     responsible_id: {
         required: helpers.withMessage(t('message.validation.required'), required),
@@ -145,7 +143,7 @@ const getRowInfo = (id) => {
         form.title = response.data.title;
         form.type = response.data.type;
         form.description = response.data.description;
-        form.source_type = response.data.source_type;
+        form.capa_source_type_id = response.data.capa_source_type_id;
         form.root_cause = response.data.root_cause;
         form.responsible_id = response.data.responsible_id;
         form.due_date = response.data.due_date?.substring(0, 10);
@@ -212,8 +210,8 @@ const handleDelete = (id) => {
                             <select-input v-model="form.type" :options="typeOptions"/>
                         </input-group>
 
-                        <input-group class="col-span-3" labelFor="source_type" :label="tm('term.sourceType')">
-                            <select-input v-model="form.source_type" :options="sourceTypeOptions"/>
+                        <input-group class="col-span-3" labelFor="capa_source_type_id" :label="tm('term.sourceType')">
+                            <select-input v-model="form.capa_source_type_id" :options="sourceTypeOptions"/>
                         </input-group>
 
                         <input-group class="col-span-6" labelFor="description" :label="tm('term.description')" :errors="v$.description.$errors">

@@ -9,7 +9,7 @@ test('an authenticated user can list problems', function () {
     Problem::create([
         'title' => 'Yanlış ürün etiketi',
         'description' => 'Sevkiyatta yanlış ürün etiketi kullanıldı.',
-        'source_type' => 'internal_observation',
+        'problem_source_type_id' => problemSourceTypeId('internal_observation'),
         'severity' => 'medium',
         'detected_by_id' => $author->id,
         'detected_date' => now(),
@@ -29,7 +29,7 @@ test('an authenticated user can view a problem detail page', function () {
     $problem = Problem::create([
         'title' => 'Yanlış ürün etiketi',
         'description' => 'Sevkiyatta yanlış ürün etiketi kullanıldı.',
-        'source_type' => 'internal_observation',
+        'problem_source_type_id' => problemSourceTypeId('internal_observation'),
         'severity' => 'medium',
         'detected_by_id' => $author->id,
         'detected_date' => now(),
@@ -51,7 +51,7 @@ test('creating a problem auto-generates a sequential code and opens it', functio
         ->post(route('problem.store'), [
             'title' => 'Yanlış ürün etiketi',
             'description' => 'Sevkiyatta yanlış ürün etiketi kullanıldı.',
-            'source_type' => 'internal_observation',
+            'problem_source_type_id' => problemSourceTypeId('internal_observation'),
             'severity' => 'medium',
             'detected_date' => now()->toDateString(),
         ])
@@ -67,7 +67,7 @@ test('creating a problem auto-generates a sequential code and opens it', functio
 test('creating a problem requires a title, description, source type, severity and detected date', function () {
     $this->actingAs(User::factory()->create())
         ->post(route('problem.store'), [])
-        ->assertSessionHasErrors(['title', 'description', 'source_type', 'severity', 'detected_date']);
+        ->assertSessionHasErrors(['title', 'description', 'problem_source_type_id', 'severity', 'detected_date']);
 });
 
 test('a problem without capas can be deleted', function () {
@@ -75,7 +75,7 @@ test('a problem without capas can be deleted', function () {
     $problem = Problem::create([
         'title' => 'Yanlış ürün etiketi',
         'description' => 'Açıklama',
-        'source_type' => 'internal_observation',
+        'problem_source_type_id' => problemSourceTypeId('internal_observation'),
         'severity' => 'medium',
         'detected_by_id' => $author->id,
         'detected_date' => now(),
@@ -91,7 +91,7 @@ test('a problem with capas raised against it cannot be deleted', function () {
     $problem = Problem::create([
         'title' => 'Yanlış ürün etiketi',
         'description' => 'Açıklama',
-        'source_type' => 'internal_observation',
+        'problem_source_type_id' => problemSourceTypeId('internal_observation'),
         'severity' => 'medium',
         'detected_by_id' => $author->id,
         'detected_date' => now(),

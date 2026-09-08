@@ -31,16 +31,14 @@ const props = defineProps({
     departments: {
         type: Array,
         default: () => []
+    },
+    problemSourceTypes: {
+        type: Array,
+        default: () => []
     }
 })
 
-const sourceTypeOptions = computed(() => [
-    {id: 'audit_finding', label: tm('term.problemSourceType.audit_finding')},
-    {id: 'customer_complaint', label: tm('term.problemSourceType.customer_complaint')},
-    {id: 'internal_observation', label: tm('term.problemSourceType.internal_observation')},
-    {id: 'supplier', label: tm('term.problemSourceType.supplier')},
-    {id: 'other', label: tm('term.problemSourceType.other')},
-])
+const sourceTypeOptions = computed(() => props.problemSourceTypes.map(t => ({id: t.id, label: t.name})))
 
 const severityOptions = computed(() => [
     {id: 'low', label: tm('term.problemSeverity.low')},
@@ -69,6 +67,7 @@ const severityColorClasses = {
 const headers = [
     {id: 'code', label: tm('term.code')},
     {id: 'title', label: tm('term.title')},
+    {id: 'source_type', label: tm('term.sourceType'), value: (row) => row.problem_source_type?.name ?? '-'},
     {id: 'severity', label: tm('term.severity')},
     {id: 'detected_date', label: tm('term.detectedDate'), value: (row) => new Date(row.detected_date).toLocaleDateString('tr-TR')},
     {id: 'status', label: tm('term.status')},
@@ -82,7 +81,7 @@ const form = useForm({
     id: null,
     title: "",
     description: "",
-    source_type: "internal_observation",
+    problem_source_type_id: null,
     severity: "medium",
     department_id: null,
     detected_date: "",
@@ -96,7 +95,7 @@ const rules = ref({
     description: {
         required: helpers.withMessage(t('message.validation.required'), required),
     },
-    source_type: {
+    problem_source_type_id: {
         required: helpers.withMessage(t('message.validation.required'), required),
     },
     severity: {
@@ -147,7 +146,7 @@ const getRowInfo = (id) => {
         form.id = response.data.id;
         form.title = response.data.title;
         form.description = response.data.description;
-        form.source_type = response.data.source_type;
+        form.problem_source_type_id = response.data.problem_source_type_id;
         form.severity = response.data.severity;
         form.department_id = response.data.department_id;
         form.detected_date = response.data.detected_date?.substring(0, 10);
@@ -217,8 +216,8 @@ const handleDelete = (id) => {
                             <text-input v-model="form.title"/>
                         </input-group>
 
-                        <input-group class="col-span-3" labelFor="source_type" :label="tm('term.sourceType')" :errors="v$.source_type.$errors">
-                            <select-input v-model="form.source_type" :options="sourceTypeOptions"/>
+                        <input-group class="col-span-3" labelFor="problem_source_type_id" :label="tm('term.sourceType')" :errors="v$.problem_source_type_id.$errors">
+                            <select-input v-model="form.problem_source_type_id" :options="sourceTypeOptions"/>
                         </input-group>
 
                         <input-group class="col-span-3" labelFor="severity" :label="tm('term.severity')" :errors="v$.severity.$errors">

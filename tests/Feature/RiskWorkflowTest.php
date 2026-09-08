@@ -107,7 +107,7 @@ test('raising a problem with source_type risk_realization against a risk opens a
             'risk_id' => $risk->id,
             'title' => 'UPS devreye girmedi, hat durdu',
             'description' => 'Elektrik kesintisinde UPS beklenen sürede devreye girmedi.',
-            'source_type' => 'risk_realization',
+            'problem_source_type_id' => problemSourceTypeId('risk_realization'),
             'severity' => 'high',
             'detected_date' => now()->toDateString(),
         ])
@@ -125,7 +125,7 @@ test('completing the pending realization review with inadequate controls sends t
     $problem = $risk->realizedProblems()->create([
         'title' => 'UPS devreye girmedi',
         'description' => 'Açıklama',
-        'source_type' => 'risk_realization',
+        'problem_source_type_id' => problemSourceTypeId('risk_realization'),
         'severity' => 'high',
         'status' => 'open',
         'detected_by_id' => $user->id,
@@ -158,7 +158,7 @@ test('the realization review does not open when the module setting is off', func
             'risk_id' => $risk->id,
             'title' => 'Küçük bir sapma',
             'description' => 'Açıklama',
-            'source_type' => 'risk_realization',
+            'problem_source_type_id' => problemSourceTypeId('risk_realization'),
             'severity' => 'low',
             'detected_date' => now()->toDateString(),
         ])

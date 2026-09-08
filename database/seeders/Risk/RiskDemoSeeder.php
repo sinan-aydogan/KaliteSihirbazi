@@ -2,7 +2,7 @@
 
 namespace Database\Seeders\Risk;
 
-use App\Enums\ProblemSourceType;
+use App\Models\ProblemSourceType;
 use App\Enums\RiskControlEffectiveness;
 use App\Enums\RiskControlStatus;
 use App\Enums\RiskReviewConclusion;
@@ -287,7 +287,7 @@ class RiskDemoSeeder extends Seeder
             'risk_id' => $risk->id,
             'title' => $title,
             'description' => $description,
-            'source_type' => ProblemSourceType::RiskRealization,
+            'problem_source_type_id' => ProblemSourceType::where('key', 'risk_realization')->value('id'),
             'severity' => $severity,
             'status' => $status,
             'detected_by_id' => $this->pickUserId(),

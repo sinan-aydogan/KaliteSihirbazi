@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Enums\CapaSourceType;
 use App\Enums\CapaStatus;
 use App\Enums\CapaType;
 use App\Traits\HasSequentialCode;
@@ -20,7 +19,7 @@ class Capa extends Model
         'title',
         'type',
         'description',
-        'source_type',
+        'capa_source_type_id',
         'source_id',
         'root_cause',
         'status',
@@ -32,7 +31,6 @@ class Capa extends Model
 
     protected $casts = [
         'type' => CapaType::class,
-        'source_type' => CapaSourceType::class,
         'status' => CapaStatus::class,
         'due_date' => 'date',
         'closed_at' => 'datetime',
@@ -55,6 +53,11 @@ class Capa extends Model
     public function problem(): BelongsTo
     {
         return $this->belongsTo(Problem::class);
+    }
+
+    public function capaSourceType(): BelongsTo
+    {
+        return $this->belongsTo(CapaSourceType::class);
     }
 
     public function actions(): HasMany

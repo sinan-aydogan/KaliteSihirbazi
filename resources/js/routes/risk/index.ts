@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
 /**
 * @see \App\Http\Controllers\RiskController::search
- * @see app/Http/Controllers/RiskController.php:21
+ * @see app/Http/Controllers/RiskController.php:22
  * @route '/risk/search'
  */
 export const search = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -16,7 +16,7 @@ search.definition = {
 
 /**
 * @see \App\Http\Controllers\RiskController::search
- * @see app/Http/Controllers/RiskController.php:21
+ * @see app/Http/Controllers/RiskController.php:22
  * @route '/risk/search'
  */
 search.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ search.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\RiskController::search
- * @see app/Http/Controllers/RiskController.php:21
+ * @see app/Http/Controllers/RiskController.php:22
  * @route '/risk/search'
  */
 search.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -35,7 +35,7 @@ search.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
     /**
 * @see \App\Http\Controllers\RiskController::search
- * @see app/Http/Controllers/RiskController.php:21
+ * @see app/Http/Controllers/RiskController.php:22
  * @route '/risk/search'
  */
     const searchForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -45,7 +45,7 @@ search.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
             /**
 * @see \App\Http\Controllers\RiskController::search
- * @see app/Http/Controllers/RiskController.php:21
+ * @see app/Http/Controllers/RiskController.php:22
  * @route '/risk/search'
  */
         searchForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -56,7 +56,7 @@ search.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     search.form = searchForm
 /**
 * @see \App\Http\Controllers\RiskController::index
- * @see app/Http/Controllers/RiskController.php:21
+ * @see app/Http/Controllers/RiskController.php:22
  * @route '/risk'
  */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -71,7 +71,7 @@ index.definition = {
 
 /**
 * @see \App\Http\Controllers\RiskController::index
- * @see app/Http/Controllers/RiskController.php:21
+ * @see app/Http/Controllers/RiskController.php:22
  * @route '/risk'
  */
 index.url = (options?: RouteQueryOptions) => {
@@ -80,7 +80,7 @@ index.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\RiskController::index
- * @see app/Http/Controllers/RiskController.php:21
+ * @see app/Http/Controllers/RiskController.php:22
  * @route '/risk'
  */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -89,7 +89,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\RiskController::index
- * @see app/Http/Controllers/RiskController.php:21
+ * @see app/Http/Controllers/RiskController.php:22
  * @route '/risk'
  */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -99,7 +99,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\RiskController::index
- * @see app/Http/Controllers/RiskController.php:21
+ * @see app/Http/Controllers/RiskController.php:22
  * @route '/risk'
  */
     const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -109,7 +109,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\RiskController::index
- * @see app/Http/Controllers/RiskController.php:21
+ * @see app/Http/Controllers/RiskController.php:22
  * @route '/risk'
  */
         indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -118,7 +118,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\RiskController::index
- * @see app/Http/Controllers/RiskController.php:21
+ * @see app/Http/Controllers/RiskController.php:22
  * @route '/risk'
  */
         indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -134,7 +134,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     index.form = indexForm
 /**
 * @see \App\Http\Controllers\RiskController::create
- * @see app/Http/Controllers/RiskController.php:37
+ * @see app/Http/Controllers/RiskController.php:38
  * @route '/risk/create'
  */
 export const create = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -149,7 +149,7 @@ create.definition = {
 
 /**
 * @see \App\Http\Controllers\RiskController::create
- * @see app/Http/Controllers/RiskController.php:37
+ * @see app/Http/Controllers/RiskController.php:38
  * @route '/risk/create'
  */
 create.url = (options?: RouteQueryOptions) => {
@@ -158,7 +158,7 @@ create.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\RiskController::create
- * @see app/Http/Controllers/RiskController.php:37
+ * @see app/Http/Controllers/RiskController.php:38
  * @route '/risk/create'
  */
 create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -167,7 +167,7 @@ create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\RiskController::create
- * @see app/Http/Controllers/RiskController.php:37
+ * @see app/Http/Controllers/RiskController.php:38
  * @route '/risk/create'
  */
 create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -177,7 +177,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\RiskController::create
- * @see app/Http/Controllers/RiskController.php:37
+ * @see app/Http/Controllers/RiskController.php:38
  * @route '/risk/create'
  */
     const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -187,7 +187,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\RiskController::create
- * @see app/Http/Controllers/RiskController.php:37
+ * @see app/Http/Controllers/RiskController.php:38
  * @route '/risk/create'
  */
         createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -196,7 +196,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\RiskController::create
- * @see app/Http/Controllers/RiskController.php:37
+ * @see app/Http/Controllers/RiskController.php:38
  * @route '/risk/create'
  */
         createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -212,7 +212,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     create.form = createForm
 /**
 * @see \App\Http\Controllers\RiskController::store
- * @see app/Http/Controllers/RiskController.php:42
+ * @see app/Http/Controllers/RiskController.php:43
  * @route '/risk'
  */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -227,7 +227,7 @@ store.definition = {
 
 /**
 * @see \App\Http\Controllers\RiskController::store
- * @see app/Http/Controllers/RiskController.php:42
+ * @see app/Http/Controllers/RiskController.php:43
  * @route '/risk'
  */
 store.url = (options?: RouteQueryOptions) => {
@@ -236,7 +236,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\RiskController::store
- * @see app/Http/Controllers/RiskController.php:42
+ * @see app/Http/Controllers/RiskController.php:43
  * @route '/risk'
  */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -246,7 +246,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
     /**
 * @see \App\Http\Controllers\RiskController::store
- * @see app/Http/Controllers/RiskController.php:42
+ * @see app/Http/Controllers/RiskController.php:43
  * @route '/risk'
  */
     const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -256,7 +256,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
             /**
 * @see \App\Http\Controllers\RiskController::store
- * @see app/Http/Controllers/RiskController.php:42
+ * @see app/Http/Controllers/RiskController.php:43
  * @route '/risk'
  */
         storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -267,7 +267,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     store.form = storeForm
 /**
 * @see \App\Http\Controllers\RiskController::show
- * @see app/Http/Controllers/RiskController.php:51
+ * @see app/Http/Controllers/RiskController.php:52
  * @route '/risk/{risk}'
  */
 export const show = (args: { risk: number | { id: number } } | [risk: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -282,7 +282,7 @@ show.definition = {
 
 /**
 * @see \App\Http\Controllers\RiskController::show
- * @see app/Http/Controllers/RiskController.php:51
+ * @see app/Http/Controllers/RiskController.php:52
  * @route '/risk/{risk}'
  */
 show.url = (args: { risk: number | { id: number } } | [risk: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -315,7 +315,7 @@ show.url = (args: { risk: number | { id: number } } | [risk: number | { id: numb
 
 /**
 * @see \App\Http\Controllers\RiskController::show
- * @see app/Http/Controllers/RiskController.php:51
+ * @see app/Http/Controllers/RiskController.php:52
  * @route '/risk/{risk}'
  */
 show.get = (args: { risk: number | { id: number } } | [risk: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -324,7 +324,7 @@ show.get = (args: { risk: number | { id: number } } | [risk: number | { id: numb
 })
 /**
 * @see \App\Http\Controllers\RiskController::show
- * @see app/Http/Controllers/RiskController.php:51
+ * @see app/Http/Controllers/RiskController.php:52
  * @route '/risk/{risk}'
  */
 show.head = (args: { risk: number | { id: number } } | [risk: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -334,7 +334,7 @@ show.head = (args: { risk: number | { id: number } } | [risk: number | { id: num
 
     /**
 * @see \App\Http\Controllers\RiskController::show
- * @see app/Http/Controllers/RiskController.php:51
+ * @see app/Http/Controllers/RiskController.php:52
  * @route '/risk/{risk}'
  */
     const showForm = (args: { risk: number | { id: number } } | [risk: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -344,7 +344,7 @@ show.head = (args: { risk: number | { id: number } } | [risk: number | { id: num
 
             /**
 * @see \App\Http\Controllers\RiskController::show
- * @see app/Http/Controllers/RiskController.php:51
+ * @see app/Http/Controllers/RiskController.php:52
  * @route '/risk/{risk}'
  */
         showForm.get = (args: { risk: number | { id: number } } | [risk: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -353,7 +353,7 @@ show.head = (args: { risk: number | { id: number } } | [risk: number | { id: num
         })
             /**
 * @see \App\Http\Controllers\RiskController::show
- * @see app/Http/Controllers/RiskController.php:51
+ * @see app/Http/Controllers/RiskController.php:52
  * @route '/risk/{risk}'
  */
         showForm.head = (args: { risk: number | { id: number } } | [risk: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -369,7 +369,7 @@ show.head = (args: { risk: number | { id: number } } | [risk: number | { id: num
     show.form = showForm
 /**
 * @see \App\Http\Controllers\RiskController::edit
- * @see app/Http/Controllers/RiskController.php:71
+ * @see app/Http/Controllers/RiskController.php:73
  * @route '/risk/{risk}/edit'
  */
 export const edit = (args: { risk: number | { id: number } } | [risk: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -384,7 +384,7 @@ edit.definition = {
 
 /**
 * @see \App\Http\Controllers\RiskController::edit
- * @see app/Http/Controllers/RiskController.php:71
+ * @see app/Http/Controllers/RiskController.php:73
  * @route '/risk/{risk}/edit'
  */
 edit.url = (args: { risk: number | { id: number } } | [risk: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -417,7 +417,7 @@ edit.url = (args: { risk: number | { id: number } } | [risk: number | { id: numb
 
 /**
 * @see \App\Http\Controllers\RiskController::edit
- * @see app/Http/Controllers/RiskController.php:71
+ * @see app/Http/Controllers/RiskController.php:73
  * @route '/risk/{risk}/edit'
  */
 edit.get = (args: { risk: number | { id: number } } | [risk: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -426,7 +426,7 @@ edit.get = (args: { risk: number | { id: number } } | [risk: number | { id: numb
 })
 /**
 * @see \App\Http\Controllers\RiskController::edit
- * @see app/Http/Controllers/RiskController.php:71
+ * @see app/Http/Controllers/RiskController.php:73
  * @route '/risk/{risk}/edit'
  */
 edit.head = (args: { risk: number | { id: number } } | [risk: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -436,7 +436,7 @@ edit.head = (args: { risk: number | { id: number } } | [risk: number | { id: num
 
     /**
 * @see \App\Http\Controllers\RiskController::edit
- * @see app/Http/Controllers/RiskController.php:71
+ * @see app/Http/Controllers/RiskController.php:73
  * @route '/risk/{risk}/edit'
  */
     const editForm = (args: { risk: number | { id: number } } | [risk: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -446,7 +446,7 @@ edit.head = (args: { risk: number | { id: number } } | [risk: number | { id: num
 
             /**
 * @see \App\Http\Controllers\RiskController::edit
- * @see app/Http/Controllers/RiskController.php:71
+ * @see app/Http/Controllers/RiskController.php:73
  * @route '/risk/{risk}/edit'
  */
         editForm.get = (args: { risk: number | { id: number } } | [risk: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -455,7 +455,7 @@ edit.head = (args: { risk: number | { id: number } } | [risk: number | { id: num
         })
             /**
 * @see \App\Http\Controllers\RiskController::edit
- * @see app/Http/Controllers/RiskController.php:71
+ * @see app/Http/Controllers/RiskController.php:73
  * @route '/risk/{risk}/edit'
  */
         editForm.head = (args: { risk: number | { id: number } } | [risk: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -471,7 +471,7 @@ edit.head = (args: { risk: number | { id: number } } | [risk: number | { id: num
     edit.form = editForm
 /**
 * @see \App\Http\Controllers\RiskController::update
- * @see app/Http/Controllers/RiskController.php:76
+ * @see app/Http/Controllers/RiskController.php:78
  * @route '/risk/{risk}'
  */
 export const update = (args: { risk: number | { id: number } } | [risk: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -486,7 +486,7 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\RiskController::update
- * @see app/Http/Controllers/RiskController.php:76
+ * @see app/Http/Controllers/RiskController.php:78
  * @route '/risk/{risk}'
  */
 update.url = (args: { risk: number | { id: number } } | [risk: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -519,7 +519,7 @@ update.url = (args: { risk: number | { id: number } } | [risk: number | { id: nu
 
 /**
 * @see \App\Http\Controllers\RiskController::update
- * @see app/Http/Controllers/RiskController.php:76
+ * @see app/Http/Controllers/RiskController.php:78
  * @route '/risk/{risk}'
  */
 update.put = (args: { risk: number | { id: number } } | [risk: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -528,7 +528,7 @@ update.put = (args: { risk: number | { id: number } } | [risk: number | { id: nu
 })
 /**
 * @see \App\Http\Controllers\RiskController::update
- * @see app/Http/Controllers/RiskController.php:76
+ * @see app/Http/Controllers/RiskController.php:78
  * @route '/risk/{risk}'
  */
 update.patch = (args: { risk: number | { id: number } } | [risk: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -538,7 +538,7 @@ update.patch = (args: { risk: number | { id: number } } | [risk: number | { id: 
 
     /**
 * @see \App\Http\Controllers\RiskController::update
- * @see app/Http/Controllers/RiskController.php:76
+ * @see app/Http/Controllers/RiskController.php:78
  * @route '/risk/{risk}'
  */
     const updateForm = (args: { risk: number | { id: number } } | [risk: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -553,7 +553,7 @@ update.patch = (args: { risk: number | { id: number } } | [risk: number | { id: 
 
             /**
 * @see \App\Http\Controllers\RiskController::update
- * @see app/Http/Controllers/RiskController.php:76
+ * @see app/Http/Controllers/RiskController.php:78
  * @route '/risk/{risk}'
  */
         updateForm.put = (args: { risk: number | { id: number } } | [risk: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -567,7 +567,7 @@ update.patch = (args: { risk: number | { id: number } } | [risk: number | { id: 
         })
             /**
 * @see \App\Http\Controllers\RiskController::update
- * @see app/Http/Controllers/RiskController.php:76
+ * @see app/Http/Controllers/RiskController.php:78
  * @route '/risk/{risk}'
  */
         updateForm.patch = (args: { risk: number | { id: number } } | [risk: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -583,7 +583,7 @@ update.patch = (args: { risk: number | { id: number } } | [risk: number | { id: 
     update.form = updateForm
 /**
 * @see \App\Http\Controllers\RiskController::destroy
- * @see app/Http/Controllers/RiskController.php:85
+ * @see app/Http/Controllers/RiskController.php:87
  * @route '/risk/{risk}'
  */
 export const destroy = (args: { risk: number | { id: number } } | [risk: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -598,7 +598,7 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\RiskController::destroy
- * @see app/Http/Controllers/RiskController.php:85
+ * @see app/Http/Controllers/RiskController.php:87
  * @route '/risk/{risk}'
  */
 destroy.url = (args: { risk: number | { id: number } } | [risk: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -631,7 +631,7 @@ destroy.url = (args: { risk: number | { id: number } } | [risk: number | { id: n
 
 /**
 * @see \App\Http\Controllers\RiskController::destroy
- * @see app/Http/Controllers/RiskController.php:85
+ * @see app/Http/Controllers/RiskController.php:87
  * @route '/risk/{risk}'
  */
 destroy.delete = (args: { risk: number | { id: number } } | [risk: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -641,7 +641,7 @@ destroy.delete = (args: { risk: number | { id: number } } | [risk: number | { id
 
     /**
 * @see \App\Http\Controllers\RiskController::destroy
- * @see app/Http/Controllers/RiskController.php:85
+ * @see app/Http/Controllers/RiskController.php:87
  * @route '/risk/{risk}'
  */
     const destroyForm = (args: { risk: number | { id: number } } | [risk: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -656,7 +656,7 @@ destroy.delete = (args: { risk: number | { id: number } } | [risk: number | { id
 
             /**
 * @see \App\Http\Controllers\RiskController::destroy
- * @see app/Http/Controllers/RiskController.php:85
+ * @see app/Http/Controllers/RiskController.php:87
  * @route '/risk/{risk}'
  */
         destroyForm.delete = (args: { risk: number | { id: number } } | [risk: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({

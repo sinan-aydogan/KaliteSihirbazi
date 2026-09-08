@@ -28,6 +28,10 @@ const props = defineProps({
     users: {
         type: Array,
         default: () => []
+    },
+    capaSourceTypes: {
+        type: Array,
+        default: () => []
     }
 })
 
@@ -36,13 +40,7 @@ const typeOptions = computed(() => [
     {id: 'preventive', label: tm('term.capaType.preventive')},
 ])
 
-const sourceTypeOptions = computed(() => [
-    {id: 'document_revision_request', label: tm('term.capaSourceType.document_revision_request')},
-    {id: 'audit_finding', label: tm('term.capaSourceType.audit_finding')},
-    {id: 'customer_complaint', label: tm('term.capaSourceType.customer_complaint')},
-    {id: 'internal', label: tm('term.capaSourceType.internal')},
-    {id: 'other', label: tm('term.capaSourceType.other')},
-])
+const sourceTypeOptions = computed(() => props.capaSourceTypes.map(t => ({id: t.id, label: t.name})))
 
 const userOptions = computed(() => props.users.map(u => ({id: u.id, label: u.name})))
 
@@ -69,7 +67,7 @@ const editForm = useForm({
     title: props.capa.title,
     type: props.capa.type,
     description: props.capa.description,
-    source_type: props.capa.source_type,
+    capa_source_type_id: props.capa.capa_source_type_id,
     root_cause: props.capa.root_cause,
     responsible_id: props.capa.responsible_id,
     due_date: props.capa.due_date?.substring(0, 10),
@@ -78,7 +76,7 @@ const editRules = ref({
     title: {required: helpers.withMessage(t('message.validation.required'), required)},
     type: {required: helpers.withMessage(t('message.validation.required'), required)},
     description: {required: helpers.withMessage(t('message.validation.required'), required)},
-    source_type: {},
+    capa_source_type_id: {},
     root_cause: {},
     responsible_id: {required: helpers.withMessage(t('message.validation.required'), required)},
     due_date: {required: helpers.withMessage(t('message.validation.required'), required)},
@@ -89,7 +87,7 @@ const openEdit = () => {
     editForm.title = props.capa.title;
     editForm.type = props.capa.type;
     editForm.description = props.capa.description;
-    editForm.source_type = props.capa.source_type;
+    editForm.capa_source_type_id = props.capa.capa_source_type_id;
     editForm.root_cause = props.capa.root_cause;
     editForm.responsible_id = props.capa.responsible_id;
     editForm.due_date = props.capa.due_date?.substring(0, 10);
@@ -242,7 +240,7 @@ const submitVerify = () => {
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4 text-sm">
                 <div><span class="text-slate-400 block" v-text="tm('term.type')"/>{{ tm(`term.capaType.${capa.type}`) }}</div>
-                <div><span class="text-slate-400 block" v-text="tm('term.sourceType')"/>{{ capa.source_type ? tm(`term.capaSourceType.${capa.source_type}`) : '-' }}</div>
+                <div><span class="text-slate-400 block" v-text="tm('term.sourceType')"/>{{ capa.capa_source_type?.name ?? '-' }}</div>
                 <div><span class="text-slate-400 block" v-text="tm('term.responsible')"/>{{ capa.responsible?.name ?? '-' }}</div>
                 <div><span class="text-slate-400 block" v-text="tm('term.openedBy')"/>{{ capa.opened_by?.name ?? '-' }}</div>
                 <div><span class="text-slate-400 block" v-text="tm('term.dueDate')"/>{{ formatDate(capa.due_date) }}</div>
@@ -347,8 +345,8 @@ const submitVerify = () => {
                             <select-input v-model="editForm.type" :options="typeOptions"/>
                         </input-group>
 
-                        <input-group class="col-span-3" labelFor="source_type" :label="tm('term.sourceType')">
-                            <select-input v-model="editForm.source_type" :options="sourceTypeOptions"/>
+                        <input-group class="col-span-3" labelFor="capa_source_type_id" :label="tm('term.sourceType')">
+                            <select-input v-model="editForm.capa_source_type_id" :options="sourceTypeOptions"/>
                         </input-group>
 
                         <input-group class="col-span-6" labelFor="description" :label="tm('term.description')" :errors="editV$.description.$errors">

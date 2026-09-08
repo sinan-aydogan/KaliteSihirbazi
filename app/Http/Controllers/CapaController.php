@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCapaRequest;
 use App\Http\Requests\UpdateCapaRequest;
 use App\Models\Capa;
+use App\Models\CapaSourceType;
 use App\Models\User;
 use App\Services\Capa\CapaWorkflowService;
 use Inertia\Inertia;
@@ -17,7 +18,7 @@ class CapaController extends Controller
 
     public function index()
     {
-        $capas = $this->tableFilter(Capa::withCount('actions')->with(['responsible:id,name', 'openedBy:id,name']))
+        $capas = $this->tableFilter(Capa::withCount('actions')->with(['responsible:id,name', 'openedBy:id,name', 'capaSourceType:id,name']))
             ->latest('id')
             ->paginate(10)
             ->withQueryString();
@@ -25,6 +26,7 @@ class CapaController extends Controller
         return Inertia::render('Modules/Capa/IndexPage', [
             'tableData' => $capas,
             'users' => User::all(['id', 'name']),
+            'capaSourceTypes' => CapaSourceType::orderBy('sort_order')->get(['id', 'name']),
         ]);
     }
 
@@ -50,11 +52,13 @@ class CapaController extends Controller
             'problem:id,code,title',
             'actions.responsible:id,name',
             'verifications.verifiedBy:id,name',
+            'capaSourceType:id,name',
         ]);
 
         return Inertia::render('Modules/Capa/ShowPage', [
             'capa' => $capa,
             'users' => User::all(['id', 'name']),
+            'capaSourceTypes' => CapaSourceType::orderBy('sort_order')->get(['id', 'name']),
         ]);
     }
 

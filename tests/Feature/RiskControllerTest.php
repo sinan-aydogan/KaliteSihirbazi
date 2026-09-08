@@ -85,7 +85,7 @@ test('a risk with realized problems cannot be deleted', function () {
     $risk->realizedProblems()->create([
         'title' => 'Gerçekleşen sorun',
         'description' => 'Açıklama',
-        'source_type' => 'risk_realization',
+        'problem_source_type_id' => problemSourceTypeId('risk_realization'),
         'severity' => 'medium',
         'status' => 'open',
         'detected_by_id' => $author->id,

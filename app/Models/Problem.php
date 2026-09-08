@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Enums\ProblemSeverity;
-use App\Enums\ProblemSourceType;
 use App\Enums\ProblemStatus;
 use App\Traits\HasSequentialCode;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -22,7 +21,7 @@ class Problem extends Model
         'customer_complaint_id',
         'title',
         'description',
-        'source_type',
+        'problem_source_type_id',
         'severity',
         'status',
         'detected_by_id',
@@ -32,7 +31,6 @@ class Problem extends Model
     ];
 
     protected $casts = [
-        'source_type' => ProblemSourceType::class,
         'severity' => ProblemSeverity::class,
         'status' => ProblemStatus::class,
         'detected_date' => 'date',
@@ -76,6 +74,11 @@ class Problem extends Model
     public function customerComplaint(): BelongsTo
     {
         return $this->belongsTo(CustomerComplaint::class);
+    }
+
+    public function problemSourceType(): BelongsTo
+    {
+        return $this->belongsTo(ProblemSourceType::class);
     }
 
     public function detectedBy(): BelongsTo

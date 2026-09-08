@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
 /**
 * @see \App\Http\Controllers\CapaController::search
- * @see app/Http/Controllers/CapaController.php:18
+ * @see app/Http/Controllers/CapaController.php:19
  * @route '/capa/search'
  */
 export const search = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -16,7 +16,7 @@ search.definition = {
 
 /**
 * @see \App\Http\Controllers\CapaController::search
- * @see app/Http/Controllers/CapaController.php:18
+ * @see app/Http/Controllers/CapaController.php:19
  * @route '/capa/search'
  */
 search.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ search.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\CapaController::search
- * @see app/Http/Controllers/CapaController.php:18
+ * @see app/Http/Controllers/CapaController.php:19
  * @route '/capa/search'
  */
 search.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -35,7 +35,7 @@ search.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
     /**
 * @see \App\Http\Controllers\CapaController::search
- * @see app/Http/Controllers/CapaController.php:18
+ * @see app/Http/Controllers/CapaController.php:19
  * @route '/capa/search'
  */
     const searchForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -45,7 +45,7 @@ search.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
             /**
 * @see \App\Http\Controllers\CapaController::search
- * @see app/Http/Controllers/CapaController.php:18
+ * @see app/Http/Controllers/CapaController.php:19
  * @route '/capa/search'
  */
         searchForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -56,7 +56,7 @@ search.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     search.form = searchForm
 /**
 * @see \App\Http\Controllers\CapaController::index
- * @see app/Http/Controllers/CapaController.php:18
+ * @see app/Http/Controllers/CapaController.php:19
  * @route '/capa'
  */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -71,7 +71,7 @@ index.definition = {
 
 /**
 * @see \App\Http\Controllers\CapaController::index
- * @see app/Http/Controllers/CapaController.php:18
+ * @see app/Http/Controllers/CapaController.php:19
  * @route '/capa'
  */
 index.url = (options?: RouteQueryOptions) => {
@@ -80,7 +80,7 @@ index.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\CapaController::index
- * @see app/Http/Controllers/CapaController.php:18
+ * @see app/Http/Controllers/CapaController.php:19
  * @route '/capa'
  */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -89,7 +89,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\CapaController::index
- * @see app/Http/Controllers/CapaController.php:18
+ * @see app/Http/Controllers/CapaController.php:19
  * @route '/capa'
  */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -99,7 +99,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\CapaController::index
- * @see app/Http/Controllers/CapaController.php:18
+ * @see app/Http/Controllers/CapaController.php:19
  * @route '/capa'
  */
     const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -109,7 +109,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\CapaController::index
- * @see app/Http/Controllers/CapaController.php:18
+ * @see app/Http/Controllers/CapaController.php:19
  * @route '/capa'
  */
         indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -118,7 +118,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\CapaController::index
- * @see app/Http/Controllers/CapaController.php:18
+ * @see app/Http/Controllers/CapaController.php:19
  * @route '/capa'
  */
         indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -134,7 +134,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     index.form = indexForm
 /**
 * @see \App\Http\Controllers\CapaController::create
- * @see app/Http/Controllers/CapaController.php:31
+ * @see app/Http/Controllers/CapaController.php:33
  * @route '/capa/create'
  */
 export const create = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -149,7 +149,7 @@ create.definition = {
 
 /**
 * @see \App\Http\Controllers\CapaController::create
- * @see app/Http/Controllers/CapaController.php:31
+ * @see app/Http/Controllers/CapaController.php:33
  * @route '/capa/create'
  */
 create.url = (options?: RouteQueryOptions) => {
@@ -158,7 +158,7 @@ create.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\CapaController::create
- * @see app/Http/Controllers/CapaController.php:31
+ * @see app/Http/Controllers/CapaController.php:33
  * @route '/capa/create'
  */
 create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -167,7 +167,7 @@ create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\CapaController::create
- * @see app/Http/Controllers/CapaController.php:31
+ * @see app/Http/Controllers/CapaController.php:33
  * @route '/capa/create'
  */
 create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -177,7 +177,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\CapaController::create
- * @see app/Http/Controllers/CapaController.php:31
+ * @see app/Http/Controllers/CapaController.php:33
  * @route '/capa/create'
  */
     const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -187,7 +187,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\CapaController::create
- * @see app/Http/Controllers/CapaController.php:31
+ * @see app/Http/Controllers/CapaController.php:33
  * @route '/capa/create'
  */
         createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -196,7 +196,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\CapaController::create
- * @see app/Http/Controllers/CapaController.php:31
+ * @see app/Http/Controllers/CapaController.php:33
  * @route '/capa/create'
  */
         createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -212,7 +212,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     create.form = createForm
 /**
 * @see \App\Http\Controllers\CapaController::store
- * @see app/Http/Controllers/CapaController.php:36
+ * @see app/Http/Controllers/CapaController.php:38
  * @route '/capa'
  */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -227,7 +227,7 @@ store.definition = {
 
 /**
 * @see \App\Http\Controllers\CapaController::store
- * @see app/Http/Controllers/CapaController.php:36
+ * @see app/Http/Controllers/CapaController.php:38
  * @route '/capa'
  */
 store.url = (options?: RouteQueryOptions) => {
@@ -236,7 +236,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\CapaController::store
- * @see app/Http/Controllers/CapaController.php:36
+ * @see app/Http/Controllers/CapaController.php:38
  * @route '/capa'
  */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -246,7 +246,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
     /**
 * @see \App\Http\Controllers\CapaController::store
- * @see app/Http/Controllers/CapaController.php:36
+ * @see app/Http/Controllers/CapaController.php:38
  * @route '/capa'
  */
     const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -256,7 +256,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
             /**
 * @see \App\Http\Controllers\CapaController::store
- * @see app/Http/Controllers/CapaController.php:36
+ * @see app/Http/Controllers/CapaController.php:38
  * @route '/capa'
  */
         storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -267,7 +267,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     store.form = storeForm
 /**
 * @see \App\Http\Controllers\CapaController::show
- * @see app/Http/Controllers/CapaController.php:45
+ * @see app/Http/Controllers/CapaController.php:47
  * @route '/capa/{capa}'
  */
 export const show = (args: { capa: number | { id: number } } | [capa: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -282,7 +282,7 @@ show.definition = {
 
 /**
 * @see \App\Http\Controllers\CapaController::show
- * @see app/Http/Controllers/CapaController.php:45
+ * @see app/Http/Controllers/CapaController.php:47
  * @route '/capa/{capa}'
  */
 show.url = (args: { capa: number | { id: number } } | [capa: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -315,7 +315,7 @@ show.url = (args: { capa: number | { id: number } } | [capa: number | { id: numb
 
 /**
 * @see \App\Http\Controllers\CapaController::show
- * @see app/Http/Controllers/CapaController.php:45
+ * @see app/Http/Controllers/CapaController.php:47
  * @route '/capa/{capa}'
  */
 show.get = (args: { capa: number | { id: number } } | [capa: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -324,7 +324,7 @@ show.get = (args: { capa: number | { id: number } } | [capa: number | { id: numb
 })
 /**
 * @see \App\Http\Controllers\CapaController::show
- * @see app/Http/Controllers/CapaController.php:45
+ * @see app/Http/Controllers/CapaController.php:47
  * @route '/capa/{capa}'
  */
 show.head = (args: { capa: number | { id: number } } | [capa: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -334,7 +334,7 @@ show.head = (args: { capa: number | { id: number } } | [capa: number | { id: num
 
     /**
 * @see \App\Http\Controllers\CapaController::show
- * @see app/Http/Controllers/CapaController.php:45
+ * @see app/Http/Controllers/CapaController.php:47
  * @route '/capa/{capa}'
  */
     const showForm = (args: { capa: number | { id: number } } | [capa: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -344,7 +344,7 @@ show.head = (args: { capa: number | { id: number } } | [capa: number | { id: num
 
             /**
 * @see \App\Http\Controllers\CapaController::show
- * @see app/Http/Controllers/CapaController.php:45
+ * @see app/Http/Controllers/CapaController.php:47
  * @route '/capa/{capa}'
  */
         showForm.get = (args: { capa: number | { id: number } } | [capa: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -353,7 +353,7 @@ show.head = (args: { capa: number | { id: number } } | [capa: number | { id: num
         })
             /**
 * @see \App\Http\Controllers\CapaController::show
- * @see app/Http/Controllers/CapaController.php:45
+ * @see app/Http/Controllers/CapaController.php:47
  * @route '/capa/{capa}'
  */
         showForm.head = (args: { capa: number | { id: number } } | [capa: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -369,7 +369,7 @@ show.head = (args: { capa: number | { id: number } } | [capa: number | { id: num
     show.form = showForm
 /**
 * @see \App\Http\Controllers\CapaController::edit
- * @see app/Http/Controllers/CapaController.php:61
+ * @see app/Http/Controllers/CapaController.php:65
  * @route '/capa/{capa}/edit'
  */
 export const edit = (args: { capa: number | { id: number } } | [capa: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -384,7 +384,7 @@ edit.definition = {
 
 /**
 * @see \App\Http\Controllers\CapaController::edit
- * @see app/Http/Controllers/CapaController.php:61
+ * @see app/Http/Controllers/CapaController.php:65
  * @route '/capa/{capa}/edit'
  */
 edit.url = (args: { capa: number | { id: number } } | [capa: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -417,7 +417,7 @@ edit.url = (args: { capa: number | { id: number } } | [capa: number | { id: numb
 
 /**
 * @see \App\Http\Controllers\CapaController::edit
- * @see app/Http/Controllers/CapaController.php:61
+ * @see app/Http/Controllers/CapaController.php:65
  * @route '/capa/{capa}/edit'
  */
 edit.get = (args: { capa: number | { id: number } } | [capa: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -426,7 +426,7 @@ edit.get = (args: { capa: number | { id: number } } | [capa: number | { id: numb
 })
 /**
 * @see \App\Http\Controllers\CapaController::edit
- * @see app/Http/Controllers/CapaController.php:61
+ * @see app/Http/Controllers/CapaController.php:65
  * @route '/capa/{capa}/edit'
  */
 edit.head = (args: { capa: number | { id: number } } | [capa: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -436,7 +436,7 @@ edit.head = (args: { capa: number | { id: number } } | [capa: number | { id: num
 
     /**
 * @see \App\Http\Controllers\CapaController::edit
- * @see app/Http/Controllers/CapaController.php:61
+ * @see app/Http/Controllers/CapaController.php:65
  * @route '/capa/{capa}/edit'
  */
     const editForm = (args: { capa: number | { id: number } } | [capa: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -446,7 +446,7 @@ edit.head = (args: { capa: number | { id: number } } | [capa: number | { id: num
 
             /**
 * @see \App\Http\Controllers\CapaController::edit
- * @see app/Http/Controllers/CapaController.php:61
+ * @see app/Http/Controllers/CapaController.php:65
  * @route '/capa/{capa}/edit'
  */
         editForm.get = (args: { capa: number | { id: number } } | [capa: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -455,7 +455,7 @@ edit.head = (args: { capa: number | { id: number } } | [capa: number | { id: num
         })
             /**
 * @see \App\Http\Controllers\CapaController::edit
- * @see app/Http/Controllers/CapaController.php:61
+ * @see app/Http/Controllers/CapaController.php:65
  * @route '/capa/{capa}/edit'
  */
         editForm.head = (args: { capa: number | { id: number } } | [capa: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -471,7 +471,7 @@ edit.head = (args: { capa: number | { id: number } } | [capa: number | { id: num
     edit.form = editForm
 /**
 * @see \App\Http\Controllers\CapaController::update
- * @see app/Http/Controllers/CapaController.php:66
+ * @see app/Http/Controllers/CapaController.php:70
  * @route '/capa/{capa}'
  */
 export const update = (args: { capa: number | { id: number } } | [capa: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -486,7 +486,7 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\CapaController::update
- * @see app/Http/Controllers/CapaController.php:66
+ * @see app/Http/Controllers/CapaController.php:70
  * @route '/capa/{capa}'
  */
 update.url = (args: { capa: number | { id: number } } | [capa: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -519,7 +519,7 @@ update.url = (args: { capa: number | { id: number } } | [capa: number | { id: nu
 
 /**
 * @see \App\Http\Controllers\CapaController::update
- * @see app/Http/Controllers/CapaController.php:66
+ * @see app/Http/Controllers/CapaController.php:70
  * @route '/capa/{capa}'
  */
 update.put = (args: { capa: number | { id: number } } | [capa: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -528,7 +528,7 @@ update.put = (args: { capa: number | { id: number } } | [capa: number | { id: nu
 })
 /**
 * @see \App\Http\Controllers\CapaController::update
- * @see app/Http/Controllers/CapaController.php:66
+ * @see app/Http/Controllers/CapaController.php:70
  * @route '/capa/{capa}'
  */
 update.patch = (args: { capa: number | { id: number } } | [capa: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -538,7 +538,7 @@ update.patch = (args: { capa: number | { id: number } } | [capa: number | { id: 
 
     /**
 * @see \App\Http\Controllers\CapaController::update
- * @see app/Http/Controllers/CapaController.php:66
+ * @see app/Http/Controllers/CapaController.php:70
  * @route '/capa/{capa}'
  */
     const updateForm = (args: { capa: number | { id: number } } | [capa: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -553,7 +553,7 @@ update.patch = (args: { capa: number | { id: number } } | [capa: number | { id: 
 
             /**
 * @see \App\Http\Controllers\CapaController::update
- * @see app/Http/Controllers/CapaController.php:66
+ * @see app/Http/Controllers/CapaController.php:70
  * @route '/capa/{capa}'
  */
         updateForm.put = (args: { capa: number | { id: number } } | [capa: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -567,7 +567,7 @@ update.patch = (args: { capa: number | { id: number } } | [capa: number | { id: 
         })
             /**
 * @see \App\Http\Controllers\CapaController::update
- * @see app/Http/Controllers/CapaController.php:66
+ * @see app/Http/Controllers/CapaController.php:70
  * @route '/capa/{capa}'
  */
         updateForm.patch = (args: { capa: number | { id: number } } | [capa: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -583,7 +583,7 @@ update.patch = (args: { capa: number | { id: number } } | [capa: number | { id: 
     update.form = updateForm
 /**
 * @see \App\Http\Controllers\CapaController::destroy
- * @see app/Http/Controllers/CapaController.php:75
+ * @see app/Http/Controllers/CapaController.php:79
  * @route '/capa/{capa}'
  */
 export const destroy = (args: { capa: number | { id: number } } | [capa: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -598,7 +598,7 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\CapaController::destroy
- * @see app/Http/Controllers/CapaController.php:75
+ * @see app/Http/Controllers/CapaController.php:79
  * @route '/capa/{capa}'
  */
 destroy.url = (args: { capa: number | { id: number } } | [capa: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -631,7 +631,7 @@ destroy.url = (args: { capa: number | { id: number } } | [capa: number | { id: n
 
 /**
 * @see \App\Http\Controllers\CapaController::destroy
- * @see app/Http/Controllers/CapaController.php:75
+ * @see app/Http/Controllers/CapaController.php:79
  * @route '/capa/{capa}'
  */
 destroy.delete = (args: { capa: number | { id: number } } | [capa: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -641,7 +641,7 @@ destroy.delete = (args: { capa: number | { id: number } } | [capa: number | { id
 
     /**
 * @see \App\Http\Controllers\CapaController::destroy
- * @see app/Http/Controllers/CapaController.php:75
+ * @see app/Http/Controllers/CapaController.php:79
  * @route '/capa/{capa}'
  */
     const destroyForm = (args: { capa: number | { id: number } } | [capa: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -656,7 +656,7 @@ destroy.delete = (args: { capa: number | { id: number } } | [capa: number | { id
 
             /**
 * @see \App\Http\Controllers\CapaController::destroy
- * @see app/Http/Controllers/CapaController.php:75
+ * @see app/Http/Controllers/CapaController.php:79
  * @route '/capa/{capa}'
  */
         destroyForm.delete = (args: { capa: number | { id: number } } | [capa: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({

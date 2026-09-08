@@ -28,6 +28,8 @@ import RiskHazardClassController from './RiskHazardClassController'
 import CustomerController from './CustomerController'
 import CustomerComplaintSettingController from './CustomerComplaintSettingController'
 import CustomerComplaintController from './CustomerComplaintController'
+import ProblemSourceTypeController from './ProblemSourceTypeController'
+import CapaSourceTypeController from './CapaSourceTypeController'
 import CompanyAccreditationController from './CompanyAccreditationController'
 import CapaActionController from './CapaActionController'
 import CapaWorkflowController from './CapaWorkflowController'
@@ -73,6 +75,8 @@ RiskHazardClassController: Object.assign(RiskHazardClassController, RiskHazardCl
 CustomerController: Object.assign(CustomerController, CustomerController),
 CustomerComplaintSettingController: Object.assign(CustomerComplaintSettingController, CustomerComplaintSettingController),
 CustomerComplaintController: Object.assign(CustomerComplaintController, CustomerComplaintController),
+ProblemSourceTypeController: Object.assign(ProblemSourceTypeController, ProblemSourceTypeController),
+CapaSourceTypeController: Object.assign(CapaSourceTypeController, CapaSourceTypeController),
 CompanyAccreditationController: Object.assign(CompanyAccreditationController, CompanyAccreditationController),
 CapaActionController: Object.assign(CapaActionController, CapaActionController),
 CapaWorkflowController: Object.assign(CapaWorkflowController, CapaWorkflowController),

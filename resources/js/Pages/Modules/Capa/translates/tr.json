@@ -38,13 +38,6 @@
             "corrective": "Düzeltici",
             "preventive": "Önleyici"
         },
-        "capaSourceType": {
-            "document_revision_request": "Doküman Revizyon Talebi",
-            "audit_finding": "Denetim Bulgusu",
-            "customer_complaint": "Müşteri Şikayeti",
-            "internal": "İç Kaynaklı",
-            "other": "Diğer"
-        },
         "capaStatus": {
             "open": "Açık",
             "action_plan": "Aksiyon Planlandı",

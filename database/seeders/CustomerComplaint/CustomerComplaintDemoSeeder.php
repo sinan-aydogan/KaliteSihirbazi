@@ -2,7 +2,7 @@
 
 namespace Database\Seeders\CustomerComplaint;
 
-use App\Enums\ProblemSourceType;
+use App\Models\ProblemSourceType;
 use App\Models\Customer;
 use App\Models\CustomerComplaint;
 use App\Models\Department;
@@ -166,7 +166,7 @@ class CustomerComplaintDemoSeeder extends Seeder
             'customer_complaint_id' => $complaint->id,
             'title' => $title,
             'description' => 'Şikayet '.$complaint->code.' için açılan kök neden araştırması.',
-            'source_type' => ProblemSourceType::CustomerComplaint,
+            'problem_source_type_id' => ProblemSourceType::where('key', 'customer_complaint')->value('id'),
             'severity' => $severity,
             'status' => $status,
             'detected_by_id' => $this->users->random()->id,

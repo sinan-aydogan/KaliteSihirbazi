@@ -38,7 +38,7 @@ test('raising a root-cause problem against a complaint moves it into investigati
             'customer_complaint_id' => $complaint->id,
             'title' => 'Lehim hattı sıcaklık profili sapması',
             'description' => 'Açıklama',
-            'source_type' => 'customer_complaint',
+            'problem_source_type_id' => problemSourceTypeId('customer_complaint'),
             'severity' => 'high',
             'detected_date' => now()->toDateString(),
         ])

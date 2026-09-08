@@ -349,4 +349,18 @@ return [
     'customerComplaintSettings' => [
         'updated' => 'Customer Complaints module settings updated.'
     ],
+    'problemSourceType' => [
+        'created' => 'Source type created.',
+        'updated' => 'Source type updated.',
+        'deleted' => 'Source type deleted.',
+        'deletedError' => 'This source type cannot be deleted because it has nonconformities assigned to it.',
+        'deletedErrorProtected' => 'This system-default source type cannot be deleted.'
+    ],
+    'capaSourceType' => [
+        'created' => 'Source type created.',
+        'updated' => 'Source type updated.',
+        'deleted' => 'Source type deleted.',
+        'deletedError' => 'This source type cannot be deleted because it has CAPA records assigned to it.',
+        'deletedErrorProtected' => 'This system-default source type cannot be deleted.'
+    ],
 ];

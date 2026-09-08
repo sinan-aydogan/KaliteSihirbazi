@@ -1,0 +1,14 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Uygunsuzluk Kaynak Türleri",
+            "subTitle": "Uygunsuzluk kayıtlarının hangi kaynaktan geldiğini gösteren sınıflandırma listesi"
+        }
+    },
+    "term": {
+        "name": "Ad",
+        "sortOrder": "Sıra",
+        "protected": "Korumalı",
+        "problemCount": "Uygunsuzluk Sayısı"
+    }
+}

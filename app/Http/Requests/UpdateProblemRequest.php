@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use App\Enums\ProblemSeverity;
-use App\Enums\ProblemSourceType;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -19,7 +18,7 @@ class UpdateProblemRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'source_type' => ['required', Rule::enum(ProblemSourceType::class)],
+            'problem_source_type_id' => 'required|exists:problem_source_types,id',
             'severity' => ['required', Rule::enum(ProblemSeverity::class)],
             'department_id' => 'nullable|exists:departments,id',
             'detected_date' => 'required|date|before_or_equal:today',

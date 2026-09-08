@@ -38,13 +38,6 @@
             "corrective": "Corrective",
             "preventive": "Preventive"
         },
-        "capaSourceType": {
-            "document_revision_request": "Document Revision Request",
-            "audit_finding": "Audit Finding",
-            "customer_complaint": "Customer Complaint",
-            "internal": "Internal",
-            "other": "Other"
-        },
         "capaStatus": {
             "open": "Open",
             "action_plan": "Action Planned",

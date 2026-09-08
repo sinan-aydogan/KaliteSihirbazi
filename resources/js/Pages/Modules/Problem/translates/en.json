@@ -29,14 +29,6 @@
         "detectedDate": "Detected Date",
         "closedAt": "Closed At",
         "capaCount": "CAPAs",
-        "problemSourceType": {
-            "audit_finding": "Audit Finding",
-            "customer_complaint": "Customer Complaint",
-            "internal_observation": "Internal Observation",
-            "supplier": "Supplier",
-            "risk_realization": "Risk Realization",
-            "other": "Other"
-        },
         "problemSeverity": {
             "low": "Low",
             "medium": "Medium",

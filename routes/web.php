@@ -27,6 +27,7 @@ use App\Http\Controllers\BusinessManagement\Vehicle\VehicleStatusController;
 use App\Http\Controllers\BusinessManagement\Vehicle\VehicleTypeController;
 use App\Http\Controllers\CapaActionController;
 use App\Http\Controllers\CapaController;
+use App\Http\Controllers\CapaSourceTypeController;
 use App\Http\Controllers\CapaWorkflowController;
 use App\Http\Controllers\CompanyAccreditationController;
 use App\Http\Controllers\CustomerComplaintController;
@@ -66,6 +67,7 @@ use App\Http\Controllers\MeasurementDevice\DeviceInfoController;
 use App\Http\Controllers\MeasurementDevice\MeasurementDeviceController;
 use App\Http\Controllers\MeasurementDevice\MeasurementDeviceTypeController;
 use App\Http\Controllers\ProblemController;
+use App\Http\Controllers\ProblemSourceTypeController;
 use App\Http\Controllers\ProblemWorkflowController;
 use App\Http\Controllers\Setting\GlobalSettingController;
 use App\Http\Controllers\Setting\ModuleController;
@@ -178,6 +180,8 @@ Route::middleware([
         ['uri' => 'risk-hazard-class', 'model' => 'riskHazardClass', 'controller' => RiskHazardClassController::class],
         ['uri' => 'customer', 'model' => 'customer', 'controller' => CustomerController::class],
         ['uri' => 'customer-complaint', 'model' => 'customerComplaint', 'controller' => CustomerComplaintController::class, 'settingController' => CustomerComplaintSettingController::class],
+        ['uri' => 'problem-source-type', 'model' => 'problemSourceType', 'controller' => ProblemSourceTypeController::class],
+        ['uri' => 'capa-source-type', 'model' => 'capaSourceType', 'controller' => CapaSourceTypeController::class],
     ];
 
     $plannedModules = [

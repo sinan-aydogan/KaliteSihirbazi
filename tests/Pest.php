@@ -42,7 +42,18 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
+function problemSourceTypeId(string $key): int
 {
-    // ..
+    return \App\Models\ProblemSourceType::firstOrCreate(
+        ['key' => $key],
+        ['name' => $key, 'is_protected' => true]
+    )->id;
+}
+
+function capaSourceTypeId(string $key): int
+{
+    return \App\Models\CapaSourceType::firstOrCreate(
+        ['key' => $key],
+        ['name' => $key, 'is_protected' => true]
+    )->id;
 }
