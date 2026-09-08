@@ -1,0 +1,81 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Müşteri Şikayetleri",
+            "subTitle": "Müşterilerden gelen şikayetleri alım, inceleme, çözüm ve kapanış döngüsü boyunca izleyin"
+        },
+        "createPage": {
+            "title": "Yeni Şikayet Kaydı",
+            "subTitle": "Şikayeti müşteriye ve ilgili ürün/parti bilgisine bağlayarak kaydedin"
+        },
+        "showPage": {
+            "title": "Şikayet Detayı",
+            "subTitle": "Şikayetin yaşam döngüsünü ve bağlı kök neden araştırmalarını buradan yönetin"
+        }
+    },
+    "term": {
+        "code": "Şikayet No",
+        "customer": "Müşteri",
+        "title": "Başlık",
+        "description": "Açıklama",
+        "channel": "Kanal",
+        "productReference": "Ürün / Parti Referansı",
+        "severity": "Önem Derecesi",
+        "department": "Sorumlu Birim",
+        "receivedDate": "Alınma Tarihi",
+        "responseDueDate": "Yanıt Termini",
+        "firstResponseAt": "İlk Yanıt",
+        "status": "Durum",
+        "resolutionSummary": "Çözüm Özeti",
+        "customerNotifiedAt": "Müşteriye Bildirim",
+        "satisfactionRating": "Müşteri Memnuniyeti (1-5)",
+        "reopenReason": "Yeniden Açılma Nedeni",
+        "reopenedCount": "Yeniden Açılma Sayısı",
+        "closedAt": "Kapanış Tarihi",
+        "reportedBy": "Kaydeden",
+        "manageModule": "Modülü Yönet",
+        "problemCount": "Kök Neden Kaydı",
+        "channelValue": {
+            "phone": "Telefon",
+            "email": "E-posta",
+            "portal": "Müşteri Portalı",
+            "in_person": "Yüz Yüze",
+            "letter": "Yazılı Mektup",
+            "other": "Diğer"
+        },
+        "severityValue": {
+            "low": "Düşük",
+            "medium": "Orta",
+            "high": "Yüksek",
+            "critical": "Kritik"
+        },
+        "statusValue": {
+            "received": "Alındı",
+            "under_investigation": "İnceleniyor",
+            "resolved": "Çözüldü",
+            "closed": "Kapatıldı",
+            "reopened": "Yeniden Açıldı"
+        },
+        "rootCauseProblems": "Bağlı Kök Neden Araştırmaları (DÖF)"
+    },
+    "action": {
+        "viewDetails": "Detay / Yönet",
+        "acknowledge": "İlk Yanıtı Kaydet / İncelemeye Al",
+        "resolve": "Çözüldü Olarak İşaretle",
+        "close": "Müşteriye Bildir ve Kapat",
+        "reopen": "Yeniden Aç",
+        "raiseRootCause": "Kök Neden Araştırması (DÖF) Aç"
+    },
+    "setting": {
+        "title": "Müşteri Şikayetleri Modülü Ayarları",
+        "subTitle": "İlk yanıt için hedeflenen süre (SLA)",
+        "sla": {
+            "title": "Yanıt Süresi (SLA)",
+            "subTitle": "Bir şikayet kaydedildiğinde, yanıt termini bu gün sayısı eklenerek otomatik hesaplanır",
+            "label": "Gün"
+        }
+    },
+    "menu": {
+        "general": "Genel Ayarlar"
+    }
+}

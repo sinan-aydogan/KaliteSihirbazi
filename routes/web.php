@@ -29,6 +29,10 @@ use App\Http\Controllers\CapaActionController;
 use App\Http\Controllers\CapaController;
 use App\Http\Controllers\CapaWorkflowController;
 use App\Http\Controllers\CompanyAccreditationController;
+use App\Http\Controllers\CustomerComplaintController;
+use App\Http\Controllers\CustomerComplaintSettingController;
+use App\Http\Controllers\CustomerComplaintWorkflowController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\Document\DistributionPointController;
 use App\Http\Controllers\Document\DocumentActionController;
@@ -172,6 +176,8 @@ Route::middleware([
         ['uri' => 'risk', 'model' => 'risk', 'controller' => RiskController::class, 'settingController' => RiskSettingController::class],
         ['uri' => 'risk-category', 'model' => 'riskCategory', 'controller' => RiskCategoryController::class],
         ['uri' => 'risk-hazard-class', 'model' => 'riskHazardClass', 'controller' => RiskHazardClassController::class],
+        ['uri' => 'customer', 'model' => 'customer', 'controller' => CustomerController::class],
+        ['uri' => 'customer-complaint', 'model' => 'customerComplaint', 'controller' => CustomerComplaintController::class, 'settingController' => CustomerComplaintSettingController::class],
     ];
 
     $plannedModules = [
@@ -179,7 +185,6 @@ Route::middleware([
         'improvement-work',
         'device',
         'machine',
-        'customer',
         'product',
         'raw-material',
         'consumable-material',
@@ -325,6 +330,12 @@ Route::middleware([
     // Risk Reviews (reassessment log, nested under a Risk)
     Route::post('risk/{risk}/reviews', [RiskReviewController::class, 'store'])->name('risk-review.store');
     Route::put('risk-review/{riskReview}', [RiskReviewController::class, 'update'])->name('risk-review.update');
+
+    // Customer Complaint Workflow (acknowledge / resolve / close / reopen)
+    Route::post('customer-complaint/{customerComplaint}/acknowledge', [CustomerComplaintWorkflowController::class, 'acknowledge'])->name('customer-complaint.acknowledge');
+    Route::post('customer-complaint/{customerComplaint}/resolve', [CustomerComplaintWorkflowController::class, 'resolve'])->name('customer-complaint.resolve');
+    Route::post('customer-complaint/{customerComplaint}/close', [CustomerComplaintWorkflowController::class, 'close'])->name('customer-complaint.close');
+    Route::post('customer-complaint/{customerComplaint}/reopen', [CustomerComplaintWorkflowController::class, 'reopen'])->name('customer-complaint.reopen');
 
     /* Warehouse Setting Pages */
     Route::resource('warehouse-type', WarehouseTypeController::class);

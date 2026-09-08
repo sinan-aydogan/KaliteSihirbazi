@@ -331,4 +331,23 @@ return [
     'riskSettings' => [
         'updated' => 'Risk modülü ayarları güncellendi.'
     ],
+    'customer' => [
+        'created' => 'Müşteri oluşturuldu.',
+        'updated' => 'Müşteri güncellendi.',
+        'deleted' => 'Müşteri silindi.',
+        'deletedError' => 'Bu müşteri silinemez çünkü üzerinde kayıtlı şikayetler var.',
+    ],
+    'customerComplaint' => [
+        'created' => ':complaint kodlu şikayet kaydedildi.',
+        'updated' => ':complaint kodlu şikayet güncellendi.',
+        'deleted' => ':complaint kodlu şikayet silindi.',
+        'deletedError' => ':complaint kodlu şikayet silinemez çünkü üzerinde kök neden araştırması/DÖF kayıtları var.',
+        'acknowledged' => ':complaint kodlu şikayet için ilk yanıt kaydedildi, inceleme başladı.',
+        'resolved' => ':complaint kodlu şikayet çözüldü olarak işaretlendi.',
+        'closed' => ':complaint kodlu şikayet müşteriye bildirilerek kapatıldı.',
+        'reopened' => ':complaint kodlu şikayet yeniden açıldı.',
+    ],
+    'customerComplaintSettings' => [
+        'updated' => 'Müşteri Şikayetleri modülü ayarları güncellendi.'
+    ],
 ];

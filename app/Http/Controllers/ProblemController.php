@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProblemRequest;
 use App\Http\Requests\UpdateProblemRequest;
+use App\Models\CustomerComplaint;
 use App\Models\Department;
 use App\Models\Problem;
 use App\Models\Risk;
 use App\Models\User;
+use App\Services\CustomerComplaint\CustomerComplaintWorkflowService;
 use App\Services\Problem\ProblemWorkflowService;
 use App\Services\Risk\RiskWorkflowService;
 use Inertia\Inertia;
@@ -17,6 +19,7 @@ class ProblemController extends Controller
     public function __construct(
         private readonly ProblemWorkflowService $problemWorkflowService,
         private readonly RiskWorkflowService $riskWorkflowService,
+        private readonly CustomerComplaintWorkflowService $customerComplaintWorkflowService,
     ) {
     }
 
@@ -46,6 +49,10 @@ class ProblemController extends Controller
             $this->riskWorkflowService->registerRealization(Risk::findOrFail($problem->risk_id), $problem);
         }
 
+        if ($problem->customer_complaint_id) {
+            $this->customerComplaintWorkflowService->linkProblem(CustomerComplaint::findOrFail($problem->customer_complaint_id), $problem);
+        }
+
         session()->flash('message', ['type' => 'success', 'content' => __('messages.problem.created', ['problem' => $problem->code])]);
 
         return redirect()->back();
@@ -60,6 +67,7 @@ class ProblemController extends Controller
             'audit:id,code,title',
             'checklistAnswer.question:id,question',
             'risk:id,code,title',
+            'customerComplaint:id,code,title',
         ]);
 
         return Inertia::render('Modules/Problem/ShowPage', [

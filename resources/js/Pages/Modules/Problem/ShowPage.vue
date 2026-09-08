@@ -157,6 +157,12 @@ const submitRaiseCapa = async () => {
                             {{ problem.risk.code }} — {{ problem.risk.title }}
                         </span>
                     </div>
+                    <div v-if="problem.customer_complaint" class="mt-2 text-xs text-slate-400">
+                        Müşteri Şikayeti:
+                        <span class="text-sky-600 cursor-pointer hover:underline" @click="router.visit(route('customer-complaint.show', problem.customer_complaint.id))">
+                            {{ problem.customer_complaint.code }} — {{ problem.customer_complaint.title }}
+                        </span>
+                    </div>
                 </div>
                 <div class="flex gap-2 flex-wrap">
                     <simple-button v-if="problem.status === 'open'" color="blue" @click="markUnderReview">

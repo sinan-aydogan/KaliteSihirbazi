@@ -88,6 +88,14 @@ class SettingSeeder extends Seeder
                 'type' => 'json',
                 'value' => json_encode(['medium' => 6, 'high' => 12, 'critical' => 20])
             ],
+
+            /*Customer Complaint Settings*/
+            [
+                'code' => 'complaint_response_sla_days',
+                'module' => 'customer_complaint',
+                'type' => 'json',
+                'value' => json_encode(3)
+            ],
         ];
 
         foreach ($settings as $s) {

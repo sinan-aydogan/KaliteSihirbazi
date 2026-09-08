@@ -17,7 +17,6 @@ test('unimplemented module menu routes render a coming soon page without exposin
     'improvement-work',
     'device',
     'machine',
-    'customer',
     'product',
     'raw-material',
     'consumable-material',

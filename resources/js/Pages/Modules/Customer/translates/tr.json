@@ -1,0 +1,22 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Müşteriler",
+            "subTitle": "Şikayet kayıtlarının bağlandığı müşteri listesi"
+        },
+        "createPage": {
+            "title": "Yeni Müşteri",
+            "subTitle": "İletişim bilgilerini girin"
+        }
+    },
+    "term": {
+        "code": "Müşteri Kodu",
+        "name": "Ad / Unvan",
+        "contactName": "İlgili Kişi",
+        "phone": "Telefon",
+        "email": "E-posta",
+        "address": "Adres",
+        "isActive": "Aktif",
+        "complaintCount": "Şikayet"
+    }
+}

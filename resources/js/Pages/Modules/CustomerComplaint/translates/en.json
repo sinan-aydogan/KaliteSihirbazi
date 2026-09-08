@@ -1,0 +1,81 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Customer Complaints",
+            "subTitle": "Track customer complaints through intake, investigation, resolution and closure"
+        },
+        "createPage": {
+            "title": "New Complaint",
+            "subTitle": "Log the complaint against a customer and the related product/lot"
+        },
+        "showPage": {
+            "title": "Complaint Detail",
+            "subTitle": "Manage this complaint's lifecycle and linked root-cause investigations"
+        }
+    },
+    "term": {
+        "code": "Complaint No",
+        "customer": "Customer",
+        "title": "Title",
+        "description": "Description",
+        "channel": "Channel",
+        "productReference": "Product / Lot Reference",
+        "severity": "Severity",
+        "department": "Responsible Department",
+        "receivedDate": "Received Date",
+        "responseDueDate": "Response Due",
+        "firstResponseAt": "First Response",
+        "status": "Status",
+        "resolutionSummary": "Resolution Summary",
+        "customerNotifiedAt": "Customer Notified",
+        "satisfactionRating": "Customer Satisfaction (1-5)",
+        "reopenReason": "Reopen Reason",
+        "reopenedCount": "Times Reopened",
+        "closedAt": "Closed At",
+        "reportedBy": "Logged By",
+        "manageModule": "Manage Module",
+        "problemCount": "Root-Cause Records",
+        "channelValue": {
+            "phone": "Phone",
+            "email": "Email",
+            "portal": "Customer Portal",
+            "in_person": "In Person",
+            "letter": "Letter",
+            "other": "Other"
+        },
+        "severityValue": {
+            "low": "Low",
+            "medium": "Medium",
+            "high": "High",
+            "critical": "Critical"
+        },
+        "statusValue": {
+            "received": "Received",
+            "under_investigation": "Under Investigation",
+            "resolved": "Resolved",
+            "closed": "Closed",
+            "reopened": "Reopened"
+        },
+        "rootCauseProblems": "Linked Root-Cause Investigations (CAPA)"
+    },
+    "action": {
+        "viewDetails": "View / Manage",
+        "acknowledge": "Log First Response / Start Investigation",
+        "resolve": "Mark Resolved",
+        "close": "Notify Customer & Close",
+        "reopen": "Reopen",
+        "raiseRootCause": "Open Root-Cause Investigation (CAPA)"
+    },
+    "setting": {
+        "title": "Customer Complaints Module Settings",
+        "subTitle": "Target response time (SLA)",
+        "sla": {
+            "title": "Response SLA",
+            "subTitle": "When a complaint is logged, the response due date is computed by adding this many days",
+            "label": "Days"
+        }
+    },
+    "menu": {
+        "general": "General Settings"
+    }
+}

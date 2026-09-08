@@ -164,6 +164,31 @@ export default function ({roles, permissions}) {
                     }
                 ]
             },
+            /*Customer Complaints*/
+            {
+                id: 'cc',
+                label: t('mainMenu.customerComplaintManagement'),
+                icon: 'comment-dots',
+                type: "dropdown",
+                links: [
+                    /*Complaints*/
+                    {
+                        id: 'cc-complaints',
+                        label: t('mainMenu.customerComplaints'),
+                        icon: 'comment-dots',
+                        type: "route",
+                        link: 'customer-complaint.index'
+                    },
+                    /*Customers*/
+                    {
+                        id: 'cc-customers',
+                        label: t('mainMenu.customers'),
+                        icon: 'handshake',
+                        type: "route",
+                        link: 'customer.index'
+                    }
+                ]
+            },
             /*CAPA System*/
             {
                 id: 'capa',
