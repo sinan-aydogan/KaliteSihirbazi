@@ -13,6 +13,7 @@ use App\Models\AuditScope;
 use App\Models\AuditType;
 use App\Models\CompanyAccreditation;
 use App\Models\Department;
+use App\Models\ProblemSourceType;
 use App\Models\Standard;
 use App\Models\User;
 use App\Services\Audit\AuditWorkflowService;
@@ -99,6 +100,7 @@ class AuditController extends Controller
             'audit' => $audit,
             'users' => User::all(['id', 'name']),
             'checklistTemplates' => AuditChecklistTemplate::where('is_active', true)->get(['id', 'name']),
+            'problemSourceTypes' => ProblemSourceType::orderBy('sort_order')->get(['id', 'key', 'name']),
         ]);
     }
 

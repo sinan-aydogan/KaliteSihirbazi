@@ -34,18 +34,17 @@ const props = defineProps({
         type: Array,
         default: () => []
     },
+    problemSourceTypes: {
+        type: Array,
+        default: () => []
+    },
 })
 
 const userOptions = computed(() => props.users.map(u => ({id: u.id, label: u.name})))
 const checklistTemplateOptions = computed(() => props.checklistTemplates.map(ct => ({id: ct.id, label: ct.name})))
 
-const problemSourceTypeOptions = computed(() => [
-    {id: 'audit_finding', label: 'Denetim Bulgusu'},
-    {id: 'customer_complaint', label: 'Müşteri Şikayeti'},
-    {id: 'internal_observation', label: 'İç Gözlem'},
-    {id: 'supplier', label: 'Tedarikçi'},
-    {id: 'other', label: 'Diğer'},
-])
+const problemSourceTypeOptions = computed(() => props.problemSourceTypes.map(t => ({id: t.id, label: t.name})))
+const auditFindingSourceTypeId = computed(() => props.problemSourceTypes.find(t => t.key === 'audit_finding')?.id ?? null)
 
 const problemSeverityOptions = computed(() => [
     {id: 'low', label: 'Düşük'},
@@ -178,14 +177,14 @@ const findingForm = useForm({
     audit_checklist_answer_id: null,
     title: "",
     description: "",
-    source_type: "audit_finding",
+    problem_source_type_id: auditFindingSourceTypeId.value,
     severity: "medium",
     detected_date: new Date().toISOString().substring(0, 10),
 })
 const findingRules = ref({
     title: {required: helpers.withMessage(t('message.validation.required'), required)},
     description: {required: helpers.withMessage(t('message.validation.required'), required)},
-    source_type: {required: helpers.withMessage(t('message.validation.required'), required)},
+    problem_source_type_id: {required: helpers.withMessage(t('message.validation.required'), required)},
     severity: {required: helpers.withMessage(t('message.validation.required'), required)},
     detected_date: {required: helpers.withMessage(t('message.validation.required'), required)},
 })
@@ -195,6 +194,7 @@ const openFinding = (answer = null) => {
     findingForm.reset();
     findingForm.audit_id = props.audit.id;
     findingForm.audit_checklist_answer_id = answer?.id ?? null;
+    findingForm.problem_source_type_id = auditFindingSourceTypeId.value;
     if (answer) {
         findingForm.title = answer.question.question;
         findingForm.description = answerDrafts[answer.id]?.notes ?? "";
@@ -442,8 +442,8 @@ const submitFinding = async () => {
                             <text-input v-model="findingForm.title"/>
                         </input-group>
 
-                        <input-group class="col-span-3" labelFor="source_type" label="Kaynak" :errors="findingV$.source_type.$errors">
-                            <select-input v-model="findingForm.source_type" :options="problemSourceTypeOptions"/>
+                        <input-group class="col-span-3" labelFor="problem_source_type_id" label="Kaynak" :errors="findingV$.problem_source_type_id.$errors">
+                            <select-input v-model="findingForm.problem_source_type_id" :options="problemSourceTypeOptions"/>
                         </input-group>
 
                         <input-group class="col-span-3" labelFor="severity" label="Önem Derecesi" :errors="findingV$.severity.$errors">

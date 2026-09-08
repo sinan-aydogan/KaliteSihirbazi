@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateProblemRequest;
 use App\Models\CustomerComplaint;
 use App\Models\Department;
 use App\Models\Problem;
+use App\Models\ProblemSourceType;
 use App\Models\Risk;
 use App\Models\User;
 use App\Services\CustomerComplaint\CustomerComplaintWorkflowService;
@@ -25,7 +26,7 @@ class ProblemController extends Controller
 
     public function index()
     {
-        $problems = $this->tableFilter(Problem::withCount('capas')->with(['detectedBy:id,name', 'department:id,name']))
+        $problems = $this->tableFilter(Problem::withCount('capas')->with(['detectedBy:id,name', 'department:id,name', 'problemSourceType:id,name']))
             ->latest('id')
             ->paginate(10)
             ->withQueryString();
@@ -33,6 +34,7 @@ class ProblemController extends Controller
         return Inertia::render('Modules/Problem/IndexPage', [
             'tableData' => $problems,
             'departments' => Department::all(['id', 'name']),
+            'problemSourceTypes' => ProblemSourceType::orderBy('sort_order')->get(['id', 'name']),
         ]);
     }
 
@@ -68,6 +70,7 @@ class ProblemController extends Controller
             'checklistAnswer.question:id,question',
             'risk:id,code,title',
             'customerComplaint:id,code,title',
+            'problemSourceType:id,name',
         ]);
 
         return Inertia::render('Modules/Problem/ShowPage', [

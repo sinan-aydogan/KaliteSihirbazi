@@ -2,8 +2,10 @@
 
 namespace Database\Seeders\Capa;
 
+use App\Models\CapaSourceType;
 use App\Models\Department;
 use App\Models\Problem;
+use App\Models\ProblemSourceType;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -184,7 +186,7 @@ class CapaProblemDemoSeeder extends Seeder
         return Problem::create([
             'title' => $title,
             'description' => $description,
-            'source_type' => $sourceType,
+            'problem_source_type_id' => ProblemSourceType::where('key', $sourceType)->value('id'),
             'severity' => $severity,
             'status' => $status,
             'detected_by_id' => $this->pickUserId(),
@@ -208,7 +210,7 @@ class CapaProblemDemoSeeder extends Seeder
             'title' => $title,
             'type' => $type,
             'description' => $description,
-            'source_type' => $sourceType,
+            'capa_source_type_id' => CapaSourceType::where('key', $sourceType)->value('id'),
             'status' => $status,
             'opened_by_id' => $this->pickUserId(),
             'responsible_id' => $this->pickUserId(),

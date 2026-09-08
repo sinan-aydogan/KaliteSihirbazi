@@ -69,7 +69,7 @@ test('answering a checklist question and raising a finding links the problem bac
             'audit_checklist_answer_id' => $answer->id,
             'title' => 'Proses akış şeması güncel değil',
             'description' => 'Şema 2 yıl önceki revizyonu gösteriyor.',
-            'source_type' => 'audit_finding',
+            'problem_source_type_id' => problemSourceTypeId('audit_finding'),
             'severity' => 'medium',
             'detected_date' => now()->toDateString(),
         ])

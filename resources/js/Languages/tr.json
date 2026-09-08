@@ -166,6 +166,8 @@
         "calibrationTasks": "Kalibrasyon Emirleri",
         "calibrationFirms": "Kalibrasyon Firmaları",
         "capaRecords": "CAPA Kayıtları",
+        "problemSourceTypes": "Uygunsuzluk Kaynak Türleri",
+        "capaSourceTypes": "DÖF Kaynak Türleri",
         "capaSystem": "CAPA Sistemi",
         "certificates": "Sertifikalar",
         "certification": "Belgelendirme",

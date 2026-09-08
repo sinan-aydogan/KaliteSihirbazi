@@ -56,6 +56,8 @@ class DatabaseSeeder extends Seeder
             EducationTypeSeeder::class,
             EducationInstructorSeeder::class,
             EducationSeeder::class,
+            // Problem / CAPA Source Type Definitions
+            SourceTypeDefinitionSeeder::class,
             // CAPA / Problem Demo Data
             CapaProblemDemoSeeder::class,
             // Audit Module Definitions

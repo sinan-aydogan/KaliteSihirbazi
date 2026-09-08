@@ -350,4 +350,18 @@ return [
     'customerComplaintSettings' => [
         'updated' => 'Müşteri Şikayetleri modülü ayarları güncellendi.'
     ],
+    'problemSourceType' => [
+        'created' => 'Kaynak türü oluşturuldu.',
+        'updated' => 'Kaynak türü güncellendi.',
+        'deleted' => 'Kaynak türü silindi.',
+        'deletedError' => 'Bu kaynak türü silinemez çünkü üzerinde kayıtlı uygunsuzluklar var.',
+        'deletedErrorProtected' => 'Sistem varsayılanı olan bu kaynak türü silinemez.'
+    ],
+    'capaSourceType' => [
+        'created' => 'Kaynak türü oluşturuldu.',
+        'updated' => 'Kaynak türü güncellendi.',
+        'deleted' => 'Kaynak türü silindi.',
+        'deletedError' => 'Bu kaynak türü silinemez çünkü üzerinde kayıtlı DÖF kayıtları var.',
+        'deletedErrorProtected' => 'Sistem varsayılanı olan bu kaynak türü silinemez.'
+    ],
 ];

@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateCustomerComplaintRequest;
 use App\Models\CustomerComplaint;
 use App\Models\Customer;
 use App\Models\Department;
+use App\Models\ProblemSourceType;
 use App\Models\User;
 use App\Services\CustomerComplaint\CustomerComplaintWorkflowService;
 use Inertia\Inertia;
@@ -57,6 +58,7 @@ class CustomerComplaintController extends Controller
         return Inertia::render('Modules/CustomerComplaint/ShowPage', [
             'complaint' => $customerComplaint,
             'users' => User::all(['id', 'name']),
+            'problemSourceTypes' => ProblemSourceType::orderBy('sort_order')->get(['id', 'key', 'name']),
         ]);
     }
 

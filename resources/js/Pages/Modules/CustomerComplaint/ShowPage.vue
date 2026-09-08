@@ -29,9 +29,14 @@ const props = defineProps({
         type: Array,
         default: () => []
     },
+    problemSourceTypes: {
+        type: Array,
+        default: () => []
+    },
 })
 
 const userOptions = computed(() => props.users.map(u => ({id: u.id, label: u.name})))
+const customerComplaintSourceTypeId = computed(() => props.problemSourceTypes.find(t => t.key === 'customer_complaint')?.id ?? null)
 
 const statusLabel = (status) => tm(`term.statusValue.${status}`)
 
@@ -143,7 +148,7 @@ const rootCauseForm = useForm({
     customer_complaint_id: props.complaint.id,
     title: "",
     description: "",
-    source_type: "customer_complaint",
+    problem_source_type_id: customerComplaintSourceTypeId.value,
     severity: props.complaint.severity,
     detected_date: new Date().toISOString().substring(0, 10),
 })
@@ -158,6 +163,7 @@ const rootCauseV$ = useVuelidate(rootCauseRules, rootCauseForm)
 const openRootCause = () => {
     rootCauseForm.reset();
     rootCauseForm.customer_complaint_id = props.complaint.id;
+    rootCauseForm.problem_source_type_id = customerComplaintSourceTypeId.value;
     rootCauseForm.severity = props.complaint.severity;
     rootCauseV$.value.$reset();
     showRootCauseModal.value = true;

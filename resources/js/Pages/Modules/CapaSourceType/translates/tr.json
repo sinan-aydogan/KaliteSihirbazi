@@ -1,0 +1,14 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "DÖF Kaynak Türleri",
+            "subTitle": "DÖF kayıtlarının hangi kaynaktan geldiğini gösteren sınıflandırma listesi"
+        }
+    },
+    "term": {
+        "name": "Ad",
+        "sortOrder": "Sıra",
+        "protected": "Korumalı",
+        "capaCount": "DÖF Sayısı"
+    }
+}

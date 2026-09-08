@@ -1,0 +1,14 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Nonconformity Source Types",
+            "subTitle": "The classification list of where nonconformity records originate from"
+        }
+    },
+    "term": {
+        "name": "Name",
+        "sortOrder": "Sort Order",
+        "protected": "Protected",
+        "problemCount": "Nonconformity Count"
+    }
+}

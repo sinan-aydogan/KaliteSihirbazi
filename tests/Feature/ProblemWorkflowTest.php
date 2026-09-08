@@ -9,7 +9,7 @@ function makeProblem(User $author): Problem
     return Problem::create([
         'title' => 'Yanlış ürün etiketi',
         'description' => 'Sevkiyatta yanlış ürün etiketi kullanıldı.',
-        'source_type' => 'internal_observation',
+        'problem_source_type_id' => problemSourceTypeId('internal_observation'),
         'severity' => 'medium',
         'detected_by_id' => $author->id,
         'detected_date' => now(),

@@ -99,7 +99,7 @@ test('a finding raised from an audit links back to it and can be viewed from the
             'audit_id' => $audit->id,
             'title' => 'Kalite el kitabı güncel değil',
             'description' => 'Açıklama',
-            'source_type' => 'audit_finding',
+            'problem_source_type_id' => problemSourceTypeId('audit_finding'),
             'severity' => 'medium',
             'detected_date' => now()->toDateString(),
         ])

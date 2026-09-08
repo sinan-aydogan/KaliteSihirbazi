@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Enums\CapaSourceType;
 use App\Enums\CapaType;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -20,7 +19,7 @@ class UpdateCapaRequest extends FormRequest
             'title' => 'required|string|max:255',
             'type' => ['required', Rule::enum(CapaType::class)],
             'description' => 'required|string',
-            'source_type' => ['nullable', Rule::enum(CapaSourceType::class)],
+            'capa_source_type_id' => 'nullable|exists:capa_source_types,id',
             'source_id' => 'nullable|integer',
             'root_cause' => 'nullable|string',
             'responsible_id' => 'required|exists:users,id',

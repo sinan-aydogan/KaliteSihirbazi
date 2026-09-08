@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreRiskRequest;
 use App\Http\Requests\UpdateRiskRequest;
 use App\Models\Department;
+use App\Models\ProblemSourceType;
 use App\Models\Risk;
 use App\Models\RiskCategory;
 use App\Models\RiskHazardClass;
@@ -65,6 +66,7 @@ class RiskController extends Controller
         return Inertia::render('Modules/Risk/ShowPage', [
             'risk' => $risk,
             'users' => User::all(['id', 'name']),
+            'problemSourceTypes' => ProblemSourceType::orderBy('sort_order')->get(['id', 'key', 'name']),
         ]);
     }
 

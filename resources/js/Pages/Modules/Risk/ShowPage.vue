@@ -30,9 +30,14 @@ const props = defineProps({
         type: Array,
         default: () => []
     },
+    problemSourceTypes: {
+        type: Array,
+        default: () => []
+    },
 })
 
 const userOptions = computed(() => props.users.map(u => ({id: u.id, label: u.name})))
+const riskRealizationSourceTypeId = computed(() => props.problemSourceTypes.find(t => t.key === 'risk_realization')?.id ?? null)
 const probabilityImpactOptions = [1, 2, 3, 4, 5].map(n => ({id: n, label: String(n)}))
 
 const controlStatusOptions = computed(() => [
@@ -239,7 +244,7 @@ const realizationForm = useForm({
     risk_id: props.risk.id,
     title: "",
     description: "",
-    source_type: "risk_realization",
+    problem_source_type_id: riskRealizationSourceTypeId.value,
     severity: "medium",
     detected_date: new Date().toISOString().substring(0, 10),
 })
@@ -254,6 +259,7 @@ const realizationV$ = useVuelidate(realizationRules, realizationForm)
 const openRealization = () => {
     realizationForm.reset();
     realizationForm.risk_id = props.risk.id;
+    realizationForm.problem_source_type_id = riskRealizationSourceTypeId.value;
     realizationV$.value.$reset();
     showRealizationModal.value = true;
 }
