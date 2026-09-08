@@ -8,5 +8,6 @@ enum ProblemSourceType: string
     case CustomerComplaint = 'customer_complaint';
     case InternalObservation = 'internal_observation';
     case Supplier = 'supplier';
+    case RiskRealization = 'risk_realization';
     case Other = 'other';
 }

@@ -15,6 +15,13 @@ use App\Http\Controllers\AuditSettingController;
 use App\Http\Controllers\AuditTypeController;
 use App\Http\Controllers\AuditWorkflowController;
 use App\Http\Controllers\InternalAuditorController;
+use App\Http\Controllers\RiskCategoryController;
+use App\Http\Controllers\RiskControlController;
+use App\Http\Controllers\RiskController;
+use App\Http\Controllers\RiskHazardClassController;
+use App\Http\Controllers\RiskReviewController;
+use App\Http\Controllers\RiskSettingController;
+use App\Http\Controllers\RiskWorkflowController;
 use App\Http\Controllers\BusinessManagement\Vehicle\VehicleSettingController;
 use App\Http\Controllers\BusinessManagement\Vehicle\VehicleStatusController;
 use App\Http\Controllers\BusinessManagement\Vehicle\VehicleTypeController;
@@ -162,6 +169,9 @@ Route::middleware([
         ['uri' => 'audit-scope', 'model' => 'auditScope', 'controller' => AuditScopeController::class],
         ['uri' => 'internal-auditor', 'model' => 'internalAuditor', 'controller' => InternalAuditorController::class],
         ['uri' => 'audit-checklist-template', 'model' => 'auditChecklistTemplate', 'controller' => AuditChecklistTemplateController::class],
+        ['uri' => 'risk', 'model' => 'risk', 'controller' => RiskController::class, 'settingController' => RiskSettingController::class],
+        ['uri' => 'risk-category', 'model' => 'riskCategory', 'controller' => RiskCategoryController::class],
+        ['uri' => 'risk-hazard-class', 'model' => 'riskHazardClass', 'controller' => RiskHazardClassController::class],
     ];
 
     $plannedModules = [
@@ -303,6 +313,18 @@ Route::middleware([
     // Printable / downloadable checklist views
     Route::get('audit-checklist-template/{auditChecklistTemplate}/print', [AuditChecklistPrintController::class, 'template'])->name('audit-checklist-template.print');
     Route::get('audit-checklist/{auditChecklist}/print', [AuditChecklistPrintController::class, 'checklist'])->name('audit-checklist.print');
+
+    // Risk Workflow (close)
+    Route::post('risk/{risk}/close', [RiskWorkflowController::class, 'close'])->name('risk.close');
+
+    // Risk Controls (mitigation actions, nested under a Risk)
+    Route::post('risk/{risk}/controls', [RiskControlController::class, 'store'])->name('risk-control.store');
+    Route::put('risk-control/{riskControl}', [RiskControlController::class, 'update'])->name('risk-control.update');
+    Route::delete('risk-control/{riskControl}', [RiskControlController::class, 'destroy'])->name('risk-control.destroy');
+
+    // Risk Reviews (reassessment log, nested under a Risk)
+    Route::post('risk/{risk}/reviews', [RiskReviewController::class, 'store'])->name('risk-review.store');
+    Route::put('risk-review/{riskReview}', [RiskReviewController::class, 'update'])->name('risk-review.update');
 
     /* Warehouse Setting Pages */
     Route::resource('warehouse-type', WarehouseTypeController::class);

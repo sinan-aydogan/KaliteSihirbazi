@@ -19,6 +19,7 @@ class StoreProblemRequest extends FormRequest
         return [
             'audit_id' => 'nullable|exists:audits,id',
             'audit_checklist_answer_id' => 'nullable|exists:audit_checklist_answers,id',
+            'risk_id' => 'nullable|exists:risks,id',
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'source_type' => ['required', Rule::enum(ProblemSourceType::class)],

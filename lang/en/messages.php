@@ -297,4 +297,37 @@ return [
         'updated' => 'The supplier named :supplier has been updated successfully',
         'update_failed' => 'The supplier named :supplier has been update failed',
     ],
+    'risk' => [
+        'created' => 'Risk :risk created.',
+        'updated' => 'Risk :risk updated.',
+        'deleted' => 'Risk :risk deleted.',
+        'deletedError' => 'Risk :risk cannot be deleted because it has nonconformities raised against it.',
+        'closed' => 'Risk :risk closed.'
+    ],
+    'riskCategory' => [
+        'created' => 'Risk category created.',
+        'updated' => 'Risk category updated.',
+        'deleted' => 'Risk category deleted.',
+        'deletedError' => 'This risk category cannot be deleted because it has risks assigned to it.',
+        'deletedErrorProtected' => 'This system-default risk category cannot be deleted.'
+    ],
+    'riskHazardClass' => [
+        'created' => 'Hazard class created.',
+        'updated' => 'Hazard class updated.',
+        'deleted' => 'Hazard class deleted.',
+        'deletedError' => 'This hazard class cannot be deleted because it has risks assigned to it.',
+        'deletedErrorProtected' => 'This system-default hazard class cannot be deleted.'
+    ],
+    'riskControl' => [
+        'created' => 'Control added.',
+        'updated' => 'Control updated.',
+        'deleted' => 'Control deleted.'
+    ],
+    'riskReview' => [
+        'created' => 'Review recorded.',
+        'completed' => 'Review completed.'
+    ],
+    'riskSettings' => [
+        'updated' => 'Risk module settings updated.'
+    ],
 ];

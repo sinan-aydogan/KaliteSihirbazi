@@ -18,6 +18,7 @@ class Problem extends Model
     protected $fillable = [
         'audit_id',
         'audit_checklist_answer_id',
+        'risk_id',
         'title',
         'description',
         'source_type',
@@ -64,6 +65,11 @@ class Problem extends Model
     public function checklistAnswer(): BelongsTo
     {
         return $this->belongsTo(AuditChecklistAnswer::class, 'audit_checklist_answer_id');
+    }
+
+    public function risk(): BelongsTo
+    {
+        return $this->belongsTo(Risk::class);
     }
 
     public function detectedBy(): BelongsTo

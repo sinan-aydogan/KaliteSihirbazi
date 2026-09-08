@@ -17,6 +17,7 @@ use Database\Seeders\MeasurementDevice\Calibration\CalibrationFirmSeeder;
 use Database\Seeders\Capa\CapaProblemDemoSeeder;
 use Database\Seeders\Audit\AuditDefinitionSeeder;
 use Database\Seeders\Audit\AuditChecklistTemplateSeeder;
+use Database\Seeders\Risk\RiskDefinitionSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -58,6 +59,8 @@ class DatabaseSeeder extends Seeder
             // Audit Module Definitions
             AuditDefinitionSeeder::class,
             AuditChecklistTemplateSeeder::class,
+            // Risk Module Definitions
+            RiskDefinitionSeeder::class,
         ]);
     }
 }
