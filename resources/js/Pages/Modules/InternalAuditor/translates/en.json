@@ -1,0 +1,18 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Internal Auditors",
+            "subTitle": "Manage the personnel authorized to conduct internal audits and the departments they cover"
+        },
+        "createPage": {
+            "title": "Add Internal Auditor",
+            "subTitle": "Designate a staff member as an internal auditor"
+        }
+    },
+    "term": {
+        "user": "Staff Member",
+        "isActive": "Active",
+        "notes": "Notes",
+        "departments": "Responsible Departments"
+    }
+}

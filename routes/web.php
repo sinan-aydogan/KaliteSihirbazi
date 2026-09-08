@@ -2,6 +2,19 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ApiTokenController;
+use App\Http\Controllers\AuditChecklistAnswerController;
+use App\Http\Controllers\AuditChecklistController;
+use App\Http\Controllers\AuditChecklistPrintController;
+use App\Http\Controllers\AuditChecklistQuestionController;
+use App\Http\Controllers\AuditChecklistTemplateController;
+use App\Http\Controllers\AuditController;
+use App\Http\Controllers\AuditFirmAuditorController;
+use App\Http\Controllers\AuditFirmController;
+use App\Http\Controllers\AuditScopeController;
+use App\Http\Controllers\AuditSettingController;
+use App\Http\Controllers\AuditTypeController;
+use App\Http\Controllers\AuditWorkflowController;
+use App\Http\Controllers\InternalAuditorController;
 use App\Http\Controllers\BusinessManagement\Vehicle\VehicleSettingController;
 use App\Http\Controllers\BusinessManagement\Vehicle\VehicleStatusController;
 use App\Http\Controllers\BusinessManagement\Vehicle\VehicleTypeController;
@@ -143,12 +156,16 @@ Route::middleware([
         ['uri' => 'standard', 'model' => 'standard', 'controller' => StandardController::class],
         ['uri' => 'capa', 'model' => 'capa', 'controller' => CapaController::class],
         ['uri' => 'problem', 'model' => 'problem', 'controller' => ProblemController::class],
+        ['uri' => 'audit-firm', 'model' => 'auditFirm', 'controller' => AuditFirmController::class],
+        ['uri' => 'audit', 'model' => 'audit', 'controller' => AuditController::class, 'settingController' => AuditSettingController::class],
+        ['uri' => 'audit-type', 'model' => 'auditType', 'controller' => AuditTypeController::class],
+        ['uri' => 'audit-scope', 'model' => 'auditScope', 'controller' => AuditScopeController::class],
+        ['uri' => 'internal-auditor', 'model' => 'internalAuditor', 'controller' => InternalAuditorController::class],
+        ['uri' => 'audit-checklist-template', 'model' => 'auditChecklistTemplate', 'controller' => AuditChecklistTemplateController::class],
     ];
 
     $plannedModules = [
-        'audit-firm',
         'product-tree',
-        'audit',
         'improvement-work',
         'device',
         'machine',
@@ -261,6 +278,31 @@ Route::middleware([
     Route::post('problem/{problem}/mark-under-review', [ProblemWorkflowController::class, 'markUnderReview'])->name('problem.mark-under-review');
     Route::post('problem/{problem}/close-without-capa', [ProblemWorkflowController::class, 'closeWithoutCapa'])->name('problem.close-without-capa');
     Route::post('problem/{problem}/close', [ProblemWorkflowController::class, 'close'])->name('problem.close');
+
+    // Audit Workflow (start / complete / cancel)
+    Route::post('audit/{audit}/start', [AuditWorkflowController::class, 'start'])->name('audit.start');
+    Route::post('audit/{audit}/complete', [AuditWorkflowController::class, 'complete'])->name('audit.complete');
+    Route::post('audit/{audit}/cancel', [AuditWorkflowController::class, 'cancel'])->name('audit.cancel');
+
+    // Audit Firm Auditors (personnel roster, nested under an Audit Firm)
+    Route::get('audit-firm/{auditFirm}/auditors', [AuditFirmAuditorController::class, 'index'])->name('audit-firm-auditor.index');
+    Route::post('audit-firm/{auditFirm}/auditors', [AuditFirmAuditorController::class, 'store'])->name('audit-firm-auditor.store');
+    Route::put('audit-firm-auditor/{auditFirmAuditor}', [AuditFirmAuditorController::class, 'update'])->name('audit-firm-auditor.update');
+    Route::delete('audit-firm-auditor/{auditFirmAuditor}', [AuditFirmAuditorController::class, 'destroy'])->name('audit-firm-auditor.destroy');
+    Route::delete('audit-firm-auditor/{auditFirmAuditor}/media/{mediaId}', [AuditFirmAuditorController::class, 'deleteMedia'])->name('audit-firm-auditor.delete-media');
+
+    // Audit Checklist Questions (nested under a Checklist Template)
+    Route::post('audit-checklist-template/{auditChecklistTemplate}/questions', [AuditChecklistQuestionController::class, 'store'])->name('audit-checklist-question.store');
+    Route::put('audit-checklist-question/{auditChecklistQuestion}', [AuditChecklistQuestionController::class, 'update'])->name('audit-checklist-question.update');
+    Route::delete('audit-checklist-question/{auditChecklistQuestion}', [AuditChecklistQuestionController::class, 'destroy'])->name('audit-checklist-question.destroy');
+
+    // Attach a Checklist to an existing Audit + answer its questions
+    Route::post('audit/{audit}/checklists', [AuditChecklistController::class, 'store'])->name('audit-checklist.store');
+    Route::put('audit-checklist-answer/{auditChecklistAnswer}', [AuditChecklistAnswerController::class, 'update'])->name('audit-checklist-answer.update');
+
+    // Printable / downloadable checklist views
+    Route::get('audit-checklist-template/{auditChecklistTemplate}/print', [AuditChecklistPrintController::class, 'template'])->name('audit-checklist-template.print');
+    Route::get('audit-checklist/{auditChecklist}/print', [AuditChecklistPrintController::class, 'checklist'])->name('audit-checklist.print');
 
     /* Warehouse Setting Pages */
     Route::resource('warehouse-type', WarehouseTypeController::class);

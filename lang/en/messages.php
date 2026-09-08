@@ -181,6 +181,65 @@ return [
         'closedWithoutCapa' => 'Problem closed without a CAPA.',
         'closed' => 'Problem closed.'
     ],
+    'auditFirm' => [
+        'created' => 'Audit firm :auditFirm created.',
+        'updated' => 'Audit firm :auditFirm updated.',
+        'deleted' => 'Audit firm :auditFirm deleted.',
+        'deletedError' => 'Audit firm :auditFirm cannot be deleted because it has audits recorded against it.'
+    ],
+    'audit' => [
+        'created' => 'Audit :audit created.',
+        'updated' => 'Audit :audit updated.',
+        'deleted' => 'Audit :audit deleted.',
+        'deletedError' => 'Audit :audit cannot be deleted because it has findings recorded against it.',
+        'started' => 'Audit started.',
+        'completed' => 'Audit completed.',
+        'cancelled' => 'Audit cancelled.'
+    ],
+    'auditType' => [
+        'created' => 'Audit type created.',
+        'updated' => 'Audit type updated.',
+        'deleted' => 'Audit type deleted.',
+        'deletedError' => 'This audit type cannot be deleted because it has audits recorded against it.',
+        'deletedErrorProtected' => 'This system default audit type cannot be deleted.'
+    ],
+    'auditScope' => [
+        'created' => 'Audit scope created.',
+        'updated' => 'Audit scope updated.',
+        'deleted' => 'Audit scope deleted.',
+        'deletedError' => 'This audit scope cannot be deleted because it has audits recorded against it.',
+        'deletedErrorProtected' => 'This system default audit scope cannot be deleted.'
+    ],
+    'internalAuditor' => [
+        'created' => 'Internal auditor added.',
+        'updated' => 'Internal auditor updated.',
+        'deleted' => 'Internal auditor removed.'
+    ],
+    'auditChecklistTemplate' => [
+        'created' => 'Checklist template created.',
+        'updated' => 'Checklist template updated.',
+        'deleted' => 'Checklist template deleted.'
+    ],
+    'auditChecklistQuestion' => [
+        'created' => 'Question added.',
+        'updated' => 'Question updated.',
+        'deleted' => 'Question deleted.'
+    ],
+    'auditChecklist' => [
+        'attached' => 'Checklist attached to the audit.'
+    ],
+    'auditChecklistAnswer' => [
+        'saved' => 'Answer saved.'
+    ],
+    'auditSettings' => [
+        'updated' => 'Audit module settings updated.'
+    ],
+    'auditFirmAuditor' => [
+        'created' => 'Auditor added.',
+        'updated' => 'Auditor updated.',
+        'deleted' => 'Auditor deleted.',
+        'mediaDeleted' => 'Document deleted.'
+    ],
     'vehicleType' => [
         'created' => 'The new vehicle type named :vehicleType has been created successfully',
         'deleted' => 'The vehicle type named :vehicleType deleted successfully',

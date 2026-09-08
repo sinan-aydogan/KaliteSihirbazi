@@ -1,0 +1,34 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Checklist Şablonları",
+            "subTitle": "İç denetimlerde kullanılacak soru listesi şablonlarını buradan yönetebilirsiniz"
+        },
+        "createPage": {
+            "title": "Şablon Oluştur",
+            "subTitle": "Yeni bir checklist şablonu oluşturun"
+        },
+        "showPage": {
+            "title": "Şablon Detayı",
+            "subTitle": "Şablona ait soruları buradan yönetebilirsiniz"
+        },
+        "addQuestionPage": {
+            "title": "Soru Ekle",
+            "subTitle": "Bu şablona yeni bir soru ekleyin"
+        }
+    },
+    "term": {
+        "name": "Şablon Adı",
+        "auditScope": "Kapsam",
+        "description": "Açıklama",
+        "isActive": "Aktif",
+        "questionCount": "Soru",
+        "question": "Soru",
+        "standardReference": "Standart Referansı",
+        "sortOrder": "Sıra"
+    },
+    "action": {
+        "addQuestion": "Soru Ekle",
+        "print": "Yazdır / PDF İndir"
+    }
+}

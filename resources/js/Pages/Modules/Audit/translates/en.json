@@ -1,0 +1,108 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Audits",
+            "subTitle": "Plan and manage your internal, certification, supplier and customer audits"
+        },
+        "createPage": {
+            "title": "Plan an Audit",
+            "subTitle": "Add a new audit record to the system"
+        },
+        "showPage": {
+            "title": "Audit Detail",
+            "subTitle": "View the audit record's details and findings here"
+        },
+        "addFindingPage": {
+            "title": "Record a Finding",
+            "subTitle": "Record a nonconformity detected during this audit"
+        },
+        "typesPage": {
+            "title": "Audit Types",
+            "subTitle": "Manage internal/external audit types here. Default types cannot be deleted."
+        },
+        "scopesPage": {
+            "title": "Audit Scopes",
+            "subTitle": "Manage audit scope categories here. Default scopes cannot be deleted."
+        },
+        "attachChecklistPage": {
+            "title": "Add Checklist",
+            "subTitle": "Apply a checklist template to this audit"
+        }
+    },
+    "term": {
+        "code": "Audit Code",
+        "title": "Audit Title",
+        "type": "Audit Type",
+        "direction": "Direction",
+        "directionValue": {
+            "internal": "Internal",
+            "external": "External"
+        },
+        "standard": "Standard",
+        "companyAccreditation": "Accreditation/Certificate",
+        "auditFirm": "Audit Firm",
+        "firmAuditors": "Audit Firm Personnel",
+        "auditor": "Auditor (Lead)",
+        "department": "Department",
+        "scopes": "Scope(s)",
+        "checklistTemplate": "Checklist Template",
+        "scope": "Scope Description",
+        "plannedDate": "Planned Date",
+        "actualDate": "Actual Date",
+        "status": "Status",
+        "result": "Result",
+        "reportNotes": "Audit Report Notes",
+        "closedAt": "Closed At",
+        "findingCount": "Findings",
+        "findings": "Nonconformity Findings",
+        "checklists": "Checklists",
+        "question": "Question",
+        "name": "Name",
+        "sortOrder": "Order",
+        "protected": "Protected",
+        "auditCount": "Audits",
+        "manageModule": "Manage Module",
+        "auditStatus": {
+            "planned": "Planned",
+            "in_progress": "In Progress",
+            "completed": "Completed",
+            "cancelled": "Cancelled"
+        },
+        "auditResult": {
+            "passed": "Passed",
+            "passed_with_findings": "Passed With Findings",
+            "failed": "Failed"
+        }
+    },
+    "action": {
+        "viewDetails": "View Details",
+        "start": "Start Audit",
+        "complete": "Complete Audit",
+        "cancel": "Cancel Audit",
+        "addFinding": "Record Finding",
+        "attachChecklist": "Add Checklist",
+        "print": "Print / Download PDF"
+    },
+    "setting": {
+        "audit": {
+            "title": "Audit Module Settings",
+            "subTitle": "Manage the audit module's general settings here",
+            "prerequisite": {
+                "title": "External Audit Prerequisite",
+                "subTitle": "When on, creating an external audit shows a warning (non-blocking) if no internal audit has recently covered the same scope",
+                "toggleLabel": "Show internal-audit-first recommendation"
+            },
+            "window": {
+                "title": "Prerequisite Time Window (Days)",
+                "subTitle": "Maximum number of days for an internal audit to still count as \"recently completed\""
+            }
+        }
+    },
+    "menu": {
+        "general": "General Settings",
+        "types": "Audit Types",
+        "scopes": "Audit Scopes",
+        "checklistTemplates": "Checklist Templates",
+        "internalAuditors": "Internal Auditors"
+    }
+}

@@ -15,6 +15,8 @@ class Problem extends Model
     use HasFactory;
 
     protected $fillable = [
+        'audit_id',
+        'audit_checklist_answer_id',
         'title',
         'description',
         'source_type',
@@ -54,6 +56,16 @@ class Problem extends Model
     public function capas(): HasMany
     {
         return $this->hasMany(Capa::class);
+    }
+
+    public function audit(): BelongsTo
+    {
+        return $this->belongsTo(Audit::class);
+    }
+
+    public function checklistAnswer(): BelongsTo
+    {
+        return $this->belongsTo(AuditChecklistAnswer::class, 'audit_checklist_answer_id');
     }
 
     public function detectedBy(): BelongsTo

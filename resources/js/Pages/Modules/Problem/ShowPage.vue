@@ -144,6 +144,13 @@ const submitRaiseCapa = async () => {
                               :class="severityColorClasses[problem.severity] ?? 'bg-slate-100 text-slate-700'"
                               v-text="tm(`term.problemSeverity.${problem.severity}`)"/>
                     </div>
+                    <div v-if="problem.audit" class="mt-2 text-xs text-slate-400">
+                        Denetim:
+                        <span class="text-sky-600 cursor-pointer hover:underline" @click="router.visit(route('audit.show', problem.audit.id))">
+                            {{ problem.audit.code }} — {{ problem.audit.title }}
+                        </span>
+                        <span v-if="problem.checklist_answer">— Soru: "{{ problem.checklist_answer.question.question }}"</span>
+                    </div>
                 </div>
                 <div class="flex gap-2 flex-wrap">
                     <simple-button v-if="problem.status === 'open'" color="blue" @click="markUnderReview">

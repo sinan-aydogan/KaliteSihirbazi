@@ -1,0 +1,18 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "İç Denetçiler",
+            "subTitle": "İç denetim yapmaya yetkili personeli ve sorumlu oldukları departmanları buradan yönetebilirsiniz"
+        },
+        "createPage": {
+            "title": "İç Denetçi Ekle",
+            "subTitle": "Bir personeli iç denetçi olarak tanımlayın"
+        }
+    },
+    "term": {
+        "user": "Personel",
+        "isActive": "Aktif",
+        "notes": "Notlar",
+        "departments": "Sorumlu Olduğu Departmanlar"
+    }
+}

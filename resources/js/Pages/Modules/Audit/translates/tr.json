@@ -1,0 +1,108 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Denetimler",
+            "subTitle": "İç, belgelendirme, tedarikçi ve müşteri denetimlerinizi buradan planlayıp yönetebilirsiniz"
+        },
+        "createPage": {
+            "title": "Denetim Planla",
+            "subTitle": "Sisteme yeni bir denetim kaydı ekleyin"
+        },
+        "showPage": {
+            "title": "Denetim Detayı",
+            "subTitle": "Denetim kaydının detaylarını ve bulgularını buradan görüntüleyebilirsiniz"
+        },
+        "addFindingPage": {
+            "title": "Uygunsuzluk Kaydet",
+            "subTitle": "Bu denetimde tespit edilen bir uygunsuzluğu kaydedin"
+        },
+        "typesPage": {
+            "title": "Denetim Türleri",
+            "subTitle": "İç/dış denetim türlerini buradan yönetebilirsiniz. Varsayılan türler silinemez."
+        },
+        "scopesPage": {
+            "title": "Denetim Kapsamları",
+            "subTitle": "Denetim kapsam kategorilerini buradan yönetebilirsiniz. Varsayılan kapsamlar silinemez."
+        },
+        "attachChecklistPage": {
+            "title": "Soru Listesi Ekle",
+            "subTitle": "Bu denetime bir checklist şablonu uygulayın"
+        }
+    },
+    "term": {
+        "code": "Denetim Kodu",
+        "title": "Denetim Başlığı",
+        "type": "Denetim Tipi",
+        "direction": "Yön",
+        "directionValue": {
+            "internal": "İç",
+            "external": "Dış"
+        },
+        "standard": "Standart",
+        "companyAccreditation": "Akreditasyon/Sertifika",
+        "auditFirm": "Denetim Firması",
+        "firmAuditors": "Denetim Firması Personeli",
+        "auditor": "Denetçi (Sorumlu)",
+        "department": "Departman",
+        "scopes": "Kapsam(lar)",
+        "checklistTemplate": "Checklist Şablonu",
+        "scope": "Kapsam Açıklaması",
+        "plannedDate": "Planlanan Tarih",
+        "actualDate": "Gerçekleşen Tarih",
+        "status": "Durum",
+        "result": "Sonuç",
+        "reportNotes": "Denetim Raporu Notları",
+        "closedAt": "Kapatılma Tarihi",
+        "findingCount": "Bulgu",
+        "findings": "Uygunsuzluk Bulguları",
+        "checklists": "Soru Listeleri (Checklist)",
+        "question": "Soru",
+        "name": "Ad",
+        "sortOrder": "Sıra",
+        "protected": "Korumalı",
+        "auditCount": "Denetim",
+        "manageModule": "Modülü Yönet",
+        "auditStatus": {
+            "planned": "Planlandı",
+            "in_progress": "Devam Ediyor",
+            "completed": "Tamamlandı",
+            "cancelled": "İptal Edildi"
+        },
+        "auditResult": {
+            "passed": "Başarılı",
+            "passed_with_findings": "Bulgularla Başarılı",
+            "failed": "Başarısız"
+        }
+    },
+    "action": {
+        "viewDetails": "Detayları Görüntüle",
+        "start": "Denetimi Başlat",
+        "complete": "Denetimi Tamamla",
+        "cancel": "Denetimi İptal Et",
+        "addFinding": "Uygunsuzluk Kaydet",
+        "attachChecklist": "Soru Listesi Ekle",
+        "print": "Yazdır / PDF İndir"
+    },
+    "setting": {
+        "audit": {
+            "title": "Denetim Modülü Ayarları",
+            "subTitle": "Denetim modülünün genel ayarlarını buradan yönetebilirsiniz",
+            "prerequisite": {
+                "title": "Dış Denetim Ön Koşulu",
+                "subTitle": "Açıksa, bir kapsamda yakın zamanda tamamlanmış iç denetim yoksa dış denetim oluşturulurken uyarı gösterilir (engellenmez)",
+                "toggleLabel": "Dış denetim öncesi iç denetim önerisi göster"
+            },
+            "window": {
+                "title": "Ön Koşul Zaman Penceresi (Gün)",
+                "subTitle": "Bir iç denetimin \"yakın zamanda tamamlanmış\" sayılması için geçmesi gereken maksimum gün sayısı"
+            }
+        }
+    },
+    "menu": {
+        "general": "Genel Ayarlar",
+        "types": "Denetim Türleri",
+        "scopes": "Denetim Kapsamları",
+        "checklistTemplates": "Checklist Şablonları",
+        "internalAuditors": "İç Denetçiler"
+    }
+}

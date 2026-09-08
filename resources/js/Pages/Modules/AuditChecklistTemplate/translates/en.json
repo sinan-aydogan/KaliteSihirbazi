@@ -1,0 +1,34 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Checklist Templates",
+            "subTitle": "Manage the question-list templates used for internal audits"
+        },
+        "createPage": {
+            "title": "Create Template",
+            "subTitle": "Create a new checklist template"
+        },
+        "showPage": {
+            "title": "Template Detail",
+            "subTitle": "Manage the questions for this template"
+        },
+        "addQuestionPage": {
+            "title": "Add Question",
+            "subTitle": "Add a new question to this template"
+        }
+    },
+    "term": {
+        "name": "Template Name",
+        "auditScope": "Scope",
+        "description": "Description",
+        "isActive": "Active",
+        "questionCount": "Questions",
+        "question": "Question",
+        "standardReference": "Standard Reference",
+        "sortOrder": "Order"
+    },
+    "action": {
+        "addQuestion": "Add Question",
+        "print": "Print / Download PDF"
+    }
+}

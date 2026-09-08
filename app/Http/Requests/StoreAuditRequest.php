@@ -6,25 +6,28 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreAuditRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
+    public function authorize(): bool
     {
-        return false;
+        return auth()->check();
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, mixed>
-     */
-    public function rules()
+    public function rules(): array
     {
         return [
-            //
+            'title' => 'required|string|max:255',
+            'audit_type_id' => 'required|exists:audit_types,id',
+            'standard_id' => 'nullable|exists:standards,id',
+            'company_accreditation_id' => 'nullable|exists:company_accreditations,id',
+            'audit_firm_id' => 'nullable|exists:audit_firms,id',
+            'firm_auditor_ids' => 'nullable|array',
+            'firm_auditor_ids.*' => 'exists:audit_firm_auditors,id',
+            'auditor_id' => 'nullable|exists:users,id',
+            'department_id' => 'nullable|exists:departments,id',
+            'scope_ids' => 'nullable|array',
+            'scope_ids.*' => 'exists:audit_scopes,id',
+            'checklist_template_id' => 'nullable|exists:audit_checklist_templates,id',
+            'scope' => 'nullable|string',
+            'planned_date' => 'required|date',
         ];
     }
 }

@@ -1,0 +1,35 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Denetim Firmaları",
+            "subTitle": "Dış denetim yapan belgelendirme/danışmanlık firmalarını buradan yönetebilirsiniz"
+        },
+        "createPage": {
+            "title": "Denetim Firması Ekle",
+            "subTitle": "Sisteme yeni bir denetim firması ekleyin"
+        },
+        "auditorsPage": {
+            "title": "Firma Personeli",
+            "subTitle": "Bu denetim firmasının personelini, yetkinlik ve ziyaret belgelerini buradan yönetebilirsiniz"
+        },
+        "createAuditorPage": {
+            "title": "Personel Ekle",
+            "subTitle": "Bu firmaya yeni bir denetçi personel ekleyin"
+        }
+    },
+    "term": {
+        "name": "Firma Adı",
+        "email": "E-posta",
+        "phone": "Telefon",
+        "address": "Adres",
+        "auditCount": "Denetim",
+        "auditorName": "Ad Soyad",
+        "auditorTitle": "Unvan",
+        "competencyDocuments": "Yetkinlik Belgeleri",
+        "visitDocuments": "Ziyaret/Görevlendirme Belgeleri"
+    },
+    "action": {
+        "manageAuditors": "Personeli Yönet",
+        "addAuditor": "Personel Ekle"
+    }
+}

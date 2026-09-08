@@ -15,6 +15,8 @@ use Database\Seeders\BusinessManagement\Vehicle\VehicleStatusSeeder;
 use Database\Seeders\HumanResources\JobDescription\JobDescriptionSeeder;
 use Database\Seeders\MeasurementDevice\Calibration\CalibrationFirmSeeder;
 use Database\Seeders\Capa\CapaProblemDemoSeeder;
+use Database\Seeders\Audit\AuditDefinitionSeeder;
+use Database\Seeders\Audit\AuditChecklistTemplateSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -53,6 +55,9 @@ class DatabaseSeeder extends Seeder
             EducationSeeder::class,
             // CAPA / Problem Demo Data
             CapaProblemDemoSeeder::class,
+            // Audit Module Definitions
+            AuditDefinitionSeeder::class,
+            AuditChecklistTemplateSeeder::class,
         ]);
     }
 }

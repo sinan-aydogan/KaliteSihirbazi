@@ -2,85 +2,70 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AuditFirm;
 use App\Http\Requests\StoreAuditFirmRequest;
 use App\Http\Requests\UpdateAuditFirmRequest;
+use App\Models\AuditFirm;
+use Inertia\Inertia;
 
 class AuditFirmController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $auditFirms = $this->tableFilter(AuditFirm::withCount('audits'))
+            ->latest('id')
+            ->paginate(10)
+            ->withQueryString();
+
+        return Inertia::render('Modules/AuditFirm/IndexPage', [
+            'tableData' => $auditFirms,
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreAuditFirmRequest  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(StoreAuditFirmRequest $request)
     {
-        //
+        $auditFirm = AuditFirm::create($request->validated());
+
+        session()->flash('message', ['type' => 'success', 'content' => __('messages.auditFirm.created', ['auditFirm' => $auditFirm->name])]);
+
+        return redirect()->back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\AuditFirm  $auditFirm
-     * @return \Illuminate\Http\Response
-     */
     public function show(AuditFirm $auditFirm)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\AuditFirm  $auditFirm
-     * @return \Illuminate\Http\Response
-     */
     public function edit(AuditFirm $auditFirm)
     {
-        //
+        return response()->json($auditFirm);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateAuditFirmRequest  $request
-     * @param  \App\Models\AuditFirm  $auditFirm
-     * @return \Illuminate\Http\Response
-     */
     public function update(UpdateAuditFirmRequest $request, AuditFirm $auditFirm)
     {
-        //
+        $auditFirm->update($request->validated());
+
+        session()->flash('message', ['type' => 'success', 'content' => __('messages.auditFirm.updated', ['auditFirm' => $auditFirm->name])]);
+
+        return redirect()->back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\AuditFirm  $auditFirm
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(AuditFirm $auditFirm)
     {
-        //
+        if ($auditFirm->audits()->exists()) {
+            session()->flash('message', ['type' => 'danger', 'content' => __('messages.auditFirm.deletedError', ['auditFirm' => $auditFirm->name])]);
+
+            return redirect()->back();
+        }
+
+        session()->flash('message', ['type' => 'success', 'content' => __('messages.auditFirm.deleted', ['auditFirm' => $auditFirm->name])]);
+
+        $auditFirm->delete();
+
+        return redirect()->route('audit-firm.index');
     }
 }

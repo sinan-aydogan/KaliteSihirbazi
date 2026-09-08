@@ -49,6 +49,8 @@ class ProblemController extends Controller
             'detectedBy:id,name',
             'department:id,name',
             'capas.responsible:id,name',
+            'audit:id,code,title',
+            'checklistAnswer.question:id,question',
         ]);
 
         return Inertia::render('Modules/Problem/ShowPage', [
