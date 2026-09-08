@@ -1,0 +1,82 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "DÖF / CAPA Kayıtları",
+            "subTitle": "Düzeltici ve Önleyici Faaliyetleri buradan yönetebilirsiniz"
+        },
+        "createPage": {
+            "title": "DÖF Kaydı Oluştur",
+            "subTitle": "Yeni bir düzeltici/önleyici faaliyet kaydı açın"
+        },
+        "showPage": {
+            "title": "DÖF Detayı",
+            "subTitle": "Aksiyon planı ve doğrulama sürecini buradan yönetin"
+        },
+        "createActionPage": {
+            "title": "Aksiyon Ekle",
+            "subTitle": "Bu DÖF için yeni bir aksiyon planlayın"
+        },
+        "verifyPage": {
+            "title": "Etkinlik Doğrulaması",
+            "subTitle": "Aksiyonların etkili olup olmadığını değerlendirin"
+        }
+    },
+    "term": {
+        "code": "DÖF No",
+        "title": "Başlık",
+        "type": "Tip",
+        "description": "Uygunsuzluk / Fırsat Açıklaması",
+        "sourceType": "Kaynak",
+        "rootCause": "Kök Neden",
+        "status": "Durum",
+        "responsible": "Sorumlu",
+        "openedBy": "Açan",
+        "dueDate": "Termin Tarihi",
+        "closedAt": "Kapanış Tarihi",
+        "actionCount": "Aksiyon",
+        "capaType": {
+            "corrective": "Düzeltici",
+            "preventive": "Önleyici"
+        },
+        "capaSourceType": {
+            "document_revision_request": "Doküman Revizyon Talebi",
+            "audit_finding": "Denetim Bulgusu",
+            "customer_complaint": "Müşteri Şikayeti",
+            "internal": "İç Kaynaklı",
+            "other": "Diğer"
+        },
+        "capaStatus": {
+            "open": "Açık",
+            "action_plan": "Aksiyon Planlandı",
+            "in_progress": "Devam Ediyor",
+            "pending_verification": "Doğrulama Bekliyor",
+            "closed_effective": "Kapatıldı (Etkili)",
+            "closed_ineffective": "Kapatıldı (Etkisiz)"
+        },
+        "overdue": "Gecikmiş",
+        "action": "Aksiyon Açıklaması",
+        "actionResponsible": "Aksiyon Sorumlusu",
+        "actionDueDate": "Aksiyon Termini",
+        "completedAt": "Tamamlanma Tarihi",
+        "actionStatus": {
+            "pending": "Bekliyor",
+            "in_progress": "Devam Ediyor",
+            "done": "Tamamlandı"
+        },
+        "verificationDate": "Doğrulama Tarihi",
+        "verifiedBy": "Doğrulayan",
+        "isEffective": "Aksiyonlar Etkili miydi?",
+        "notes": "Notlar"
+    },
+    "action": {
+        "viewDetails": "Detay / Yönet",
+        "addAction": "Aksiyon Ekle",
+        "startAction": "Başlat",
+        "completeAction": "Tamamla",
+        "submitForVerification": "Doğrulamaya Gönder",
+        "verify": "Doğrula",
+        "reopen": "Yeniden Aç",
+        "effective": "Etkili",
+        "ineffective": "Etkisiz"
+    }
+}

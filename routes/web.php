@@ -5,6 +5,9 @@ use App\Http\Controllers\ApiTokenController;
 use App\Http\Controllers\BusinessManagement\Vehicle\VehicleSettingController;
 use App\Http\Controllers\BusinessManagement\Vehicle\VehicleStatusController;
 use App\Http\Controllers\BusinessManagement\Vehicle\VehicleTypeController;
+use App\Http\Controllers\CapaActionController;
+use App\Http\Controllers\CapaController;
+use App\Http\Controllers\CapaWorkflowController;
 use App\Http\Controllers\CompanyAccreditationController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\Document\DistributionPointController;
@@ -38,6 +41,8 @@ use App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrat
 use App\Http\Controllers\MeasurementDevice\DeviceInfoController;
 use App\Http\Controllers\MeasurementDevice\MeasurementDeviceController;
 use App\Http\Controllers\MeasurementDevice\MeasurementDeviceTypeController;
+use App\Http\Controllers\ProblemController;
+use App\Http\Controllers\ProblemWorkflowController;
 use App\Http\Controllers\Setting\GlobalSettingController;
 use App\Http\Controllers\Setting\ModuleController;
 use App\Http\Controllers\Setting\PropertyController;
@@ -136,12 +141,12 @@ Route::middleware([
         ['uri' => 'calibration-firm', 'model' => 'calibrationFirm', 'controller' => CalibrationFirmController::class],
         ['uri' => 'measurement-device-action', 'model' => 'measurementDeviceAction', 'controller' => MeasurementDeviceActionController::class],
         ['uri' => 'standard', 'model' => 'standard', 'controller' => StandardController::class],
+        ['uri' => 'capa', 'model' => 'capa', 'controller' => CapaController::class],
+        ['uri' => 'problem', 'model' => 'problem', 'controller' => ProblemController::class],
     ];
 
     $plannedModules = [
         'audit-firm',
-        'problem',
-        'capa-action',
         'product-tree',
         'audit',
         'improvement-work',
@@ -239,6 +244,23 @@ Route::middleware([
     Route::post('standard/{standard}/accreditations', [CompanyAccreditationController::class, 'store'])->name('company-accreditation.store');
     Route::put('company-accreditation/{companyAccreditation}', [CompanyAccreditationController::class, 'update'])->name('company-accreditation.update');
     Route::delete('company-accreditation/{companyAccreditation}', [CompanyAccreditationController::class, 'destroy'])->name('company-accreditation.destroy');
+
+    // CAPA Actions (nested under a CAPA)
+    Route::post('capa/{capa}/actions', [CapaActionController::class, 'store'])->name('capa-action.store');
+    Route::put('capa-action/{capaAction}', [CapaActionController::class, 'update'])->name('capa-action.update');
+    Route::delete('capa-action/{capaAction}', [CapaActionController::class, 'destroy'])->name('capa-action.destroy');
+    Route::post('capa-action/{capaAction}/start', [CapaActionController::class, 'start'])->name('capa-action.start');
+    Route::post('capa-action/{capaAction}/complete', [CapaActionController::class, 'complete'])->name('capa-action.complete');
+
+    // CAPA Workflow (submit for verification / verify / reopen)
+    Route::post('capa/{capa}/submit-for-verification', [CapaWorkflowController::class, 'submitForVerification'])->name('capa.submit-for-verification');
+    Route::post('capa/{capa}/verify', [CapaWorkflowController::class, 'verify'])->name('capa.verify');
+    Route::post('capa/{capa}/reopen', [CapaWorkflowController::class, 'reopen'])->name('capa.reopen');
+
+    // Problem (Uygunsuzluk) Workflow
+    Route::post('problem/{problem}/mark-under-review', [ProblemWorkflowController::class, 'markUnderReview'])->name('problem.mark-under-review');
+    Route::post('problem/{problem}/close-without-capa', [ProblemWorkflowController::class, 'closeWithoutCapa'])->name('problem.close-without-capa');
+    Route::post('problem/{problem}/close', [ProblemWorkflowController::class, 'close'])->name('problem.close');
 
     /* Warehouse Setting Pages */
     Route::resource('warehouse-type', WarehouseTypeController::class);

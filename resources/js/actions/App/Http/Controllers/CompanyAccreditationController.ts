@@ -4,7 +4,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFo
  * @see app/Http/Controllers/CompanyAccreditationController.php:16
  * @route '/standard/{standard}/accreditations'
  */
-export const index = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const index = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: index.url(args, options),
     method: 'get',
 })
@@ -19,7 +19,7 @@ index.definition = {
  * @see app/Http/Controllers/CompanyAccreditationController.php:16
  * @route '/standard/{standard}/accreditations'
  */
-index.url = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+index.url = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { standard: args }
     }
@@ -52,7 +52,7 @@ index.url = (args: { standard: string | number | { id: string | number } } | [st
  * @see app/Http/Controllers/CompanyAccreditationController.php:16
  * @route '/standard/{standard}/accreditations'
  */
-index.get = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+index.get = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: index.url(args, options),
     method: 'get',
 })
@@ -61,7 +61,7 @@ index.get = (args: { standard: string | number | { id: string | number } } | [st
  * @see app/Http/Controllers/CompanyAccreditationController.php:16
  * @route '/standard/{standard}/accreditations'
  */
-index.head = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+index.head = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(args, options),
     method: 'head',
 })
@@ -71,7 +71,7 @@ index.head = (args: { standard: string | number | { id: string | number } } | [s
  * @see app/Http/Controllers/CompanyAccreditationController.php:16
  * @route '/standard/{standard}/accreditations'
  */
-    const indexForm = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    const indexForm = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
         action: index.url(args, options),
         method: 'get',
     })
@@ -81,7 +81,7 @@ index.head = (args: { standard: string | number | { id: string | number } } | [s
  * @see app/Http/Controllers/CompanyAccreditationController.php:16
  * @route '/standard/{standard}/accreditations'
  */
-        indexForm.get = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        indexForm.get = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: index.url(args, options),
             method: 'get',
         })
@@ -90,7 +90,7 @@ index.head = (args: { standard: string | number | { id: string | number } } | [s
  * @see app/Http/Controllers/CompanyAccreditationController.php:16
  * @route '/standard/{standard}/accreditations'
  */
-        indexForm.head = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        indexForm.head = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: index.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'HEAD',
@@ -106,7 +106,7 @@ index.head = (args: { standard: string | number | { id: string | number } } | [s
  * @see app/Http/Controllers/CompanyAccreditationController.php:32
  * @route '/standard/{standard}/accreditations'
  */
-export const store = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const store = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(args, options),
     method: 'post',
 })
@@ -121,7 +121,7 @@ store.definition = {
  * @see app/Http/Controllers/CompanyAccreditationController.php:32
  * @route '/standard/{standard}/accreditations'
  */
-store.url = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+store.url = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { standard: args }
     }
@@ -154,7 +154,7 @@ store.url = (args: { standard: string | number | { id: string | number } } | [st
  * @see app/Http/Controllers/CompanyAccreditationController.php:32
  * @route '/standard/{standard}/accreditations'
  */
-store.post = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+store.post = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(args, options),
     method: 'post',
 })
@@ -164,7 +164,7 @@ store.post = (args: { standard: string | number | { id: string | number } } | [s
  * @see app/Http/Controllers/CompanyAccreditationController.php:32
  * @route '/standard/{standard}/accreditations'
  */
-    const storeForm = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const storeForm = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: store.url(args, options),
         method: 'post',
     })
@@ -174,7 +174,7 @@ store.post = (args: { standard: string | number | { id: string | number } } | [s
  * @see app/Http/Controllers/CompanyAccreditationController.php:32
  * @route '/standard/{standard}/accreditations'
  */
-        storeForm.post = (args: { standard: string | number | { id: string | number } } | [standard: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        storeForm.post = (args: { standard: number | { id: number } } | [standard: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: store.url(args, options),
             method: 'post',
         })
@@ -185,7 +185,7 @@ store.post = (args: { standard: string | number | { id: string | number } } | [s
  * @see app/Http/Controllers/CompanyAccreditationController.php:45
  * @route '/company-accreditation/{companyAccreditation}'
  */
-export const update = (args: { companyAccreditation: string | number | { id: string | number } } | [companyAccreditation: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { companyAccreditation: number | { id: number } } | [companyAccreditation: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -200,7 +200,7 @@ update.definition = {
  * @see app/Http/Controllers/CompanyAccreditationController.php:45
  * @route '/company-accreditation/{companyAccreditation}'
  */
-update.url = (args: { companyAccreditation: string | number | { id: string | number } } | [companyAccreditation: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+update.url = (args: { companyAccreditation: number | { id: number } } | [companyAccreditation: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { companyAccreditation: args }
     }
@@ -233,7 +233,7 @@ update.url = (args: { companyAccreditation: string | number | { id: string | num
  * @see app/Http/Controllers/CompanyAccreditationController.php:45
  * @route '/company-accreditation/{companyAccreditation}'
  */
-update.put = (args: { companyAccreditation: string | number | { id: string | number } } | [companyAccreditation: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { companyAccreditation: number | { id: number } } | [companyAccreditation: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -243,7 +243,7 @@ update.put = (args: { companyAccreditation: string | number | { id: string | num
  * @see app/Http/Controllers/CompanyAccreditationController.php:45
  * @route '/company-accreditation/{companyAccreditation}'
  */
-    const updateForm = (args: { companyAccreditation: string | number | { id: string | number } } | [companyAccreditation: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const updateForm = (args: { companyAccreditation: number | { id: number } } | [companyAccreditation: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: update.url(args, {
                     [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                         _method: 'PUT',
@@ -258,7 +258,7 @@ update.put = (args: { companyAccreditation: string | number | { id: string | num
  * @see app/Http/Controllers/CompanyAccreditationController.php:45
  * @route '/company-accreditation/{companyAccreditation}'
  */
-        updateForm.put = (args: { companyAccreditation: string | number | { id: string | number } } | [companyAccreditation: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        updateForm.put = (args: { companyAccreditation: number | { id: number } } | [companyAccreditation: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: update.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'PUT',
@@ -274,7 +274,7 @@ update.put = (args: { companyAccreditation: string | number | { id: string | num
  * @see app/Http/Controllers/CompanyAccreditationController.php:58
  * @route '/company-accreditation/{companyAccreditation}'
  */
-export const destroy = (args: { companyAccreditation: string | number | { id: string | number } } | [companyAccreditation: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { companyAccreditation: number | { id: number } } | [companyAccreditation: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -289,7 +289,7 @@ destroy.definition = {
  * @see app/Http/Controllers/CompanyAccreditationController.php:58
  * @route '/company-accreditation/{companyAccreditation}'
  */
-destroy.url = (args: { companyAccreditation: string | number | { id: string | number } } | [companyAccreditation: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { companyAccreditation: number | { id: number } } | [companyAccreditation: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { companyAccreditation: args }
     }
@@ -322,7 +322,7 @@ destroy.url = (args: { companyAccreditation: string | number | { id: string | nu
  * @see app/Http/Controllers/CompanyAccreditationController.php:58
  * @route '/company-accreditation/{companyAccreditation}'
  */
-destroy.delete = (args: { companyAccreditation: string | number | { id: string | number } } | [companyAccreditation: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { companyAccreditation: number | { id: number } } | [companyAccreditation: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -332,7 +332,7 @@ destroy.delete = (args: { companyAccreditation: string | number | { id: string |
  * @see app/Http/Controllers/CompanyAccreditationController.php:58
  * @route '/company-accreditation/{companyAccreditation}'
  */
-    const destroyForm = (args: { companyAccreditation: string | number | { id: string | number } } | [companyAccreditation: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const destroyForm = (args: { companyAccreditation: number | { id: number } } | [companyAccreditation: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: destroy.url(args, {
                     [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                         _method: 'DELETE',
@@ -347,7 +347,7 @@ destroy.delete = (args: { companyAccreditation: string | number | { id: string |
  * @see app/Http/Controllers/CompanyAccreditationController.php:58
  * @route '/company-accreditation/{companyAccreditation}'
  */
-        destroyForm.delete = (args: { companyAccreditation: string | number | { id: string | number } } | [companyAccreditation: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        destroyForm.delete = (args: { companyAccreditation: number | { id: number } } | [companyAccreditation: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: destroy.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'DELETE',

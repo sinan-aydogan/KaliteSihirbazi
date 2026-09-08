@@ -146,13 +146,13 @@ export default function ({roles, permissions}) {
                         type: "route",
                         link: 'problem.index'
                     },
-                    /*Actions*/
+                    /*CAPA Records*/
                     {
                         id: 'capa-ac',
-                        label: t('mainMenu.actions'),
-                        icon: 'arrow-right-arrow-left',
+                        label: t('mainMenu.capaRecords'),
+                        icon: 'list-check',
                         type: "route",
-                        link: 'capa-action.index'
+                        link: 'capa.index'
                     }
                 ]
             },
