@@ -1,0 +1,63 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Audits",
+            "subTitle": "Plan and manage your internal, certification, supplier and customer audits"
+        },
+        "createPage": {
+            "title": "Plan an Audit",
+            "subTitle": "Add a new audit record to the system"
+        },
+        "showPage": {
+            "title": "Audit Detail",
+            "subTitle": "View the audit record's details and findings here"
+        },
+        "addFindingPage": {
+            "title": "Record a Finding",
+            "subTitle": "Record a nonconformity detected during this audit"
+        }
+    },
+    "term": {
+        "code": "Audit Code",
+        "title": "Audit Title",
+        "type": "Audit Type",
+        "standard": "Standard",
+        "companyAccreditation": "Accreditation/Certificate",
+        "auditFirm": "Audit Firm",
+        "auditor": "Auditor",
+        "department": "Department",
+        "scope": "Scope",
+        "plannedDate": "Planned Date",
+        "actualDate": "Actual Date",
+        "status": "Status",
+        "result": "Result",
+        "reportNotes": "Audit Report Notes",
+        "closedAt": "Closed At",
+        "findingCount": "Findings",
+        "findings": "Nonconformity Findings",
+        "auditType": {
+            "internal": "Internal Audit",
+            "certification": "Certification Audit",
+            "supplier": "Supplier Audit",
+            "customer": "Customer Audit"
+        },
+        "auditStatus": {
+            "planned": "Planned",
+            "in_progress": "In Progress",
+            "completed": "Completed",
+            "cancelled": "Cancelled"
+        },
+        "auditResult": {
+            "passed": "Passed",
+            "passed_with_findings": "Passed With Findings",
+            "failed": "Failed"
+        }
+    },
+    "action": {
+        "viewDetails": "View Details",
+        "start": "Start Audit",
+        "complete": "Complete Audit",
+        "cancel": "Cancel Audit",
+        "addFinding": "Record Finding"
+    }
+}

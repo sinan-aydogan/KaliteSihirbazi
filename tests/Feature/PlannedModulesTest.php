@@ -13,9 +13,7 @@ test('unimplemented module menu routes render a coming soon page without exposin
         ->and(app('router')->has($module.'.deleted'))->toBeFalse()
         ->and(app('router')->has($module.'.permanent-delete'))->toBeFalse();
 })->with([
-    'audit-firm',
     'product-tree',
-    'audit',
     'improvement-work',
     'device',
     'machine',

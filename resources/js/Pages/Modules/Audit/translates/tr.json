@@ -1,0 +1,63 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Denetimler",
+            "subTitle": "İç, belgelendirme, tedarikçi ve müşteri denetimlerinizi buradan planlayıp yönetebilirsiniz"
+        },
+        "createPage": {
+            "title": "Denetim Planla",
+            "subTitle": "Sisteme yeni bir denetim kaydı ekleyin"
+        },
+        "showPage": {
+            "title": "Denetim Detayı",
+            "subTitle": "Denetim kaydının detaylarını ve bulgularını buradan görüntüleyebilirsiniz"
+        },
+        "addFindingPage": {
+            "title": "Uygunsuzluk Kaydet",
+            "subTitle": "Bu denetimde tespit edilen bir uygunsuzluğu kaydedin"
+        }
+    },
+    "term": {
+        "code": "Denetim Kodu",
+        "title": "Denetim Başlığı",
+        "type": "Denetim Tipi",
+        "standard": "Standart",
+        "companyAccreditation": "Akreditasyon/Sertifika",
+        "auditFirm": "Denetim Firması",
+        "auditor": "Denetçi",
+        "department": "Departman",
+        "scope": "Kapsam",
+        "plannedDate": "Planlanan Tarih",
+        "actualDate": "Gerçekleşen Tarih",
+        "status": "Durum",
+        "result": "Sonuç",
+        "reportNotes": "Denetim Raporu Notları",
+        "closedAt": "Kapatılma Tarihi",
+        "findingCount": "Bulgu",
+        "findings": "Uygunsuzluk Bulguları",
+        "auditType": {
+            "internal": "İç Denetim",
+            "certification": "Belgelendirme Denetimi",
+            "supplier": "Tedarikçi Denetimi",
+            "customer": "Müşteri Denetimi"
+        },
+        "auditStatus": {
+            "planned": "Planlandı",
+            "in_progress": "Devam Ediyor",
+            "completed": "Tamamlandı",
+            "cancelled": "İptal Edildi"
+        },
+        "auditResult": {
+            "passed": "Başarılı",
+            "passed_with_findings": "Bulgularla Başarılı",
+            "failed": "Başarısız"
+        }
+    },
+    "action": {
+        "viewDetails": "Detayları Görüntüle",
+        "start": "Denetimi Başlat",
+        "complete": "Denetimi Tamamla",
+        "cancel": "Denetimi İptal Et",
+        "addFinding": "Uygunsuzluk Kaydet"
+    }
+}

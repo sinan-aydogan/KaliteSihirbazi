@@ -17,6 +17,7 @@ class StoreProblemRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'audit_id' => 'nullable|exists:audits,id',
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'source_type' => ['required', Rule::enum(ProblemSourceType::class)],

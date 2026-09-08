@@ -1,0 +1,19 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Audit Firms",
+            "subTitle": "Manage the certification/consulting firms that perform external audits"
+        },
+        "createPage": {
+            "title": "Add Audit Firm",
+            "subTitle": "Add a new audit firm to the system"
+        }
+    },
+    "term": {
+        "name": "Firm Name",
+        "email": "Email",
+        "phone": "Phone",
+        "address": "Address",
+        "auditCount": "Audits"
+    }
+}

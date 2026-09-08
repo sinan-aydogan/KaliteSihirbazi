@@ -1,70 +1,70 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
-* @see \App\Http\Controllers\AuditController::search
+* @see \App\Http\Controllers\AuditController::index
  * @see app/Http/Controllers/AuditController.php:22
  * @route '/audit/search'
  */
-export const search = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
-    url: search.url(options),
+const index96abd1e42a2417df226631e7aa8a8f54 = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: index96abd1e42a2417df226631e7aa8a8f54.url(options),
     method: 'post',
 })
 
-search.definition = {
+index96abd1e42a2417df226631e7aa8a8f54.definition = {
     methods: ["post"],
     url: '/audit/search',
 } satisfies RouteDefinition<["post"]>
 
 /**
-* @see \App\Http\Controllers\AuditController::search
+* @see \App\Http\Controllers\AuditController::index
  * @see app/Http/Controllers/AuditController.php:22
  * @route '/audit/search'
  */
-search.url = (options?: RouteQueryOptions) => {
-    return search.definition.url + queryParams(options)
+index96abd1e42a2417df226631e7aa8a8f54.url = (options?: RouteQueryOptions) => {
+    return index96abd1e42a2417df226631e7aa8a8f54.definition.url + queryParams(options)
 }
 
 /**
-* @see \App\Http\Controllers\AuditController::search
+* @see \App\Http\Controllers\AuditController::index
  * @see app/Http/Controllers/AuditController.php:22
  * @route '/audit/search'
  */
-search.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
-    url: search.url(options),
+index96abd1e42a2417df226631e7aa8a8f54.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: index96abd1e42a2417df226631e7aa8a8f54.url(options),
     method: 'post',
 })
 
     /**
-* @see \App\Http\Controllers\AuditController::search
+* @see \App\Http\Controllers\AuditController::index
  * @see app/Http/Controllers/AuditController.php:22
  * @route '/audit/search'
  */
-    const searchForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-        action: search.url(options),
+    const index96abd1e42a2417df226631e7aa8a8f54Form = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        action: index96abd1e42a2417df226631e7aa8a8f54.url(options),
         method: 'post',
     })
 
             /**
-* @see \App\Http\Controllers\AuditController::search
+* @see \App\Http\Controllers\AuditController::index
  * @see app/Http/Controllers/AuditController.php:22
  * @route '/audit/search'
  */
-        searchForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-            action: search.url(options),
+        index96abd1e42a2417df226631e7aa8a8f54Form.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+            action: index96abd1e42a2417df226631e7aa8a8f54.url(options),
             method: 'post',
         })
     
-    search.form = searchForm
-/**
+    index96abd1e42a2417df226631e7aa8a8f54.form = index96abd1e42a2417df226631e7aa8a8f54Form
+    /**
 * @see \App\Http\Controllers\AuditController::index
  * @see app/Http/Controllers/AuditController.php:22
  * @route '/audit'
  */
-export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: index.url(options),
+const indexeb34da18791561b44f3607f3ea8ab70d = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: indexeb34da18791561b44f3607f3ea8ab70d.url(options),
     method: 'get',
 })
 
-index.definition = {
+indexeb34da18791561b44f3607f3ea8ab70d.definition = {
     methods: ["get","head"],
     url: '/audit',
 } satisfies RouteDefinition<["get","head"]>
@@ -74,8 +74,8 @@ index.definition = {
  * @see app/Http/Controllers/AuditController.php:22
  * @route '/audit'
  */
-index.url = (options?: RouteQueryOptions) => {
-    return index.definition.url + queryParams(options)
+indexeb34da18791561b44f3607f3ea8ab70d.url = (options?: RouteQueryOptions) => {
+    return indexeb34da18791561b44f3607f3ea8ab70d.definition.url + queryParams(options)
 }
 
 /**
@@ -83,8 +83,8 @@ index.url = (options?: RouteQueryOptions) => {
  * @see app/Http/Controllers/AuditController.php:22
  * @route '/audit'
  */
-index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: index.url(options),
+indexeb34da18791561b44f3607f3ea8ab70d.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: indexeb34da18791561b44f3607f3ea8ab70d.url(options),
     method: 'get',
 })
 /**
@@ -92,8 +92,8 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
  * @see app/Http/Controllers/AuditController.php:22
  * @route '/audit'
  */
-index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: index.url(options),
+indexeb34da18791561b44f3607f3ea8ab70d.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: indexeb34da18791561b44f3607f3ea8ab70d.url(options),
     method: 'head',
 })
 
@@ -102,8 +102,8 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
  * @see app/Http/Controllers/AuditController.php:22
  * @route '/audit'
  */
-    const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-        action: index.url(options),
+    const indexeb34da18791561b44f3607f3ea8ab70dForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        action: indexeb34da18791561b44f3607f3ea8ab70d.url(options),
         method: 'get',
     })
 
@@ -112,8 +112,8 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
  * @see app/Http/Controllers/AuditController.php:22
  * @route '/audit'
  */
-        indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: index.url(options),
+        indexeb34da18791561b44f3607f3ea8ab70dForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: indexeb34da18791561b44f3607f3ea8ab70d.url(options),
             method: 'get',
         })
             /**
@@ -121,8 +121,8 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
  * @see app/Http/Controllers/AuditController.php:22
  * @route '/audit'
  */
-        indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: index.url({
+        indexeb34da18791561b44f3607f3ea8ab70dForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: indexeb34da18791561b44f3607f3ea8ab70d.url({
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'HEAD',
                             ...(options?.query ?? options?.mergeQuery ?? {}),
@@ -131,7 +131,18 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
             method: 'get',
         })
     
-    index.form = indexForm
+    indexeb34da18791561b44f3607f3ea8ab70d.form = indexeb34da18791561b44f3607f3ea8ab70dForm
+
+/**
+* Multiple routes resolve to \App\Http\Controllers\AuditController::index, so this export is a
+* dictionary keyed by URI rather than a callable. Call a specific route with `index['<uri>'](...)`,
+* or import the route by name from your generated `routes/` directory.
+*/
+export const index = {
+    '/audit/search': index96abd1e42a2417df226631e7aa8a8f54,
+    '/audit': indexeb34da18791561b44f3607f3ea8ab70d,
+}
+
 /**
 * @see \App\Http\Controllers\AuditController::create
  * @see app/Http/Controllers/AuditController.php:39
@@ -670,255 +681,6 @@ destroy.delete = (args: { audit: number | { id: number } } | [audit: number | { 
         })
     
     destroy.form = destroyForm
-/**
-* @see \App\Http\Controllers\AuditWorkflowController::start
- * @see app/Http/Controllers/AuditWorkflowController.php:16
- * @route '/audit/{audit}/start'
- */
-export const start = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
-    url: start.url(args, options),
-    method: 'post',
-})
+const AuditController = { index, create, store, show, edit, update, destroy }
 
-start.definition = {
-    methods: ["post"],
-    url: '/audit/{audit}/start',
-} satisfies RouteDefinition<["post"]>
-
-/**
-* @see \App\Http\Controllers\AuditWorkflowController::start
- * @see app/Http/Controllers/AuditWorkflowController.php:16
- * @route '/audit/{audit}/start'
- */
-start.url = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
-    if (typeof args === 'string' || typeof args === 'number') {
-        args = { audit: args }
-    }
-
-            if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
-            args = { audit: args.id }
-        }
-    
-    if (Array.isArray(args)) {
-        args = {
-                    audit: args[0],
-                }
-    }
-
-    args = applyUrlDefaults(args)
-
-    const parsedArgs = {
-                        audit: typeof args.audit === 'object'
-                ? args.audit.id
-                : args.audit,
-                }
-
-    return start.definition.url
-            .replace('{audit}', parsedArgs.audit.toString())
-            .replace(/\/+$/, '') + queryParams(options)
-}
-
-/**
-* @see \App\Http\Controllers\AuditWorkflowController::start
- * @see app/Http/Controllers/AuditWorkflowController.php:16
- * @route '/audit/{audit}/start'
- */
-start.post = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
-    url: start.url(args, options),
-    method: 'post',
-})
-
-    /**
-* @see \App\Http\Controllers\AuditWorkflowController::start
- * @see app/Http/Controllers/AuditWorkflowController.php:16
- * @route '/audit/{audit}/start'
- */
-    const startForm = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-        action: start.url(args, options),
-        method: 'post',
-    })
-
-            /**
-* @see \App\Http\Controllers\AuditWorkflowController::start
- * @see app/Http/Controllers/AuditWorkflowController.php:16
- * @route '/audit/{audit}/start'
- */
-        startForm.post = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-            action: start.url(args, options),
-            method: 'post',
-        })
-    
-    start.form = startForm
-/**
-* @see \App\Http\Controllers\AuditWorkflowController::complete
- * @see app/Http/Controllers/AuditWorkflowController.php:24
- * @route '/audit/{audit}/complete'
- */
-export const complete = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
-    url: complete.url(args, options),
-    method: 'post',
-})
-
-complete.definition = {
-    methods: ["post"],
-    url: '/audit/{audit}/complete',
-} satisfies RouteDefinition<["post"]>
-
-/**
-* @see \App\Http\Controllers\AuditWorkflowController::complete
- * @see app/Http/Controllers/AuditWorkflowController.php:24
- * @route '/audit/{audit}/complete'
- */
-complete.url = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
-    if (typeof args === 'string' || typeof args === 'number') {
-        args = { audit: args }
-    }
-
-            if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
-            args = { audit: args.id }
-        }
-    
-    if (Array.isArray(args)) {
-        args = {
-                    audit: args[0],
-                }
-    }
-
-    args = applyUrlDefaults(args)
-
-    const parsedArgs = {
-                        audit: typeof args.audit === 'object'
-                ? args.audit.id
-                : args.audit,
-                }
-
-    return complete.definition.url
-            .replace('{audit}', parsedArgs.audit.toString())
-            .replace(/\/+$/, '') + queryParams(options)
-}
-
-/**
-* @see \App\Http\Controllers\AuditWorkflowController::complete
- * @see app/Http/Controllers/AuditWorkflowController.php:24
- * @route '/audit/{audit}/complete'
- */
-complete.post = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
-    url: complete.url(args, options),
-    method: 'post',
-})
-
-    /**
-* @see \App\Http\Controllers\AuditWorkflowController::complete
- * @see app/Http/Controllers/AuditWorkflowController.php:24
- * @route '/audit/{audit}/complete'
- */
-    const completeForm = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-        action: complete.url(args, options),
-        method: 'post',
-    })
-
-            /**
-* @see \App\Http\Controllers\AuditWorkflowController::complete
- * @see app/Http/Controllers/AuditWorkflowController.php:24
- * @route '/audit/{audit}/complete'
- */
-        completeForm.post = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-            action: complete.url(args, options),
-            method: 'post',
-        })
-    
-    complete.form = completeForm
-/**
-* @see \App\Http\Controllers\AuditWorkflowController::cancel
- * @see app/Http/Controllers/AuditWorkflowController.php:32
- * @route '/audit/{audit}/cancel'
- */
-export const cancel = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
-    url: cancel.url(args, options),
-    method: 'post',
-})
-
-cancel.definition = {
-    methods: ["post"],
-    url: '/audit/{audit}/cancel',
-} satisfies RouteDefinition<["post"]>
-
-/**
-* @see \App\Http\Controllers\AuditWorkflowController::cancel
- * @see app/Http/Controllers/AuditWorkflowController.php:32
- * @route '/audit/{audit}/cancel'
- */
-cancel.url = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
-    if (typeof args === 'string' || typeof args === 'number') {
-        args = { audit: args }
-    }
-
-            if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
-            args = { audit: args.id }
-        }
-    
-    if (Array.isArray(args)) {
-        args = {
-                    audit: args[0],
-                }
-    }
-
-    args = applyUrlDefaults(args)
-
-    const parsedArgs = {
-                        audit: typeof args.audit === 'object'
-                ? args.audit.id
-                : args.audit,
-                }
-
-    return cancel.definition.url
-            .replace('{audit}', parsedArgs.audit.toString())
-            .replace(/\/+$/, '') + queryParams(options)
-}
-
-/**
-* @see \App\Http\Controllers\AuditWorkflowController::cancel
- * @see app/Http/Controllers/AuditWorkflowController.php:32
- * @route '/audit/{audit}/cancel'
- */
-cancel.post = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
-    url: cancel.url(args, options),
-    method: 'post',
-})
-
-    /**
-* @see \App\Http\Controllers\AuditWorkflowController::cancel
- * @see app/Http/Controllers/AuditWorkflowController.php:32
- * @route '/audit/{audit}/cancel'
- */
-    const cancelForm = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-        action: cancel.url(args, options),
-        method: 'post',
-    })
-
-            /**
-* @see \App\Http\Controllers\AuditWorkflowController::cancel
- * @see app/Http/Controllers/AuditWorkflowController.php:32
- * @route '/audit/{audit}/cancel'
- */
-        cancelForm.post = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-            action: cancel.url(args, options),
-            method: 'post',
-        })
-    
-    cancel.form = cancelForm
-const audit = {
-    search: Object.assign(search, search),
-index: Object.assign(index, index),
-create: Object.assign(create, create),
-store: Object.assign(store, store),
-show: Object.assign(show, show),
-edit: Object.assign(edit, edit),
-update: Object.assign(update, update),
-destroy: Object.assign(destroy, destroy),
-start: Object.assign(start, start),
-complete: Object.assign(complete, complete),
-cancel: Object.assign(cancel, cancel),
-}
-
-export default audit
+export default AuditController

@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ApiTokenController;
+use App\Http\Controllers\AuditController;
+use App\Http\Controllers\AuditFirmController;
+use App\Http\Controllers\AuditWorkflowController;
 use App\Http\Controllers\BusinessManagement\Vehicle\VehicleSettingController;
 use App\Http\Controllers\BusinessManagement\Vehicle\VehicleStatusController;
 use App\Http\Controllers\BusinessManagement\Vehicle\VehicleTypeController;
@@ -143,12 +146,12 @@ Route::middleware([
         ['uri' => 'standard', 'model' => 'standard', 'controller' => StandardController::class],
         ['uri' => 'capa', 'model' => 'capa', 'controller' => CapaController::class],
         ['uri' => 'problem', 'model' => 'problem', 'controller' => ProblemController::class],
+        ['uri' => 'audit-firm', 'model' => 'auditFirm', 'controller' => AuditFirmController::class],
+        ['uri' => 'audit', 'model' => 'audit', 'controller' => AuditController::class],
     ];
 
     $plannedModules = [
-        'audit-firm',
         'product-tree',
-        'audit',
         'improvement-work',
         'device',
         'machine',
@@ -261,6 +264,11 @@ Route::middleware([
     Route::post('problem/{problem}/mark-under-review', [ProblemWorkflowController::class, 'markUnderReview'])->name('problem.mark-under-review');
     Route::post('problem/{problem}/close-without-capa', [ProblemWorkflowController::class, 'closeWithoutCapa'])->name('problem.close-without-capa');
     Route::post('problem/{problem}/close', [ProblemWorkflowController::class, 'close'])->name('problem.close');
+
+    // Audit Workflow (start / complete / cancel)
+    Route::post('audit/{audit}/start', [AuditWorkflowController::class, 'start'])->name('audit.start');
+    Route::post('audit/{audit}/complete', [AuditWorkflowController::class, 'complete'])->name('audit.complete');
+    Route::post('audit/{audit}/cancel', [AuditWorkflowController::class, 'cancel'])->name('audit.cancel');
 
     /* Warehouse Setting Pages */
     Route::resource('warehouse-type', WarehouseTypeController::class);

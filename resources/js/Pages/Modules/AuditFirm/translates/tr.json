@@ -1,0 +1,19 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Denetim Firmaları",
+            "subTitle": "Dış denetim yapan belgelendirme/danışmanlık firmalarını buradan yönetebilirsiniz"
+        },
+        "createPage": {
+            "title": "Denetim Firması Ekle",
+            "subTitle": "Sisteme yeni bir denetim firması ekleyin"
+        }
+    },
+    "term": {
+        "name": "Firma Adı",
+        "email": "E-posta",
+        "phone": "Telefon",
+        "address": "Adres",
+        "auditCount": "Denetim"
+    }
+}

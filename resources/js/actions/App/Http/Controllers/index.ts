@@ -14,10 +14,13 @@ import MeasurementDevice from './MeasurementDevice'
 import StandardController from './StandardController'
 import CapaController from './CapaController'
 import ProblemController from './ProblemController'
+import AuditFirmController from './AuditFirmController'
+import AuditController from './AuditController'
 import CompanyAccreditationController from './CompanyAccreditationController'
 import CapaActionController from './CapaActionController'
 import CapaWorkflowController from './CapaWorkflowController'
 import ProblemWorkflowController from './ProblemWorkflowController'
+import AuditWorkflowController from './AuditWorkflowController'
 const Controllers = {
     AccountController: Object.assign(AccountController, AccountController),
 ApiTokenController: Object.assign(ApiTokenController, ApiTokenController),
@@ -35,10 +38,13 @@ MeasurementDevice: Object.assign(MeasurementDevice, MeasurementDevice),
 StandardController: Object.assign(StandardController, StandardController),
 CapaController: Object.assign(CapaController, CapaController),
 ProblemController: Object.assign(ProblemController, ProblemController),
+AuditFirmController: Object.assign(AuditFirmController, AuditFirmController),
+AuditController: Object.assign(AuditController, AuditController),
 CompanyAccreditationController: Object.assign(CompanyAccreditationController, CompanyAccreditationController),
 CapaActionController: Object.assign(CapaActionController, CapaActionController),
 CapaWorkflowController: Object.assign(CapaWorkflowController, CapaWorkflowController),
 ProblemWorkflowController: Object.assign(ProblemWorkflowController, ProblemWorkflowController),
+AuditWorkflowController: Object.assign(AuditWorkflowController, AuditWorkflowController),
 }
 
 export default Controllers

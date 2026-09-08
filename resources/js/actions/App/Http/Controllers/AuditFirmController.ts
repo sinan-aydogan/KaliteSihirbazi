@@ -1,70 +1,70 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
-* @see \App\Http\Controllers\AuditFirmController::search
+* @see \App\Http\Controllers\AuditFirmController::index
  * @see app/Http/Controllers/AuditFirmController.php:12
  * @route '/audit-firm/search'
  */
-export const search = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
-    url: search.url(options),
+const index45c43c0bcfcdf575672d521afda2e16c = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: index45c43c0bcfcdf575672d521afda2e16c.url(options),
     method: 'post',
 })
 
-search.definition = {
+index45c43c0bcfcdf575672d521afda2e16c.definition = {
     methods: ["post"],
     url: '/audit-firm/search',
 } satisfies RouteDefinition<["post"]>
 
 /**
-* @see \App\Http\Controllers\AuditFirmController::search
+* @see \App\Http\Controllers\AuditFirmController::index
  * @see app/Http/Controllers/AuditFirmController.php:12
  * @route '/audit-firm/search'
  */
-search.url = (options?: RouteQueryOptions) => {
-    return search.definition.url + queryParams(options)
+index45c43c0bcfcdf575672d521afda2e16c.url = (options?: RouteQueryOptions) => {
+    return index45c43c0bcfcdf575672d521afda2e16c.definition.url + queryParams(options)
 }
 
 /**
-* @see \App\Http\Controllers\AuditFirmController::search
+* @see \App\Http\Controllers\AuditFirmController::index
  * @see app/Http/Controllers/AuditFirmController.php:12
  * @route '/audit-firm/search'
  */
-search.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
-    url: search.url(options),
+index45c43c0bcfcdf575672d521afda2e16c.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: index45c43c0bcfcdf575672d521afda2e16c.url(options),
     method: 'post',
 })
 
     /**
-* @see \App\Http\Controllers\AuditFirmController::search
+* @see \App\Http\Controllers\AuditFirmController::index
  * @see app/Http/Controllers/AuditFirmController.php:12
  * @route '/audit-firm/search'
  */
-    const searchForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-        action: search.url(options),
+    const index45c43c0bcfcdf575672d521afda2e16cForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        action: index45c43c0bcfcdf575672d521afda2e16c.url(options),
         method: 'post',
     })
 
             /**
-* @see \App\Http\Controllers\AuditFirmController::search
+* @see \App\Http\Controllers\AuditFirmController::index
  * @see app/Http/Controllers/AuditFirmController.php:12
  * @route '/audit-firm/search'
  */
-        searchForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-            action: search.url(options),
+        index45c43c0bcfcdf575672d521afda2e16cForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+            action: index45c43c0bcfcdf575672d521afda2e16c.url(options),
             method: 'post',
         })
     
-    search.form = searchForm
-/**
+    index45c43c0bcfcdf575672d521afda2e16c.form = index45c43c0bcfcdf575672d521afda2e16cForm
+    /**
 * @see \App\Http\Controllers\AuditFirmController::index
  * @see app/Http/Controllers/AuditFirmController.php:12
  * @route '/audit-firm'
  */
-export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: index.url(options),
+const index85fcc171c374f3d3104c4f5b6db57f98 = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: index85fcc171c374f3d3104c4f5b6db57f98.url(options),
     method: 'get',
 })
 
-index.definition = {
+index85fcc171c374f3d3104c4f5b6db57f98.definition = {
     methods: ["get","head"],
     url: '/audit-firm',
 } satisfies RouteDefinition<["get","head"]>
@@ -74,8 +74,8 @@ index.definition = {
  * @see app/Http/Controllers/AuditFirmController.php:12
  * @route '/audit-firm'
  */
-index.url = (options?: RouteQueryOptions) => {
-    return index.definition.url + queryParams(options)
+index85fcc171c374f3d3104c4f5b6db57f98.url = (options?: RouteQueryOptions) => {
+    return index85fcc171c374f3d3104c4f5b6db57f98.definition.url + queryParams(options)
 }
 
 /**
@@ -83,8 +83,8 @@ index.url = (options?: RouteQueryOptions) => {
  * @see app/Http/Controllers/AuditFirmController.php:12
  * @route '/audit-firm'
  */
-index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: index.url(options),
+index85fcc171c374f3d3104c4f5b6db57f98.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: index85fcc171c374f3d3104c4f5b6db57f98.url(options),
     method: 'get',
 })
 /**
@@ -92,8 +92,8 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
  * @see app/Http/Controllers/AuditFirmController.php:12
  * @route '/audit-firm'
  */
-index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: index.url(options),
+index85fcc171c374f3d3104c4f5b6db57f98.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: index85fcc171c374f3d3104c4f5b6db57f98.url(options),
     method: 'head',
 })
 
@@ -102,8 +102,8 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
  * @see app/Http/Controllers/AuditFirmController.php:12
  * @route '/audit-firm'
  */
-    const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-        action: index.url(options),
+    const index85fcc171c374f3d3104c4f5b6db57f98Form = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        action: index85fcc171c374f3d3104c4f5b6db57f98.url(options),
         method: 'get',
     })
 
@@ -112,8 +112,8 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
  * @see app/Http/Controllers/AuditFirmController.php:12
  * @route '/audit-firm'
  */
-        indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: index.url(options),
+        index85fcc171c374f3d3104c4f5b6db57f98Form.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: index85fcc171c374f3d3104c4f5b6db57f98.url(options),
             method: 'get',
         })
             /**
@@ -121,8 +121,8 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
  * @see app/Http/Controllers/AuditFirmController.php:12
  * @route '/audit-firm'
  */
-        indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: index.url({
+        index85fcc171c374f3d3104c4f5b6db57f98Form.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: index85fcc171c374f3d3104c4f5b6db57f98.url({
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'HEAD',
                             ...(options?.query ?? options?.mergeQuery ?? {}),
@@ -131,7 +131,18 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
             method: 'get',
         })
     
-    index.form = indexForm
+    index85fcc171c374f3d3104c4f5b6db57f98.form = index85fcc171c374f3d3104c4f5b6db57f98Form
+
+/**
+* Multiple routes resolve to \App\Http\Controllers\AuditFirmController::index, so this export is a
+* dictionary keyed by URI rather than a callable. Call a specific route with `index['<uri>'](...)`,
+* or import the route by name from your generated `routes/` directory.
+*/
+export const index = {
+    '/audit-firm/search': index45c43c0bcfcdf575672d521afda2e16c,
+    '/audit-firm': index85fcc171c374f3d3104c4f5b6db57f98,
+}
+
 /**
 * @see \App\Http\Controllers\AuditFirmController::create
  * @see app/Http/Controllers/AuditFirmController.php:24
@@ -670,15 +681,6 @@ destroy.delete = (args: { audit_firm: number | { id: number } } | [audit_firm: n
         })
     
     destroy.form = destroyForm
-const auditFirm = {
-    search: Object.assign(search, search),
-index: Object.assign(index, index),
-create: Object.assign(create, create),
-store: Object.assign(store, store),
-show: Object.assign(show, show),
-edit: Object.assign(edit, edit),
-update: Object.assign(update, update),
-destroy: Object.assign(destroy, destroy),
-}
+const AuditFirmController = { index, create, store, show, edit, update, destroy }
 
-export default auditFirm
+export default AuditFirmController

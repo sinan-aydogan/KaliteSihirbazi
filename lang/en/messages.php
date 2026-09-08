@@ -181,6 +181,21 @@ return [
         'closedWithoutCapa' => 'Problem closed without a CAPA.',
         'closed' => 'Problem closed.'
     ],
+    'auditFirm' => [
+        'created' => 'Audit firm :auditFirm created.',
+        'updated' => 'Audit firm :auditFirm updated.',
+        'deleted' => 'Audit firm :auditFirm deleted.',
+        'deletedError' => 'Audit firm :auditFirm cannot be deleted because it has audits recorded against it.'
+    ],
+    'audit' => [
+        'created' => 'Audit :audit created.',
+        'updated' => 'Audit :audit updated.',
+        'deleted' => 'Audit :audit deleted.',
+        'deletedError' => 'Audit :audit cannot be deleted because it has findings recorded against it.',
+        'started' => 'Audit started.',
+        'completed' => 'Audit completed.',
+        'cancelled' => 'Audit cancelled.'
+    ],
     'vehicleType' => [
         'created' => 'The new vehicle type named :vehicleType has been created successfully',
         'deleted' => 'The vehicle type named :vehicleType deleted successfully',

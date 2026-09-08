@@ -182,6 +182,21 @@ return [
         'closedWithoutCapa' => 'Uygunsuzluk DÖF gerektirmeden kapatıldı.',
         'closed' => 'Uygunsuzluk kapatıldı.'
     ],
+    'auditFirm' => [
+        'created' => ':auditFirm isimli denetim firması oluşturuldu.',
+        'updated' => ':auditFirm isimli denetim firması güncellendi.',
+        'deleted' => ':auditFirm isimli denetim firması silindi.',
+        'deletedError' => ':auditFirm isimli denetim firması silinemez çünkü üzerinde kayıtlı denetimler var.'
+    ],
+    'audit' => [
+        'created' => ':audit kodlu denetim oluşturuldu.',
+        'updated' => ':audit kodlu denetim güncellendi.',
+        'deleted' => ':audit kodlu denetim silindi.',
+        'deletedError' => ':audit kodlu denetim silinemez çünkü üzerinde kayıtlı uygunsuzluk bulguları var.',
+        'started' => 'Denetim başlatıldı.',
+        'completed' => 'Denetim tamamlandı.',
+        'cancelled' => 'Denetim iptal edildi.'
+    ],
     'vehicleType' => [
         'created' => ':vehicleType isimli araç tipi oluşturuldu.',
         'deleted' => ':vehicleType isimli araç tipi silindi.',
