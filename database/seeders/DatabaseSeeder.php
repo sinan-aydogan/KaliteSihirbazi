@@ -14,6 +14,7 @@ use Database\Seeders\MeasurementDevice\MeasurementDeviceTypeSeeder;
 use Database\Seeders\BusinessManagement\Vehicle\VehicleStatusSeeder;
 use Database\Seeders\HumanResources\JobDescription\JobDescriptionSeeder;
 use Database\Seeders\MeasurementDevice\Calibration\CalibrationFirmSeeder;
+use Database\Seeders\Capa\CapaProblemDemoSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -50,6 +51,8 @@ class DatabaseSeeder extends Seeder
             EducationTypeSeeder::class,
             EducationInstructorSeeder::class,
             EducationSeeder::class,
+            // CAPA / Problem Demo Data
+            CapaProblemDemoSeeder::class,
         ]);
     }
 }
