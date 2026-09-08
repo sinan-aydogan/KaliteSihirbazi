@@ -4,6 +4,8 @@ use App\Models\Audit;
 use App\Models\AuditChecklistTemplate;
 use App\Models\AuditType;
 use App\Models\User;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 function makeInternalAuditType(): AuditType
 {
@@ -75,4 +77,54 @@ test('answering a checklist question and raising a finding links the problem bac
 
     expect($answer->fresh()->problem)->not->toBeNull()
         ->and($answer->fresh()->problem->audit_checklist_answer_id)->toBe($answer->id);
+});
+
+test('a numeric-type question stores its answer in the value column', function () {
+    $auditor = User::factory()->create();
+    $template = AuditChecklistTemplate::create(['name' => 'Ölçüm Checklist\'i']);
+    $question = $template->questions()->create(['question' => 'Son kalibrasyondan bu yana geçen gün sayısı', 'question_type' => 'numeric', 'sort_order' => 1]);
+    $audit = Audit::create([
+        'title' => 'Cihaz Kontrolü',
+        'audit_type_id' => makeInternalAuditType()->id,
+        'auditor_id' => $auditor->id,
+        'planned_date' => now(),
+        'status' => 'in_progress',
+        'actual_date' => now(),
+    ]);
+    $checklist = $audit->checklists()->create(['audit_checklist_template_id' => $template->id]);
+    $answer = $checklist->answers()->create(['audit_checklist_question_id' => $question->id]);
+
+    $this->actingAs($auditor)
+        ->put(route('audit-checklist-answer.update', $answer), ['value' => '42'])
+        ->assertSessionHasNoErrors();
+
+    expect($answer->fresh()->value)->toBe('42')
+        ->and($answer->fresh()->answer)->toBeNull();
+});
+
+test('a file-evidence question accepts an uploaded document', function () {
+    Storage::fake('public');
+
+    $auditor = User::factory()->create();
+    $template = AuditChecklistTemplate::create(['name' => '5S Checklist\'i']);
+    $question = $template->questions()->create(['question' => 'Saha fotoğrafı ekleyin', 'question_type' => 'file_evidence', 'sort_order' => 1]);
+    $audit = Audit::create([
+        'title' => '5S Denetimi',
+        'audit_type_id' => makeInternalAuditType()->id,
+        'auditor_id' => $auditor->id,
+        'planned_date' => now(),
+        'status' => 'in_progress',
+        'actual_date' => now(),
+    ]);
+    $checklist = $audit->checklists()->create(['audit_checklist_template_id' => $template->id]);
+    $answer = $checklist->answers()->create(['audit_checklist_question_id' => $question->id]);
+
+    $this->actingAs($auditor)
+        ->post(route('audit-checklist-answer.update', $answer), [
+            '_method' => 'put',
+            'evidence' => [UploadedFile::fake()->image('saha.jpg')],
+        ])
+        ->assertSessionHasNoErrors();
+
+    expect($answer->fresh()->getMedia('evidence'))->toHaveCount(1);
 });

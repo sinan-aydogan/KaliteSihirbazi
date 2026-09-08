@@ -11,6 +11,7 @@ use App\Http\Controllers\AuditController;
 use App\Http\Controllers\AuditFirmAuditorController;
 use App\Http\Controllers\AuditFirmController;
 use App\Http\Controllers\AuditScopeController;
+use App\Http\Controllers\AuditSettingController;
 use App\Http\Controllers\AuditTypeController;
 use App\Http\Controllers\AuditWorkflowController;
 use App\Http\Controllers\InternalAuditorController;
@@ -156,7 +157,7 @@ Route::middleware([
         ['uri' => 'capa', 'model' => 'capa', 'controller' => CapaController::class],
         ['uri' => 'problem', 'model' => 'problem', 'controller' => ProblemController::class],
         ['uri' => 'audit-firm', 'model' => 'auditFirm', 'controller' => AuditFirmController::class],
-        ['uri' => 'audit', 'model' => 'audit', 'controller' => AuditController::class],
+        ['uri' => 'audit', 'model' => 'audit', 'controller' => AuditController::class, 'settingController' => AuditSettingController::class],
         ['uri' => 'audit-type', 'model' => 'auditType', 'controller' => AuditTypeController::class],
         ['uri' => 'audit-scope', 'model' => 'auditScope', 'controller' => AuditScopeController::class],
         ['uri' => 'internal-auditor', 'model' => 'internalAuditor', 'controller' => InternalAuditorController::class],

@@ -12,6 +12,8 @@ import InputGroup from "@/Components/Form/InputGroup.vue"
 import TextInput from "@/Components/Form/TextInput.vue"
 import TextAreaInput from "@/Components/Form/TextAreaInput.vue"
 import SelectInput from "@/Components/Form/SelectInput.vue"
+import FileInput from "@/Components/Form/FileInput.vue"
+import HelpButton from "@/Components/Help/HelpButton.vue"
 
 // Multi-lang
 import Translates from "./translates"
@@ -147,15 +149,26 @@ const submitAttachChecklist = () => {
 
 const answerDrafts = reactive(
     Object.fromEntries(
-        props.audit.checklists.flatMap(c => c.answers).map(a => [a.id, {answer: a.answer, notes: a.notes ?? ""}])
+        props.audit.checklists.flatMap(c => c.answers).map(a => [a.id, {answer: a.answer, value: a.value ?? "", notes: a.notes ?? "", evidence: []}])
     )
 )
 
+const yesNoOptions = computed(() => [
+    {id: 'evet', label: 'Evet'},
+    {id: 'hayır', label: 'Hayır'},
+])
+
+const ratingOptions = computed(() => [1, 2, 3, 4, 5].map(n => ({id: String(n), label: String(n)})))
+
 const saveAnswer = (answerId) => {
-    router.put(route('audit-checklist-answer.update', answerId), {
-        answer: answerDrafts[answerId].answer,
-        notes: answerDrafts[answerId].notes,
-    }, {preserveScroll: true})
+    const draft = answerDrafts[answerId]
+    router.post(route('audit-checklist-answer.update', answerId), {
+        _method: 'put',
+        answer: draft.answer,
+        value: draft.value,
+        notes: draft.notes,
+        evidence: draft.evidence,
+    }, {preserveScroll: true, forceFormData: true})
 }
 
 /* ---------- Record Finding ---------- */
@@ -203,6 +216,12 @@ const submitFinding = async () => {
 <template>
     <app-layout :title="tm('title.showPage.title') + ' — ' + audit.code" :sub-title="tm('title.showPage.subTitle')">
         <template #actionArea>
+            <help-button title="Denetim Detayı — Nasıl Çalışır?" subtitle="Bir denetimin tüm yaşam döngüsünü buradan yönetirsiniz">
+                <p><strong>Durum akışı:</strong> Planlandı → (Başlat) → Devam Ediyor → (Tamamla) → Tamamlandı. İstenen her aşamada "İptal Et" ile denetim iptal edilebilir.</p>
+                <p><strong>Soru Listeleri (Checklist):</strong> Denetim oluşturulurken bir şablon seçilmediyse, "Devam Ediyor" durumundayken "Soru Listesi Ekle" ile sonradan da eklenebilir. Her soru kendi cevap tipine göre farklı bir kontrol gösterir: Uygunluk (Uygun/Uygunsuz/Kapsam Dışı/Gözlem), Evet/Hayır, 1-5 Puanlama, Sayısal Ölçüm, Serbest Metin veya Kanıt/Fotoğraf Yükleme.</p>
+                <p><strong>Uygunsuzluk açma:</strong> Bir soruya "Uygunsuz" cevabı verip kaydettiğinizde, o satırda kırmızı böcek ikonu belirir — tıklandığında soru metni ve notu otomatik dolu bir uygunsuzluk (DÖF zincirinin başlangıcı) kaydı açılır. Ayrıca sağ üstteki "Uygunsuzluk Kaydet" ile checklist'e bağlı olmadan da doğrudan bulgu girilebilir.</p>
+                <p><strong>Yazdır / PDF İndir:</strong> Her checklist'in yanında bulunan bu buton, sorular ve (varsa) cevaplarla birlikte yazdırılabilir/PDF olarak kaydedilebilir bir görünüm açar — denetimi kağıt üzerinde yapıp sonra sisteme işlemek isteyenler için idealdir.</p>
+            </help-button>
             <simple-button type="route" :link="route('audit.index')">
                 <font-awesome-icon icon="fa-solid fa-left-long" class="mr-2"/>
                 <span v-text="t('action.goBack')"/>
@@ -267,8 +286,8 @@ const submitFinding = async () => {
             </div>
         </div>
 
-        <!--Checklists (internal audits)-->
-        <div v-if="isInternal" class="bg-slate-100 dark:bg-slate-600 rounded-lg p-6 mb-6">
+        <!--Checklists (any audit type/direction can use a checklist)-->
+        <div class="bg-slate-100 dark:bg-slate-600 rounded-lg p-6 mb-6">
             <div class="flex justify-between items-center mb-4">
                 <h3 class="font-bold" v-text="tm('term.checklists')"/>
                 <simple-button v-if="audit.checklists.length === 0" color="blue" @click="showAttachChecklistModal = true">
@@ -305,9 +324,22 @@ const submitFinding = async () => {
                             <span v-if="answer.question.standard_reference" class="block text-xs text-slate-400">{{ answer.question.standard_reference }}</span>
                         </td>
                         <td class="px-2 py-2">
-                            <select-input v-if="audit.status === 'in_progress'" v-model="answerDrafts[answer.id].answer" :options="checklistAnswerOptions"/>
-                            <span v-else-if="answer.answer" class="px-2 py-0.5 rounded text-xs" :class="checklistAnswerColorClasses[answer.answer] ?? ''">{{ checklistAnswerOptions.find(o => o.id === answer.answer)?.label }}</span>
-                            <span v-else class="text-slate-400">-</span>
+                            <template v-if="audit.status === 'in_progress'">
+                                <select-input v-if="answer.question.question_type === 'compliance_4'" v-model="answerDrafts[answer.id].answer" :options="checklistAnswerOptions"/>
+                                <select-input v-else-if="answer.question.question_type === 'yes_no'" v-model="answerDrafts[answer.id].value" :options="yesNoOptions"/>
+                                <select-input v-else-if="answer.question.question_type === 'rating_1_5'" v-model="answerDrafts[answer.id].value" :options="ratingOptions"/>
+                                <text-input v-else-if="answer.question.question_type === 'numeric'" v-model="answerDrafts[answer.id].value"/>
+                                <text-input v-else-if="answer.question.question_type === 'text'" v-model="answerDrafts[answer.id].value"/>
+                                <file-input v-else-if="answer.question.question_type === 'file_evidence'" multiple accept=".pdf,.jpg,.jpeg,.png" @change="answerDrafts[answer.id].evidence = $event ?? []"/>
+                            </template>
+                            <template v-else>
+                                <span v-if="answer.question.question_type === 'compliance_4' && answer.answer" class="px-2 py-0.5 rounded text-xs" :class="checklistAnswerColorClasses[answer.answer] ?? ''">{{ checklistAnswerOptions.find(o => o.id === answer.answer)?.label }}</span>
+                                <span v-else-if="answer.question.question_type === 'file_evidence'">
+                                    <a v-for="doc in (answer.evidence || [])" :key="doc.id" :href="doc.url" target="_blank" class="text-sky-600 hover:underline text-xs block">{{ doc.name }}</a>
+                                    <span v-if="!answer.evidence?.length" class="text-slate-400">-</span>
+                                </span>
+                                <span v-else>{{ answer.value || '-' }}</span>
+                            </template>
                         </td>
                         <td class="px-2 py-2">
                             <text-input v-if="audit.status === 'in_progress'" v-model="answerDrafts[answer.id].notes"/>

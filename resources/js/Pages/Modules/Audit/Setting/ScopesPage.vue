@@ -11,6 +11,7 @@ import Form from "@/Components/Form/Form.vue"
 import FormSection from "@/Components/Form/FormSection.vue"
 import InputGroup from "@/Components/Form/InputGroup.vue"
 import TextInput from "@/Components/Form/TextInput.vue"
+import HelpButton from "@/Components/Help/HelpButton.vue"
 
 // Multi-lang
 import Translates from "../translates"
@@ -110,6 +111,10 @@ const handleDelete = (id) => {
             :delete-action-visible="(row) => !row.is_protected"
         >
             <template #actionArea>
+                <help-button title="Denetim Kapsamları — Nasıl Çalışır?" subtitle="Denetimlerin hangi kategorileri kapsadığını etiketlemek için kullanılan liste">
+                    <p>Bir denetim oluşturulurken "Kapsam(lar)" alanından birden fazla kapsam seçilebilir (örn. hem Sistem hem Proses). Checklist şablonları da isteğe bağlı olarak bir kapsama bağlanabilir, böylece hangi şablonun hangi tür denetim için uygun olduğu daha kolay anlaşılır.</p>
+                    <p>Sistemin geldiği <strong>korumalı</strong> (✔ işaretli) kapsamlar (Ürün/Sistem/Proses/Cihaz) silinemez. Kendi ihtiyacınıza göre yeni kapsamlar (örn. "Lojistik") ekleyebilirsiniz.</p>
+                </help-button>
                 <simple-button @click="openCreate" color="green">
                     <font-awesome-icon icon="plus" class="mr-2"/>
                     <span v-text="t('action.addNew')"/>

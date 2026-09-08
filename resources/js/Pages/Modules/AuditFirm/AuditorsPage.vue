@@ -12,6 +12,7 @@ import FormSection from "@/Components/Form/FormSection.vue"
 import InputGroup from "@/Components/Form/InputGroup.vue"
 import TextInput from "@/Components/Form/TextInput.vue"
 import FileInput from "@/Components/Form/FileInput.vue"
+import HelpButton from "@/Components/Help/HelpButton.vue"
 
 // Multi-lang
 import Translates from "./translates"
@@ -94,6 +95,11 @@ const deleteMedia = (auditorId, mediaId) => {
 <template>
     <app-layout :title="tm('title.auditorsPage.title') + ' — ' + auditFirm.name" :sub-title="tm('title.auditorsPage.subTitle')">
         <template #actionArea>
+            <help-button title="Firma Personeli — Nasıl Çalışır?" subtitle="Bu denetim firmasının denetçi personeli ve belgeleri">
+                <p>"Personel Ekle" ile firmanın bir denetçisini (ad, unvan, iletişim bilgisi) kaydedin. Aynı formda o kişinin <strong>Yetkinlik Belgeleri</strong> (sertifika vb.) ve <strong>Ziyaret/Görevlendirme Belgeleri</strong>ni PDF/görsel olarak yükleyebilirsiniz — her ikisi için de birden fazla dosya seçilebilir.</p>
+                <p>Yüklenen belgeler tablodaki ilgili sütunda listelenir; her belgenin yanındaki çöp kutusu ikonuyla tek tek silinebilir.</p>
+                <p>Buraya eklenen personel, "Denetimler" sayfasında bu firmayla bir dış denetim planlarken "Denetim Firması Personeli" alanında seçilebilir hale gelir.</p>
+            </help-button>
             <simple-button type="route" :link="route('audit-firm.index')">
                 <font-awesome-icon icon="fa-solid fa-left-long" class="mr-2"/>
                 <span v-text="t('action.goBack')"/>

@@ -1,6 +1,6 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
-import {ref} from "vue"
+import {computed, ref} from "vue"
 import {useForm, router} from "@inertiajs/vue3";
 
 /*Components*/
@@ -11,6 +11,8 @@ import FormSection from "@/Components/Form/FormSection.vue"
 import InputGroup from "@/Components/Form/InputGroup.vue"
 import TextInput from "@/Components/Form/TextInput.vue"
 import TextAreaInput from "@/Components/Form/TextAreaInput.vue"
+import SelectInput from "@/Components/Form/SelectInput.vue"
+import HelpButton from "@/Components/Help/HelpButton.vue"
 
 // Multi-lang
 import Translates from "./translates"
@@ -25,18 +27,31 @@ const props = defineProps({
     template: Object,
 })
 
+const questionTypeOptions = computed(() => [
+    {id: 'compliance_4', label: 'Uygunluk (Uygun/Uygunsuz/Kapsam Dışı/Gözlem)'},
+    {id: 'yes_no', label: 'Evet/Hayır'},
+    {id: 'rating_1_5', label: 'Puanlama (1-5)'},
+    {id: 'numeric', label: 'Sayısal Ölçüm'},
+    {id: 'text', label: 'Serbest Metin'},
+    {id: 'file_evidence', label: 'Kanıt/Fotoğraf Yükleme'},
+])
+
+const questionTypeLabel = (type) => questionTypeOptions.value.find(o => o.id === type)?.label ?? type
+
 /*Form*/
 const showModal = ref(false);
 const formType = ref('create');
 const form = useForm({
     id: null,
     question: "",
+    question_type: "compliance_4",
     standard_reference: "",
     sort_order: null,
 })
 
 const rules = ref({
     question: {required: helpers.withMessage(t('message.validation.required'), required)},
+    question_type: {required: helpers.withMessage(t('message.validation.required'), required)},
     standard_reference: {},
     sort_order: {},
 })
@@ -53,6 +68,7 @@ const openCreate = () => {
 const openEdit = (question) => {
     form.id = question.id;
     form.question = question.question;
+    form.question_type = question.question_type;
     form.standard_reference = question.standard_reference;
     form.sort_order = question.sort_order;
     formType.value = 'update';
@@ -92,6 +108,11 @@ const handleDelete = (id) => {
 <template>
     <app-layout :title="tm('title.showPage.title') + ' — ' + template.name" :sub-title="tm('title.showPage.subTitle')">
         <template #actionArea>
+            <help-button title="Şablon Detayı — Nasıl Çalışır?" subtitle="Bu şablona ait soruları ve her sorunun cevap tipini buradan yönetirsiniz">
+                <p>"Soru Ekle" ile yeni bir soru tanımlayın: soru metni, <strong>Cevap Tipi</strong> (denetim sırasında hangi giriş kontrolünün gösterileceğini belirler) ve isteğe bağlı bir standart referansı (örn. "ISO 9001 md. 8.5.1").</p>
+                <p>Sıralama numarası boş bırakılırsa soru otomatik olarak listenin sonuna eklenir.</p>
+                <p>Bir soruyu düzenlemek mevcut denetimlerdeki geçmiş cevapları etkilemez — yalnızca şablonun kendisini günceller; yeni uygulanan denetimler güncel haliyle kopyalanır.</p>
+            </help-button>
             <simple-button type="route" :link="route('audit-checklist-template.index')">
                 <font-awesome-icon icon="fa-solid fa-left-long" class="mr-2"/>
                 <span v-text="t('action.goBack')"/>
@@ -114,6 +135,7 @@ const handleDelete = (id) => {
                 <tr class="text-slate-400 text-left">
                     <th class="px-2 pb-2">#</th>
                     <th class="px-2 pb-2" v-text="tm('term.question')"/>
+                    <th class="px-2 pb-2">Tip</th>
                     <th class="px-2 pb-2" v-text="tm('term.standardReference')"/>
                     <th class="px-2 pb-2"></th>
                 </tr>
@@ -122,6 +144,7 @@ const handleDelete = (id) => {
                 <tr v-for="(question, index) in template.questions" :key="question.id" class="border-t border-slate-200 dark:border-slate-500">
                     <td class="px-2 py-2">{{ index + 1 }}</td>
                     <td class="px-2 py-2">{{ question.question }}</td>
+                    <td class="px-2 py-2 text-slate-400 text-xs">{{ questionTypeLabel(question.question_type) }}</td>
                     <td class="px-2 py-2 text-slate-400">{{ question.standard_reference ?? '-' }}</td>
                     <td class="px-2 py-2 text-right whitespace-nowrap">
                         <font-awesome-icon icon="pen" class="cursor-pointer text-sky-600 hover:scale-110 transition mr-3" @click="openEdit(question)"/>
@@ -129,7 +152,7 @@ const handleDelete = (id) => {
                     </td>
                 </tr>
                 <tr v-if="template.questions.length === 0">
-                    <td colspan="4" class="text-center py-4 text-slate-400" v-text="t('message.feedback.noResults')"/>
+                    <td colspan="5" class="text-center py-4 text-slate-400" v-text="t('message.feedback.noResults')"/>
                 </tr>
                 </tbody>
             </table>
@@ -148,6 +171,10 @@ const handleDelete = (id) => {
                     <FormSection bg-less>
                         <input-group class="col-span-6" labelFor="question" :label="tm('term.question')" :errors="v$.question.$errors">
                             <text-area-input v-model="form.question"/>
+                        </input-group>
+
+                        <input-group class="col-span-6" labelFor="question_type" label="Cevap Tipi" :errors="v$.question_type.$errors">
+                            <select-input v-model="form.question_type" :options="questionTypeOptions"/>
                         </input-group>
 
                         <input-group class="col-span-4" labelFor="standard_reference" :label="tm('term.standardReference')">

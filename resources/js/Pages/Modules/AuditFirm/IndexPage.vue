@@ -11,6 +11,7 @@ import Form from "@/Components/Form/Form.vue"
 import FormSection from "@/Components/Form/FormSection.vue"
 import InputGroup from "@/Components/Form/InputGroup.vue"
 import TextInput from "@/Components/Form/TextInput.vue"
+import HelpButton from "@/Components/Help/HelpButton.vue"
 
 // Multi-lang
 import Translates from "./translates"
@@ -107,6 +108,14 @@ const handleDelete = (id) => {
 
 <template>
     <app-layout :title="tm('title.indexPage.title')" :sub-title="tm('title.indexPage.subTitle')">
+        <template #actionArea>
+            <help-button title="Denetim Firmaları — Nasıl Çalışır?" subtitle="Dış denetim yapan belgelendirme/danışmanlık firmalarının kayıtlı olduğu liste">
+                <p>Buraya eklediğiniz firmalar, "Denetimler" sayfasında bir dış denetim (Belgelendirme/Tedarikçi/Müşteri) planlarken "Denetim Firması" alanında seçilebilir hale gelir.</p>
+                <p><strong>"Personeli Yönet"</strong> aksiyonuna tıklayarak o firmanın hangi denetçi personeli olduğunu, unvanlarını ve yetkinlik/ziyaret belgelerini (PDF/görsel) yönetebilirsiniz. Bir denetim planlarken, o firmanın personelinden hangisinin/hangilerinin geleceğini de seçebilirsiniz.</p>
+                <p>Kayıtlı denetimi olan bir firma, veri tutarlılığı için silinemez.</p>
+            </help-button>
+        </template>
+
         <Table
             :data="tableData"
             :headers="headers"

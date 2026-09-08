@@ -12,6 +12,7 @@ import FormSection from "@/Components/Form/FormSection.vue"
 import InputGroup from "@/Components/Form/InputGroup.vue"
 import TextInput from "@/Components/Form/TextInput.vue"
 import SelectInput from "@/Components/Form/SelectInput.vue"
+import HelpButton from "@/Components/Help/HelpButton.vue"
 
 // Multi-lang
 import Translates from "../translates"
@@ -122,6 +123,10 @@ const handleDelete = (id) => {
             :delete-action-visible="(row) => !row.is_protected"
         >
             <template #actionArea>
+                <help-button title="Denetim Türleri — Nasıl Çalışır?" subtitle="Denetimlerde seçilebilecek tip listesi">
+                    <p>Her türün bir <strong>Yön</strong>ü vardır: "İç" seçilirse bu tür bir iç denetim olarak, "Dış" seçilirse belgelendirme/tedarikçi/müşteri tarzı bir dış denetim olarak davranır — bu, denetim formunda hangi alanların (Departman+Checklist mi, yoksa Standart/Firma mı) gösterileceğini belirler.</p>
+                    <p>Sistemin geldiği <strong>korumalı</strong> (✔ işaretli) türler silinemez ve yönü değiştirilemez; sadece adı düzenlenebilir. Kendi eklediğiniz türler tamamen serbestçe düzenlenip silinebilir (kullanımda değilse).</p>
+                </help-button>
                 <simple-button @click="openCreate" color="green">
                     <font-awesome-icon icon="plus" class="mr-2"/>
                     <span v-text="t('action.addNew')"/>

@@ -61,6 +61,7 @@
         "sortOrder": "Sıra",
         "protected": "Korumalı",
         "auditCount": "Denetim",
+        "manageModule": "Modülü Yönet",
         "auditStatus": {
             "planned": "Planlandı",
             "in_progress": "Devam Ediyor",
@@ -81,5 +82,27 @@
         "addFinding": "Uygunsuzluk Kaydet",
         "attachChecklist": "Soru Listesi Ekle",
         "print": "Yazdır / PDF İndir"
+    },
+    "setting": {
+        "audit": {
+            "title": "Denetim Modülü Ayarları",
+            "subTitle": "Denetim modülünün genel ayarlarını buradan yönetebilirsiniz",
+            "prerequisite": {
+                "title": "Dış Denetim Ön Koşulu",
+                "subTitle": "Açıksa, bir kapsamda yakın zamanda tamamlanmış iç denetim yoksa dış denetim oluşturulurken uyarı gösterilir (engellenmez)",
+                "toggleLabel": "Dış denetim öncesi iç denetim önerisi göster"
+            },
+            "window": {
+                "title": "Ön Koşul Zaman Penceresi (Gün)",
+                "subTitle": "Bir iç denetimin \"yakın zamanda tamamlanmış\" sayılması için geçmesi gereken maksimum gün sayısı"
+            }
+        }
+    },
+    "menu": {
+        "general": "Genel Ayarlar",
+        "types": "Denetim Türleri",
+        "scopes": "Denetim Kapsamları",
+        "checklistTemplates": "Checklist Şablonları",
+        "internalAuditors": "İç Denetçiler"
     }
 }

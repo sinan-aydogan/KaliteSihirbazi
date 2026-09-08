@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\ChecklistQuestionType;
 use App\Http\Requests\StoreAuditRequest;
 use App\Http\Requests\UpdateAuditRequest;
 use App\Models\Audit;
@@ -53,6 +54,17 @@ class AuditController extends Controller
     {
         $audit = $this->auditWorkflowService->create($request->validated(), auth()->user());
 
+        $prerequisiteWarning = $this->auditWorkflowService->checkInternalPrerequisiteWarning($audit);
+
+        if ($prerequisiteWarning) {
+            session()->flash('message', [
+                'type' => 'warning',
+                'content' => __('messages.audit.created', ['audit' => $audit->code]).' '.$prerequisiteWarning,
+            ]);
+
+            return redirect()->back();
+        }
+
         session()->flash('message', ['type' => 'success', 'content' => __('messages.audit.created', ['audit' => $audit->code])]);
 
         return redirect()->back();
@@ -74,6 +86,14 @@ class AuditController extends Controller
             'checklists.answers.question',
             'checklists.answers.problem:id,audit_checklist_answer_id,code,status',
         ]);
+
+        foreach ($audit->checklists as $checklist) {
+            foreach ($checklist->answers as $answer) {
+                if ($answer->question->question_type === ChecklistQuestionType::FileEvidence) {
+                    $answer->evidence = $answer->getMedia('evidence')->map(fn ($m) => ['id' => $m->id, 'name' => $m->file_name, 'url' => $m->getUrl()]);
+                }
+            }
+        }
 
         return Inertia::render('Modules/Audit/ShowPage', [
             'audit' => $audit,

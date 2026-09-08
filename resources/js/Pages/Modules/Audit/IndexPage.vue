@@ -14,6 +14,7 @@ import TextInput from "@/Components/Form/TextInput.vue"
 import TextAreaInput from "@/Components/Form/TextAreaInput.vue"
 import SelectInput from "@/Components/Form/SelectInput.vue"
 import MultiSelectInput from "@/Components/Form/MultiSelectInput.vue"
+import HelpButton from "@/Components/Help/HelpButton.vue"
 
 // Multi-lang
 import Translates from "./translates"
@@ -207,6 +208,20 @@ const handleDelete = (id) => {
 
 <template>
     <app-layout :title="tm('title.indexPage.title')" :sub-title="tm('title.indexPage.subTitle')">
+        <template #actionArea>
+            <help-button title="Denetimler — Nasıl Çalışır?" subtitle="Bu sayfa iç, belgelendirme, tedarikçi ve müşteri denetimlerinin tamamının listelendiği ana ekrandır">
+                <p><strong>Bu sayfada ne yapabilirim?</strong> "Yeni Ekle" ile bir denetim planlayabilir, listeden bir kaydın detayına (göz ikonu) girip denetimi başlatabilir/tamamlayabilir/iptal edebilirsiniz.</p>
+                <p><strong>Denetim Tipi</strong> seçtiğinizde form otomatik değişir: "İç Denetim" tipi seçilirse Departman ve (isteğe bağlı) bir Checklist Şablonu seçebilirsiniz; diğer tipler (Belgelendirme/Tedarikçi/Müşteri) için Standart, Akreditasyon, Denetim Firması ve o firmanın hangi personelinin geleceğini seçebilirsiniz.</p>
+                <p><strong>Kapsam(lar)</strong> alanı bir denetimin birden fazla kategoriyi (Ürün/Sistem/Proses/Cihaz) kapsayabilmesi için çoklu seçimlidir.</p>
+                <p><strong>Checklist Şablonu</strong> seçerseniz, denetim oluşturulur oluşturulmaz o şablonun tüm soruları otomatik olarak denetime eklenir — denetim detay sayfasında cevaplanmaya hazır bekler.</p>
+                <p>Sağ üstteki <strong>"Modülü Yönet"</strong> butonu, Denetim Türleri/Kapsamları, Checklist Şablonları, İç Denetçiler ve genel ayarları yönetebileceğiniz ayarlar merkezine götürür.</p>
+            </help-button>
+            <simple-button type="route" :link="route('audit-setting.index')" color="blue">
+                <font-awesome-icon icon="fa-solid fa-cog" class="mr-2"/>
+                <span v-text="tm('term.manageModule')"/>
+            </simple-button>
+        </template>
+
         <Table
             :data="tableData"
             :headers="headers"
@@ -263,17 +278,15 @@ const handleDelete = (id) => {
                             <multi-select-input v-model="form.scope_ids" :options="auditScopeOptions"/>
                         </input-group>
 
-                        <template v-if="isInternal">
-                            <input-group class="col-span-6" labelFor="department_id" :label="tm('term.department')">
-                                <select-input v-model="form.department_id" :options="departmentOptions"/>
-                            </input-group>
+                        <input-group v-if="isInternal" class="col-span-6" labelFor="department_id" :label="tm('term.department')">
+                            <select-input v-model="form.department_id" :options="departmentOptions"/>
+                        </input-group>
 
-                            <input-group v-if="formType === 'create'" class="col-span-6" labelFor="checklist_template_id" :label="tm('term.checklistTemplate')">
-                                <select-input v-model="form.checklist_template_id" :options="checklistTemplateOptions"/>
-                            </input-group>
-                        </template>
+                        <input-group v-if="formType === 'create'" class="col-span-6" labelFor="checklist_template_id" :label="tm('term.checklistTemplate')">
+                            <select-input v-model="form.checklist_template_id" :options="checklistTemplateOptions"/>
+                        </input-group>
 
-                        <template v-else>
+                        <template v-if="!isInternal">
                             <input-group class="col-span-3" labelFor="standard_id" :label="tm('term.standard')">
                                 <select-input v-model="form.standard_id" :options="standardOptions"/>
                             </input-group>

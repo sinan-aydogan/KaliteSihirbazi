@@ -14,6 +14,7 @@ import SelectInput from "@/Components/Form/SelectInput.vue"
 import MultiSelectInput from "@/Components/Form/MultiSelectInput.vue"
 import SwitchInput from "@/Components/Form/SwitchInput.vue"
 import TextAreaInput from "@/Components/Form/TextAreaInput.vue"
+import HelpButton from "@/Components/Help/HelpButton.vue"
 
 // Multi-lang
 import Translates from "./translates"
@@ -119,6 +120,14 @@ const handleDelete = (id) => {
 
 <template>
     <app-layout :title="tm('title.indexPage.title')" :sub-title="tm('title.indexPage.subTitle')">
+        <template #actionArea>
+            <help-button title="İç Denetçiler — Nasıl Çalışır?" subtitle="İç denetim yapmaya yetkili personel ve sorumlu oldukları departmanlar">
+                <p>Bir personeli iç denetçi olarak burada tanımlayın ve hangi departman(lar)dan sorumlu olduğunu (çoklu seçim) belirtin — bu, kimin hangi alanı denetleyebileceğini gösteren bir roster/havuzdur.</p>
+                <p>"Aktif" durumu kapatılan bir denetçi listede görünmeye devam eder ancak pasif olarak işaretlenir; kaldırmak için silme işlemini kullanın.</p>
+                <p>Bu liste şu an "Denetimler" sayfasındaki Denetçi (Sorumlu) seçiminden bağımsızdır — bir bilgi/roster kaydı olarak tutulur, denetim planlarken hâlâ tüm kullanıcılar arasından seçim yapılabilir.</p>
+            </help-button>
+        </template>
+
         <Table
             :data="tableData"
             :headers="headers"

@@ -16,8 +16,11 @@ class AnswerAuditChecklistAnswerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'answer' => ['required', Rule::enum(ChecklistAnswerResult::class)],
+            'answer' => ['nullable', Rule::enum(ChecklistAnswerResult::class)],
+            'value' => 'nullable|string',
             'notes' => 'nullable|string',
+            'evidence' => 'nullable|array',
+            'evidence.*' => 'file|mimes:pdf,jpg,jpeg,png|max:10240',
         ];
     }
 }

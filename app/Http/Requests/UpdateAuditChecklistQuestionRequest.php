@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\ChecklistQuestionType;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateAuditChecklistQuestionRequest extends FormRequest
 {
@@ -15,6 +17,7 @@ class UpdateAuditChecklistQuestionRequest extends FormRequest
     {
         return [
             'question' => 'required|string',
+            'question_type' => ['required', Rule::enum(ChecklistQuestionType::class)],
             'standard_reference' => 'nullable|string|max:255',
             'sort_order' => 'nullable|integer|min:0',
         ];

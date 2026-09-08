@@ -109,7 +109,7 @@ import {
     faBuildingColumns,
     faHourglassHalf,
     faFileWord, faFilePdf, faFile, faTimeline,faTags,faVideo,faMusic,faDownload,
-    faPlay, faPrint, faPen, faDiagramProject
+    faPlay, faPrint, faPen, faDiagramProject, faCircleQuestion
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -232,5 +232,6 @@ library.add(
     faPlay,
     faPrint,
     faPen,
-    faDiagramProject
+    faDiagramProject,
+    faCircleQuestion
 );

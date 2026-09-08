@@ -61,6 +61,19 @@ class SettingSeeder extends Seeder
                 'type' => 'json',
                 'value' => json_encode(['size' => 10, 'unit' => 'MB'])
             ],
+            /*Audit Settings*/
+            [
+                'code' => 'audit_external_requires_internal_first',
+                'module' => 'audit',
+                'type' => 'json',
+                'value' => json_encode(false)
+            ],
+            [
+                'code' => 'audit_internal_prerequisite_window_days',
+                'module' => 'audit',
+                'type' => 'json',
+                'value' => json_encode(365)
+            ],
         ];
 
         foreach ($settings as $s) {

@@ -232,6 +232,9 @@ return [
     'auditChecklistAnswer' => [
         'saved' => 'Cevap kaydedildi.'
     ],
+    'auditSettings' => [
+        'updated' => 'Denetim modülü ayarları güncellendi.'
+    ],
     'auditFirmAuditor' => [
         'created' => 'Denetçi personel eklendi.',
         'updated' => 'Denetçi personel güncellendi.',

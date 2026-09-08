@@ -5,6 +5,7 @@ namespace App\Services\Audit;
 use App\Enums\AuditStatus;
 use App\Models\Audit;
 use App\Models\AuditChecklistTemplate;
+use App\Models\Setting;
 use App\Models\User;
 use RuntimeException;
 
@@ -49,6 +50,50 @@ class AuditWorkflowService
         }
 
         return $audit;
+    }
+
+    /**
+     * Soft, non-blocking check: if the "external audits require a recent internal
+     * audit first" setting is on, and this is an external audit with no recently
+     * completed internal audit covering an overlapping scope, return a warning
+     * message to surface to the user. Never prevents creation.
+     */
+    public function checkInternalPrerequisiteWarning(Audit $audit): ?string
+    {
+        $audit->loadMissing('auditType', 'scopes');
+
+        if ($audit->auditType?->direction !== 'external') {
+            return null;
+        }
+
+        $requiresInternalFirst = json_decode(
+            Setting::where('code', 'audit_external_requires_internal_first')->value('value') ?? 'false'
+        );
+
+        if (! $requiresInternalFirst) {
+            return null;
+        }
+
+        $scopeIds = $audit->scopes->pluck('id');
+        if ($scopeIds->isEmpty()) {
+            return null;
+        }
+
+        $windowDays = (int) json_decode(
+            Setting::where('code', 'audit_internal_prerequisite_window_days')->value('value') ?? '365'
+        );
+
+        $hasRecentInternalAudit = Audit::whereHas('auditType', fn ($q) => $q->where('direction', 'internal'))
+            ->where('status', AuditStatus::Completed)
+            ->where('closed_at', '>=', now()->subDays($windowDays))
+            ->whereHas('scopes', fn ($q) => $q->whereIn('audit_scopes.id', $scopeIds))
+            ->exists();
+
+        if ($hasRecentInternalAudit) {
+            return null;
+        }
+
+        return 'Bu kapsamda son '.$windowDays.' gün içinde tamamlanmış bir iç denetim bulunamadı. Dış denetim öncesi iç denetim yapılması önerilir.';
     }
 
     public function attachChecklist(Audit $audit, AuditChecklistTemplate $template): Audit

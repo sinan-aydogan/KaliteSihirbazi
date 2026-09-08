@@ -24,6 +24,7 @@ test('a user can create a checklist template with questions', function () {
     $this->actingAs($user)
         ->post(route('audit-checklist-question.store', $template), [
             'question' => 'Proses akış şeması güncel mi?',
+            'question_type' => 'compliance_4',
             'standard_reference' => 'ISO 9001 md. 4.4',
         ])
         ->assertSessionHasNoErrors();
@@ -35,10 +36,10 @@ test('a user can create a checklist template with questions', function () {
 test('a checklist question can be updated and deleted', function () {
     $user = User::factory()->create();
     $template = AuditChecklistTemplate::create(['name' => 'ISO 9001 Proses Checklist\'i']);
-    $question = $template->questions()->create(['question' => 'Eski soru', 'sort_order' => 1]);
+    $question = $template->questions()->create(['question' => 'Eski soru', 'question_type' => 'compliance_4', 'sort_order' => 1]);
 
     $this->actingAs($user)
-        ->put(route('audit-checklist-question.update', $question), ['question' => 'Güncellenmiş soru'])
+        ->put(route('audit-checklist-question.update', $question), ['question' => 'Güncellenmiş soru', 'question_type' => 'compliance_4'])
         ->assertSessionHasNoErrors();
 
     expect($question->fresh()->question)->toBe('Güncellenmiş soru');

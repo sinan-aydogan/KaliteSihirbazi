@@ -14,7 +14,12 @@ class AuditChecklistAnswerController extends Controller
 
     public function update(AnswerAuditChecklistAnswerRequest $request, AuditChecklistAnswer $auditChecklistAnswer)
     {
-        $this->auditChecklistService->answer($auditChecklistAnswer, $request->validated(), auth()->user());
+        $this->auditChecklistService->answer(
+            $auditChecklistAnswer,
+            $request->validated(),
+            auth()->user(),
+            $request->file('evidence', [])
+        );
 
         session()->flash('message', ['type' => 'success', 'content' => __('messages.auditChecklistAnswer.saved')]);
 

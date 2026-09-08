@@ -14,6 +14,7 @@ import TextInput from "@/Components/Form/TextInput.vue"
 import TextAreaInput from "@/Components/Form/TextAreaInput.vue"
 import SelectInput from "@/Components/Form/SelectInput.vue"
 import SwitchInput from "@/Components/Form/SwitchInput.vue"
+import HelpButton from "@/Components/Help/HelpButton.vue"
 
 // Multi-lang
 import Translates from "./translates"
@@ -116,6 +117,15 @@ const handleDelete = (id) => {
 
 <template>
     <app-layout :title="tm('title.indexPage.title')" :sub-title="tm('title.indexPage.subTitle')">
+        <template #actionArea>
+            <help-button title="Checklist Şablonları — Nasıl Çalışır?" subtitle="İç/dış denetimlerde kullanılacak soru listesi şablonlarının tanımlandığı yer">
+                <p>Sistem birkaç hazır şablonla gelir (ISO 9001 Proses/Sistem Denetimi, Tedarikçi Değerlendirme, 5S/Saha Denetimi, Ölçüm Cihazı Kontrolü) — bunları doğrudan kullanabilir, düzenleyebilir veya kendi şablonlarınızı oluşturabilirsiniz.</p>
+                <p>Bir şablon oluşturduktan sonra listedeki <strong>soru listesi ikonuna</strong> tıklayarak sorularını ekleyin. Her sorunun bir <strong>Cevap Tipi</strong> vardır — bu, denetim sırasında o soru için hangi giriş kontrolünün gösterileceğini belirler (Uygunluk, Evet/Hayır, 1-5 Puanlama, Sayısal, Serbest Metin veya Kanıt Yükleme).</p>
+                <p>Bir şablon bir denetim oluşturulurken veya devam eden bir denetime sonradan seçilebilir; seçildiği anda tüm soruları otomatik olarak o denetime kopyalanır (şablonu sonradan değiştirseniz bile o denetimin cevapları etkilenmez).</p>
+                <p>"Yazdır / PDF İndir" ile şablonun boş halini çıktı alıp denetimi kağıt üzerinde yapabilir, sonuçları daha sonra sisteme işleyebilirsiniz.</p>
+            </help-button>
+        </template>
+
         <Table
             :data="tableData"
             :headers="headers"

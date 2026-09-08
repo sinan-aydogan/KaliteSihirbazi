@@ -61,6 +61,7 @@
         "sortOrder": "Order",
         "protected": "Protected",
         "auditCount": "Audits",
+        "manageModule": "Manage Module",
         "auditStatus": {
             "planned": "Planned",
             "in_progress": "In Progress",
@@ -81,5 +82,27 @@
         "addFinding": "Record Finding",
         "attachChecklist": "Add Checklist",
         "print": "Print / Download PDF"
+    },
+    "setting": {
+        "audit": {
+            "title": "Audit Module Settings",
+            "subTitle": "Manage the audit module's general settings here",
+            "prerequisite": {
+                "title": "External Audit Prerequisite",
+                "subTitle": "When on, creating an external audit shows a warning (non-blocking) if no internal audit has recently covered the same scope",
+                "toggleLabel": "Show internal-audit-first recommendation"
+            },
+            "window": {
+                "title": "Prerequisite Time Window (Days)",
+                "subTitle": "Maximum number of days for an internal audit to still count as \"recently completed\""
+            }
+        }
+    },
+    "menu": {
+        "general": "General Settings",
+        "types": "Audit Types",
+        "scopes": "Audit Scopes",
+        "checklistTemplates": "Checklist Templates",
+        "internalAuditors": "Internal Auditors"
     }
 }

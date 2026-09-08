@@ -231,6 +231,9 @@ return [
     'auditChecklistAnswer' => [
         'saved' => 'Answer saved.'
     ],
+    'auditSettings' => [
+        'updated' => 'Audit module settings updated.'
+    ],
     'auditFirmAuditor' => [
         'created' => 'Auditor added.',
         'updated' => 'Auditor updated.',

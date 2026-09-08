@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\ChecklistQuestionType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -14,11 +15,13 @@ class AuditChecklistQuestion extends Model
     protected $fillable = [
         'audit_checklist_template_id',
         'question',
+        'question_type',
         'standard_reference',
         'sort_order',
     ];
 
     protected $casts = [
+        'question_type' => ChecklistQuestionType::class,
         'sort_order' => 'integer',
     ];
 

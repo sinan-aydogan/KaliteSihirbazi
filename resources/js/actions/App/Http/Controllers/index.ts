@@ -15,6 +15,7 @@ import StandardController from './StandardController'
 import CapaController from './CapaController'
 import ProblemController from './ProblemController'
 import AuditFirmController from './AuditFirmController'
+import AuditSettingController from './AuditSettingController'
 import AuditController from './AuditController'
 import AuditTypeController from './AuditTypeController'
 import AuditScopeController from './AuditScopeController'
@@ -48,6 +49,7 @@ StandardController: Object.assign(StandardController, StandardController),
 CapaController: Object.assign(CapaController, CapaController),
 ProblemController: Object.assign(ProblemController, ProblemController),
 AuditFirmController: Object.assign(AuditFirmController, AuditFirmController),
+AuditSettingController: Object.assign(AuditSettingController, AuditSettingController),
 AuditController: Object.assign(AuditController, AuditController),
 AuditTypeController: Object.assign(AuditTypeController, AuditTypeController),
 AuditScopeController: Object.assign(AuditScopeController, AuditScopeController),
