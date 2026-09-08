@@ -18,6 +18,7 @@ use Database\Seeders\Capa\CapaProblemDemoSeeder;
 use Database\Seeders\Audit\AuditDefinitionSeeder;
 use Database\Seeders\Audit\AuditChecklistTemplateSeeder;
 use Database\Seeders\Risk\RiskDefinitionSeeder;
+use Database\Seeders\Risk\RiskDemoSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -61,6 +62,7 @@ class DatabaseSeeder extends Seeder
             AuditChecklistTemplateSeeder::class,
             // Risk Module Definitions
             RiskDefinitionSeeder::class,
+            RiskDemoSeeder::class,
         ]);
     }
 }
