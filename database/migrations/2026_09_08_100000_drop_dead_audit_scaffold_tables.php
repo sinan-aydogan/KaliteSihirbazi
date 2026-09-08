@@ -13,6 +13,8 @@ return new class extends Migration
 
     public function down(): void
     {
-        //
+        throw new \RuntimeException(
+            'Irreversible: dropped audits/audit_firms were dead, empty 2022 scaffold tables with no data to restore.'
+        );
     }
 };

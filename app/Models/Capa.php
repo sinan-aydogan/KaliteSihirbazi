@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\CapaSourceType;
 use App\Enums\CapaStatus;
 use App\Enums\CapaType;
+use App\Traits\HasSequentialCode;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -12,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Capa extends Model
 {
-    use HasFactory;
+    use HasFactory, HasSequentialCode;
 
     protected $fillable = [
         'problem_id',
@@ -48,10 +49,7 @@ class Capa extends Model
 
     protected static function nextCode(): string
     {
-        $year = now()->year;
-        $sequence = static::where('code', 'like', "DOF-{$year}-%")->count() + 1;
-
-        return sprintf('DOF-%d-%03d', $year, $sequence);
+        return static::nextSequentialCode('DOF');
     }
 
     public function problem(): BelongsTo

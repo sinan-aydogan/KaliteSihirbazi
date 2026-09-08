@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\AuditResult;
 use App\Enums\AuditStatus;
+use App\Traits\HasSequentialCode;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -12,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Audit extends Model
 {
-    use HasFactory;
+    use HasFactory, HasSequentialCode;
 
     protected $fillable = [
         'title',
@@ -50,10 +51,7 @@ class Audit extends Model
 
     protected static function nextCode(): string
     {
-        $year = now()->year;
-        $sequence = static::where('code', 'like', "DNT-{$year}-%")->count() + 1;
-
-        return sprintf('DNT-%d-%03d', $year, $sequence);
+        return static::nextSequentialCode('DNT');
     }
 
     public function auditType(): BelongsTo

@@ -68,6 +68,26 @@ test('creating an audit auto-generates a sequential code and plans it', function
         ->and($audit->auditor_id)->toBe($author->id);
 });
 
+test('sequential code generation skips past a deleted middle gap instead of colliding', function () {
+    $author = User::factory()->create();
+    $auditType = makeAuditType();
+
+    $first = Audit::create(['title' => 'A', 'audit_type_id' => $auditType->id, 'auditor_id' => $author->id, 'planned_date' => now()]);
+    $second = Audit::create(['title' => 'B', 'audit_type_id' => $auditType->id, 'auditor_id' => $author->id, 'planned_date' => now()]);
+    $third = Audit::create(['title' => 'C', 'audit_type_id' => $auditType->id, 'auditor_id' => $author->id, 'planned_date' => now()]);
+    expect($third->code)->toBe(sprintf('DNT-%d-003', now()->year));
+
+    // Deleting the middle record leaves a gap: only 001 and 003 remain, count()=2.
+    // The old count()+1 logic would regenerate '003' here and collide with the unique constraint.
+    $second->delete();
+
+    $fourth = Audit::create(['title' => 'D', 'audit_type_id' => $auditType->id, 'auditor_id' => $author->id, 'planned_date' => now()]);
+
+    expect($fourth->code)->toBe(sprintf('DNT-%d-004', now()->year))
+        ->and($fourth->code)->not->toBe($first->code)
+        ->and($fourth->code)->not->toBe($third->code);
+});
+
 test('creating an audit requires a title, audit type and planned date', function () {
     $this->actingAs(User::factory()->create())
         ->post(route('audit.store'), [])
