@@ -330,4 +330,23 @@ return [
     'riskSettings' => [
         'updated' => 'Risk module settings updated.'
     ],
+    'customer' => [
+        'created' => 'Customer created.',
+        'updated' => 'Customer updated.',
+        'deleted' => 'Customer deleted.',
+        'deletedError' => 'This customer cannot be deleted because it has complaints on record.',
+    ],
+    'customerComplaint' => [
+        'created' => 'Complaint :complaint recorded.',
+        'updated' => 'Complaint :complaint updated.',
+        'deleted' => 'Complaint :complaint deleted.',
+        'deletedError' => 'Complaint :complaint cannot be deleted because it has root-cause/CAPA records raised against it.',
+        'acknowledged' => 'First response recorded for complaint :complaint, investigation started.',
+        'resolved' => 'Complaint :complaint marked as resolved.',
+        'closed' => 'Complaint :complaint closed and the customer notified.',
+        'reopened' => 'Complaint :complaint reopened.',
+    ],
+    'customerComplaintSettings' => [
+        'updated' => 'Customer Complaints module settings updated.'
+    ],
 ];

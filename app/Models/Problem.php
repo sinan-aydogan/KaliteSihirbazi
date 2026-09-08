@@ -19,6 +19,7 @@ class Problem extends Model
         'audit_id',
         'audit_checklist_answer_id',
         'risk_id',
+        'customer_complaint_id',
         'title',
         'description',
         'source_type',
@@ -70,6 +71,11 @@ class Problem extends Model
     public function risk(): BelongsTo
     {
         return $this->belongsTo(Risk::class);
+    }
+
+    public function customerComplaint(): BelongsTo
+    {
+        return $this->belongsTo(CustomerComplaint::class);
     }
 
     public function detectedBy(): BelongsTo

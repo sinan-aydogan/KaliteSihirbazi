@@ -1,0 +1,22 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Customers",
+            "subTitle": "The customer list complaint records are linked to"
+        },
+        "createPage": {
+            "title": "New Customer",
+            "subTitle": "Enter the contact details"
+        }
+    },
+    "term": {
+        "code": "Customer Code",
+        "name": "Name",
+        "contactName": "Contact Person",
+        "phone": "Phone",
+        "email": "Email",
+        "address": "Address",
+        "isActive": "Active",
+        "complaintCount": "Complaints"
+    }
+}

@@ -25,6 +25,9 @@ import RiskSettingController from './RiskSettingController'
 import RiskController from './RiskController'
 import RiskCategoryController from './RiskCategoryController'
 import RiskHazardClassController from './RiskHazardClassController'
+import CustomerController from './CustomerController'
+import CustomerComplaintSettingController from './CustomerComplaintSettingController'
+import CustomerComplaintController from './CustomerComplaintController'
 import CompanyAccreditationController from './CompanyAccreditationController'
 import CapaActionController from './CapaActionController'
 import CapaWorkflowController from './CapaWorkflowController'
@@ -38,6 +41,7 @@ import AuditChecklistPrintController from './AuditChecklistPrintController'
 import RiskWorkflowController from './RiskWorkflowController'
 import RiskControlController from './RiskControlController'
 import RiskReviewController from './RiskReviewController'
+import CustomerComplaintWorkflowController from './CustomerComplaintWorkflowController'
 const Controllers = {
     AccountController: Object.assign(AccountController, AccountController),
 ApiTokenController: Object.assign(ApiTokenController, ApiTokenController),
@@ -66,6 +70,9 @@ RiskSettingController: Object.assign(RiskSettingController, RiskSettingControlle
 RiskController: Object.assign(RiskController, RiskController),
 RiskCategoryController: Object.assign(RiskCategoryController, RiskCategoryController),
 RiskHazardClassController: Object.assign(RiskHazardClassController, RiskHazardClassController),
+CustomerController: Object.assign(CustomerController, CustomerController),
+CustomerComplaintSettingController: Object.assign(CustomerComplaintSettingController, CustomerComplaintSettingController),
+CustomerComplaintController: Object.assign(CustomerComplaintController, CustomerComplaintController),
 CompanyAccreditationController: Object.assign(CompanyAccreditationController, CompanyAccreditationController),
 CapaActionController: Object.assign(CapaActionController, CapaActionController),
 CapaWorkflowController: Object.assign(CapaWorkflowController, CapaWorkflowController),
@@ -79,6 +86,7 @@ AuditChecklistPrintController: Object.assign(AuditChecklistPrintController, Audi
 RiskWorkflowController: Object.assign(RiskWorkflowController, RiskWorkflowController),
 RiskControlController: Object.assign(RiskControlController, RiskControlController),
 RiskReviewController: Object.assign(RiskReviewController, RiskReviewController),
+CustomerComplaintWorkflowController: Object.assign(CustomerComplaintWorkflowController, CustomerComplaintWorkflowController),
 }
 
 export default Controllers

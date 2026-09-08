@@ -19,6 +19,7 @@ use Database\Seeders\Audit\AuditDefinitionSeeder;
 use Database\Seeders\Audit\AuditChecklistTemplateSeeder;
 use Database\Seeders\Risk\RiskDefinitionSeeder;
 use Database\Seeders\Risk\RiskDemoSeeder;
+use Database\Seeders\CustomerComplaint\CustomerComplaintDemoSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -63,6 +64,9 @@ class DatabaseSeeder extends Seeder
             // Risk Module Definitions
             RiskDefinitionSeeder::class,
             RiskDemoSeeder::class,
+            // Customer Complaints Module
+            CustomerSeeder::class,
+            CustomerComplaintDemoSeeder::class,
         ]);
     }
 }
