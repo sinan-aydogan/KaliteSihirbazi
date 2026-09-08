@@ -15,18 +15,38 @@
         "addFindingPage": {
             "title": "Uygunsuzluk Kaydet",
             "subTitle": "Bu denetimde tespit edilen bir uygunsuzluğu kaydedin"
+        },
+        "typesPage": {
+            "title": "Denetim Türleri",
+            "subTitle": "İç/dış denetim türlerini buradan yönetebilirsiniz. Varsayılan türler silinemez."
+        },
+        "scopesPage": {
+            "title": "Denetim Kapsamları",
+            "subTitle": "Denetim kapsam kategorilerini buradan yönetebilirsiniz. Varsayılan kapsamlar silinemez."
+        },
+        "attachChecklistPage": {
+            "title": "Soru Listesi Ekle",
+            "subTitle": "Bu denetime bir checklist şablonu uygulayın"
         }
     },
     "term": {
         "code": "Denetim Kodu",
         "title": "Denetim Başlığı",
         "type": "Denetim Tipi",
+        "direction": "Yön",
+        "directionValue": {
+            "internal": "İç",
+            "external": "Dış"
+        },
         "standard": "Standart",
         "companyAccreditation": "Akreditasyon/Sertifika",
         "auditFirm": "Denetim Firması",
-        "auditor": "Denetçi",
+        "firmAuditors": "Denetim Firması Personeli",
+        "auditor": "Denetçi (Sorumlu)",
         "department": "Departman",
-        "scope": "Kapsam",
+        "scopes": "Kapsam(lar)",
+        "checklistTemplate": "Checklist Şablonu",
+        "scope": "Kapsam Açıklaması",
         "plannedDate": "Planlanan Tarih",
         "actualDate": "Gerçekleşen Tarih",
         "status": "Durum",
@@ -35,12 +55,12 @@
         "closedAt": "Kapatılma Tarihi",
         "findingCount": "Bulgu",
         "findings": "Uygunsuzluk Bulguları",
-        "auditType": {
-            "internal": "İç Denetim",
-            "certification": "Belgelendirme Denetimi",
-            "supplier": "Tedarikçi Denetimi",
-            "customer": "Müşteri Denetimi"
-        },
+        "checklists": "Soru Listeleri (Checklist)",
+        "question": "Soru",
+        "name": "Ad",
+        "sortOrder": "Sıra",
+        "protected": "Korumalı",
+        "auditCount": "Denetim",
         "auditStatus": {
             "planned": "Planlandı",
             "in_progress": "Devam Ediyor",
@@ -58,6 +78,8 @@
         "start": "Denetimi Başlat",
         "complete": "Denetimi Tamamla",
         "cancel": "Denetimi İptal Et",
-        "addFinding": "Uygunsuzluk Kaydet"
+        "addFinding": "Uygunsuzluk Kaydet",
+        "attachChecklist": "Soru Listesi Ekle",
+        "print": "Yazdır / PDF İndir"
     }
 }

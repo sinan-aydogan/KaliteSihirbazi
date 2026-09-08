@@ -149,6 +149,7 @@ const submitRaiseCapa = async () => {
                         <span class="text-sky-600 cursor-pointer hover:underline" @click="router.visit(route('audit.show', problem.audit.id))">
                             {{ problem.audit.code }} — {{ problem.audit.title }}
                         </span>
+                        <span v-if="problem.checklist_answer">— Soru: "{{ problem.checklist_answer.question.question }}"</span>
                     </div>
                 </div>
                 <div class="flex gap-2 flex-wrap">

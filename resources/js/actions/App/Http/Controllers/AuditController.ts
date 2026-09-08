@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\AuditController::index
- * @see app/Http/Controllers/AuditController.php:22
+ * @see app/Http/Controllers/AuditController.php:26
  * @route '/audit/search'
  */
 const index96abd1e42a2417df226631e7aa8a8f54 = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -16,7 +16,7 @@ index96abd1e42a2417df226631e7aa8a8f54.definition = {
 
 /**
 * @see \App\Http\Controllers\AuditController::index
- * @see app/Http/Controllers/AuditController.php:22
+ * @see app/Http/Controllers/AuditController.php:26
  * @route '/audit/search'
  */
 index96abd1e42a2417df226631e7aa8a8f54.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ index96abd1e42a2417df226631e7aa8a8f54.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\AuditController::index
- * @see app/Http/Controllers/AuditController.php:22
+ * @see app/Http/Controllers/AuditController.php:26
  * @route '/audit/search'
  */
 index96abd1e42a2417df226631e7aa8a8f54.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -35,7 +35,7 @@ index96abd1e42a2417df226631e7aa8a8f54.post = (options?: RouteQueryOptions): Rout
 
     /**
 * @see \App\Http\Controllers\AuditController::index
- * @see app/Http/Controllers/AuditController.php:22
+ * @see app/Http/Controllers/AuditController.php:26
  * @route '/audit/search'
  */
     const index96abd1e42a2417df226631e7aa8a8f54Form = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -45,7 +45,7 @@ index96abd1e42a2417df226631e7aa8a8f54.post = (options?: RouteQueryOptions): Rout
 
             /**
 * @see \App\Http\Controllers\AuditController::index
- * @see app/Http/Controllers/AuditController.php:22
+ * @see app/Http/Controllers/AuditController.php:26
  * @route '/audit/search'
  */
         index96abd1e42a2417df226631e7aa8a8f54Form.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -56,7 +56,7 @@ index96abd1e42a2417df226631e7aa8a8f54.post = (options?: RouteQueryOptions): Rout
     index96abd1e42a2417df226631e7aa8a8f54.form = index96abd1e42a2417df226631e7aa8a8f54Form
     /**
 * @see \App\Http\Controllers\AuditController::index
- * @see app/Http/Controllers/AuditController.php:22
+ * @see app/Http/Controllers/AuditController.php:26
  * @route '/audit'
  */
 const indexeb34da18791561b44f3607f3ea8ab70d = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -71,7 +71,7 @@ indexeb34da18791561b44f3607f3ea8ab70d.definition = {
 
 /**
 * @see \App\Http\Controllers\AuditController::index
- * @see app/Http/Controllers/AuditController.php:22
+ * @see app/Http/Controllers/AuditController.php:26
  * @route '/audit'
  */
 indexeb34da18791561b44f3607f3ea8ab70d.url = (options?: RouteQueryOptions) => {
@@ -80,7 +80,7 @@ indexeb34da18791561b44f3607f3ea8ab70d.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\AuditController::index
- * @see app/Http/Controllers/AuditController.php:22
+ * @see app/Http/Controllers/AuditController.php:26
  * @route '/audit'
  */
 indexeb34da18791561b44f3607f3ea8ab70d.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -89,7 +89,7 @@ indexeb34da18791561b44f3607f3ea8ab70d.get = (options?: RouteQueryOptions): Route
 })
 /**
 * @see \App\Http\Controllers\AuditController::index
- * @see app/Http/Controllers/AuditController.php:22
+ * @see app/Http/Controllers/AuditController.php:26
  * @route '/audit'
  */
 indexeb34da18791561b44f3607f3ea8ab70d.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -99,7 +99,7 @@ indexeb34da18791561b44f3607f3ea8ab70d.head = (options?: RouteQueryOptions): Rout
 
     /**
 * @see \App\Http\Controllers\AuditController::index
- * @see app/Http/Controllers/AuditController.php:22
+ * @see app/Http/Controllers/AuditController.php:26
  * @route '/audit'
  */
     const indexeb34da18791561b44f3607f3ea8ab70dForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -109,7 +109,7 @@ indexeb34da18791561b44f3607f3ea8ab70d.head = (options?: RouteQueryOptions): Rout
 
             /**
 * @see \App\Http\Controllers\AuditController::index
- * @see app/Http/Controllers/AuditController.php:22
+ * @see app/Http/Controllers/AuditController.php:26
  * @route '/audit'
  */
         indexeb34da18791561b44f3607f3ea8ab70dForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -118,7 +118,7 @@ indexeb34da18791561b44f3607f3ea8ab70d.head = (options?: RouteQueryOptions): Rout
         })
             /**
 * @see \App\Http\Controllers\AuditController::index
- * @see app/Http/Controllers/AuditController.php:22
+ * @see app/Http/Controllers/AuditController.php:26
  * @route '/audit'
  */
         indexeb34da18791561b44f3607f3ea8ab70dForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -145,7 +145,7 @@ export const index = {
 
 /**
 * @see \App\Http\Controllers\AuditController::create
- * @see app/Http/Controllers/AuditController.php:39
+ * @see app/Http/Controllers/AuditController.php:47
  * @route '/audit/create'
  */
 export const create = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -160,7 +160,7 @@ create.definition = {
 
 /**
 * @see \App\Http\Controllers\AuditController::create
- * @see app/Http/Controllers/AuditController.php:39
+ * @see app/Http/Controllers/AuditController.php:47
  * @route '/audit/create'
  */
 create.url = (options?: RouteQueryOptions) => {
@@ -169,7 +169,7 @@ create.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\AuditController::create
- * @see app/Http/Controllers/AuditController.php:39
+ * @see app/Http/Controllers/AuditController.php:47
  * @route '/audit/create'
  */
 create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -178,7 +178,7 @@ create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\AuditController::create
- * @see app/Http/Controllers/AuditController.php:39
+ * @see app/Http/Controllers/AuditController.php:47
  * @route '/audit/create'
  */
 create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -188,7 +188,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\AuditController::create
- * @see app/Http/Controllers/AuditController.php:39
+ * @see app/Http/Controllers/AuditController.php:47
  * @route '/audit/create'
  */
     const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -198,7 +198,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\AuditController::create
- * @see app/Http/Controllers/AuditController.php:39
+ * @see app/Http/Controllers/AuditController.php:47
  * @route '/audit/create'
  */
         createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -207,7 +207,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\AuditController::create
- * @see app/Http/Controllers/AuditController.php:39
+ * @see app/Http/Controllers/AuditController.php:47
  * @route '/audit/create'
  */
         createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -223,7 +223,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     create.form = createForm
 /**
 * @see \App\Http\Controllers\AuditController::store
- * @see app/Http/Controllers/AuditController.php:44
+ * @see app/Http/Controllers/AuditController.php:52
  * @route '/audit'
  */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -238,7 +238,7 @@ store.definition = {
 
 /**
 * @see \App\Http\Controllers\AuditController::store
- * @see app/Http/Controllers/AuditController.php:44
+ * @see app/Http/Controllers/AuditController.php:52
  * @route '/audit'
  */
 store.url = (options?: RouteQueryOptions) => {
@@ -247,7 +247,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\AuditController::store
- * @see app/Http/Controllers/AuditController.php:44
+ * @see app/Http/Controllers/AuditController.php:52
  * @route '/audit'
  */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -257,7 +257,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
     /**
 * @see \App\Http\Controllers\AuditController::store
- * @see app/Http/Controllers/AuditController.php:44
+ * @see app/Http/Controllers/AuditController.php:52
  * @route '/audit'
  */
     const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -267,7 +267,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
             /**
 * @see \App\Http\Controllers\AuditController::store
- * @see app/Http/Controllers/AuditController.php:44
+ * @see app/Http/Controllers/AuditController.php:52
  * @route '/audit'
  */
         storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -278,7 +278,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     store.form = storeForm
 /**
 * @see \App\Http\Controllers\AuditController::show
- * @see app/Http/Controllers/AuditController.php:53
+ * @see app/Http/Controllers/AuditController.php:61
  * @route '/audit/{audit}'
  */
 export const show = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -293,7 +293,7 @@ show.definition = {
 
 /**
 * @see \App\Http\Controllers\AuditController::show
- * @see app/Http/Controllers/AuditController.php:53
+ * @see app/Http/Controllers/AuditController.php:61
  * @route '/audit/{audit}'
  */
 show.url = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -326,7 +326,7 @@ show.url = (args: { audit: number | { id: number } } | [audit: number | { id: nu
 
 /**
 * @see \App\Http\Controllers\AuditController::show
- * @see app/Http/Controllers/AuditController.php:53
+ * @see app/Http/Controllers/AuditController.php:61
  * @route '/audit/{audit}'
  */
 show.get = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -335,7 +335,7 @@ show.get = (args: { audit: number | { id: number } } | [audit: number | { id: nu
 })
 /**
 * @see \App\Http\Controllers\AuditController::show
- * @see app/Http/Controllers/AuditController.php:53
+ * @see app/Http/Controllers/AuditController.php:61
  * @route '/audit/{audit}'
  */
 show.head = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -345,7 +345,7 @@ show.head = (args: { audit: number | { id: number } } | [audit: number | { id: n
 
     /**
 * @see \App\Http\Controllers\AuditController::show
- * @see app/Http/Controllers/AuditController.php:53
+ * @see app/Http/Controllers/AuditController.php:61
  * @route '/audit/{audit}'
  */
     const showForm = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -355,7 +355,7 @@ show.head = (args: { audit: number | { id: number } } | [audit: number | { id: n
 
             /**
 * @see \App\Http\Controllers\AuditController::show
- * @see app/Http/Controllers/AuditController.php:53
+ * @see app/Http/Controllers/AuditController.php:61
  * @route '/audit/{audit}'
  */
         showForm.get = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -364,7 +364,7 @@ show.head = (args: { audit: number | { id: number } } | [audit: number | { id: n
         })
             /**
 * @see \App\Http\Controllers\AuditController::show
- * @see app/Http/Controllers/AuditController.php:53
+ * @see app/Http/Controllers/AuditController.php:61
  * @route '/audit/{audit}'
  */
         showForm.head = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -380,7 +380,7 @@ show.head = (args: { audit: number | { id: number } } | [audit: number | { id: n
     show.form = showForm
 /**
 * @see \App\Http\Controllers\AuditController::edit
- * @see app/Http/Controllers/AuditController.php:70
+ * @see app/Http/Controllers/AuditController.php:85
  * @route '/audit/{audit}/edit'
  */
 export const edit = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -395,7 +395,7 @@ edit.definition = {
 
 /**
 * @see \App\Http\Controllers\AuditController::edit
- * @see app/Http/Controllers/AuditController.php:70
+ * @see app/Http/Controllers/AuditController.php:85
  * @route '/audit/{audit}/edit'
  */
 edit.url = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -428,7 +428,7 @@ edit.url = (args: { audit: number | { id: number } } | [audit: number | { id: nu
 
 /**
 * @see \App\Http\Controllers\AuditController::edit
- * @see app/Http/Controllers/AuditController.php:70
+ * @see app/Http/Controllers/AuditController.php:85
  * @route '/audit/{audit}/edit'
  */
 edit.get = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -437,7 +437,7 @@ edit.get = (args: { audit: number | { id: number } } | [audit: number | { id: nu
 })
 /**
 * @see \App\Http\Controllers\AuditController::edit
- * @see app/Http/Controllers/AuditController.php:70
+ * @see app/Http/Controllers/AuditController.php:85
  * @route '/audit/{audit}/edit'
  */
 edit.head = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -447,7 +447,7 @@ edit.head = (args: { audit: number | { id: number } } | [audit: number | { id: n
 
     /**
 * @see \App\Http\Controllers\AuditController::edit
- * @see app/Http/Controllers/AuditController.php:70
+ * @see app/Http/Controllers/AuditController.php:85
  * @route '/audit/{audit}/edit'
  */
     const editForm = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -457,7 +457,7 @@ edit.head = (args: { audit: number | { id: number } } | [audit: number | { id: n
 
             /**
 * @see \App\Http\Controllers\AuditController::edit
- * @see app/Http/Controllers/AuditController.php:70
+ * @see app/Http/Controllers/AuditController.php:85
  * @route '/audit/{audit}/edit'
  */
         editForm.get = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -466,7 +466,7 @@ edit.head = (args: { audit: number | { id: number } } | [audit: number | { id: n
         })
             /**
 * @see \App\Http\Controllers\AuditController::edit
- * @see app/Http/Controllers/AuditController.php:70
+ * @see app/Http/Controllers/AuditController.php:85
  * @route '/audit/{audit}/edit'
  */
         editForm.head = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -482,7 +482,7 @@ edit.head = (args: { audit: number | { id: number } } | [audit: number | { id: n
     edit.form = editForm
 /**
 * @see \App\Http\Controllers\AuditController::update
- * @see app/Http/Controllers/AuditController.php:75
+ * @see app/Http/Controllers/AuditController.php:90
  * @route '/audit/{audit}'
  */
 export const update = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -497,7 +497,7 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\AuditController::update
- * @see app/Http/Controllers/AuditController.php:75
+ * @see app/Http/Controllers/AuditController.php:90
  * @route '/audit/{audit}'
  */
 update.url = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -530,7 +530,7 @@ update.url = (args: { audit: number | { id: number } } | [audit: number | { id: 
 
 /**
 * @see \App\Http\Controllers\AuditController::update
- * @see app/Http/Controllers/AuditController.php:75
+ * @see app/Http/Controllers/AuditController.php:90
  * @route '/audit/{audit}'
  */
 update.put = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -539,7 +539,7 @@ update.put = (args: { audit: number | { id: number } } | [audit: number | { id: 
 })
 /**
 * @see \App\Http\Controllers\AuditController::update
- * @see app/Http/Controllers/AuditController.php:75
+ * @see app/Http/Controllers/AuditController.php:90
  * @route '/audit/{audit}'
  */
 update.patch = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -549,7 +549,7 @@ update.patch = (args: { audit: number | { id: number } } | [audit: number | { id
 
     /**
 * @see \App\Http\Controllers\AuditController::update
- * @see app/Http/Controllers/AuditController.php:75
+ * @see app/Http/Controllers/AuditController.php:90
  * @route '/audit/{audit}'
  */
     const updateForm = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -564,7 +564,7 @@ update.patch = (args: { audit: number | { id: number } } | [audit: number | { id
 
             /**
 * @see \App\Http\Controllers\AuditController::update
- * @see app/Http/Controllers/AuditController.php:75
+ * @see app/Http/Controllers/AuditController.php:90
  * @route '/audit/{audit}'
  */
         updateForm.put = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -578,7 +578,7 @@ update.patch = (args: { audit: number | { id: number } } | [audit: number | { id
         })
             /**
 * @see \App\Http\Controllers\AuditController::update
- * @see app/Http/Controllers/AuditController.php:75
+ * @see app/Http/Controllers/AuditController.php:90
  * @route '/audit/{audit}'
  */
         updateForm.patch = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -594,7 +594,7 @@ update.patch = (args: { audit: number | { id: number } } | [audit: number | { id
     update.form = updateForm
 /**
 * @see \App\Http\Controllers\AuditController::destroy
- * @see app/Http/Controllers/AuditController.php:84
+ * @see app/Http/Controllers/AuditController.php:99
  * @route '/audit/{audit}'
  */
 export const destroy = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -609,7 +609,7 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\AuditController::destroy
- * @see app/Http/Controllers/AuditController.php:84
+ * @see app/Http/Controllers/AuditController.php:99
  * @route '/audit/{audit}'
  */
 destroy.url = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -642,7 +642,7 @@ destroy.url = (args: { audit: number | { id: number } } | [audit: number | { id:
 
 /**
 * @see \App\Http\Controllers\AuditController::destroy
- * @see app/Http/Controllers/AuditController.php:84
+ * @see app/Http/Controllers/AuditController.php:99
  * @route '/audit/{audit}'
  */
 destroy.delete = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -652,7 +652,7 @@ destroy.delete = (args: { audit: number | { id: number } } | [audit: number | { 
 
     /**
 * @see \App\Http\Controllers\AuditController::destroy
- * @see app/Http/Controllers/AuditController.php:84
+ * @see app/Http/Controllers/AuditController.php:99
  * @route '/audit/{audit}'
  */
     const destroyForm = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -667,7 +667,7 @@ destroy.delete = (args: { audit: number | { id: number } } | [audit: number | { 
 
             /**
 * @see \App\Http\Controllers\AuditController::destroy
- * @see app/Http/Controllers/AuditController.php:84
+ * @see app/Http/Controllers/AuditController.php:99
  * @route '/audit/{audit}'
  */
         destroyForm.delete = (args: { audit: number | { id: number } } | [audit: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({

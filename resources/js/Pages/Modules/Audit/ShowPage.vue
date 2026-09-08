@@ -1,6 +1,6 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
-import {computed, ref} from "vue"
+import {computed, reactive, ref} from "vue"
 import {useForm, router} from "@inertiajs/vue3";
 
 /*Components*/
@@ -27,10 +27,15 @@ const props = defineProps({
     users: {
         type: Array,
         default: () => []
-    }
+    },
+    checklistTemplates: {
+        type: Array,
+        default: () => []
+    },
 })
 
 const userOptions = computed(() => props.users.map(u => ({id: u.id, label: u.name})))
+const checklistTemplateOptions = computed(() => props.checklistTemplates.map(ct => ({id: ct.id, label: ct.name})))
 
 const problemSourceTypeOptions = computed(() => [
     {id: 'audit_finding', label: 'Denetim Bulgusu'},
@@ -47,6 +52,13 @@ const problemSeverityOptions = computed(() => [
     {id: 'critical', label: 'Kritik'},
 ])
 
+const checklistAnswerOptions = computed(() => [
+    {id: 'compliant', label: 'Uygun'},
+    {id: 'non_compliant', label: 'Uygunsuz'},
+    {id: 'not_applicable', label: 'Kapsam Dışı'},
+    {id: 'observation', label: 'Gözlem'},
+])
+
 const resultOptions = computed(() => [
     {id: 'passed', label: tm('term.auditResult.passed')},
     {id: 'passed_with_findings', label: tm('term.auditResult.passed_with_findings')},
@@ -58,6 +70,13 @@ const statusColorClasses = {
     in_progress: 'bg-amber-100 text-amber-700',
     completed: 'bg-emerald-100 text-emerald-700',
     cancelled: 'bg-rose-100 text-rose-700',
+}
+
+const checklistAnswerColorClasses = {
+    compliant: 'bg-emerald-100 text-emerald-700',
+    non_compliant: 'bg-rose-100 text-rose-700',
+    not_applicable: 'bg-slate-100 text-slate-700',
+    observation: 'bg-sky-100 text-sky-700',
 }
 
 const problemStatusColorClasses = {
@@ -77,6 +96,7 @@ const problemStatusLabels = {
 }
 
 const formatDate = (value) => value ? new Date(value).toLocaleDateString('tr-TR') : '-'
+const isInternal = computed(() => props.audit.audit_type?.direction === 'internal')
 
 /* ---------- Workflow ---------- */
 const startAudit = () => {
@@ -113,10 +133,36 @@ const submitComplete = async () => {
     })
 }
 
+/* ---------- Checklist ---------- */
+const showAttachChecklistModal = ref(false)
+const attachChecklistForm = useForm({
+    audit_checklist_template_id: null,
+})
+
+const submitAttachChecklist = () => {
+    attachChecklistForm.post(route('audit-checklist.store', props.audit.id), {
+        onSuccess: () => showAttachChecklistModal.value = false,
+    })
+}
+
+const answerDrafts = reactive(
+    Object.fromEntries(
+        props.audit.checklists.flatMap(c => c.answers).map(a => [a.id, {answer: a.answer, notes: a.notes ?? ""}])
+    )
+)
+
+const saveAnswer = (answerId) => {
+    router.put(route('audit-checklist-answer.update', answerId), {
+        answer: answerDrafts[answerId].answer,
+        notes: answerDrafts[answerId].notes,
+    }, {preserveScroll: true})
+}
+
 /* ---------- Record Finding ---------- */
 const showFindingModal = ref(false)
 const findingForm = useForm({
     audit_id: props.audit.id,
+    audit_checklist_answer_id: null,
     title: "",
     description: "",
     source_type: "audit_finding",
@@ -132,9 +178,14 @@ const findingRules = ref({
 })
 const findingV$ = useVuelidate(findingRules, findingForm)
 
-const openFinding = () => {
+const openFinding = (answer = null) => {
     findingForm.reset();
     findingForm.audit_id = props.audit.id;
+    findingForm.audit_checklist_answer_id = answer?.id ?? null;
+    if (answer) {
+        findingForm.title = answer.question.question;
+        findingForm.description = answerDrafts[answer.id]?.notes ?? "";
+    }
     findingV$.value.$reset();
     showFindingModal.value = true;
 }
@@ -163,12 +214,12 @@ const submitFinding = async () => {
             <div class="flex justify-between items-start flex-wrap gap-4">
                 <div>
                     <h2 class="text-xl font-bold">{{ audit.title }}</h2>
-                    <div class="flex gap-2 mt-2">
+                    <div class="flex gap-2 mt-2 flex-wrap">
                         <span class="px-2 py-0.5 rounded text-xs"
                               :class="statusColorClasses[audit.status] ?? 'bg-slate-100 text-slate-700'"
                               v-text="tm(`term.auditStatus.${audit.status}`)"/>
-                        <span class="px-2 py-0.5 rounded text-xs bg-indigo-100 text-indigo-700"
-                              v-text="tm(`term.auditType.${audit.audit_type}`)"/>
+                        <span class="px-2 py-0.5 rounded text-xs bg-indigo-100 text-indigo-700">{{ audit.audit_type?.name }}</span>
+                        <span v-for="scope in audit.scopes" :key="scope.id" class="px-2 py-0.5 rounded text-xs bg-slate-200 dark:bg-slate-500">{{ scope.name }}</span>
                         <span v-if="audit.result" class="px-2 py-0.5 rounded text-xs bg-violet-100 text-violet-700"
                               v-text="tm(`term.auditResult.${audit.result}`)"/>
                     </div>
@@ -186,7 +237,7 @@ const submitFinding = async () => {
                         <font-awesome-icon icon="circle-xmark" class="mr-2"/>
                         <span v-text="t('action.cancel')"/>
                     </simple-button>
-                    <simple-button v-if="audit.status === 'in_progress'" color="red" @click="openFinding">
+                    <simple-button v-if="audit.status === 'in_progress'" color="red" @click="openFinding()">
                         <font-awesome-icon icon="bug" class="mr-2"/>
                         <span v-text="t('action.addFinding')"/>
                     </simple-button>
@@ -194,11 +245,12 @@ const submitFinding = async () => {
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4 text-sm">
-                <div><span class="text-slate-400 block" v-text="tm('term.standard')"/>{{ audit.standard?.name ?? '-' }}</div>
-                <div><span class="text-slate-400 block" v-text="tm('term.companyAccreditation')"/>{{ audit.company_accreditation?.certificate_number ?? '-' }}</div>
-                <div><span class="text-slate-400 block" v-text="tm('term.auditFirm')"/>{{ audit.audit_firm?.name ?? '-' }}</div>
+                <div v-if="!isInternal"><span class="text-slate-400 block" v-text="tm('term.standard')"/>{{ audit.standard?.name ?? '-' }}</div>
+                <div v-if="!isInternal"><span class="text-slate-400 block" v-text="tm('term.companyAccreditation')"/>{{ audit.company_accreditation?.certificate_number ?? '-' }}</div>
+                <div v-if="!isInternal"><span class="text-slate-400 block" v-text="tm('term.auditFirm')"/>{{ audit.audit_firm?.name ?? '-' }}</div>
+                <div v-if="!isInternal && audit.firm_auditors?.length"><span class="text-slate-400 block" v-text="tm('term.firmAuditors')"/>{{ audit.firm_auditors.map(a => a.name).join(', ') }}</div>
                 <div><span class="text-slate-400 block" v-text="tm('term.auditor')"/>{{ audit.auditor?.name ?? '-' }}</div>
-                <div><span class="text-slate-400 block" v-text="tm('term.department')"/>{{ audit.department?.name ?? '-' }}</div>
+                <div v-if="isInternal"><span class="text-slate-400 block" v-text="tm('term.department')"/>{{ audit.department?.name ?? '-' }}</div>
                 <div><span class="text-slate-400 block" v-text="tm('term.plannedDate')"/>{{ formatDate(audit.planned_date) }}</div>
                 <div><span class="text-slate-400 block" v-text="tm('term.actualDate')"/>{{ formatDate(audit.actual_date) }}</div>
                 <div><span class="text-slate-400 block" v-text="tm('term.closedAt')"/>{{ formatDate(audit.closed_at) }}</div>
@@ -213,6 +265,71 @@ const submitFinding = async () => {
                 <span class="text-slate-400 block" v-text="tm('term.reportNotes')"/>
                 <p>{{ audit.report_notes }}</p>
             </div>
+        </div>
+
+        <!--Checklists (internal audits)-->
+        <div v-if="isInternal" class="bg-slate-100 dark:bg-slate-600 rounded-lg p-6 mb-6">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="font-bold" v-text="tm('term.checklists')"/>
+                <simple-button v-if="audit.checklists.length === 0" color="blue" @click="showAttachChecklistModal = true">
+                    <font-awesome-icon icon="list-check" class="mr-2"/>
+                    <span v-text="tm('action.attachChecklist')"/>
+                </simple-button>
+            </div>
+
+            <div v-for="checklist in audit.checklists" :key="checklist.id" class="mb-6 last:mb-0">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="font-semibold text-sm">{{ checklist.template?.name ?? 'Checklist' }}</span>
+                    <a :href="route('audit-checklist.print', checklist.id)" target="_blank">
+                        <simple-button color="neutral" type="button">
+                            <font-awesome-icon icon="print" class="mr-2"/>
+                            <span v-text="tm('action.print')"/>
+                        </simple-button>
+                    </a>
+                </div>
+                <table class="w-full text-sm">
+                    <thead>
+                    <tr class="text-slate-400 text-left">
+                        <th class="px-2 pb-2 w-8">#</th>
+                        <th class="px-2 pb-2" v-text="tm('term.question')"/>
+                        <th class="px-2 pb-2 w-40">Sonuç</th>
+                        <th class="px-2 pb-2 w-56">Not</th>
+                        <th class="px-2 pb-2 w-32"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="(answer, index) in checklist.answers" :key="answer.id" class="border-t border-slate-200 dark:border-slate-500">
+                        <td class="px-2 py-2">{{ index + 1 }}</td>
+                        <td class="px-2 py-2">
+                            {{ answer.question.question }}
+                            <span v-if="answer.question.standard_reference" class="block text-xs text-slate-400">{{ answer.question.standard_reference }}</span>
+                        </td>
+                        <td class="px-2 py-2">
+                            <select-input v-if="audit.status === 'in_progress'" v-model="answerDrafts[answer.id].answer" :options="checklistAnswerOptions"/>
+                            <span v-else-if="answer.answer" class="px-2 py-0.5 rounded text-xs" :class="checklistAnswerColorClasses[answer.answer] ?? ''">{{ checklistAnswerOptions.find(o => o.id === answer.answer)?.label }}</span>
+                            <span v-else class="text-slate-400">-</span>
+                        </td>
+                        <td class="px-2 py-2">
+                            <text-input v-if="audit.status === 'in_progress'" v-model="answerDrafts[answer.id].notes"/>
+                            <span v-else>{{ answer.notes ?? '-' }}</span>
+                        </td>
+                        <td class="px-2 py-2 text-right whitespace-nowrap">
+                            <template v-if="audit.status === 'in_progress'">
+                                <simple-button color="blue" @click="saveAnswer(answer.id)">
+                                    <font-awesome-icon icon="circle-check"/>
+                                </simple-button>
+                                <span v-if="answer.problem" class="ml-2 text-xs text-sky-600 cursor-pointer hover:underline" @click="router.visit(route('problem.show', answer.problem.id))">{{ answer.problem.code }}</span>
+                                <simple-button v-else-if="answerDrafts[answer.id].answer === 'non_compliant'" color="red" class="ml-2" @click="openFinding(answer)">
+                                    <font-awesome-icon icon="bug"/>
+                                </simple-button>
+                            </template>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p v-if="audit.checklists.length === 0" class="text-center py-4 text-slate-400" v-text="t('message.feedback.noResults')"/>
         </div>
 
         <!--Findings-->
@@ -264,6 +381,22 @@ const submitFinding = async () => {
                 </Form>
                 <template #footer>
                     <SimpleButton :label="t('action.complete')" color="green" @click="submitComplete" :loading="completeForm.processing"/>
+                </template>
+            </Modal>
+        </teleport>
+
+        <!--Attach Checklist Modal-->
+        <teleport to="body">
+            <Modal v-model="showAttachChecklistModal" :header="tm('title.attachChecklistPage.title')" :subHeader="tm('title.attachChecklistPage.subTitle')" closeable close-button>
+                <Form full-size>
+                    <FormSection bg-less>
+                        <input-group class="col-span-6" labelFor="audit_checklist_template_id" :label="tm('term.checklistTemplate')">
+                            <select-input v-model="attachChecklistForm.audit_checklist_template_id" :options="checklistTemplateOptions"/>
+                        </input-group>
+                    </FormSection>
+                </Form>
+                <template #footer>
+                    <SimpleButton :label="tm('action.attachChecklist')" color="green" @click="submitAttachChecklist" :loading="attachChecklistForm.processing"/>
                 </template>
             </Modal>
         </teleport>

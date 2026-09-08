@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
             $table->string('code')->unique();
             $table->string('title');
-            $table->string('audit_type');
+            $table->foreignId('audit_type_id')->constrained('audit_types');
             $table->foreignId('standard_id')->nullable()->constrained('standards')->nullOnDelete();
             $table->foreignId('company_accreditation_id')->nullable()->constrained('company_accreditations')->nullOnDelete();
             $table->foreignId('audit_firm_id')->nullable()->constrained('audit_firms')->nullOnDelete();

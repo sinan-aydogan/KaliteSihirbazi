@@ -15,18 +15,38 @@
         "addFindingPage": {
             "title": "Record a Finding",
             "subTitle": "Record a nonconformity detected during this audit"
+        },
+        "typesPage": {
+            "title": "Audit Types",
+            "subTitle": "Manage internal/external audit types here. Default types cannot be deleted."
+        },
+        "scopesPage": {
+            "title": "Audit Scopes",
+            "subTitle": "Manage audit scope categories here. Default scopes cannot be deleted."
+        },
+        "attachChecklistPage": {
+            "title": "Add Checklist",
+            "subTitle": "Apply a checklist template to this audit"
         }
     },
     "term": {
         "code": "Audit Code",
         "title": "Audit Title",
         "type": "Audit Type",
+        "direction": "Direction",
+        "directionValue": {
+            "internal": "Internal",
+            "external": "External"
+        },
         "standard": "Standard",
         "companyAccreditation": "Accreditation/Certificate",
         "auditFirm": "Audit Firm",
-        "auditor": "Auditor",
+        "firmAuditors": "Audit Firm Personnel",
+        "auditor": "Auditor (Lead)",
         "department": "Department",
-        "scope": "Scope",
+        "scopes": "Scope(s)",
+        "checklistTemplate": "Checklist Template",
+        "scope": "Scope Description",
         "plannedDate": "Planned Date",
         "actualDate": "Actual Date",
         "status": "Status",
@@ -35,12 +55,12 @@
         "closedAt": "Closed At",
         "findingCount": "Findings",
         "findings": "Nonconformity Findings",
-        "auditType": {
-            "internal": "Internal Audit",
-            "certification": "Certification Audit",
-            "supplier": "Supplier Audit",
-            "customer": "Customer Audit"
-        },
+        "checklists": "Checklists",
+        "question": "Question",
+        "name": "Name",
+        "sortOrder": "Order",
+        "protected": "Protected",
+        "auditCount": "Audits",
         "auditStatus": {
             "planned": "Planned",
             "in_progress": "In Progress",
@@ -58,6 +78,8 @@
         "start": "Start Audit",
         "complete": "Complete Audit",
         "cancel": "Cancel Audit",
-        "addFinding": "Record Finding"
+        "addFinding": "Record Finding",
+        "attachChecklist": "Add Checklist",
+        "print": "Print / Download PDF"
     }
 }

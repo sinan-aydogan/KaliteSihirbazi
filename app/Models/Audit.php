@@ -4,10 +4,10 @@ namespace App\Models;
 
 use App\Enums\AuditResult;
 use App\Enums\AuditStatus;
-use App\Enums\AuditType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Audit extends Model
@@ -16,7 +16,7 @@ class Audit extends Model
 
     protected $fillable = [
         'title',
-        'audit_type',
+        'audit_type_id',
         'standard_id',
         'company_accreditation_id',
         'audit_firm_id',
@@ -32,7 +32,6 @@ class Audit extends Model
     ];
 
     protected $casts = [
-        'audit_type' => AuditType::class,
         'status' => AuditStatus::class,
         'result' => AuditResult::class,
         'planned_date' => 'date',
@@ -55,6 +54,11 @@ class Audit extends Model
         $sequence = static::where('code', 'like', "DNT-{$year}-%")->count() + 1;
 
         return sprintf('DNT-%d-%03d', $year, $sequence);
+    }
+
+    public function auditType(): BelongsTo
+    {
+        return $this->belongsTo(AuditType::class);
     }
 
     public function standard(): BelongsTo
@@ -80,6 +84,21 @@ class Audit extends Model
     public function department(): BelongsTo
     {
         return $this->belongsTo(Department::class);
+    }
+
+    public function scopes(): BelongsToMany
+    {
+        return $this->belongsToMany(AuditScope::class, 'audit_audit_scope');
+    }
+
+    public function firmAuditors(): BelongsToMany
+    {
+        return $this->belongsToMany(AuditFirmAuditor::class, 'audit_audit_firm_auditor');
+    }
+
+    public function checklists(): HasMany
+    {
+        return $this->hasMany(AuditChecklist::class);
     }
 
     public function findings(): HasMany

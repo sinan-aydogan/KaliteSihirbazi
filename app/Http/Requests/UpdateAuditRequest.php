@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Enums\AuditType;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class UpdateAuditRequest extends FormRequest
 {
@@ -17,12 +15,16 @@ class UpdateAuditRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:255',
-            'audit_type' => ['required', Rule::enum(AuditType::class)],
+            'audit_type_id' => 'required|exists:audit_types,id',
             'standard_id' => 'nullable|exists:standards,id',
             'company_accreditation_id' => 'nullable|exists:company_accreditations,id',
             'audit_firm_id' => 'nullable|exists:audit_firms,id',
+            'firm_auditor_ids' => 'nullable|array',
+            'firm_auditor_ids.*' => 'exists:audit_firm_auditors,id',
             'auditor_id' => 'nullable|exists:users,id',
             'department_id' => 'nullable|exists:departments,id',
+            'scope_ids' => 'nullable|array',
+            'scope_ids.*' => 'exists:audit_scopes,id',
             'scope' => 'nullable|string',
             'planned_date' => 'required|date',
         ];

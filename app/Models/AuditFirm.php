@@ -21,4 +21,9 @@ class AuditFirm extends Model
     {
         return $this->hasMany(Audit::class);
     }
+
+    public function auditors(): HasMany
+    {
+        return $this->hasMany(AuditFirmAuditor::class);
+    }
 }

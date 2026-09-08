@@ -7,6 +7,14 @@
         "createPage": {
             "title": "Add Audit Firm",
             "subTitle": "Add a new audit firm to the system"
+        },
+        "auditorsPage": {
+            "title": "Firm Personnel",
+            "subTitle": "Manage this audit firm's personnel and their competency/visit documents here"
+        },
+        "createAuditorPage": {
+            "title": "Add Personnel",
+            "subTitle": "Add a new auditor to this firm"
         }
     },
     "term": {
@@ -14,6 +22,14 @@
         "email": "Email",
         "phone": "Phone",
         "address": "Address",
-        "auditCount": "Audits"
+        "auditCount": "Audits",
+        "auditorName": "Full Name",
+        "auditorTitle": "Title",
+        "competencyDocuments": "Competency Documents",
+        "visitDocuments": "Visit/Assignment Documents"
+    },
+    "action": {
+        "manageAuditors": "Manage Personnel",
+        "addAuditor": "Add Personnel"
     }
 }

@@ -286,6 +286,38 @@ export default function ({roles, permissions}) {
                         type: "route",
                         link: 'audit.index'
                     },
+                    /*Internal Auditors*/
+                    {
+                        id: 'cr-ia',
+                        label: t('mainMenu.internalAuditors'),
+                        icon: 'user-group',
+                        type: "route",
+                        link: 'internal-auditor.index'
+                    },
+                    /*Checklist Templates*/
+                    {
+                        id: 'cr-ct',
+                        label: t('mainMenu.checklistTemplates'),
+                        icon: 'list-check',
+                        type: "route",
+                        link: 'audit-checklist-template.index'
+                    },
+                    /*Audit Types*/
+                    {
+                        id: 'cr-at',
+                        label: t('mainMenu.auditTypes'),
+                        icon: 'sitemap',
+                        type: "route",
+                        link: 'audit-type.index'
+                    },
+                    /*Audit Scopes*/
+                    {
+                        id: 'cr-as',
+                        label: t('mainMenu.auditScopes'),
+                        icon: 'diagram-project',
+                        type: "route",
+                        link: 'audit-scope.index'
+                    },
                     /*Certificates*/
                     {
                         id: 'cr-cr',

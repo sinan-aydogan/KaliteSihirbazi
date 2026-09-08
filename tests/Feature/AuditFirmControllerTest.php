@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\AuditFirm;
+use App\Models\AuditType;
 use App\Models\User;
 use Inertia\Testing\AssertableInertia as Assert;
 
@@ -59,9 +60,13 @@ test('an audit firm without audits can be deleted', function () {
 test('an audit firm with audits cannot be deleted', function () {
     $user = User::factory()->create();
     $firm = AuditFirm::create(['name' => 'TÜV Belgelendirme']);
+    $auditType = AuditType::firstOrCreate(
+        ['key' => 'certification'],
+        ['name' => 'Belgelendirme Denetimi', 'direction' => 'external', 'is_protected' => true]
+    );
     $firm->audits()->create([
         'title' => 'Yıllık Gözetim Denetimi',
-        'audit_type' => 'certification',
+        'audit_type_id' => $auditType->id,
         'planned_date' => now()->addWeek(),
     ]);
 

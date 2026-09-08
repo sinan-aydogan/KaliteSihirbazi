@@ -197,6 +197,47 @@ return [
         'completed' => 'Denetim tamamlandı.',
         'cancelled' => 'Denetim iptal edildi.'
     ],
+    'auditType' => [
+        'created' => 'Denetim türü oluşturuldu.',
+        'updated' => 'Denetim türü güncellendi.',
+        'deleted' => 'Denetim türü silindi.',
+        'deletedError' => 'Bu denetim türü silinemez çünkü üzerinde kayıtlı denetimler var.',
+        'deletedErrorProtected' => 'Sistem varsayılanı olan bu denetim türü silinemez.'
+    ],
+    'auditScope' => [
+        'created' => 'Denetim kapsamı oluşturuldu.',
+        'updated' => 'Denetim kapsamı güncellendi.',
+        'deleted' => 'Denetim kapsamı silindi.',
+        'deletedError' => 'Bu denetim kapsamı silinemez çünkü üzerinde kayıtlı denetimler var.',
+        'deletedErrorProtected' => 'Sistem varsayılanı olan bu denetim kapsamı silinemez.'
+    ],
+    'internalAuditor' => [
+        'created' => 'İç denetçi eklendi.',
+        'updated' => 'İç denetçi güncellendi.',
+        'deleted' => 'İç denetçi kaldırıldı.'
+    ],
+    'auditChecklistTemplate' => [
+        'created' => 'Checklist şablonu oluşturuldu.',
+        'updated' => 'Checklist şablonu güncellendi.',
+        'deleted' => 'Checklist şablonu silindi.'
+    ],
+    'auditChecklistQuestion' => [
+        'created' => 'Soru eklendi.',
+        'updated' => 'Soru güncellendi.',
+        'deleted' => 'Soru silindi.'
+    ],
+    'auditChecklist' => [
+        'attached' => 'Checklist denetime eklendi.'
+    ],
+    'auditChecklistAnswer' => [
+        'saved' => 'Cevap kaydedildi.'
+    ],
+    'auditFirmAuditor' => [
+        'created' => 'Denetçi personel eklendi.',
+        'updated' => 'Denetçi personel güncellendi.',
+        'deleted' => 'Denetçi personel silindi.',
+        'mediaDeleted' => 'Belge silindi.'
+    ],
     'vehicleType' => [
         'created' => ':vehicleType isimli araç tipi oluşturuldu.',
         'deleted' => ':vehicleType isimli araç tipi silindi.',

@@ -2,13 +2,19 @@
 
 use App\Enums\AuditStatus;
 use App\Models\Audit;
+use App\Models\AuditType;
 use App\Models\User;
 
 function makeAudit(User $auditor): Audit
 {
+    $auditType = AuditType::firstOrCreate(
+        ['key' => 'certification'],
+        ['name' => 'Belgelendirme Denetimi', 'direction' => 'external', 'is_protected' => true]
+    );
+
     return Audit::create([
         'title' => 'Yıllık ISO 9001 Gözetim Denetimi',
-        'audit_type' => 'certification',
+        'audit_type_id' => $auditType->id,
         'auditor_id' => $auditor->id,
         'planned_date' => now()->addWeek(),
     ]);

@@ -114,6 +114,12 @@ const handleDelete = (id) => {
             @delete="handleDelete($event.id)"
             edit-action
             delete-action
+            :custom-actions="[{
+                action: (row) => router.visit(route('audit-firm-auditor.index', row.id)),
+                color: 'blue',
+                icon: 'user-group',
+                label: t('action.manageAuditors'),
+            }]"
         >
             <template #actionArea>
                 <simple-button @click="showModal = true; formType = 'create'" color="green">
