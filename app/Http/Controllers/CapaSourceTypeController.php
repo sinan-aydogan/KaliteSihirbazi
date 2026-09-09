@@ -17,7 +17,7 @@ class CapaSourceTypeController extends Controller
             ->paginate(10)
             ->withQueryString();
 
-        return Inertia::render('Modules/CapaSourceType/IndexPage', [
+        return Inertia::render('Modules/Capa/Setting/CapaSourceType/IndexPage', [
             'tableData' => $capaSourceTypes,
         ]);
     }

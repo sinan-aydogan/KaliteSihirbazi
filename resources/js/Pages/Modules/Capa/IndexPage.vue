@@ -162,6 +162,12 @@ const handleDelete = (id) => {
 
 <template>
     <app-layout :title="tm('title.indexPage.title')" :sub-title="tm('title.indexPage.subTitle')">
+        <template #actionArea>
+            <simple-button type="route" :link="route('problem-source-type.index')" color="blue">
+                <font-awesome-icon icon="fa-solid fa-cog" class="mr-2"/>
+                <span v-text="tm('term.manageModule')"/>
+            </simple-button>
+        </template>
         <Table
             :data="tableData"
             :headers="headers"

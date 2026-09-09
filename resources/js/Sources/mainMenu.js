@@ -211,22 +211,6 @@ export default function ({roles, permissions}) {
                         icon: 'list-check',
                         type: "route",
                         link: 'capa.index'
-                    },
-                    /*Problem Source Types*/
-                    {
-                        id: 'capa-pst',
-                        label: t('mainMenu.problemSourceTypes'),
-                        icon: 'diagram-project',
-                        type: "route",
-                        link: 'problem-source-type.index'
-                    },
-                    /*CAPA Source Types*/
-                    {
-                        id: 'capa-cst',
-                        label: t('mainMenu.capaSourceTypes'),
-                        icon: 'diagram-project',
-                        type: "route",
-                        link: 'capa-source-type.index'
                     }
                 ]
             },

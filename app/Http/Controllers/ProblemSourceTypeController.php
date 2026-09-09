@@ -17,7 +17,7 @@ class ProblemSourceTypeController extends Controller
             ->paginate(10)
             ->withQueryString();
 
-        return Inertia::render('Modules/ProblemSourceType/IndexPage', [
+        return Inertia::render('Modules/Capa/Setting/ProblemSourceType/IndexPage', [
             'tableData' => $problemSourceTypes,
         ]);
     }
