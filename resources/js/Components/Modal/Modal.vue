@@ -12,15 +12,24 @@ import {
 /*Component*/
 import SimpleButton from "@/Components/Button/SimpleButton.vue";
 
-const emit = defineEmits(['closed', 'submit', 'reset'])
+const emit = defineEmits(['update:modelValue', 'closed', 'open', 'expand', 'timerEnd', 'submit', 'reset'])
 
 const props = defineProps({
   modelValue: {
     type: Boolean,
     default: false,
   },
+  /*Size — accepts xs/sm/md/lg/xl/2xl/3xl/4xl/5xl/6xl/7xl/full. `size` is the ta-ui-kit-aligned
+  name; `maxWidth` is kept as the original alias since most of the app's ~50 call sites use it.*/
   maxWidth: {
-    default: "2xl",
+    default: null,
+  },
+  size: {
+    default: null,
+  },
+  radius: {
+    type: String,
+    default: "lg", // none | sm | md | lg | full
   },
   closeable: {
     type: Boolean,
@@ -30,6 +39,24 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  closeOnEsc: {
+    type: Boolean,
+    default: true,
+  },
+  closeOnBackdrop: {
+    type: Boolean,
+    default: true,
+  },
+  preventScroll: {
+    type: Boolean,
+    default: true,
+  },
+  /*beforeClose can return false (or resolve to false) to veto a close attempt — used to guard
+  unsaved-changes style flows. Receives the trigger: 'closeButton' | 'esc' | 'backdrop' | 'timer' | 'programmatic'.*/
+  beforeClose: {
+    type: Function,
+    default: null,
+  },
   header: {
     type: String,
     default: "",
@@ -37,6 +64,34 @@ const props = defineProps({
   subHeader: {
     type: String,
     default: "",
+  },
+  /*title/description are ta-ui-kit-aligned aliases for header/subHeader.*/
+  title: {
+    type: String,
+    default: "",
+  },
+  description: {
+    type: String,
+    default: "",
+  },
+  /*Renders a small status icon badge beside the header title.*/
+  status: {
+    type: String,
+    default: null, // success | warning | danger | error | info | question
+  },
+  icon: {
+    type: String,
+    default: null,
+  },
+  iconColor: {
+    type: String,
+    default: null, // success | warning | danger | info | accent
+  },
+  /*'center'/'alert' stack the header icon/title/description into a centered column — useful for
+  confirmation-style dialogs. 'default' keeps the app's existing left-aligned header.*/
+  layout: {
+    type: String,
+    default: "default", // default | center | alert
   },
   actionButtons: {
     type: Array,
@@ -54,21 +109,22 @@ const props = defineProps({
     type: String,
     default: "top",
   },
-  notification: {
+  centered: {
     type: Boolean,
     default: false,
   },
-  notificationType: {
-    type: String,
-    default: "",
+  zIndex: {
+    type: Number,
+    default: 50,
   },
-  notificationTitle: {
-    type: String,
-    default: "",
+  /*Auto-close countdown in ms. Omit (default null) for no timer.*/
+  timer: {
+    type: Number,
+    default: null,
   },
-  notificationMessage: {
-    type: String,
-    default: "",
+  pauseOnHover: {
+    type: Boolean,
+    default: true,
   },
   actionButtonsDef: {
     type: Object,
@@ -96,191 +152,233 @@ const props = defineProps({
 });
 
 /*Showing Status*/
-const {closeable, modelValue, maxWidth} = toRefs(props);
-const close = () => {
-  if (closeable.value) {
-    emit("update:modelValue", false);
-    emit("closed");
-    emit("reset");
-    isExpanded.value = false;
+const {closeable, modelValue} = toRefs(props);
+
+/*Fullscreen*/
+const isExpanded = ref(false);
+const toggleExpand = () => {
+  isExpanded.value = !isExpanded.value;
+  dragPosition.value = {x: 0, y: 0};
+  emit("expand", isExpanded.value);
+};
+
+/*Draggable — pointer-based; drag is reset whenever the modal (re)opens or is expanded.*/
+const dragPosition = ref({x: 0, y: 0});
+const isDragging = ref(false);
+let dragStartX = 0;
+let dragStartY = 0;
+let dragOriginX = 0;
+let dragOriginY = 0;
+
+const onDragStart = (e) => {
+  if (!props.draggable || isExpanded.value) return;
+  if (e.target.closest("button, a, input, select, textarea")) return;
+
+  isDragging.value = true;
+  dragStartX = e.clientX;
+  dragStartY = e.clientY;
+  dragOriginX = dragPosition.value.x;
+  dragOriginY = dragPosition.value.y;
+
+  window.addEventListener("pointermove", onDragMove);
+  window.addEventListener("pointerup", onDragEnd);
+};
+
+const onDragMove = (e) => {
+  if (!isDragging.value) return;
+  dragPosition.value = {
+    x: dragOriginX + (e.clientX - dragStartX),
+    y: dragOriginY + (e.clientY - dragStartY),
+  };
+};
+
+const onDragEnd = () => {
+  isDragging.value = false;
+  window.removeEventListener("pointermove", onDragMove);
+  window.removeEventListener("pointerup", onDragEnd);
+};
+
+const panelStyle = computed(() => {
+  if (isExpanded.value || (dragPosition.value.x === 0 && dragPosition.value.y === 0)) return {};
+  return {transform: `translate(${dragPosition.value.x}px, ${dragPosition.value.y}px)`};
+});
+
+/*Auto-close timer*/
+const timerProgress = ref(100);
+const remainingMs = ref(0);
+const isTimerPaused = ref(false);
+let timerRafId = null;
+let lastTimestamp = null;
+
+const startTimer = () => {
+  if (!props.timer || props.timer <= 0) return;
+  stopTimer();
+  remainingMs.value = props.timer;
+  timerProgress.value = 100;
+  lastTimestamp = performance.now();
+  isTimerPaused.value = false;
+
+  const step = (now) => {
+    if (!modelValue.value) return;
+    if (lastTimestamp !== null) {
+      const delta = now - lastTimestamp;
+      lastTimestamp = now;
+      if (!isTimerPaused.value) {
+        remainingMs.value = Math.max(0, remainingMs.value - delta);
+        timerProgress.value = Math.max(0, (remainingMs.value / props.timer) * 100);
+        if (remainingMs.value <= 0) {
+          emit("timerEnd");
+          close("timer");
+          return;
+        }
+      }
+    } else {
+      lastTimestamp = now;
+    }
+    timerRafId = requestAnimationFrame(step);
+  };
+  timerRafId = requestAnimationFrame(step);
+};
+
+const stopTimer = () => {
+  if (timerRafId !== null) {
+    cancelAnimationFrame(timerRafId);
+    timerRafId = null;
+  }
+  lastTimestamp = null;
+};
+
+const onMouseEnter = () => {
+  if (props.pauseOnHover && props.timer) isTimerPaused.value = true;
+};
+const onMouseLeave = () => {
+  if (props.pauseOnHover && props.timer) {
+    isTimerPaused.value = false;
+    lastTimestamp = performance.now();
   }
 };
 
+const close = async (trigger = "programmatic") => {
+  if (!closeable.value) return;
+  if ((trigger === "esc" && !props.closeOnEsc) || (trigger === "backdrop" && !props.closeOnBackdrop)) return;
+
+  if (props.beforeClose) {
+    const canClose = await props.beforeClose(trigger);
+    if (canClose === false) return;
+  }
+
+  emit("update:modelValue", false);
+  emit("closed");
+  emit("reset");
+  isExpanded.value = false;
+};
+
 const closeOnEscape = (e) => {
-  if (e.key === "Escape" && modelValue.value && closeable.value) {
-    close();
+  if (e.key === "Escape" && modelValue.value) {
+    close("esc");
   }
 };
 
 onMounted(() => document.addEventListener("keydown", closeOnEscape));
 onUnmounted(() => {
   document.removeEventListener("keydown", closeOnEscape);
-  document.body.style.overflow = null;
+  if (props.preventScroll) document.body.style.overflow = null;
+  stopTimer();
+  window.removeEventListener("pointermove", onDragMove);
+  window.removeEventListener("pointerup", onDragEnd);
 });
 
 watch(
     modelValue,
     () => {
       if (modelValue.value) {
-        document.body.style.overflow = "hidden";
+        emit("open");
+        dragPosition.value = {x: 0, y: 0};
+        isExpanded.value = false;
+        if (props.preventScroll) document.body.style.overflow = "hidden";
+        if (props.timer) startTimer();
       } else {
-        document.body.style.overflow = null;
+        if (props.preventScroll) document.body.style.overflow = null;
+        stopTimer();
       }
     },
     {immediate: true}
 );
 
-/*Icon List*/
-const iconList = [
-  {
-    key: "success",
-    content:
-        '<svg fill="transparent" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" stroke="currentColor">\n' +
-        '  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />\n' +
-        "</svg>",
-    color: "text-green-500",
-    border: "border-green-500",
-  },
-  {
-    key: "warning",
-    content:
-        '<svg fill="transparent" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" stroke="currentColor">\n' +
-        '  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />\n' +
-        "</svg>",
-    color: "text-yellow-500",
-    border: "border-yellow-500",
-  },
-  {
-    key: "error",
-    content:
-        '<svg fill="transparent" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" stroke="currentColor">\n' +
-        '  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />\n' +
-        "</svg>",
-    color: "text-red-500",
-    border: "border-red-500",
-  },
-  {
-    key: "info",
-    content:
-        '<svg fill="transparent" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" stroke="currentColor">\n' +
-        '  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />\n' +
-        "</svg>",
-    color: "text-blue-500",
-    border: "border-blue-500",
-  },
-  {
-    key: "question",
-    content:
-        '<svg fill="transparent" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" stroke="currentColor">\n' +
-        '  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />\n' +
-        "</svg>",
-    color: "text-indigo-500",
-    border: "border-indigo-500",
-  },
-];
+/*Header text/icon — title/status are ta-ui-kit-aligned aliases layered on top of the
+app's original header/notification-free props.*/
+const resolvedHeader = computed(() => props.title || props.header);
+const resolvedSubHeader = computed(() => props.description || props.subHeader);
 
-/*Style*/
-const maxWidthClass = computed(() => {
-  return {
-    sm: "sm:max-w-sm",
-    md: "sm:max-w-md",
-    lg: "sm:max-w-lg",
-    xl: "sm:max-w-xl",
-    "2xl": "sm:max-w-2xl",
-  }[maxWidth.value];
-});
-
-/*Drag*/
-const width = ref(window.innerWidth);
-const height = ref(window.innerHeight);
-
-window.onresize = () => {
-  width.value = window.innerWidth;
-  height.value = window.innerHeight;
+const STATUS_ICON = {
+  success: "circle-check",
+  warning: "triangle-exclamation",
+  danger: "circle-xmark",
+  error: "circle-xmark",
+  info: "info-circle",
+  question: "circle-question",
 };
 
-const modalContainer = ref(null);
-const clickDiff = ref({x: 0, y: 0});
-
-const dragStart = (e) => {
-  let modal = modalContainer.value.getBoundingClientRect();
-  clickDiff.value = {
-    x: e.clientX - modal.left,
-    y: e.clientY - modal.top,
-  };
+const STATUS_BADGE_CLASSES = {
+  success: "text-emerald-600 bg-emerald-100 border-emerald-200 dark:text-emerald-400 dark:bg-emerald-900/40 dark:border-emerald-800",
+  warning: "text-amber-600 bg-amber-100 border-amber-200 dark:text-amber-400 dark:bg-amber-900/40 dark:border-amber-800",
+  danger: "text-rose-600 bg-rose-100 border-rose-200 dark:text-rose-400 dark:bg-rose-900/40 dark:border-rose-800",
+  error: "text-rose-600 bg-rose-100 border-rose-200 dark:text-rose-400 dark:bg-rose-900/40 dark:border-rose-800",
+  info: "text-sky-600 bg-sky-100 border-sky-200 dark:text-sky-400 dark:bg-sky-900/40 dark:border-sky-800",
+  question: "text-violet-600 bg-violet-100 border-violet-200 dark:text-violet-400 dark:bg-violet-900/40 dark:border-violet-800",
 };
 
-const dragEnd = (e) => {
-  let diff = {x: 0, y: 0};
-  let modal = modalContainer.value.getBoundingClientRect();
-  /*X origin*/
-  if (e.clientX - clickDiff.value.x < 0) {
-    diff.x = 0;
-  } else if (e.clientX > width.value - (modal.width - clickDiff.value.x)) {
-    diff.x = width.value - modal.width;
-  } else {
-    diff.x = e.clientX - clickDiff.value.x;
-  }
+const resolvedIcon = computed(() => props.icon || (props.status ? STATUS_ICON[props.status] : null));
+const resolvedIconBadgeClass = computed(() => STATUS_BADGE_CLASSES[props.status] ?? STATUS_BADGE_CLASSES.info);
+const isCenteredLayout = computed(() => props.layout === "center" || props.layout === "alert");
+const effectivePosition = computed(() => (props.centered ? "center" : props.position));
 
-  /*Y origin*/
-  if (e.clientY - clickDiff.value.y < 0) {
-    diff.y = 0;
-  } else if (
-      e.clientY >
-      height.value - (modal.height + clickDiff.value.y)
-  ) {
-    diff.y = height.value - (modal.height + clickDiff.value.y + 10);
-  } else {
-    diff.y = e.clientY - clickDiff.value.y;
-  }
-
-  modalContainer.value.style.left = diff.x + "px";
-  modalContainer.value.style.top = diff.y + "px";
+/*Size — accepts the ta-ui-kit scale. Unknown/missing values fall back to "2xl" (the app's
+long-standing default) instead of silently producing no max-width class, which is what made
+help-panel modals (max-width="3xl", previously unmapped) render full-bleed.*/
+const SIZE_MAP = {
+  xs: "sm:max-w-xs",
+  sm: "sm:max-w-sm",
+  md: "sm:max-w-md",
+  lg: "sm:max-w-lg",
+  xl: "sm:max-w-xl",
+  "2xl": "sm:max-w-2xl",
+  "3xl": "sm:max-w-3xl",
+  "4xl": "sm:max-w-4xl",
+  "5xl": "sm:max-w-5xl",
+  "6xl": "sm:max-w-6xl",
+  "7xl": "sm:max-w-7xl",
+  full: "sm:max-w-[calc(100vw-3rem)]",
 };
 
-/*Fullscreen*/
-const isExpanded = ref(false);
-const defaultStyle = ref(null);
-const updateSize = () => {
-  if (!isExpanded) {
-    defaultStyle.value = modelValue.value.style;
-  }
-  if (modalContainer.value) {
-    if (isExpanded.value) {
-      modalContainer.value.style.width = width.value + "px";
-      modalContainer.value.style.height = height.value + "px";
-      modalContainer.value.style.padding = "10px";
-    } else {
-      modalContainer.value.style = defaultStyle.value
-          ? defaultStyle.value
-          : "";
-    }
-  }
+const maxWidthClass = computed(() => SIZE_MAP[props.size ?? props.maxWidth] ?? SIZE_MAP["2xl"]);
+
+const RADIUS_MAP = {
+  none: "rounded-none",
+  sm: "rounded-lg",
+  md: "rounded-xl",
+  lg: "rounded-xl",
+  full: "rounded-2xl",
 };
 
-watch(
-    [width, height],
-    () => {
-      updateSize();
-    },
-    {immediate: true}
-);
+const radiusClass = computed(() => RADIUS_MAP[props.radius] ?? RADIUS_MAP.lg);
 
+defineExpose({close, toggleExpand, isExpanded});
 </script>
 
 <template>
   <teleport to="body">
-      <div v-show="modelValue" class="fixed inset-0 z-50 flex justify-center overflow-hidden p-3 sm:p-6" :class="[
+      <div v-show="modelValue" class="fixed inset-0 flex justify-center overflow-hidden p-3 sm:p-6" :style="{zIndex}" :class="[
                 {
-                    'items-center': position === 'center',
-                    'items-start': position !== 'center',
+                    'items-center': effectivePosition === 'center',
+                    'items-start': effectivePosition !== 'center',
                 },
             ]" scroll-region>
         <transition enter-active-class="ease-out duration-300" enter-from-class="opacity-0"
                     enter-to-class="opacity-100" leave-active-class="ease-in duration-300"
                     leave-from-class="opacity-100" leave-to-class="opacity-0">
           <div v-show="modelValue" class="fixed inset-0 transform transition-all"
-               @click="closeable ? close() : ''">
+               @click="close('backdrop')">
             <div class="absolute inset-0 bg-slate-900/55 backdrop-blur-[2px]"></div>
           </div>
         </transition>
@@ -290,42 +388,59 @@ watch(
                     enter-to-class="opacity-100 translate-y-0 sm:scale-100" leave-active-class="ease-in duration-300"
                     leave-from-class="opacity-100 translate-y-0 sm:scale-100"
                     leave-to-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
-          <div id="draggable " v-if="modelValue"
-               class="relative mx-auto flex max-h-[calc(100dvh-1.5rem)] w-full transform flex-col overflow-hidden rounded-xl border border-slate-300 bg-white shadow-2xl shadow-slate-950/25 transition-all sm:max-h-[calc(100dvh-3rem)] dark:border-slate-500 dark:bg-slate-700"
-               :class="[!isExpanded ? maxWidthClass : 'h-full max-h-full']" :draggable="draggable"
-               @dragstart="dragStart($event)" @dragend="dragEnd($event)" ref="modalContainer">
+          <div v-if="modelValue"
+               class="relative mx-auto flex max-h-[calc(100dvh-1.5rem)] w-full transform flex-col overflow-hidden border border-slate-300 bg-white shadow-2xl shadow-slate-950/25 transition-all sm:max-h-[calc(100dvh-3rem)] dark:border-slate-500 dark:bg-slate-700"
+               :class="[!isExpanded ? maxWidthClass : 'h-full max-h-full', !isExpanded ? radiusClass : 'rounded-none']"
+               :style="panelStyle"
+               @click.stop
+               @mouseenter="onMouseEnter"
+               @mouseleave="onMouseLeave">
+
+            <!--Countdown Timer Line-->
+            <div v-if="timer" class="absolute top-0 inset-x-0 h-1 overflow-hidden z-30 bg-slate-200 dark:bg-slate-600">
+              <div class="h-full bg-sky-500 transition-none origin-left" :style="{width: `${timerProgress}%`}"></div>
+            </div>
+
             <!--Header-->
-            <div
-                class="relative z-10 flex min-h-14 items-center bg-slate-100 px-5 py-3 pr-14 text-slate-800 shadow-sm shadow-slate-300/60 select-none dark:bg-slate-800 dark:text-slate-100 dark:shadow-black/20"
-                :class="[{ 'cursor-move': draggable }]">
-              <div>
-                <!--Header-->
-                <div v-if="header || $slots.header">
-                  <span v-if="header" v-text="header" class="text-xl font-semibold"></span>
-                  <slot v-else name="header"></slot>
+            <div class="relative z-10 flex min-h-14 items-center bg-slate-100 px-5 py-3 pr-14 text-slate-800 shadow-sm shadow-slate-300/60 select-none dark:bg-slate-800 dark:text-slate-100 dark:shadow-black/20"
+                :class="[
+                    {'cursor-move': draggable},
+                    isCenteredLayout ? 'flex-col items-center text-center pt-7 pb-4' : '',
+                ]"
+                @pointerdown="onDragStart">
+              <div class="flex min-w-0" :class="isCenteredLayout ? 'flex-col items-center gap-2 w-full' : 'items-center gap-3'">
+                <!--Status/Icon Badge-->
+                <div v-if="resolvedIcon"
+                     class="flex shrink-0 items-center justify-center rounded-xl border"
+                     :class="[isCenteredLayout ? 'size-11 text-lg' : 'size-9 text-sm', resolvedIconBadgeClass]">
+                  <font-awesome-icon :icon="resolvedIcon"/>
                 </div>
-                <!--Sub-header-->
-                <div v-if="subHeader || $slots.subHeader" class="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
-                  <span v-if="subHeader" v-text="subHeader"></span>
-                  <slot v-else name="subHeader"></slot>
+
+                <div>
+                  <!--Header-->
+                  <div v-if="resolvedHeader || $slots.header">
+                    <span v-if="resolvedHeader" v-text="resolvedHeader" class="text-xl font-semibold"></span>
+                    <slot v-else name="header"></slot>
+                  </div>
+                  <!--Sub-header-->
+                  <div v-if="resolvedSubHeader || $slots.subHeader" class="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
+                    <span v-if="resolvedSubHeader" v-text="resolvedSubHeader"></span>
+                    <slot v-else name="subHeader"></slot>
+                  </div>
                 </div>
               </div>
 
               <!--Top Action Icons-->
               <div class="absolute right-3 top-1/2 z-10 flex -translate-y-1/2 items-center justify-center gap-1"
-                   :class="[{ 'pr-2 pt-2': isExpanded }]">
+                   :class="[{ 'pr-2 pt-2': isExpanded, 'top-4 translate-y-0': isCenteredLayout }]">
                 <!--Maximize Icon-->
-                <div v-if="expandable" @click="
-    isExpanded = !isExpanded;
-updateSize();
-                                " class="flex justify-center items-center cursor-pointer">
-                  <font-awesome-icon icon="expand-alt" v-if="isExpanded"
-                                     class="w-4 h-4 text-slate-600"/>
+                <div v-if="expandable" @click="toggleExpand()" class="flex justify-center items-center cursor-pointer">
+                  <font-awesome-icon icon="expand-alt" v-if="isExpanded" class="w-4 h-4 text-slate-600"/>
                   <font-awesome-icon icon="compress-alt" v-else class="w-4 h-4 text-slate-600"/>
                 </div>
 
                 <!--Close Button-->
-                <button v-if="modelValue && closeButton" type="button" aria-label="Close" @click="close()"
+                <button v-if="modelValue && closeButton" type="button" aria-label="Close" @click="close('closeButton')"
                      class="flex size-9 cursor-pointer items-center justify-center rounded-full text-slate-500 transition hover:bg-slate-200 hover:text-rose-600 focus:outline-none focus:ring-2 focus:ring-rose-400/50 dark:text-slate-300 dark:hover:bg-slate-600 dark:hover:text-rose-300">
                   <font-awesome-icon icon="x" class="size-4"/>
                 </button>
@@ -333,41 +448,9 @@ updateSize();
             </div>
 
             <!--Body-->
-            <div
-                class="min-h-0 flex-1 overflow-y-auto bg-white px-5 pt-1 pb-4 text-slate-700 dark:bg-slate-700 dark:text-slate-100"
-                :class="[
-                                {
-                                    'flex': notification,
-                                },
-                            ]">
-              <!--Special Content for Type-->
-              <div v-if="notification" class="flex flex-col w-full justify-center items-center">
-                <!--Icon-->
-                <div v-if="notificationType || $slots.hasOwnProperty('icon')"
-                     class="flex justify-center items-center rounded-full p-2 mb-2" :class="
-                                        notificationType
-                                            ? iconList.find((i) => i.key === notificationType).border
-                                            : ''
-                                    ">
-                  <svg v-if="notificationType" v-html="
-                                        iconList.find((i) => i.key === notificationType).content
-                                    " :class="[
-    iconList.find((i) => i.key === notificationType).color,
-]" class="w-24 h-24 iconAnimation"/>
-                  <slot v-else name="icon"/>
-                </div>
-
-                <!--Title-->
-                <p v-if="notificationTitle" v-text="notificationTitle"
-                   class="text-2xl font-semibold mb-2"></p>
-                <!--Message-->
-                <span v-if="notificationMessage" v-text="notificationMessage"></span>
-              </div>
-
-              <!--Common Content-->
-              <div v-else class="w-full h-full">
-                <slot></slot>
-              </div>
+            <div class="min-h-0 flex-1 overflow-y-auto bg-white px-5 pt-1 pb-4 text-slate-700 dark:bg-slate-700 dark:text-slate-100"
+                :class="isCenteredLayout ? 'text-center' : ''">
+              <slot></slot>
             </div>
 
             <!--Footer-->
@@ -411,23 +494,3 @@ updateSize();
       </div>
   </teleport>
 </template>
-
-<style scoped>
-.iconAnimation {
-  animation: iconAnimation 700ms ease-in-out;
-}
-
-@keyframes iconAnimation {
-  0% {
-    transform: scale(0.5) rotateY(0);
-  }
-
-  50% {
-    transform: scale(1.2);
-  }
-
-  100% {
-    transform: scale(1) rotateY(180deg);
-  }
-}
-</style>
