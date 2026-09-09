@@ -64,6 +64,7 @@ import MultiSelectInput from "@/Components/Form/MultiSelectInput.vue";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import ShowModal from "@/Pages/Modules/Document/ShowModal.vue";
 import {fileTypesToAcceptAttribute} from "@/Components/Form/FileTypeSelectInput.vue";
+import HelpButton from "@/Components/Help/HelpButton.vue";
 
 const fileAccept = computed(() => fileTypesToAcceptAttribute(props.allowedFileTypes))
 
@@ -238,6 +239,13 @@ const handleCloseModal = () => {
 <template>
     <app-layout :title="tm('title.indexPage.title')" :sub-title="tm('title.indexPage.subTitle')">
         <template #actionArea>
+            <help-button title="Doküman Yönetimi — Nasıl Çalışır?" subtitle="Versiyon onay akışını, revizyon taleplerini ve iptal/yerine geçme mekanizmasını buradan öğrenin">
+                <p><strong>Versiyon Onay Akışı:</strong> Taslak → (Onaya Gönder) → İnceleniyor → (İnceleme Onayı) → Onay Bekliyor → (Onayla) → Onaylandı. İnceleme veya onay adımında reddedilirse versiyon "Reddedildi" durumuna geçer. Bir versiyon onaylandığında, dökümanın önceki onaylı versiyonu otomatik olarak "Eskidi" durumuna geçer — aynı anda yalnızca bir versiyon yürürlükte kalır.</p>
+                <p><strong>Yeni Revizyon:</strong> Bir dökümana yeni revizyon (versiyon), yalnızca mevcut versiyon Onaylandı/Reddedildi/Eskidi durumlarından birindeyken eklenebilir — süreci devam eden (Taslak/İnceleniyor/Onay Bekliyor) bir versiyon varken yeni revizyon başlatılamaz.</p>
+                <p><strong>Revizyon Talebi:</strong> Herhangi bir kullanıcı bir dökümanın revize edilmesini talep edebilir. Talep, yetkili biri tarafından kabul veya reddedilir; kabul edilen bir talep, onu karşılayan yeni versiyon yüklendiğinde otomatik olarak "Tamamlandı" durumuna geçer.</p>
+                <p><strong>İptal / Yerine Geçme:</strong> Bir döküman iptal edildiğinde, varsa onaylı versiyonu da "Eskidi" durumuna alınır. İptal ederken isteğe bağlı olarak dökümanın yerine geçen başka bir döküman belirtilebilir.</p>
+                <p><strong>Dağıtım Noktaları ve Yetkiler:</strong> Bir versiyon onaylandığında, dökümanın türüne yetkili (Yazar/İnceleyen/Onaylayan/Görüntüleyen) tüm kullanıcılara ve dağıtım noktalarındaki herkese "okudum/anladım" onay kaydı otomatik olarak açılır.</p>
+            </help-button>
             <!--Deleted Documents-->
             <simple-button type="route" :link="route('department.deleted')" color="red">
                 <font-awesome-icon icon="trash-can" class="mr-2"/>
