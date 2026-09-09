@@ -70,7 +70,7 @@ class EducationPlanController extends Controller
     public function show(EducationPlan $educationPlan)
     {
         return Inertia::render('Modules/HumanResources/EducationPlan/ShowPage', [
-            'data' => $educationPlan,
+            'data' => $educationPlan->load(['educations' => fn ($query) => $query->select('id', 'education_plan_id', 'name', 'planned_date', 'is_completed', 'is_cancelled')]),
         ]);
     }
 

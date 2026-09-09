@@ -7,12 +7,20 @@ import {router} from "@inertiajs/vue3";
 import SimpleButton from "@/Components/Button/SimpleButton.vue"
 import Alert from "@/Components/Alert/Alert.vue"
 import Badge from "@/Components/Badge/Badge.vue"
+import HelpButton from "@/Components/Help/HelpButton.vue"
+import Modal from "@/Components/Modal/Modal.vue"
+import InputGroup from "@/Components/Form/InputGroup.vue"
+import SelectInput from "@/Components/Form/SelectInput.vue"
 
 // Props
 const props = defineProps({
     data: {
         type: Object,
         default: {}
+    },
+    candidateUsers: {
+        type: Array,
+        default: () => []
     }
 })
 
@@ -20,6 +28,37 @@ const props = defineProps({
 import Translates from "./translates"
 
 const {t, tm} = Translates();
+
+/*Add participant*/
+const showAddParticipantModal = ref(false);
+const newParticipantUserId = ref(null);
+const addParticipant = () => {
+    if (!newParticipantUserId.value) return;
+    router.post(route('education.add-participant', props.data.id), {
+        user_id: newParticipantUserId.value,
+    }, {
+        preserveScroll: true,
+        onSuccess: () => {
+            showAddParticipantModal.value = false;
+            newParticipantUserId.value = null;
+        }
+    })
+}
+
+/*Update participant (attendance / success / score)*/
+const updateParticipant = (participation, changes) => {
+    router.put(route('education.update-participant', [props.data.id, participation.user_id]), {
+        is_attend: participation.is_attend,
+        status: participation.status,
+        score: participation.score,
+        ...changes,
+    }, {preserveScroll: true})
+}
+
+/*Remove participant*/
+const removeParticipant = (participation) => {
+    router.delete(route('education.remove-participant', [props.data.id, participation.user_id]), {preserveScroll: true})
+}
 
 // Status badge colors
 const getStatusColor = (education) => {
@@ -59,6 +98,12 @@ const formatDuration = (minutes) => {
 <template>
     <app-layout :title="tm('title.showPage.title')" :sub-title="props.data.name">
         <template #actionArea>
+            <help-button title="Eğitim Detayı — Nasıl Çalışır?" subtitle="Durum, katılımcı ve eğitmen yönetimi">
+                <p><strong>Durum Rozeti:</strong> Bir eğitim varsayılan olarak "Planlandı" durumundadır. Düzenleme formundaki "Tamamlandı" ve "İptal Edildi" işaretleri birbirinden bağımsızdır — sistem ikisinin aynı anda işaretlenmesini engellemez, rozet önceliği önce iptali, sonra tamamlanmayı gösterir.</p>
+                <p><strong>Katılımcılar:</strong> Her katılımcı için üç ayrı bilgi tutulur: <strong>Katıldı mı</strong> (fiilen eğitime katıldı mı), <strong>Başarılı mı</strong> (eğitimi başarıyla tamamladı mı) ve 0-100 arası <strong>puan</strong>. Bu üçü birbirinden bağımsızdır; birini işaretlemek diğerini otomatik değiştirmez.</p>
+                <p><strong>Eğitmenler:</strong> Eğitmen listesi, kişi bazlı hesap gerektirmeyen ayrı bir "Eğitmen" tanım tablosundan (Modül Ayarları) gelir — katılımcı listesindeki kullanıcı hesaplarından farklıdır.</p>
+            </help-button>
+
             <!--Return to List-->
             <simple-button type="route" :link="route('education.index')" color="gray">
                 <font-awesome-icon icon="arrow-left" class="mr-2"/>
@@ -69,12 +114,6 @@ const formatDuration = (minutes) => {
             <simple-button type="route" :link="route('education.edit', props.data.id)" color="blue">
                 <font-awesome-icon icon="edit" class="mr-2"/>
                 <span v-text="tm('action.editEducation')"/>
-            </simple-button>
-
-            <!--Manage Participants-->
-            <simple-button color="purple">
-                <font-awesome-icon icon="users" class="mr-2"/>
-                <span v-text="tm('action.manageParticipants')"/>
             </simple-button>
         </template>
 
@@ -208,14 +247,14 @@ const formatDuration = (minutes) => {
                 <div class="bg-white dark:bg-slate-800 rounded-lg p-6 shadow">
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="text-lg font-semibold">{{ tm('term.participants') }}</h3>
-                        <simple-button color="green" size="sm">
+                        <simple-button color="green" size="sm" @click="showAddParticipantModal = true">
                             <font-awesome-icon icon="plus" class="mr-1"/>
                             {{ tm('term.addParticipant') }}
                         </simple-button>
                     </div>
                     <div v-if="data.participations?.length" class="space-y-3">
-                        <div 
-                            v-for="participation in data.participations" 
+                        <div
+                            v-for="participation in data.participations"
                             :key="participation.id"
                             class="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded"
                         >
@@ -225,13 +264,39 @@ const formatDuration = (minutes) => {
                                 </div>
                                 <div>
                                     <p class="font-medium">{{ participation.user?.name }}</p>
-                                    <div class="flex space-x-2 text-xs">
-                                        <Badge :color="participation.is_attend ? 'green' : 'gray'" size="sm">
+                                    <div class="flex flex-wrap items-center gap-2 text-xs mt-1">
+                                        <Badge
+                                            class="cursor-pointer"
+                                            :color="participation.is_attend ? 'green' : 'gray'"
+                                            size="sm"
+                                            @click="updateParticipant(participation, {is_attend: !participation.is_attend})"
+                                        >
                                             {{ participation.is_attend ? tm('term.isAttend') : 'Katılmadı' }}
                                         </Badge>
-                                        <Badge v-if="participation.score !== null" color="blue" size="sm">
-                                            {{ participation.score }} puan
+                                        <Badge
+                                            class="cursor-pointer"
+                                            :color="participation.status ? 'blue' : 'gray'"
+                                            size="sm"
+                                            @click="updateParticipant(participation, {status: !participation.status})"
+                                        >
+                                            {{ participation.status ? 'Başarılı' : 'Başarısız' }}
                                         </Badge>
+                                        <input
+                                            type="number"
+                                            min="0"
+                                            max="100"
+                                            :value="participation.score"
+                                            @change="updateParticipant(participation, {score: $event.target.value === '' ? null : Number($event.target.value)})"
+                                            class="w-16 text-xs rounded border-gray-300 dark:border-gray-600 dark:bg-gray-800"
+                                            placeholder="puan"
+                                        />
+                                        <button
+                                            type="button"
+                                            class="text-red-500 hover:text-red-700"
+                                            @click="removeParticipant(participation)"
+                                        >
+                                            <font-awesome-icon icon="trash-can"/>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -258,7 +323,7 @@ const formatDuration = (minutes) => {
                                 <p class="font-medium truncate">{{ document.name }}</p>
                                 <p class="text-xs text-gray-500">{{ document.mime_type }}</p>
                             </div>
-                            <simple-button size="sm" color="blue" class="ml-2">
+                            <simple-button size="sm" color="blue" class="ml-2" type="external" :link="document.original_url" download>
                                 <font-awesome-icon icon="download"/>
                             </simple-button>
                         </div>
@@ -270,4 +335,20 @@ const formatDuration = (minutes) => {
             </div>
         </div>
     </app-layout>
+
+    <teleport to="body">
+        <Modal
+            v-model="showAddParticipantModal"
+            :header="tm('term.addParticipant')"
+            closeable
+            close-button
+        >
+            <input-group label-for="participant_user_id" :label="tm('term.participants')">
+                <select-input v-model="newParticipantUserId" :options="candidateUsers" option-key="id" option-label="name"/>
+            </input-group>
+            <template #footer>
+                <SimpleButton :label="t('action.create')" color="green" @click="addParticipant"/>
+            </template>
+        </Modal>
+    </teleport>
 </template> 
