@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RecordImmediateActionRequest;
 use App\Models\Problem;
 use App\Services\Problem\ProblemWorkflowService;
 use RuntimeException;
@@ -10,6 +11,14 @@ class ProblemWorkflowController extends Controller
 {
     public function __construct(private readonly ProblemWorkflowService $problemWorkflowService)
     {
+    }
+
+    public function recordImmediateAction(RecordImmediateActionRequest $request, Problem $problem)
+    {
+        return $this->runWorkflowAction(
+            fn () => $this->problemWorkflowService->recordImmediateAction($problem, $request->validated('immediate_action'), auth()->user()),
+            'messages.problem.immediateActionRecorded',
+        );
     }
 
     public function markUnderReview(Problem $problem)

@@ -12,6 +12,7 @@ import InputGroup from "@/Components/Form/InputGroup.vue"
 import TextInput from "@/Components/Form/TextInput.vue"
 import TextAreaInput from "@/Components/Form/TextAreaInput.vue"
 import SelectInput from "@/Components/Form/SelectInput.vue"
+import HelpButton from "@/Components/Help/HelpButton.vue"
 
 // Multi-lang
 import Translates from "./translates"
@@ -71,6 +72,33 @@ const capaStatusLabels = {
 }
 
 const formatDate = (value) => value ? new Date(value).toLocaleDateString('tr-TR') : '-'
+const formatDateTime = (value) => value ? new Date(value).toLocaleString('tr-TR') : '-'
+
+/* ---------- Immediate Action ---------- */
+const showImmediateActionModal = ref(false)
+const immediateActionForm = useForm({
+    immediate_action: props.problem.immediate_action ?? "",
+})
+const immediateActionRules = ref({
+    immediate_action: {required: helpers.withMessage(t('message.validation.required'), required)},
+})
+const immediateActionV$ = useVuelidate(immediateActionRules, immediateActionForm)
+
+const openImmediateAction = () => {
+    immediateActionForm.immediate_action = props.problem.immediate_action ?? "";
+    immediateActionV$.value.$reset();
+    showImmediateActionModal.value = true;
+}
+
+const submitImmediateAction = async () => {
+    const isValidated = await immediateActionV$.value.$validate()
+    if (!isValidated) return
+
+    immediateActionForm.post(route('problem.immediate-action', props.problem.id), {
+        onSuccess: () => showImmediateActionModal.value = false,
+        preserveScroll: true,
+    })
+}
 
 /* ---------- Workflow ---------- */
 const markUnderReview = () => {
@@ -125,6 +153,10 @@ const submitRaiseCapa = async () => {
 <template>
     <app-layout :title="tm('title.showPage.title') + ' — ' + problem.code" :sub-title="tm('title.showPage.subTitle')">
         <template #actionArea>
+            <help-button title="Uygunsuzluk Detayı — Nasıl Çalışır?" subtitle="Anlık aksiyon, DÖF ilişkisi ve durum akışını buradan yönetin">
+                <p><strong>Anlık Aksiyon (Düzeltme):</strong> Uygunsuzluk tespit edildiği anda, kök neden araştırması beklenmeden alınan ilk müdahaledir (örn. "etkilenen parti karantinaya alındı"). Bu, kök nedeni ortadan kaldırmaya yönelik DÖF'ten (Düzeltici/Önleyici Faaliyet) farklıdır ve durum akışından bağımsız olarak her an kaydedilebilir/güncellenebilir.</p>
+                <p><strong>Durum akışı:</strong> Açık → (İncelemeye Al) → İnceleniyor → (DÖF Aç) → DÖF Açıldı → (tüm bağlı DÖF'ler kapandığında Kapat) → Kapatıldı. Kök neden araştırması gerekmiyorsa "DÖF Gerektirmeden Kapat" ile doğrudan kapatılabilir.</p>
+            </help-button>
             <simple-button type="route" :link="route('problem.index')">
                 <font-awesome-icon icon="fa-solid fa-left-long" class="mr-2"/>
                 <span v-text="t('action.goBack')"/>
@@ -165,6 +197,10 @@ const submitRaiseCapa = async () => {
                     </div>
                 </div>
                 <div class="flex gap-2 flex-wrap">
+                    <simple-button color="red" @click="openImmediateAction">
+                        <font-awesome-icon icon="bolt" class="mr-2"/>
+                        <span v-text="problem.immediate_action ? tm('action.editImmediateAction') : tm('action.recordImmediateAction')"/>
+                    </simple-button>
                     <simple-button v-if="problem.status === 'open'" color="blue" @click="markUnderReview">
                         <span v-text="tm('action.markUnderReview')"/>
                     </simple-button>
@@ -194,6 +230,12 @@ const submitRaiseCapa = async () => {
             <div class="mt-4 text-sm">
                 <span class="text-slate-400 block" v-text="tm('term.description')"/>
                 <p>{{ problem.description }}</p>
+            </div>
+
+            <div v-if="problem.immediate_action" class="mt-4 text-sm bg-rose-50 dark:bg-rose-950 rounded p-3">
+                <span class="text-rose-500 block" v-text="tm('term.immediateAction')"/>
+                <p>{{ problem.immediate_action }}</p>
+                <p class="text-xs text-slate-400 mt-1">{{ problem.immediate_action_by?.name ?? '-' }} — {{ formatDateTime(problem.immediate_action_at) }}</p>
             </div>
         </div>
 
@@ -231,6 +273,22 @@ const submitRaiseCapa = async () => {
                 </tbody>
             </table>
         </div>
+
+        <!--Immediate Action Modal-->
+        <teleport to="body">
+            <Modal v-model="showImmediateActionModal" :header="tm('action.recordImmediateAction')" closeable close-button max-width="2xl">
+                <Form full-size>
+                    <FormSection bg-less>
+                        <input-group class="col-span-6" labelFor="immediate_action" :label="tm('term.immediateAction')" :errors="immediateActionV$.immediate_action.$errors">
+                            <text-area-input v-model="immediateActionForm.immediate_action"/>
+                        </input-group>
+                    </FormSection>
+                </Form>
+                <template #footer>
+                    <SimpleButton :label="tm('action.recordImmediateAction')" color="red" @click="submitImmediateAction" :loading="immediateActionForm.processing"/>
+                </template>
+            </Modal>
+        </teleport>
 
         <!--Raise CAPA Modal-->
         <teleport to="body">

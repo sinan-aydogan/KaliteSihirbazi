@@ -1,7 +1,86 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
+* @see \App\Http\Controllers\ProblemWorkflowController::recordImmediateAction
+ * @see app/Http/Controllers/ProblemWorkflowController.php:16
+ * @route '/problem/{problem}/immediate-action'
+ */
+export const recordImmediateAction = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: recordImmediateAction.url(args, options),
+    method: 'post',
+})
+
+recordImmediateAction.definition = {
+    methods: ["post"],
+    url: '/problem/{problem}/immediate-action',
+} satisfies RouteDefinition<["post"]>
+
+/**
+* @see \App\Http\Controllers\ProblemWorkflowController::recordImmediateAction
+ * @see app/Http/Controllers/ProblemWorkflowController.php:16
+ * @route '/problem/{problem}/immediate-action'
+ */
+recordImmediateAction.url = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { problem: args }
+    }
+
+            if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
+            args = { problem: args.id }
+        }
+    
+    if (Array.isArray(args)) {
+        args = {
+                    problem: args[0],
+                }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+                        problem: typeof args.problem === 'object'
+                ? args.problem.id
+                : args.problem,
+                }
+
+    return recordImmediateAction.definition.url
+            .replace('{problem}', parsedArgs.problem.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\ProblemWorkflowController::recordImmediateAction
+ * @see app/Http/Controllers/ProblemWorkflowController.php:16
+ * @route '/problem/{problem}/immediate-action'
+ */
+recordImmediateAction.post = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: recordImmediateAction.url(args, options),
+    method: 'post',
+})
+
+    /**
+* @see \App\Http\Controllers\ProblemWorkflowController::recordImmediateAction
+ * @see app/Http/Controllers/ProblemWorkflowController.php:16
+ * @route '/problem/{problem}/immediate-action'
+ */
+    const recordImmediateActionForm = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        action: recordImmediateAction.url(args, options),
+        method: 'post',
+    })
+
+            /**
+* @see \App\Http\Controllers\ProblemWorkflowController::recordImmediateAction
+ * @see app/Http/Controllers/ProblemWorkflowController.php:16
+ * @route '/problem/{problem}/immediate-action'
+ */
+        recordImmediateActionForm.post = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+            action: recordImmediateAction.url(args, options),
+            method: 'post',
+        })
+    
+    recordImmediateAction.form = recordImmediateActionForm
+/**
 * @see \App\Http\Controllers\ProblemWorkflowController::markUnderReview
- * @see app/Http/Controllers/ProblemWorkflowController.php:15
+ * @see app/Http/Controllers/ProblemWorkflowController.php:24
  * @route '/problem/{problem}/mark-under-review'
  */
 export const markUnderReview = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -16,7 +95,7 @@ markUnderReview.definition = {
 
 /**
 * @see \App\Http\Controllers\ProblemWorkflowController::markUnderReview
- * @see app/Http/Controllers/ProblemWorkflowController.php:15
+ * @see app/Http/Controllers/ProblemWorkflowController.php:24
  * @route '/problem/{problem}/mark-under-review'
  */
 markUnderReview.url = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -49,7 +128,7 @@ markUnderReview.url = (args: { problem: number | { id: number } } | [problem: nu
 
 /**
 * @see \App\Http\Controllers\ProblemWorkflowController::markUnderReview
- * @see app/Http/Controllers/ProblemWorkflowController.php:15
+ * @see app/Http/Controllers/ProblemWorkflowController.php:24
  * @route '/problem/{problem}/mark-under-review'
  */
 markUnderReview.post = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -59,7 +138,7 @@ markUnderReview.post = (args: { problem: number | { id: number } } | [problem: n
 
     /**
 * @see \App\Http\Controllers\ProblemWorkflowController::markUnderReview
- * @see app/Http/Controllers/ProblemWorkflowController.php:15
+ * @see app/Http/Controllers/ProblemWorkflowController.php:24
  * @route '/problem/{problem}/mark-under-review'
  */
     const markUnderReviewForm = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -69,7 +148,7 @@ markUnderReview.post = (args: { problem: number | { id: number } } | [problem: n
 
             /**
 * @see \App\Http\Controllers\ProblemWorkflowController::markUnderReview
- * @see app/Http/Controllers/ProblemWorkflowController.php:15
+ * @see app/Http/Controllers/ProblemWorkflowController.php:24
  * @route '/problem/{problem}/mark-under-review'
  */
         markUnderReviewForm.post = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -80,7 +159,7 @@ markUnderReview.post = (args: { problem: number | { id: number } } | [problem: n
     markUnderReview.form = markUnderReviewForm
 /**
 * @see \App\Http\Controllers\ProblemWorkflowController::closeWithoutCapa
- * @see app/Http/Controllers/ProblemWorkflowController.php:23
+ * @see app/Http/Controllers/ProblemWorkflowController.php:32
  * @route '/problem/{problem}/close-without-capa'
  */
 export const closeWithoutCapa = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -95,7 +174,7 @@ closeWithoutCapa.definition = {
 
 /**
 * @see \App\Http\Controllers\ProblemWorkflowController::closeWithoutCapa
- * @see app/Http/Controllers/ProblemWorkflowController.php:23
+ * @see app/Http/Controllers/ProblemWorkflowController.php:32
  * @route '/problem/{problem}/close-without-capa'
  */
 closeWithoutCapa.url = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -128,7 +207,7 @@ closeWithoutCapa.url = (args: { problem: number | { id: number } } | [problem: n
 
 /**
 * @see \App\Http\Controllers\ProblemWorkflowController::closeWithoutCapa
- * @see app/Http/Controllers/ProblemWorkflowController.php:23
+ * @see app/Http/Controllers/ProblemWorkflowController.php:32
  * @route '/problem/{problem}/close-without-capa'
  */
 closeWithoutCapa.post = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -138,7 +217,7 @@ closeWithoutCapa.post = (args: { problem: number | { id: number } } | [problem: 
 
     /**
 * @see \App\Http\Controllers\ProblemWorkflowController::closeWithoutCapa
- * @see app/Http/Controllers/ProblemWorkflowController.php:23
+ * @see app/Http/Controllers/ProblemWorkflowController.php:32
  * @route '/problem/{problem}/close-without-capa'
  */
     const closeWithoutCapaForm = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -148,7 +227,7 @@ closeWithoutCapa.post = (args: { problem: number | { id: number } } | [problem: 
 
             /**
 * @see \App\Http\Controllers\ProblemWorkflowController::closeWithoutCapa
- * @see app/Http/Controllers/ProblemWorkflowController.php:23
+ * @see app/Http/Controllers/ProblemWorkflowController.php:32
  * @route '/problem/{problem}/close-without-capa'
  */
         closeWithoutCapaForm.post = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -159,7 +238,7 @@ closeWithoutCapa.post = (args: { problem: number | { id: number } } | [problem: 
     closeWithoutCapa.form = closeWithoutCapaForm
 /**
 * @see \App\Http\Controllers\ProblemWorkflowController::close
- * @see app/Http/Controllers/ProblemWorkflowController.php:31
+ * @see app/Http/Controllers/ProblemWorkflowController.php:40
  * @route '/problem/{problem}/close'
  */
 export const close = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -174,7 +253,7 @@ close.definition = {
 
 /**
 * @see \App\Http\Controllers\ProblemWorkflowController::close
- * @see app/Http/Controllers/ProblemWorkflowController.php:31
+ * @see app/Http/Controllers/ProblemWorkflowController.php:40
  * @route '/problem/{problem}/close'
  */
 close.url = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -207,7 +286,7 @@ close.url = (args: { problem: number | { id: number } } | [problem: number | { i
 
 /**
 * @see \App\Http\Controllers\ProblemWorkflowController::close
- * @see app/Http/Controllers/ProblemWorkflowController.php:31
+ * @see app/Http/Controllers/ProblemWorkflowController.php:40
  * @route '/problem/{problem}/close'
  */
 close.post = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -217,7 +296,7 @@ close.post = (args: { problem: number | { id: number } } | [problem: number | { 
 
     /**
 * @see \App\Http\Controllers\ProblemWorkflowController::close
- * @see app/Http/Controllers/ProblemWorkflowController.php:31
+ * @see app/Http/Controllers/ProblemWorkflowController.php:40
  * @route '/problem/{problem}/close'
  */
     const closeForm = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -227,7 +306,7 @@ close.post = (args: { problem: number | { id: number } } | [problem: number | { 
 
             /**
 * @see \App\Http\Controllers\ProblemWorkflowController::close
- * @see app/Http/Controllers/ProblemWorkflowController.php:31
+ * @see app/Http/Controllers/ProblemWorkflowController.php:40
  * @route '/problem/{problem}/close'
  */
         closeForm.post = (args: { problem: number | { id: number } } | [problem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -236,6 +315,6 @@ close.post = (args: { problem: number | { id: number } } | [problem: number | { 
         })
     
     close.form = closeForm
-const ProblemWorkflowController = { markUnderReview, closeWithoutCapa, close }
+const ProblemWorkflowController = { recordImmediateAction, markUnderReview, closeWithoutCapa, close }
 
 export default ProblemWorkflowController

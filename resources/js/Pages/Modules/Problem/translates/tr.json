@@ -29,6 +29,7 @@
         "detectedDate": "Tespit Tarihi",
         "closedAt": "Kapanış Tarihi",
         "capaCount": "DÖF",
+        "immediateAction": "Anlık Aksiyon (Düzeltme)",
         "problemSeverity": {
             "low": "Düşük",
             "medium": "Orta",
@@ -45,6 +46,8 @@
     },
     "action": {
         "viewDetails": "Detay / Yönet",
+        "recordImmediateAction": "Anlık Aksiyon Kaydet",
+        "editImmediateAction": "Anlık Aksiyonu Düzenle",
         "markUnderReview": "İncelemeye Al",
         "raiseCapa": "DÖF Aç",
         "closeWithoutCapa": "DÖF Gerektirmeden Kapat",

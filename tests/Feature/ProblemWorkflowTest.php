@@ -16,6 +16,45 @@ function makeProblem(User $author): Problem
     ]);
 }
 
+test('an immediate action can be recorded on a problem regardless of status', function () {
+    $author = User::factory()->create();
+    $problem = makeProblem($author);
+
+    $this->actingAs($author)
+        ->post(route('problem.immediate-action', $problem), [
+            'immediate_action' => 'Etkilenen parti karantinaya alındı.',
+        ])
+        ->assertSessionHasNoErrors();
+
+    expect($problem->fresh()->immediate_action)->toBe('Etkilenen parti karantinaya alındı.')
+        ->and($problem->fresh()->immediate_action_by_id)->toBe($author->id)
+        ->and($problem->fresh()->immediate_action_at)->not->toBeNull()
+        ->and($problem->fresh()->status)->toBe(ProblemStatus::Open);
+});
+
+test('recording an immediate action requires a description', function () {
+    $author = User::factory()->create();
+    $problem = makeProblem($author);
+
+    $this->actingAs($author)
+        ->post(route('problem.immediate-action', $problem), [])
+        ->assertSessionHasErrors(['immediate_action']);
+});
+
+test('an immediate action can be amended after it was first recorded', function () {
+    $author = User::factory()->create();
+    $problem = makeProblem($author);
+    $problem->update(['immediate_action' => 'İlk kayıt.', 'immediate_action_at' => now(), 'immediate_action_by_id' => $author->id]);
+
+    $this->actingAs($author)
+        ->post(route('problem.immediate-action', $problem), [
+            'immediate_action' => 'Güncellenmiş kayıt.',
+        ])
+        ->assertSessionHasNoErrors();
+
+    expect($problem->fresh()->immediate_action)->toBe('Güncellenmiş kayıt.');
+});
+
 test('raising a capa against a problem moves it into the capa_raised state', function () {
     $author = User::factory()->create();
     $problem = makeProblem($author);
