@@ -9,6 +9,7 @@ use App\Models\HumanResources\Education\Education;
 use App\Models\HumanResources\Education\EducationInstructor;
 use App\Models\HumanResources\Education\EducationPlan;
 use App\Models\HumanResources\Education\EducationType;
+use App\Models\HumanResources\Employee\Employee;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -119,6 +120,14 @@ class EducationController extends Controller
                 'participations.user',
                 'media',
             ]),
+            'candidateUsers' => Employee::whereHas('account')
+                ->with('account:id,accountable_id,accountable_type,name')
+                ->get(['id', 'name'])
+                ->map(fn (Employee $employee) => [
+                    'id' => $employee->account->id,
+                    'name' => $employee->account->name ?: $employee->name,
+                ])
+                ->values(),
         ]);
     }
 

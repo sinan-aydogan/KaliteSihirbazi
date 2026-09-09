@@ -1,10 +1,12 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
-import {router} from "@inertiajs/vue3";
+import {Link, router} from "@inertiajs/vue3";
 
 // Components
 import SimpleButton from "@/Components/Button/SimpleButton.vue"
 import Alert from "@/Components/Alert/Alert.vue";
+import Badge from "@/Components/Badge/Badge.vue";
+import HelpButton from "@/Components/Help/HelpButton.vue";
 
 // Props
 const props = defineProps({
@@ -33,6 +35,11 @@ const formatDate = (date) => {
 <app-layout :title="data.name">
 
   <template #actionArea>
+    <help-button title="Eğitim Planı — Nasıl Çalışır?" subtitle="Plan ile eğitimler arası ilişki">
+      <p>Bir <strong>Eğitim Planı</strong>, belirli bir tarih aralığını (başlangıç-bitiş) kapsayan bir gruplama kaydıdır. Tekil <strong>Eğitim</strong> kayıtları oluşturulurken bir plana bağlanır; bu sayfada o plana bağlı tüm eğitimler listelenir.</p>
+      <p>Yeni bir eğitim eklemek için "Eğitimler" listesindeki butonla eğitim listesine gidip oradan planı seçerek oluşturursunuz — eğitim ekleme işlemi bu sayfadan değil, Eğitimler modülünden yapılır.</p>
+    </help-button>
+
     <simple-button @click="handleDelete" color="red">
       <font-awesome-icon icon="trash-can" class="mr-2" />
       <span v-text="tm('action.delete')" />
@@ -72,15 +79,33 @@ const formatDate = (date) => {
       </div>
     </div>
 
-    <!--Educations List (Future feature)-->
+    <!--Educations List-->
     <div class="col-span-12">
       <div class="bg-white dark:bg-slate-800 rounded-lg p-6 shadow">
         <h3 class="text-lg font-semibold mb-4">{{ tm('term.educations') }}</h3>
-        <Alert>
+
+        <div v-if="data.educations?.length" class="space-y-2">
+          <Link
+            v-for="education in data.educations"
+            :key="education.id"
+            :href="route('education.show', education.id)"
+            class="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded hover:bg-gray-100 dark:hover:bg-gray-600"
+          >
+            <span class="font-medium">{{ education.name }}</span>
+            <div class="flex items-center gap-2 text-xs">
+              <span>{{ formatDate(education.planned_date) }}</span>
+              <Badge :color="education.is_cancelled ? 'red' : (education.is_completed ? 'green' : 'blue')">
+                {{ education.is_cancelled ? 'İptal Edildi' : (education.is_completed ? 'Tamamlandı' : 'Planlandı') }}
+              </Badge>
+            </div>
+          </Link>
+        </div>
+        <Alert v-else>
           {{ tm('message.feedback.noEducationsInPlan') }}
         </Alert>
+
         <!--Add Education-->
-        <simple-button class="mt-4" full-size color="green">
+        <simple-button class="mt-4" full-size color="green" type="route" :link="route('education.index')">
           <font-awesome-icon icon="fa-solid fa-plus"/>
           <span v-text="tm('action.addEducation')"/>
         </simple-button>

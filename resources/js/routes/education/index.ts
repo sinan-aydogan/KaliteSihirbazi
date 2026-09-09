@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::search
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:26
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:27
  * @route '/education/search'
  */
 export const search = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -16,7 +16,7 @@ search.definition = {
 
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::search
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:26
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:27
  * @route '/education/search'
  */
 search.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ search.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::search
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:26
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:27
  * @route '/education/search'
  */
 search.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -35,7 +35,7 @@ search.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
     /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::search
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:26
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:27
  * @route '/education/search'
  */
     const searchForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -45,7 +45,7 @@ search.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
             /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::search
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:26
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:27
  * @route '/education/search'
  */
         searchForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -56,7 +56,7 @@ search.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     search.form = searchForm
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::index
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:26
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:27
  * @route '/education'
  */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -71,7 +71,7 @@ index.definition = {
 
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::index
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:26
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:27
  * @route '/education'
  */
 index.url = (options?: RouteQueryOptions) => {
@@ -80,7 +80,7 @@ index.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::index
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:26
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:27
  * @route '/education'
  */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -89,7 +89,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::index
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:26
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:27
  * @route '/education'
  */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -99,7 +99,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::index
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:26
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:27
  * @route '/education'
  */
     const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -109,7 +109,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::index
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:26
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:27
  * @route '/education'
  */
         indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -118,7 +118,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::index
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:26
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:27
  * @route '/education'
  */
         indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -134,7 +134,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     index.form = indexForm
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::create
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:65
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:66
  * @route '/education/create'
  */
 export const create = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -149,7 +149,7 @@ create.definition = {
 
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::create
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:65
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:66
  * @route '/education/create'
  */
 create.url = (options?: RouteQueryOptions) => {
@@ -158,7 +158,7 @@ create.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::create
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:65
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:66
  * @route '/education/create'
  */
 create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -167,7 +167,7 @@ create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::create
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:65
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:66
  * @route '/education/create'
  */
 create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -177,7 +177,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::create
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:65
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:66
  * @route '/education/create'
  */
     const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -187,7 +187,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::create
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:65
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:66
  * @route '/education/create'
  */
         createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -196,7 +196,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::create
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:65
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:66
  * @route '/education/create'
  */
         createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -212,7 +212,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     create.form = createForm
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::store
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:75
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:76
  * @route '/education'
  */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -227,7 +227,7 @@ store.definition = {
 
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::store
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:75
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:76
  * @route '/education'
  */
 store.url = (options?: RouteQueryOptions) => {
@@ -236,7 +236,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::store
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:75
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:76
  * @route '/education'
  */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -246,7 +246,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
     /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::store
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:75
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:76
  * @route '/education'
  */
     const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -256,7 +256,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
             /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::store
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:75
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:76
  * @route '/education'
  */
         storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -267,7 +267,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     store.form = storeForm
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::show
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:112
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:113
  * @route '/education/{education}'
  */
 export const show = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -282,7 +282,7 @@ show.definition = {
 
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::show
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:112
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:113
  * @route '/education/{education}'
  */
 show.url = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -315,7 +315,7 @@ show.url = (args: { education: number | { id: number } } | [education: number | 
 
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::show
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:112
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:113
  * @route '/education/{education}'
  */
 show.get = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -324,7 +324,7 @@ show.get = (args: { education: number | { id: number } } | [education: number | 
 })
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::show
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:112
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:113
  * @route '/education/{education}'
  */
 show.head = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -334,7 +334,7 @@ show.head = (args: { education: number | { id: number } } | [education: number |
 
     /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::show
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:112
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:113
  * @route '/education/{education}'
  */
     const showForm = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -344,7 +344,7 @@ show.head = (args: { education: number | { id: number } } | [education: number |
 
             /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::show
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:112
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:113
  * @route '/education/{education}'
  */
         showForm.get = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -353,7 +353,7 @@ show.head = (args: { education: number | { id: number } } | [education: number |
         })
             /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::show
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:112
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:113
  * @route '/education/{education}'
  */
         showForm.head = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -369,7 +369,7 @@ show.head = (args: { education: number | { id: number } } | [education: number |
     show.form = showForm
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::edit
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:130
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:139
  * @route '/education/{education}/edit'
  */
 export const edit = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -384,7 +384,7 @@ edit.definition = {
 
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::edit
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:130
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:139
  * @route '/education/{education}/edit'
  */
 edit.url = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -417,7 +417,7 @@ edit.url = (args: { education: number | { id: number } } | [education: number | 
 
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::edit
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:130
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:139
  * @route '/education/{education}/edit'
  */
 edit.get = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -426,7 +426,7 @@ edit.get = (args: { education: number | { id: number } } | [education: number | 
 })
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::edit
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:130
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:139
  * @route '/education/{education}/edit'
  */
 edit.head = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -436,7 +436,7 @@ edit.head = (args: { education: number | { id: number } } | [education: number |
 
     /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::edit
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:130
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:139
  * @route '/education/{education}/edit'
  */
     const editForm = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -446,7 +446,7 @@ edit.head = (args: { education: number | { id: number } } | [education: number |
 
             /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::edit
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:130
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:139
  * @route '/education/{education}/edit'
  */
         editForm.get = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -455,7 +455,7 @@ edit.head = (args: { education: number | { id: number } } | [education: number |
         })
             /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::edit
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:130
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:139
  * @route '/education/{education}/edit'
  */
         editForm.head = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -471,7 +471,7 @@ edit.head = (args: { education: number | { id: number } } | [education: number |
     edit.form = editForm
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::update
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:145
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:154
  * @route '/education/{education}'
  */
 export const update = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -486,7 +486,7 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::update
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:145
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:154
  * @route '/education/{education}'
  */
 update.url = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -519,7 +519,7 @@ update.url = (args: { education: number | { id: number } } | [education: number 
 
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::update
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:145
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:154
  * @route '/education/{education}'
  */
 update.put = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -528,7 +528,7 @@ update.put = (args: { education: number | { id: number } } | [education: number 
 })
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::update
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:145
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:154
  * @route '/education/{education}'
  */
 update.patch = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -538,7 +538,7 @@ update.patch = (args: { education: number | { id: number } } | [education: numbe
 
     /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::update
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:145
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:154
  * @route '/education/{education}'
  */
     const updateForm = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -553,7 +553,7 @@ update.patch = (args: { education: number | { id: number } } | [education: numbe
 
             /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::update
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:145
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:154
  * @route '/education/{education}'
  */
         updateForm.put = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -567,7 +567,7 @@ update.patch = (args: { education: number | { id: number } } | [education: numbe
         })
             /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::update
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:145
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:154
  * @route '/education/{education}'
  */
         updateForm.patch = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -583,7 +583,7 @@ update.patch = (args: { education: number | { id: number } } | [education: numbe
     update.form = updateForm
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::destroy
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:181
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:190
  * @route '/education/{education}'
  */
 export const destroy = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -598,7 +598,7 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::destroy
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:181
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:190
  * @route '/education/{education}'
  */
 destroy.url = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -631,7 +631,7 @@ destroy.url = (args: { education: number | { id: number } } | [education: number
 
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::destroy
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:181
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:190
  * @route '/education/{education}'
  */
 destroy.delete = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -641,7 +641,7 @@ destroy.delete = (args: { education: number | { id: number } } | [education: num
 
     /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::destroy
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:181
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:190
  * @route '/education/{education}'
  */
     const destroyForm = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -656,7 +656,7 @@ destroy.delete = (args: { education: number | { id: number } } | [education: num
 
             /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::destroy
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:181
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:190
  * @route '/education/{education}'
  */
         destroyForm.delete = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -672,7 +672,7 @@ destroy.delete = (args: { education: number | { id: number } } | [education: num
     destroy.form = destroyForm
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::deleted
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:49
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:50
  * @route '/education-deleted'
  */
 export const deleted = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -687,7 +687,7 @@ deleted.definition = {
 
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::deleted
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:49
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:50
  * @route '/education-deleted'
  */
 deleted.url = (options?: RouteQueryOptions) => {
@@ -696,7 +696,7 @@ deleted.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::deleted
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:49
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:50
  * @route '/education-deleted'
  */
 deleted.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -705,7 +705,7 @@ deleted.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::deleted
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:49
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:50
  * @route '/education-deleted'
  */
 deleted.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -715,7 +715,7 @@ deleted.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::deleted
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:49
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:50
  * @route '/education-deleted'
  */
     const deletedForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -725,7 +725,7 @@ deleted.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::deleted
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:49
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:50
  * @route '/education-deleted'
  */
         deletedForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -734,7 +734,7 @@ deleted.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::deleted
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:49
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:50
  * @route '/education-deleted'
  */
         deletedForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -750,7 +750,7 @@ deleted.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     deleted.form = deletedForm
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::permanentDelete
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:195
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:204
  * @route '/education-permanent-delete/{education}'
  */
 export const permanentDelete = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -765,7 +765,7 @@ permanentDelete.definition = {
 
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::permanentDelete
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:195
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:204
  * @route '/education-permanent-delete/{education}'
  */
 permanentDelete.url = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -798,7 +798,7 @@ permanentDelete.url = (args: { education: number | { id: number } } | [education
 
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::permanentDelete
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:195
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:204
  * @route '/education-permanent-delete/{education}'
  */
 permanentDelete.delete = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -808,7 +808,7 @@ permanentDelete.delete = (args: { education: number | { id: number } } | [educat
 
     /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::permanentDelete
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:195
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:204
  * @route '/education-permanent-delete/{education}'
  */
     const permanentDeleteForm = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -823,7 +823,7 @@ permanentDelete.delete = (args: { education: number | { id: number } } | [educat
 
             /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::permanentDelete
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:195
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:204
  * @route '/education-permanent-delete/{education}'
  */
         permanentDeleteForm.delete = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -839,7 +839,7 @@ permanentDelete.delete = (args: { education: number | { id: number } } | [educat
     permanentDelete.form = permanentDeleteForm
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::restore
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:212
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:221
  * @route '/education-restore/{education}'
  */
 export const restore = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -854,7 +854,7 @@ restore.definition = {
 
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::restore
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:212
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:221
  * @route '/education-restore/{education}'
  */
 restore.url = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -887,7 +887,7 @@ restore.url = (args: { education: number | { id: number } } | [education: number
 
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::restore
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:212
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:221
  * @route '/education-restore/{education}'
  */
 restore.get = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -896,7 +896,7 @@ restore.get = (args: { education: number | { id: number } } | [education: number
 })
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::restore
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:212
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:221
  * @route '/education-restore/{education}'
  */
 restore.head = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -906,7 +906,7 @@ restore.head = (args: { education: number | { id: number } } | [education: numbe
 
     /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::restore
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:212
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:221
  * @route '/education-restore/{education}'
  */
     const restoreForm = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -916,7 +916,7 @@ restore.head = (args: { education: number | { id: number } } | [education: numbe
 
             /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::restore
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:212
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:221
  * @route '/education-restore/{education}'
  */
         restoreForm.get = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -925,7 +925,7 @@ restore.head = (args: { education: number | { id: number } } | [education: numbe
         })
             /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::restore
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:212
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:221
  * @route '/education-restore/{education}'
  */
         restoreForm.head = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -941,7 +941,7 @@ restore.head = (args: { education: number | { id: number } } | [education: numbe
     restore.form = restoreForm
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::addParticipant
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:226
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:235
  * @route '/education/{education}/participants'
  */
 export const addParticipant = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -956,7 +956,7 @@ addParticipant.definition = {
 
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::addParticipant
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:226
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:235
  * @route '/education/{education}/participants'
  */
 addParticipant.url = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -989,7 +989,7 @@ addParticipant.url = (args: { education: number | { id: number } } | [education:
 
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::addParticipant
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:226
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:235
  * @route '/education/{education}/participants'
  */
 addParticipant.post = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -999,7 +999,7 @@ addParticipant.post = (args: { education: number | { id: number } } | [education
 
     /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::addParticipant
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:226
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:235
  * @route '/education/{education}/participants'
  */
     const addParticipantForm = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -1009,7 +1009,7 @@ addParticipant.post = (args: { education: number | { id: number } } | [education
 
             /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::addParticipant
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:226
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:235
  * @route '/education/{education}/participants'
  */
         addParticipantForm.post = (args: { education: number | { id: number } } | [education: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -1020,7 +1020,7 @@ addParticipant.post = (args: { education: number | { id: number } } | [education
     addParticipant.form = addParticipantForm
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::updateParticipant
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:250
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:259
  * @route '/education/{education}/participants/{user}'
  */
 export const updateParticipant = (args: { education: number | { id: number }, user: number | { id: number } } | [education: number | { id: number }, user: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -1035,7 +1035,7 @@ updateParticipant.definition = {
 
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::updateParticipant
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:250
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:259
  * @route '/education/{education}/participants/{user}'
  */
 updateParticipant.url = (args: { education: number | { id: number }, user: number | { id: number } } | [education: number | { id: number }, user: number | { id: number } ], options?: RouteQueryOptions) => {
@@ -1065,7 +1065,7 @@ updateParticipant.url = (args: { education: number | { id: number }, user: numbe
 
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::updateParticipant
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:250
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:259
  * @route '/education/{education}/participants/{user}'
  */
 updateParticipant.put = (args: { education: number | { id: number }, user: number | { id: number } } | [education: number | { id: number }, user: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -1075,7 +1075,7 @@ updateParticipant.put = (args: { education: number | { id: number }, user: numbe
 
     /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::updateParticipant
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:250
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:259
  * @route '/education/{education}/participants/{user}'
  */
     const updateParticipantForm = (args: { education: number | { id: number }, user: number | { id: number } } | [education: number | { id: number }, user: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -1090,7 +1090,7 @@ updateParticipant.put = (args: { education: number | { id: number }, user: numbe
 
             /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::updateParticipant
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:250
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:259
  * @route '/education/{education}/participants/{user}'
  */
         updateParticipantForm.put = (args: { education: number | { id: number }, user: number | { id: number } } | [education: number | { id: number }, user: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -1106,7 +1106,7 @@ updateParticipant.put = (args: { education: number | { id: number }, user: numbe
     updateParticipant.form = updateParticipantForm
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::removeParticipant
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:276
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:285
  * @route '/education/{education}/participants/{user}'
  */
 export const removeParticipant = (args: { education: number | { id: number }, user: number | { id: number } } | [education: number | { id: number }, user: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -1121,7 +1121,7 @@ removeParticipant.definition = {
 
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::removeParticipant
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:276
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:285
  * @route '/education/{education}/participants/{user}'
  */
 removeParticipant.url = (args: { education: number | { id: number }, user: number | { id: number } } | [education: number | { id: number }, user: number | { id: number } ], options?: RouteQueryOptions) => {
@@ -1151,7 +1151,7 @@ removeParticipant.url = (args: { education: number | { id: number }, user: numbe
 
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::removeParticipant
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:276
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:285
  * @route '/education/{education}/participants/{user}'
  */
 removeParticipant.delete = (args: { education: number | { id: number }, user: number | { id: number } } | [education: number | { id: number }, user: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -1161,7 +1161,7 @@ removeParticipant.delete = (args: { education: number | { id: number }, user: nu
 
     /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::removeParticipant
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:276
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:285
  * @route '/education/{education}/participants/{user}'
  */
     const removeParticipantForm = (args: { education: number | { id: number }, user: number | { id: number } } | [education: number | { id: number }, user: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -1176,7 +1176,7 @@ removeParticipant.delete = (args: { education: number | { id: number }, user: nu
 
             /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::removeParticipant
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:276
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:285
  * @route '/education/{education}/participants/{user}'
  */
         removeParticipantForm.delete = (args: { education: number | { id: number }, user: number | { id: number } } | [education: number | { id: number }, user: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -1192,7 +1192,7 @@ removeParticipant.delete = (args: { education: number | { id: number }, user: nu
     removeParticipant.form = removeParticipantForm
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::deleteMedia
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:292
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:301
  * @route '/education/{education}/media/{mediaId}'
  */
 export const deleteMedia = (args: { education: number | { id: number }, mediaId: string | number } | [education: number | { id: number }, mediaId: string | number ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -1207,7 +1207,7 @@ deleteMedia.definition = {
 
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::deleteMedia
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:292
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:301
  * @route '/education/{education}/media/{mediaId}'
  */
 deleteMedia.url = (args: { education: number | { id: number }, mediaId: string | number } | [education: number | { id: number }, mediaId: string | number ], options?: RouteQueryOptions) => {
@@ -1235,7 +1235,7 @@ deleteMedia.url = (args: { education: number | { id: number }, mediaId: string |
 
 /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::deleteMedia
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:292
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:301
  * @route '/education/{education}/media/{mediaId}'
  */
 deleteMedia.delete = (args: { education: number | { id: number }, mediaId: string | number } | [education: number | { id: number }, mediaId: string | number ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -1245,7 +1245,7 @@ deleteMedia.delete = (args: { education: number | { id: number }, mediaId: strin
 
     /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::deleteMedia
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:292
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:301
  * @route '/education/{education}/media/{mediaId}'
  */
     const deleteMediaForm = (args: { education: number | { id: number }, mediaId: string | number } | [education: number | { id: number }, mediaId: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -1260,7 +1260,7 @@ deleteMedia.delete = (args: { education: number | { id: number }, mediaId: strin
 
             /**
 * @see \App\Http\Controllers\HumanResources\Education\EducationController::deleteMedia
- * @see app/Http/Controllers/HumanResources/Education/EducationController.php:292
+ * @see app/Http/Controllers/HumanResources/Education/EducationController.php:301
  * @route '/education/{education}/media/{mediaId}'
  */
         deleteMediaForm.delete = (args: { education: number | { id: number }, mediaId: string | number } | [education: number | { id: number }, mediaId: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
