@@ -13,6 +13,7 @@ import TextInput from "@/Components/Form/TextInput.vue"
 import TextAreaInput from "@/Components/Form/TextAreaInput.vue"
 import SelectInput from "@/Components/Form/SelectInput.vue"
 import SwitchInput from "@/Components/Form/SwitchInput.vue"
+import HelpButton from "@/Components/Help/HelpButton.vue"
 
 // Multi-lang
 import Translates from "./translates"
@@ -200,6 +201,12 @@ const submitVerify = () => {
 <template>
     <app-layout :title="tm('title.showPage.title') + ' — ' + capa.code" :sub-title="tm('title.showPage.subTitle')">
         <template #actionArea>
+            <help-button title="DÖF Detayı — Nasıl Çalışır?" subtitle="Aksiyon planı, doğrulama ve durum akışını buradan yönetin">
+                <p><strong>Aksiyon Planı:</strong> Bir DÖF, kök nedeni ortadan kaldırmak için bir veya birden çok aksiyondan oluşur. İlk aksiyon eklendiğinde DÖF otomatik olarak "Aksiyon Planlandı" durumuna, ilk aksiyon başlatıldığında ise "Devam Ediyor" durumuna geçer.</p>
+                <p><strong>Doğrulamaya Gönder:</strong> Tüm aksiyonlar tamamlanmadan DÖF doğrulamaya gönderilemez. Doğrulama, aksiyonların kök nedeni gerçekten ortadan kaldırıp kaldırmadığını (etkinliğini) kontrol eden ayrı bir adımdır.</p>
+                <p><strong>Etkisiz kapanış bir çıkmaz değildir:</strong> Doğrulama "etkisiz" bulunursa DÖF "Kapatıldı (Etkisiz)" durumuna geçer; buradan "Yeniden Aç" ile tekrar "Devam Ediyor" durumuna alınıp yeni bir aksiyon döngüsü başlatılabilir — yeni bir DÖF kaydı açmaya gerek yoktur.</p>
+                <p><strong>Kök Neden:</strong> Aksiyon planından ayrı, kök neden analizinin sonucunu belgeleyen serbest metin alanıdır.</p>
+            </help-button>
             <simple-button type="route" :link="route('capa.index')">
                 <font-awesome-icon icon="fa-solid fa-left-long" class="mr-2"/>
                 <span v-text="t('action.goBack')"/>
