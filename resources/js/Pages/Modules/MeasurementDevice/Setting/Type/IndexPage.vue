@@ -1,7 +1,8 @@
 <script setup>
-import AppLayout from "@/Layouts/AppLayout.vue";
+import SettingLayout from "@/Layouts/SettingLayout.vue";
 import {ref} from "vue";
 import {useForm, router} from "@inertiajs/vue3";
+import Menu from "../menu";
 
 // Components
 import Modal from "@/Components/Modal/Modal.vue"
@@ -12,6 +13,7 @@ import FormSection from "@/Components/Form/FormSection.vue"
 import InputGroup from "@/Components/Form/InputGroup.vue"
 import TextInput from "@/Components/Form/TextInput.vue"
 import TextAreaInput from "@/Components/Form/TextAreaInput.vue"
+import HelpButton from "@/Components/Help/HelpButton.vue"
 
 // Props
 const props = defineProps({
@@ -25,6 +27,7 @@ const props = defineProps({
 import Translates from "./translates"
 
 const {t, tm} = Translates();
+const {links} = Menu()
 
 // Validation
 import {useVuelidate} from "@vuelidate/core"
@@ -139,8 +142,12 @@ const handleDelete = (id) => {
 </script>
 
 <template>
-  <app-layout :title="tm('title.indexPage.title')" :sub-title="tm('title.indexPage.subTitle')">
+  <setting-layout :title="tm('title.indexPage.title')" :sub-title="tm('title.indexPage.subTitle')" :links="links">
     <template #actionArea>
+      <help-button title="Ölçüm Cihazı Tipleri — Nasıl Çalışır?" subtitle="Cihazları sınıflandırmak için kullanılan tip listesi">
+        <p>Her ölçüm cihazı, kaydedilirken bir <strong>tip</strong>e atanır (ör. Kumpas, Terazi, Termometre). Bu liste tamamen serbest tanımlanır — sistemin dayattığı korumalı bir değer yoktur, ihtiyacınıza göre ekleyip düzenleyebilirsiniz.</p>
+        <p>Bir tipi sildiğinizde kalıcı olarak kaybolmaz — "Silinen Öğeler" listesine taşınır ve buradan geri yüklenebilir veya kalıcı olarak silinebilir.</p>
+      </help-button>
       <simple-button type="route" :link="route('measurement-device-type.deleted')" color="red">
         <font-awesome-icon icon="trash-can" class="mr-2"/>
         <span v-text="$t('term.deletedItems')"/>
@@ -159,7 +166,7 @@ const handleDelete = (id) => {
         edit-action
         delete-action
     ></Table>
-  </app-layout>
+  </setting-layout>
 
   <teleport to="body">
     <!--Modal-->

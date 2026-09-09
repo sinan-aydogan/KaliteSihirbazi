@@ -1,7 +1,8 @@
 <script setup>
-import AppLayout from "@/Layouts/AppLayout.vue";
+import SettingLayout from "@/Layouts/SettingLayout.vue";
 import { ref } from "vue";
 import { router, useForm } from '@inertiajs/vue3';
+import Menu from "../menu";
 
 // Components
 import Modal from "@/Components/Modal/Modal.vue"
@@ -32,6 +33,7 @@ const props = defineProps({
 /*Multi-lang*/
 import Translates from "./translates"
 const {t,tm} = Translates();
+const {links} = Menu()
 
 // Validation
 import { useVuelidate } from "@vuelidate/core"
@@ -170,7 +172,7 @@ const handleDelete = (id) => {
 </script>
 
 <template>
-  <app-layout :title="tm('title.deletedPage.title')" :sub-title="tm('title.deletedPage.subTitle')">
+  <setting-layout :title="tm('title.deletedPage.title')" :sub-title="tm('title.deletedPage.subTitle')" :links="links">
     <template #actionArea>
       <simple-button type="route" :link="route('measurement-device-type.index')" color="blue">
         <font-awesome-icon icon="fa-solid fa-left-long" class="mr-2" />
@@ -197,7 +199,7 @@ const handleDelete = (id) => {
         {{timeAgo(props.deleted_at)}}
       </template>
     </Table>
-  </app-layout>
+  </setting-layout>
 
   <teleport to="body">
     <!--Modal-->

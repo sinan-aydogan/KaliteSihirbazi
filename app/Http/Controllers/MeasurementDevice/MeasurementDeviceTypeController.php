@@ -17,7 +17,7 @@ class MeasurementDeviceTypeController extends Controller
      */
     public function index()
     {
-        return Inertia::render("Modules/MeasurementDevice/Type/IndexPage", [
+        return Inertia::render("Modules/MeasurementDevice/Setting/Type/IndexPage", [
             'tableData' => $this->tableFilter(MeasurementDeviceType::query())->latest('id')->paginate(10)->withQueryString(),
         ]);
     }
@@ -29,7 +29,7 @@ class MeasurementDeviceTypeController extends Controller
      */
     public function deleted()
     {
-        return Inertia::render("Modules/MeasurementDevice/Type/DeletedPage", [
+        return Inertia::render("Modules/MeasurementDevice/Setting/Type/DeletedPage", [
             'tableData' => $this->tableFilter(MeasurementDeviceType::onlyTrashed())->latest('deleted_at')->paginate(10)->withQueryString(),
         ]);
     }
