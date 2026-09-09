@@ -1,7 +1,8 @@
 <script setup>
-import AppLayout from "@/Layouts/AppLayout.vue";
+import SettingLayout from "@/Layouts/SettingLayout.vue";
 import {ref} from "vue"
 import {useForm, router} from "@inertiajs/vue3";
+import Menu from "../menu";
 
 /*Components*/
 import SimpleButton from "@/Components/Button/SimpleButton.vue"
@@ -21,6 +22,7 @@ import {helpers, maxLength, required} from "@vuelidate/validators";
 import {useVuelidate} from "@vuelidate/core";
 
 const {t, tm} = Translates();
+const {links} = Menu()
 
 defineProps({
     tableData: {
@@ -31,7 +33,7 @@ defineProps({
 
 const headers = [
     {id: 'name', label: tm('term.name')},
-    {id: 'problems_count', label: tm('term.problemCount')},
+    {id: 'capas_count', label: tm('term.capaCount')},
     {id: 'is_protected', label: tm('term.protected'), value: (row) => row.is_protected ? '✔' : '-'},
 ]
 
@@ -66,7 +68,7 @@ const handleSubmit = async () => {
     if (!isValidated) return
 
     if (formType.value === 'create') {
-        form.post(route('problem-source-type.store'), {
+        form.post(route('capa-source-type.store'), {
             onSuccess: () => {
                 form.reset();
                 v$.value.$reset();
@@ -74,7 +76,7 @@ const handleSubmit = async () => {
             }
         })
     } else {
-        form.put(route('problem-source-type.update', {id: form.id}), {
+        form.put(route('capa-source-type.update', {id: form.id}), {
             onSuccess: () => {
                 form.reset();
                 v$.value.$reset();
@@ -93,20 +95,20 @@ const getRowInfo = (row) => {
 }
 
 const handleDelete = (id) => {
-    router.delete(route("problem-source-type.destroy", id), {
+    router.delete(route("capa-source-type.destroy", id), {
         preserveState: true,
     });
 }
 </script>
 
 <template>
-    <app-layout :title="tm('title.indexPage.title')" :sub-title="tm('title.indexPage.subTitle')">
+    <setting-layout :title="tm('title.indexPage.title')" :sub-title="tm('title.indexPage.subTitle')" :links="links">
         <template #actionArea>
-            <help-button title="Uygunsuzluk Kaynak Türleri — Nasıl Çalışır?" subtitle="Uygunsuzluk kayıtlarının kaynak sınıflandırması">
-                <p>Her uygunsuzluk kaydı, hangi kaynaktan geldiğini gösteren bir <strong>kaynak türü</strong>ne atanır (Denetim Bulgusu, Müşteri Şikayeti, İç Gözlem, Tedarikçi, Risk Gerçekleşmesi, Diğer).</p>
-                <p>Sistemin geldiği <strong>korumalı</strong> (✔ işaretli) türler, Denetim/Risk/Müşteri Şikayeti modüllerinin otomatik olarak kullandığı sabit değerler olduğu için silinemez; kendi eklediğiniz türler kullanımda değilse serbestçe silinebilir.</p>
+            <help-button title="DÖF Kaynak Türleri — Nasıl Çalışır?" subtitle="DÖF kayıtlarının kaynak sınıflandırması">
+                <p>Her DÖF kaydı, hangi kaynaktan geldiğini gösteren bir <strong>kaynak türü</strong>ne (opsiyonel) atanabilir (Doküman Revizyon Talebi, Denetim Bulgusu, Müşteri Şikayeti, İç Kaynaklı, Diğer).</p>
+                <p>Sistemin geldiği <strong>korumalı</strong> (✔ işaretli) türler silinemez; kendi eklediğiniz türler kullanımda değilse serbestçe silinebilir.</p>
             </help-button>
-            <simple-button type="route" :link="route('problem.index')">
+            <simple-button type="route" :link="route('capa.index')">
                 <font-awesome-icon icon="fa-solid fa-left-long" class="mr-2"/>
                 <span v-text="t('action.goBack')"/>
             </simple-button>
@@ -153,5 +155,5 @@ const handleDelete = (id) => {
                 </template>
             </Modal>
         </teleport>
-    </app-layout>
+    </setting-layout>
 </template>
