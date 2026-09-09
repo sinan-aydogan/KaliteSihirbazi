@@ -14,6 +14,7 @@ import TextInput from "@/Components/Form/TextInput.vue"
 import TextAreaInput from "@/Components/Form/TextAreaInput.vue"
 import SelectInput from "@/Components/Form/SelectInput.vue"
 import FileInput from "@/Components/Form/FileInput.vue"
+import HelpButton from "@/Components/Help/HelpButton.vue"
 
 // Multi-lang
 import Translates from "./translates"
@@ -153,6 +154,10 @@ const handleDelete = (id) => {
 <template>
     <app-layout :title="tm('title.accreditationsPage.title') + ' — ' + standard.name" :sub-title="tm('title.accreditationsPage.subTitle')">
         <template #actionArea>
+            <help-button title="Akreditasyonlar — Nasıl Çalışır?" subtitle="Sertifika durumu ve süre dolumu takibi buradan yönetilir">
+                <p><strong>Akreditasyon Kaydı:</strong> Bir sertifikasyon kuruluşunun bu standarda göre verdiği somut sertifikayı temsil eder — sertifika numarası, kapsamı, veriliş/geçerlilik tarihleri ve isteğe bağlı sertifika dosyası ile birlikte kaydedilir.</p>
+                <p><strong>Durum ile Süre Dolumu bağımsızdır:</strong> "Aktif/Askıya Alınmış/Geri Çekilmiş" durumu elle seçilen bir alandır; "Süresi Doldu" rozeti ise yalnızca geçerlilik tarihine bakılarak otomatik hesaplanır. Yani bir sertifika durumu hâlâ "Aktif" görünse bile geçerlilik tarihi geçmişse "Süresi Doldu" rozeti ayrıca görünür — durumu güncellemek kullanıcının elindedir, sistem otomatik değiştirmez.</p>
+            </help-button>
             <simple-button type="route" :link="route('standard.index')">
                 <font-awesome-icon icon="fa-solid fa-left-long" class="mr-2"/>
                 <span v-text="t('action.goBack')"/>

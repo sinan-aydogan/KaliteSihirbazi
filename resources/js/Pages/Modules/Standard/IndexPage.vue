@@ -12,6 +12,7 @@ import FormSection from "@/Components/Form/FormSection.vue"
 import InputGroup from "@/Components/Form/InputGroup.vue"
 import TextInput from "@/Components/Form/TextInput.vue"
 import TextAreaInput from "@/Components/Form/TextAreaInput.vue"
+import HelpButton from "@/Components/Help/HelpButton.vue"
 
 // Multi-lang
 import Translates from "./translates"
@@ -99,6 +100,12 @@ const handleDelete = (id) => {
 
 <template>
     <app-layout :title="tm('title.indexPage.title')" :sub-title="tm('title.indexPage.subTitle')">
+        <template #actionArea>
+            <help-button title="Standartlar — Nasıl Çalışır?" subtitle="Standart ile akreditasyon kaydı arasındaki ilişkiyi buradan öğrenin">
+                <p><strong>Standart:</strong> Şirketin uyduğu/uygulamak istediği kalite standardının tanımıdır (ör. ISO 9001, ISO 14001). Kendisi bir sertifika değildir — bir sertifikasyon kuruluşunun bu standarda göre verdiği somut belgeler ayrı bir kayıt olan "akreditasyon"dur.</p>
+                <p><strong>Akreditasyon Sayısı:</strong> Bir standarda bağlı kaç akreditasyon (sertifika) kaydı olduğunu gösterir. Sertifika numarası, geçerlilik tarihleri ve durumu yönetmek için sertifika ikonuna tıklayarak o standardın akreditasyon listesine gidin.</p>
+            </help-button>
+        </template>
         <Table
             :data="tableData"
             :headers="headers"
