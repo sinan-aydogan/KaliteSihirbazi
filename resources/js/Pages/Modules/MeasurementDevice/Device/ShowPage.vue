@@ -5,6 +5,7 @@ import {Link, router} from "@inertiajs/vue3";
 // Components
 import SimpleButton from "@/Components/Button/SimpleButton.vue"
 import SelectInput from "@/Components/Form/SelectInput.vue";
+import HelpButton from "@/Components/Help/HelpButton.vue";
 
 // Props
 const props = defineProps({
@@ -50,6 +51,10 @@ const handleDelete = () => {
 
   <app-layout :title="measurementDevice.code + ' ' + measurementDevice.type.name">
     <template #actionArea>
+      <help-button title="Cihaz Detayı — Nasıl Çalışır?" subtitle="Cihaz bilgisi ve kalibrasyon takibi buradan yönetilir">
+        <p><strong>Cihaz Bilgisi:</strong> Cihazın tipi, markası/modeli, seri numarası, satın alma bilgileri ve cihazdan/kalibrasyonundan sorumlu kişiler burada tutulur.</p>
+        <p><strong>Kalibrasyon Görevleri:</strong> Bu cihaz için planlanan her kalibrasyon (planlanan tarih, kalibrasyon firması, ücret) ayrı bir görev olarak kaydedilir. Durum rozeti görevin tamamlanıp tamamlanmadığını gösterir.</p>
+      </help-button>
       <simple-button @click="handleDelete" color="red">
         <font-awesome-icon icon="trash-can" class="mr-2"/>
         <span v-text="tm('action.delete')"/>

@@ -169,6 +169,11 @@ const getRowInfo = async (id) => {
         <span v-text="$t('term.deletedItems')"/>
       </simple-button>
 
+      <simple-button type="route" :link="route('measurement-device-type.index')" color="blue">
+        <font-awesome-icon icon="fa-solid fa-cog" class="mr-2"/>
+        <span v-text="tm('term.manageModule')"/>
+      </simple-button>
+
       <simple-button @click="showModal = true; formType = 'create'" color="green">
         <font-awesome-icon icon="plus" class="mr-2"/>
         <span v-text="$t('action.addNew')"/>

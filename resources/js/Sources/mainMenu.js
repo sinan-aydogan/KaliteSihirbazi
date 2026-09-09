@@ -310,22 +310,6 @@ export default function ({roles, permissions}) {
                         icon: 'ruler-combined',
                         type: "route",
                         link: 'measurement-device.index'
-                    },
-                    /*Calibration Tasks*/
-                    {
-                        id: 'md-co',
-                        label: t('mainMenu.calibrationTasks'),
-                        icon: 'code-commit',
-                        type: "route",
-                        link: 'measurement-device-calibration.index'
-                    },
-                    /*Actions*/
-                    {
-                        id: 'md-ac',
-                        label: t('mainMenu.actions'),
-                        icon: 'arrow-right-arrow-left',
-                        type: "route",
-                        link: 'measurement-device-action.index'
                     }
                 ]
             },
