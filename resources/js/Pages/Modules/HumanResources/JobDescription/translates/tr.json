@@ -51,6 +51,10 @@
     "workingToolsDescription": "Görev sırasında kullanılan ekipman, araç ve yazılımlar.",
     "workingHoursDescription": "Pozisyonun çalışma düzeni, vardiya ve saat bilgileri.",
     "overtimeStatusDescription": "Fazla mesai gereksinimleri ve uygulanma koşulları.",
-    "travelStatusDescription": "Yurt içi veya yurt dışı seyahat gerekçeleri ve kapsamı."
+    "travelStatusDescription": "Yurt içi veya yurt dışı seyahat gerekçeleri ve kapsamı.",
+    "assignedEmployees": "Atanan Kişiler",
+    "customizeTable": "Tabloyu Özelleştir",
+    "showAssignedEmployees": "Kişileri Göster",
+    "noAssignedEmployees": "Bu görev tanımına henüz kimse atanmamış"
   }
 }

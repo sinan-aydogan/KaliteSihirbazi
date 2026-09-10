@@ -154,6 +154,8 @@ debouncedWatch(filters, (value) => {
                 <!--Search-->
                 <!--Advanced Search: Filter-->
                 <TableFilters v-model="filters" :headers="headers" />
+                <!--Extra table-level controls (e.g. column customization)-->
+                <slot v-if="$slots.tableActions" name="tableActions"></slot>
             </div>
 
             <!--Right Side-->
