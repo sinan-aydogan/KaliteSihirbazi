@@ -30,6 +30,9 @@ import CustomerComplaintSettingController from './CustomerComplaintSettingContro
 import CustomerComplaintController from './CustomerComplaintController'
 import ProblemSourceTypeController from './ProblemSourceTypeController'
 import CapaSourceTypeController from './CapaSourceTypeController'
+import ComplaintSourceTypeController from './ComplaintSourceTypeController'
+import ComplaintSubjectController from './ComplaintSubjectController'
+import DistributorController from './DistributorController'
 import CompanyAccreditationController from './CompanyAccreditationController'
 import CapaActionController from './CapaActionController'
 import CapaWorkflowController from './CapaWorkflowController'
@@ -77,6 +80,9 @@ CustomerComplaintSettingController: Object.assign(CustomerComplaintSettingContro
 CustomerComplaintController: Object.assign(CustomerComplaintController, CustomerComplaintController),
 ProblemSourceTypeController: Object.assign(ProblemSourceTypeController, ProblemSourceTypeController),
 CapaSourceTypeController: Object.assign(CapaSourceTypeController, CapaSourceTypeController),
+ComplaintSourceTypeController: Object.assign(ComplaintSourceTypeController, ComplaintSourceTypeController),
+ComplaintSubjectController: Object.assign(ComplaintSubjectController, ComplaintSubjectController),
+DistributorController: Object.assign(DistributorController, DistributorController),
 CompanyAccreditationController: Object.assign(CompanyAccreditationController, CompanyAccreditationController),
 CapaActionController: Object.assign(CapaActionController, CapaActionController),
 CapaWorkflowController: Object.assign(CapaWorkflowController, CapaWorkflowController),

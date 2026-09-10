@@ -184,6 +184,7 @@ const submitRootCause = async () => {
         <template #actionArea>
             <help-button title="Şikayet Detayı — Nasıl Çalışır?" subtitle="Bir şikayetin tüm yaşam döngüsünü buradan yönetirsiniz">
                 <p><strong>Durum akışı:</strong> Alındı → (İlk Yanıtı Kaydet) → İnceleniyor → (Çözüldü Olarak İşaretle) → Çözüldü → (Müşteriye Bildir ve Kapat) → Kapatıldı.</p>
+                <p><strong>Kaynak:</strong> Bu şikayet İç, Müşteri, Tedarikçi veya Dağıtıcı kaynaklı olabilir — kaynağa göre ilgili taraf bilgisi (Müşteri/Tedarikçi/Dağıtıcı) değişir. Kaynak ve Konu listeleri Modül Ayarları'ndan yönetilir.</p>
                 <p><strong>Kök Neden Araştırması (DÖF) Aç:</strong> Şikayetin kök nedenini araştırmak/düzeltici faaliyet başlatmak gerekiyorsa bu butonla bir uygunsuzluk kaydı açın. Sistem otomatik olarak şikayeti "İnceleniyor" durumuna alır.</p>
                 <p><strong>Yeniden Aç:</strong> Kapatılmış bir şikayette müşteri verilen çözümden memnun kalmadıysa, nedenini belirterek şikayeti yeniden açabilirsiniz — bu, kalıcı olmayan çözümleri ve tekrarlayan sorunları kayda geçirmenizi sağlar.</p>
             </help-button>
@@ -233,7 +234,12 @@ const submitRootCause = async () => {
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4 text-sm">
-                <div><span class="text-slate-400 block" v-text="tm('term.customer')"/>{{ complaint.customer?.name ?? '-' }}</div>
+                <div><span class="text-slate-400 block" v-text="tm('term.complaintSourceType')"/>{{ complaint.complaint_source_type?.name ?? '-' }}</div>
+                <div>
+                    <span class="text-slate-400 block" v-text="tm('term.relatedParty')"/>
+                    {{ complaint.customer?.name ?? complaint.supplier?.name ?? complaint.distributor?.name ?? '-' }}
+                </div>
+                <div><span class="text-slate-400 block" v-text="tm('term.complaintSubject')"/>{{ complaint.complaint_subject?.name ?? '-' }}</div>
                 <div><span class="text-slate-400 block" v-text="tm('term.department')"/>{{ complaint.department?.name ?? '-' }}</div>
                 <div><span class="text-slate-400 block" v-text="tm('term.productReference')"/>{{ complaint.product_reference ?? '-' }}</div>
                 <div><span class="text-slate-400 block" v-text="tm('term.reportedBy')"/>{{ complaint.reported_by?.name ?? '-' }}</div>
@@ -246,6 +252,16 @@ const submitRootCause = async () => {
             <div v-if="complaint.customer" class="mt-4 text-sm">
                 <span class="text-slate-400 block">Müşteri İletişim</span>
                 <p>{{ complaint.customer.contact_name ?? '-' }} — {{ complaint.customer.phone ?? '-' }} — {{ complaint.customer.email ?? '-' }}</p>
+            </div>
+
+            <div v-else-if="complaint.supplier" class="mt-4 text-sm">
+                <span class="text-slate-400 block">Tedarikçi</span>
+                <p>{{ complaint.supplier.code }} — {{ complaint.supplier.name }}</p>
+            </div>
+
+            <div v-else-if="complaint.distributor" class="mt-4 text-sm">
+                <span class="text-slate-400 block">Dağıtıcı</span>
+                <p>{{ complaint.distributor.code }} — {{ complaint.distributor.name }}</p>
             </div>
 
             <div class="mt-4 text-sm">

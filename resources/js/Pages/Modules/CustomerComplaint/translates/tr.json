@@ -11,11 +11,24 @@
         "showPage": {
             "title": "Şikayet Detayı",
             "subTitle": "Şikayetin yaşam döngüsünü ve bağlı kök neden araştırmalarını buradan yönetin"
+        },
+        "complaintSourceTypePage": {
+            "title": "Şikayet Kaynakları",
+            "subTitle": "Şikayetlerin kimden/nereden geldiğini gösteren sınıflandırma listesi"
+        },
+        "complaintSubjectPage": {
+            "title": "Şikayet Konuları",
+            "subTitle": "Şikayetlerin hangi konu hakkında olduğunu gösteren sınıflandırma listesi"
         }
     },
     "term": {
         "code": "Şikayet No",
+        "complaintSourceType": "Şikayet Kaynağı",
+        "complaintSubject": "Şikayet Konusu",
         "customer": "Müşteri",
+        "supplier": "Tedarikçi",
+        "distributor": "Dağıtıcı",
+        "relatedParty": "İlgili Taraf",
         "title": "Başlık",
         "description": "Açıklama",
         "channel": "Kanal",
@@ -35,6 +48,10 @@
         "reportedBy": "Kaydeden",
         "manageModule": "Modülü Yönet",
         "problemCount": "Kök Neden Kaydı",
+        "name": "Ad",
+        "sortOrder": "Sıra",
+        "protected": "Korumalı",
+        "complaintCount": "Şikayet Sayısı",
         "channelValue": {
             "phone": "Telefon",
             "email": "E-posta",
@@ -76,6 +93,8 @@
         }
     },
     "menu": {
-        "general": "Genel Ayarlar"
+        "general": "Genel Ayarlar",
+        "sourceTypes": "Şikayet Kaynakları",
+        "subjects": "Şikayet Konuları"
     }
 }

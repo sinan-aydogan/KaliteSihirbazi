@@ -11,11 +11,24 @@
         "showPage": {
             "title": "Complaint Detail",
             "subTitle": "Manage this complaint's lifecycle and linked root-cause investigations"
+        },
+        "complaintSourceTypePage": {
+            "title": "Complaint Sources",
+            "subTitle": "The classification list of who/where complaints come from"
+        },
+        "complaintSubjectPage": {
+            "title": "Complaint Subjects",
+            "subTitle": "The classification list of what complaints are about"
         }
     },
     "term": {
         "code": "Complaint No",
+        "complaintSourceType": "Complaint Source",
+        "complaintSubject": "Complaint Subject",
         "customer": "Customer",
+        "supplier": "Supplier",
+        "distributor": "Distributor",
+        "relatedParty": "Related Party",
         "title": "Title",
         "description": "Description",
         "channel": "Channel",
@@ -35,6 +48,10 @@
         "reportedBy": "Logged By",
         "manageModule": "Manage Module",
         "problemCount": "Root-Cause Records",
+        "name": "Name",
+        "sortOrder": "Sort Order",
+        "protected": "Protected",
+        "complaintCount": "Complaint Count",
         "channelValue": {
             "phone": "Phone",
             "email": "Email",
@@ -76,6 +93,8 @@
         }
     },
     "menu": {
-        "general": "General Settings"
+        "general": "General Settings",
+        "sourceTypes": "Complaint Sources",
+        "subjects": "Complaint Subjects"
     }
 }

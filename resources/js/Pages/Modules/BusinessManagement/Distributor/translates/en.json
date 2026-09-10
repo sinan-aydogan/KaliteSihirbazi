@@ -1,0 +1,22 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Distributors",
+            "subTitle": "You can manage your distributors here"
+        },
+        "createPage": {
+            "title": "Create a Distributor",
+            "subTitle": "Create a new distributor record"
+        },
+        "updatePage": {
+            "title": "Update Distributor",
+            "subTitle": "Update the distributor's information"
+        }
+    },
+    "term": {
+        "code": "Code",
+        "name": "Name",
+        "status": "Status",
+        "complaintCount": "Complaint Count"
+    }
+}

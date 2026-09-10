@@ -8,6 +8,8 @@ function makeWorkflowComplaint(User $author)
     $customer = Customer::create(['name' => 'Karel Elektronik San. Tic. A.Ş.']);
 
     return app(\App\Services\CustomerComplaint\CustomerComplaintWorkflowService::class)->create([
+        'complaint_source_type_id' => complaintSourceTypeId('customer'),
+        'complaint_subject_id' => complaintSubjectId('other'),
         'customer_id' => $customer->id,
         'title' => 'PCB kartlarında lehim kaynaklı temassızlık',
         'description' => 'Açıklama',
