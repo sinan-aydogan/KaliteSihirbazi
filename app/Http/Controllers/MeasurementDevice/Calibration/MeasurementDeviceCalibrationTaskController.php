@@ -50,9 +50,9 @@ class MeasurementDeviceCalibrationTaskController extends Controller
      *
      * @return Response
      */
-    public function show(MeasurementDeviceCalibrationTask $measurementDeviceCalibrationTask)
+    public function show(MeasurementDeviceCalibrationTask $measurementDeviceCalibration)
     {
-        return response()->json($measurementDeviceCalibrationTask->load(['device', 'firm']));
+        return response()->json($measurementDeviceCalibration->load(['device', 'firm']));
     }
 
     /**
@@ -60,9 +60,9 @@ class MeasurementDeviceCalibrationTaskController extends Controller
      *
      * @return Response
      */
-    public function edit(MeasurementDeviceCalibrationTask $measurementDeviceCalibrationTask)
+    public function edit(MeasurementDeviceCalibrationTask $measurementDeviceCalibration)
     {
-        return response()->json($measurementDeviceCalibrationTask);
+        return response()->json($measurementDeviceCalibration);
     }
 
     /**
@@ -70,9 +70,11 @@ class MeasurementDeviceCalibrationTaskController extends Controller
      *
      * @return Response
      */
-    public function update(UpdateMeasurementDeviceCalibrationTaskRequest $request, MeasurementDeviceCalibrationTask $measurementDeviceCalibrationTask)
+    public function update(UpdateMeasurementDeviceCalibrationTaskRequest $request, MeasurementDeviceCalibrationTask $measurementDeviceCalibration)
     {
-        $measurementDeviceCalibrationTask->update($request->validated());
+        $measurementDeviceCalibration->update($request->validated());
+
+        session()->flash('message', ['type' => 'success', 'content' => __('messages.measurementDeviceCalibration.updated', ['measurementDeviceCalibration' => $measurementDeviceCalibration->id])]);
 
         return redirect()->back();
     }

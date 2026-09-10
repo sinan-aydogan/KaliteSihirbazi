@@ -1,5 +1,5 @@
 <script setup>
-import {ref} from "vue";
+import {ref, watch} from "vue";
 import {useForm, router} from "@inertiajs/vue3";
 import ShowPage from "@/Pages/Modules/MeasurementDevice/Device/ShowPage.vue";
 import EmptySource from "@/Components/Content/EmptySource.vue"
@@ -11,6 +11,7 @@ import FormSection from "@/Components/Form/FormSection.vue"
 import InputGroup from "@/Components/Form/InputGroup.vue"
 import TextInput from "@/Components/Form/TextInput.vue"
 import SelectInput from "@/Components/Form/SelectInput.vue"
+import SwitchInput from "@/Components/Form/SwitchInput.vue"
 import relativeTime from "dayjs/plugin/relativeTime";
 
 // Multi-lang
@@ -51,9 +52,11 @@ const headers = [
 ]
 
 const showTaskCreateModal = ref(false);
+const formType = ref('create');
 
 const period = ref('');
 const form = useForm({
+  id: null,
   planned_date: '',
   accomplished_date: '',
   measurement_device_id: props.measurementDevice.id,
@@ -69,17 +72,51 @@ const rules = ref({
 })
 const v$ = useVuelidate(rules, form)
 
+watch(() => form.status, (status) => {
+  if (!status) form.accomplished_date = '';
+})
+
+const openCreate = () => {
+  form.reset();
+  v$.value.$reset();
+  formType.value = 'create';
+  showTaskCreateModal.value = true;
+}
+
 const handleSubmit = async () => {
   const isValidated = await v$.value.$validate()
   if (!isValidated) return
 
-  form.post(route('measurement-device-calibration.store'), {
-    onSuccess: () => {
-      form.reset();
-      showTaskCreateModal.value = false;
-      v$.value.$reset();
-    }
-  })
+  if (formType.value === 'create') {
+    form.post(route('measurement-device-calibration.store'), {
+      onSuccess: () => {
+        form.reset();
+        showTaskCreateModal.value = false;
+        v$.value.$reset();
+      }
+    })
+  } else {
+    form.put(route('measurement-device-calibration.update', {id: form.id}), {
+      onSuccess: () => {
+        form.reset();
+        showTaskCreateModal.value = false;
+        v$.value.$reset();
+      }
+    })
+  }
+}
+
+const getRowInfo = (row) => {
+  form.id = row.id;
+  form.planned_date = dayjs(row.planned_date).format('YYYY-MM-DD');
+  form.accomplished_date = row.accomplished_date ? dayjs(row.accomplished_date).format('YYYY-MM-DD') : '';
+  form.measurement_device_id = row.measurement_device_id;
+  form.calibration_firm_id = row.calibration_firm_id;
+  form.price = row.price;
+  form.currency = row.currency;
+  form.status = row.status;
+  formType.value = 'update';
+  showTaskCreateModal.value = true;
 }
 
 const handleDelete = (id) => {
@@ -95,10 +132,12 @@ dayjs.extend(relativeTime)
           :data="calibrationTasks"
           :headers="headers"
           @delete="handleDelete($event.id)"
+          @edit="getRowInfo"
+          edit-action
           delete-action
       >
         <template #actionArea>
-          <SimpleButton @click="showTaskCreateModal = true" :label="tm('action.createCalibrationTask')"/>
+          <SimpleButton @click="openCreate" :label="tm('action.createCalibrationTask')"/>
         </template>
 
         <template #planned_date="{props}">
@@ -131,14 +170,14 @@ dayjs.extend(relativeTime)
         :message="tm('message.feedback.emptyCalibrationTasksList')"
         :add-new-text="tm('action.createCalibrationTask')"
         class="mt-6"
-        :add-new-callback="()=>{showTaskCreateModal = true}"
+        :add-new-callback="openCreate"
     ></EmptySource>
 
-    <!--Calibration Task Create Form-->
+    <!--Calibration Task Create/Update Form-->
     <Modal
         v-model="showTaskCreateModal"
-        :header="tm('title.createCalibrationModal.title')"
-        :sub-header="tm('title.createCalibrationModal.subTitle')"
+        :header="formType === 'create' ? tm('title.createCalibrationModal.title') : tm('title.updateCalibrationModal.title')"
+        :sub-header="formType === 'create' ? tm('title.createCalibrationModal.subTitle') : tm('title.updateCalibrationModal.subTitle')"
         closeable
         close-button
     >
@@ -171,11 +210,26 @@ dayjs.extend(relativeTime)
           <InputGroup class="col-span-6" label-for="currency" :label="t('term.currency')">
             <TextInput v-model="form.currency"/>
           </InputGroup>
+
+          <!--Accomplished?-->
+          <InputGroup class="col-span-6" label-for="status" :label="tm('term.isAccomplished')">
+            <SwitchInput v-model="form.status"/>
+          </InputGroup>
+
+          <!--Accomplished Date-->
+          <InputGroup v-if="form.status" class="col-span-6" label-for="accomplished_date" :label="t('term.accomplishedDate')">
+            <TextInput v-model="form.accomplished_date" input-type="date"/>
+          </InputGroup>
         </FormSection>
       </Form>
       <template #footer>
         <SimpleButton :label="t('action.cancel')" color="neutral" @click="showTaskCreateModal=false"/>
-        <SimpleButton :label="tm('action.createTask')" color="green" @click="handleSubmit" :loading="form.processing"/>
+        <SimpleButton
+            :label="formType === 'create' ? tm('action.createTask') : tm('action.updateTask')"
+            color="green"
+            @click="handleSubmit"
+            :loading="form.processing"
+        />
       </template>
     </Modal>
   </ShowPage>

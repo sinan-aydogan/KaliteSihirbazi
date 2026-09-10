@@ -53,7 +53,7 @@ const handleDelete = () => {
     <template #actionArea>
       <help-button title="Cihaz Detayı — Nasıl Çalışır?" subtitle="Cihaz bilgisi ve kalibrasyon takibi buradan yönetilir">
         <p><strong>Cihaz Bilgisi:</strong> Cihazın tipi, markası/modeli, seri numarası, satın alma bilgileri ve cihazdan/kalibrasyonundan sorumlu kişiler burada tutulur.</p>
-        <p><strong>Kalibrasyon Görevleri:</strong> Bu cihaz için planlanan her kalibrasyon (planlanan tarih, kalibrasyon firması, ücret) ayrı bir görev olarak kaydedilir. Durum rozeti görevin tamamlanıp tamamlanmadığını gösterir.</p>
+        <p><strong>Kalibrasyon Görevleri:</strong> Bu cihaz için planlanan her kalibrasyon (planlanan tarih, kalibrasyon firması, ücret) ayrı bir görev olarak kaydedilir. Bir görevi düzenle ikonuyla açıp "Gerçekleşti mi?" ile tamamlandı olarak işaretleyebilir ve gerçekleşme tarihini girebilirsiniz — durum rozeti buna göre güncellenir.</p>
       </help-button>
       <simple-button @click="handleDelete" color="red">
         <font-awesome-icon icon="trash-can" class="mr-2"/>

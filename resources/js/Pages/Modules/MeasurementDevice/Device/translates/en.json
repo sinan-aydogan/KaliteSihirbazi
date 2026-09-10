@@ -11,6 +11,10 @@
     "createCalibrationModal": {
       "title": "Create a Calibration Task",
       "subTitle": "Create a calibration task for your device"
+    },
+    "updateCalibrationModal": {
+      "title": "Update Calibration Task",
+      "subTitle": "Update the calibration task's status and details"
     }
   },
   "term": {
@@ -37,7 +41,8 @@
     "calibrationFirm": "Calibration Firm",
     "calibrationFee": "Calibration Fee",
     "active": "Active",
-    "accomplished": "Accomplished"
+    "accomplished": "Accomplished",
+    "isAccomplished": "Accomplished?"
   },
   "message": {
     "feedback": {
@@ -46,6 +51,7 @@
   },
   "action": {
     "createCalibrationTask": "Create a Calibration Task",
-    "createTask": "Create Task"
+    "createTask": "Create Task",
+    "updateTask": "Update Task"
   }
 }
