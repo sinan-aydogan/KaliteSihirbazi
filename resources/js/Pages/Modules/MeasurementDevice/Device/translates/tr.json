@@ -11,6 +11,10 @@
     "createCalibrationModal": {
       "title": "Kalibrasyon Emri Oluştur",
       "subTitle": "Cihaz için kalibrasyon emri oluşturun"
+    },
+    "updateCalibrationModal": {
+      "title": "Kalibrasyon Emrini Güncelle",
+      "subTitle": "Kalibrasyon emrinin durumunu ve bilgilerini güncelleyin"
     }
   },
   "term": {
@@ -37,7 +41,8 @@
     "calibrationFirm": "Kalibrasyon Firması",
     "calibrationFee": "Kalibrasyon Ücreti",
     "active": "Aktif",
-    "accomplished": "Gerçekleşti"
+    "accomplished": "Gerçekleşti",
+    "isAccomplished": "Gerçekleşti mi?"
   },
   "message":{
     "feedback" : {
@@ -46,6 +51,7 @@
   },
   "action": {
     "createCalibrationTask": "Kalibrasyon Emri Oluştur",
-    "createTask": "Emri Oluştur"
+    "createTask": "Emri Oluştur",
+    "updateTask": "Emri Güncelle"
   }
 }
