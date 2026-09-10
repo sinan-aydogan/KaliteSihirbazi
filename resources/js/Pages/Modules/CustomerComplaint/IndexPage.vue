@@ -19,7 +19,7 @@ import HelpButton from "@/Components/Help/HelpButton.vue"
 import Translates from "./translates"
 
 /*Validation*/
-import {helpers, required} from "@vuelidate/validators";
+import {helpers, required, requiredIf} from "@vuelidate/validators";
 import {useVuelidate} from "@vuelidate/core";
 
 const {t, tm} = Translates();
@@ -37,10 +37,32 @@ const props = defineProps({
         type: Array,
         default: () => []
     },
+    suppliers: {
+        type: Array,
+        default: () => []
+    },
+    distributors: {
+        type: Array,
+        default: () => []
+    },
+    complaintSourceTypes: {
+        type: Array,
+        default: () => []
+    },
+    complaintSubjects: {
+        type: Array,
+        default: () => []
+    },
 })
 
 const customerOptions = computed(() => props.customers.map(c => ({id: c.id, label: c.name})))
 const departmentOptions = computed(() => props.departments.map(d => ({id: d.id, label: d.name})))
+const supplierOptions = computed(() => props.suppliers.map(s => ({id: s.id, label: s.name})))
+const distributorOptions = computed(() => props.distributors.map(d => ({id: d.id, label: d.name})))
+const complaintSourceTypeOptions = computed(() => props.complaintSourceTypes.map(s => ({id: s.id, label: s.name})))
+const complaintSubjectOptions = computed(() => props.complaintSubjects.map(s => ({id: s.id, label: s.name})))
+
+const selectedSourceKey = computed(() => props.complaintSourceTypes.find(s => s.id === form.complaint_source_type_id)?.key ?? null)
 
 const channelOptions = computed(() => [
     {id: 'phone', label: tm('term.channelValue.phone')},
@@ -75,10 +97,14 @@ const severityColorClasses = {
     critical: 'bg-rose-100 text-rose-700',
 }
 
+const partyLabel = (row) => row.customer?.name ?? row.supplier?.name ?? row.distributor?.name ?? '-'
+
 const headers = [
     {id: 'code', label: tm('term.code')},
     {id: 'title', label: tm('term.title')},
-    {id: 'customer', label: tm('term.customer'), value: (row) => row.customer?.name ?? '-'},
+    {id: 'complaint_source_type', label: tm('term.complaintSourceType'), value: (row) => row.complaint_source_type?.name ?? '-'},
+    {id: 'party', label: tm('term.relatedParty'), value: partyLabel},
+    {id: 'complaint_subject', label: tm('term.complaintSubject'), value: (row) => row.complaint_subject?.name ?? '-'},
     {id: 'department', label: tm('term.department'), value: (row) => row.department?.name ?? '-'},
     {id: 'severity', label: tm('term.severity')},
     {id: 'status', label: tm('term.status')},
@@ -88,7 +114,11 @@ const headers = [
 /*Form*/
 const showModal = ref(false);
 const form = useForm({
+    complaint_source_type_id: null,
+    complaint_subject_id: null,
     customer_id: null,
+    supplier_id: null,
+    distributor_id: null,
     title: "",
     description: "",
     channel: "email",
@@ -99,7 +129,17 @@ const form = useForm({
 })
 
 const rules = ref({
-    customer_id: {required: helpers.withMessage(t('message.validation.required'), required)},
+    complaint_source_type_id: {required: helpers.withMessage(t('message.validation.required'), required)},
+    complaint_subject_id: {required: helpers.withMessage(t('message.validation.required'), required)},
+    customer_id: {
+        required: helpers.withMessage(t('message.validation.required'), requiredIf(() => selectedSourceKey.value === 'customer')),
+    },
+    supplier_id: {
+        required: helpers.withMessage(t('message.validation.required'), requiredIf(() => selectedSourceKey.value === 'supplier')),
+    },
+    distributor_id: {
+        required: helpers.withMessage(t('message.validation.required'), requiredIf(() => selectedSourceKey.value === 'distributor')),
+    },
     title: {required: helpers.withMessage(t('message.validation.required'), required)},
     description: {required: helpers.withMessage(t('message.validation.required'), required)},
     channel: {required: helpers.withMessage(t('message.validation.required'), required)},
@@ -143,6 +183,7 @@ const handleDelete = (id) => {
         <template #actionArea>
             <help-button title="Müşteri Şikayetleri — Nasıl Çalışır?" subtitle="Şikayetlerin alım, inceleme, çözüm ve kapanış döngüsünü buradan yönetirsiniz">
                 <p><strong>Bu sayfada ne yapabilirim?</strong> "Yeni Ekle" ile bir şikayet kaydedin; listeden bir kaydın detayına (göz ikonu) girip incelemeye alabilir, çözüm özeti girebilir, müşteriye bildirerek kapatabilir ve gerekirse kök neden araştırması (DÖF) açabilirsiniz.</p>
+                <p><strong>Kaynak ve Konu:</strong> Her şikayet bir kaynağa (İç/Müşteri/Tedarikçi/Dağıtıcı) ve bir konuya (Ürün Kalitesi, Teslimat vb.) atanır. Seçilen kaynağa göre ilgili taraf alanı (Müşteri/Tedarikçi/Dağıtıcı) değişir — İç kaynaklı şikayetlerde hiçbiri istenmez. Bu listeler "Modülü Yönet" üzerinden özelleştirilebilir.</p>
                 <p><strong>Yanıt Termini</strong>, şikayet kaydedildiğinde modül ayarlarındaki SLA gün sayısına göre otomatik hesaplanır.</p>
                 <p>Bir şikayete bağlı <strong>kök neden araştırması</strong> açıldığında (detay sayfasındaki "Kök Neden Araştırması Aç" ile), şikayet otomatik olarak "İnceleniyor" durumuna geçer.</p>
                 <p>Müşteri, verilen çözümden memnun kalmazsa kapatılmış bir şikayet <strong>yeniden açılabilir</strong> — bu, kalıcı olmayan çözümleri kayda geçirmenizi sağlar.</p>
@@ -199,8 +240,26 @@ const handleDelete = (id) => {
             >
                 <Form full-size>
                     <FormSection bg-less>
-                        <input-group class="col-span-6" labelFor="customer_id" :label="tm('term.customer')" :errors="v$.customer_id.$errors">
+                        <input-group class="col-span-3" labelFor="complaint_source_type_id" :label="tm('term.complaintSourceType')" :errors="v$.complaint_source_type_id.$errors">
+                            <select-input v-model="form.complaint_source_type_id" :options="complaintSourceTypeOptions"/>
+                        </input-group>
+
+                        <input-group v-if="selectedSourceKey === 'customer'" class="col-span-3" labelFor="customer_id" :label="tm('term.customer')" :errors="v$.customer_id.$errors">
                             <select-input v-model="form.customer_id" :options="customerOptions"/>
+                        </input-group>
+
+                        <input-group v-else-if="selectedSourceKey === 'supplier'" class="col-span-3" labelFor="supplier_id" :label="tm('term.supplier')" :errors="v$.supplier_id.$errors">
+                            <select-input v-model="form.supplier_id" :options="supplierOptions"/>
+                        </input-group>
+
+                        <input-group v-else-if="selectedSourceKey === 'distributor'" class="col-span-3" labelFor="distributor_id" :label="tm('term.distributor')" :errors="v$.distributor_id.$errors">
+                            <select-input v-model="form.distributor_id" :options="distributorOptions"/>
+                        </input-group>
+
+                        <div v-else class="col-span-3"></div>
+
+                        <input-group class="col-span-6" labelFor="complaint_subject_id" :label="tm('term.complaintSubject')" :errors="v$.complaint_subject_id.$errors">
+                            <select-input v-model="form.complaint_subject_id" :options="complaintSubjectOptions"/>
                         </input-group>
 
                         <input-group class="col-span-6" labelFor="title" :label="tm('term.title')" :errors="v$.title.$errors">

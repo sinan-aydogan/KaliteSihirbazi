@@ -17,6 +17,10 @@ class CustomerComplaint extends Model
 
     protected $fillable = [
         'customer_id',
+        'complaint_source_type_id',
+        'complaint_subject_id',
+        'supplier_id',
+        'distributor_id',
         'title',
         'description',
         'channel',
@@ -64,6 +68,26 @@ class CustomerComplaint extends Model
     public function customer(): BelongsTo
     {
         return $this->belongsTo(Customer::class);
+    }
+
+    public function complaintSourceType(): BelongsTo
+    {
+        return $this->belongsTo(ComplaintSourceType::class);
+    }
+
+    public function complaintSubject(): BelongsTo
+    {
+        return $this->belongsTo(ComplaintSubject::class);
+    }
+
+    public function supplier(): BelongsTo
+    {
+        return $this->belongsTo(Supplier::class);
+    }
+
+    public function distributor(): BelongsTo
+    {
+        return $this->belongsTo(Distributor::class);
     }
 
     public function department(): BelongsTo

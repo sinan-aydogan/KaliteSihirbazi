@@ -24,6 +24,8 @@ test('a customer with complaints cannot be deleted', function () {
     $customer = Customer::create(['name' => 'Test Müşteri']);
     $customer->complaints()->create([
         'title' => 'Test şikayeti',
+        'complaint_source_type_id' => complaintSourceTypeId('customer'),
+        'complaint_subject_id' => complaintSubjectId('other'),
         'description' => 'Açıklama',
         'channel' => 'email',
         'severity' => 'low',

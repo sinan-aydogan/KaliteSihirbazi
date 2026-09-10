@@ -15,6 +15,8 @@ test('an authenticated user can list customer complaints', function () {
 
     $this->actingAs($user)
         ->post(route('customer-complaint.store'), [
+            'complaint_source_type_id' => complaintSourceTypeId('customer'),
+            'complaint_subject_id' => complaintSubjectId('other'),
             'customer_id' => makeComplaintCustomer()->id,
             'title' => 'Eksik parça şikayeti',
             'description' => 'Açıklama',
@@ -39,6 +41,8 @@ test('creating a complaint auto-generates a sequential code, sets status receive
 
     $this->actingAs($author)
         ->post(route('customer-complaint.store'), [
+            'complaint_source_type_id' => complaintSourceTypeId('customer'),
+            'complaint_subject_id' => complaintSubjectId('other'),
             'customer_id' => makeComplaintCustomer()->id,
             'title' => 'Eksik parça şikayeti',
             'description' => 'Açıklama',
@@ -60,6 +64,8 @@ test('a complaint with linked root-cause problems cannot be deleted', function (
     $user = User::factory()->create();
     $complaint = makeComplaintCustomer()->complaints()->create([
         'code' => 'SKY-2026-999',
+        'complaint_source_type_id' => complaintSourceTypeId('customer'),
+        'complaint_subject_id' => complaintSubjectId('other'),
         'title' => 'Test şikayeti',
         'description' => 'Açıklama',
         'channel' => 'email',
@@ -81,4 +87,93 @@ test('a complaint with linked root-cause problems cannot be deleted', function (
     $this->actingAs($user)->delete(route('customer-complaint.destroy', $complaint));
 
     expect(CustomerComplaint::find($complaint->id))->not->toBeNull();
+});
+
+test('a customer-sourced complaint requires a customer', function () {
+    $this->actingAs(User::factory()->create())
+        ->post(route('customer-complaint.store'), [
+            'complaint_source_type_id' => complaintSourceTypeId('customer'),
+            'complaint_subject_id' => complaintSubjectId('other'),
+            'title' => 'Müşterisiz şikayet',
+            'description' => 'Açıklama',
+            'channel' => 'email',
+            'severity' => 'low',
+            'received_date' => now()->toDateString(),
+        ])
+        ->assertSessionHasErrors('customer_id');
+});
+
+test('a supplier-sourced complaint requires a supplier and links to it', function () {
+    $supplier = \App\Models\Supplier::create(['code' => 'SUP-100', 'name' => 'Test Tedarikçi']);
+
+    $this->actingAs(User::factory()->create())
+        ->post(route('customer-complaint.store'), [
+            'complaint_source_type_id' => complaintSourceTypeId('supplier'),
+            'complaint_subject_id' => complaintSubjectId('other'),
+            'title' => 'Tedarikçi şikayeti',
+            'description' => 'Açıklama',
+            'channel' => 'email',
+            'severity' => 'low',
+            'received_date' => now()->toDateString(),
+        ])
+        ->assertSessionHasErrors('supplier_id');
+
+    $this->actingAs(User::factory()->create())
+        ->post(route('customer-complaint.store'), [
+            'complaint_source_type_id' => complaintSourceTypeId('supplier'),
+            'complaint_subject_id' => complaintSubjectId('other'),
+            'supplier_id' => $supplier->id,
+            'title' => 'Tedarikçi şikayeti',
+            'description' => 'Açıklama',
+            'channel' => 'email',
+            'severity' => 'low',
+            'received_date' => now()->toDateString(),
+        ])
+        ->assertSessionHasNoErrors();
+
+    $complaint = CustomerComplaint::latest('id')->first();
+
+    expect($complaint->supplier_id)->toBe($supplier->id)
+        ->and($complaint->customer_id)->toBeNull();
+});
+
+test('a distributor-sourced complaint requires a distributor and links to it', function () {
+    $distributor = \App\Models\Distributor::create(['code' => 'DIS-100', 'name' => 'Test Dağıtıcı']);
+
+    $this->actingAs(User::factory()->create())
+        ->post(route('customer-complaint.store'), [
+            'complaint_source_type_id' => complaintSourceTypeId('distributor'),
+            'complaint_subject_id' => complaintSubjectId('other'),
+            'distributor_id' => $distributor->id,
+            'title' => 'Dağıtıcı şikayeti',
+            'description' => 'Açıklama',
+            'channel' => 'email',
+            'severity' => 'low',
+            'received_date' => now()->toDateString(),
+        ])
+        ->assertSessionHasNoErrors();
+
+    $complaint = CustomerComplaint::latest('id')->first();
+
+    expect($complaint->distributor_id)->toBe($distributor->id);
+});
+
+test('an internal-sourced complaint needs no customer, supplier or distributor', function () {
+    $this->actingAs(User::factory()->create())
+        ->post(route('customer-complaint.store'), [
+            'complaint_source_type_id' => complaintSourceTypeId('internal'),
+            'complaint_subject_id' => complaintSubjectId('other'),
+            'title' => 'İç şikayet',
+            'description' => 'Açıklama',
+            'channel' => 'other',
+            'severity' => 'low',
+            'received_date' => now()->toDateString(),
+        ])
+        ->assertSessionHasNoErrors();
+
+    $complaint = CustomerComplaint::latest('id')->first();
+
+    expect($complaint->customer_id)->toBeNull()
+        ->and($complaint->supplier_id)->toBeNull()
+        ->and($complaint->distributor_id)->toBeNull();
 });

@@ -57,3 +57,19 @@ function capaSourceTypeId(string $key): int
         ['name' => $key, 'is_protected' => true]
     )->id;
 }
+
+function complaintSourceTypeId(string $key): int
+{
+    return \App\Models\ComplaintSourceType::firstOrCreate(
+        ['key' => $key],
+        ['name' => $key, 'is_protected' => true]
+    )->id;
+}
+
+function complaintSubjectId(string $key): int
+{
+    return \App\Models\ComplaintSubject::firstOrCreate(
+        ['key' => $key],
+        ['name' => $key, 'is_protected' => false]
+    )->id;
+}

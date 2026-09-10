@@ -30,11 +30,14 @@ use App\Http\Controllers\CapaController;
 use App\Http\Controllers\CapaSourceTypeController;
 use App\Http\Controllers\CapaWorkflowController;
 use App\Http\Controllers\CompanyAccreditationController;
+use App\Http\Controllers\ComplaintSourceTypeController;
+use App\Http\Controllers\ComplaintSubjectController;
 use App\Http\Controllers\CustomerComplaintController;
 use App\Http\Controllers\CustomerComplaintSettingController;
 use App\Http\Controllers\CustomerComplaintWorkflowController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\DistributorController;
 use App\Http\Controllers\Document\DistributionPointController;
 use App\Http\Controllers\Document\DocumentActionController;
 use App\Http\Controllers\Document\DocumentController;
@@ -182,6 +185,9 @@ Route::middleware([
         ['uri' => 'customer-complaint', 'model' => 'customerComplaint', 'controller' => CustomerComplaintController::class, 'settingController' => CustomerComplaintSettingController::class],
         ['uri' => 'problem-source-type', 'model' => 'problemSourceType', 'controller' => ProblemSourceTypeController::class],
         ['uri' => 'capa-source-type', 'model' => 'capaSourceType', 'controller' => CapaSourceTypeController::class],
+        ['uri' => 'complaint-source-type', 'model' => 'complaintSourceType', 'controller' => ComplaintSourceTypeController::class],
+        ['uri' => 'complaint-subject', 'model' => 'complaintSubject', 'controller' => ComplaintSubjectController::class],
+        ['uri' => 'distributor', 'model' => 'distributor', 'controller' => DistributorController::class],
     ];
 
     $plannedModules = [

@@ -115,6 +115,15 @@ class SupplierController extends Controller
      */
     public function destroy(Supplier $supplier)
     {
+        if ($supplier->complaints()->exists()) {
+            session()->flash('message', [
+                'type' => 'danger',
+                'content' => __('messages.supplier.deletedError', ['supplier' => $supplier->name]),
+            ]);
+
+            return redirect()->back();
+        }
+
         try {
             $supplier->delete();
 

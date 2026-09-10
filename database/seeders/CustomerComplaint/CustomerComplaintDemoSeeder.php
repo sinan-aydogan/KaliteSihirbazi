@@ -2,6 +2,8 @@
 
 namespace Database\Seeders\CustomerComplaint;
 
+use App\Models\ComplaintSourceType;
+use App\Models\ComplaintSubject;
 use App\Models\ProblemSourceType;
 use App\Models\Customer;
 use App\Models\CustomerComplaint;
@@ -47,6 +49,7 @@ class CustomerComplaintDemoSeeder extends Seeder
             severity: 'low',
             productReference: 'KNT-450 Konektör Seti',
             receivedDaysAgo: 2,
+            subjectKey: 'delivery_logistics',
         );
 
         // 2) İlk yanıt verildi, kök neden araştırması (DÖF) açık, devam ediyor
@@ -86,6 +89,7 @@ class CustomerComplaintDemoSeeder extends Seeder
             severity: 'low',
             productReference: 'OTM-310 Fren Balata Seti',
             receivedDaysAgo: 60,
+            subjectKey: 'delivery_logistics',
         );
         $this->service->acknowledge($complaint);
         $this->service->resolve($complaint, [
@@ -139,10 +143,13 @@ class CustomerComplaintDemoSeeder extends Seeder
         string $severity,
         string $productReference,
         int $receivedDaysAgo,
+        string $subjectKey = 'product_quality',
     ): CustomerComplaint {
         $department = Department::inRandomOrder()->first();
 
         return $this->service->create([
+            'complaint_source_type_id' => ComplaintSourceType::where('key', 'customer')->value('id'),
+            'complaint_subject_id' => ComplaintSubject::where('key', $subjectKey)->value('id'),
             'customer_id' => $customer->id,
             'title' => $title,
             'description' => $description,

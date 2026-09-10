@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\CustomerComplaintController::index
- * @see app/Http/Controllers/CustomerComplaintController.php:21
+ * @see app/Http/Controllers/CustomerComplaintController.php:25
  * @route '/customer-complaint/search'
  */
 const index8260e958f954526990b9ee32fe3f29a7 = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -16,7 +16,7 @@ index8260e958f954526990b9ee32fe3f29a7.definition = {
 
 /**
 * @see \App\Http\Controllers\CustomerComplaintController::index
- * @see app/Http/Controllers/CustomerComplaintController.php:21
+ * @see app/Http/Controllers/CustomerComplaintController.php:25
  * @route '/customer-complaint/search'
  */
 index8260e958f954526990b9ee32fe3f29a7.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ index8260e958f954526990b9ee32fe3f29a7.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\CustomerComplaintController::index
- * @see app/Http/Controllers/CustomerComplaintController.php:21
+ * @see app/Http/Controllers/CustomerComplaintController.php:25
  * @route '/customer-complaint/search'
  */
 index8260e958f954526990b9ee32fe3f29a7.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -35,7 +35,7 @@ index8260e958f954526990b9ee32fe3f29a7.post = (options?: RouteQueryOptions): Rout
 
     /**
 * @see \App\Http\Controllers\CustomerComplaintController::index
- * @see app/Http/Controllers/CustomerComplaintController.php:21
+ * @see app/Http/Controllers/CustomerComplaintController.php:25
  * @route '/customer-complaint/search'
  */
     const index8260e958f954526990b9ee32fe3f29a7Form = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -45,7 +45,7 @@ index8260e958f954526990b9ee32fe3f29a7.post = (options?: RouteQueryOptions): Rout
 
             /**
 * @see \App\Http\Controllers\CustomerComplaintController::index
- * @see app/Http/Controllers/CustomerComplaintController.php:21
+ * @see app/Http/Controllers/CustomerComplaintController.php:25
  * @route '/customer-complaint/search'
  */
         index8260e958f954526990b9ee32fe3f29a7Form.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -56,7 +56,7 @@ index8260e958f954526990b9ee32fe3f29a7.post = (options?: RouteQueryOptions): Rout
     index8260e958f954526990b9ee32fe3f29a7.form = index8260e958f954526990b9ee32fe3f29a7Form
     /**
 * @see \App\Http\Controllers\CustomerComplaintController::index
- * @see app/Http/Controllers/CustomerComplaintController.php:21
+ * @see app/Http/Controllers/CustomerComplaintController.php:25
  * @route '/customer-complaint'
  */
 const index0e59b87696eab6a7ac8233276d00c6b5 = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -71,7 +71,7 @@ index0e59b87696eab6a7ac8233276d00c6b5.definition = {
 
 /**
 * @see \App\Http\Controllers\CustomerComplaintController::index
- * @see app/Http/Controllers/CustomerComplaintController.php:21
+ * @see app/Http/Controllers/CustomerComplaintController.php:25
  * @route '/customer-complaint'
  */
 index0e59b87696eab6a7ac8233276d00c6b5.url = (options?: RouteQueryOptions) => {
@@ -80,7 +80,7 @@ index0e59b87696eab6a7ac8233276d00c6b5.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\CustomerComplaintController::index
- * @see app/Http/Controllers/CustomerComplaintController.php:21
+ * @see app/Http/Controllers/CustomerComplaintController.php:25
  * @route '/customer-complaint'
  */
 index0e59b87696eab6a7ac8233276d00c6b5.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -89,7 +89,7 @@ index0e59b87696eab6a7ac8233276d00c6b5.get = (options?: RouteQueryOptions): Route
 })
 /**
 * @see \App\Http\Controllers\CustomerComplaintController::index
- * @see app/Http/Controllers/CustomerComplaintController.php:21
+ * @see app/Http/Controllers/CustomerComplaintController.php:25
  * @route '/customer-complaint'
  */
 index0e59b87696eab6a7ac8233276d00c6b5.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -99,7 +99,7 @@ index0e59b87696eab6a7ac8233276d00c6b5.head = (options?: RouteQueryOptions): Rout
 
     /**
 * @see \App\Http\Controllers\CustomerComplaintController::index
- * @see app/Http/Controllers/CustomerComplaintController.php:21
+ * @see app/Http/Controllers/CustomerComplaintController.php:25
  * @route '/customer-complaint'
  */
     const index0e59b87696eab6a7ac8233276d00c6b5Form = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -109,7 +109,7 @@ index0e59b87696eab6a7ac8233276d00c6b5.head = (options?: RouteQueryOptions): Rout
 
             /**
 * @see \App\Http\Controllers\CustomerComplaintController::index
- * @see app/Http/Controllers/CustomerComplaintController.php:21
+ * @see app/Http/Controllers/CustomerComplaintController.php:25
  * @route '/customer-complaint'
  */
         index0e59b87696eab6a7ac8233276d00c6b5Form.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -118,7 +118,7 @@ index0e59b87696eab6a7ac8233276d00c6b5.head = (options?: RouteQueryOptions): Rout
         })
             /**
 * @see \App\Http\Controllers\CustomerComplaintController::index
- * @see app/Http/Controllers/CustomerComplaintController.php:21
+ * @see app/Http/Controllers/CustomerComplaintController.php:25
  * @route '/customer-complaint'
  */
         index0e59b87696eab6a7ac8233276d00c6b5Form.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -145,7 +145,7 @@ export const index = {
 
 /**
 * @see \App\Http\Controllers\CustomerComplaintController::create
- * @see app/Http/Controllers/CustomerComplaintController.php:35
+ * @see app/Http/Controllers/CustomerComplaintController.php:50
  * @route '/customer-complaint/create'
  */
 export const create = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -160,7 +160,7 @@ create.definition = {
 
 /**
 * @see \App\Http\Controllers\CustomerComplaintController::create
- * @see app/Http/Controllers/CustomerComplaintController.php:35
+ * @see app/Http/Controllers/CustomerComplaintController.php:50
  * @route '/customer-complaint/create'
  */
 create.url = (options?: RouteQueryOptions) => {
@@ -169,7 +169,7 @@ create.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\CustomerComplaintController::create
- * @see app/Http/Controllers/CustomerComplaintController.php:35
+ * @see app/Http/Controllers/CustomerComplaintController.php:50
  * @route '/customer-complaint/create'
  */
 create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -178,7 +178,7 @@ create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\CustomerComplaintController::create
- * @see app/Http/Controllers/CustomerComplaintController.php:35
+ * @see app/Http/Controllers/CustomerComplaintController.php:50
  * @route '/customer-complaint/create'
  */
 create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -188,7 +188,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\CustomerComplaintController::create
- * @see app/Http/Controllers/CustomerComplaintController.php:35
+ * @see app/Http/Controllers/CustomerComplaintController.php:50
  * @route '/customer-complaint/create'
  */
     const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -198,7 +198,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\CustomerComplaintController::create
- * @see app/Http/Controllers/CustomerComplaintController.php:35
+ * @see app/Http/Controllers/CustomerComplaintController.php:50
  * @route '/customer-complaint/create'
  */
         createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -207,7 +207,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\CustomerComplaintController::create
- * @see app/Http/Controllers/CustomerComplaintController.php:35
+ * @see app/Http/Controllers/CustomerComplaintController.php:50
  * @route '/customer-complaint/create'
  */
         createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -223,7 +223,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     create.form = createForm
 /**
 * @see \App\Http\Controllers\CustomerComplaintController::store
- * @see app/Http/Controllers/CustomerComplaintController.php:40
+ * @see app/Http/Controllers/CustomerComplaintController.php:55
  * @route '/customer-complaint'
  */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -238,7 +238,7 @@ store.definition = {
 
 /**
 * @see \App\Http\Controllers\CustomerComplaintController::store
- * @see app/Http/Controllers/CustomerComplaintController.php:40
+ * @see app/Http/Controllers/CustomerComplaintController.php:55
  * @route '/customer-complaint'
  */
 store.url = (options?: RouteQueryOptions) => {
@@ -247,7 +247,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\CustomerComplaintController::store
- * @see app/Http/Controllers/CustomerComplaintController.php:40
+ * @see app/Http/Controllers/CustomerComplaintController.php:55
  * @route '/customer-complaint'
  */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -257,7 +257,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
     /**
 * @see \App\Http\Controllers\CustomerComplaintController::store
- * @see app/Http/Controllers/CustomerComplaintController.php:40
+ * @see app/Http/Controllers/CustomerComplaintController.php:55
  * @route '/customer-complaint'
  */
     const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -267,7 +267,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
             /**
 * @see \App\Http\Controllers\CustomerComplaintController::store
- * @see app/Http/Controllers/CustomerComplaintController.php:40
+ * @see app/Http/Controllers/CustomerComplaintController.php:55
  * @route '/customer-complaint'
  */
         storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -278,7 +278,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     store.form = storeForm
 /**
 * @see \App\Http\Controllers\CustomerComplaintController::show
- * @see app/Http/Controllers/CustomerComplaintController.php:49
+ * @see app/Http/Controllers/CustomerComplaintController.php:64
  * @route '/customer-complaint/{customer_complaint}'
  */
 export const show = (args: { customer_complaint: number | { id: number } } | [customer_complaint: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -293,7 +293,7 @@ show.definition = {
 
 /**
 * @see \App\Http\Controllers\CustomerComplaintController::show
- * @see app/Http/Controllers/CustomerComplaintController.php:49
+ * @see app/Http/Controllers/CustomerComplaintController.php:64
  * @route '/customer-complaint/{customer_complaint}'
  */
 show.url = (args: { customer_complaint: number | { id: number } } | [customer_complaint: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -326,7 +326,7 @@ show.url = (args: { customer_complaint: number | { id: number } } | [customer_co
 
 /**
 * @see \App\Http\Controllers\CustomerComplaintController::show
- * @see app/Http/Controllers/CustomerComplaintController.php:49
+ * @see app/Http/Controllers/CustomerComplaintController.php:64
  * @route '/customer-complaint/{customer_complaint}'
  */
 show.get = (args: { customer_complaint: number | { id: number } } | [customer_complaint: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -335,7 +335,7 @@ show.get = (args: { customer_complaint: number | { id: number } } | [customer_co
 })
 /**
 * @see \App\Http\Controllers\CustomerComplaintController::show
- * @see app/Http/Controllers/CustomerComplaintController.php:49
+ * @see app/Http/Controllers/CustomerComplaintController.php:64
  * @route '/customer-complaint/{customer_complaint}'
  */
 show.head = (args: { customer_complaint: number | { id: number } } | [customer_complaint: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -345,7 +345,7 @@ show.head = (args: { customer_complaint: number | { id: number } } | [customer_c
 
     /**
 * @see \App\Http\Controllers\CustomerComplaintController::show
- * @see app/Http/Controllers/CustomerComplaintController.php:49
+ * @see app/Http/Controllers/CustomerComplaintController.php:64
  * @route '/customer-complaint/{customer_complaint}'
  */
     const showForm = (args: { customer_complaint: number | { id: number } } | [customer_complaint: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -355,7 +355,7 @@ show.head = (args: { customer_complaint: number | { id: number } } | [customer_c
 
             /**
 * @see \App\Http\Controllers\CustomerComplaintController::show
- * @see app/Http/Controllers/CustomerComplaintController.php:49
+ * @see app/Http/Controllers/CustomerComplaintController.php:64
  * @route '/customer-complaint/{customer_complaint}'
  */
         showForm.get = (args: { customer_complaint: number | { id: number } } | [customer_complaint: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -364,7 +364,7 @@ show.head = (args: { customer_complaint: number | { id: number } } | [customer_c
         })
             /**
 * @see \App\Http\Controllers\CustomerComplaintController::show
- * @see app/Http/Controllers/CustomerComplaintController.php:49
+ * @see app/Http/Controllers/CustomerComplaintController.php:64
  * @route '/customer-complaint/{customer_complaint}'
  */
         showForm.head = (args: { customer_complaint: number | { id: number } } | [customer_complaint: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -380,7 +380,7 @@ show.head = (args: { customer_complaint: number | { id: number } } | [customer_c
     show.form = showForm
 /**
 * @see \App\Http\Controllers\CustomerComplaintController::edit
- * @see app/Http/Controllers/CustomerComplaintController.php:65
+ * @see app/Http/Controllers/CustomerComplaintController.php:84
  * @route '/customer-complaint/{customer_complaint}/edit'
  */
 export const edit = (args: { customer_complaint: number | { id: number } } | [customer_complaint: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -395,7 +395,7 @@ edit.definition = {
 
 /**
 * @see \App\Http\Controllers\CustomerComplaintController::edit
- * @see app/Http/Controllers/CustomerComplaintController.php:65
+ * @see app/Http/Controllers/CustomerComplaintController.php:84
  * @route '/customer-complaint/{customer_complaint}/edit'
  */
 edit.url = (args: { customer_complaint: number | { id: number } } | [customer_complaint: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -428,7 +428,7 @@ edit.url = (args: { customer_complaint: number | { id: number } } | [customer_co
 
 /**
 * @see \App\Http\Controllers\CustomerComplaintController::edit
- * @see app/Http/Controllers/CustomerComplaintController.php:65
+ * @see app/Http/Controllers/CustomerComplaintController.php:84
  * @route '/customer-complaint/{customer_complaint}/edit'
  */
 edit.get = (args: { customer_complaint: number | { id: number } } | [customer_complaint: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -437,7 +437,7 @@ edit.get = (args: { customer_complaint: number | { id: number } } | [customer_co
 })
 /**
 * @see \App\Http\Controllers\CustomerComplaintController::edit
- * @see app/Http/Controllers/CustomerComplaintController.php:65
+ * @see app/Http/Controllers/CustomerComplaintController.php:84
  * @route '/customer-complaint/{customer_complaint}/edit'
  */
 edit.head = (args: { customer_complaint: number | { id: number } } | [customer_complaint: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -447,7 +447,7 @@ edit.head = (args: { customer_complaint: number | { id: number } } | [customer_c
 
     /**
 * @see \App\Http\Controllers\CustomerComplaintController::edit
- * @see app/Http/Controllers/CustomerComplaintController.php:65
+ * @see app/Http/Controllers/CustomerComplaintController.php:84
  * @route '/customer-complaint/{customer_complaint}/edit'
  */
     const editForm = (args: { customer_complaint: number | { id: number } } | [customer_complaint: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -457,7 +457,7 @@ edit.head = (args: { customer_complaint: number | { id: number } } | [customer_c
 
             /**
 * @see \App\Http\Controllers\CustomerComplaintController::edit
- * @see app/Http/Controllers/CustomerComplaintController.php:65
+ * @see app/Http/Controllers/CustomerComplaintController.php:84
  * @route '/customer-complaint/{customer_complaint}/edit'
  */
         editForm.get = (args: { customer_complaint: number | { id: number } } | [customer_complaint: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -466,7 +466,7 @@ edit.head = (args: { customer_complaint: number | { id: number } } | [customer_c
         })
             /**
 * @see \App\Http\Controllers\CustomerComplaintController::edit
- * @see app/Http/Controllers/CustomerComplaintController.php:65
+ * @see app/Http/Controllers/CustomerComplaintController.php:84
  * @route '/customer-complaint/{customer_complaint}/edit'
  */
         editForm.head = (args: { customer_complaint: number | { id: number } } | [customer_complaint: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -482,7 +482,7 @@ edit.head = (args: { customer_complaint: number | { id: number } } | [customer_c
     edit.form = editForm
 /**
 * @see \App\Http\Controllers\CustomerComplaintController::update
- * @see app/Http/Controllers/CustomerComplaintController.php:70
+ * @see app/Http/Controllers/CustomerComplaintController.php:89
  * @route '/customer-complaint/{customer_complaint}'
  */
 export const update = (args: { customer_complaint: number | { id: number } } | [customer_complaint: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -497,7 +497,7 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\CustomerComplaintController::update
- * @see app/Http/Controllers/CustomerComplaintController.php:70
+ * @see app/Http/Controllers/CustomerComplaintController.php:89
  * @route '/customer-complaint/{customer_complaint}'
  */
 update.url = (args: { customer_complaint: number | { id: number } } | [customer_complaint: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -530,7 +530,7 @@ update.url = (args: { customer_complaint: number | { id: number } } | [customer_
 
 /**
 * @see \App\Http\Controllers\CustomerComplaintController::update
- * @see app/Http/Controllers/CustomerComplaintController.php:70
+ * @see app/Http/Controllers/CustomerComplaintController.php:89
  * @route '/customer-complaint/{customer_complaint}'
  */
 update.put = (args: { customer_complaint: number | { id: number } } | [customer_complaint: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -539,7 +539,7 @@ update.put = (args: { customer_complaint: number | { id: number } } | [customer_
 })
 /**
 * @see \App\Http\Controllers\CustomerComplaintController::update
- * @see app/Http/Controllers/CustomerComplaintController.php:70
+ * @see app/Http/Controllers/CustomerComplaintController.php:89
  * @route '/customer-complaint/{customer_complaint}'
  */
 update.patch = (args: { customer_complaint: number | { id: number } } | [customer_complaint: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -549,7 +549,7 @@ update.patch = (args: { customer_complaint: number | { id: number } } | [custome
 
     /**
 * @see \App\Http\Controllers\CustomerComplaintController::update
- * @see app/Http/Controllers/CustomerComplaintController.php:70
+ * @see app/Http/Controllers/CustomerComplaintController.php:89
  * @route '/customer-complaint/{customer_complaint}'
  */
     const updateForm = (args: { customer_complaint: number | { id: number } } | [customer_complaint: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -564,7 +564,7 @@ update.patch = (args: { customer_complaint: number | { id: number } } | [custome
 
             /**
 * @see \App\Http\Controllers\CustomerComplaintController::update
- * @see app/Http/Controllers/CustomerComplaintController.php:70
+ * @see app/Http/Controllers/CustomerComplaintController.php:89
  * @route '/customer-complaint/{customer_complaint}'
  */
         updateForm.put = (args: { customer_complaint: number | { id: number } } | [customer_complaint: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -578,7 +578,7 @@ update.patch = (args: { customer_complaint: number | { id: number } } | [custome
         })
             /**
 * @see \App\Http\Controllers\CustomerComplaintController::update
- * @see app/Http/Controllers/CustomerComplaintController.php:70
+ * @see app/Http/Controllers/CustomerComplaintController.php:89
  * @route '/customer-complaint/{customer_complaint}'
  */
         updateForm.patch = (args: { customer_complaint: number | { id: number } } | [customer_complaint: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -594,7 +594,7 @@ update.patch = (args: { customer_complaint: number | { id: number } } | [custome
     update.form = updateForm
 /**
 * @see \App\Http\Controllers\CustomerComplaintController::destroy
- * @see app/Http/Controllers/CustomerComplaintController.php:79
+ * @see app/Http/Controllers/CustomerComplaintController.php:98
  * @route '/customer-complaint/{customer_complaint}'
  */
 export const destroy = (args: { customer_complaint: number | { id: number } } | [customer_complaint: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -609,7 +609,7 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\CustomerComplaintController::destroy
- * @see app/Http/Controllers/CustomerComplaintController.php:79
+ * @see app/Http/Controllers/CustomerComplaintController.php:98
  * @route '/customer-complaint/{customer_complaint}'
  */
 destroy.url = (args: { customer_complaint: number | { id: number } } | [customer_complaint: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -642,7 +642,7 @@ destroy.url = (args: { customer_complaint: number | { id: number } } | [customer
 
 /**
 * @see \App\Http\Controllers\CustomerComplaintController::destroy
- * @see app/Http/Controllers/CustomerComplaintController.php:79
+ * @see app/Http/Controllers/CustomerComplaintController.php:98
  * @route '/customer-complaint/{customer_complaint}'
  */
 destroy.delete = (args: { customer_complaint: number | { id: number } } | [customer_complaint: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -652,7 +652,7 @@ destroy.delete = (args: { customer_complaint: number | { id: number } } | [custo
 
     /**
 * @see \App\Http\Controllers\CustomerComplaintController::destroy
- * @see app/Http/Controllers/CustomerComplaintController.php:79
+ * @see app/Http/Controllers/CustomerComplaintController.php:98
  * @route '/customer-complaint/{customer_complaint}'
  */
     const destroyForm = (args: { customer_complaint: number | { id: number } } | [customer_complaint: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -667,7 +667,7 @@ destroy.delete = (args: { customer_complaint: number | { id: number } } | [custo
 
             /**
 * @see \App\Http\Controllers\CustomerComplaintController::destroy
- * @see app/Http/Controllers/CustomerComplaintController.php:79
+ * @see app/Http/Controllers/CustomerComplaintController.php:98
  * @route '/customer-complaint/{customer_complaint}'
  */
         destroyForm.delete = (args: { customer_complaint: number | { id: number } } | [customer_complaint: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({

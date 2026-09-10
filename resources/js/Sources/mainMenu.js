@@ -72,6 +72,14 @@ export default function ({roles, permissions}) {
                         type: "route",
                         link: 'supplier.index'
                     },
+                    /*Distributors*/
+                    {
+                        id: 'bm-dis',
+                        label: t('mainMenu.distributors'),
+                        icon: 'truck',
+                        type: "route",
+                        link: 'distributor.index'
+                    },
                     /*Audit Firms*/
                     {
                         id: 'bm-aud',

@@ -292,11 +292,18 @@ return [
         'created' => 'The new supplier named :supplier has been created successfully',
         'creation_failed' => 'The supplier named :supplier has been creation failed',
         'deleted' => 'The supplier named :supplier deleted successfully',
+        'deletedError' => 'The supplier named :supplier cannot be deleted because it has complaints on record.',
         'delete_failed' => 'The supplier named :supplier has been delete failed',
         'permanentDeleted' => 'The supplier named :supplier permanently deleted successfully',
         'restored' => 'The supplier named :supplier restored successfully',
         'updated' => 'The supplier named :supplier has been updated successfully',
         'update_failed' => 'The supplier named :supplier has been update failed',
+    ],
+    'distributor' => [
+        'created' => 'Distributor :distributor created.',
+        'updated' => 'Distributor :distributor updated.',
+        'deleted' => 'Distributor :distributor deleted.',
+        'deletedError' => 'Distributor :distributor cannot be deleted because it has complaints on record.',
     ],
     'risk' => [
         'created' => 'Risk :risk created.',
@@ -363,5 +370,19 @@ return [
         'deleted' => 'Source type deleted.',
         'deletedError' => 'This source type cannot be deleted because it has CAPA records assigned to it.',
         'deletedErrorProtected' => 'This system-default source type cannot be deleted.'
+    ],
+    'complaintSourceType' => [
+        'created' => 'Complaint source created.',
+        'updated' => 'Complaint source updated.',
+        'deleted' => 'Complaint source deleted.',
+        'deletedError' => 'This complaint source cannot be deleted because it has complaints assigned to it.',
+        'deletedErrorProtected' => 'This system-default complaint source cannot be deleted.'
+    ],
+    'complaintSubject' => [
+        'created' => 'Complaint subject created.',
+        'updated' => 'Complaint subject updated.',
+        'deleted' => 'Complaint subject deleted.',
+        'deletedError' => 'This complaint subject cannot be deleted because it has complaints assigned to it.',
+        'deletedErrorProtected' => 'This system-default complaint subject cannot be deleted.'
     ],
 ];

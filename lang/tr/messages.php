@@ -293,11 +293,18 @@ return [
         'created' => ':supplier isimli tedarikçi oluşturuldu.',
         'creation_failed' => ':supplier isimli tedarikçi oluşturulamadı.',
         'deleted' => ':supplier isimli tedarikçi silindi.',
+        'deletedError' => ':supplier isimli tedarikçi silinemez çünkü üzerine kayıtlı şikayetler var.',
         'delete_failed' => ':supplier isimli tedarikçi silinemedi.',
         'permanentDeleted' => ':supplier isimli tedarikçi kalıcı olarak silindi.',
         'restored' => ':supplier isimli tedarikçi geri getirildi.',
         'updated' => ':supplier isimli tedarikçi güncellendi.',
         'update_failed' => ':supplier isimli tedarikçi güncellenemedi.',
+    ],
+    'distributor' => [
+        'created' => ':distributor isimli dağıtıcı oluşturuldu.',
+        'updated' => ':distributor isimli dağıtıcı güncellendi.',
+        'deleted' => ':distributor isimli dağıtıcı silindi.',
+        'deletedError' => ':distributor isimli dağıtıcı silinemez çünkü üzerine kayıtlı şikayetler var.',
     ],
     'risk' => [
         'created' => ':risk kodlu risk oluşturuldu.',
@@ -364,5 +371,19 @@ return [
         'deleted' => 'Kaynak türü silindi.',
         'deletedError' => 'Bu kaynak türü silinemez çünkü üzerinde kayıtlı DÖF kayıtları var.',
         'deletedErrorProtected' => 'Sistem varsayılanı olan bu kaynak türü silinemez.'
+    ],
+    'complaintSourceType' => [
+        'created' => 'Şikayet kaynağı oluşturuldu.',
+        'updated' => 'Şikayet kaynağı güncellendi.',
+        'deleted' => 'Şikayet kaynağı silindi.',
+        'deletedError' => 'Bu şikayet kaynağı silinemez çünkü üzerinde kayıtlı şikayetler var.',
+        'deletedErrorProtected' => 'Sistem varsayılanı olan bu şikayet kaynağı silinemez.'
+    ],
+    'complaintSubject' => [
+        'created' => 'Şikayet konusu oluşturuldu.',
+        'updated' => 'Şikayet konusu güncellendi.',
+        'deleted' => 'Şikayet konusu silindi.',
+        'deletedError' => 'Bu şikayet konusu silinemez çünkü üzerinde kayıtlı şikayetler var.',
+        'deletedErrorProtected' => 'Sistem varsayılanı olan bu şikayet konusu silinemez.'
     ],
 ];

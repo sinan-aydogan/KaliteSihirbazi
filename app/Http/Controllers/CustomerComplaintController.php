@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCustomerComplaintRequest;
 use App\Http\Requests\UpdateCustomerComplaintRequest;
+use App\Models\ComplaintSourceType;
+use App\Models\ComplaintSubject;
 use App\Models\CustomerComplaint;
 use App\Models\Customer;
 use App\Models\Department;
+use App\Models\Distributor;
 use App\Models\ProblemSourceType;
+use App\Models\Supplier;
 use App\Models\User;
 use App\Services\CustomerComplaint\CustomerComplaintWorkflowService;
 use Inertia\Inertia;
@@ -20,7 +24,14 @@ class CustomerComplaintController extends Controller
 
     public function index()
     {
-        $complaints = $this->tableFilter(CustomerComplaint::withCount('problems')->with(['customer:id,name', 'department:id,name']))
+        $complaints = $this->tableFilter(CustomerComplaint::withCount('problems')->with([
+            'customer:id,name',
+            'department:id,name',
+            'complaintSourceType:id,name,key',
+            'complaintSubject:id,name',
+            'supplier:id,name',
+            'distributor:id,name',
+        ]))
             ->latest('id')
             ->paginate(10)
             ->withQueryString();
@@ -29,6 +40,10 @@ class CustomerComplaintController extends Controller
             'tableData' => $complaints,
             'customers' => Customer::where('is_active', true)->get(['id', 'name']),
             'departments' => Department::all(['id', 'name']),
+            'suppliers' => Supplier::where('is_active', true)->get(['id', 'name']),
+            'distributors' => Distributor::where('is_active', true)->get(['id', 'name']),
+            'complaintSourceTypes' => ComplaintSourceType::orderBy('sort_order')->get(['id', 'key', 'name']),
+            'complaintSubjects' => ComplaintSubject::orderBy('sort_order')->get(['id', 'key', 'name']),
         ]);
     }
 
@@ -50,6 +65,10 @@ class CustomerComplaintController extends Controller
     {
         $customerComplaint->load([
             'customer:id,code,name,contact_name,phone,email',
+            'complaintSourceType:id,name,key',
+            'complaintSubject:id,name',
+            'supplier:id,code,name,contact_info',
+            'distributor:id,code,name,contact_info',
             'department:id,name',
             'reportedBy:id,name',
             'problems:id,customer_complaint_id,code,title,status',

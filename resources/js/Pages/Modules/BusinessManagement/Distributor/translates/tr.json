@@ -1,0 +1,22 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Dağıtıcılar",
+            "subTitle": "Dağıtıcılarınızı buradan yönetebilirsiniz"
+        },
+        "createPage": {
+            "title": "Dağıtıcı Oluştur",
+            "subTitle": "Yeni bir dağıtıcı kaydı oluşturun"
+        },
+        "updatePage": {
+            "title": "Dağıtıcıyı Güncelle",
+            "subTitle": "Dağıtıcı bilgilerini güncelleyin"
+        }
+    },
+    "term": {
+        "code": "Kod",
+        "name": "Ad",
+        "status": "Durum",
+        "complaintCount": "Şikayet Sayısı"
+    }
+}
