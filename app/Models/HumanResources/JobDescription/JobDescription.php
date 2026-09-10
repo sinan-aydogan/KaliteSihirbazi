@@ -6,6 +6,7 @@ use App\Models\Department;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class JobDescription extends Model
@@ -57,5 +58,11 @@ class JobDescription extends Model
     public function department(): BelongsTo
     {
         return $this->belongsTo(Department::class, 'department_id');
+    }
+
+    // The employees ever assigned to this job description
+    public function assignments(): HasMany
+    {
+        return $this->hasMany(JobDescriptionAssignment::class);
     }
 }

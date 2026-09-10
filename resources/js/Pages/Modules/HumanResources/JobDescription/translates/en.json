@@ -51,6 +51,10 @@
     "workingToolsDescription": "Equipment, tools, and software used while performing the role.",
     "workingHoursDescription": "Working schedule, shifts, and hours for the position.",
     "overtimeStatusDescription": "Overtime requirements and the conditions under which they apply.",
-    "travelStatusDescription": "Reasons and scope for domestic or international travel."
+    "travelStatusDescription": "Reasons and scope for domestic or international travel.",
+    "assignedEmployees": "Assigned Employees",
+    "customizeTable": "Customize Table",
+    "showAssignedEmployees": "Show Assigned Employees",
+    "noAssignedEmployees": "No one has been assigned to this job description yet"
   }
 }

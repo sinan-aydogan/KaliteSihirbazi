@@ -22,7 +22,13 @@ class JobDescriptionController extends Controller
     public function index()
     {
         return Inertia::render('Modules/HumanResources/JobDescription/IndexPage', [
-            'tableData' => $this->tableFilter(JobDescription::with('department:id,name'), [
+            'tableData' => $this->tableFilter(JobDescription::with([
+                'department:id,name',
+                'assignments' => fn ($query) => $query->where('status', true)->with([
+                    'employee' => fn ($query) => $query->select('id', 'name', 'department_id')
+                        ->with(['department:id,name', 'account:id,accountable_id,accountable_type,name']),
+                ]),
+            ]), [
                 'department_id' => ['relation' => 'department', 'column' => 'name'],
             ])->latest('id')->paginate(10)->withQueryString(),
             'departments' => Department::all(['id', 'name']),

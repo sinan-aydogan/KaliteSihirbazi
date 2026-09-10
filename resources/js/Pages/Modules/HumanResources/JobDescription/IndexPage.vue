@@ -2,6 +2,7 @@
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {computed, ref} from "vue";
 import {useForm, router} from "@inertiajs/vue3";
+import {onClickOutside} from "@vueuse/core";
 
 // Components
 import Modal from "@/Components/Modal/Modal.vue"
@@ -16,6 +17,7 @@ import TextListInput from "@/Components/Form/TextListInput.vue"
 import TextListInputWithSelect from "@/Components/Form/TextListInputWithSelect.vue"
 import SelectInput from "@/Components/Form/SelectInput.vue"
 import SwitchInput from "@/Components/Form/SwitchInput.vue"
+import Avatar from "@/Components/Avatar/Avatar.vue"
 
 // Props
 const props = defineProps({
@@ -39,7 +41,7 @@ import {useVuelidate} from "@vuelidate/core"
 import {required, maxLength, helpers} from "@vuelidate/validators"
 
 /*Table*/
-const tableHeaders = [
+const baseTableHeaders = [
   {
     id: 'code',
     label: tm('term.code')
@@ -62,6 +64,33 @@ const tableHeaders = [
     align: 'center'
   }
 ]
+
+/*Column customization*/
+const showAssigneesColumn = ref(false);
+const showColumnCustomizer = ref(false);
+const columnCustomizerContainer = ref(null);
+onClickOutside(columnCustomizerContainer, () => {
+  showColumnCustomizer.value = false;
+});
+
+const tableHeaders = computed(() => showAssigneesColumn.value
+    ? [...baseTableHeaders, {id: 'assignees', label: tm('term.assignedEmployees'), filterable: false}]
+    : baseTableHeaders);
+
+/*Assigned employees avatar group*/
+const maxVisibleAvatars = 5;
+const visibleAssignments = (row) => (row.assignments ?? []).slice(0, row.assignments.length > maxVisibleAvatars ? maxVisibleAvatars - 1 : maxVisibleAvatars);
+const hiddenAssignmentsCount = (row) => row.assignments?.length > maxVisibleAvatars ? row.assignments.length - (maxVisibleAvatars - 1) : 0;
+
+const showPeopleModal = ref(false);
+const selectedJobDescription = ref(null);
+const openPeopleModal = (row) => {
+  if (!row.assignments?.length) return;
+  selectedJobDescription.value = row;
+  showPeopleModal.value = true;
+}
+const formatDate = (date) => date ? new Date(date).toLocaleDateString('tr-TR') : '';
+
 const showModal = ref(false);
 const showSectionPicker = ref(false);
 const selectedSections = ref([]);
@@ -310,6 +339,26 @@ const handleDelete = (id) => {
         show-action
         edit-action
     >
+      <!--Customize Table-->
+      <template #tableActions>
+        <div ref="columnCustomizerContainer" class="relative shrink-0">
+          <simple-button color="neutral" size="slim" @click="showColumnCustomizer = !showColumnCustomizer">
+            <font-awesome-icon icon="fa-solid fa-sliders"/>
+            <span v-text="tm('term.customizeTable')"/>
+          </simple-button>
+
+          <div
+              v-if="showColumnCustomizer"
+              class="absolute left-0 top-full z-50 mt-2 w-64 rounded-xl border border-slate-300 bg-white p-3 shadow-xl dark:border-slate-500 dark:bg-slate-800"
+          >
+            <label class="flex items-center justify-between gap-3 text-sm text-slate-700 dark:text-slate-200">
+              <span v-text="tm('term.showAssignedEmployees')"/>
+              <switch-input v-model="showAssigneesColumn"/>
+            </label>
+          </div>
+        </div>
+      </template>
+
       <!--Staff Type-->
       <template #staff_type="{props}">
         <div
@@ -339,6 +388,38 @@ const handleDelete = (id) => {
       <!--Status-->
       <template #status="{props}">
         <font-awesome-icon icon="fa-solid fa-circle-check" :class="props.status ? 'text-emerald-500': ''" size="lg"/>
+      </template>
+
+      <!--Assigned Employees-->
+      <template #assignees="{props}">
+        <div
+            v-if="props.assignments?.length"
+            class="flex -space-x-2 cursor-pointer"
+            @click="openPeopleModal(props)"
+        >
+          <template v-for="assignment in visibleAssignments(props)" :key="assignment.id">
+            <Avatar
+                v-if="assignment.employee?.account"
+                :src="assignment.employee.account.profile_photo_url"
+                class="ring-2 ring-white dark:ring-slate-800"
+                :title="assignment.employee.employeeName"
+            />
+            <div
+                v-else
+                class="flex w-8 h-8 items-center justify-center rounded-full bg-slate-500 text-xs font-semibold text-white ring-2 ring-white dark:ring-slate-800"
+                :title="assignment.employee?.employeeName"
+            >
+              {{ assignment.employee?.employeeName?.charAt(0).toUpperCase() }}
+            </div>
+          </template>
+          <div
+              v-if="hiddenAssignmentsCount(props) > 0"
+              class="flex w-8 h-8 items-center justify-center rounded-full bg-slate-700 text-xs font-semibold text-white ring-2 ring-white dark:ring-slate-800"
+          >
+            +{{ hiddenAssignmentsCount(props) }}
+          </div>
+        </div>
+        <span v-else class="text-xs text-slate-400" v-text="tm('term.noAssignedEmployees')"/>
       </template>
     </Table>
   </app-layout>
@@ -489,6 +570,42 @@ const handleDelete = (id) => {
         </button>
       </div>
       <div v-else class="p-8 text-center text-slate-500 dark:text-slate-400" v-text="tm('term.allSectionsAdded')"/>
+    </Modal>
+  </teleport>
+
+  <teleport v-if="showPeopleModal" to="body">
+    <Modal
+        v-model="showPeopleModal"
+        :header="tm('term.assignedEmployees')"
+        :subHeader="selectedJobDescription?.name"
+        closeable
+        closeButton
+    >
+      <div class="space-y-2 p-1">
+        <div
+            v-for="assignment in selectedJobDescription?.assignments ?? []"
+            :key="assignment.id"
+            class="flex items-center justify-between p-2 bg-gray-50 dark:bg-gray-700 rounded"
+        >
+          <div class="flex items-center space-x-3">
+            <Avatar
+                v-if="assignment.employee?.account"
+                :src="assignment.employee.account.profile_photo_url"
+            />
+            <div
+                v-else
+                class="flex w-8 h-8 items-center justify-center rounded-full bg-slate-500 text-xs font-semibold text-white"
+            >
+              {{ assignment.employee?.employeeName?.charAt(0).toUpperCase() }}
+            </div>
+            <div>
+              <p class="font-medium">{{ assignment.employee?.employeeName }}</p>
+              <p v-if="assignment.employee?.department" class="text-xs text-slate-500">{{ assignment.employee.department.name }}</p>
+            </div>
+          </div>
+          <span class="text-xs text-slate-500">{{ formatDate(assignment.assignment_date) }}</span>
+        </div>
+      </div>
     </Modal>
   </teleport>
 </template>
