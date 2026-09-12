@@ -13,6 +13,7 @@ import FormSection from "@/Components/Form/FormSection.vue"
 import InputGroup from "@/Components/Form/InputGroup.vue"
 import TextInput from "@/Components/Form/TextInput.vue"
 import SelectInput from "@/Components/Form/SelectInput.vue"
+import SwitchInput from "@/Components/Form/SwitchInput.vue"
 import HelpButton from "@/Components/Help/HelpButton.vue"
 
 // Props
@@ -103,6 +104,7 @@ const form = useForm({
   calibration_supervisor_id:null,
   department_id:null,
   measurement_device_type_id:null,
+  is_reference_standard: false,
 })
 
 /*Related Data with select*/
@@ -294,6 +296,11 @@ const getRowInfo = async (id) => {
           <!-- Measurement Device Type -->
           <input-group class="col-span-12 sm:col-span-8" labelFor="measurement_device_type_id" :label="tm('term.type')" :errors="v$.measurement_device_type_id.$errors">
             <select-input v-model="form.measurement_device_type_id" :options="measurementDeviceTypes" option-label="name"/>
+          </input-group>
+
+          <!-- Reference Standard (Etalon) -->
+          <input-group class="col-span-12" labelFor="is_reference_standard" :label="tm('term.isReferenceStandard')">
+            <switch-input v-model="form.is_reference_standard"/>
           </input-group>
 
           <!-- Brand -->

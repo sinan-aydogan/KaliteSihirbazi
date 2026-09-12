@@ -121,6 +121,9 @@ const handleDelete = () => {
           >
             {{ measurementDevice.status === 'active' ? tm('term.statusValue.active') : tm('term.statusValue.decommissioned') }}
           </span>
+          <span v-if="measurementDevice.is_reference_standard" class="px-2 py-0.5 rounded text-xs bg-indigo-100 text-indigo-700">
+            {{ tm('term.isReferenceStandard') }}
+          </span>
         </div>
         <!--Type-->
         <span v-text="measurementDevice.type.name" class="text-xs uppercase"/>

@@ -1,0 +1,19 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Kalibrasyon Personeli",
+            "subTitle": "İç kalibrasyon yapmaya yetkili personel ve kalibre edebildikleri cihaz tipleri"
+        },
+        "createPage": {
+            "title": "Kalibrasyon Personeli Ekle",
+            "subTitle": "Yeni bir kalibrasyon teknisyeni tanımlayın"
+        }
+    },
+    "term": {
+        "user": "Kullanıcı",
+        "deviceTypes": "Yetkili Olduğu Cihaz Tipleri",
+        "isActive": "Aktif",
+        "notes": "Notlar",
+        "competencyDocuments": "Yetkinlik Belgeleri"
+    }
+}

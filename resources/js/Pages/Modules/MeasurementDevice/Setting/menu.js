@@ -27,6 +27,12 @@ export default function () {
                     type: "link",
                     link: 'calibration-firm.index'
                 },
+                {
+                    'id': 'gb-technician',
+                    'label': t('mainMenu.calibrationTechnicians'),
+                    type: "link",
+                    link: 'calibration-technician.index'
+                },
             ]
         },
     ])

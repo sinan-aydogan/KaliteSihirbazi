@@ -218,6 +218,12 @@ return [
         'updated' => 'Internal auditor updated.',
         'deleted' => 'Internal auditor removed.'
     ],
+    'calibrationTechnician' => [
+        'created' => 'Calibration technician added.',
+        'updated' => 'Calibration technician updated.',
+        'deleted' => 'Calibration technician removed.',
+        'mediaDeleted' => 'Document deleted.'
+    ],
     'auditChecklistTemplate' => [
         'created' => 'Checklist template created.',
         'updated' => 'Checklist template updated.',

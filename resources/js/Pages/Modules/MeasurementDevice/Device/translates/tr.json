@@ -61,11 +61,28 @@
     "decommissionReason": "Kullanımdan Düşürme Sebebi",
     "decommissionedAt": "Kullanımdan Düşürülme Tarihi",
     "decommissionedBy": "Kullanımdan Düşüren",
-    "failedResultNudge": "Bu kalibrasyon sonucu Uygunsuz. Cihazı sayfanın üstündeki \"Kullanımdan Düşür\" butonuyla kullanım dışı bırakabilirsiniz."
+    "failedResultNudge": "Bu kalibrasyon sonucu Uygunsuz. Cihazı sayfanın üstündeki \"Kullanımdan Düşür\" butonuyla kullanım dışı bırakabilirsiniz.",
+    "calibrationType": "Kalibrasyon Türü",
+    "typeValue": {
+      "external": "Dış Kalibrasyon",
+      "internal": "İç Kalibrasyon"
+    },
+    "referenceDevice": "Referans Cihaz (Etalon)",
+    "performedBy": "Kalibrasyonu Yapan Personel",
+    "currentTraceabilityReference": "Şu An Bağlı Olduğu Referans",
+    "report": "Rapor",
+    "measurementPoints": "Ölçüm Noktaları",
+    "nominalValue": "Nominal Değer",
+    "measuredValue": "Ölçülen Değer",
+    "tolerance": "Tolerans (±)",
+    "unit": "Birim",
+    "deviation": "Sapma",
+    "isReferenceStandard": "Referans Standart (Etalon)"
   },
   "message":{
     "feedback" : {
-      "emptyCalibrationTasksList": "Henüz hiç kalibrasyon emri oluşturulmamış"
+      "emptyCalibrationTasksList": "Henüz hiç kalibrasyon emri oluşturulmamış",
+      "emptyMeasurementPoints": "Henüz ölçüm noktası eklenmedi"
     }
   },
   "action": {
@@ -73,6 +90,7 @@
     "createTask": "Emri Oluştur",
     "updateTask": "Emri Güncelle",
     "decommission": "Kullanımdan Düşür",
-    "reactivate": "Yeniden Aktifleştir"
+    "reactivate": "Yeniden Aktifleştir",
+    "addMeasurementPoint": "Ölçüm Noktası Ekle"
   }
 }

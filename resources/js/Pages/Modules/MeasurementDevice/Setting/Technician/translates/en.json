@@ -1,0 +1,19 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Calibration Technicians",
+            "subTitle": "Personnel authorized to perform internal calibrations and the device types they can calibrate"
+        },
+        "createPage": {
+            "title": "Add Calibration Technician",
+            "subTitle": "Register a new calibration technician"
+        }
+    },
+    "term": {
+        "user": "User",
+        "deviceTypes": "Qualified Device Types",
+        "isActive": "Active",
+        "notes": "Notes",
+        "competencyDocuments": "Competency Documents"
+    }
+}

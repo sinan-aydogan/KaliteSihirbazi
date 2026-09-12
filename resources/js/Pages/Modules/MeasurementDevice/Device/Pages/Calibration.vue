@@ -1,5 +1,5 @@
 <script setup>
-import {ref, watch} from "vue";
+import {computed, ref, watch} from "vue";
 import {useForm, router} from "@inertiajs/vue3";
 import ShowPage from "@/Pages/Modules/MeasurementDevice/Device/ShowPage.vue";
 import EmptySource from "@/Components/Content/EmptySource.vue"
@@ -31,6 +31,14 @@ const props = defineProps({
   measurementDevice: Object,
   calibrationTasks: Array,
   calibrationFirms: Array,
+  referenceDevices: {
+    type: Array,
+    default: () => []
+  },
+  calibrationTechnicians: {
+    type: Array,
+    default: () => []
+  },
 })
 
 const headers = [
@@ -43,7 +51,7 @@ const headers = [
     label: t('term.accomplishedDate'),
   },
   {
-    id: "calibrationFirm",
+    id: "source",
     label: t('term.calibrationFirm')
   },
   {
@@ -61,6 +69,12 @@ const headers = [
     label: tm('term.certificate'),
     align: 'center',
     filterable: false,
+  },
+  {
+    id: 'report',
+    label: tm('term.report'),
+    align: 'center',
+    filterable: false,
   }
 ]
 
@@ -68,6 +82,15 @@ const resultOptions = [
   {id: 'passed', label: tm('term.resultValue.passed')},
   {id: 'failed', label: tm('term.resultValue.failed')},
 ]
+
+const typeOptions = [
+  {id: 'external', label: tm('term.typeValue.external')},
+  {id: 'internal', label: tm('term.typeValue.internal')},
+]
+
+const technicianOptions = computed(() => props.calibrationTechnicians
+    .filter(technician => technician.measurement_device_types.some(t => t.id === props.measurementDevice.type.id))
+    .map(technician => ({id: technician.id, label: technician.user.name})))
 
 const showTaskCreateModal = ref(false);
 const formType = ref('create');
@@ -78,7 +101,10 @@ const form = useForm({
   planned_date: '',
   accomplished_date: '',
   measurement_device_id: props.measurementDevice.id,
+  type: 'external',
   calibration_firm_id: null,
+  reference_measurement_device_id: null,
+  performed_by_id: null,
   price: '',
   currency: '',
   status: false,
@@ -87,11 +113,20 @@ const form = useForm({
   report_notes: '',
   next_calibration_date: '',
   certificate: null,
+  measurement_points: [],
 })
 
 const rules = ref({
   planned_date: {required: helpers.withMessage(t('message.validation.required'), required)},
-  calibration_firm_id: {required: helpers.withMessage(t('message.validation.required'), required)},
+  calibration_firm_id: {
+    required: helpers.withMessage(t('message.validation.required'), (value) => form.type !== 'external' || !!value),
+  },
+  reference_measurement_device_id: {
+    required: helpers.withMessage(t('message.validation.required'), (value) => form.type !== 'internal' || !!value),
+  },
+  performed_by_id: {
+    required: helpers.withMessage(t('message.validation.required'), (value) => form.type !== 'internal' || !!value),
+  },
   next_calibration_date: {},
 })
 const v$ = useVuelidate(rules, form)
@@ -103,8 +138,37 @@ watch(() => form.status, (status) => {
     form.report_number = '';
     form.report_notes = '';
     form.next_calibration_date = '';
+    form.measurement_points = [];
   }
 })
+
+watch(() => form.type, (type) => {
+  if (type === 'external') {
+    form.reference_measurement_device_id = null;
+    form.performed_by_id = null;
+  } else {
+    form.calibration_firm_id = null;
+  }
+})
+
+const addMeasurementPoint = () => {
+  form.measurement_points.push({unit: '', nominal_value: '', measured_value: '', tolerance: ''});
+}
+
+const removeMeasurementPoint = (index) => {
+  form.measurement_points.splice(index, 1);
+}
+
+const pointDeviation = (point) => {
+  if (point.nominal_value === '' || point.measured_value === '') return null;
+  return (Number(point.measured_value) - Number(point.nominal_value)).toFixed(3);
+}
+
+const pointWithinTolerance = (point) => {
+  const deviation = pointDeviation(point);
+  if (deviation === null || point.tolerance === '') return null;
+  return Math.abs(deviation) <= Number(point.tolerance);
+}
 
 const openCreate = () => {
   form.reset();
@@ -141,7 +205,10 @@ const getRowInfo = (row) => {
   form.planned_date = dayjs(row.planned_date).format('YYYY-MM-DD');
   form.accomplished_date = row.accomplished_date ? dayjs(row.accomplished_date).format('YYYY-MM-DD') : '';
   form.measurement_device_id = row.measurement_device_id;
+  form.type = row.type;
   form.calibration_firm_id = row.calibration_firm_id;
+  form.reference_measurement_device_id = row.reference_measurement_device_id;
+  form.performed_by_id = row.performed_by_id;
   form.price = row.price;
   form.currency = row.currency;
   form.status = row.status;
@@ -150,6 +217,12 @@ const getRowInfo = (row) => {
   form.report_notes = row.report_notes ?? '';
   form.next_calibration_date = row.next_calibration_date ? dayjs(row.next_calibration_date).format('YYYY-MM-DD') : '';
   form.certificate = null;
+  form.measurement_points = (row.measurement_points ?? []).map(p => ({
+    unit: p.unit ?? '',
+    nominal_value: p.nominal_value,
+    measured_value: p.measured_value,
+    tolerance: p.tolerance ?? '',
+  }));
   formType.value = 'update';
   showTaskCreateModal.value = true;
 }
@@ -161,6 +234,12 @@ dayjs.extend(relativeTime)
 </script>
 <template>
   <ShowPage :measurement-device="measurementDevice">
+    <!--Current Traceability Reference-->
+    <div v-if="measurementDevice.currentTraceabilityReference" class="mt-4 px-4 py-2 rounded-lg bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300 text-sm inline-flex items-center gap-2">
+      <font-awesome-icon icon="fa-solid fa-link"/>
+      <span>{{ tm('term.currentTraceabilityReference') }}: <strong>{{ measurementDevice.currentTraceabilityReference.code }}</strong></span>
+    </div>
+
     <div v-if="calibrationTasks.length>0" class="mt-6"
     >
       <Table
@@ -183,8 +262,12 @@ dayjs.extend(relativeTime)
           {{ format.date(props.accomplished_date) }}
         </template>
 
-        <template #calibrationFirm="{props}">
-          {{ props.firm.name }}
+        <template #source="{props}">
+          <span v-if="props.type === 'internal'" class="text-xs">
+            <span class="px-2 py-0.5 rounded bg-indigo-100 text-indigo-700 mr-1">{{ tm('term.typeValue.internal') }}</span>
+            {{ props.reference_device?.code }}
+          </span>
+          <span v-else>{{ props.firm?.name }}</span>
         </template>
 
         <!--Status-->
@@ -222,6 +305,19 @@ dayjs.extend(relativeTime)
           </a>
           <span v-else>-</span>
         </template>
+
+        <!--Report-->
+        <template #report="{props}">
+          <a
+              v-if="props.status"
+              :href="route('measurement-device-calibration.report', props.id)"
+              target="_blank"
+              class="text-sky-600 hover:scale-110 transition inline-block"
+          >
+            <font-awesome-icon icon="fa-solid fa-file-lines"/>
+          </a>
+          <span v-else>-</span>
+        </template>
       </Table>
     </div>
     <!--Empty Message-->
@@ -250,8 +346,13 @@ dayjs.extend(relativeTime)
             <TextInput v-model="form.planned_date" input-type="date"/>
           </InputGroup>
 
-          <!--Calibration Firm-->
-          <InputGroup class="col-span-12" label-for="calibration_firm_id" :label="t('term.calibrationFirm')"
+          <!--Calibration Type-->
+          <InputGroup class="col-span-12" label-for="type" :label="tm('term.calibrationType')">
+            <SelectInput v-model="form.type" :options="typeOptions"/>
+          </InputGroup>
+
+          <!--Calibration Firm (External)-->
+          <InputGroup v-if="form.type === 'external'" class="col-span-12" label-for="calibration_firm_id" :label="t('term.calibrationFirm')"
                       :errors="v$.calibration_firm_id.$errors">
             <SelectInput
                 v-model="form.calibration_firm_id"
@@ -260,6 +361,25 @@ dayjs.extend(relativeTime)
                 option-key="id"
             />
           </InputGroup>
+
+          <template v-else>
+            <!--Reference Device (Internal)-->
+            <InputGroup class="col-span-6" label-for="reference_measurement_device_id" :label="tm('term.referenceDevice')"
+                        :errors="v$.reference_measurement_device_id.$errors">
+              <SelectInput
+                  v-model="form.reference_measurement_device_id"
+                  :options="referenceDevices"
+                  option-label="code"
+                  option-key="id"
+              />
+            </InputGroup>
+
+            <!--Performed By (Internal)-->
+            <InputGroup class="col-span-6" label-for="performed_by_id" :label="tm('term.performedBy')"
+                        :errors="v$.performed_by_id.$errors">
+              <SelectInput v-model="form.performed_by_id" :options="technicianOptions"/>
+            </InputGroup>
+          </template>
 
           <!--Price-->
           <InputGroup class="col-span-6" label-for="price" :label="t('term.calibrationFee')">
@@ -307,6 +427,46 @@ dayjs.extend(relativeTime)
             <InputGroup class="col-span-12" label-for="report_notes" :label="tm('term.reportNotes')">
               <TextAreaInput v-model="form.report_notes"/>
             </InputGroup>
+
+            <!--Measurement Points-->
+            <div class="col-span-12">
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-sm font-medium">{{ tm('term.measurementPoints') }}</span>
+                <SimpleButton size="slim" color="blue" @click="addMeasurementPoint">
+                  <font-awesome-icon icon="plus" class="mr-1"/>
+                  <span v-text="tm('action.addMeasurementPoint')"/>
+                </SimpleButton>
+              </div>
+
+              <div v-if="form.measurement_points.length === 0" class="text-xs text-slate-400">
+                {{ tm('message.feedback.emptyMeasurementPoints') }}
+              </div>
+
+              <div v-for="(point, index) in form.measurement_points" :key="index"
+                   class="grid grid-cols-12 gap-2 items-center mb-2 p-2 rounded-md bg-slate-50 dark:bg-slate-800/50">
+                <div class="col-span-3">
+                  <TextInput v-model="point.nominal_value" input-type="number" :placeholder="tm('term.nominalValue')"/>
+                </div>
+                <div class="col-span-3">
+                  <TextInput v-model="point.measured_value" input-type="number" :placeholder="tm('term.measuredValue')"/>
+                </div>
+                <div class="col-span-2">
+                  <TextInput v-model="point.tolerance" input-type="number" :placeholder="tm('term.tolerance')"/>
+                </div>
+                <div class="col-span-2">
+                  <TextInput v-model="point.unit" :placeholder="tm('term.unit')"/>
+                </div>
+                <div class="col-span-1 text-center text-xs" :class="{
+                  'text-emerald-600': pointWithinTolerance(point) === true,
+                  'text-rose-600': pointWithinTolerance(point) === false,
+                }">
+                  {{ pointDeviation(point) ?? '-' }}
+                </div>
+                <div class="col-span-1 text-center">
+                  <font-awesome-icon icon="trash-can" class="cursor-pointer text-rose-600" @click="removeMeasurementPoint(index)"/>
+                </div>
+              </div>
+            </div>
 
             <!--Decommission nudge-->
             <div v-if="form.result === 'failed'" class="col-span-12 rounded-lg bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 p-3 text-sm">

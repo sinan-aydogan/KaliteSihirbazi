@@ -219,6 +219,12 @@ return [
         'updated' => 'İç denetçi güncellendi.',
         'deleted' => 'İç denetçi kaldırıldı.'
     ],
+    'calibrationTechnician' => [
+        'created' => 'Kalibrasyon personeli eklendi.',
+        'updated' => 'Kalibrasyon personeli güncellendi.',
+        'deleted' => 'Kalibrasyon personeli kaldırıldı.',
+        'mediaDeleted' => 'Belge silindi.'
+    ],
     'auditChecklistTemplate' => [
         'created' => 'Checklist şablonu oluşturuldu.',
         'updated' => 'Checklist şablonu güncellendi.',

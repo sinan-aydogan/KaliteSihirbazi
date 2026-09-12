@@ -43,6 +43,7 @@ class MeasurementDevice extends Model
         'decommissioned_at',
         'decommission_reason',
         'decommissioned_by_id',
+        'is_reference_standard',
     ];
 
     /**
@@ -55,6 +56,7 @@ class MeasurementDevice extends Model
         'purchase_date' => 'date',
         'purchase_price' => 'decimal:2',
         'decommissioned_at' => 'datetime',
+        'is_reference_standard' => 'boolean',
     ];
 
     // The supervisor of the device
@@ -87,6 +89,12 @@ class MeasurementDevice extends Model
         return $this->hasMany(MeasurementDeviceCalibrationTask::class);
     }
 
+    // Internal calibration tasks (of other devices) where this device was used as the reference standard
+    public function referencedInCalibrationTasks(): HasMany
+    {
+        return $this->hasMany(MeasurementDeviceCalibrationTask::class, 'reference_measurement_device_id');
+    }
+
     // The user who decommissioned the device, if any
     public function decommissionedBy(): BelongsTo
     {
@@ -101,5 +109,22 @@ class MeasurementDevice extends Model
     public function scopeActive(Builder $query): Builder
     {
         return $query->where('status', self::STATUS_ACTIVE);
+    }
+
+    public function scopeReferenceStandard(Builder $query): Builder
+    {
+        return $query->where('is_reference_standard', true);
+    }
+
+    // The reference standard this device is currently traced to, derived from its latest accomplished internal calibration
+    public function currentTraceabilityReference(): ?MeasurementDevice
+    {
+        $latestInternalTask = $this->calibrationTasks()
+            ->where('type', MeasurementDeviceCalibrationTask::TYPE_INTERNAL)
+            ->where('status', true)
+            ->latest('accomplished_date')
+            ->first();
+
+        return $latestInternalTask?->referenceDevice;
     }
 }

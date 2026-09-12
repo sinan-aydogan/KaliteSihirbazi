@@ -37,6 +37,7 @@ class UpdateMeasurementDeviceRequest extends FormRequest
             'calibration_supervisor_id' => 'required|exists:employees,id',
             'department_id' => 'required|exists:departments,id',
             'measurement_device_type_id' => 'required|exists:measurement_device_types,id',
+            'is_reference_standard' => 'boolean',
         ];
     }
 }

@@ -12,6 +12,7 @@ import HumanResources from './HumanResources'
 import Document from './Document'
 import MeasurementDeviceSettingController from './MeasurementDeviceSettingController'
 import MeasurementDevice from './MeasurementDevice'
+import CalibrationTechnicianController from './CalibrationTechnicianController'
 import StandardController from './StandardController'
 import CapaController from './CapaController'
 import ProblemController from './ProblemController'
@@ -63,6 +64,7 @@ HumanResources: Object.assign(HumanResources, HumanResources),
 Document: Object.assign(Document, Document),
 MeasurementDeviceSettingController: Object.assign(MeasurementDeviceSettingController, MeasurementDeviceSettingController),
 MeasurementDevice: Object.assign(MeasurementDevice, MeasurementDevice),
+CalibrationTechnicianController: Object.assign(CalibrationTechnicianController, CalibrationTechnicianController),
 StandardController: Object.assign(StandardController, StandardController),
 CapaController: Object.assign(CapaController, CapaController),
 ProblemController: Object.assign(ProblemController, ProblemController),
