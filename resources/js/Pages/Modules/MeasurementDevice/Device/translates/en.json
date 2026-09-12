@@ -42,7 +42,26 @@
     "calibrationFee": "Calibration Fee",
     "active": "Active",
     "accomplished": "Accomplished",
-    "isAccomplished": "Accomplished?"
+    "isAccomplished": "Accomplished?",
+    "overdueCalibrations": "device(s) have overdue calibration",
+    "upcomingCalibrations": "device(s) have calibration coming up",
+    "statusValue": {
+      "active": "Active",
+      "decommissioned": "Decommissioned"
+    },
+    "result": "Result",
+    "reportNumber": "Report No",
+    "reportNotes": "Report Notes",
+    "nextCalibrationDate": "Next Calibration Date",
+    "certificate": "Calibration Certificate",
+    "resultValue": {
+      "passed": "Passed",
+      "failed": "Failed"
+    },
+    "decommissionReason": "Decommission Reason",
+    "decommissionedAt": "Decommissioned At",
+    "decommissionedBy": "Decommissioned By",
+    "failedResultNudge": "This calibration result is Failed. You can decommission the device using the \"Decommission\" button at the top of the page."
   },
   "message": {
     "feedback": {
@@ -52,6 +71,8 @@
   "action": {
     "createCalibrationTask": "Create a Calibration Task",
     "createTask": "Create Task",
-    "updateTask": "Update Task"
+    "updateTask": "Update Task",
+    "decommission": "Decommission",
+    "reactivate": "Reactivate"
   }
 }

@@ -1,20 +1,31 @@
 import {ref} from "vue"
-// Multi-lang
-import Translates from "./Type/translates"
+import {useI18n} from "vue-i18n";
 
 export default function () {
 
-    const {tm} = Translates();
+    const {t} = useI18n();
 
     const links = ref([
         {
             id: "gb",
             items: [
                 {
+                    'id': 'gb-general',
+                    'label': t('term.generalSettings'),
+                    type: "link",
+                    link: 'measurement-device-setting.index'
+                },
+                {
                     'id': 'gb-type',
-                    'label': tm('title.indexPage.title'),
+                    'label': t('mainMenu.measurementDeviceTypes'),
                     type: "link",
                     link: 'measurement-device-type.index'
+                },
+                {
+                    'id': 'gb-firm',
+                    'label': t('mainMenu.calibrationFirms'),
+                    type: "link",
+                    link: 'calibration-firm.index'
                 },
             ]
         },

@@ -96,6 +96,14 @@ class SettingSeeder extends Seeder
                 'type' => 'json',
                 'value' => json_encode(3)
             ],
+
+            /*Measurement Device Settings*/
+            [
+                'code' => 'calibration_reminder_days',
+                'module' => 'measurement_device',
+                'type' => 'json',
+                'value' => json_encode(30)
+            ],
         ];
 
         foreach ($settings as $s) {

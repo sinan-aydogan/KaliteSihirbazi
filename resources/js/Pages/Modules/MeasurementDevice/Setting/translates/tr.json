@@ -1,0 +1,15 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Ölçüm Cihazı Yönetimi Modülü Ayarları",
+            "subTitle": "Kalibrasyon hatırlatma süresini buradan değiştirebilirsiniz"
+        }
+    },
+    "term": {
+        "reminderDays": {
+            "title": "Kalibrasyon Hatırlatma Süresi",
+            "subTitle": "Planlanan tarihine bu kadar gün kalan kalibrasyon emirleri \"Yaklaşan Kalibrasyonlar\" olarak işaretlenir",
+            "label": "Gün"
+        }
+    }
+}

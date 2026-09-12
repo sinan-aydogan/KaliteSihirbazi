@@ -42,7 +42,26 @@
     "calibrationFee": "Kalibrasyon Ücreti",
     "active": "Aktif",
     "accomplished": "Gerçekleşti",
-    "isAccomplished": "Gerçekleşti mi?"
+    "isAccomplished": "Gerçekleşti mi?",
+    "overdueCalibrations": "cihazın kalibrasyonu gecikti",
+    "upcomingCalibrations": "cihazın kalibrasyonu yaklaşıyor",
+    "statusValue": {
+      "active": "Aktif",
+      "decommissioned": "Kullanım Dışı"
+    },
+    "result": "Sonuç",
+    "reportNumber": "Rapor No",
+    "reportNotes": "Rapor Notları",
+    "nextCalibrationDate": "Sonraki Kalibrasyon Tarihi",
+    "certificate": "Kalibrasyon Sertifikası",
+    "resultValue": {
+      "passed": "Uygun",
+      "failed": "Uygunsuz"
+    },
+    "decommissionReason": "Kullanımdan Düşürme Sebebi",
+    "decommissionedAt": "Kullanımdan Düşürülme Tarihi",
+    "decommissionedBy": "Kullanımdan Düşüren",
+    "failedResultNudge": "Bu kalibrasyon sonucu Uygunsuz. Cihazı sayfanın üstündeki \"Kullanımdan Düşür\" butonuyla kullanım dışı bırakabilirsiniz."
   },
   "message":{
     "feedback" : {
@@ -52,6 +71,8 @@
   "action": {
     "createCalibrationTask": "Kalibrasyon Emri Oluştur",
     "createTask": "Emri Oluştur",
-    "updateTask": "Emri Güncelle"
+    "updateTask": "Emri Güncelle",
+    "decommission": "Kullanımdan Düşür",
+    "reactivate": "Yeniden Aktifleştir"
   }
 }

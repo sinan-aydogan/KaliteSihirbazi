@@ -1,0 +1,15 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Measurement Device Management Module Settings",
+            "subTitle": "You can change the calibration reminder threshold here"
+        }
+    },
+    "term": {
+        "reminderDays": {
+            "title": "Calibration Reminder Threshold",
+            "subTitle": "Calibration tasks whose planned date is within this many days are flagged as \"Upcoming\"",
+            "label": "Days"
+        }
+    }
+}

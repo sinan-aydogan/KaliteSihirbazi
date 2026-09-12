@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::search
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:18
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:19
  * @route '/calibration-firm/search'
  */
 export const search = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -16,7 +16,7 @@ search.definition = {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::search
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:18
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:19
  * @route '/calibration-firm/search'
  */
 search.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ search.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::search
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:18
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:19
  * @route '/calibration-firm/search'
  */
 search.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -35,7 +35,7 @@ search.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
     /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::search
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:18
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:19
  * @route '/calibration-firm/search'
  */
     const searchForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -45,7 +45,7 @@ search.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::search
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:18
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:19
  * @route '/calibration-firm/search'
  */
         searchForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -56,7 +56,7 @@ search.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     search.form = searchForm
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::index
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:18
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:19
  * @route '/calibration-firm'
  */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -71,7 +71,7 @@ index.definition = {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::index
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:18
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:19
  * @route '/calibration-firm'
  */
 index.url = (options?: RouteQueryOptions) => {
@@ -80,7 +80,7 @@ index.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::index
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:18
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:19
  * @route '/calibration-firm'
  */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -89,7 +89,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::index
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:18
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:19
  * @route '/calibration-firm'
  */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -99,7 +99,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::index
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:18
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:19
  * @route '/calibration-firm'
  */
     const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -109,7 +109,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::index
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:18
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:19
  * @route '/calibration-firm'
  */
         indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -118,7 +118,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::index
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:18
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:19
  * @route '/calibration-firm'
  */
         indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -134,7 +134,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     index.form = indexForm
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::create
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:28
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:34
  * @route '/calibration-firm/create'
  */
 export const create = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -149,7 +149,7 @@ create.definition = {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::create
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:28
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:34
  * @route '/calibration-firm/create'
  */
 create.url = (options?: RouteQueryOptions) => {
@@ -158,7 +158,7 @@ create.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::create
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:28
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:34
  * @route '/calibration-firm/create'
  */
 create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -167,7 +167,7 @@ create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::create
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:28
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:34
  * @route '/calibration-firm/create'
  */
 create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -177,7 +177,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::create
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:28
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:34
  * @route '/calibration-firm/create'
  */
     const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -187,7 +187,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::create
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:28
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:34
  * @route '/calibration-firm/create'
  */
         createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -196,7 +196,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::create
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:28
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:34
  * @route '/calibration-firm/create'
  */
         createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -212,7 +212,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     create.form = createForm
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::store
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:38
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:44
  * @route '/calibration-firm'
  */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -227,7 +227,7 @@ store.definition = {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::store
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:38
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:44
  * @route '/calibration-firm'
  */
 store.url = (options?: RouteQueryOptions) => {
@@ -236,7 +236,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::store
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:38
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:44
  * @route '/calibration-firm'
  */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -246,7 +246,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
     /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::store
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:38
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:44
  * @route '/calibration-firm'
  */
     const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -256,7 +256,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::store
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:38
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:44
  * @route '/calibration-firm'
  */
         storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -267,7 +267,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     store.form = storeForm
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::show
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:50
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:56
  * @route '/calibration-firm/{calibration_firm}'
  */
 export const show = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -282,7 +282,7 @@ show.definition = {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::show
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:50
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:56
  * @route '/calibration-firm/{calibration_firm}'
  */
 show.url = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -315,7 +315,7 @@ show.url = (args: { calibration_firm: number | { id: number } } | [calibration_f
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::show
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:50
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:56
  * @route '/calibration-firm/{calibration_firm}'
  */
 show.get = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -324,7 +324,7 @@ show.get = (args: { calibration_firm: number | { id: number } } | [calibration_f
 })
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::show
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:50
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:56
  * @route '/calibration-firm/{calibration_firm}'
  */
 show.head = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -334,7 +334,7 @@ show.head = (args: { calibration_firm: number | { id: number } } | [calibration_
 
     /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::show
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:50
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:56
  * @route '/calibration-firm/{calibration_firm}'
  */
     const showForm = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -344,7 +344,7 @@ show.head = (args: { calibration_firm: number | { id: number } } | [calibration_
 
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::show
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:50
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:56
  * @route '/calibration-firm/{calibration_firm}'
  */
         showForm.get = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -353,7 +353,7 @@ show.head = (args: { calibration_firm: number | { id: number } } | [calibration_
         })
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::show
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:50
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:56
  * @route '/calibration-firm/{calibration_firm}'
  */
         showForm.head = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -369,7 +369,7 @@ show.head = (args: { calibration_firm: number | { id: number } } | [calibration_
     show.form = showForm
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::edit
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:60
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:66
  * @route '/calibration-firm/{calibration_firm}/edit'
  */
 export const edit = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -384,7 +384,7 @@ edit.definition = {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::edit
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:60
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:66
  * @route '/calibration-firm/{calibration_firm}/edit'
  */
 edit.url = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -417,7 +417,7 @@ edit.url = (args: { calibration_firm: number | { id: number } } | [calibration_f
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::edit
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:60
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:66
  * @route '/calibration-firm/{calibration_firm}/edit'
  */
 edit.get = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -426,7 +426,7 @@ edit.get = (args: { calibration_firm: number | { id: number } } | [calibration_f
 })
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::edit
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:60
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:66
  * @route '/calibration-firm/{calibration_firm}/edit'
  */
 edit.head = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -436,7 +436,7 @@ edit.head = (args: { calibration_firm: number | { id: number } } | [calibration_
 
     /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::edit
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:60
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:66
  * @route '/calibration-firm/{calibration_firm}/edit'
  */
     const editForm = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -446,7 +446,7 @@ edit.head = (args: { calibration_firm: number | { id: number } } | [calibration_
 
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::edit
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:60
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:66
  * @route '/calibration-firm/{calibration_firm}/edit'
  */
         editForm.get = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -455,7 +455,7 @@ edit.head = (args: { calibration_firm: number | { id: number } } | [calibration_
         })
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::edit
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:60
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:66
  * @route '/calibration-firm/{calibration_firm}/edit'
  */
         editForm.head = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -471,7 +471,7 @@ edit.head = (args: { calibration_firm: number | { id: number } } | [calibration_
     edit.form = editForm
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::update
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:70
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:76
  * @route '/calibration-firm/{calibration_firm}'
  */
 export const update = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -486,7 +486,7 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::update
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:70
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:76
  * @route '/calibration-firm/{calibration_firm}'
  */
 update.url = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -519,7 +519,7 @@ update.url = (args: { calibration_firm: number | { id: number } } | [calibration
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::update
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:70
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:76
  * @route '/calibration-firm/{calibration_firm}'
  */
 update.put = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -528,7 +528,7 @@ update.put = (args: { calibration_firm: number | { id: number } } | [calibration
 })
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::update
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:70
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:76
  * @route '/calibration-firm/{calibration_firm}'
  */
 update.patch = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -538,7 +538,7 @@ update.patch = (args: { calibration_firm: number | { id: number } } | [calibrati
 
     /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::update
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:70
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:76
  * @route '/calibration-firm/{calibration_firm}'
  */
     const updateForm = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -553,7 +553,7 @@ update.patch = (args: { calibration_firm: number | { id: number } } | [calibrati
 
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::update
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:70
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:76
  * @route '/calibration-firm/{calibration_firm}'
  */
         updateForm.put = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -567,7 +567,7 @@ update.patch = (args: { calibration_firm: number | { id: number } } | [calibrati
         })
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::update
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:70
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:76
  * @route '/calibration-firm/{calibration_firm}'
  */
         updateForm.patch = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -583,7 +583,7 @@ update.patch = (args: { calibration_firm: number | { id: number } } | [calibrati
     update.form = updateForm
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::destroy
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:82
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:88
  * @route '/calibration-firm/{calibration_firm}'
  */
 export const destroy = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -598,7 +598,7 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::destroy
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:82
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:88
  * @route '/calibration-firm/{calibration_firm}'
  */
 destroy.url = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -631,7 +631,7 @@ destroy.url = (args: { calibration_firm: number | { id: number } } | [calibratio
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::destroy
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:82
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:88
  * @route '/calibration-firm/{calibration_firm}'
  */
 destroy.delete = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -641,7 +641,7 @@ destroy.delete = (args: { calibration_firm: number | { id: number } } | [calibra
 
     /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::destroy
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:82
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:88
  * @route '/calibration-firm/{calibration_firm}'
  */
     const destroyForm = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -656,7 +656,7 @@ destroy.delete = (args: { calibration_firm: number | { id: number } } | [calibra
 
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::destroy
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:82
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:88
  * @route '/calibration-firm/{calibration_firm}'
  */
         destroyForm.delete = (args: { calibration_firm: number | { id: number } } | [calibration_firm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -672,7 +672,7 @@ destroy.delete = (args: { calibration_firm: number | { id: number } } | [calibra
     destroy.form = destroyForm
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::deleted
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:89
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:95
  * @route '/calibration-firm-deleted'
  */
 export const deleted = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -687,7 +687,7 @@ deleted.definition = {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::deleted
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:89
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:95
  * @route '/calibration-firm-deleted'
  */
 deleted.url = (options?: RouteQueryOptions) => {
@@ -696,7 +696,7 @@ deleted.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::deleted
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:89
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:95
  * @route '/calibration-firm-deleted'
  */
 deleted.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -705,7 +705,7 @@ deleted.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::deleted
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:89
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:95
  * @route '/calibration-firm-deleted'
  */
 deleted.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -715,7 +715,7 @@ deleted.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::deleted
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:89
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:95
  * @route '/calibration-firm-deleted'
  */
     const deletedForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -725,7 +725,7 @@ deleted.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::deleted
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:89
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:95
  * @route '/calibration-firm-deleted'
  */
         deletedForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -734,7 +734,7 @@ deleted.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::deleted
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:89
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:95
  * @route '/calibration-firm-deleted'
  */
         deletedForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -750,7 +750,7 @@ deleted.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     deleted.form = deletedForm
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::permanentDelete
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:94
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:105
  * @route '/calibration-firm-permanent-delete/{calibrationFirm}'
  */
 export const permanentDelete = (args: { calibrationFirm: number | { id: number } } | [calibrationFirm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -765,7 +765,7 @@ permanentDelete.definition = {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::permanentDelete
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:94
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:105
  * @route '/calibration-firm-permanent-delete/{calibrationFirm}'
  */
 permanentDelete.url = (args: { calibrationFirm: number | { id: number } } | [calibrationFirm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -798,7 +798,7 @@ permanentDelete.url = (args: { calibrationFirm: number | { id: number } } | [cal
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::permanentDelete
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:94
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:105
  * @route '/calibration-firm-permanent-delete/{calibrationFirm}'
  */
 permanentDelete.delete = (args: { calibrationFirm: number | { id: number } } | [calibrationFirm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -808,7 +808,7 @@ permanentDelete.delete = (args: { calibrationFirm: number | { id: number } } | [
 
     /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::permanentDelete
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:94
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:105
  * @route '/calibration-firm-permanent-delete/{calibrationFirm}'
  */
     const permanentDeleteForm = (args: { calibrationFirm: number | { id: number } } | [calibrationFirm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -823,7 +823,7 @@ permanentDelete.delete = (args: { calibrationFirm: number | { id: number } } | [
 
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::permanentDelete
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:94
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:105
  * @route '/calibration-firm-permanent-delete/{calibrationFirm}'
  */
         permanentDeleteForm.delete = (args: { calibrationFirm: number | { id: number } } | [calibrationFirm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -839,7 +839,7 @@ permanentDelete.delete = (args: { calibrationFirm: number | { id: number } } | [
     permanentDelete.form = permanentDeleteForm
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::restore
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:103
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:114
  * @route '/calibration-firm-restore/{calibrationFirm}'
  */
 export const restore = (args: { calibrationFirm: number | { id: number } } | [calibrationFirm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -854,7 +854,7 @@ restore.definition = {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::restore
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:103
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:114
  * @route '/calibration-firm-restore/{calibrationFirm}'
  */
 restore.url = (args: { calibrationFirm: number | { id: number } } | [calibrationFirm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -887,7 +887,7 @@ restore.url = (args: { calibrationFirm: number | { id: number } } | [calibration
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::restore
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:103
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:114
  * @route '/calibration-firm-restore/{calibrationFirm}'
  */
 restore.get = (args: { calibrationFirm: number | { id: number } } | [calibrationFirm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -896,7 +896,7 @@ restore.get = (args: { calibrationFirm: number | { id: number } } | [calibration
 })
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::restore
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:103
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:114
  * @route '/calibration-firm-restore/{calibrationFirm}'
  */
 restore.head = (args: { calibrationFirm: number | { id: number } } | [calibrationFirm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -906,7 +906,7 @@ restore.head = (args: { calibrationFirm: number | { id: number } } | [calibratio
 
     /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::restore
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:103
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:114
  * @route '/calibration-firm-restore/{calibrationFirm}'
  */
     const restoreForm = (args: { calibrationFirm: number | { id: number } } | [calibrationFirm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -916,7 +916,7 @@ restore.head = (args: { calibrationFirm: number | { id: number } } | [calibratio
 
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::restore
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:103
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:114
  * @route '/calibration-firm-restore/{calibrationFirm}'
  */
         restoreForm.get = (args: { calibrationFirm: number | { id: number } } | [calibrationFirm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -925,7 +925,7 @@ restore.head = (args: { calibrationFirm: number | { id: number } } | [calibratio
         })
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController::restore
- * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:103
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/CalibrationFirmController.php:114
  * @route '/calibration-firm-restore/{calibrationFirm}'
  */
         restoreForm.head = (args: { calibrationFirm: number | { id: number } } | [calibrationFirm: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({

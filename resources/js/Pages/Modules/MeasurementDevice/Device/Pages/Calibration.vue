@@ -12,6 +12,8 @@ import InputGroup from "@/Components/Form/InputGroup.vue"
 import TextInput from "@/Components/Form/TextInput.vue"
 import SelectInput from "@/Components/Form/SelectInput.vue"
 import SwitchInput from "@/Components/Form/SwitchInput.vue"
+import TextAreaInput from "@/Components/Form/TextAreaInput.vue"
+import FileInput from "@/Components/Form/FileInput.vue"
 import relativeTime from "dayjs/plugin/relativeTime";
 
 // Multi-lang
@@ -48,7 +50,23 @@ const headers = [
     id: 'status',
     label: tm('term.status'),
     align: 'center'
+  },
+  {
+    id: 'result',
+    label: tm('term.result'),
+    align: 'center'
+  },
+  {
+    id: 'certificate',
+    label: tm('term.certificate'),
+    align: 'center',
+    filterable: false,
   }
+]
+
+const resultOptions = [
+  {id: 'passed', label: tm('term.resultValue.passed')},
+  {id: 'failed', label: tm('term.resultValue.failed')},
 ]
 
 const showTaskCreateModal = ref(false);
@@ -63,17 +81,29 @@ const form = useForm({
   calibration_firm_id: null,
   price: '',
   currency: '',
-  status: false
+  status: false,
+  result: null,
+  report_number: '',
+  report_notes: '',
+  next_calibration_date: '',
+  certificate: null,
 })
 
 const rules = ref({
   planned_date: {required: helpers.withMessage(t('message.validation.required'), required)},
   calibration_firm_id: {required: helpers.withMessage(t('message.validation.required'), required)},
+  next_calibration_date: {},
 })
 const v$ = useVuelidate(rules, form)
 
 watch(() => form.status, (status) => {
-  if (!status) form.accomplished_date = '';
+  if (!status) {
+    form.accomplished_date = '';
+    form.result = null;
+    form.report_number = '';
+    form.report_notes = '';
+    form.next_calibration_date = '';
+  }
 })
 
 const openCreate = () => {
@@ -115,6 +145,11 @@ const getRowInfo = (row) => {
   form.price = row.price;
   form.currency = row.currency;
   form.status = row.status;
+  form.result = row.result;
+  form.report_number = row.report_number ?? '';
+  form.report_notes = row.report_notes ?? '';
+  form.next_calibration_date = row.next_calibration_date ? dayjs(row.next_calibration_date).format('YYYY-MM-DD') : '';
+  form.certificate = null;
   formType.value = 'update';
   showTaskCreateModal.value = true;
 }
@@ -161,6 +196,31 @@ dayjs.extend(relativeTime)
             <font-awesome-icon :icon="`fa-solid fa-${props.status ? 'circle-check' : 'hourglass-half' }`"/>
             <span v-text="tm(props.status ? 'term.accomplished' : 'term.active')"/>
           </div>
+        </template>
+
+        <!--Result-->
+        <template #result="{props}">
+          <span
+              v-if="props.result"
+              class="px-2 py-0.5 rounded text-xs"
+              :class="props.result === 'passed' ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'"
+          >
+            {{ tm(`term.resultValue.${props.result}`) }}
+          </span>
+          <span v-else>-</span>
+        </template>
+
+        <!--Certificate-->
+        <template #certificate="{props}">
+          <a
+              v-if="props.certificate_url"
+              :href="props.certificate_url"
+              target="_blank"
+              class="text-sky-600 hover:scale-110 transition inline-block"
+          >
+            <font-awesome-icon icon="fa-solid fa-file-arrow-down"/>
+          </a>
+          <span v-else>-</span>
         </template>
       </Table>
     </div>
@@ -220,6 +280,39 @@ dayjs.extend(relativeTime)
           <InputGroup v-if="form.status" class="col-span-6" label-for="accomplished_date" :label="t('term.accomplishedDate')">
             <TextInput v-model="form.accomplished_date" input-type="date"/>
           </InputGroup>
+
+          <template v-if="form.status">
+            <!--Result-->
+            <InputGroup class="col-span-6" label-for="result" :label="tm('term.result')">
+              <SelectInput v-model="form.result" :options="resultOptions"/>
+            </InputGroup>
+
+            <!--Report Number-->
+            <InputGroup class="col-span-6" label-for="report_number" :label="tm('term.reportNumber')">
+              <TextInput v-model="form.report_number"/>
+            </InputGroup>
+
+            <!--Next Calibration Date-->
+            <InputGroup class="col-span-6" label-for="next_calibration_date" :label="tm('term.nextCalibrationDate')"
+                        :errors="v$.next_calibration_date.$errors">
+              <TextInput v-model="form.next_calibration_date" input-type="date"/>
+            </InputGroup>
+
+            <!--Certificate-->
+            <InputGroup class="col-span-6" label-for="certificate" :label="tm('term.certificate')">
+              <FileInput accept=".pdf,.jpg,.jpeg,.png" @change="form.certificate = $event ? $event[0] : null"/>
+            </InputGroup>
+
+            <!--Report Notes-->
+            <InputGroup class="col-span-12" label-for="report_notes" :label="tm('term.reportNotes')">
+              <TextAreaInput v-model="form.report_notes"/>
+            </InputGroup>
+
+            <!--Decommission nudge-->
+            <div v-if="form.result === 'failed'" class="col-span-12 rounded-lg bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 p-3 text-sm">
+              {{ tm('term.failedResultNudge') }}
+            </div>
+          </template>
         </FormSection>
       </Form>
       <template #footer>

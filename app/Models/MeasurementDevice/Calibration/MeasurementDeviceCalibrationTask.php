@@ -3,14 +3,21 @@
 namespace App\Models\MeasurementDevice\Calibration;
 
 use App\Models\MeasurementDevice\MeasurementDevice;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class MeasurementDeviceCalibrationTask extends Model
+class MeasurementDeviceCalibrationTask extends Model implements HasMedia
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, InteractsWithMedia;
+
+    public const RESULT_PASSED = 'passed';
+
+    public const RESULT_FAILED = 'failed';
 
     protected $fillable = [
         'planned_date',
@@ -20,6 +27,10 @@ class MeasurementDeviceCalibrationTask extends Model
         'price',
         'currency',
         'status',
+        'result',
+        'report_number',
+        'report_notes',
+        'next_calibration_date',
     ];
 
     /**
@@ -30,6 +41,7 @@ class MeasurementDeviceCalibrationTask extends Model
     protected $casts = [
         'planned_date' => 'date',
         'accomplished_date' => 'date',
+        'next_calibration_date' => 'date',
         'price' => 'decimal:2',
         'status' => 'boolean',
     ];
@@ -44,5 +56,19 @@ class MeasurementDeviceCalibrationTask extends Model
     public function firm(): BelongsTo
     {
         return $this->belongsTo(CalibrationFirm::class, 'calibration_firm_id');
+    }
+
+    // Not yet accomplished and past its planned date
+    public function scopeOverdue(Builder $query): Builder
+    {
+        return $query->where('status', false)->whereDate('planned_date', '<', now()->toDateString());
+    }
+
+    // Not yet accomplished, planned within the given number of days from now
+    public function scopeUpcoming(Builder $query, int $days): Builder
+    {
+        return $query->where('status', false)
+            ->whereDate('planned_date', '>=', now()->toDateString())
+            ->whereDate('planned_date', '<=', now()->addDays($days)->toDateString());
     }
 }

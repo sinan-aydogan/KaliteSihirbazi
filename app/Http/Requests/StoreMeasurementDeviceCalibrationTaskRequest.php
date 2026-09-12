@@ -31,6 +31,11 @@ class StoreMeasurementDeviceCalibrationTaskRequest extends FormRequest
             'price' => 'nullable|numeric|min:0',
             'currency' => 'nullable|required_with:price|string|size:3',
             'status' => 'sometimes|boolean',
+            'result' => 'nullable|in:passed,failed',
+            'report_number' => 'nullable|string|max:100',
+            'report_notes' => 'nullable|string|max:2000',
+            'next_calibration_date' => 'nullable|date|after:planned_date',
+            'certificate' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:10240',
         ];
     }
 }

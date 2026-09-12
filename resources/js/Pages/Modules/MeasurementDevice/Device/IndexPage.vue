@@ -13,6 +13,7 @@ import FormSection from "@/Components/Form/FormSection.vue"
 import InputGroup from "@/Components/Form/InputGroup.vue"
 import TextInput from "@/Components/Form/TextInput.vue"
 import SelectInput from "@/Components/Form/SelectInput.vue"
+import HelpButton from "@/Components/Help/HelpButton.vue"
 
 // Props
 const props = defineProps({
@@ -31,6 +32,14 @@ const props = defineProps({
   employees: {
     type: Array,
     default: []
+  },
+  overdueCalibrationCount: {
+    type: Number,
+    default: 0
+  },
+  upcomingCalibrationCount: {
+    type: Number,
+    default: 0
   }
 })
 
@@ -69,6 +78,11 @@ const tableHeaders = [
   {
     id: 'calibration_supervisor_id',
     label: tm('term.supervisor'),
+  },
+  {
+    id: 'status',
+    label: tm('term.status'),
+    align: 'center',
   },
 ]
 const showModal = ref(false);
@@ -164,12 +178,16 @@ const getRowInfo = async (id) => {
 <template>
   <app-layout :title="tm('title.indexPage.title')" :sub-title="tm('title.indexPage.subTitle')">
     <template #actionArea>
+      <help-button title="Ölçüm Cihazı Yönetimi — Nasıl Çalışır?" subtitle="Kalibrasyon hatırlatmaları ve cihaz durumu buradan izlenir">
+        <p><strong>Kalibrasyon Hatırlatmaları:</strong> Aşağıdaki uyarı, aktif (kullanımdan düşürülmemiş) cihazların henüz gerçekleşmemiş kalibrasyon emirlerini gösterir — planlanan tarihi geçmiş olanlar "Gecikmiş", ayarlardaki eşik gün sayısı içinde olanlar "Yaklaşan" olarak sayılır. Eşik gün sayısı "Modülü Yönet"ten değiştirilebilir.</p>
+        <p><strong>Durum:</strong> Bir cihaz Aktif veya Kullanım Dışı olabilir. Kullanımdan düşürme, cihaz detay sayfasından bir sebep belirtilerek yapılır ve istenirse geri alınabilir — kullanım dışı cihazlar hatırlatma sayımlarına dahil edilmez.</p>
+      </help-button>
       <simple-button type="route" :link="route('measurement-device.deleted')" color="red">
         <font-awesome-icon icon="trash-can" class="mr-2"/>
         <span v-text="$t('term.deletedItems')"/>
       </simple-button>
 
-      <simple-button type="route" :link="route('measurement-device-type.index')" color="blue">
+      <simple-button type="route" :link="route('measurement-device-setting.index')" color="blue">
         <font-awesome-icon icon="fa-solid fa-cog" class="mr-2"/>
         <span v-text="tm('term.manageModule')"/>
       </simple-button>
@@ -179,6 +197,28 @@ const getRowInfo = async (id) => {
         <span v-text="$t('action.addNew')"/>
       </simple-button>
     </template>
+
+    <!--Calibration Reminders Banner-->
+    <div
+        v-if="overdueCalibrationCount > 0 || upcomingCalibrationCount > 0"
+        class="flex flex-wrap gap-3 mb-4"
+    >
+      <div
+          v-if="overdueCalibrationCount > 0"
+          class="flex items-center gap-2 px-4 py-2 rounded-lg bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300"
+      >
+        <font-awesome-icon icon="fa-solid fa-triangle-exclamation"/>
+        <span>{{ overdueCalibrationCount }} {{ tm('term.overdueCalibrations') }}</span>
+      </div>
+      <div
+          v-if="upcomingCalibrationCount > 0"
+          class="flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300"
+      >
+        <font-awesome-icon icon="fa-solid fa-clock"/>
+        <span>{{ upcomingCalibrationCount }} {{ tm('term.upcomingCalibrations') }}</span>
+      </div>
+    </div>
+
     <Table
         :data="tableData"
         :headers="tableHeaders"
@@ -222,7 +262,12 @@ const getRowInfo = async (id) => {
 
       <!--Status-->
       <template #status="{props}">
-        <font-awesome-icon icon="fa-solid fa-circle-check" :class="props.status ? 'text-emerald-500': ''" size="lg"/>
+        <span
+            class="px-2 py-0.5 rounded text-xs"
+            :class="props.status === 'active' ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-200 text-slate-700'"
+        >
+          {{ props.status === 'active' ? tm('term.statusValue.active') : tm('term.statusValue.decommissioned') }}
+        </span>
       </template>
     </Table>
   </app-layout>

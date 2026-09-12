@@ -38,7 +38,11 @@ class MeasurementDeviceCalibrationTaskController extends Controller
      */
     public function store(StoreMeasurementDeviceCalibrationTaskRequest $request)
     {
-        $measurementDeviceCalibration = MeasurementDeviceCalibrationTask::create($request->validated());
+        $measurementDeviceCalibration = MeasurementDeviceCalibrationTask::create($request->safe()->except('certificate'));
+
+        if ($request->hasFile('certificate')) {
+            $measurementDeviceCalibration->addMedia($request->file('certificate'))->toMediaCollection('certificate');
+        }
 
         session()->flash('message', ['type' => 'success', 'content' => __('messages.measurementDeviceCalibration.created', ['measurementDeviceCalibration' => $measurementDeviceCalibration->id])]);
 
@@ -72,7 +76,11 @@ class MeasurementDeviceCalibrationTaskController extends Controller
      */
     public function update(UpdateMeasurementDeviceCalibrationTaskRequest $request, MeasurementDeviceCalibrationTask $measurementDeviceCalibration)
     {
-        $measurementDeviceCalibration->update($request->validated());
+        $measurementDeviceCalibration->update($request->safe()->except('certificate'));
+
+        if ($request->hasFile('certificate')) {
+            $measurementDeviceCalibration->addMedia($request->file('certificate'))->toMediaCollection('certificate');
+        }
 
         session()->flash('message', ['type' => 'success', 'content' => __('messages.measurementDeviceCalibration.updated', ['measurementDeviceCalibration' => $measurementDeviceCalibration->id])]);
 

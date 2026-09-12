@@ -68,7 +68,9 @@ return [
         'deleted' => ':measurementDeviceCode coded :measurementDeviceType deleted successfully',
         'permanentDeleted' => ':measurementDeviceCode coded :measurementDeviceType permanently deleted successfully',
         'restored' => ':measurementDeviceCode coded :measurementDeviceType restored successfully',
-        'updated' => ':measurementDeviceCode coded :measurementDeviceType has been updated successfully'
+        'updated' => ':measurementDeviceCode coded :measurementDeviceType has been updated successfully',
+        'decommissioned' => 'Device :measurementDeviceCode has been decommissioned',
+        'reactivated' => 'Device :measurementDeviceCode has been reactivated'
     ],
     'measurementDeviceType' => [
         'created' => 'The new device type named :measurementDeviceType has been created successfully',
@@ -356,6 +358,9 @@ return [
     ],
     'customerComplaintSettings' => [
         'updated' => 'Customer Complaints module settings updated.'
+    ],
+    'measurementDeviceSettings' => [
+        'updated' => 'Measurement Device Management module settings updated.'
     ],
     'problemSourceType' => [
         'created' => 'Source type created.',

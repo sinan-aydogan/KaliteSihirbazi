@@ -69,7 +69,9 @@ return [
         'deleted' => ':measurementDeviceCode kodlu, :measurementDeviceType silindi.',
         'permanentDeleted' => ':measurementDeviceCode kodlu, :measurementDeviceType kalıcı olarak silindi.',
         'restored' => ':measurementDeviceCode kodlu, :measurementDeviceType geri getirildi.',
-        'updated' => ':measurementDeviceCode kodlu, :measurementDeviceType güncellendi.'
+        'updated' => ':measurementDeviceCode kodlu, :measurementDeviceType güncellendi.',
+        'decommissioned' => ':measurementDeviceCode kodlu cihaz kullanımdan düşürüldü.',
+        'reactivated' => ':measurementDeviceCode kodlu cihaz yeniden aktifleştirildi.'
     ],
     'measurementDeviceType' => [
         'created' => ':measurementDeviceType isimli cihaz tipi oluşturuldu.',
@@ -357,6 +359,9 @@ return [
     ],
     'customerComplaintSettings' => [
         'updated' => 'Müşteri Şikayetleri modülü ayarları güncellendi.'
+    ],
+    'measurementDeviceSettings' => [
+        'updated' => 'Ölçüm Cihazı Yönetimi modülü ayarları güncellendi.'
     ],
     'problemSourceType' => [
         'created' => 'Kaynak türü oluşturuldu.',
