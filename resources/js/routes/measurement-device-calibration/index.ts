@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::search
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:19
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:20
  * @route '/measurement-device-calibration/search'
  */
 export const search = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -16,7 +16,7 @@ search.definition = {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::search
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:19
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:20
  * @route '/measurement-device-calibration/search'
  */
 search.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ search.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::search
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:19
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:20
  * @route '/measurement-device-calibration/search'
  */
 search.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -35,7 +35,7 @@ search.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
     /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::search
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:19
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:20
  * @route '/measurement-device-calibration/search'
  */
     const searchForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -45,7 +45,7 @@ search.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::search
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:19
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:20
  * @route '/measurement-device-calibration/search'
  */
         searchForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -56,7 +56,7 @@ search.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     search.form = searchForm
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::index
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:19
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:20
  * @route '/measurement-device-calibration'
  */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -71,7 +71,7 @@ index.definition = {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::index
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:19
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:20
  * @route '/measurement-device-calibration'
  */
 index.url = (options?: RouteQueryOptions) => {
@@ -80,7 +80,7 @@ index.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::index
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:19
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:20
  * @route '/measurement-device-calibration'
  */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -89,7 +89,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::index
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:19
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:20
  * @route '/measurement-device-calibration'
  */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -99,7 +99,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::index
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:19
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:20
  * @route '/measurement-device-calibration'
  */
     const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -109,7 +109,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::index
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:19
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:20
  * @route '/measurement-device-calibration'
  */
         indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -118,7 +118,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::index
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:19
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:20
  * @route '/measurement-device-calibration'
  */
         indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -134,7 +134,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     index.form = indexForm
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::create
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:39
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:40
  * @route '/measurement-device-calibration/create'
  */
 export const create = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -149,7 +149,7 @@ create.definition = {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::create
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:39
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:40
  * @route '/measurement-device-calibration/create'
  */
 create.url = (options?: RouteQueryOptions) => {
@@ -158,7 +158,7 @@ create.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::create
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:39
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:40
  * @route '/measurement-device-calibration/create'
  */
 create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -167,7 +167,7 @@ create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::create
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:39
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:40
  * @route '/measurement-device-calibration/create'
  */
 create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -177,7 +177,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::create
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:39
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:40
  * @route '/measurement-device-calibration/create'
  */
     const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -187,7 +187,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::create
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:39
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:40
  * @route '/measurement-device-calibration/create'
  */
         createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -196,7 +196,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::create
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:39
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:40
  * @route '/measurement-device-calibration/create'
  */
         createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -212,7 +212,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     create.form = createForm
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::store
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:49
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:50
  * @route '/measurement-device-calibration'
  */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -227,7 +227,7 @@ store.definition = {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::store
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:49
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:50
  * @route '/measurement-device-calibration'
  */
 store.url = (options?: RouteQueryOptions) => {
@@ -236,7 +236,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::store
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:49
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:50
  * @route '/measurement-device-calibration'
  */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -246,7 +246,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
     /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::store
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:49
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:50
  * @route '/measurement-device-calibration'
  */
     const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -256,7 +256,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::store
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:49
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:50
  * @route '/measurement-device-calibration'
  */
         storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -267,7 +267,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     store.form = storeForm
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::show
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:69
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:70
  * @route '/measurement-device-calibration/{measurement_device_calibration}'
  */
 export const show = (args: { measurement_device_calibration: number | { id: number } } | [measurement_device_calibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -282,7 +282,7 @@ show.definition = {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::show
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:69
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:70
  * @route '/measurement-device-calibration/{measurement_device_calibration}'
  */
 show.url = (args: { measurement_device_calibration: number | { id: number } } | [measurement_device_calibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -315,7 +315,7 @@ show.url = (args: { measurement_device_calibration: number | { id: number } } | 
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::show
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:69
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:70
  * @route '/measurement-device-calibration/{measurement_device_calibration}'
  */
 show.get = (args: { measurement_device_calibration: number | { id: number } } | [measurement_device_calibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -324,7 +324,7 @@ show.get = (args: { measurement_device_calibration: number | { id: number } } | 
 })
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::show
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:69
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:70
  * @route '/measurement-device-calibration/{measurement_device_calibration}'
  */
 show.head = (args: { measurement_device_calibration: number | { id: number } } | [measurement_device_calibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -334,7 +334,7 @@ show.head = (args: { measurement_device_calibration: number | { id: number } } |
 
     /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::show
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:69
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:70
  * @route '/measurement-device-calibration/{measurement_device_calibration}'
  */
     const showForm = (args: { measurement_device_calibration: number | { id: number } } | [measurement_device_calibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -344,7 +344,7 @@ show.head = (args: { measurement_device_calibration: number | { id: number } } |
 
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::show
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:69
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:70
  * @route '/measurement-device-calibration/{measurement_device_calibration}'
  */
         showForm.get = (args: { measurement_device_calibration: number | { id: number } } | [measurement_device_calibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -353,7 +353,7 @@ show.head = (args: { measurement_device_calibration: number | { id: number } } |
         })
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::show
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:69
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:70
  * @route '/measurement-device-calibration/{measurement_device_calibration}'
  */
         showForm.head = (args: { measurement_device_calibration: number | { id: number } } | [measurement_device_calibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -369,7 +369,7 @@ show.head = (args: { measurement_device_calibration: number | { id: number } } |
     show.form = showForm
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::edit
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:79
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:80
  * @route '/measurement-device-calibration/{measurement_device_calibration}/edit'
  */
 export const edit = (args: { measurement_device_calibration: number | { id: number } } | [measurement_device_calibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -384,7 +384,7 @@ edit.definition = {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::edit
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:79
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:80
  * @route '/measurement-device-calibration/{measurement_device_calibration}/edit'
  */
 edit.url = (args: { measurement_device_calibration: number | { id: number } } | [measurement_device_calibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -417,7 +417,7 @@ edit.url = (args: { measurement_device_calibration: number | { id: number } } | 
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::edit
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:79
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:80
  * @route '/measurement-device-calibration/{measurement_device_calibration}/edit'
  */
 edit.get = (args: { measurement_device_calibration: number | { id: number } } | [measurement_device_calibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -426,7 +426,7 @@ edit.get = (args: { measurement_device_calibration: number | { id: number } } | 
 })
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::edit
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:79
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:80
  * @route '/measurement-device-calibration/{measurement_device_calibration}/edit'
  */
 edit.head = (args: { measurement_device_calibration: number | { id: number } } | [measurement_device_calibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -436,7 +436,7 @@ edit.head = (args: { measurement_device_calibration: number | { id: number } } |
 
     /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::edit
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:79
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:80
  * @route '/measurement-device-calibration/{measurement_device_calibration}/edit'
  */
     const editForm = (args: { measurement_device_calibration: number | { id: number } } | [measurement_device_calibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -446,7 +446,7 @@ edit.head = (args: { measurement_device_calibration: number | { id: number } } |
 
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::edit
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:79
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:80
  * @route '/measurement-device-calibration/{measurement_device_calibration}/edit'
  */
         editForm.get = (args: { measurement_device_calibration: number | { id: number } } | [measurement_device_calibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -455,7 +455,7 @@ edit.head = (args: { measurement_device_calibration: number | { id: number } } |
         })
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::edit
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:79
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:80
  * @route '/measurement-device-calibration/{measurement_device_calibration}/edit'
  */
         editForm.head = (args: { measurement_device_calibration: number | { id: number } } | [measurement_device_calibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -471,7 +471,7 @@ edit.head = (args: { measurement_device_calibration: number | { id: number } } |
     edit.form = editForm
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::update
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:89
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:90
  * @route '/measurement-device-calibration/{measurement_device_calibration}'
  */
 export const update = (args: { measurement_device_calibration: number | { id: number } } | [measurement_device_calibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -486,7 +486,7 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::update
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:89
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:90
  * @route '/measurement-device-calibration/{measurement_device_calibration}'
  */
 update.url = (args: { measurement_device_calibration: number | { id: number } } | [measurement_device_calibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -519,7 +519,7 @@ update.url = (args: { measurement_device_calibration: number | { id: number } } 
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::update
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:89
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:90
  * @route '/measurement-device-calibration/{measurement_device_calibration}'
  */
 update.put = (args: { measurement_device_calibration: number | { id: number } } | [measurement_device_calibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -528,7 +528,7 @@ update.put = (args: { measurement_device_calibration: number | { id: number } } 
 })
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::update
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:89
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:90
  * @route '/measurement-device-calibration/{measurement_device_calibration}'
  */
 update.patch = (args: { measurement_device_calibration: number | { id: number } } | [measurement_device_calibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -538,7 +538,7 @@ update.patch = (args: { measurement_device_calibration: number | { id: number } 
 
     /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::update
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:89
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:90
  * @route '/measurement-device-calibration/{measurement_device_calibration}'
  */
     const updateForm = (args: { measurement_device_calibration: number | { id: number } } | [measurement_device_calibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -553,7 +553,7 @@ update.patch = (args: { measurement_device_calibration: number | { id: number } 
 
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::update
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:89
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:90
  * @route '/measurement-device-calibration/{measurement_device_calibration}'
  */
         updateForm.put = (args: { measurement_device_calibration: number | { id: number } } | [measurement_device_calibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -567,7 +567,7 @@ update.patch = (args: { measurement_device_calibration: number | { id: number } 
         })
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::update
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:89
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:90
  * @route '/measurement-device-calibration/{measurement_device_calibration}'
  */
         updateForm.patch = (args: { measurement_device_calibration: number | { id: number } } | [measurement_device_calibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -583,7 +583,7 @@ update.patch = (args: { measurement_device_calibration: number | { id: number } 
     update.form = updateForm
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::destroy
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:109
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:110
  * @route '/measurement-device-calibration/{measurement_device_calibration}'
  */
 export const destroy = (args: { measurement_device_calibration: number | { id: number } } | [measurement_device_calibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -598,7 +598,7 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::destroy
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:109
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:110
  * @route '/measurement-device-calibration/{measurement_device_calibration}'
  */
 destroy.url = (args: { measurement_device_calibration: number | { id: number } } | [measurement_device_calibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -631,7 +631,7 @@ destroy.url = (args: { measurement_device_calibration: number | { id: number } }
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::destroy
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:109
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:110
  * @route '/measurement-device-calibration/{measurement_device_calibration}'
  */
 destroy.delete = (args: { measurement_device_calibration: number | { id: number } } | [measurement_device_calibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -641,7 +641,7 @@ destroy.delete = (args: { measurement_device_calibration: number | { id: number 
 
     /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::destroy
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:109
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:110
  * @route '/measurement-device-calibration/{measurement_device_calibration}'
  */
     const destroyForm = (args: { measurement_device_calibration: number | { id: number } } | [measurement_device_calibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -656,7 +656,7 @@ destroy.delete = (args: { measurement_device_calibration: number | { id: number 
 
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::destroy
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:109
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:110
  * @route '/measurement-device-calibration/{measurement_device_calibration}'
  */
         destroyForm.delete = (args: { measurement_device_calibration: number | { id: number } } | [measurement_device_calibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -672,7 +672,7 @@ destroy.delete = (args: { measurement_device_calibration: number | { id: number 
     destroy.form = destroyForm
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::report
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:121
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:122
  * @route '/measurement-device-calibration/{measurementDeviceCalibration}/report'
  */
 export const report = (args: { measurementDeviceCalibration: number | { id: number } } | [measurementDeviceCalibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -687,7 +687,7 @@ report.definition = {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::report
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:121
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:122
  * @route '/measurement-device-calibration/{measurementDeviceCalibration}/report'
  */
 report.url = (args: { measurementDeviceCalibration: number | { id: number } } | [measurementDeviceCalibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -720,7 +720,7 @@ report.url = (args: { measurementDeviceCalibration: number | { id: number } } | 
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::report
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:121
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:122
  * @route '/measurement-device-calibration/{measurementDeviceCalibration}/report'
  */
 report.get = (args: { measurementDeviceCalibration: number | { id: number } } | [measurementDeviceCalibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -729,7 +729,7 @@ report.get = (args: { measurementDeviceCalibration: number | { id: number } } | 
 })
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::report
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:121
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:122
  * @route '/measurement-device-calibration/{measurementDeviceCalibration}/report'
  */
 report.head = (args: { measurementDeviceCalibration: number | { id: number } } | [measurementDeviceCalibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -739,7 +739,7 @@ report.head = (args: { measurementDeviceCalibration: number | { id: number } } |
 
     /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::report
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:121
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:122
  * @route '/measurement-device-calibration/{measurementDeviceCalibration}/report'
  */
     const reportForm = (args: { measurementDeviceCalibration: number | { id: number } } | [measurementDeviceCalibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -749,7 +749,7 @@ report.head = (args: { measurementDeviceCalibration: number | { id: number } } |
 
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::report
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:121
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:122
  * @route '/measurement-device-calibration/{measurementDeviceCalibration}/report'
  */
         reportForm.get = (args: { measurementDeviceCalibration: number | { id: number } } | [measurementDeviceCalibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -758,7 +758,7 @@ report.head = (args: { measurementDeviceCalibration: number | { id: number } } |
         })
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController::report
- * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:121
+ * @see app/Http/Controllers/MeasurementDevice/Calibration/MeasurementDeviceCalibrationTaskController.php:122
  * @route '/measurement-device-calibration/{measurementDeviceCalibration}/report'
  */
         reportForm.head = (args: { measurementDeviceCalibration: number | { id: number } } | [measurementDeviceCalibration: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
