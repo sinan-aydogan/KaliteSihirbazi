@@ -15,6 +15,10 @@
     "updateCalibrationModal": {
       "title": "Kalibrasyon Emrini Güncelle",
       "subTitle": "Kalibrasyon emrinin durumunu ve bilgilerini güncelleyin"
+    },
+    "calibrationTasksIndexPage": {
+      "title": "Kalibrasyon Emirleri",
+      "subTitle": "Tüm cihazların kalibrasyon emirlerini tek yerden görüntüleyin"
     }
   },
   "term": {
@@ -77,7 +81,8 @@
     "tolerance": "Tolerans (±)",
     "unit": "Birim",
     "deviation": "Sapma",
-    "isReferenceStandard": "Referans Standart (Etalon)"
+    "isReferenceStandard": "Referans Standart (Etalon)",
+    "device": "Cihaz"
   },
   "message":{
     "feedback" : {

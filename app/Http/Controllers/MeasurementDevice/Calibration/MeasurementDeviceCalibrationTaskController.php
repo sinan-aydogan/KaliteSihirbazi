@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateMeasurementDeviceCalibrationTaskRequest;
 use App\Models\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTask;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
+use Inertia\Inertia;
 
 class MeasurementDeviceCalibrationTaskController extends Controller
 {
@@ -18,7 +19,17 @@ class MeasurementDeviceCalibrationTaskController extends Controller
      */
     public function index()
     {
-        //
+        $tasks = $this->tableFilter(MeasurementDeviceCalibrationTask::with(['device:id,code', 'firm:id,name', 'referenceDevice:id,code']))
+            ->latest('planned_date')
+            ->paginate(15)
+            ->withQueryString()
+            ->through(fn (MeasurementDeviceCalibrationTask $task) => tap($task, function (MeasurementDeviceCalibrationTask $t) {
+                $t['certificate_url'] = $t->getFirstMediaUrl('certificate') ?: null;
+            }));
+
+        return Inertia::render('Modules/MeasurementDevice/Calibration/IndexPage', [
+            'tableData' => $tasks,
+        ]);
     }
 
     /**

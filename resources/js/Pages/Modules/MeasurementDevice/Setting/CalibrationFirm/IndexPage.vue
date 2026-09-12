@@ -1,8 +1,7 @@
 <script setup>
-import SettingLayout from "@/Layouts/SettingLayout.vue";
+import AppLayout from "@/Layouts/AppLayout.vue";
 import {ref} from "vue"
 import {useForm, router} from "@inertiajs/vue3";
-import Menu from "../menu";
 
 /*Components*/
 import SimpleButton from "@/Components/Button/SimpleButton.vue"
@@ -22,7 +21,6 @@ import {helpers, maxLength, required, email as emailRule} from "@vuelidate/valid
 import {useVuelidate} from "@vuelidate/core";
 
 const {t, tm} = Translates();
-const {links} = Menu()
 
 defineProps({
     tableData: {
@@ -112,7 +110,7 @@ const handleDelete = (id) => {
 </script>
 
 <template>
-    <setting-layout :title="tm('title.indexPage.title')" :sub-title="tm('title.indexPage.subTitle')" :links="links">
+    <app-layout :title="tm('title.indexPage.title')" :sub-title="tm('title.indexPage.subTitle')">
         <template #actionArea>
             <help-button title="Kalibrasyon Firmaları — Nasıl Çalışır?" subtitle="Kalibrasyon emri oluştururken seçilebilecek firma listesi">
                 <p>Bu liste, bir kalibrasyon emri oluştururken seçilebilecek firmaları tutar. Üzerinde kayıtlı kalibrasyon emri bulunan bir firma silinemez — önce ilgili emirlerin başka bir firmaya taşınması veya silinmesi gerekir.</p>
@@ -170,5 +168,5 @@ const handleDelete = (id) => {
                 </template>
             </Modal>
         </teleport>
-    </setting-layout>
+    </app-layout>
 </template>

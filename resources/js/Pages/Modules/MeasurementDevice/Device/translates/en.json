@@ -15,6 +15,10 @@
     "updateCalibrationModal": {
       "title": "Update Calibration Task",
       "subTitle": "Update the calibration task's status and details"
+    },
+    "calibrationTasksIndexPage": {
+      "title": "Calibration Orders",
+      "subTitle": "View every device's calibration orders in one place"
     }
   },
   "term": {
@@ -77,7 +81,8 @@
     "tolerance": "Tolerance (±)",
     "unit": "Unit",
     "deviation": "Deviation",
-    "isReferenceStandard": "Reference Standard"
+    "isReferenceStandard": "Reference Standard",
+    "device": "Device"
   },
   "message": {
     "feedback": {

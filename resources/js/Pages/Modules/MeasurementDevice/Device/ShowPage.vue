@@ -31,7 +31,10 @@ const {t, tm} = Translates();
 const showDecommissionModal = ref(false);
 const decommissionForm = useForm({reason: ""})
 const decommissionRules = ref({reason: {required: helpers.withMessage(t('message.validation.required'), required)}})
-const decommissionV$ = useVuelidate(decommissionRules, decommissionForm)
+/* $scope: false isolates this validator from Vuelidate's automatic parent/child collection —
+without it, every tab page nested inside ShowPage (e.g. Calibration.vue's own useVuelidate)
+gets this always-empty "reason" field merged into its own $errors, silently failing $validate(). */
+const decommissionV$ = useVuelidate(decommissionRules, decommissionForm, {$scope: false})
 
 const openDecommission = () => {
   decommissionForm.reset();

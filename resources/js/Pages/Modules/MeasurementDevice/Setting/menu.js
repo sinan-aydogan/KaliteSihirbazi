@@ -21,18 +21,6 @@ export default function () {
                     type: "link",
                     link: 'measurement-device-type.index'
                 },
-                {
-                    'id': 'gb-firm',
-                    'label': t('mainMenu.calibrationFirms'),
-                    type: "link",
-                    link: 'calibration-firm.index'
-                },
-                {
-                    'id': 'gb-technician',
-                    'label': t('mainMenu.calibrationTechnicians'),
-                    type: "link",
-                    link: 'calibration-technician.index'
-                },
             ]
         },
     ])

@@ -1,8 +1,7 @@
 <script setup>
-import SettingLayout from "@/Layouts/SettingLayout.vue";
+import AppLayout from "@/Layouts/AppLayout.vue";
 import {computed, ref} from "vue"
 import {useForm, router} from "@inertiajs/vue3";
-import Menu from "../menu";
 
 /*Components*/
 import SimpleButton from "@/Components/Button/SimpleButton.vue"
@@ -26,7 +25,6 @@ import {helpers, required} from "@vuelidate/validators";
 import {useVuelidate} from "@vuelidate/core";
 
 const {t, tm} = Translates();
-const {links} = Menu()
 
 const props = defineProps({
     tableData: {
@@ -129,7 +127,7 @@ const deleteMedia = (technicianId, mediaId) => {
 </script>
 
 <template>
-    <setting-layout :title="tm('title.indexPage.title')" :sub-title="tm('title.indexPage.subTitle')" :links="links">
+    <app-layout :title="tm('title.indexPage.title')" :sub-title="tm('title.indexPage.subTitle')">
         <template #actionArea>
             <help-button title="Kalibrasyon Personeli — Nasıl Çalışır?" subtitle="İç kalibrasyon yapmaya yetkili personel havuzu">
                 <p>Bir personeli burada kalibrasyon teknisyeni olarak tanımlayın ve hangi cihaz tiplerini (örn. Kumpas, Terazi) kalibre etmeye yetkili olduğunu (çoklu seçim) belirtin.</p>
@@ -203,5 +201,5 @@ const deleteMedia = (technicianId, mediaId) => {
                 </template>
             </Modal>
         </teleport>
-    </setting-layout>
+    </app-layout>
 </template>
