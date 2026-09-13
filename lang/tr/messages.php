@@ -409,4 +409,9 @@ return [
         'deletedError' => 'Bu aksiyon türü silinemez çünkü üzerinde kayıtlı aksiyonlar var.',
         'deletedErrorProtected' => 'Sistem varsayılanı olan bu aksiyon türü silinemez.'
     ],
+    'customerComplaintReportTemplate' => [
+        'created' => 'Rapor şablonu oluşturuldu.',
+        'updated' => 'Rapor şablonu güncellendi.',
+        'deleted' => 'Rapor şablonu silindi.'
+    ],
 ];

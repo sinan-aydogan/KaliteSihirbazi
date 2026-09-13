@@ -1,0 +1,64 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Complaint Analytics",
+            "subTitle": "Summary statistics from complaint data and your own saved report templates"
+        },
+        "createTemplateModal": {
+            "title": "Create Report Template",
+            "subTitle": "Pick a chart type, grouping and metric, then save it as a template"
+        },
+        "updateTemplateModal": {
+            "title": "Update Report Template",
+            "subTitle": "Update the template's configuration"
+        }
+    },
+    "term": {
+        "totalComplaints": "Total Complaints",
+        "openComplaints": "Open Complaints",
+        "avgResolutionDays": "Avg. Resolution Time",
+        "days": "days",
+        "overdueComplaints": "Overdue",
+        "overview": "Overview",
+        "myTemplates": "My Report Templates",
+        "templateName": "Template Name",
+        "chartType": "Chart Type",
+        "groupBy": "Group By",
+        "metric": "Metric",
+        "dateFrom": "Date From",
+        "dateTo": "Date To",
+        "isShared": "Shared with everyone",
+        "chartTypeValue": {
+            "bar": "Bar Chart",
+            "pie": "Pie Chart",
+            "line": "Line Chart",
+            "table": "Table"
+        },
+        "groupByValue": {
+            "source_type": "Complaint Source",
+            "subject": "Complaint Subject",
+            "severity": "Severity",
+            "status": "Status",
+            "channel": "Channel",
+            "department": "Department",
+            "distributor": "Distributor",
+            "supplier": "Supplier",
+            "month": "Month (Trend)"
+        },
+        "metricValue": {
+            "count": "Count",
+            "avg_resolution_days": "Average Resolution Time (days)"
+        },
+        "sharedBadge": "Shared",
+        "createdBy": "Created By"
+    },
+    "message": {
+        "feedback": {
+            "emptyTemplatesList": "No report templates have been created yet"
+        }
+    },
+    "action": {
+        "createTemplate": "Add New Template",
+        "preview": "Preview"
+    }
+}

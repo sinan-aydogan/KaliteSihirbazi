@@ -408,4 +408,9 @@ return [
         'deletedError' => 'This action type cannot be deleted because it has actions assigned to it.',
         'deletedErrorProtected' => 'This system-default action type cannot be deleted.'
     ],
+    'customerComplaintReportTemplate' => [
+        'created' => 'Report template created.',
+        'updated' => 'Report template updated.',
+        'deleted' => 'Report template deleted.'
+    ],
 ];
