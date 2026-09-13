@@ -51,11 +51,13 @@
         "@vuelidate/core": "^2.0.3",
         "@vuelidate/validators": "^2.0.4",
         "@vueuse/core": "^10.9.0",
+        "chart.js": "^4.5.1",
         "dayjs": "^1.11.10",
         "floating-vue": "^5.2.2",
         "pinia": "^3.0.3",
         "pinia-plugin-persistedstate": "^4.5.0",
         "tailwindcss": "^4.1.12",
+        "vue-chartjs": "^5.3.4",
         "vue-i18n": "^9.11.0",
         "vuedraggable": "^4.1.0",
         "ziggy-js": "^2.6.3"

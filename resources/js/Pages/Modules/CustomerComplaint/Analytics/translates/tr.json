@@ -1,0 +1,64 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Şikayet Analizi",
+            "subTitle": "Şikayet verilerinden özet istatistikler ve kendi rapor şablonlarınızı oluşturun"
+        },
+        "createTemplateModal": {
+            "title": "Rapor Şablonu Oluştur",
+            "subTitle": "Grafik tipini, gruplama ve metriği seçip şablon olarak kaydedin"
+        },
+        "updateTemplateModal": {
+            "title": "Rapor Şablonunu Güncelle",
+            "subTitle": "Şablon yapılandırmasını güncelleyin"
+        }
+    },
+    "term": {
+        "totalComplaints": "Toplam Şikayet",
+        "openComplaints": "Açık Şikayet",
+        "avgResolutionDays": "Ort. Çözüm Süresi",
+        "days": "gün",
+        "overdueComplaints": "Süresi Geçen",
+        "overview": "Genel Bakış",
+        "myTemplates": "Rapor Şablonlarım",
+        "templateName": "Şablon Adı",
+        "chartType": "Grafik Tipi",
+        "groupBy": "Gruplama",
+        "metric": "Metrik",
+        "dateFrom": "Başlangıç Tarihi",
+        "dateTo": "Bitiş Tarihi",
+        "isShared": "Herkese Açık",
+        "chartTypeValue": {
+            "bar": "Çubuk Grafik",
+            "pie": "Pasta Grafik",
+            "line": "Çizgi Grafik",
+            "table": "Tablo"
+        },
+        "groupByValue": {
+            "source_type": "Şikayet Kaynağı",
+            "subject": "Şikayet Konusu",
+            "severity": "Önem Derecesi",
+            "status": "Durum",
+            "channel": "Kanal",
+            "department": "Departman",
+            "distributor": "Dağıtıcı",
+            "supplier": "Tedarikçi",
+            "month": "Ay (Trend)"
+        },
+        "metricValue": {
+            "count": "Adet",
+            "avg_resolution_days": "Ortalama Çözüm Süresi (gün)"
+        },
+        "sharedBadge": "Paylaşılan",
+        "createdBy": "Oluşturan"
+    },
+    "message": {
+        "feedback": {
+            "emptyTemplatesList": "Henüz hiç rapor şablonu oluşturulmamış"
+        }
+    },
+    "action": {
+        "createTemplate": "Yeni Şablon Ekle",
+        "preview": "Önizle"
+    }
+}

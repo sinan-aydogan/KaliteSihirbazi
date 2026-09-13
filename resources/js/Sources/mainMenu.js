@@ -194,6 +194,14 @@ export default function ({roles, permissions}) {
                         icon: 'handshake',
                         type: "route",
                         link: 'customer.index'
+                    },
+                    /*Analytics*/
+                    {
+                        id: 'cc-analytics',
+                        label: t('mainMenu.customerComplaintAnalytics'),
+                        icon: 'arrow-trend-up',
+                        type: "route",
+                        link: 'customer-complaint-analytics.index'
                     }
                 ]
             },

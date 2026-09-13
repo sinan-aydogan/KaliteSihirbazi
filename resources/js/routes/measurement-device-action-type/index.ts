@@ -270,7 +270,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
  * @see app/Http/Controllers/MeasurementDevice/Action/MeasurementDeviceActionTypeController.php:44
  * @route '/measurement-device-action-type/{measurement_device_action_type}'
  */
-export const show = (args: { measurement_device_action_type: string | number | { id: string | number } } | [measurement_device_action_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { measurement_device_action_type: number | { id: number } } | [measurement_device_action_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -285,7 +285,7 @@ show.definition = {
  * @see app/Http/Controllers/MeasurementDevice/Action/MeasurementDeviceActionTypeController.php:44
  * @route '/measurement-device-action-type/{measurement_device_action_type}'
  */
-show.url = (args: { measurement_device_action_type: string | number | { id: string | number } } | [measurement_device_action_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+show.url = (args: { measurement_device_action_type: number | { id: number } } | [measurement_device_action_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { measurement_device_action_type: args }
     }
@@ -318,7 +318,7 @@ show.url = (args: { measurement_device_action_type: string | number | { id: stri
  * @see app/Http/Controllers/MeasurementDevice/Action/MeasurementDeviceActionTypeController.php:44
  * @route '/measurement-device-action-type/{measurement_device_action_type}'
  */
-show.get = (args: { measurement_device_action_type: string | number | { id: string | number } } | [measurement_device_action_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { measurement_device_action_type: number | { id: number } } | [measurement_device_action_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -327,7 +327,7 @@ show.get = (args: { measurement_device_action_type: string | number | { id: stri
  * @see app/Http/Controllers/MeasurementDevice/Action/MeasurementDeviceActionTypeController.php:44
  * @route '/measurement-device-action-type/{measurement_device_action_type}'
  */
-show.head = (args: { measurement_device_action_type: string | number | { id: string | number } } | [measurement_device_action_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { measurement_device_action_type: number | { id: number } } | [measurement_device_action_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -337,7 +337,7 @@ show.head = (args: { measurement_device_action_type: string | number | { id: str
  * @see app/Http/Controllers/MeasurementDevice/Action/MeasurementDeviceActionTypeController.php:44
  * @route '/measurement-device-action-type/{measurement_device_action_type}'
  */
-    const showForm = (args: { measurement_device_action_type: string | number | { id: string | number } } | [measurement_device_action_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    const showForm = (args: { measurement_device_action_type: number | { id: number } } | [measurement_device_action_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
         action: show.url(args, options),
         method: 'get',
     })
@@ -347,7 +347,7 @@ show.head = (args: { measurement_device_action_type: string | number | { id: str
  * @see app/Http/Controllers/MeasurementDevice/Action/MeasurementDeviceActionTypeController.php:44
  * @route '/measurement-device-action-type/{measurement_device_action_type}'
  */
-        showForm.get = (args: { measurement_device_action_type: string | number | { id: string | number } } | [measurement_device_action_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        showForm.get = (args: { measurement_device_action_type: number | { id: number } } | [measurement_device_action_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: show.url(args, options),
             method: 'get',
         })
@@ -356,7 +356,7 @@ show.head = (args: { measurement_device_action_type: string | number | { id: str
  * @see app/Http/Controllers/MeasurementDevice/Action/MeasurementDeviceActionTypeController.php:44
  * @route '/measurement-device-action-type/{measurement_device_action_type}'
  */
-        showForm.head = (args: { measurement_device_action_type: string | number | { id: string | number } } | [measurement_device_action_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        showForm.head = (args: { measurement_device_action_type: number | { id: number } } | [measurement_device_action_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: show.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'HEAD',
@@ -372,7 +372,7 @@ show.head = (args: { measurement_device_action_type: string | number | { id: str
  * @see app/Http/Controllers/MeasurementDevice/Action/MeasurementDeviceActionTypeController.php:49
  * @route '/measurement-device-action-type/{measurement_device_action_type}/edit'
  */
-export const edit = (args: { measurement_device_action_type: string | number | { id: string | number } } | [measurement_device_action_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { measurement_device_action_type: number | { id: number } } | [measurement_device_action_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -387,7 +387,7 @@ edit.definition = {
  * @see app/Http/Controllers/MeasurementDevice/Action/MeasurementDeviceActionTypeController.php:49
  * @route '/measurement-device-action-type/{measurement_device_action_type}/edit'
  */
-edit.url = (args: { measurement_device_action_type: string | number | { id: string | number } } | [measurement_device_action_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+edit.url = (args: { measurement_device_action_type: number | { id: number } } | [measurement_device_action_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { measurement_device_action_type: args }
     }
@@ -420,7 +420,7 @@ edit.url = (args: { measurement_device_action_type: string | number | { id: stri
  * @see app/Http/Controllers/MeasurementDevice/Action/MeasurementDeviceActionTypeController.php:49
  * @route '/measurement-device-action-type/{measurement_device_action_type}/edit'
  */
-edit.get = (args: { measurement_device_action_type: string | number | { id: string | number } } | [measurement_device_action_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { measurement_device_action_type: number | { id: number } } | [measurement_device_action_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -429,7 +429,7 @@ edit.get = (args: { measurement_device_action_type: string | number | { id: stri
  * @see app/Http/Controllers/MeasurementDevice/Action/MeasurementDeviceActionTypeController.php:49
  * @route '/measurement-device-action-type/{measurement_device_action_type}/edit'
  */
-edit.head = (args: { measurement_device_action_type: string | number | { id: string | number } } | [measurement_device_action_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { measurement_device_action_type: number | { id: number } } | [measurement_device_action_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
@@ -439,7 +439,7 @@ edit.head = (args: { measurement_device_action_type: string | number | { id: str
  * @see app/Http/Controllers/MeasurementDevice/Action/MeasurementDeviceActionTypeController.php:49
  * @route '/measurement-device-action-type/{measurement_device_action_type}/edit'
  */
-    const editForm = (args: { measurement_device_action_type: string | number | { id: string | number } } | [measurement_device_action_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    const editForm = (args: { measurement_device_action_type: number | { id: number } } | [measurement_device_action_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
         action: edit.url(args, options),
         method: 'get',
     })
@@ -449,7 +449,7 @@ edit.head = (args: { measurement_device_action_type: string | number | { id: str
  * @see app/Http/Controllers/MeasurementDevice/Action/MeasurementDeviceActionTypeController.php:49
  * @route '/measurement-device-action-type/{measurement_device_action_type}/edit'
  */
-        editForm.get = (args: { measurement_device_action_type: string | number | { id: string | number } } | [measurement_device_action_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        editForm.get = (args: { measurement_device_action_type: number | { id: number } } | [measurement_device_action_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: edit.url(args, options),
             method: 'get',
         })
@@ -458,7 +458,7 @@ edit.head = (args: { measurement_device_action_type: string | number | { id: str
  * @see app/Http/Controllers/MeasurementDevice/Action/MeasurementDeviceActionTypeController.php:49
  * @route '/measurement-device-action-type/{measurement_device_action_type}/edit'
  */
-        editForm.head = (args: { measurement_device_action_type: string | number | { id: string | number } } | [measurement_device_action_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        editForm.head = (args: { measurement_device_action_type: number | { id: number } } | [measurement_device_action_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: edit.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'HEAD',
@@ -474,7 +474,7 @@ edit.head = (args: { measurement_device_action_type: string | number | { id: str
  * @see app/Http/Controllers/MeasurementDevice/Action/MeasurementDeviceActionTypeController.php:54
  * @route '/measurement-device-action-type/{measurement_device_action_type}'
  */
-export const update = (args: { measurement_device_action_type: string | number | { id: string | number } } | [measurement_device_action_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { measurement_device_action_type: number | { id: number } } | [measurement_device_action_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -489,7 +489,7 @@ update.definition = {
  * @see app/Http/Controllers/MeasurementDevice/Action/MeasurementDeviceActionTypeController.php:54
  * @route '/measurement-device-action-type/{measurement_device_action_type}'
  */
-update.url = (args: { measurement_device_action_type: string | number | { id: string | number } } | [measurement_device_action_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+update.url = (args: { measurement_device_action_type: number | { id: number } } | [measurement_device_action_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { measurement_device_action_type: args }
     }
@@ -522,7 +522,7 @@ update.url = (args: { measurement_device_action_type: string | number | { id: st
  * @see app/Http/Controllers/MeasurementDevice/Action/MeasurementDeviceActionTypeController.php:54
  * @route '/measurement-device-action-type/{measurement_device_action_type}'
  */
-update.put = (args: { measurement_device_action_type: string | number | { id: string | number } } | [measurement_device_action_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { measurement_device_action_type: number | { id: number } } | [measurement_device_action_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -531,7 +531,7 @@ update.put = (args: { measurement_device_action_type: string | number | { id: st
  * @see app/Http/Controllers/MeasurementDevice/Action/MeasurementDeviceActionTypeController.php:54
  * @route '/measurement-device-action-type/{measurement_device_action_type}'
  */
-update.patch = (args: { measurement_device_action_type: string | number | { id: string | number } } | [measurement_device_action_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update.patch = (args: { measurement_device_action_type: number | { id: number } } | [measurement_device_action_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
@@ -541,7 +541,7 @@ update.patch = (args: { measurement_device_action_type: string | number | { id: 
  * @see app/Http/Controllers/MeasurementDevice/Action/MeasurementDeviceActionTypeController.php:54
  * @route '/measurement-device-action-type/{measurement_device_action_type}'
  */
-    const updateForm = (args: { measurement_device_action_type: string | number | { id: string | number } } | [measurement_device_action_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const updateForm = (args: { measurement_device_action_type: number | { id: number } } | [measurement_device_action_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: update.url(args, {
                     [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                         _method: 'PUT',
@@ -556,7 +556,7 @@ update.patch = (args: { measurement_device_action_type: string | number | { id: 
  * @see app/Http/Controllers/MeasurementDevice/Action/MeasurementDeviceActionTypeController.php:54
  * @route '/measurement-device-action-type/{measurement_device_action_type}'
  */
-        updateForm.put = (args: { measurement_device_action_type: string | number | { id: string | number } } | [measurement_device_action_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        updateForm.put = (args: { measurement_device_action_type: number | { id: number } } | [measurement_device_action_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: update.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'PUT',
@@ -570,7 +570,7 @@ update.patch = (args: { measurement_device_action_type: string | number | { id: 
  * @see app/Http/Controllers/MeasurementDevice/Action/MeasurementDeviceActionTypeController.php:54
  * @route '/measurement-device-action-type/{measurement_device_action_type}'
  */
-        updateForm.patch = (args: { measurement_device_action_type: string | number | { id: string | number } } | [measurement_device_action_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        updateForm.patch = (args: { measurement_device_action_type: number | { id: number } } | [measurement_device_action_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: update.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'PATCH',
@@ -586,7 +586,7 @@ update.patch = (args: { measurement_device_action_type: string | number | { id: 
  * @see app/Http/Controllers/MeasurementDevice/Action/MeasurementDeviceActionTypeController.php:63
  * @route '/measurement-device-action-type/{measurement_device_action_type}'
  */
-export const destroy = (args: { measurement_device_action_type: string | number | { id: string | number } } | [measurement_device_action_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { measurement_device_action_type: number | { id: number } } | [measurement_device_action_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -601,7 +601,7 @@ destroy.definition = {
  * @see app/Http/Controllers/MeasurementDevice/Action/MeasurementDeviceActionTypeController.php:63
  * @route '/measurement-device-action-type/{measurement_device_action_type}'
  */
-destroy.url = (args: { measurement_device_action_type: string | number | { id: string | number } } | [measurement_device_action_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { measurement_device_action_type: number | { id: number } } | [measurement_device_action_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { measurement_device_action_type: args }
     }
@@ -634,7 +634,7 @@ destroy.url = (args: { measurement_device_action_type: string | number | { id: s
  * @see app/Http/Controllers/MeasurementDevice/Action/MeasurementDeviceActionTypeController.php:63
  * @route '/measurement-device-action-type/{measurement_device_action_type}'
  */
-destroy.delete = (args: { measurement_device_action_type: string | number | { id: string | number } } | [measurement_device_action_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { measurement_device_action_type: number | { id: number } } | [measurement_device_action_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -644,7 +644,7 @@ destroy.delete = (args: { measurement_device_action_type: string | number | { id
  * @see app/Http/Controllers/MeasurementDevice/Action/MeasurementDeviceActionTypeController.php:63
  * @route '/measurement-device-action-type/{measurement_device_action_type}'
  */
-    const destroyForm = (args: { measurement_device_action_type: string | number | { id: string | number } } | [measurement_device_action_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const destroyForm = (args: { measurement_device_action_type: number | { id: number } } | [measurement_device_action_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: destroy.url(args, {
                     [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                         _method: 'DELETE',
@@ -659,7 +659,7 @@ destroy.delete = (args: { measurement_device_action_type: string | number | { id
  * @see app/Http/Controllers/MeasurementDevice/Action/MeasurementDeviceActionTypeController.php:63
  * @route '/measurement-device-action-type/{measurement_device_action_type}'
  */
-        destroyForm.delete = (args: { measurement_device_action_type: string | number | { id: string | number } } | [measurement_device_action_type: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        destroyForm.delete = (args: { measurement_device_action_type: number | { id: number } } | [measurement_device_action_type: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: destroy.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'DELETE',

@@ -3,6 +3,7 @@ import ApiTokenController from './ApiTokenController'
 import Setting from './Setting'
 import Tag from './Tag'
 import User from './User'
+import CustomerComplaintAnalyticsController from './CustomerComplaintAnalyticsController'
 import DepartmentController from './DepartmentController'
 import Warehouse from './Warehouse'
 import BusinessManagement from './BusinessManagement'
@@ -55,6 +56,7 @@ ApiTokenController: Object.assign(ApiTokenController, ApiTokenController),
 Setting: Object.assign(Setting, Setting),
 Tag: Object.assign(Tag, Tag),
 User: Object.assign(User, User),
+CustomerComplaintAnalyticsController: Object.assign(CustomerComplaintAnalyticsController, CustomerComplaintAnalyticsController),
 DepartmentController: Object.assign(DepartmentController, DepartmentController),
 Warehouse: Object.assign(Warehouse, Warehouse),
 BusinessManagement: Object.assign(BusinessManagement, BusinessManagement),

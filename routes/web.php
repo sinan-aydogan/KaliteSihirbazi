@@ -33,6 +33,7 @@ use App\Http\Controllers\CapaWorkflowController;
 use App\Http\Controllers\CompanyAccreditationController;
 use App\Http\Controllers\ComplaintSourceTypeController;
 use App\Http\Controllers\ComplaintSubjectController;
+use App\Http\Controllers\CustomerComplaintAnalyticsController;
 use App\Http\Controllers\CustomerComplaintController;
 use App\Http\Controllers\CustomerComplaintSettingController;
 use App\Http\Controllers\CustomerComplaintWorkflowController;
@@ -196,6 +197,12 @@ Route::middleware([
         ['uri' => 'distributor', 'model' => 'distributor', 'controller' => DistributorController::class],
     ];
 
+    // Registered before the $mRoutes resource loop below: the customer-complaint resource's
+    // `GET customer-complaint/{customerComplaint}` show route would otherwise match "analytics"
+    // as the id parameter first (both are 2-segment GET routes), 404ing on model binding.
+    Route::get('customer-complaint/analytics', [CustomerComplaintAnalyticsController::class, 'index'])->name('customer-complaint-analytics.index');
+    Route::post('customer-complaint/analytics/preview', [CustomerComplaintAnalyticsController::class, 'preview'])->name('customer-complaint-analytics.preview');
+
     $plannedModules = [
         'product-tree',
         'improvement-work',
@@ -353,6 +360,11 @@ Route::middleware([
     Route::post('customer-complaint/{customerComplaint}/resolve', [CustomerComplaintWorkflowController::class, 'resolve'])->name('customer-complaint.resolve');
     Route::post('customer-complaint/{customerComplaint}/close', [CustomerComplaintWorkflowController::class, 'close'])->name('customer-complaint.close');
     Route::post('customer-complaint/{customerComplaint}/reopen', [CustomerComplaintWorkflowController::class, 'reopen'])->name('customer-complaint.reopen');
+
+    // Customer Complaint Report Templates (saved user-defined chart configs)
+    Route::post('customer-complaint-report-template', [CustomerComplaintAnalyticsController::class, 'store'])->name('customer-complaint-report-template.store');
+    Route::put('customer-complaint-report-template/{customerComplaintReportTemplate}', [CustomerComplaintAnalyticsController::class, 'update'])->name('customer-complaint-report-template.update');
+    Route::delete('customer-complaint-report-template/{customerComplaintReportTemplate}', [CustomerComplaintAnalyticsController::class, 'destroy'])->name('customer-complaint-report-template.destroy');
 
     /* Warehouse Setting Pages */
     Route::resource('warehouse-type', WarehouseTypeController::class);
