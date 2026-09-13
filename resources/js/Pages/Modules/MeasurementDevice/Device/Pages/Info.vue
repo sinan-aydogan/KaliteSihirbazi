@@ -9,6 +9,8 @@ import FormSection from "@/Components/Form/FormSection.vue";
 import InputGroup from "@/Components/Form/InputGroup.vue";
 import TextInput from "@/Components/Form/TextInput.vue";
 import SelectInput from "@/Components/Form/SelectInput.vue";
+import EquipmentAreaAssignment from "@/Components/Equipment/EquipmentAreaAssignment.vue";
+import EquipmentOperatorAuthorizations from "@/Components/Equipment/EquipmentOperatorAuthorizations.vue";
 
 // Multi-lang
 import Translates from "../translates"
@@ -28,6 +30,10 @@ const props = defineProps({
   employees: {
     type: Array,
     default: []
+  },
+  allAreas: {
+    type: Array,
+    default: () => []
   }
 })
 
@@ -202,5 +208,14 @@ const handleUpdate = async () => {
         <div class="hidden sm:block col-span-6"></div>
       </FormSection>
     </Form>
+
+    <div class="grid grid-cols-12 gap-4 mt-4">
+      <div class="col-span-12 md:col-span-6">
+        <EquipmentAreaAssignment equipment-type="measurement-device" :equipment-id="measurementDevice.id" :areas="measurementDevice.areas ?? []" :all-areas="allAreas"/>
+      </div>
+      <div class="col-span-12 md:col-span-6">
+        <EquipmentOperatorAuthorizations equipment-type="measurement-device" :equipment-id="measurementDevice.id" :authorizations="measurementDevice.operator_authorizations ?? []" :employees="employees"/>
+      </div>
+    </div>
   </ShowPage>
 </template>

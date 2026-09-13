@@ -129,6 +129,19 @@
             "updateSuccessfully": "Departman başarıyla güncellendi"
         }
     },
+    "equipment": {
+        "areas": "Bağlı Olduğu Alanlar",
+        "areasDesc": "Bu ekipmanın bulunduğu/kullanıldığı alanları seçin",
+        "operatorAuthorizations": "Kullanım Yetkisi Olan Personel",
+        "employee": "Personel",
+        "grantedAt": "Yetki Tarihi",
+        "expiresAt": "Geçerlilik Süresi",
+        "grantedByEducation": "Yetkiyi Veren Eğitim",
+        "note": "Not",
+        "noOperators": "Bu ekipman için kullanım yetkisi tanımlanmamış",
+        "equipmentInArea": "Bu Alandaki Ekipmanlar",
+        "noEquipment": "Bu alana bağlı ekipman bulunamadı"
+    },
     "fileType": {
         "csv": "CSV Dosyası (.csv)",
         "doc": "Word Belgesi (.doc)",

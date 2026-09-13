@@ -41,7 +41,11 @@ class AreaController extends Controller
 
     public function show(Area $area)
     {
-        //
+        $area->load('department:id,name', 'responsible:id,name', 'devices:id,code,name', 'machines:id,code,name', 'measurementDevices:id,code,brand,model');
+
+        return Inertia::render('Modules/BusinessManagement/Area/ShowPage', [
+            'data' => $area,
+        ]);
     }
 
     public function edit(Area $area)

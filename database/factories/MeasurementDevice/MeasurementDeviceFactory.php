@@ -9,15 +9,11 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class MeasurementDeviceFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition()
+    public function definition(): array
     {
         return [
-            //
+            'code' => 'MD-'.fake()->unique()->numberBetween(1000, 9999),
+            'status' => \App\Models\MeasurementDevice\MeasurementDevice::STATUS_ACTIVE,
         ];
     }
 }

@@ -7,6 +7,8 @@ use App\Models\HumanResources\Employee\Employee;
 use App\Models\MeasurementDevice\Action\MeasurementDeviceAction;
 use App\Models\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTask;
 use App\Models\User;
+use App\Traits\HasAreas;
+use App\Traits\HasOperatorAuthorizations;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -16,7 +18,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class MeasurementDevice extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasAreas, HasFactory, HasOperatorAuthorizations, SoftDeletes;
 
     public const STATUS_ACTIVE = 'active';
 

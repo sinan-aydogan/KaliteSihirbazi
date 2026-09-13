@@ -48,6 +48,8 @@ use App\Http\Controllers\CustomerComplaintSettingController;
 use App\Http\Controllers\CustomerComplaintWorkflowController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\DeviceController;
+use App\Http\Controllers\DeviceTypeController;
 use App\Http\Controllers\DistributorController;
 use App\Http\Controllers\Document\DistributionPointController;
 use App\Http\Controllers\Document\DocumentActionController;
@@ -59,6 +61,8 @@ use App\Http\Controllers\Document\DocumentTypeAuthorityController;
 use App\Http\Controllers\Document\DocumentTypeController;
 use App\Http\Controllers\Document\DocumentVersionController;
 use App\Http\Controllers\Document\DocumentVersionWorkflowController;
+use App\Http\Controllers\EquipmentAreaController;
+use App\Http\Controllers\EquipmentOperatorAuthorizationController;
 use App\Http\Controllers\HumanResources\Education\EducationController;
 use App\Http\Controllers\HumanResources\Education\EducationInstructorController;
 use App\Http\Controllers\HumanResources\Education\EducationPlanController;
@@ -72,6 +76,8 @@ use App\Http\Controllers\HumanResources\Employee\PersonalInfo;
 use App\Http\Controllers\HumanResources\Employee\TimeOffController;
 use App\Http\Controllers\HumanResources\JobDescription\JobDescriptionAssignmentController;
 use App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController;
+use App\Http\Controllers\MachineController;
+use App\Http\Controllers\MachineTypeController;
 use App\Http\Controllers\MeasurementDevice\Action\DeviceActionController;
 use App\Http\Controllers\MeasurementDevice\Action\MeasurementDeviceActionController;
 use App\Http\Controllers\MeasurementDevice\Action\MeasurementDeviceActionTypeController;
@@ -172,6 +178,10 @@ Route::middleware([
     $mRoutes = [
         ['uri' => 'department', 'model' => 'department', 'controller' => DepartmentController::class],
         ['uri' => 'area', 'model' => 'area', 'controller' => AreaController::class],
+        ['uri' => 'device', 'model' => 'device', 'controller' => DeviceController::class],
+        ['uri' => 'device-type', 'model' => 'device_type', 'controller' => DeviceTypeController::class],
+        ['uri' => 'machine', 'model' => 'machine', 'controller' => MachineController::class],
+        ['uri' => 'machine-type', 'model' => 'machine_type', 'controller' => MachineTypeController::class],
         ['uri' => 'warehouse', 'model' => 'warehouse', 'controller' => WarehouseController::class, 'settingController' => WarehouseSettingController::class],
         ['uri' => 'vehicle', 'model' => 'vehicle', 'controller' => VehicleController::class, 'settingController' => VehicleSettingController::class],
         ['uri' => 'supplier', 'model' => 'supplier', 'controller' => SupplierController::class],
@@ -225,8 +235,6 @@ Route::middleware([
 
     $plannedModules = [
         'product-tree',
-        'device',
-        'machine',
         'product',
         'raw-material',
         'consumable-material',
@@ -428,6 +436,14 @@ Route::middleware([
     /* Vehicle Setting Pages */
     Route::resource('vehicle-type', VehicleTypeController::class)->middleware('module.permission:vehicle-type');
     Route::resource('vehicle-status', VehicleStatusController::class)->middleware('module.permission:vehicle-status');
+
+    /* Competency Matrix: Area <-> Equipment linking + operator authorizations
+       (Device/Machine/MeasurementDevice) — permission-checked inside the
+       controllers themselves since {equipmentType} is only known at runtime. */
+    Route::put('equipment/{equipmentType}/{equipmentId}/areas', [EquipmentAreaController::class, 'update'])->name('equipment-area.update');
+    Route::post('equipment/{equipmentType}/{equipmentId}/operator-authorizations', [EquipmentOperatorAuthorizationController::class, 'store'])->name('equipment-operator-authorization.store');
+    Route::put('equipment/{equipmentType}/{equipmentId}/operator-authorizations/{authorization}', [EquipmentOperatorAuthorizationController::class, 'update'])->name('equipment-operator-authorization.update');
+    Route::delete('equipment/{equipmentType}/{equipmentId}/operator-authorizations/{authorization}', [EquipmentOperatorAuthorizationController::class, 'destroy'])->name('equipment-operator-authorization.destroy');
 });
 
 // Test Route

@@ -1,0 +1,37 @@
+{
+  "title": {
+    "indexPage": {
+      "title": "Cihazlar",
+      "subTitle": "İşletmenizdeki cihazları buradan yönetebilirsiniz"
+    },
+    "deletedPage": {
+      "title": "Silinmiş Cihazlar",
+      "subTitle": "Silinmiş cihazları kurtarabilirsiniz veya kalıcı olarak silebilirsiniz"
+    },
+    "typeIndexPage": {
+      "title": "Cihaz Tipleri",
+      "subTitle": "Cihaz tiplerini buradan yönetebilirsiniz"
+    }
+  },
+  "term": {
+    "device": "Cihaz | Cihazlar",
+    "code": "Cihaz Kodu",
+    "name": "Cihaz Adı",
+    "type": "Cihaz Tipi",
+    "typeName": "Cihaz Tipi Adı",
+    "responsible": "Sorumlu",
+    "department": "İlgili Departman",
+    "brand": "Marka",
+    "model": "Model",
+    "serialNo": "Seri No",
+    "isActive": "Aktif",
+    "notes": "Notlar"
+  },
+  "action": {
+    "addNew": "Yeni Ekle",
+    "manageTypes": "Cihaz Tiplerini Yönet",
+    "delete": "Sil",
+    "goBack": "Geri Dön",
+    "returnToList": "Listeye Geri Dön"
+  }
+}

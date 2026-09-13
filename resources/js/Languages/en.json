@@ -130,6 +130,19 @@
             "updateSuccessfully": "Department updated successfully"
         }
     },
+    "equipment": {
+        "areas": "Linked Areas",
+        "areasDesc": "Select the areas where this equipment is located/used",
+        "operatorAuthorizations": "Authorized Operators",
+        "employee": "Employee",
+        "grantedAt": "Granted At",
+        "expiresAt": "Expires At",
+        "grantedByEducation": "Granted By Training",
+        "note": "Note",
+        "noOperators": "No operator authorizations defined for this equipment",
+        "equipmentInArea": "Equipment In This Area",
+        "noEquipment": "No equipment linked to this area"
+    },
     "fileType": {
         "csv": "CSV File (.csv)",
         "doc": "Word Document (.doc)",

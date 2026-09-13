@@ -136,8 +136,10 @@ const handleDelete = (id) => {
         <Table
             :data="tableData"
             :headers="tableHeaders"
+            @view="router.visit(route('area.show', $event.id))"
             @edit="getRowInfo"
             @delete="handleDelete($event.id)"
+            show-action
             edit-action
             delete-action
         >

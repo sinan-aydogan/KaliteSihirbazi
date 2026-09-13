@@ -16,6 +16,30 @@ return [
         'updated' => 'The department named :department has been updated successfully',
         'update_failed' => 'The department named :department has been update failed',
     ],
+    'device' => [
+        'created' => 'The device named :device has been created successfully',
+        'deleted' => 'The device named :device deleted successfully',
+        'permanentDeleted' => 'The device named :device permanently deleted successfully',
+        'restored' => 'The device named :device restored successfully',
+        'updated' => 'The device named :device has been updated successfully',
+    ],
+    'deviceType' => [
+        'created' => 'The device type named :deviceType has been created successfully',
+        'deleted' => 'The device type named :deviceType deleted successfully',
+        'updated' => 'The device type named :deviceType has been updated successfully',
+    ],
+    'machine' => [
+        'created' => 'The machine named :machine has been created successfully',
+        'deleted' => 'The machine named :machine deleted successfully',
+        'permanentDeleted' => 'The machine named :machine permanently deleted successfully',
+        'restored' => 'The machine named :machine restored successfully',
+        'updated' => 'The machine named :machine has been updated successfully',
+    ],
+    'machineType' => [
+        'created' => 'The machine type named :machineType has been created successfully',
+        'deleted' => 'The machine type named :machineType deleted successfully',
+        'updated' => 'The machine type named :machineType has been updated successfully',
+    ],
     'vehicle' => [
         'created' => 'The new vehicle with licence plate :vehicle has been created successfully',
         'deleted' => 'The vehicle with licence plate :vehicle deleted successfully',
