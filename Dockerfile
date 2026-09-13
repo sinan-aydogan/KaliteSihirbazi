@@ -9,7 +9,7 @@
 # plugin's buildStart hook, which needs a bootable Laravel app (vendor/) to
 # introspect routes/controllers. A node-only stage has no PHP to satisfy that.
 # ==============================================================================
-FROM php:8.3-cli-bookworm AS builder
+FROM php:8.4-cli-bookworm AS builder
 
 WORKDIR /app
 
@@ -35,6 +35,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         gd \
         bcmath \
         zip \
+        exif \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Composer
@@ -65,7 +66,7 @@ RUN rm -rf node_modules .env
 # ==============================================================================
 # Stage 2: Runtime (PHP application server)
 # ==============================================================================
-FROM php:8.3-cli-bookworm AS runtime
+FROM php:8.4-cli-bookworm AS runtime
 
 WORKDIR /app
 
