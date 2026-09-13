@@ -2,6 +2,9 @@
 
 namespace Database\Factories\MeasurementDevice\Action;
 
+use App\Models\MeasurementDevice\Action\MeasurementDeviceActionType;
+use App\Models\MeasurementDevice\MeasurementDevice;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,15 +12,15 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class MeasurementDeviceActionFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition()
     {
         return [
-            //
+            'measurement_device_id' => MeasurementDevice::factory(),
+            'measurement_device_action_type_id' => MeasurementDeviceActionType::factory(),
+            'started_at' => $this->faker->date(),
+            'resolved_at' => null,
+            'description' => $this->faker->sentence(),
+            'recorded_by_id' => User::factory(),
         ];
     }
 }

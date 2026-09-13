@@ -19,6 +19,14 @@
     "calibrationTasksIndexPage": {
       "title": "Calibration Orders",
       "subTitle": "View every device's calibration orders in one place"
+    },
+    "createActionModal": {
+      "title": "Record Action",
+      "subTitle": "Record a maintenance, calibration, malfunction or repair action for this device"
+    },
+    "updateActionModal": {
+      "title": "Update Action",
+      "subTitle": "Update this action record"
     }
   },
   "term": {
@@ -82,12 +90,18 @@
     "unit": "Unit",
     "deviation": "Deviation",
     "isReferenceStandard": "Reference Standard",
-    "device": "Device"
+    "device": "Device",
+    "actionType": "Action Type",
+    "startedAt": "Date",
+    "resolvedAt": "Return / Resolution Date",
+    "description": "Description",
+    "recordedBy": "Recorded By"
   },
   "message": {
     "feedback": {
       "emptyCalibrationTasksList": "No calibration task have been created yet",
-      "emptyMeasurementPoints": "No measurement points added yet"
+      "emptyMeasurementPoints": "No measurement points added yet",
+      "emptyActionsList": "No actions have been recorded yet"
     }
   },
   "action": {
@@ -96,6 +110,7 @@
     "updateTask": "Update Task",
     "decommission": "Decommission",
     "reactivate": "Reactivate",
-    "addMeasurementPoint": "Add Measurement Point"
+    "addMeasurementPoint": "Add Measurement Point",
+    "createAction": "Record Action"
   }
 }

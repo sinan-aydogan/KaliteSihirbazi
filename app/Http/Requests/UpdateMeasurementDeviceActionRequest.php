@@ -6,25 +6,18 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateMeasurementDeviceActionRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
+    public function authorize(): bool
     {
-        return false;
+        return auth()->check();
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, mixed>
-     */
-    public function rules()
+    public function rules(): array
     {
         return [
-            //
+            'measurement_device_action_type_id' => 'required|exists:measurement_device_action_types,id',
+            'started_at' => 'required|date',
+            'resolved_at' => 'nullable|date|after_or_equal:started_at',
+            'description' => 'nullable|string|max:2000',
         ];
     }
 }

@@ -64,6 +64,7 @@ use App\Http\Controllers\HumanResources\JobDescription\JobDescriptionAssignmentC
 use App\Http\Controllers\HumanResources\JobDescription\JobDescriptionController;
 use App\Http\Controllers\MeasurementDevice\Action\DeviceActionController;
 use App\Http\Controllers\MeasurementDevice\Action\MeasurementDeviceActionController;
+use App\Http\Controllers\MeasurementDevice\Action\MeasurementDeviceActionTypeController;
 use App\Http\Controllers\MeasurementDevice\Calibration\CalibrationFirmController;
 use App\Http\Controllers\MeasurementDevice\Calibration\CalibrationTaskController;
 use App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTaskController;
@@ -173,6 +174,7 @@ Route::middleware([
         ['uri' => 'calibration-firm', 'model' => 'calibrationFirm', 'controller' => CalibrationFirmController::class],
         ['uri' => 'calibration-technician', 'model' => 'calibrationTechnician', 'controller' => CalibrationTechnicianController::class],
         ['uri' => 'measurement-device-action', 'model' => 'measurementDeviceAction', 'controller' => MeasurementDeviceActionController::class],
+        ['uri' => 'measurement-device-action-type', 'model' => 'measurementDeviceActionType', 'controller' => MeasurementDeviceActionTypeController::class],
         ['uri' => 'standard', 'model' => 'standard', 'controller' => StandardController::class],
         ['uri' => 'capa', 'model' => 'capa', 'controller' => CapaController::class],
         ['uri' => 'problem', 'model' => 'problem', 'controller' => ProblemController::class],

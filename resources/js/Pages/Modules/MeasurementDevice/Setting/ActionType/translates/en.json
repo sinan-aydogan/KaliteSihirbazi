@@ -1,0 +1,14 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Device Action Types",
+            "subTitle": "Manage the action types (maintenance, calibration, malfunction, etc.) that can be recorded for devices"
+        }
+    },
+    "term": {
+        "name": "Type Name",
+        "sortOrder": "Sort Order",
+        "actionCount": "Action Count",
+        "protected": "Protected"
+    }
+}
