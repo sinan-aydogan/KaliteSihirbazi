@@ -425,13 +425,53 @@ export default function ({roles, permissions}) {
                 icon: 'bolt',
                 type: "dropdown",
                 links: [
-                    /*Works*/
+                    /*Dashboard*/
                     {
-                        id: 'ci-cl',
-                        label: t('mainMenu.improvementWorks'),
-                        icon: 'seedling',
+                        id: 'ci-dashboard',
+                        label: t('mainMenu.continuesImprovementDashboard'),
+                        icon: 'gauge-high',
                         type: "route",
-                        link: 'improvement-work.index'
+                        link: 'continuous-improvement.index'
+                    },
+                    /*Kaizen Suggestions*/
+                    {
+                        id: 'ci-kaizen',
+                        label: t('mainMenu.kaizenSuggestions'),
+                        icon: 'lightbulb',
+                        type: "route",
+                        link: 'kaizen-suggestion.index'
+                    },
+                    /*5S Audits*/
+                    {
+                        id: 'ci-5s',
+                        label: t('mainMenu.fiveSAudits'),
+                        icon: 'broom',
+                        type: "route",
+                        link: 'five-s-audit.index'
+                    },
+                    /*Gemba Walks*/
+                    {
+                        id: 'ci-gemba',
+                        label: t('mainMenu.gembaWalks'),
+                        icon: 'person-walking',
+                        type: "route",
+                        link: 'gemba-walk.index'
+                    },
+                    /*Improvement Areas*/
+                    {
+                        id: 'ci-area',
+                        label: t('mainMenu.improvementAreas'),
+                        icon: 'map-location-dot',
+                        type: "route",
+                        link: 'improvement-area.index'
+                    },
+                    /*Kaizen Categories*/
+                    {
+                        id: 'ci-category',
+                        label: t('mainMenu.kaizenCategories'),
+                        icon: 'tags',
+                        type: "route",
+                        link: 'kaizen-category.index'
                     }
                 ]
             }

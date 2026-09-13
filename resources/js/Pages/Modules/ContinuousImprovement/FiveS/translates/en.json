@@ -1,0 +1,66 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "5S Audits",
+            "subTitle": "Audit areas against Sort/Set in Order/Shine/Standardize/Sustain criteria"
+        },
+        "showPage": {
+            "title": "5S Audit",
+            "subTitle": "Audit scores and findings"
+        },
+        "createModal": {
+            "title": "New 5S Audit"
+        },
+        "addFindingModal": {
+            "title": "Add Finding"
+        },
+        "resolveFindingModal": {
+            "title": "Resolve Finding"
+        }
+    },
+    "term": {
+        "code": "Code",
+        "area": "Area",
+        "auditedBy": "Audited By",
+        "auditDate": "Audit Date",
+        "sortScore": "Sort",
+        "setInOrderScore": "Set In Order",
+        "shineScore": "Shine",
+        "standardizeScore": "Standardize",
+        "sustainScore": "Sustain",
+        "totalScore": "Total Score",
+        "generalNote": "General Note",
+        "findings": "Findings",
+        "criterion": "Criterion",
+        "description": "Description",
+        "responsible": "Responsible",
+        "dueDate": "Due Date",
+        "status": "Status",
+        "resolutionNote": "Resolution Note",
+        "criterionValue": {
+            "sort": "Sort (Seiri)",
+            "set_in_order": "Set In Order (Seiton)",
+            "shine": "Shine (Seiso)",
+            "standardize": "Standardize (Seiketsu)",
+            "sustain": "Sustain (Shitsuke)",
+            "general": "General"
+        },
+        "statusValue": {
+            "open": "Open",
+            "in_progress": "In Progress",
+            "resolved": "Resolved"
+        }
+    },
+    "action": {
+        "viewDetails": "Details / Manage",
+        "createAudit": "New Audit",
+        "addFinding": "Add Finding",
+        "resolve": "Mark as Resolved"
+    },
+    "message": {
+        "feedback": {
+            "emptyList": "No 5S audits recorded yet",
+            "emptyFindingsList": "No findings for this audit"
+        }
+    }
+}

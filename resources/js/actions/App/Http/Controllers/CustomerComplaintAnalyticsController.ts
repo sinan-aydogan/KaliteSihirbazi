@@ -192,7 +192,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
  * @see app/Http/Controllers/CustomerComplaintAnalyticsController.php:95
  * @route '/customer-complaint-report-template/{customerComplaintReportTemplate}'
  */
-export const update = (args: { customerComplaintReportTemplate: string | number | { id: string | number } } | [customerComplaintReportTemplate: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { customerComplaintReportTemplate: number | { id: number } } | [customerComplaintReportTemplate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -207,7 +207,7 @@ update.definition = {
  * @see app/Http/Controllers/CustomerComplaintAnalyticsController.php:95
  * @route '/customer-complaint-report-template/{customerComplaintReportTemplate}'
  */
-update.url = (args: { customerComplaintReportTemplate: string | number | { id: string | number } } | [customerComplaintReportTemplate: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+update.url = (args: { customerComplaintReportTemplate: number | { id: number } } | [customerComplaintReportTemplate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { customerComplaintReportTemplate: args }
     }
@@ -240,7 +240,7 @@ update.url = (args: { customerComplaintReportTemplate: string | number | { id: s
  * @see app/Http/Controllers/CustomerComplaintAnalyticsController.php:95
  * @route '/customer-complaint-report-template/{customerComplaintReportTemplate}'
  */
-update.put = (args: { customerComplaintReportTemplate: string | number | { id: string | number } } | [customerComplaintReportTemplate: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { customerComplaintReportTemplate: number | { id: number } } | [customerComplaintReportTemplate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -250,7 +250,7 @@ update.put = (args: { customerComplaintReportTemplate: string | number | { id: s
  * @see app/Http/Controllers/CustomerComplaintAnalyticsController.php:95
  * @route '/customer-complaint-report-template/{customerComplaintReportTemplate}'
  */
-    const updateForm = (args: { customerComplaintReportTemplate: string | number | { id: string | number } } | [customerComplaintReportTemplate: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const updateForm = (args: { customerComplaintReportTemplate: number | { id: number } } | [customerComplaintReportTemplate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: update.url(args, {
                     [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                         _method: 'PUT',
@@ -265,7 +265,7 @@ update.put = (args: { customerComplaintReportTemplate: string | number | { id: s
  * @see app/Http/Controllers/CustomerComplaintAnalyticsController.php:95
  * @route '/customer-complaint-report-template/{customerComplaintReportTemplate}'
  */
-        updateForm.put = (args: { customerComplaintReportTemplate: string | number | { id: string | number } } | [customerComplaintReportTemplate: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        updateForm.put = (args: { customerComplaintReportTemplate: number | { id: number } } | [customerComplaintReportTemplate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: update.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'PUT',
@@ -281,7 +281,7 @@ update.put = (args: { customerComplaintReportTemplate: string | number | { id: s
  * @see app/Http/Controllers/CustomerComplaintAnalyticsController.php:104
  * @route '/customer-complaint-report-template/{customerComplaintReportTemplate}'
  */
-export const destroy = (args: { customerComplaintReportTemplate: string | number | { id: string | number } } | [customerComplaintReportTemplate: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { customerComplaintReportTemplate: number | { id: number } } | [customerComplaintReportTemplate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -296,7 +296,7 @@ destroy.definition = {
  * @see app/Http/Controllers/CustomerComplaintAnalyticsController.php:104
  * @route '/customer-complaint-report-template/{customerComplaintReportTemplate}'
  */
-destroy.url = (args: { customerComplaintReportTemplate: string | number | { id: string | number } } | [customerComplaintReportTemplate: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { customerComplaintReportTemplate: number | { id: number } } | [customerComplaintReportTemplate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { customerComplaintReportTemplate: args }
     }
@@ -329,7 +329,7 @@ destroy.url = (args: { customerComplaintReportTemplate: string | number | { id: 
  * @see app/Http/Controllers/CustomerComplaintAnalyticsController.php:104
  * @route '/customer-complaint-report-template/{customerComplaintReportTemplate}'
  */
-destroy.delete = (args: { customerComplaintReportTemplate: string | number | { id: string | number } } | [customerComplaintReportTemplate: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { customerComplaintReportTemplate: number | { id: number } } | [customerComplaintReportTemplate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -339,7 +339,7 @@ destroy.delete = (args: { customerComplaintReportTemplate: string | number | { i
  * @see app/Http/Controllers/CustomerComplaintAnalyticsController.php:104
  * @route '/customer-complaint-report-template/{customerComplaintReportTemplate}'
  */
-    const destroyForm = (args: { customerComplaintReportTemplate: string | number | { id: string | number } } | [customerComplaintReportTemplate: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const destroyForm = (args: { customerComplaintReportTemplate: number | { id: number } } | [customerComplaintReportTemplate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: destroy.url(args, {
                     [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                         _method: 'DELETE',
@@ -354,7 +354,7 @@ destroy.delete = (args: { customerComplaintReportTemplate: string | number | { i
  * @see app/Http/Controllers/CustomerComplaintAnalyticsController.php:104
  * @route '/customer-complaint-report-template/{customerComplaintReportTemplate}'
  */
-        destroyForm.delete = (args: { customerComplaintReportTemplate: string | number | { id: string | number } } | [customerComplaintReportTemplate: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        destroyForm.delete = (args: { customerComplaintReportTemplate: number | { id: number } } | [customerComplaintReportTemplate: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: destroy.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'DELETE',

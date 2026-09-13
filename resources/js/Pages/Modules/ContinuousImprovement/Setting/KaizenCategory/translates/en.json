@@ -1,0 +1,14 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Kaizen Categories",
+            "subTitle": "Manage the categories used for kaizen suggestions"
+        }
+    },
+    "term": {
+        "name": "Category Name",
+        "sortOrder": "Sort Order",
+        "suggestionCount": "Suggestion Count",
+        "protected": "Protected"
+    }
+}

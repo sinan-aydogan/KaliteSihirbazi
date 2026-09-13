@@ -1,0 +1,66 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "5S Denetimleri",
+            "subTitle": "Alanların Sınıflandır/Düzenle/Temizlik/Standartlaştır/Disiplin kriterlerine göre denetlenmesi"
+        },
+        "showPage": {
+            "title": "5S Denetimi",
+            "subTitle": "Denetim puanları ve bulguları"
+        },
+        "createModal": {
+            "title": "Yeni 5S Denetimi"
+        },
+        "addFindingModal": {
+            "title": "Bulgu Ekle"
+        },
+        "resolveFindingModal": {
+            "title": "Bulguyu Çöz"
+        }
+    },
+    "term": {
+        "code": "Kod",
+        "area": "Alan",
+        "auditedBy": "Denetleyen",
+        "auditDate": "Denetim Tarihi",
+        "sortScore": "Sınıflandır",
+        "setInOrderScore": "Düzenle",
+        "shineScore": "Temizlik",
+        "standardizeScore": "Standartlaştır",
+        "sustainScore": "Disiplin",
+        "totalScore": "Toplam Puan",
+        "generalNote": "Genel Not",
+        "findings": "Bulgular",
+        "criterion": "Kriter",
+        "description": "Açıklama",
+        "responsible": "Sorumlu",
+        "dueDate": "Son Tarih",
+        "status": "Durum",
+        "resolutionNote": "Çözüm Notu",
+        "criterionValue": {
+            "sort": "Sınıflandır (Seiri)",
+            "set_in_order": "Düzenle (Seiton)",
+            "shine": "Temizlik (Seiso)",
+            "standardize": "Standartlaştır (Seiketsu)",
+            "sustain": "Disiplin/Sürdürme (Shitsuke)",
+            "general": "Genel"
+        },
+        "statusValue": {
+            "open": "Açık",
+            "in_progress": "Devam Ediyor",
+            "resolved": "Çözüldü"
+        }
+    },
+    "action": {
+        "viewDetails": "Detay / Yönet",
+        "createAudit": "Yeni Denetim",
+        "addFinding": "Bulgu Ekle",
+        "resolve": "Çözüldü Olarak İşaretle"
+    },
+    "message": {
+        "feedback": {
+            "emptyList": "Henüz 5S denetimi kaydedilmemiş",
+            "emptyFindingsList": "Bu denetimde bulgu yok"
+        }
+    }
+}

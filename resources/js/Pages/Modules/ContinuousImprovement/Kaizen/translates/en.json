@@ -1,0 +1,77 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Kaizen Suggestions",
+            "subTitle": "Record and track continuous improvement suggestions, one small step at a time"
+        },
+        "showPage": {
+            "title": "Kaizen Suggestion",
+            "subTitle": "Manage the suggestion's review and implementation process"
+        },
+        "createModal": {
+            "title": "New Kaizen Suggestion",
+            "subTitle": "Describe the current situation and your proposed solution"
+        },
+        "approveModal": {
+            "title": "Approve Suggestion"
+        },
+        "rejectModal": {
+            "title": "Reject Suggestion"
+        },
+        "startModal": {
+            "title": "Start Implementation"
+        },
+        "implementModal": {
+            "title": "Implement Suggestion"
+        }
+    },
+    "term": {
+        "code": "Code",
+        "title": "Title",
+        "category": "Category",
+        "department": "Department",
+        "proposedBy": "Proposed By",
+        "responsible": "Responsible",
+        "status": "Status",
+        "currentSituation": "Current Situation",
+        "proposedSolution": "Proposed Solution",
+        "evaluationNote": "Evaluation Note",
+        "rejectionReason": "Rejection Reason",
+        "plannedCompletionDate": "Planned Completion Date",
+        "completedAt": "Completed At",
+        "estimatedAnnualSaving": "Estimated Annual Saving",
+        "realizedAnnualSaving": "Realized Annual Saving",
+        "realizationNote": "Realization Note",
+        "planNote": "Plan (P)",
+        "doNote": "Do (D)",
+        "checkNote": "Check (C)",
+        "actNote": "Act (A)",
+        "view": "View",
+        "listView": "List",
+        "kanbanView": "Board",
+        "statusValue": {
+            "submitted": "Submitted",
+            "under_review": "Under Review",
+            "approved": "Approved",
+            "rejected": "Rejected",
+            "in_progress": "In Progress",
+            "implemented": "Implemented",
+            "closed": "Closed"
+        }
+    },
+    "action": {
+        "viewDetails": "Details / Manage",
+        "createSuggestion": "New Suggestion",
+        "markUnderReview": "Mark Under Review",
+        "approve": "Approve",
+        "reject": "Reject",
+        "start": "Start Implementation",
+        "implement": "Mark as Implemented",
+        "closeSuggestion": "Close"
+    },
+    "message": {
+        "feedback": {
+            "emptyList": "No kaizen suggestions recorded yet"
+        }
+    }
+}

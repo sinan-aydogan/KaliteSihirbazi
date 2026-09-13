@@ -1,0 +1,14 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Kaizen Kategorileri",
+            "subTitle": "Kaizen önerileri için kullanılan kategorileri buradan yönetebilirsiniz"
+        }
+    },
+    "term": {
+        "name": "Kategori Adı",
+        "sortOrder": "Sıralama",
+        "suggestionCount": "Öneri Sayısı",
+        "protected": "Korumalı"
+    }
+}
