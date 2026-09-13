@@ -71,7 +71,10 @@ WORKDIR /app
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Runtime-only system dependencies & PHP extensions (no build toolchain/Node)
+# Runtime-only shared libraries (no compilers/headers). PHP extensions are
+# NOT rebuilt here — docker-php-ext-install needs the same -dev/header
+# packages as the builder stage (e.g. zip needs zlib1g-dev), so instead the
+# already-compiled extensions from the builder stage are copied below.
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     libpq5 \
@@ -79,13 +82,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libjpeg62-turbo \
     libfreetype6 \
     libzip4 \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) \
-        pdo_pgsql \
-        gd \
-        bcmath \
-        zip \
     && rm -rf /var/lib/apt/lists/*
+
+# Compiled PHP extensions (pdo_pgsql, gd, bcmath, zip) + their enabling ini
+# files, built once in the builder stage against the identical base image.
+COPY --from=builder /usr/local/lib/php/extensions/ /usr/local/lib/php/extensions/
+COPY --from=builder /usr/local/etc/php/conf.d/ /usr/local/etc/php/conf.d/
 
 # Copy the fully built application (vendor/, public/build/, app code) from the builder stage
 COPY --from=builder /app ./
