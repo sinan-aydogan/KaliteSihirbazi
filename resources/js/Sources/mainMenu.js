@@ -87,6 +87,14 @@ export default function ({roles, permissions}) {
                         icon: 'landmark',
                         type: "route",
                         link: 'audit-firm.index'
+                    },
+                    /*Areas*/
+                    {
+                        id: 'bm-area',
+                        label: t('mainMenu.areas'),
+                        icon: 'map-location-dot',
+                        type: "route",
+                        link: 'area.index'
                     }
                 ]
             },
@@ -456,14 +464,6 @@ export default function ({roles, permissions}) {
                         icon: 'person-walking',
                         type: "route",
                         link: 'gemba-walk.index'
-                    },
-                    /*Improvement Areas*/
-                    {
-                        id: 'ci-area',
-                        label: t('mainMenu.improvementAreas'),
-                        icon: 'map-location-dot',
-                        type: "route",
-                        link: 'improvement-area.index'
                     },
                     /*Kaizen Categories*/
                     {

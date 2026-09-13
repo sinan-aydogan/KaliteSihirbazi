@@ -15,12 +15,6 @@ export default function () {
                     type: "link",
                     link: 'kaizen-category.index'
                 },
-                {
-                    'id': 'gb-area',
-                    'label': t('mainMenu.improvementAreas'),
-                    type: "link",
-                    link: 'improvement-area.index'
-                },
             ]
         },
     ])

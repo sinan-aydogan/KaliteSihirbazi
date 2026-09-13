@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ApiTokenController;
+use App\Http\Controllers\AreaController;
 use App\Http\Controllers\AuditChecklistAnswerController;
 use App\Http\Controllers\AuditChecklistController;
 use App\Http\Controllers\AuditChecklistPrintController;
@@ -38,7 +39,6 @@ use App\Http\Controllers\ContinuousImprovement\FiveSAuditController;
 use App\Http\Controllers\ContinuousImprovement\FiveSAuditFindingController;
 use App\Http\Controllers\ContinuousImprovement\GembaWalkController;
 use App\Http\Controllers\ContinuousImprovement\GembaWalkFindingController;
-use App\Http\Controllers\ContinuousImprovement\ImprovementAreaController;
 use App\Http\Controllers\ContinuousImprovement\KaizenCategoryController;
 use App\Http\Controllers\ContinuousImprovement\KaizenSuggestionController;
 use App\Http\Controllers\ContinuousImprovement\KaizenWorkflowController;
@@ -165,6 +165,7 @@ Route::middleware([
     /* Modules */
     $mRoutes = [
         ['uri' => 'department', 'model' => 'department', 'controller' => DepartmentController::class],
+        ['uri' => 'area', 'model' => 'area', 'controller' => AreaController::class],
         ['uri' => 'warehouse', 'model' => 'warehouse', 'controller' => WarehouseController::class, 'settingController' => WarehouseSettingController::class],
         ['uri' => 'vehicle', 'model' => 'vehicle', 'controller' => VehicleController::class, 'settingController' => VehicleSettingController::class],
         ['uri' => 'supplier', 'model' => 'supplier', 'controller' => SupplierController::class],
@@ -206,7 +207,6 @@ Route::middleware([
         ['uri' => 'distributor', 'model' => 'distributor', 'controller' => DistributorController::class],
         ['uri' => 'kaizen-category', 'model' => 'kaizenCategory', 'controller' => KaizenCategoryController::class],
         ['uri' => 'kaizen-suggestion', 'model' => 'kaizenSuggestion', 'controller' => KaizenSuggestionController::class],
-        ['uri' => 'improvement-area', 'model' => 'improvementArea', 'controller' => ImprovementAreaController::class],
         ['uri' => 'five-s-audit', 'model' => 'fiveSAudit', 'controller' => FiveSAuditController::class],
         ['uri' => 'gemba-walk', 'model' => 'gembaWalk', 'controller' => GembaWalkController::class],
     ];

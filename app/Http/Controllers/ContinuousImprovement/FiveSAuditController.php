@@ -5,8 +5,8 @@ namespace App\Http\Controllers\ContinuousImprovement;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreFiveSAuditRequest;
 use App\Http\Requests\UpdateFiveSAuditRequest;
+use App\Models\Area;
 use App\Models\ContinuousImprovement\FiveSAudit;
-use App\Models\ContinuousImprovement\ImprovementArea;
 use App\Models\User;
 use App\Services\ContinuousImprovement\FiveSAuditService;
 use Inertia\Inertia;
@@ -26,7 +26,7 @@ class FiveSAuditController extends Controller
 
         return Inertia::render('Modules/ContinuousImprovement/FiveS/IndexPage', [
             'tableData' => $audits,
-            'areas' => ImprovementArea::where('is_active', true)->get(['id', 'name']),
+            'areas' => Area::where('is_active', true)->get(['id', 'name']),
             'users' => User::all(['id', 'name']),
         ]);
     }

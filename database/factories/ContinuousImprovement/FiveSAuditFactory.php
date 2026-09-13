@@ -2,7 +2,7 @@
 
 namespace Database\Factories\ContinuousImprovement;
 
-use App\Models\ContinuousImprovement\ImprovementArea;
+use App\Models\Area;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -14,7 +14,7 @@ class FiveSAuditFactory extends Factory
     public function definition()
     {
         return [
-            'continuous_improvement_area_id' => ImprovementArea::factory(),
+            'area_id' => Area::factory(),
             'audited_by_id' => User::factory(),
             'audit_date' => $this->faker->date(),
             'sort_score' => 4,

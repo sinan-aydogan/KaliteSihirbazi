@@ -421,7 +421,7 @@ return [
         'deletedError' => 'Bu kategori silinemez çünkü üzerinde kayıtlı öneriler var.',
         'deletedErrorProtected' => 'Sistem varsayılanı olan bu kategori silinemez.'
     ],
-    'improvementArea' => [
+    'area' => [
         'created' => ':area alanı oluşturuldu.',
         'updated' => ':area alanı güncellendi.',
         'deleted' => ':area alanı silindi.',

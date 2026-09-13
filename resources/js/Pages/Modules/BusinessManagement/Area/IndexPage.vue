@@ -1,8 +1,7 @@
 <script setup>
-import SettingLayout from "@/Layouts/SettingLayout.vue";
+import AppLayout from "@/Layouts/AppLayout.vue";
 import {computed, ref} from "vue";
 import {useForm, router} from "@inertiajs/vue3";
-import Menu from "../menu";
 
 // Components
 import SimpleButton from "@/Components/Button/SimpleButton.vue"
@@ -15,8 +14,6 @@ import TextInput from "@/Components/Form/TextInput.vue"
 import SelectInput from "@/Components/Form/SelectInput.vue"
 import SwitchInput from "@/Components/Form/SwitchInput.vue"
 import HelpButton from "@/Components/Help/HelpButton.vue"
-
-const {links} = Menu()
 
 const props = defineProps({
     tableData: {
@@ -89,14 +86,14 @@ const handleSubmit = async () => {
     if (!isValidated) return
 
     if (formType.value === 'create') {
-        form.post(route('improvement-area.store'), {
+        form.post(route('area.store'), {
             onSuccess: () => {
                 resetForm();
                 showModal.value = false;
             }
         })
     } else {
-        form.put(route('improvement-area.update', {id: form.id}), {
+        form.put(route('area.update', {id: form.id}), {
             onSuccess: () => {
                 resetForm();
                 showModal.value = false;
@@ -116,26 +113,23 @@ const getRowInfo = (row) => {
 }
 
 const handleDelete = (id) => {
-    router.delete(route("improvement-area.destroy", id), {
+    router.delete(route("area.destroy", id), {
         preserveState: true,
     });
 }
 </script>
 
 <template>
-    <setting-layout :title="tm('title.indexPage.title')" :sub-title="tm('title.indexPage.subTitle')" :links="links">
+    <app-layout :title="tm('title.indexPage.title')" :sub-title="tm('title.indexPage.subTitle')">
         <template #actionArea>
-            <help-button title="İyileştirme Alanları — Nasıl Çalışır?" subtitle="5S ve Gemba için alan tanımı">
-                <p>Bir 5S denetimi veya Gemba turu kaydedilirken, denetlenen/gezilen <strong>alan</strong> buradaki listeden seçilir.</p>
+            <help-button title="Alanlar — Nasıl Çalışır?" subtitle="Departmanlara bağlı fiziksel/organizasyonel alanlar">
+                <p>Bir <strong>alan</strong>, bir departmana bağlı fiziksel veya organizasyonel bir bölgedir (ör. bir montaj hattı, bir depo bölümü).</p>
+                <p>Sürekli İyileştirme modülündeki 5S denetimleri ve Gemba turları, denetlenen/gezilen alanı buradaki listeden seçer — alan yönetimi bu sayfadan yapılır, o modüller sadece alanlara referans verir.</p>
                 <p>Üzerinde kayıtlı 5S denetimi veya Gemba turu bulunan bir alan silinemez.</p>
             </help-button>
             <simple-button @click="openCreate" color="green">
                 <font-awesome-icon icon="plus" class="mr-2"/>
                 <span v-text="t('action.addNew')"/>
-            </simple-button>
-            <simple-button type="route" :link="route('continuous-improvement.index')">
-                <font-awesome-icon icon="fa-solid fa-left-long" class="mr-2"/>
-                <span v-text="t('action.goBack')"/>
             </simple-button>
         </template>
 
@@ -186,5 +180,5 @@ const handleDelete = (id) => {
                 </template>
             </Modal>
         </teleport>
-    </setting-layout>
+    </app-layout>
 </template>

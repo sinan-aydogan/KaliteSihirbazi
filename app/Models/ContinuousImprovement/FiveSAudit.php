@@ -2,6 +2,7 @@
 
 namespace App\Models\ContinuousImprovement;
 
+use App\Models\Area;
 use App\Models\User;
 use App\Traits\HasSequentialCode;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,7 +16,7 @@ class FiveSAudit extends Model
     use HasFactory, HasSequentialCode, SoftDeletes;
 
     protected $fillable = [
-        'continuous_improvement_area_id',
+        'area_id',
         'audited_by_id',
         'audit_date',
         'sort_score',
@@ -61,7 +62,7 @@ class FiveSAudit extends Model
 
     public function area(): BelongsTo
     {
-        return $this->belongsTo(ImprovementArea::class, 'continuous_improvement_area_id');
+        return $this->belongsTo(Area::class);
     }
 
     public function auditedBy(): BelongsTo

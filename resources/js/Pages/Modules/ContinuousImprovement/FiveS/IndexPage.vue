@@ -61,7 +61,7 @@ const headers = [
 /* ---------- Create Form ---------- */
 const showModal = ref(false);
 const form = useForm({
-    continuous_improvement_area_id: null,
+    area_id: null,
     audited_by_id: null,
     audit_date: new Date().toISOString().substring(0, 10),
     sort_score: 5,
@@ -73,7 +73,7 @@ const form = useForm({
 })
 
 const rules = ref({
-    continuous_improvement_area_id: {required: helpers.withMessage(t('message.validation.required'), required)},
+    area_id: {required: helpers.withMessage(t('message.validation.required'), required)},
     audited_by_id: {},
     audit_date: {required: helpers.withMessage(t('message.validation.required'), required)},
     sort_score: {required: helpers.withMessage(t('message.validation.required'), required)},
@@ -112,9 +112,9 @@ const handleSubmit = async () => {
                 <p>Her kriter (Sınıflandır, Düzenle, Temizlik, Standartlaştır, Disiplin) 0-5 arası puanlanır; toplam puan otomatik hesaplanır (0-25).</p>
                 <p>Puanı düşük çıkan bir kriter için detay sayfasından <strong>bulgu</strong> (aksiyon maddesi) ekleyip sorumlu/son tarih atayabilirsiniz.</p>
             </help-button>
-            <simple-button type="route" :link="route('improvement-area.index')" color="blue">
+            <simple-button type="route" :link="route('area.index')" color="blue">
                 <font-awesome-icon icon="map-location-dot" class="mr-2"/>
-                <span v-text="t('mainMenu.improvementAreas')"/>
+                <span v-text="t('mainMenu.areas')"/>
             </simple-button>
             <simple-button type="route" :link="route('continuous-improvement.index')">
                 <font-awesome-icon icon="fa-solid fa-left-long" class="mr-2"/>
@@ -154,8 +154,8 @@ const handleSubmit = async () => {
             >
                 <Form full-size>
                     <FormSection bg-less>
-                        <input-group class="col-span-6" labelFor="continuous_improvement_area_id" :label="tm('term.area')" :errors="v$.continuous_improvement_area_id.$errors">
-                            <select-input v-model="form.continuous_improvement_area_id" :options="areaOptions"/>
+                        <input-group class="col-span-6" labelFor="area_id" :label="tm('term.area')" :errors="v$.area_id.$errors">
+                            <select-input v-model="form.area_id" :options="areaOptions"/>
                         </input-group>
 
                         <input-group class="col-span-3" labelFor="audited_by_id" :label="tm('term.auditedBy')">
