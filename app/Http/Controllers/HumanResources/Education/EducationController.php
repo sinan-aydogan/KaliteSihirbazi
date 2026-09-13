@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers\HumanResources\Education;
 
+use App\Enums\RiskControlEffectiveness;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\HumanResources\Education\StoreEducationRequest;
 use App\Http\Requests\HumanResources\Education\UpdateEducationRequest;
 use App\Models\HumanResources\Education\Education;
 use App\Models\HumanResources\Education\EducationInstructor;
+use App\Models\HumanResources\Education\EducationParticipation;
 use App\Models\HumanResources\Education\EducationPlan;
 use App\Models\HumanResources\Education\EducationType;
 use App\Models\HumanResources\Employee\Employee;
 use App\Models\User;
+use App\Services\FileUploadSettingService;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -118,6 +122,10 @@ class EducationController extends Controller
                 'educationTypes',
                 'instructors.media',
                 'participations.user',
+                'participations.effectivenessEvaluatedBy:id,name',
+                'participations.media',
+                'problem:id,code,title',
+                'capa:id,code,title',
                 'media',
             ]),
             'candidateUsers' => Employee::whereHas('account')
@@ -262,17 +270,73 @@ class EducationController extends Controller
             'is_attend' => 'required|boolean',
             'status' => 'required|boolean',
             'score' => 'nullable|integer|min:0|max:100',
+            'effectiveness_rating' => ['nullable', Rule::enum(RiskControlEffectiveness::class)],
+            'effectiveness_note' => 'nullable|string|max:1000',
         ]);
 
         abort_unless($education->participants()->whereKey($user->id)->exists(), 404);
 
-        $education->participants()->updateExistingPivot($user->id, [
+        $pivotData = [
             'is_attend' => $request->is_attend,
             'status' => $request->status,
             'score' => $request->score,
-        ]);
+        ];
+
+        if ($request->has('effectiveness_rating')) {
+            $pivotData['effectiveness_rating'] = $request->effectiveness_rating;
+            $pivotData['effectiveness_note'] = $request->effectiveness_note;
+            $pivotData['effectiveness_evaluated_at'] = now()->toDateString();
+            $pivotData['effectiveness_evaluated_by_id'] = auth()->id();
+        }
+
+        if ($request->is_attend && $request->status) {
+            $validityMonths = $education->shortestValidityMonths();
+            if ($validityMonths) {
+                $pivotData['expires_at'] = ($education->performed_date ?? now())->copy()->addMonths($validityMonths)->toDateString();
+            }
+        } else {
+            $pivotData['expires_at'] = null;
+        }
+
+        $education->participants()->updateExistingPivot($user->id, $pivotData);
 
         session()->flash('message', ['type' => 'success', 'content' => __('messages.education.participantUpdated')]);
+
+        return redirect()->back();
+    }
+
+    /**
+     * Katılımcı için sertifika/belge yükle
+     */
+    public function uploadParticipantDocument(Request $request, Education $education, User $user)
+    {
+        $request->validate([
+            'document' => app(FileUploadSettingService::class)->fileValidationRules(
+                'education_allowed_file_types', ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'jpg', 'jpeg', 'png'],
+                'education_max_file_size', ['size' => 10, 'unit' => 'MB'],
+            ),
+        ]);
+
+        $participation = $education->participants()->whereKey($user->id)->firstOrFail()->pivot;
+        $participation->addMedia($request->file('document'))->toMediaCollection('education_documents');
+
+        session()->flash('message', ['type' => 'success', 'content' => __('messages.education.participantDocumentUploaded')]);
+
+        return redirect()->back();
+    }
+
+    /**
+     * Katılımcının belgesini sil
+     */
+    public function deleteParticipantDocument(Education $education, User $user, int $mediaId)
+    {
+        $participation = $education->participants()->whereKey($user->id)->firstOrFail()->pivot;
+        $media = $participation->media()->find($mediaId);
+
+        if ($media) {
+            $media->delete();
+            session()->flash('message', ['type' => 'success', 'content' => __('messages.education.mediaDeleted')]);
+        }
 
         return redirect()->back();
     }

@@ -270,6 +270,8 @@ Route::middleware([
     Route::post('education/{education}/participants', [EducationController::class, 'addParticipant'])->name('education.add-participant');
     Route::put('education/{education}/participants/{user}', [EducationController::class, 'updateParticipant'])->name('education.update-participant');
     Route::delete('education/{education}/participants/{user}', [EducationController::class, 'removeParticipant'])->name('education.remove-participant');
+    Route::post('education/{education}/participants/{user}/documents', [EducationController::class, 'uploadParticipantDocument'])->name('education.upload-participant-document');
+    Route::delete('education/{education}/participants/{user}/documents/{mediaId}', [EducationController::class, 'deleteParticipantDocument'])->name('education.delete-participant-document');
 
     // Education Media Management
     Route::delete('education/{education}/media/{mediaId}', [EducationController::class, 'deleteMedia'])->name('education.delete-media');

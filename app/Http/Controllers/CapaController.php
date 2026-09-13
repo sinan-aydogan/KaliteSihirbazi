@@ -6,6 +6,7 @@ use App\Http\Requests\StoreCapaRequest;
 use App\Http\Requests\UpdateCapaRequest;
 use App\Models\Capa;
 use App\Models\CapaSourceType;
+use App\Models\HumanResources\Education\EducationPlan;
 use App\Models\User;
 use App\Services\Capa\CapaWorkflowService;
 use Inertia\Inertia;
@@ -53,12 +54,14 @@ class CapaController extends Controller
             'actions.responsible:id,name',
             'verifications.verifiedBy:id,name',
             'capaSourceType:id,name',
+            'trainings.educationPlan:id,name',
         ]);
 
         return Inertia::render('Modules/Capa/ShowPage', [
             'capa' => $capa,
             'users' => User::all(['id', 'name']),
             'capaSourceTypes' => CapaSourceType::orderBy('sort_order')->get(['id', 'name']),
+            'educationPlans' => EducationPlan::where('end_date', '>=', now())->get(['id', 'name']),
         ]);
     }
 

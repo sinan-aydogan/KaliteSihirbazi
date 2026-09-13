@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\CapaStatus;
 use App\Enums\CapaType;
+use App\Models\HumanResources\Education\Education;
 use App\Traits\HasSequentialCode;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -68,6 +69,11 @@ class Capa extends Model
     public function verifications(): HasMany
     {
         return $this->hasMany(CapaVerification::class);
+    }
+
+    public function trainings(): HasMany
+    {
+        return $this->hasMany(Education::class);
     }
 
     public function openedBy(): BelongsTo

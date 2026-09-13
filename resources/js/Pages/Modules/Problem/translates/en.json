@@ -29,6 +29,8 @@
         "detectedDate": "Detected Date",
         "closedAt": "Closed At",
         "capaCount": "CAPAs",
+        "trainings": "Linked Trainings",
+        "educationPlan": "Education Plan",
         "immediateAction": "Immediate Action (Correction)",
         "problemSeverity": {
             "low": "Low",
@@ -50,6 +52,7 @@
         "editImmediateAction": "Edit Immediate Action",
         "markUnderReview": "Mark Under Review",
         "raiseCapa": "Raise CAPA",
+        "raiseTraining": "Raise Training",
         "closeWithoutCapa": "Close Without CAPA",
         "close": "Close"
     }

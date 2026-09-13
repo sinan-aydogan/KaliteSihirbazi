@@ -294,7 +294,8 @@ return [
         'participantAdded' => 'Participant has been added to the education successfully',
         'participantUpdated' => 'Participant information has been updated successfully',
         'participantRemoved' => 'Participant has been removed from the education successfully',
-        'mediaDeleted' => 'Media file has been deleted successfully'
+        'mediaDeleted' => 'Media file has been deleted successfully',
+        'participantDocumentUploaded' => 'Participant document has been uploaded successfully'
     ],
     'supplier' => [
         'created' => 'The new supplier named :supplier has been created successfully',

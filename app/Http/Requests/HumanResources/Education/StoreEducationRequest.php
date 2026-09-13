@@ -28,6 +28,8 @@ class StoreEducationRequest extends FormRequest
     {
         return [
             'education_plan_id' => 'required|exists:education_plans,id',
+            'problem_id' => 'nullable|exists:problems,id',
+            'capa_id' => 'nullable|exists:capas,id',
             'name' => 'required|string|max:255',
             'description' => 'nullable|string|max:1000',
             'planned_date' => 'required|date|date_format:Y-m-d',

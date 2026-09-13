@@ -33,8 +33,14 @@ const props = defineProps({
     capaSourceTypes: {
         type: Array,
         default: () => []
+    },
+    educationPlans: {
+        type: Array,
+        default: () => []
     }
 })
+
+const educationPlanOptions = computed(() => props.educationPlans.map(p => ({id: p.id, label: p.name})))
 
 const typeOptions = computed(() => [
     {id: 'corrective', label: tm('term.capaType.corrective')},
@@ -196,6 +202,41 @@ const submitVerify = () => {
         onSuccess: () => showVerifyModal.value = false,
     })
 }
+
+/* ---------- Raise Training (Education) ---------- */
+const showRaiseTrainingModal = ref(false)
+const trainingForm = useForm({
+    capa_id: props.capa.id,
+    education_plan_id: null,
+    name: "",
+    planned_date: "",
+    duration: 60,
+    is_completed: false,
+    is_cancelled: false,
+})
+const trainingRules = ref({
+    education_plan_id: {required: helpers.withMessage(t('message.validation.required'), required)},
+    name: {required: helpers.withMessage(t('message.validation.required'), required)},
+    planned_date: {required: helpers.withMessage(t('message.validation.required'), required)},
+    duration: {required: helpers.withMessage(t('message.validation.required'), required)},
+})
+const trainingV$ = useVuelidate(trainingRules, trainingForm)
+
+const openRaiseTraining = () => {
+    trainingForm.reset();
+    trainingForm.capa_id = props.capa.id;
+    trainingV$.value.$reset();
+    showRaiseTrainingModal.value = true;
+}
+
+const submitRaiseTraining = async () => {
+    const isValidated = await trainingV$.value.$validate()
+    if (!isValidated) return
+
+    trainingForm.post(route('education.store'), {
+        onSuccess: () => showRaiseTrainingModal.value = false,
+    })
+}
 </script>
 
 <template>
@@ -241,6 +282,10 @@ const submitVerify = () => {
                     <simple-button color="neutral" @click="openEdit">
                         <font-awesome-icon icon="edit" class="mr-2"/>
                         <span v-text="t('action.update')"/>
+                    </simple-button>
+                    <simple-button color="blue" @click="openRaiseTraining">
+                        <font-awesome-icon icon="chalkboard-user" class="mr-2"/>
+                        <span v-text="tm('action.raiseTraining')"/>
                     </simple-button>
                 </div>
             </div>
@@ -307,6 +352,32 @@ const submitVerify = () => {
                 </tr>
                 <tr v-if="capa.actions.length === 0">
                     <td colspan="5" class="text-center py-4 text-slate-400" v-text="t('message.feedback.noResults')"/>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--Linked Trainings-->
+        <div v-if="capa.trainings?.length" class="bg-slate-100 dark:bg-slate-600 rounded-lg p-6 mb-6">
+            <h3 class="font-bold mb-4" v-text="tm('term.trainings')"/>
+            <table class="w-full text-sm">
+                <thead>
+                <tr class="text-slate-400 text-left">
+                    <th class="px-2 pb-2">Ad</th>
+                    <th class="px-2 pb-2">Plan</th>
+                    <th class="px-2 pb-2">Durum</th>
+                    <th class="px-2 pb-2"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="training in capa.trainings" :key="training.id" class="border-t border-slate-200 dark:border-slate-500">
+                    <td class="px-2 py-2">{{ training.name }}</td>
+                    <td class="px-2 py-2">{{ training.education_plan?.name ?? '-' }}</td>
+                    <td class="px-2 py-2">{{ training.is_completed ? 'Tamamlandı' : 'Planlandı' }}</td>
+                    <td class="px-2 py-2 text-right">
+                        <font-awesome-icon icon="chalkboard-user" class="cursor-pointer text-sky-600 hover:scale-110 transition"
+                                            @click="router.visit(route('education.show', training.id))"/>
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -419,6 +490,34 @@ const submitVerify = () => {
                 </Form>
                 <template #footer>
                     <SimpleButton :label="tm('action.verify')" color="green" @click="submitVerify" :loading="verifyForm.processing"/>
+                </template>
+            </Modal>
+        </teleport>
+
+        <!--Raise Training Modal-->
+        <teleport to="body">
+            <Modal v-model="showRaiseTrainingModal" :header="tm('action.raiseTraining')" closeable close-button max-width="2xl">
+                <Form full-size>
+                    <FormSection bg-less>
+                        <input-group class="col-span-6" labelFor="education_plan_id" :label="tm('term.educationPlan')" :errors="trainingV$.education_plan_id.$errors">
+                            <select-input v-model="trainingForm.education_plan_id" :options="educationPlanOptions"/>
+                        </input-group>
+
+                        <input-group class="col-span-6" labelFor="name" :label="tm('term.title')" :errors="trainingV$.name.$errors">
+                            <text-input v-model="trainingForm.name"/>
+                        </input-group>
+
+                        <input-group class="col-span-3" labelFor="planned_date" label="Planlanan Tarih" :errors="trainingV$.planned_date.$errors">
+                            <text-input input-type="date" v-model="trainingForm.planned_date"/>
+                        </input-group>
+
+                        <input-group class="col-span-3" labelFor="duration" label="Süre (dk)" :errors="trainingV$.duration.$errors">
+                            <text-input input-type="number" v-model="trainingForm.duration"/>
+                        </input-group>
+                    </FormSection>
+                </Form>
+                <template #footer>
+                    <SimpleButton :label="tm('action.raiseTraining')" color="green" @click="submitRaiseTraining" :loading="trainingForm.processing"/>
                 </template>
             </Modal>
         </teleport>

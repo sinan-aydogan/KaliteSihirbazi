@@ -29,6 +29,8 @@
         "detectedDate": "Tespit Tarihi",
         "closedAt": "Kapanış Tarihi",
         "capaCount": "DÖF",
+        "trainings": "Bağlı Eğitimler",
+        "educationPlan": "Eğitim Planı",
         "immediateAction": "Anlık Aksiyon (Düzeltme)",
         "problemSeverity": {
             "low": "Düşük",
@@ -50,6 +52,7 @@
         "editImmediateAction": "Anlık Aksiyonu Düzenle",
         "markUnderReview": "İncelemeye Al",
         "raiseCapa": "DÖF Aç",
+        "raiseTraining": "Eğitim Aç",
         "closeWithoutCapa": "DÖF Gerektirmeden Kapat",
         "close": "Kapat"
     }
