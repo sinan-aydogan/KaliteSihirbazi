@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\EnsureModulePermission;
 use App\Http\Middleware\HandleInertiaRequests;
 use App\Http\Middleware\UpdateLangMiddleware;
 use Illuminate\Foundation\Application;
@@ -23,6 +24,10 @@ return Application::configure(basePath: dirname(__DIR__))
             UpdateLangMiddleware::class,
             HandleInertiaRequests::class,
             AddLinkHeadersForPreloadedAssets::class,
+        ]);
+
+        $middleware->alias([
+            'module.permission' => EnsureModulePermission::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

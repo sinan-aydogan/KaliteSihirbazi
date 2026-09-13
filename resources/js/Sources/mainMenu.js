@@ -2,13 +2,43 @@
 import {useI18n} from "vue-i18n";
 import {computed} from "vue";
 
+/**
+ * A dropdown group with no visible children (or a route link the current
+ * user has no "{module}.view" permission for) is dropped entirely rather
+ * than shown empty/dead. Sistem Yöneticisi holds every permission (see
+ * PermissionSeeder), so nothing is hidden for that role.
+ */
+function filterByPermission(items, permissionNames) {
+    return items
+        .map((item) => {
+            if (item.links) {
+                const links = filterByPermission(item.links, permissionNames);
+
+                return links.length ? {...item, links} : null;
+            }
+
+            if (item.link) {
+                const module = item.link.split('.')[0];
+
+                if (!permissionNames.includes(`${module}.view`)) {
+                    return null;
+                }
+            }
+
+            return item;
+        })
+        .filter(Boolean);
+}
+
 export default function ({roles, permissions}) {
 
     const {t} = useI18n()
 
     /*Main Menu Links*/
     const links = computed(() => {
-        return [
+        const permissionNames = permissions?.value ?? permissions ?? [];
+
+        return filterByPermission([
             /*Business Management*/
             {
                 id: 'bm',
@@ -475,7 +505,7 @@ export default function ({roles, permissions}) {
                     }
                 ]
             }
-        ]
+        ], permissionNames);
     });
 
 

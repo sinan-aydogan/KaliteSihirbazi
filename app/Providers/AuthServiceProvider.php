@@ -10,6 +10,7 @@ use App\Models\Tag\TagType;
 use App\Policies\DocumentPolicy;
 use App\Policies\TagPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -36,6 +37,9 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Sistem Yöneticisi bypasses every permission check (route middleware,
+        // policies, Vue-side `can` checks) — the pre-existing bootstrap admin
+        // role, see database/seeders/AdminSeeder.php and RoleSeeder.php.
+        Gate::before(fn ($user, $ability) => $user->hasRole('Sistem Yöneticisi') ? true : null);
     }
 }

@@ -90,6 +90,8 @@ use App\Http\Controllers\Setting\GlobalSettingController;
 use App\Http\Controllers\Setting\ModuleController;
 use App\Http\Controllers\Setting\PropertyController;
 use App\Http\Controllers\Setting\PropertyTypeController;
+use App\Http\Controllers\Setting\RoleController;
+use App\Http\Controllers\Setting\UserManagementController;
 use App\Http\Controllers\StandardController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\Tag\TagController;
@@ -141,7 +143,7 @@ Route::middleware([
     Route::prefix('settings')->group(function () {
         Route::get('/', [GlobalSettingController::class, 'index'])->name('global-setting.index');
         /* Module Management */
-        Route::resource('module', ModuleController::class);
+        Route::resource('module', ModuleController::class)->middleware('module.permission:module');
         /* Property Management */
         Route::resource('property', PropertyController::class);
         Route::resource('property-type', PropertyTypeController::class);
@@ -153,9 +155,13 @@ Route::middleware([
         Route::get('time', [GlobalSettingController::class, 'time'])->name('global-setting.time');
         Route::post('time', [GlobalSettingController::class, 'updateTime'])->name('global-setting.time.update');
         /* Tag Management (global pool: types + tags) */
-        Route::resource('tag-type', TagTypeController::class)->only(['index', 'store', 'update', 'destroy']);
-        Route::post('tag', [TagController::class, 'store'])->name('tag.store');
-        Route::delete('tag/{tag}', [TagController::class, 'destroy'])->name('tag.destroy');
+        Route::resource('tag-type', TagTypeController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('module.permission:tag-type');
+        Route::post('tag', [TagController::class, 'store'])->name('tag.store')->middleware('module.permission:tag-type,update');
+        Route::delete('tag/{tag}', [TagController::class, 'destroy'])->name('tag.destroy')->middleware('module.permission:tag-type,delete');
+        /* Authorization Management (roles + user-role assignment) */
+        Route::resource('role', RoleController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('module.permission:role');
+        Route::get('users', [UserManagementController::class, 'index'])->name('user-management.index')->middleware('module.permission:user,view');
+        Route::put('users/{user}/roles', [UserManagementController::class, 'updateRoles'])->name('user-management.update-roles')->middleware('module.permission:user,update');
     });
 
     /* User Functions */
@@ -230,196 +236,198 @@ Route::middleware([
 
     foreach ($plannedModules as $plannedModule) {
         Route::get($plannedModule, fn () => Inertia::render('ComingSoon'))
-            ->name($plannedModule.'.index');
+            ->name($plannedModule.'.index')
+            ->middleware('module.permission:'.$plannedModule.',view');
     }
 
     foreach ($mRoutes as $mRoute) {
-        /* Setting */
-        if (isset($mRoute['settingController'])) {
-            Route::get($mRoute['uri'].'/setting', [$mRoute['settingController'], 'index'])->withTrashed()->name($mRoute['uri'].'-setting.index');
-            Route::post($mRoute['uri'].'/setting', [$mRoute['settingController'], 'update'])->name($mRoute['uri'].'-setting.update');
-        }
-        /* Search */
-        Route::post($mRoute['uri'].'/search', [$mRoute['controller'], 'index'])->name($mRoute['uri'].'.search');
-        /* Resource */
-        Route::resource($mRoute['uri'], $mRoute['controller']);
-        /* Soft Delete Routes */
-        if (method_exists($mRoute['controller'], 'deleted')) {
-            Route::get($mRoute['uri'].'-deleted', [$mRoute['controller'], 'deleted'])->name($mRoute['uri'].'.deleted');
-        }
+        Route::middleware('module.permission:'.$mRoute['uri'])->group(function () use ($mRoute) {
+            /* Setting */
+            if (isset($mRoute['settingController'])) {
+                Route::get($mRoute['uri'].'/setting', [$mRoute['settingController'], 'index'])->withTrashed()->name($mRoute['uri'].'-setting.index');
+                Route::post($mRoute['uri'].'/setting', [$mRoute['settingController'], 'update'])->name($mRoute['uri'].'-setting.update');
+            }
+            /* Search */
+            Route::post($mRoute['uri'].'/search', [$mRoute['controller'], 'index'])->name($mRoute['uri'].'.search');
+            /* Resource */
+            Route::resource($mRoute['uri'], $mRoute['controller']);
+            /* Soft Delete Routes */
+            if (method_exists($mRoute['controller'], 'deleted')) {
+                Route::get($mRoute['uri'].'-deleted', [$mRoute['controller'], 'deleted'])->name($mRoute['uri'].'.deleted');
+            }
 
-        if (method_exists($mRoute['controller'], 'permanentDestroy')) {
-            Route::delete($mRoute['uri'].'-permanent-delete/{'.$mRoute['model'].'}', [$mRoute['controller'], 'permanentDestroy'])->withTrashed()->name($mRoute['uri'].'.permanent-delete');
-        }
+            if (method_exists($mRoute['controller'], 'permanentDestroy')) {
+                Route::delete($mRoute['uri'].'-permanent-delete/{'.$mRoute['model'].'}', [$mRoute['controller'], 'permanentDestroy'])->withTrashed()->name($mRoute['uri'].'.permanent-delete');
+            }
 
-        if (method_exists($mRoute['controller'], 'restore')) {
-            Route::get($mRoute['uri'].'-restore/{'.$mRoute['model'].'}', [$mRoute['controller'], 'restore'])->withTrashed()->name($mRoute['uri'].'.restore');
-        }
-
+            if (method_exists($mRoute['controller'], 'restore')) {
+                Route::get($mRoute['uri'].'-restore/{'.$mRoute['model'].'}', [$mRoute['controller'], 'restore'])->withTrashed()->name($mRoute['uri'].'.restore');
+            }
+        });
     }
 
     /* Employee Management Pages */
-    Route::get('employee/{employee}/personal-info', [PersonalInfo::class, 'index'])->name('employee-personal-info.index');
-    Route::get('employee/{employee}/employment-info', [EmploymentInfo::class, 'index'])->name('employee-employment-info.index');
-    Route::get('employee/{employee}/jd-assignment', [JobAssignmentController::class, 'index'])->name('employee-jd-assignment.index');
-    Route::get('employee/{employee}/time-off', [TimeOffController::class, 'index'])->name('employee-time-off.index');
-    Route::get('employee/{employee}/debt', [DebtController::class, 'index'])->name('employee-debt.index');
-    Route::get('employee/{employee}/education', [App\Http\Controllers\HumanResources\Employee\EducationController::class, 'index'])->name('employee-education.index');
+    Route::get('employee/{employee}/personal-info', [PersonalInfo::class, 'index'])->name('employee-personal-info.index')->middleware('module.permission:employee,view');
+    Route::get('employee/{employee}/employment-info', [EmploymentInfo::class, 'index'])->name('employee-employment-info.index')->middleware('module.permission:employee,view');
+    Route::get('employee/{employee}/jd-assignment', [JobAssignmentController::class, 'index'])->name('employee-jd-assignment.index')->middleware('module.permission:employee,view');
+    Route::get('employee/{employee}/time-off', [TimeOffController::class, 'index'])->name('employee-time-off.index')->middleware('module.permission:employee,view');
+    Route::get('employee/{employee}/debt', [DebtController::class, 'index'])->name('employee-debt.index')->middleware('module.permission:employee,view');
+    Route::get('employee/{employee}/education', [App\Http\Controllers\HumanResources\Employee\EducationController::class, 'index'])->name('employee-education.index')->middleware('module.permission:employee,view');
 
     // Education Participant Management
-    Route::post('education/{education}/participants', [EducationController::class, 'addParticipant'])->name('education.add-participant');
-    Route::put('education/{education}/participants/{user}', [EducationController::class, 'updateParticipant'])->name('education.update-participant');
-    Route::delete('education/{education}/participants/{user}', [EducationController::class, 'removeParticipant'])->name('education.remove-participant');
-    Route::post('education/{education}/participants/{user}/documents', [EducationController::class, 'uploadParticipantDocument'])->name('education.upload-participant-document');
-    Route::delete('education/{education}/participants/{user}/documents/{mediaId}', [EducationController::class, 'deleteParticipantDocument'])->name('education.delete-participant-document');
+    Route::post('education/{education}/participants', [EducationController::class, 'addParticipant'])->name('education.add-participant')->middleware('module.permission:education,update');
+    Route::put('education/{education}/participants/{user}', [EducationController::class, 'updateParticipant'])->name('education.update-participant')->middleware('module.permission:education,update');
+    Route::delete('education/{education}/participants/{user}', [EducationController::class, 'removeParticipant'])->name('education.remove-participant')->middleware('module.permission:education,delete');
+    Route::post('education/{education}/participants/{user}/documents', [EducationController::class, 'uploadParticipantDocument'])->name('education.upload-participant-document')->middleware('module.permission:education,update');
+    Route::delete('education/{education}/participants/{user}/documents/{mediaId}', [EducationController::class, 'deleteParticipantDocument'])->name('education.delete-participant-document')->middleware('module.permission:education,delete');
 
     // Education Media Management
-    Route::delete('education/{education}/media/{mediaId}', [EducationController::class, 'deleteMedia'])->name('education.delete-media');
-    Route::delete('education-instructor/{educationInstructor}/media/{mediaId}', [EducationInstructorController::class, 'deleteMedia'])->name('education-instructor.delete-media');
+    Route::delete('education/{education}/media/{mediaId}', [EducationController::class, 'deleteMedia'])->name('education.delete-media')->middleware('module.permission:education,delete');
+    Route::delete('education-instructor/{educationInstructor}/media/{mediaId}', [EducationInstructorController::class, 'deleteMedia'])->name('education-instructor.delete-media')->middleware('module.permission:education-instructor,delete');
 
     // Education Setting Pages
-    Route::get('education/setting/general', [EducationSettingController::class, 'general'])->name('education-setting.general');
+    Route::get('education/setting/general', [EducationSettingController::class, 'general'])->name('education-setting.general')->middleware('module.permission:education,view');
 
     // Document Type Authorities (author/reviewer/approver/viewer grants)
-    Route::get('document-type/{documentType}/authorities', [DocumentTypeAuthorityController::class, 'index'])->name('document-type-authority.index');
-    Route::post('document-type/{documentType}/authorities', [DocumentTypeAuthorityController::class, 'store'])->name('document-type-authority.store');
-    Route::delete('document-type-authority/{documentTypeAuthority}', [DocumentTypeAuthorityController::class, 'destroy'])->name('document-type-authority.destroy');
+    Route::get('document-type/{documentType}/authorities', [DocumentTypeAuthorityController::class, 'index'])->name('document-type-authority.index')->middleware('module.permission:document-type,view');
+    Route::post('document-type/{documentType}/authorities', [DocumentTypeAuthorityController::class, 'store'])->name('document-type-authority.store')->middleware('module.permission:document-type,update');
+    Route::delete('document-type-authority/{documentTypeAuthority}', [DocumentTypeAuthorityController::class, 'destroy'])->name('document-type-authority.destroy')->middleware('module.permission:document-type,delete');
 
     // Document Tag Settings (which global tag types this module shows)
-    Route::get('document/setting/tags', [DocumentTagSettingController::class, 'index'])->name('document-tag-setting.index');
-    Route::post('document/setting/tags', [DocumentTagSettingController::class, 'update'])->name('document-tag-setting.update');
+    Route::get('document/setting/tags', [DocumentTagSettingController::class, 'index'])->name('document-tag-setting.index')->middleware('module.permission:document,view');
+    Route::post('document/setting/tags', [DocumentTagSettingController::class, 'update'])->name('document-tag-setting.update')->middleware('module.permission:document,update');
 
     // Document Revision Requests (anyone with view access may ask for a revision)
-    Route::get('document-revision-requests', [DocumentRevisionRequestController::class, 'index'])->name('document-revision-request.index');
-    Route::post('document/{document}/revision-requests', [DocumentRevisionRequestController::class, 'store'])->name('document-revision-request.store');
-    Route::post('document-revision-request/{documentRevisionRequest}/accept', [DocumentRevisionRequestController::class, 'accept'])->name('document-revision-request.accept');
-    Route::post('document-revision-request/{documentRevisionRequest}/reject', [DocumentRevisionRequestController::class, 'reject'])->name('document-revision-request.reject');
+    Route::get('document-revision-requests', [DocumentRevisionRequestController::class, 'index'])->name('document-revision-request.index')->middleware('module.permission:document,view');
+    Route::post('document/{document}/revision-requests', [DocumentRevisionRequestController::class, 'store'])->name('document-revision-request.store')->middleware('module.permission:document,update');
+    Route::post('document-revision-request/{documentRevisionRequest}/accept', [DocumentRevisionRequestController::class, 'accept'])->name('document-revision-request.accept')->middleware('module.permission:document,update');
+    Route::post('document-revision-request/{documentRevisionRequest}/reject', [DocumentRevisionRequestController::class, 'reject'])->name('document-revision-request.reject')->middleware('module.permission:document,update');
 
     // Document Actions (read-only audit trail of workflow/lifecycle activity)
-    Route::get('document-actions', [DocumentActionController::class, 'index'])->name('document-action.index');
+    Route::get('document-actions', [DocumentActionController::class, 'index'])->name('document-action.index')->middleware('module.permission:document-action,view');
 
     // New document revisions (versions) and document cancellation/supersession
-    Route::post('document/{document}/versions', [DocumentVersionController::class, 'store'])->name('document-version.store');
-    Route::post('document/{document}/cancel', [DocumentController::class, 'cancel'])->name('document.cancel');
+    Route::post('document/{document}/versions', [DocumentVersionController::class, 'store'])->name('document-version.store')->middleware('module.permission:document,update');
+    Route::post('document/{document}/cancel', [DocumentController::class, 'cancel'])->name('document.cancel')->middleware('module.permission:document,update');
 
     // Document Version Workflow (submit / review / approve / reject / acknowledge)
-    Route::post('document-version/{documentVersion}/submit', [DocumentVersionWorkflowController::class, 'submit'])->name('document-version.submit');
-    Route::post('document-version/{documentVersion}/review', [DocumentVersionWorkflowController::class, 'review'])->name('document-version.review');
-    Route::post('document-version/{documentVersion}/approve', [DocumentVersionWorkflowController::class, 'approve'])->name('document-version.approve');
-    Route::post('document-version/{documentVersion}/reject', [DocumentVersionWorkflowController::class, 'reject'])->name('document-version.reject');
-    Route::post('document-version/{documentVersion}/acknowledge', [DocumentVersionWorkflowController::class, 'acknowledge'])->name('document-version.acknowledge');
+    Route::post('document-version/{documentVersion}/submit', [DocumentVersionWorkflowController::class, 'submit'])->name('document-version.submit')->middleware('module.permission:document,update');
+    Route::post('document-version/{documentVersion}/review', [DocumentVersionWorkflowController::class, 'review'])->name('document-version.review')->middleware('module.permission:document,update');
+    Route::post('document-version/{documentVersion}/approve', [DocumentVersionWorkflowController::class, 'approve'])->name('document-version.approve')->middleware('module.permission:document,update');
+    Route::post('document-version/{documentVersion}/reject', [DocumentVersionWorkflowController::class, 'reject'])->name('document-version.reject')->middleware('module.permission:document,update');
+    Route::post('document-version/{documentVersion}/acknowledge', [DocumentVersionWorkflowController::class, 'acknowledge'])->name('document-version.acknowledge')->middleware('module.permission:document,update');
 
     // Company Accreditations (nested under a Standard)
-    Route::get('standard/{standard}/accreditations', [CompanyAccreditationController::class, 'index'])->name('company-accreditation.index');
-    Route::post('standard/{standard}/accreditations', [CompanyAccreditationController::class, 'store'])->name('company-accreditation.store');
-    Route::put('company-accreditation/{companyAccreditation}', [CompanyAccreditationController::class, 'update'])->name('company-accreditation.update');
-    Route::delete('company-accreditation/{companyAccreditation}', [CompanyAccreditationController::class, 'destroy'])->name('company-accreditation.destroy');
+    Route::get('standard/{standard}/accreditations', [CompanyAccreditationController::class, 'index'])->name('company-accreditation.index')->middleware('module.permission:standard,view');
+    Route::post('standard/{standard}/accreditations', [CompanyAccreditationController::class, 'store'])->name('company-accreditation.store')->middleware('module.permission:standard,update');
+    Route::put('company-accreditation/{companyAccreditation}', [CompanyAccreditationController::class, 'update'])->name('company-accreditation.update')->middleware('module.permission:standard,update');
+    Route::delete('company-accreditation/{companyAccreditation}', [CompanyAccreditationController::class, 'destroy'])->name('company-accreditation.destroy')->middleware('module.permission:standard,delete');
 
     // CAPA Actions (nested under a CAPA)
-    Route::post('capa/{capa}/actions', [CapaActionController::class, 'store'])->name('capa-action.store');
-    Route::put('capa-action/{capaAction}', [CapaActionController::class, 'update'])->name('capa-action.update');
-    Route::delete('capa-action/{capaAction}', [CapaActionController::class, 'destroy'])->name('capa-action.destroy');
-    Route::post('capa-action/{capaAction}/start', [CapaActionController::class, 'start'])->name('capa-action.start');
-    Route::post('capa-action/{capaAction}/complete', [CapaActionController::class, 'complete'])->name('capa-action.complete');
+    Route::post('capa/{capa}/actions', [CapaActionController::class, 'store'])->name('capa-action.store')->middleware('module.permission:capa,update');
+    Route::put('capa-action/{capaAction}', [CapaActionController::class, 'update'])->name('capa-action.update')->middleware('module.permission:capa,update');
+    Route::delete('capa-action/{capaAction}', [CapaActionController::class, 'destroy'])->name('capa-action.destroy')->middleware('module.permission:capa,delete');
+    Route::post('capa-action/{capaAction}/start', [CapaActionController::class, 'start'])->name('capa-action.start')->middleware('module.permission:capa,update');
+    Route::post('capa-action/{capaAction}/complete', [CapaActionController::class, 'complete'])->name('capa-action.complete')->middleware('module.permission:capa,update');
 
     // CAPA Workflow (submit for verification / verify / reopen)
-    Route::post('capa/{capa}/submit-for-verification', [CapaWorkflowController::class, 'submitForVerification'])->name('capa.submit-for-verification');
-    Route::post('capa/{capa}/verify', [CapaWorkflowController::class, 'verify'])->name('capa.verify');
-    Route::post('capa/{capa}/reopen', [CapaWorkflowController::class, 'reopen'])->name('capa.reopen');
+    Route::post('capa/{capa}/submit-for-verification', [CapaWorkflowController::class, 'submitForVerification'])->name('capa.submit-for-verification')->middleware('module.permission:capa,update');
+    Route::post('capa/{capa}/verify', [CapaWorkflowController::class, 'verify'])->name('capa.verify')->middleware('module.permission:capa,update');
+    Route::post('capa/{capa}/reopen', [CapaWorkflowController::class, 'reopen'])->name('capa.reopen')->middleware('module.permission:capa,update');
 
     // Problem (Uygunsuzluk) Workflow
-    Route::post('problem/{problem}/immediate-action', [ProblemWorkflowController::class, 'recordImmediateAction'])->name('problem.immediate-action');
-    Route::post('problem/{problem}/mark-under-review', [ProblemWorkflowController::class, 'markUnderReview'])->name('problem.mark-under-review');
-    Route::post('problem/{problem}/close-without-capa', [ProblemWorkflowController::class, 'closeWithoutCapa'])->name('problem.close-without-capa');
-    Route::post('problem/{problem}/close', [ProblemWorkflowController::class, 'close'])->name('problem.close');
+    Route::post('problem/{problem}/immediate-action', [ProblemWorkflowController::class, 'recordImmediateAction'])->name('problem.immediate-action')->middleware('module.permission:problem,update');
+    Route::post('problem/{problem}/mark-under-review', [ProblemWorkflowController::class, 'markUnderReview'])->name('problem.mark-under-review')->middleware('module.permission:problem,update');
+    Route::post('problem/{problem}/close-without-capa', [ProblemWorkflowController::class, 'closeWithoutCapa'])->name('problem.close-without-capa')->middleware('module.permission:problem,update');
+    Route::post('problem/{problem}/close', [ProblemWorkflowController::class, 'close'])->name('problem.close')->middleware('module.permission:problem,update');
 
     // Audit Workflow (start / complete / cancel)
-    Route::post('audit/{audit}/start', [AuditWorkflowController::class, 'start'])->name('audit.start');
-    Route::post('audit/{audit}/complete', [AuditWorkflowController::class, 'complete'])->name('audit.complete');
-    Route::post('audit/{audit}/cancel', [AuditWorkflowController::class, 'cancel'])->name('audit.cancel');
+    Route::post('audit/{audit}/start', [AuditWorkflowController::class, 'start'])->name('audit.start')->middleware('module.permission:audit,update');
+    Route::post('audit/{audit}/complete', [AuditWorkflowController::class, 'complete'])->name('audit.complete')->middleware('module.permission:audit,update');
+    Route::post('audit/{audit}/cancel', [AuditWorkflowController::class, 'cancel'])->name('audit.cancel')->middleware('module.permission:audit,update');
 
     // Audit Firm Auditors (personnel roster, nested under an Audit Firm)
-    Route::get('audit-firm/{auditFirm}/auditors', [AuditFirmAuditorController::class, 'index'])->name('audit-firm-auditor.index');
-    Route::post('audit-firm/{auditFirm}/auditors', [AuditFirmAuditorController::class, 'store'])->name('audit-firm-auditor.store');
-    Route::put('audit-firm-auditor/{auditFirmAuditor}', [AuditFirmAuditorController::class, 'update'])->name('audit-firm-auditor.update');
-    Route::delete('audit-firm-auditor/{auditFirmAuditor}', [AuditFirmAuditorController::class, 'destroy'])->name('audit-firm-auditor.destroy');
-    Route::delete('audit-firm-auditor/{auditFirmAuditor}/media/{mediaId}', [AuditFirmAuditorController::class, 'deleteMedia'])->name('audit-firm-auditor.delete-media');
+    Route::get('audit-firm/{auditFirm}/auditors', [AuditFirmAuditorController::class, 'index'])->name('audit-firm-auditor.index')->middleware('module.permission:audit-firm,view');
+    Route::post('audit-firm/{auditFirm}/auditors', [AuditFirmAuditorController::class, 'store'])->name('audit-firm-auditor.store')->middleware('module.permission:audit-firm,update');
+    Route::put('audit-firm-auditor/{auditFirmAuditor}', [AuditFirmAuditorController::class, 'update'])->name('audit-firm-auditor.update')->middleware('module.permission:audit-firm,update');
+    Route::delete('audit-firm-auditor/{auditFirmAuditor}', [AuditFirmAuditorController::class, 'destroy'])->name('audit-firm-auditor.destroy')->middleware('module.permission:audit-firm,delete');
+    Route::delete('audit-firm-auditor/{auditFirmAuditor}/media/{mediaId}', [AuditFirmAuditorController::class, 'deleteMedia'])->name('audit-firm-auditor.delete-media')->middleware('module.permission:audit-firm,delete');
 
     // Audit Checklist Questions (nested under a Checklist Template)
-    Route::post('audit-checklist-template/{auditChecklistTemplate}/questions', [AuditChecklistQuestionController::class, 'store'])->name('audit-checklist-question.store');
-    Route::put('audit-checklist-question/{auditChecklistQuestion}', [AuditChecklistQuestionController::class, 'update'])->name('audit-checklist-question.update');
-    Route::delete('audit-checklist-question/{auditChecklistQuestion}', [AuditChecklistQuestionController::class, 'destroy'])->name('audit-checklist-question.destroy');
+    Route::post('audit-checklist-template/{auditChecklistTemplate}/questions', [AuditChecklistQuestionController::class, 'store'])->name('audit-checklist-question.store')->middleware('module.permission:audit-checklist-template,update');
+    Route::put('audit-checklist-question/{auditChecklistQuestion}', [AuditChecklistQuestionController::class, 'update'])->name('audit-checklist-question.update')->middleware('module.permission:audit-checklist-template,update');
+    Route::delete('audit-checklist-question/{auditChecklistQuestion}', [AuditChecklistQuestionController::class, 'destroy'])->name('audit-checklist-question.destroy')->middleware('module.permission:audit-checklist-template,delete');
 
     // Attach a Checklist to an existing Audit + answer its questions
-    Route::post('audit/{audit}/checklists', [AuditChecklistController::class, 'store'])->name('audit-checklist.store');
-    Route::put('audit-checklist-answer/{auditChecklistAnswer}', [AuditChecklistAnswerController::class, 'update'])->name('audit-checklist-answer.update');
+    Route::post('audit/{audit}/checklists', [AuditChecklistController::class, 'store'])->name('audit-checklist.store')->middleware('module.permission:audit,update');
+    Route::put('audit-checklist-answer/{auditChecklistAnswer}', [AuditChecklistAnswerController::class, 'update'])->name('audit-checklist-answer.update')->middleware('module.permission:audit,update');
 
     // Printable / downloadable checklist views
-    Route::get('audit-checklist-template/{auditChecklistTemplate}/print', [AuditChecklistPrintController::class, 'template'])->name('audit-checklist-template.print');
-    Route::get('audit-checklist/{auditChecklist}/print', [AuditChecklistPrintController::class, 'checklist'])->name('audit-checklist.print');
+    Route::get('audit-checklist-template/{auditChecklistTemplate}/print', [AuditChecklistPrintController::class, 'template'])->name('audit-checklist-template.print')->middleware('module.permission:audit-checklist-template,view');
+    Route::get('audit-checklist/{auditChecklist}/print', [AuditChecklistPrintController::class, 'checklist'])->name('audit-checklist.print')->middleware('module.permission:audit,view');
 
     // Risk Workflow (close)
-    Route::post('risk/{risk}/close', [RiskWorkflowController::class, 'close'])->name('risk.close');
+    Route::post('risk/{risk}/close', [RiskWorkflowController::class, 'close'])->name('risk.close')->middleware('module.permission:risk,update');
 
     // Risk Controls (mitigation actions, nested under a Risk)
-    Route::post('risk/{risk}/controls', [RiskControlController::class, 'store'])->name('risk-control.store');
-    Route::put('risk-control/{riskControl}', [RiskControlController::class, 'update'])->name('risk-control.update');
-    Route::delete('risk-control/{riskControl}', [RiskControlController::class, 'destroy'])->name('risk-control.destroy');
+    Route::post('risk/{risk}/controls', [RiskControlController::class, 'store'])->name('risk-control.store')->middleware('module.permission:risk,update');
+    Route::put('risk-control/{riskControl}', [RiskControlController::class, 'update'])->name('risk-control.update')->middleware('module.permission:risk,update');
+    Route::delete('risk-control/{riskControl}', [RiskControlController::class, 'destroy'])->name('risk-control.destroy')->middleware('module.permission:risk,delete');
 
     // Risk Reviews (reassessment log, nested under a Risk)
-    Route::post('risk/{risk}/reviews', [RiskReviewController::class, 'store'])->name('risk-review.store');
-    Route::put('risk-review/{riskReview}', [RiskReviewController::class, 'update'])->name('risk-review.update');
+    Route::post('risk/{risk}/reviews', [RiskReviewController::class, 'store'])->name('risk-review.store')->middleware('module.permission:risk,update');
+    Route::put('risk-review/{riskReview}', [RiskReviewController::class, 'update'])->name('risk-review.update')->middleware('module.permission:risk,update');
 
     // Customer Complaint Workflow (acknowledge / resolve / close / reopen)
-    Route::post('customer-complaint/{customerComplaint}/acknowledge', [CustomerComplaintWorkflowController::class, 'acknowledge'])->name('customer-complaint.acknowledge');
-    Route::post('customer-complaint/{customerComplaint}/resolve', [CustomerComplaintWorkflowController::class, 'resolve'])->name('customer-complaint.resolve');
-    Route::post('customer-complaint/{customerComplaint}/close', [CustomerComplaintWorkflowController::class, 'close'])->name('customer-complaint.close');
-    Route::post('customer-complaint/{customerComplaint}/reopen', [CustomerComplaintWorkflowController::class, 'reopen'])->name('customer-complaint.reopen');
+    Route::post('customer-complaint/{customerComplaint}/acknowledge', [CustomerComplaintWorkflowController::class, 'acknowledge'])->name('customer-complaint.acknowledge')->middleware('module.permission:customer-complaint,update');
+    Route::post('customer-complaint/{customerComplaint}/resolve', [CustomerComplaintWorkflowController::class, 'resolve'])->name('customer-complaint.resolve')->middleware('module.permission:customer-complaint,update');
+    Route::post('customer-complaint/{customerComplaint}/close', [CustomerComplaintWorkflowController::class, 'close'])->name('customer-complaint.close')->middleware('module.permission:customer-complaint,update');
+    Route::post('customer-complaint/{customerComplaint}/reopen', [CustomerComplaintWorkflowController::class, 'reopen'])->name('customer-complaint.reopen')->middleware('module.permission:customer-complaint,update');
 
     // Customer Complaint Report Templates (saved user-defined chart configs)
-    Route::post('customer-complaint-report-template', [CustomerComplaintAnalyticsController::class, 'store'])->name('customer-complaint-report-template.store');
-    Route::put('customer-complaint-report-template/{customerComplaintReportTemplate}', [CustomerComplaintAnalyticsController::class, 'update'])->name('customer-complaint-report-template.update');
-    Route::delete('customer-complaint-report-template/{customerComplaintReportTemplate}', [CustomerComplaintAnalyticsController::class, 'destroy'])->name('customer-complaint-report-template.destroy');
+    Route::post('customer-complaint-report-template', [CustomerComplaintAnalyticsController::class, 'store'])->name('customer-complaint-report-template.store')->middleware('module.permission:customer-complaint-analytics,update');
+    Route::put('customer-complaint-report-template/{customerComplaintReportTemplate}', [CustomerComplaintAnalyticsController::class, 'update'])->name('customer-complaint-report-template.update')->middleware('module.permission:customer-complaint-analytics,update');
+    Route::delete('customer-complaint-report-template/{customerComplaintReportTemplate}', [CustomerComplaintAnalyticsController::class, 'destroy'])->name('customer-complaint-report-template.destroy')->middleware('module.permission:customer-complaint-analytics,delete');
 
     // Continuous Improvement Hub (summary dashboard)
-    Route::get('continuous-improvement', [ContinuousImprovementController::class, 'index'])->name('continuous-improvement.index');
+    Route::get('continuous-improvement', [ContinuousImprovementController::class, 'index'])->name('continuous-improvement.index')->middleware('module.permission:continuous-improvement,view');
 
     // Kaizen Suggestion Workflow (review / approve / reject / start / implement / close)
-    Route::post('kaizen-suggestion/{kaizenSuggestion}/mark-under-review', [KaizenWorkflowController::class, 'markUnderReview'])->name('kaizen-suggestion.mark-under-review');
-    Route::post('kaizen-suggestion/{kaizenSuggestion}/approve', [KaizenWorkflowController::class, 'approve'])->name('kaizen-suggestion.approve');
-    Route::post('kaizen-suggestion/{kaizenSuggestion}/reject', [KaizenWorkflowController::class, 'reject'])->name('kaizen-suggestion.reject');
-    Route::post('kaizen-suggestion/{kaizenSuggestion}/start', [KaizenWorkflowController::class, 'start'])->name('kaizen-suggestion.start');
-    Route::post('kaizen-suggestion/{kaizenSuggestion}/implement', [KaizenWorkflowController::class, 'implement'])->name('kaizen-suggestion.implement');
-    Route::post('kaizen-suggestion/{kaizenSuggestion}/close', [KaizenWorkflowController::class, 'close'])->name('kaizen-suggestion.close');
+    Route::post('kaizen-suggestion/{kaizenSuggestion}/mark-under-review', [KaizenWorkflowController::class, 'markUnderReview'])->name('kaizen-suggestion.mark-under-review')->middleware('module.permission:kaizen-suggestion,update');
+    Route::post('kaizen-suggestion/{kaizenSuggestion}/approve', [KaizenWorkflowController::class, 'approve'])->name('kaizen-suggestion.approve')->middleware('module.permission:kaizen-suggestion,update');
+    Route::post('kaizen-suggestion/{kaizenSuggestion}/reject', [KaizenWorkflowController::class, 'reject'])->name('kaizen-suggestion.reject')->middleware('module.permission:kaizen-suggestion,update');
+    Route::post('kaizen-suggestion/{kaizenSuggestion}/start', [KaizenWorkflowController::class, 'start'])->name('kaizen-suggestion.start')->middleware('module.permission:kaizen-suggestion,update');
+    Route::post('kaizen-suggestion/{kaizenSuggestion}/implement', [KaizenWorkflowController::class, 'implement'])->name('kaizen-suggestion.implement')->middleware('module.permission:kaizen-suggestion,update');
+    Route::post('kaizen-suggestion/{kaizenSuggestion}/close', [KaizenWorkflowController::class, 'close'])->name('kaizen-suggestion.close')->middleware('module.permission:kaizen-suggestion,update');
 
     // 5S Audit Findings (nested under a 5S Audit)
-    Route::post('five-s-audit/{fiveSAudit}/findings', [FiveSAuditFindingController::class, 'store'])->name('five-s-audit-finding.store');
-    Route::put('five-s-audit-finding/{fiveSAuditFinding}', [FiveSAuditFindingController::class, 'update'])->name('five-s-audit-finding.update');
-    Route::post('five-s-audit-finding/{fiveSAuditFinding}/resolve', [FiveSAuditFindingController::class, 'resolve'])->name('five-s-audit-finding.resolve');
-    Route::delete('five-s-audit-finding/{fiveSAuditFinding}', [FiveSAuditFindingController::class, 'destroy'])->name('five-s-audit-finding.destroy');
+    Route::post('five-s-audit/{fiveSAudit}/findings', [FiveSAuditFindingController::class, 'store'])->name('five-s-audit-finding.store')->middleware('module.permission:five-s-audit,update');
+    Route::put('five-s-audit-finding/{fiveSAuditFinding}', [FiveSAuditFindingController::class, 'update'])->name('five-s-audit-finding.update')->middleware('module.permission:five-s-audit,update');
+    Route::post('five-s-audit-finding/{fiveSAuditFinding}/resolve', [FiveSAuditFindingController::class, 'resolve'])->name('five-s-audit-finding.resolve')->middleware('module.permission:five-s-audit,update');
+    Route::delete('five-s-audit-finding/{fiveSAuditFinding}', [FiveSAuditFindingController::class, 'destroy'])->name('five-s-audit-finding.destroy')->middleware('module.permission:five-s-audit,delete');
 
     // Gemba Walk Findings (nested under a Gemba Walk)
-    Route::post('gemba-walk/{gembaWalk}/findings', [GembaWalkFindingController::class, 'store'])->name('gemba-walk-finding.store');
-    Route::put('gemba-walk-finding/{gembaWalkFinding}', [GembaWalkFindingController::class, 'update'])->name('gemba-walk-finding.update');
-    Route::post('gemba-walk-finding/{gembaWalkFinding}/resolve', [GembaWalkFindingController::class, 'resolve'])->name('gemba-walk-finding.resolve');
-    Route::delete('gemba-walk-finding/{gembaWalkFinding}', [GembaWalkFindingController::class, 'destroy'])->name('gemba-walk-finding.destroy');
+    Route::post('gemba-walk/{gembaWalk}/findings', [GembaWalkFindingController::class, 'store'])->name('gemba-walk-finding.store')->middleware('module.permission:gemba-walk,update');
+    Route::put('gemba-walk-finding/{gembaWalkFinding}', [GembaWalkFindingController::class, 'update'])->name('gemba-walk-finding.update')->middleware('module.permission:gemba-walk,update');
+    Route::post('gemba-walk-finding/{gembaWalkFinding}/resolve', [GembaWalkFindingController::class, 'resolve'])->name('gemba-walk-finding.resolve')->middleware('module.permission:gemba-walk,update');
+    Route::delete('gemba-walk-finding/{gembaWalkFinding}', [GembaWalkFindingController::class, 'destroy'])->name('gemba-walk-finding.destroy')->middleware('module.permission:gemba-walk,delete');
 
     /* Warehouse Setting Pages */
-    Route::resource('warehouse-type', WarehouseTypeController::class);
+    Route::resource('warehouse-type', WarehouseTypeController::class)->middleware('module.permission:warehouse-type');
 
     /* Measurement Device Management Pages */
-    Route::get('measurement-device/{measurementDevice}/device-info', [DeviceInfoController::class, 'index'])->name('measurement-device-info.index');
-    Route::get('measurement-device/{measurementDevice}/calibration-tasks', [CalibrationTaskController::class, 'index'])->name('measurement-device-calibrations.index');
-    Route::get('measurement-device/{measurementDevice}/device-actions', [DeviceActionController::class, 'index'])->name('measurement-device-actions.index');
+    Route::get('measurement-device/{measurementDevice}/device-info', [DeviceInfoController::class, 'index'])->name('measurement-device-info.index')->middleware('module.permission:measurement-device,view');
+    Route::get('measurement-device/{measurementDevice}/calibration-tasks', [CalibrationTaskController::class, 'index'])->name('measurement-device-calibrations.index')->middleware('module.permission:measurement-device,view');
+    Route::get('measurement-device/{measurementDevice}/device-actions', [DeviceActionController::class, 'index'])->name('measurement-device-actions.index')->middleware('module.permission:measurement-device,view');
 
     /* Measurement Device Workflow (decommission / reactivate) */
-    Route::post('measurement-device/{measurementDevice}/decommission', [MeasurementDeviceWorkflowController::class, 'decommission'])->name('measurement-device.decommission');
-    Route::post('measurement-device/{measurementDevice}/reactivate', [MeasurementDeviceWorkflowController::class, 'reactivate'])->name('measurement-device.reactivate');
-    Route::delete('calibration-technician/{calibrationTechnician}/media/{mediaId}', [CalibrationTechnicianController::class, 'deleteMedia'])->name('calibration-technician.delete-media');
-    Route::get('measurement-device-calibration/{measurementDeviceCalibration}/report', [MeasurementDeviceCalibrationTaskController::class, 'report'])->name('measurement-device-calibration.report');
+    Route::post('measurement-device/{measurementDevice}/decommission', [MeasurementDeviceWorkflowController::class, 'decommission'])->name('measurement-device.decommission')->middleware('module.permission:measurement-device,update');
+    Route::post('measurement-device/{measurementDevice}/reactivate', [MeasurementDeviceWorkflowController::class, 'reactivate'])->name('measurement-device.reactivate')->middleware('module.permission:measurement-device,update');
+    Route::delete('calibration-technician/{calibrationTechnician}/media/{mediaId}', [CalibrationTechnicianController::class, 'deleteMedia'])->name('calibration-technician.delete-media')->middleware('module.permission:calibration-technician,delete');
+    Route::get('measurement-device-calibration/{measurementDeviceCalibration}/report', [MeasurementDeviceCalibrationTaskController::class, 'report'])->name('measurement-device-calibration.report')->middleware('module.permission:measurement-device-calibration,view');
     /* Vehicle Setting Pages */
-    Route::resource('vehicle-type', VehicleTypeController::class);
-    Route::resource('vehicle-status', VehicleStatusController::class);
+    Route::resource('vehicle-type', VehicleTypeController::class)->middleware('module.permission:vehicle-type');
+    Route::resource('vehicle-status', VehicleStatusController::class)->middleware('module.permission:vehicle-status');
 });
 
 // Test Route

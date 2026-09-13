@@ -75,16 +75,16 @@ export default function () {
                         type: "dropdown",
                         links: [
                             {
-                                id: "au-am-pg",
-                                label: t("settingMenu.permissionGroups"),
-                            },
-                            {
-                                id: "au-am-p",
-                                label: t("settingMenu.permissions"),
+                                id: "au-am-us",
+                                label: t("settingMenu.users"),
+                                type: "link",
+                                link: "user-management.index",
                             },
                             {
                                 id: "au-am-r",
                                 label: t("settingMenu.roles"),
+                                type: "link",
+                                link: "role.index",
                             },
                         ],
                     },
