@@ -75,6 +75,7 @@
         "selectType": "Select Type",
         "submit": "Submit",
         "update": "Update",
+        "view": "View",
         "yesDeleteIt": "Yes, delete it!"
     },
     "auth": {
@@ -324,7 +325,14 @@
         "relatedModules": "Related Modules",
         "role": "Role",
         "roles": "Roles",
+        "rolesDesc": "User-defined roles and the per-module permission matrix",
         "settings": "Settings",
+        "user": "User",
+        "users": "Users",
+        "usersDesc": "Assign roles to system users",
+        "protectedRole": "System Role",
+        "manageRoles": "Manage Roles",
+        "noRole": "No role assigned",
         "tagManagement": "Tag Management",
         "tagManagementDesc": "Management of tag types and tags"
     },

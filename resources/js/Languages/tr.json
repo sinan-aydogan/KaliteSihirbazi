@@ -75,6 +75,7 @@
         "selectType": "Tür Seç",
         "submit": "Gönder",
         "update": "Güncelle",
+        "view": "Görüntüle",
         "yesDeleteIt": "Evet, sil!"
     },
     "auth": {
@@ -299,7 +300,14 @@
         "relatedModules": "İlgili Modüller",
         "role": "Rol",
         "roles": "Roller",
+        "rolesDesc": "Kullanıcı tanımlı roller ve modül bazlı yetki matrisi",
         "settings": "Ayarlar",
+        "user": "Kullanıcı",
+        "users": "Kullanıcılar",
+        "usersDesc": "Sistem kullanıcılarına rol atayın",
+        "protectedRole": "Sistem Rolü",
+        "manageRoles": "Rolleri Yönet",
+        "noRole": "Rol atanmamış",
         "tagManagement": "Etiket Yönetimi",
         "tagManagementDesc": "Etiket tiplerinin ve etiketlerin yönetimi"
     },
