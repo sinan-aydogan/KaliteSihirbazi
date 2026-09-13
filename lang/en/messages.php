@@ -396,4 +396,16 @@ return [
         'deletedError' => 'This complaint subject cannot be deleted because it has complaints assigned to it.',
         'deletedErrorProtected' => 'This system-default complaint subject cannot be deleted.'
     ],
+    'measurementDeviceAction' => [
+        'created' => 'Device action #:measurementDeviceAction recorded.',
+        'updated' => 'Device action #:measurementDeviceAction updated.',
+        'deleted' => 'Device action #:measurementDeviceAction deleted.'
+    ],
+    'measurementDeviceActionType' => [
+        'created' => 'Action type created.',
+        'updated' => 'Action type updated.',
+        'deleted' => 'Action type deleted.',
+        'deletedError' => 'This action type cannot be deleted because it has actions assigned to it.',
+        'deletedErrorProtected' => 'This system-default action type cannot be deleted.'
+    ],
 ];

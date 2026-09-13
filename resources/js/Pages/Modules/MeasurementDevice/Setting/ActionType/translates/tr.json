@@ -1,0 +1,14 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Cihaz Aksiyon Türleri",
+            "subTitle": "Cihazlar için kaydedilebilecek aksiyon türlerini (bakım, kalibrasyon, arıza vb.) buradan yönetebilirsiniz"
+        }
+    },
+    "term": {
+        "name": "Tür Adı",
+        "sortOrder": "Sıralama",
+        "actionCount": "Aksiyon Sayısı",
+        "protected": "Korumalı"
+    }
+}

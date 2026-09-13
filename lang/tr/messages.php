@@ -397,4 +397,16 @@ return [
         'deletedError' => 'Bu şikayet konusu silinemez çünkü üzerinde kayıtlı şikayetler var.',
         'deletedErrorProtected' => 'Sistem varsayılanı olan bu şikayet konusu silinemez.'
     ],
+    'measurementDeviceAction' => [
+        'created' => '#:measurementDeviceAction kodlu cihaz aksiyonu kaydedildi.',
+        'updated' => '#:measurementDeviceAction kodlu cihaz aksiyonu güncellendi.',
+        'deleted' => '#:measurementDeviceAction kodlu cihaz aksiyonu silindi.'
+    ],
+    'measurementDeviceActionType' => [
+        'created' => 'Aksiyon türü oluşturuldu.',
+        'updated' => 'Aksiyon türü güncellendi.',
+        'deleted' => 'Aksiyon türü silindi.',
+        'deletedError' => 'Bu aksiyon türü silinemez çünkü üzerinde kayıtlı aksiyonlar var.',
+        'deletedErrorProtected' => 'Sistem varsayılanı olan bu aksiyon türü silinemez.'
+    ],
 ];

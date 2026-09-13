@@ -4,6 +4,7 @@ namespace App\Models\MeasurementDevice;
 
 use App\Models\Department;
 use App\Models\HumanResources\Employee\Employee;
+use App\Models\MeasurementDevice\Action\MeasurementDeviceAction;
 use App\Models\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTask;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
@@ -99,6 +100,12 @@ class MeasurementDevice extends Model
     public function decommissionedBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'decommissioned_by_id');
+    }
+
+    // Maintenance/calibration-send-off/malfunction/repair log entries
+    public function actions(): HasMany
+    {
+        return $this->hasMany(MeasurementDeviceAction::class);
     }
 
     public function isActive(): bool

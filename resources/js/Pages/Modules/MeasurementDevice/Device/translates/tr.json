@@ -19,6 +19,14 @@
     "calibrationTasksIndexPage": {
       "title": "Kalibrasyon Emirleri",
       "subTitle": "Tüm cihazların kalibrasyon emirlerini tek yerden görüntüleyin"
+    },
+    "createActionModal": {
+      "title": "Aksiyon Kaydet",
+      "subTitle": "Cihaz için bakım, kalibrasyon, arıza veya tamir gibi bir aksiyon kaydedin"
+    },
+    "updateActionModal": {
+      "title": "Aksiyonu Güncelle",
+      "subTitle": "Aksiyon kaydını güncelleyin"
     }
   },
   "term": {
@@ -82,12 +90,18 @@
     "unit": "Birim",
     "deviation": "Sapma",
     "isReferenceStandard": "Referans Standart (Etalon)",
-    "device": "Cihaz"
+    "device": "Cihaz",
+    "actionType": "Aksiyon Türü",
+    "startedAt": "Tarih",
+    "resolvedAt": "Dönüş / Çözüm Tarihi",
+    "description": "Açıklama",
+    "recordedBy": "Kaydeden"
   },
   "message":{
     "feedback" : {
       "emptyCalibrationTasksList": "Henüz hiç kalibrasyon emri oluşturulmamış",
-      "emptyMeasurementPoints": "Henüz ölçüm noktası eklenmedi"
+      "emptyMeasurementPoints": "Henüz ölçüm noktası eklenmedi",
+      "emptyActionsList": "Henüz hiç aksiyon kaydedilmemiş"
     }
   },
   "action": {
@@ -96,6 +110,7 @@
     "updateTask": "Emri Güncelle",
     "decommission": "Kullanımdan Düşür",
     "reactivate": "Yeniden Aktifleştir",
-    "addMeasurementPoint": "Ölçüm Noktası Ekle"
+    "addMeasurementPoint": "Ölçüm Noktası Ekle",
+    "createAction": "Aksiyon Kaydet"
   }
 }

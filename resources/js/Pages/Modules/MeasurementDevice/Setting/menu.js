@@ -21,6 +21,12 @@ export default function () {
                     type: "link",
                     link: 'measurement-device-type.index'
                 },
+                {
+                    'id': 'gb-action-type',
+                    'label': t('mainMenu.deviceActionTypes'),
+                    type: "link",
+                    link: 'measurement-device-action-type.index'
+                },
             ]
         },
     ])

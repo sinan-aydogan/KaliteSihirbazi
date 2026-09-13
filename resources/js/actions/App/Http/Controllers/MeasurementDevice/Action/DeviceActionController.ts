@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Action\DeviceActionController::index
- * @see app/Http/Controllers/MeasurementDevice/Action/DeviceActionController.php:11
+ * @see app/Http/Controllers/MeasurementDevice/Action/DeviceActionController.php:12
  * @route '/measurement-device/{measurementDevice}/device-actions'
  */
 export const index = (args: { measurementDevice: number | { id: number } } | [measurementDevice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ index.definition = {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Action\DeviceActionController::index
- * @see app/Http/Controllers/MeasurementDevice/Action/DeviceActionController.php:11
+ * @see app/Http/Controllers/MeasurementDevice/Action/DeviceActionController.php:12
  * @route '/measurement-device/{measurementDevice}/device-actions'
  */
 index.url = (args: { measurementDevice: number | { id: number } } | [measurementDevice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -49,7 +49,7 @@ index.url = (args: { measurementDevice: number | { id: number } } | [measurement
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Action\DeviceActionController::index
- * @see app/Http/Controllers/MeasurementDevice/Action/DeviceActionController.php:11
+ * @see app/Http/Controllers/MeasurementDevice/Action/DeviceActionController.php:12
  * @route '/measurement-device/{measurementDevice}/device-actions'
  */
 index.get = (args: { measurementDevice: number | { id: number } } | [measurementDevice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -58,7 +58,7 @@ index.get = (args: { measurementDevice: number | { id: number } } | [measurement
 })
 /**
 * @see \App\Http\Controllers\MeasurementDevice\Action\DeviceActionController::index
- * @see app/Http/Controllers/MeasurementDevice/Action/DeviceActionController.php:11
+ * @see app/Http/Controllers/MeasurementDevice/Action/DeviceActionController.php:12
  * @route '/measurement-device/{measurementDevice}/device-actions'
  */
 index.head = (args: { measurementDevice: number | { id: number } } | [measurementDevice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -68,7 +68,7 @@ index.head = (args: { measurementDevice: number | { id: number } } | [measuremen
 
     /**
 * @see \App\Http\Controllers\MeasurementDevice\Action\DeviceActionController::index
- * @see app/Http/Controllers/MeasurementDevice/Action/DeviceActionController.php:11
+ * @see app/Http/Controllers/MeasurementDevice/Action/DeviceActionController.php:12
  * @route '/measurement-device/{measurementDevice}/device-actions'
  */
     const indexForm = (args: { measurementDevice: number | { id: number } } | [measurementDevice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -78,7 +78,7 @@ index.head = (args: { measurementDevice: number | { id: number } } | [measuremen
 
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Action\DeviceActionController::index
- * @see app/Http/Controllers/MeasurementDevice/Action/DeviceActionController.php:11
+ * @see app/Http/Controllers/MeasurementDevice/Action/DeviceActionController.php:12
  * @route '/measurement-device/{measurementDevice}/device-actions'
  */
         indexForm.get = (args: { measurementDevice: number | { id: number } } | [measurementDevice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -87,7 +87,7 @@ index.head = (args: { measurementDevice: number | { id: number } } | [measuremen
         })
             /**
 * @see \App\Http\Controllers\MeasurementDevice\Action\DeviceActionController::index
- * @see app/Http/Controllers/MeasurementDevice/Action/DeviceActionController.php:11
+ * @see app/Http/Controllers/MeasurementDevice/Action/DeviceActionController.php:12
  * @route '/measurement-device/{measurementDevice}/device-actions'
  */
         indexForm.head = (args: { measurementDevice: number | { id: number } } | [measurementDevice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
