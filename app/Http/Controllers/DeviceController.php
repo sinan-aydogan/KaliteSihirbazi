@@ -2,85 +2,115 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Device;
 use App\Http\Requests\StoreDeviceRequest;
 use App\Http\Requests\UpdateDeviceRequest;
+use App\Models\Area;
+use App\Models\Department;
+use App\Models\Device;
+use App\Models\DeviceType;
+use App\Models\HumanResources\Employee\Employee;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class DeviceController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(): Response
     {
-        //
+        return Inertia::render('Modules/BusinessManagement/Device/IndexPage', [
+            'tableData' => $this->tableFilter(Device::with('type:id,name', 'department:id,name', 'responsible:id,name'), [
+                'device_type_id' => ['relation' => 'type', 'column' => 'name'],
+                'department_id' => ['relation' => 'department', 'column' => 'name'],
+                'responsible_id' => ['relation' => 'responsible', 'column' => 'name'],
+            ])->latest('id')->paginate(10)->withQueryString(),
+            'deviceTypes' => DeviceType::all(['id', 'name']),
+            'departments' => Department::all(['id', 'name']),
+            'employees' => Employee::all(['id', 'name']),
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function deleted(): Response
+    {
+        return Inertia::render('Modules/BusinessManagement/Device/DeletedPage', [
+            'tableData' => $this->tableFilter(Device::onlyTrashed()->with('type:id,name', 'department:id,name', 'responsible:id,name'))
+                ->latest('deleted_at')->paginate(10)->withQueryString(),
+        ]);
+    }
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreDeviceRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreDeviceRequest $request)
+    public function store(StoreDeviceRequest $request): RedirectResponse
     {
-        //
+        $device = Device::create($request->validated());
+
+        session()->flash('message', ['type' => 'success', 'content' => __('messages.device.created', ['device' => $device->name])]);
+
+        return redirect()->back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Device  $device
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Device $device)
+    public function show(Device $device): Response
     {
-        //
+        $device->load(
+            'type:id,name',
+            'department:id,name',
+            'responsible:id,name,has_account',
+            'responsible.account:accountable_id,name',
+            'areas:id,name',
+            'operatorAuthorizations.employee:id,name,has_account',
+            'operatorAuthorizations.employee.account:accountable_id,name',
+            'operatorAuthorizations.education:id,name',
+            'operatorAuthorizations.grantedBy:id,name'
+        );
+
+        return Inertia::render('Modules/BusinessManagement/Device/ShowPage', [
+            'data' => $device,
+            'allAreas' => Area::all(['id', 'name']),
+            'employees' => Employee::all(['id', 'name']),
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Device  $device
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Device $device)
+    public function edit(Device $device): JsonResponse
     {
-        //
+        return response()->json($device);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateDeviceRequest  $request
-     * @param  \App\Models\Device  $device
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateDeviceRequest $request, Device $device)
+    public function update(UpdateDeviceRequest $request, Device $device): RedirectResponse
     {
-        //
+        $device->update($request->validated());
+
+        session()->flash('message', ['type' => 'success', 'content' => __('messages.device.updated', ['device' => $device->name])]);
+
+        return redirect()->back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Device  $device
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Device $device)
+    public function destroy(Device $device): RedirectResponse
     {
-        //
+        session()->flash('message', ['type' => 'danger', 'content' => __('messages.device.deleted', ['device' => $device->name])]);
+
+        $device->delete();
+
+        return redirect()->route('device.index');
+    }
+
+    public function permanentDestroy(Device $device): RedirectResponse
+    {
+        session()->flash('message', ['type' => 'danger', 'content' => __('messages.device.permanentDeleted', ['device' => $device->name])]);
+
+        $device->forceDelete();
+
+        return redirect()->route('device.index');
+    }
+
+    public function restore(Device $device): RedirectResponse
+    {
+        session()->flash('message', ['type' => 'info', 'content' => __('messages.device.restored', ['device' => $device->name])]);
+
+        $device->restore();
+
+        return redirect()->route('device.index');
     }
 }

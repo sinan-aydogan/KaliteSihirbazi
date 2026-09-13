@@ -1,0 +1,37 @@
+{
+  "title": {
+    "indexPage": {
+      "title": "Devices",
+      "subTitle": "Manage your organization's devices here"
+    },
+    "deletedPage": {
+      "title": "Deleted Devices",
+      "subTitle": "Restore or permanently delete removed devices"
+    },
+    "typeIndexPage": {
+      "title": "Device Types",
+      "subTitle": "Manage device types here"
+    }
+  },
+  "term": {
+    "device": "Device | Devices",
+    "code": "Device Code",
+    "name": "Device Name",
+    "type": "Device Type",
+    "typeName": "Device Type Name",
+    "responsible": "Responsible",
+    "department": "Department",
+    "brand": "Brand",
+    "model": "Model",
+    "serialNo": "Serial No",
+    "isActive": "Active",
+    "notes": "Notes"
+  },
+  "action": {
+    "addNew": "Add New",
+    "manageTypes": "Manage Device Types",
+    "delete": "Delete",
+    "goBack": "Go Back",
+    "returnToList": "Return to List"
+  }
+}

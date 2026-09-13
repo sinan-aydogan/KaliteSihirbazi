@@ -3,28 +3,28 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateMachineRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
+    public function authorize(): bool
     {
-        return false;
+        return auth()->check();
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, mixed>
-     */
-    public function rules()
+    public function rules(): array
     {
         return [
-            //
+            'code' => ['required', 'string', 'max:20', Rule::unique('machines')->ignore($this->route('machine'))],
+            'name' => 'required|string|max:150',
+            'machine_type_id' => 'nullable|exists:machine_types,id',
+            'department_id' => 'nullable|exists:departments,id',
+            'responsible_id' => 'nullable|exists:employees,id',
+            'brand' => 'nullable|string|max:100',
+            'model' => 'nullable|string|max:100',
+            'serial_no' => 'nullable|string|max:100',
+            'is_active' => 'boolean',
+            'notes' => 'nullable|string',
         ];
     }
 }

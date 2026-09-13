@@ -1,0 +1,37 @@
+{
+  "title": {
+    "indexPage": {
+      "title": "Machines",
+      "subTitle": "Manage your organization's machines here"
+    },
+    "deletedPage": {
+      "title": "Deleted Machines",
+      "subTitle": "Restore or permanently delete removed machines"
+    },
+    "typeIndexPage": {
+      "title": "Machine Types",
+      "subTitle": "Manage machine types here"
+    }
+  },
+  "term": {
+    "machine": "Machine | Machines",
+    "code": "Machine Code",
+    "name": "Machine Name",
+    "type": "Machine Type",
+    "typeName": "Machine Type Name",
+    "responsible": "Responsible",
+    "department": "Department",
+    "brand": "Brand",
+    "model": "Model",
+    "serialNo": "Serial No",
+    "isActive": "Active",
+    "notes": "Notes"
+  },
+  "action": {
+    "addNew": "Add New",
+    "manageTypes": "Manage Machine Types",
+    "delete": "Delete",
+    "goBack": "Go Back",
+    "returnToList": "Return to List"
+  }
+}

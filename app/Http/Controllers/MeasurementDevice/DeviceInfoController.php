@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\MeasurementDevice;
 
 use App\Http\Controllers\Controller;
+use App\Models\Area;
 use App\Models\Department;
 use App\Models\HumanResources\Employee\Employee;
 use App\Models\MeasurementDevice\MeasurementDevice;
@@ -13,6 +14,8 @@ class DeviceInfoController extends Controller
 {
     public function index(MeasurementDevice $measurementDevice): \Inertia\Response
     {
+        $measurementDevice->load('areas:id,name', 'operatorAuthorizations.employee:id,name', 'operatorAuthorizations.education:id,name');
+
         $data = $measurementDevice;
         $data['department'] = $measurementDevice->department;
         $data['type'] = $measurementDevice->type;
@@ -23,7 +26,8 @@ class DeviceInfoController extends Controller
             'measurementDevice' => $data,
             'measurementDeviceTypes' => MeasurementDeviceType::all(['id', 'name']),
             'departments' => Department::all(['id', 'name']),
-            'employees' => Employee::all(['id']),
+            'employees' => Employee::all(['id', 'name']),
+            'allAreas' => Area::all(['id', 'name']),
         ]);
     }
 }

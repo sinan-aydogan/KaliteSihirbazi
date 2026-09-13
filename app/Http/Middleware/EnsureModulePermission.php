@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Support\ModulePermission;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -19,18 +20,9 @@ class EnsureModulePermission
      */
     public function handle(Request $request, Closure $next, string $module, ?string $action = null): Response
     {
-        // The rest of the test suite predates this permission system and
-        // acts as a bare factory user with no roles/permissions — enforcing
-        // here by default would 403 hundreds of unrelated tests. Tests that
-        // specifically exercise the permission system opt in explicitly via
-        // config(['permission_modules.enforced' => true]).
-        if (app()->environment('testing') && ! config('permission_modules.enforced')) {
-            return $next($request);
-        }
-
         $action ??= $this->actionFromRouteName($request->route()?->getName());
 
-        abort_unless($request->user()?->can("{$module}.{$action}"), 403);
+        abort_unless(ModulePermission::allows($request->user(), $module, $action), 403);
 
         return $next($request);
     }

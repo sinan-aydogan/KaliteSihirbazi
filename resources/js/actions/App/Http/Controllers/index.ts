@@ -6,6 +6,10 @@ import User from './User'
 import CustomerComplaintAnalyticsController from './CustomerComplaintAnalyticsController'
 import DepartmentController from './DepartmentController'
 import AreaController from './AreaController'
+import DeviceController from './DeviceController'
+import DeviceTypeController from './DeviceTypeController'
+import MachineController from './MachineController'
+import MachineTypeController from './MachineTypeController'
 import Warehouse from './Warehouse'
 import BusinessManagement from './BusinessManagement'
 import VehicleController from './VehicleController'
@@ -52,6 +56,8 @@ import RiskWorkflowController from './RiskWorkflowController'
 import RiskControlController from './RiskControlController'
 import RiskReviewController from './RiskReviewController'
 import CustomerComplaintWorkflowController from './CustomerComplaintWorkflowController'
+import EquipmentAreaController from './EquipmentAreaController'
+import EquipmentOperatorAuthorizationController from './EquipmentOperatorAuthorizationController'
 const Controllers = {
     AccountController: Object.assign(AccountController, AccountController),
 ApiTokenController: Object.assign(ApiTokenController, ApiTokenController),
@@ -61,6 +67,10 @@ User: Object.assign(User, User),
 CustomerComplaintAnalyticsController: Object.assign(CustomerComplaintAnalyticsController, CustomerComplaintAnalyticsController),
 DepartmentController: Object.assign(DepartmentController, DepartmentController),
 AreaController: Object.assign(AreaController, AreaController),
+DeviceController: Object.assign(DeviceController, DeviceController),
+DeviceTypeController: Object.assign(DeviceTypeController, DeviceTypeController),
+MachineController: Object.assign(MachineController, MachineController),
+MachineTypeController: Object.assign(MachineTypeController, MachineTypeController),
 Warehouse: Object.assign(Warehouse, Warehouse),
 BusinessManagement: Object.assign(BusinessManagement, BusinessManagement),
 VehicleController: Object.assign(VehicleController, VehicleController),
@@ -107,6 +117,8 @@ RiskWorkflowController: Object.assign(RiskWorkflowController, RiskWorkflowContro
 RiskControlController: Object.assign(RiskControlController, RiskControlController),
 RiskReviewController: Object.assign(RiskReviewController, RiskReviewController),
 CustomerComplaintWorkflowController: Object.assign(CustomerComplaintWorkflowController, CustomerComplaintWorkflowController),
+EquipmentAreaController: Object.assign(EquipmentAreaController, EquipmentAreaController),
+EquipmentOperatorAuthorizationController: Object.assign(EquipmentOperatorAuthorizationController, EquipmentOperatorAuthorizationController),
 }
 
 export default Controllers

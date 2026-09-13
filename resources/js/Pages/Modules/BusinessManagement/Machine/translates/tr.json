@@ -1,0 +1,37 @@
+{
+  "title": {
+    "indexPage": {
+      "title": "Makineler",
+      "subTitle": "İşletmenizdeki makineleri buradan yönetebilirsiniz"
+    },
+    "deletedPage": {
+      "title": "Silinmiş Makineler",
+      "subTitle": "Silinmiş makineleri kurtarabilirsiniz veya kalıcı olarak silebilirsiniz"
+    },
+    "typeIndexPage": {
+      "title": "Makine Tipleri",
+      "subTitle": "Makine tiplerini buradan yönetebilirsiniz"
+    }
+  },
+  "term": {
+    "machine": "Makine | Makineler",
+    "code": "Makine Kodu",
+    "name": "Makine Adı",
+    "type": "Makine Tipi",
+    "typeName": "Makine Tipi Adı",
+    "responsible": "Sorumlu",
+    "department": "İlgili Departman",
+    "brand": "Marka",
+    "model": "Model",
+    "serialNo": "Seri No",
+    "isActive": "Aktif",
+    "notes": "Notlar"
+  },
+  "action": {
+    "addNew": "Yeni Ekle",
+    "manageTypes": "Makine Tiplerini Yönet",
+    "delete": "Sil",
+    "goBack": "Geri Dön",
+    "returnToList": "Listeye Geri Dön"
+  }
+}

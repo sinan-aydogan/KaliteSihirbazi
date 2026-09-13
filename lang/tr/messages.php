@@ -16,6 +16,30 @@ return [
         'updated' => ':department isimli departman güncellendi.',
         'update_failed' => ':department isimli departman güncellenemedi.',
     ],
+    'device' => [
+        'created' => ':device isimli cihaz oluşturuldu.',
+        'deleted' => ':device isimli cihaz silindi.',
+        'permanentDeleted' => ':device isimli cihaz kalıcı olarak silindi.',
+        'restored' => ':device isimli cihaz geri getirildi.',
+        'updated' => ':device isimli cihaz güncellendi.',
+    ],
+    'deviceType' => [
+        'created' => ':deviceType isimli cihaz tipi oluşturuldu.',
+        'deleted' => ':deviceType isimli cihaz tipi silindi.',
+        'updated' => ':deviceType isimli cihaz tipi güncellendi.',
+    ],
+    'machine' => [
+        'created' => ':machine isimli makine oluşturuldu.',
+        'deleted' => ':machine isimli makine silindi.',
+        'permanentDeleted' => ':machine isimli makine kalıcı olarak silindi.',
+        'restored' => ':machine isimli makine geri getirildi.',
+        'updated' => ':machine isimli makine güncellendi.',
+    ],
+    'machineType' => [
+        'created' => ':machineType isimli makine tipi oluşturuldu.',
+        'deleted' => ':machineType isimli makine tipi silindi.',
+        'updated' => ':machineType isimli makine tipi güncellendi.',
+    ],
     'vehicle' => [
         'created' => ':vehicle plakalı araç oluşturuldu.',
         'deleted' => ':vehicle plakalı araç silindi.',
