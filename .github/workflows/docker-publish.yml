@@ -47,6 +47,7 @@ jobs:
             type=raw,value=${{ inputs.tag_name }},enable=${{ github.event_name == 'workflow_dispatch' }}
 
       - name: Build & Push kalitesihirbazi
+        id: build
         uses: docker/build-push-action@v6
         with:
           context: .
@@ -57,3 +58,58 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+    outputs:
+      image_digest: ${{ steps.build.outputs.digest }}
+
+  smoke-test:
+    name: Smoke Test (boot + /up health check)
+    needs: build-app
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: kalite_sihirbazi
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    steps:
+      - name: Run kalitesihirbazi container against Postgres service
+        run: |
+          IMAGE="${{ secrets.DOCKERHUB_USERNAME || 'sinanaydogan' }}/kalitesihirbazi@${{ needs.build-app.outputs.image_digest }}"
+          docker run -d --name app --network host \
+            -e APP_KEY="base64:$(openssl rand -base64 32)" \
+            -e DB_CONNECTION=pgsql \
+            -e DB_HOST=127.0.0.1 \
+            -e DB_PORT=5432 \
+            -e DB_DATABASE=kalite_sihirbazi \
+            -e DB_USERNAME=postgres \
+            -e DB_PASSWORD=postgres \
+            -e SESSION_DRIVER=database \
+            "$IMAGE"
+
+      - name: Wait for /up health check
+        run: |
+          for i in $(seq 1 30); do
+            if curl -fsS http://localhost:8000/up > /dev/null; then
+              echo "Sağlık kontrolü geçti (deneme $i)"
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "Sağlık kontrolü zaman aşımına uğradı"
+          exit 1
+
+      - name: Container logs
+        if: always()
+        run: docker logs app || true
+
+      - name: Cleanup
+        if: always()
+        run: docker rm -f app || true
