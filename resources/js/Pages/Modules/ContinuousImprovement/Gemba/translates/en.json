@@ -1,0 +1,62 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Gemba Walks",
+            "subTitle": "Record shop-floor observation walks"
+        },
+        "showPage": {
+            "title": "Gemba Walk",
+            "subTitle": "Observations and findings"
+        },
+        "createModal": {
+            "title": "New Gemba Walk"
+        },
+        "addFindingModal": {
+            "title": "Add Finding"
+        },
+        "resolveFindingModal": {
+            "title": "Resolve Finding"
+        }
+    },
+    "term": {
+        "code": "Code",
+        "area": "Area",
+        "conductedBy": "Conducted By",
+        "walkDate": "Walk Date",
+        "participants": "Participants",
+        "observations": "Observations",
+        "generalNote": "General Note",
+        "findings": "Findings",
+        "category": "Category",
+        "description": "Description",
+        "responsible": "Responsible",
+        "dueDate": "Due Date",
+        "status": "Status",
+        "resolutionNote": "Resolution Note",
+        "categoryValue": {
+            "safety": "Safety",
+            "quality": "Quality",
+            "delivery": "Delivery/Flow",
+            "cost": "Cost",
+            "morale": "Morale",
+            "other": "Other"
+        },
+        "statusValue": {
+            "open": "Open",
+            "in_progress": "In Progress",
+            "resolved": "Resolved"
+        }
+    },
+    "action": {
+        "viewDetails": "Details / Manage",
+        "createWalk": "New Walk",
+        "addFinding": "Add Finding",
+        "resolve": "Mark as Resolved"
+    },
+    "message": {
+        "feedback": {
+            "emptyList": "No Gemba walks recorded yet",
+            "emptyFindingsList": "No findings for this walk"
+        }
+    }
+}

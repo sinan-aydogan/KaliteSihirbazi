@@ -413,4 +413,50 @@ return [
         'updated' => 'Report template updated.',
         'deleted' => 'Report template deleted.'
     ],
+    'kaizenCategory' => [
+        'created' => 'Kaizen category created.',
+        'updated' => 'Kaizen category updated.',
+        'deleted' => 'Kaizen category deleted.',
+        'deletedError' => 'This category cannot be deleted because it has suggestions assigned to it.',
+        'deletedErrorProtected' => 'This system-default category cannot be deleted.'
+    ],
+    'improvementArea' => [
+        'created' => 'Area :area created.',
+        'updated' => 'Area :area updated.',
+        'deleted' => 'Area :area deleted.',
+        'deletedError' => 'Area :area cannot be deleted because it has 5S audits or gemba walks assigned to it.'
+    ],
+    'kaizenSuggestion' => [
+        'created' => 'Kaizen suggestion :suggestion recorded.',
+        'updated' => 'Kaizen suggestion :suggestion updated.',
+        'deleted' => 'Kaizen suggestion :suggestion deleted.',
+        'markedUnderReview' => 'Suggestion :suggestion is now under review.',
+        'approved' => 'Suggestion :suggestion approved.',
+        'rejected' => 'Suggestion :suggestion rejected.',
+        'started' => 'Implementation of suggestion :suggestion started.',
+        'implemented' => 'Suggestion :suggestion implemented.',
+        'closed' => 'Suggestion :suggestion closed.'
+    ],
+    'fiveSAudit' => [
+        'created' => '5S audit :audit recorded.',
+        'updated' => '5S audit :audit updated.',
+        'deleted' => '5S audit :audit deleted.'
+    ],
+    'fiveSAuditFinding' => [
+        'created' => 'Finding recorded.',
+        'updated' => 'Finding updated.',
+        'resolved' => 'Finding marked as resolved.',
+        'deleted' => 'Finding deleted.'
+    ],
+    'gembaWalk' => [
+        'created' => 'Gemba walk :walk recorded.',
+        'updated' => 'Gemba walk :walk updated.',
+        'deleted' => 'Gemba walk :walk deleted.'
+    ],
+    'gembaWalkFinding' => [
+        'created' => 'Finding recorded.',
+        'updated' => 'Finding updated.',
+        'resolved' => 'Finding marked as resolved.',
+        'deleted' => 'Finding deleted.'
+    ],
 ];

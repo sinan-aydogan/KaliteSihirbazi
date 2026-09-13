@@ -36,6 +36,7 @@ import CapaSourceTypeController from './CapaSourceTypeController'
 import ComplaintSourceTypeController from './ComplaintSourceTypeController'
 import ComplaintSubjectController from './ComplaintSubjectController'
 import DistributorController from './DistributorController'
+import ContinuousImprovement from './ContinuousImprovement'
 import CompanyAccreditationController from './CompanyAccreditationController'
 import CapaActionController from './CapaActionController'
 import CapaWorkflowController from './CapaWorkflowController'
@@ -89,6 +90,7 @@ CapaSourceTypeController: Object.assign(CapaSourceTypeController, CapaSourceType
 ComplaintSourceTypeController: Object.assign(ComplaintSourceTypeController, ComplaintSourceTypeController),
 ComplaintSubjectController: Object.assign(ComplaintSubjectController, ComplaintSubjectController),
 DistributorController: Object.assign(DistributorController, DistributorController),
+ContinuousImprovement: Object.assign(ContinuousImprovement, ContinuousImprovement),
 CompanyAccreditationController: Object.assign(CompanyAccreditationController, CompanyAccreditationController),
 CapaActionController: Object.assign(CapaActionController, CapaActionController),
 CapaWorkflowController: Object.assign(CapaWorkflowController, CapaWorkflowController),

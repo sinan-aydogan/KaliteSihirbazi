@@ -1,0 +1,77 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Kaizen Önerileri",
+            "subTitle": "Küçük adımlarla sürekli iyileştirme önerilerini kaydedin ve takip edin"
+        },
+        "showPage": {
+            "title": "Kaizen Önerisi",
+            "subTitle": "Önerinin değerlendirme ve uygulama sürecini buradan yönetin"
+        },
+        "createModal": {
+            "title": "Yeni Kaizen Önerisi",
+            "subTitle": "Mevcut durumu ve önerdiğiniz çözümü açıklayın"
+        },
+        "approveModal": {
+            "title": "Öneriyi Onayla"
+        },
+        "rejectModal": {
+            "title": "Öneriyi Reddet"
+        },
+        "startModal": {
+            "title": "Uygulamaya Başla"
+        },
+        "implementModal": {
+            "title": "Öneriyi Uygula"
+        }
+    },
+    "term": {
+        "code": "Kod",
+        "title": "Başlık",
+        "category": "Kategori",
+        "department": "Departman",
+        "proposedBy": "Öneren",
+        "responsible": "Sorumlu",
+        "status": "Durum",
+        "currentSituation": "Mevcut Durum",
+        "proposedSolution": "Önerilen Çözüm",
+        "evaluationNote": "Değerlendirme Notu",
+        "rejectionReason": "Reddetme Nedeni",
+        "plannedCompletionDate": "Planlanan Tamamlanma Tarihi",
+        "completedAt": "Tamamlanma Tarihi",
+        "estimatedAnnualSaving": "Tahmini Yıllık Kazanç",
+        "realizedAnnualSaving": "Gerçekleşen Yıllık Kazanç",
+        "realizationNote": "Gerçekleşme Notu",
+        "planNote": "Planla (P)",
+        "doNote": "Uygula (D)",
+        "checkNote": "Kontrol Et (C)",
+        "actNote": "Önlem Al (A)",
+        "view": "Görünüm",
+        "listView": "Liste",
+        "kanbanView": "Pano",
+        "statusValue": {
+            "submitted": "Gönderildi",
+            "under_review": "Değerlendiriliyor",
+            "approved": "Onaylandı",
+            "rejected": "Reddedildi",
+            "in_progress": "Uygulanıyor",
+            "implemented": "Uygulandı",
+            "closed": "Kapatıldı"
+        }
+    },
+    "action": {
+        "viewDetails": "Detay / Yönet",
+        "createSuggestion": "Yeni Öneri",
+        "markUnderReview": "Değerlendirmeye Al",
+        "approve": "Onayla",
+        "reject": "Reddet",
+        "start": "Uygulamaya Başla",
+        "implement": "Uygulandı Olarak İşaretle",
+        "closeSuggestion": "Kapat"
+    },
+    "message": {
+        "feedback": {
+            "emptyList": "Henüz kaizen önerisi kaydedilmemiş"
+        }
+    }
+}

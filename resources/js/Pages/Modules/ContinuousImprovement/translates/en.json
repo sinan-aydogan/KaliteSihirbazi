@@ -1,0 +1,31 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Continuous Improvement",
+            "subTitle": "Overview of kaizen suggestions, 5S audits and Gemba walks"
+        }
+    },
+    "term": {
+        "openSuggestions": "Open Suggestions",
+        "implementedThisYear": "Implemented This Year",
+        "realizedSavingThisYear": "Realized Saving This Year",
+        "average5sScore": "Average 5S Score",
+        "openGembaFindings": "Open Gemba Findings",
+        "recentSuggestions": "Recent Kaizen Suggestions",
+        "recentAudits": "Recent 5S Audits",
+        "score": "Score"
+    },
+    "action": {
+        "kaizenSuggestions": "Kaizen Suggestions",
+        "fiveSAudits": "5S Audits",
+        "gembaWalks": "Gemba Walks",
+        "manageAreas": "Manage Areas",
+        "manageCategories": "Manage Categories"
+    },
+    "message": {
+        "feedback": {
+            "emptySuggestionsList": "No kaizen suggestions recorded yet",
+            "emptyAuditsList": "No 5S audits recorded yet"
+        }
+    }
+}

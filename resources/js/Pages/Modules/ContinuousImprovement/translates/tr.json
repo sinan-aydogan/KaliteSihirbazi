@@ -1,0 +1,31 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Sürekli İyileştirme",
+            "subTitle": "Kaizen önerileri, 5S denetimleri ve Gemba turlarının genel görünümü"
+        }
+    },
+    "term": {
+        "openSuggestions": "Açık Öneri",
+        "implementedThisYear": "Bu Yıl Uygulanan",
+        "realizedSavingThisYear": "Bu Yıl Gerçekleşen Kazanç",
+        "average5sScore": "Ortalama 5S Puanı",
+        "openGembaFindings": "Açık Gemba Bulgusu",
+        "recentSuggestions": "Son Kaizen Önerileri",
+        "recentAudits": "Son 5S Denetimleri",
+        "score": "Puan"
+    },
+    "action": {
+        "kaizenSuggestions": "Kaizen Önerileri",
+        "fiveSAudits": "5S Denetimleri",
+        "gembaWalks": "Gemba Turları",
+        "manageAreas": "Alanları Yönet",
+        "manageCategories": "Kategorileri Yönet"
+    },
+    "message": {
+        "feedback": {
+            "emptySuggestionsList": "Henüz kaizen önerisi kaydedilmemiş",
+            "emptyAuditsList": "Henüz 5S denetimi kaydedilmemiş"
+        }
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Improvement Areas",
+            "subTitle": "Areas/stations used in 5S audits and Gemba walks"
+        }
+    },
+    "term": {
+        "name": "Area Name",
+        "department": "Department",
+        "responsible": "Responsible",
+        "status": "Active",
+        "fiveSAuditCount": "5S Audit Count",
+        "gembaWalkCount": "Gemba Walk Count"
+    }
+}

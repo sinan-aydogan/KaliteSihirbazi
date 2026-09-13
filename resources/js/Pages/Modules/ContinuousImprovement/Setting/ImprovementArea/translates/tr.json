@@ -1,0 +1,16 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "İyileştirme Alanları",
+            "subTitle": "5S denetimlerinde ve Gemba turlarında kullanılan alan/istasyon listesi"
+        }
+    },
+    "term": {
+        "name": "Alan Adı",
+        "department": "Departman",
+        "responsible": "Sorumlu",
+        "status": "Aktif",
+        "fiveSAuditCount": "5S Denetim Sayısı",
+        "gembaWalkCount": "Gemba Turu Sayısı"
+    }
+}

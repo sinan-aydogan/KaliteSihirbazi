@@ -1,0 +1,62 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Gemba Turları",
+            "subTitle": "Sahaya gidip yapılan gözlem turlarını kaydedin"
+        },
+        "showPage": {
+            "title": "Gemba Turu",
+            "subTitle": "Gözlemler ve bulgular"
+        },
+        "createModal": {
+            "title": "Yeni Gemba Turu"
+        },
+        "addFindingModal": {
+            "title": "Bulgu Ekle"
+        },
+        "resolveFindingModal": {
+            "title": "Bulguyu Çöz"
+        }
+    },
+    "term": {
+        "code": "Kod",
+        "area": "Alan",
+        "conductedBy": "Yapan",
+        "walkDate": "Tur Tarihi",
+        "participants": "Katılımcılar",
+        "observations": "Gözlemler",
+        "generalNote": "Genel Not",
+        "findings": "Bulgular",
+        "category": "Kategori",
+        "description": "Açıklama",
+        "responsible": "Sorumlu",
+        "dueDate": "Son Tarih",
+        "status": "Durum",
+        "resolutionNote": "Çözüm Notu",
+        "categoryValue": {
+            "safety": "İş Güvenliği",
+            "quality": "Kalite",
+            "delivery": "Teslimat/Akış",
+            "cost": "Maliyet",
+            "morale": "Çalışan Motivasyonu",
+            "other": "Diğer"
+        },
+        "statusValue": {
+            "open": "Açık",
+            "in_progress": "Devam Ediyor",
+            "resolved": "Çözüldü"
+        }
+    },
+    "action": {
+        "viewDetails": "Detay / Yönet",
+        "createWalk": "Yeni Tur",
+        "addFinding": "Bulgu Ekle",
+        "resolve": "Çözüldü Olarak İşaretle"
+    },
+    "message": {
+        "feedback": {
+            "emptyList": "Henüz Gemba turu kaydedilmemiş",
+            "emptyFindingsList": "Bu turda bulgu yok"
+        }
+    }
+}

@@ -414,4 +414,50 @@ return [
         'updated' => 'Rapor şablonu güncellendi.',
         'deleted' => 'Rapor şablonu silindi.'
     ],
+    'kaizenCategory' => [
+        'created' => 'Kaizen kategorisi oluşturuldu.',
+        'updated' => 'Kaizen kategorisi güncellendi.',
+        'deleted' => 'Kaizen kategorisi silindi.',
+        'deletedError' => 'Bu kategori silinemez çünkü üzerinde kayıtlı öneriler var.',
+        'deletedErrorProtected' => 'Sistem varsayılanı olan bu kategori silinemez.'
+    ],
+    'improvementArea' => [
+        'created' => ':area alanı oluşturuldu.',
+        'updated' => ':area alanı güncellendi.',
+        'deleted' => ':area alanı silindi.',
+        'deletedError' => ':area alanı silinemez çünkü üzerinde kayıtlı 5S denetimi veya saha turu var.'
+    ],
+    'kaizenSuggestion' => [
+        'created' => ':suggestion kodlu kaizen önerisi kaydedildi.',
+        'updated' => ':suggestion kodlu kaizen önerisi güncellendi.',
+        'deleted' => ':suggestion kodlu kaizen önerisi silindi.',
+        'markedUnderReview' => ':suggestion kodlu öneri değerlendirmeye alındı.',
+        'approved' => ':suggestion kodlu öneri onaylandı.',
+        'rejected' => ':suggestion kodlu öneri reddedildi.',
+        'started' => ':suggestion kodlu önerinin uygulanmasına başlandı.',
+        'implemented' => ':suggestion kodlu öneri uygulandı.',
+        'closed' => ':suggestion kodlu öneri kapatıldı.'
+    ],
+    'fiveSAudit' => [
+        'created' => ':audit kodlu 5S denetimi kaydedildi.',
+        'updated' => ':audit kodlu 5S denetimi güncellendi.',
+        'deleted' => ':audit kodlu 5S denetimi silindi.'
+    ],
+    'fiveSAuditFinding' => [
+        'created' => 'Bulgu kaydedildi.',
+        'updated' => 'Bulgu güncellendi.',
+        'resolved' => 'Bulgu çözüldü olarak işaretlendi.',
+        'deleted' => 'Bulgu silindi.'
+    ],
+    'gembaWalk' => [
+        'created' => ':walk kodlu saha turu kaydedildi.',
+        'updated' => ':walk kodlu saha turu güncellendi.',
+        'deleted' => ':walk kodlu saha turu silindi.'
+    ],
+    'gembaWalkFinding' => [
+        'created' => 'Bulgu kaydedildi.',
+        'updated' => 'Bulgu güncellendi.',
+        'resolved' => 'Bulgu çözüldü olarak işaretlendi.',
+        'deleted' => 'Bulgu silindi.'
+    ],
 ];

@@ -33,6 +33,15 @@ use App\Http\Controllers\CapaWorkflowController;
 use App\Http\Controllers\CompanyAccreditationController;
 use App\Http\Controllers\ComplaintSourceTypeController;
 use App\Http\Controllers\ComplaintSubjectController;
+use App\Http\Controllers\ContinuousImprovement\ContinuousImprovementController;
+use App\Http\Controllers\ContinuousImprovement\FiveSAuditController;
+use App\Http\Controllers\ContinuousImprovement\FiveSAuditFindingController;
+use App\Http\Controllers\ContinuousImprovement\GembaWalkController;
+use App\Http\Controllers\ContinuousImprovement\GembaWalkFindingController;
+use App\Http\Controllers\ContinuousImprovement\ImprovementAreaController;
+use App\Http\Controllers\ContinuousImprovement\KaizenCategoryController;
+use App\Http\Controllers\ContinuousImprovement\KaizenSuggestionController;
+use App\Http\Controllers\ContinuousImprovement\KaizenWorkflowController;
 use App\Http\Controllers\CustomerComplaintAnalyticsController;
 use App\Http\Controllers\CustomerComplaintController;
 use App\Http\Controllers\CustomerComplaintSettingController;
@@ -195,6 +204,11 @@ Route::middleware([
         ['uri' => 'complaint-source-type', 'model' => 'complaintSourceType', 'controller' => ComplaintSourceTypeController::class],
         ['uri' => 'complaint-subject', 'model' => 'complaintSubject', 'controller' => ComplaintSubjectController::class],
         ['uri' => 'distributor', 'model' => 'distributor', 'controller' => DistributorController::class],
+        ['uri' => 'kaizen-category', 'model' => 'kaizenCategory', 'controller' => KaizenCategoryController::class],
+        ['uri' => 'kaizen-suggestion', 'model' => 'kaizenSuggestion', 'controller' => KaizenSuggestionController::class],
+        ['uri' => 'improvement-area', 'model' => 'improvementArea', 'controller' => ImprovementAreaController::class],
+        ['uri' => 'five-s-audit', 'model' => 'fiveSAudit', 'controller' => FiveSAuditController::class],
+        ['uri' => 'gemba-walk', 'model' => 'gembaWalk', 'controller' => GembaWalkController::class],
     ];
 
     // Registered before the $mRoutes resource loop below: the customer-complaint resource's
@@ -205,7 +219,6 @@ Route::middleware([
 
     $plannedModules = [
         'product-tree',
-        'improvement-work',
         'device',
         'machine',
         'product',
@@ -365,6 +378,29 @@ Route::middleware([
     Route::post('customer-complaint-report-template', [CustomerComplaintAnalyticsController::class, 'store'])->name('customer-complaint-report-template.store');
     Route::put('customer-complaint-report-template/{customerComplaintReportTemplate}', [CustomerComplaintAnalyticsController::class, 'update'])->name('customer-complaint-report-template.update');
     Route::delete('customer-complaint-report-template/{customerComplaintReportTemplate}', [CustomerComplaintAnalyticsController::class, 'destroy'])->name('customer-complaint-report-template.destroy');
+
+    // Continuous Improvement Hub (summary dashboard)
+    Route::get('continuous-improvement', [ContinuousImprovementController::class, 'index'])->name('continuous-improvement.index');
+
+    // Kaizen Suggestion Workflow (review / approve / reject / start / implement / close)
+    Route::post('kaizen-suggestion/{kaizenSuggestion}/mark-under-review', [KaizenWorkflowController::class, 'markUnderReview'])->name('kaizen-suggestion.mark-under-review');
+    Route::post('kaizen-suggestion/{kaizenSuggestion}/approve', [KaizenWorkflowController::class, 'approve'])->name('kaizen-suggestion.approve');
+    Route::post('kaizen-suggestion/{kaizenSuggestion}/reject', [KaizenWorkflowController::class, 'reject'])->name('kaizen-suggestion.reject');
+    Route::post('kaizen-suggestion/{kaizenSuggestion}/start', [KaizenWorkflowController::class, 'start'])->name('kaizen-suggestion.start');
+    Route::post('kaizen-suggestion/{kaizenSuggestion}/implement', [KaizenWorkflowController::class, 'implement'])->name('kaizen-suggestion.implement');
+    Route::post('kaizen-suggestion/{kaizenSuggestion}/close', [KaizenWorkflowController::class, 'close'])->name('kaizen-suggestion.close');
+
+    // 5S Audit Findings (nested under a 5S Audit)
+    Route::post('five-s-audit/{fiveSAudit}/findings', [FiveSAuditFindingController::class, 'store'])->name('five-s-audit-finding.store');
+    Route::put('five-s-audit-finding/{fiveSAuditFinding}', [FiveSAuditFindingController::class, 'update'])->name('five-s-audit-finding.update');
+    Route::post('five-s-audit-finding/{fiveSAuditFinding}/resolve', [FiveSAuditFindingController::class, 'resolve'])->name('five-s-audit-finding.resolve');
+    Route::delete('five-s-audit-finding/{fiveSAuditFinding}', [FiveSAuditFindingController::class, 'destroy'])->name('five-s-audit-finding.destroy');
+
+    // Gemba Walk Findings (nested under a Gemba Walk)
+    Route::post('gemba-walk/{gembaWalk}/findings', [GembaWalkFindingController::class, 'store'])->name('gemba-walk-finding.store');
+    Route::put('gemba-walk-finding/{gembaWalkFinding}', [GembaWalkFindingController::class, 'update'])->name('gemba-walk-finding.update');
+    Route::post('gemba-walk-finding/{gembaWalkFinding}/resolve', [GembaWalkFindingController::class, 'resolve'])->name('gemba-walk-finding.resolve');
+    Route::delete('gemba-walk-finding/{gembaWalkFinding}', [GembaWalkFindingController::class, 'destroy'])->name('gemba-walk-finding.destroy');
 
     /* Warehouse Setting Pages */
     Route::resource('warehouse-type', WarehouseTypeController::class);
