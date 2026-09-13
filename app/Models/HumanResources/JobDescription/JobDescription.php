@@ -3,9 +3,11 @@
 namespace App\Models\HumanResources\JobDescription;
 
 use App\Models\Department;
+use App\Models\HumanResources\Education\EducationType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -64,5 +66,11 @@ class JobDescription extends Model
     public function assignments(): HasMany
     {
         return $this->hasMany(JobDescriptionAssignment::class);
+    }
+
+    // The training types required to hold this job description
+    public function educationTypes(): BelongsToMany
+    {
+        return $this->belongsToMany(EducationType::class, 'job_description_education_types');
     }
 }

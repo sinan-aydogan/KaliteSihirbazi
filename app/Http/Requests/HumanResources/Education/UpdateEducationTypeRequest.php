@@ -25,6 +25,9 @@ class UpdateEducationTypeRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255', Rule::unique('education_types')->ignore($this->route('education_type'))],
+            'validity_months' => 'nullable|integer|min:1|max:120',
+            'job_description_ids' => 'nullable|array',
+            'job_description_ids.*' => 'exists:job_descriptions,id',
         ];
     }
 

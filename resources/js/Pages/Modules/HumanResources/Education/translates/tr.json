@@ -55,7 +55,24 @@
     "removeParticipant": "Katılımcıyı Çıkar",
     "updateParticipant": "Katılımcıyı Güncelle",
     "educationSettings": "Eğitim Ayarları",
-    "manageModule": "Modül Yönetimi"
+    "manageModule": "Modül Yönetimi",
+    "validityMonths": "Geçerlilik Süresi (Ay)",
+    "validityMonthsPlaceholder": "Boş bırakılırsa süresiz kabul edilir",
+    "noExpiry": "Süresiz",
+    "requiredForJobDescriptions": "Zorunlu Olduğu Görev Tanımları",
+    "expiresAt": "Geçerlilik Tarihi",
+    "effectivenessRating": "Etkinlik Değerlendirmesi",
+    "effectivenessNote": "Etkinlik Notu",
+    "effectivenessEvaluatedAt": "Değerlendirme Tarihi",
+    "effectivenessEvaluatedBy": "Değerlendiren",
+    "sourceProblem": "Kaynak Uygunsuzluk",
+    "sourceCapa": "Kaynak DÖF",
+    "effectivenessValue": {
+      "not_evaluated": "Değerlendirilmedi",
+      "ineffective": "Etkisiz",
+      "partially_effective": "Kısmen Etkili",
+      "effective": "Etkili"
+    }
   },
   "action": {
     "returnToList": "Listeye Dön",

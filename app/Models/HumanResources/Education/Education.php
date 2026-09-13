@@ -2,6 +2,8 @@
 
 namespace App\Models\HumanResources\Education;
 
+use App\Models\Capa;
+use App\Models\Problem;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -20,6 +22,8 @@ class Education extends Model implements HasMedia
 
     protected $fillable = [
         'education_plan_id',
+        'problem_id',
+        'capa_id',
         'name',
         'description',
         'planned_date',
@@ -43,6 +47,22 @@ class Education extends Model implements HasMedia
     public function educationPlan(): BelongsTo
     {
         return $this->belongsTo(EducationPlan::class);
+    }
+
+    /**
+     * Bu eğitimin doğduğu uygunsuzluk (varsa)
+     */
+    public function problem(): BelongsTo
+    {
+        return $this->belongsTo(Problem::class);
+    }
+
+    /**
+     * Bu eğitimin doğduğu DÖF (varsa)
+     */
+    public function capa(): BelongsTo
+    {
+        return $this->belongsTo(Capa::class);
     }
 
     /**
@@ -79,11 +99,25 @@ class Education extends Model implements HasMedia
         return $this->belongsToMany(User::class, 'education_participations')
             ->using(EducationParticipation::class)
             ->withPivot([
+                'id',
                 'is_attend',
                 'status',
                 'score',
+                'expires_at',
+                'effectiveness_rating',
+                'effectiveness_note',
+                'effectiveness_evaluated_at',
+                'effectiveness_evaluated_by_id',
             ])
             ->withTimestamps();
+    }
+
+    /**
+     * En kısa geçerlilik süresi (ay) - birden fazla eğitim türü varsa en erken dolan esas alınır
+     */
+    public function shortestValidityMonths(): ?int
+    {
+        return $this->educationTypes->pluck('validity_months')->filter()->min();
     }
 
     /**

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\HumanResources\Education\StoreEducationTypeRequest;
 use App\Http\Requests\HumanResources\Education\UpdateEducationTypeRequest;
 use App\Models\HumanResources\Education\EducationType;
+use App\Models\HumanResources\JobDescription\JobDescription;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
@@ -22,6 +23,7 @@ class EducationTypeController extends Controller
     {
         return Inertia::render('Modules/HumanResources/Education/Setting/EducationTypePage', [
             'tableData' => $this->tableFilter(EducationType::query())->latest('id')->paginate(10)->withQueryString(),
+            'jobDescriptions' => JobDescription::all(['id', 'name']),
         ]);
     }
 
@@ -55,8 +57,10 @@ class EducationTypeController extends Controller
      */
     public function store(StoreEducationTypeRequest $request)
     {
-        $educationType = new EducationType($request->validated());
+        $educationType = new EducationType($request->safe()->except('job_description_ids'));
         $educationType->save();
+
+        $educationType->jobDescriptions()->sync($request->input('job_description_ids', []));
 
         session()->flash('message', ['type'=> 'success', 'content'=>__('messages.educationType.created', ['educationType' => $educationType->name])]);
 
@@ -84,7 +88,7 @@ class EducationTypeController extends Controller
      */
     public function edit(EducationType $educationType)
     {
-        return response()->json($educationType);
+        return response()->json($educationType->load('jobDescriptions:id,name'));
     }
 
     /**
@@ -96,7 +100,9 @@ class EducationTypeController extends Controller
      */
     public function update(UpdateEducationTypeRequest $request, EducationType $educationType)
     {
-        $educationType->update($request->validated());
+        $educationType->update($request->safe()->except('job_description_ids'));
+
+        $educationType->jobDescriptions()->sync($request->input('job_description_ids', []));
 
         session()->flash('message', ['type'=> 'success', 'content'=>__('messages.educationType.updated', ['educationType' => $educationType->name])]);
 

@@ -28,6 +28,8 @@ class UpdateEducationRequest extends FormRequest
     {
         return [
             'education_plan_id' => 'sometimes|exists:education_plans,id',
+            'problem_id' => 'nullable|exists:problems,id',
+            'capa_id' => 'nullable|exists:capas,id',
             'name' => 'sometimes|string|max:255',
             'description' => 'nullable|string|max:1000',
             'planned_date' => 'sometimes|date|date_format:Y-m-d',

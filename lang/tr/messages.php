@@ -295,7 +295,8 @@ return [
         'participantAdded' => 'Katılımcı eğitime başarıyla eklendi.',
         'participantUpdated' => 'Katılımcı bilgileri başarıyla güncellendi.',
         'participantRemoved' => 'Katılımcı eğitimden başarıyla çıkarıldı.',
-        'mediaDeleted' => 'Medya dosyası başarıyla silindi.'
+        'mediaDeleted' => 'Medya dosyası başarıyla silindi.',
+        'participantDocumentUploaded' => 'Katılımcı belgesi başarıyla yüklendi.'
     ],
     'supplier' => [
         'created' => ':supplier isimli tedarikçi oluşturuldu.',

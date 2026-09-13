@@ -55,7 +55,24 @@
     "removeParticipant": "Remove Participant",
     "updateParticipant": "Update Participant",
     "educationSettings": "Education Settings",
-    "manageModule": "Manage Module"
+    "manageModule": "Manage Module",
+    "validityMonths": "Validity Period (Months)",
+    "validityMonthsPlaceholder": "Leave empty for no expiry",
+    "noExpiry": "No expiry",
+    "requiredForJobDescriptions": "Required For Job Descriptions",
+    "expiresAt": "Expires At",
+    "effectivenessRating": "Effectiveness Rating",
+    "effectivenessNote": "Effectiveness Note",
+    "effectivenessEvaluatedAt": "Evaluated At",
+    "effectivenessEvaluatedBy": "Evaluated By",
+    "sourceProblem": "Source Nonconformity",
+    "sourceCapa": "Source CAPA",
+    "effectivenessValue": {
+      "not_evaluated": "Not Evaluated",
+      "ineffective": "Ineffective",
+      "partially_effective": "Partially Effective",
+      "effective": "Effective"
+    }
   },
   "action": {
     "returnToList": "Return to List",

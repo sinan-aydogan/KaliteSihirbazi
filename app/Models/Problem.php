@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\ProblemSeverity;
 use App\Enums\ProblemStatus;
+use App\Models\HumanResources\Education\Education;
 use App\Traits\HasSequentialCode;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -58,6 +59,11 @@ class Problem extends Model
     public function capas(): HasMany
     {
         return $this->hasMany(Capa::class);
+    }
+
+    public function trainings(): HasMany
+    {
+        return $this->hasMany(Education::class);
     }
 
     public function audit(): BelongsTo

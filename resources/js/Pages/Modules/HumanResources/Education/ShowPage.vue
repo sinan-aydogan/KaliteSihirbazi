@@ -11,6 +11,7 @@ import HelpButton from "@/Components/Help/HelpButton.vue"
 import Modal from "@/Components/Modal/Modal.vue"
 import InputGroup from "@/Components/Form/InputGroup.vue"
 import SelectInput from "@/Components/Form/SelectInput.vue"
+import TextAreaInput from "@/Components/Form/TextAreaInput.vue"
 
 // Props
 const props = defineProps({
@@ -58,6 +59,67 @@ const updateParticipant = (participation, changes) => {
 /*Remove participant*/
 const removeParticipant = (participation) => {
     router.delete(route('education.remove-participant', [props.data.id, participation.user_id]), {preserveScroll: true})
+}
+
+/*Effectiveness evaluation*/
+const showEffectivenessModal = ref(false);
+const evaluatingParticipation = ref(null);
+const effectivenessForm = ref({rating: 'not_evaluated', note: ''});
+
+const effectivenessOptions = [
+    {id: 'not_evaluated', label: 'Değerlendirilmedi'},
+    {id: 'ineffective', label: 'Etkisiz'},
+    {id: 'partially_effective', label: 'Kısmen Etkili'},
+    {id: 'effective', label: 'Etkili'},
+]
+
+const effectivenessColorClasses = {
+    not_evaluated: 'neutral',
+    ineffective: 'red',
+    partially_effective: 'orange',
+    effective: 'green',
+}
+
+const openEvaluateEffectiveness = (participation) => {
+    evaluatingParticipation.value = participation;
+    effectivenessForm.value = {
+        rating: participation.effectiveness_rating ?? 'not_evaluated',
+        note: participation.effectiveness_note ?? '',
+    };
+    showEffectivenessModal.value = true;
+}
+
+const submitEffectiveness = () => {
+    router.put(route('education.update-participant', [props.data.id, evaluatingParticipation.value.user_id]), {
+        is_attend: evaluatingParticipation.value.is_attend,
+        status: evaluatingParticipation.value.status,
+        score: evaluatingParticipation.value.score,
+        effectiveness_rating: effectivenessForm.value.rating,
+        effectiveness_note: effectivenessForm.value.note,
+    }, {
+        preserveScroll: true,
+        onSuccess: () => showEffectivenessModal.value = false,
+    })
+}
+
+/*Participant documents*/
+const uploadParticipantDocument = (participation, event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    router.post(route('education.upload-participant-document', [props.data.id, participation.user_id]), {
+        document: file,
+    }, {preserveScroll: true, forceFormData: true})
+}
+
+const deleteParticipantDocument = (participation, mediaId) => {
+    router.delete(route('education.delete-participant-document', [props.data.id, participation.user_id, mediaId]), {preserveScroll: true})
+}
+
+const formatExpiresAt = (participation) => {
+    if (!participation.expires_at) return null;
+    const isExpired = new Date(participation.expires_at) < new Date();
+    return {text: formatDate(participation.expires_at), expired: isExpired};
 }
 
 // Status badge colors
@@ -201,6 +263,19 @@ const formatDuration = (minutes) => {
                 </div>
             </div>
 
+            <!--Source (Problem/Capa, if raised as a corrective action)-->
+            <div v-if="data.problem || data.capa" class="col-span-12">
+                <div class="bg-amber-50 dark:bg-amber-900/20 rounded-lg p-6 shadow">
+                    <h3 class="text-lg font-semibold mb-2 text-amber-800 dark:text-amber-300">Kaynak</h3>
+                    <p v-if="data.problem" class="text-amber-700 dark:text-amber-400 cursor-pointer hover:underline" @click="router.visit(route('problem.show', data.problem.id))">
+                        {{ tm('term.sourceProblem') }}: {{ data.problem.code }} — {{ data.problem.title }}
+                    </p>
+                    <p v-if="data.capa" class="text-amber-700 dark:text-amber-400 cursor-pointer hover:underline" @click="router.visit(route('capa.show', data.capa.id))">
+                        {{ tm('term.sourceCapa') }}: {{ data.capa.code }} — {{ data.capa.title }}
+                    </p>
+                </div>
+            </div>
+
             <!--Cancel Reason (if cancelled)-->
             <div v-if="data.is_cancelled && data.cancel_reason" class="col-span-12">
                 <div class="bg-red-50 dark:bg-red-900/20 rounded-lg p-6 shadow">
@@ -298,6 +373,27 @@ const formatDuration = (minutes) => {
                                             <font-awesome-icon icon="trash-can"/>
                                         </button>
                                     </div>
+                                    <div class="flex flex-wrap items-center gap-2 text-xs mt-1">
+                                        <Badge
+                                            class="cursor-pointer"
+                                            :color="effectivenessColorClasses[participation.effectiveness_rating ?? 'not_evaluated']"
+                                            size="sm"
+                                            @click="openEvaluateEffectiveness(participation)"
+                                        >
+                                            {{ tm(`term.effectivenessValue.${participation.effectiveness_rating ?? 'not_evaluated'}`) }}
+                                        </Badge>
+                                        <Badge v-if="formatExpiresAt(participation)" :color="formatExpiresAt(participation).expired ? 'red' : 'neutral'" size="sm">
+                                            {{ tm('term.expiresAt') }}: {{ formatExpiresAt(participation).text }}
+                                        </Badge>
+                                        <label class="cursor-pointer text-slate-400 hover:text-sky-600" :title="tm('term.documents')">
+                                            <font-awesome-icon icon="paperclip"/>
+                                            <input type="file" class="hidden" @change="uploadParticipantDocument(participation, $event)"/>
+                                        </label>
+                                        <span v-for="document in participation.media" :key="document.id" class="flex items-center gap-1">
+                                            <a :href="document.original_url" target="_blank" class="text-sky-600 hover:underline truncate max-w-[100px]">{{ document.name }}</a>
+                                            <font-awesome-icon icon="circle-xmark" class="cursor-pointer text-slate-400 hover:text-red-600" @click="deleteParticipantDocument(participation, document.id)"/>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -348,6 +444,25 @@ const formatDuration = (minutes) => {
             </input-group>
             <template #footer>
                 <SimpleButton :label="t('action.create')" color="green" @click="addParticipant"/>
+            </template>
+        </Modal>
+    </teleport>
+
+    <teleport to="body">
+        <Modal
+            v-model="showEffectivenessModal"
+            :header="tm('term.effectivenessRating')"
+            closeable
+            close-button
+        >
+            <input-group label-for="effectiveness_rating" :label="tm('term.effectivenessRating')">
+                <select-input v-model="effectivenessForm.rating" :options="effectivenessOptions" option-key="id" option-label="label"/>
+            </input-group>
+            <input-group label-for="effectiveness_note" :label="tm('term.effectivenessNote')" class="mt-4">
+                <text-area-input v-model="effectivenessForm.note" :rows="3"/>
+            </input-group>
+            <template #footer>
+                <SimpleButton :label="t('action.update')" color="green" @click="submitEffectiveness"/>
             </template>
         </Modal>
     </teleport>

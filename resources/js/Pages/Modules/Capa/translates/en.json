@@ -24,6 +24,8 @@
     "term": {
         "code": "CAPA No",
         "title": "Title",
+        "trainings": "Linked Trainings",
+        "educationPlan": "Education Plan",
         "type": "Type",
         "description": "Nonconformity / Opportunity Description",
         "sourceType": "Source",
@@ -68,6 +70,7 @@
         "completeAction": "Complete",
         "submitForVerification": "Submit for Verification",
         "verify": "Verify",
+        "raiseTraining": "Raise Training",
         "reopen": "Reopen",
         "effective": "Effective",
         "ineffective": "Ineffective"

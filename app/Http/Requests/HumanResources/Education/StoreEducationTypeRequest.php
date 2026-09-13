@@ -23,6 +23,9 @@ class StoreEducationTypeRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255|unique:education_types,name',
+            'validity_months' => 'nullable|integer|min:1|max:120',
+            'job_description_ids' => 'nullable|array',
+            'job_description_ids.*' => 'exists:job_descriptions,id',
         ];
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Models\HumanResources\Education;
 
+use App\Enums\RiskControlEffectiveness;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\Pivot;
@@ -20,12 +21,20 @@ class EducationParticipation extends Pivot implements HasMedia
         'is_attend',
         'status',
         'score',
+        'expires_at',
+        'effectiveness_rating',
+        'effectiveness_note',
+        'effectiveness_evaluated_at',
+        'effectiveness_evaluated_by_id',
     ];
 
     protected $casts = [
         'is_attend' => 'boolean',
         'status' => 'boolean',
         'score' => 'integer',
+        'expires_at' => 'date',
+        'effectiveness_rating' => RiskControlEffectiveness::class,
+        'effectiveness_evaluated_at' => 'date',
     ];
 
     /**
@@ -42,6 +51,14 @@ class EducationParticipation extends Pivot implements HasMedia
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Etkinlik değerlendirmesini yapan kullanıcı
+     */
+    public function effectivenessEvaluatedBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'effectiveness_evaluated_by_id');
     }
 
     /**

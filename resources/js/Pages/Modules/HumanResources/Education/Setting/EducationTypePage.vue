@@ -11,12 +11,17 @@ import Form from "@/Components/Form/Form.vue"
 import FormSection from "@/Components/Form/FormSection.vue"
 import InputGroup from "@/Components/Form/InputGroup.vue"
 import TextInput from "@/Components/Form/TextInput.vue"
+import MultiSelectInput from "@/Components/Form/MultiSelectInput.vue"
 
 // Props
 const props = defineProps({
     tableData: {
         type: Object,
         default: {}
+    },
+    jobDescriptions: {
+        type: Array,
+        default: () => []
     }
 })
 
@@ -41,6 +46,11 @@ const tableHeaders = [
         value: (row) => row?.educations_count || 0
     },
     {
+        id: 'validity_months',
+        label: tm('term.validityMonths'),
+        value: (row) => row?.validity_months ? `${row.validity_months} ay` : tm('term.noExpiry')
+    },
+    {
         id: 'created_at',
         label: t('term.createdAt'),
         value: (row) => !!row?.created_at ? new Date(row.created_at).toLocaleDateString('tr-TR') : ''
@@ -52,7 +62,9 @@ const showModal = ref(false);
 const formType = ref("create");
 const form = useForm({
     id: null,
-    name: ""
+    name: "",
+    validity_months: "",
+    job_description_ids: []
 })
 
 // Rules
@@ -94,6 +106,8 @@ const getRowInfo = (id) => {
     axios.get(route("education-type.edit", {id: id})).then(response => {
         form.id = response.data.id;
         form.name = response.data.name;
+        form.validity_months = response.data.validity_months;
+        form.job_description_ids = response.data.job_descriptions.map(jd => jd.id);
     })
     showModal.value = true;
     formType.value = "update"
@@ -151,6 +165,16 @@ const handleDelete = (id) => {
                     <!-- Name -->
                     <input-group class="col-span-12" labelFor="name" :label="tm('term.name')" :errors="v$.name.$errors">
                         <text-input v-model="form.name" :placeholder="'Eğitim türü adını giriniz'"/>
+                    </input-group>
+
+                    <!-- Validity Months -->
+                    <input-group class="col-span-12" labelFor="validity_months" :label="tm('term.validityMonths')" :errors="v$.validity_months?.$errors">
+                        <text-input input-type="number" v-model="form.validity_months" :placeholder="tm('term.validityMonthsPlaceholder')"/>
+                    </input-group>
+
+                    <!-- Required For Job Descriptions -->
+                    <input-group class="col-span-12" labelFor="job_description_ids" :label="tm('term.requiredForJobDescriptions')">
+                        <MultiSelectInput v-model="form.job_description_ids" :options="jobDescriptions" optionKey="id" optionLabel="name"/>
                     </input-group>
                 </FormSection>
             </Form>

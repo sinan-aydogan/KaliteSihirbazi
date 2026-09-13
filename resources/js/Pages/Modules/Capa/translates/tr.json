@@ -24,6 +24,8 @@
     "term": {
         "code": "DÖF No",
         "title": "Başlık",
+        "trainings": "Bağlı Eğitimler",
+        "educationPlan": "Eğitim Planı",
         "type": "Tip",
         "description": "Uygunsuzluk / Fırsat Açıklaması",
         "sourceType": "Kaynak",
@@ -68,6 +70,7 @@
         "completeAction": "Tamamla",
         "submitForVerification": "Doğrulamaya Gönder",
         "verify": "Doğrula",
+        "raiseTraining": "Eğitim Aç",
         "reopen": "Yeniden Aç",
         "effective": "Etkili",
         "ineffective": "Etkisiz"

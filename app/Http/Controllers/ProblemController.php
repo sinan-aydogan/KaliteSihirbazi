@@ -6,6 +6,7 @@ use App\Http\Requests\StoreProblemRequest;
 use App\Http\Requests\UpdateProblemRequest;
 use App\Models\CustomerComplaint;
 use App\Models\Department;
+use App\Models\HumanResources\Education\EducationPlan;
 use App\Models\Problem;
 use App\Models\ProblemSourceType;
 use App\Models\Risk;
@@ -72,11 +73,13 @@ class ProblemController extends Controller
             'customerComplaint:id,code,title',
             'problemSourceType:id,name',
             'immediateActionBy:id,name',
+            'trainings.educationPlan:id,name',
         ]);
 
         return Inertia::render('Modules/Problem/ShowPage', [
             'problem' => $problem,
             'users' => User::all(['id', 'name']),
+            'educationPlans' => EducationPlan::where('end_date', '>=', now())->get(['id', 'name']),
         ]);
     }
 
