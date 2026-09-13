@@ -14,6 +14,7 @@ use App\Http\Controllers\AuditScopeController;
 use App\Http\Controllers\AuditSettingController;
 use App\Http\Controllers\AuditTypeController;
 use App\Http\Controllers\AuditWorkflowController;
+use App\Http\Controllers\CalibrationTechnicianController;
 use App\Http\Controllers\InternalAuditorController;
 use App\Http\Controllers\RiskCategoryController;
 use App\Http\Controllers\RiskControlController;
@@ -69,6 +70,8 @@ use App\Http\Controllers\MeasurementDevice\Calibration\MeasurementDeviceCalibrat
 use App\Http\Controllers\MeasurementDevice\DeviceInfoController;
 use App\Http\Controllers\MeasurementDevice\MeasurementDeviceController;
 use App\Http\Controllers\MeasurementDevice\MeasurementDeviceTypeController;
+use App\Http\Controllers\MeasurementDevice\MeasurementDeviceWorkflowController;
+use App\Http\Controllers\MeasurementDeviceSettingController;
 use App\Http\Controllers\ProblemController;
 use App\Http\Controllers\ProblemSourceTypeController;
 use App\Http\Controllers\ProblemWorkflowController;
@@ -164,10 +167,11 @@ Route::middleware([
         ['uri' => 'document', 'model' => 'document', 'controller' => DocumentController::class, 'settingController' => DocumentSettingController::class],
         ['uri' => 'document-type', 'model' => 'documentType', 'controller' => DocumentTypeController::class],
         ['uri' => 'distribution-point', 'model' => 'distributionPoint', 'controller' => DistributionPointController::class],
-        ['uri' => 'measurement-device', 'model' => 'measurementDevice', 'controller' => MeasurementDeviceController::class],
+        ['uri' => 'measurement-device', 'model' => 'measurementDevice', 'controller' => MeasurementDeviceController::class, 'settingController' => MeasurementDeviceSettingController::class],
         ['uri' => 'measurement-device-type', 'model' => 'measurementDeviceType', 'controller' => MeasurementDeviceTypeController::class],
         ['uri' => 'measurement-device-calibration', 'model' => 'measurementDeviceCalibration', 'controller' => MeasurementDeviceCalibrationTaskController::class],
         ['uri' => 'calibration-firm', 'model' => 'calibrationFirm', 'controller' => CalibrationFirmController::class],
+        ['uri' => 'calibration-technician', 'model' => 'calibrationTechnician', 'controller' => CalibrationTechnicianController::class],
         ['uri' => 'measurement-device-action', 'model' => 'measurementDeviceAction', 'controller' => MeasurementDeviceActionController::class],
         ['uri' => 'standard', 'model' => 'standard', 'controller' => StandardController::class],
         ['uri' => 'capa', 'model' => 'capa', 'controller' => CapaController::class],
@@ -355,6 +359,12 @@ Route::middleware([
     Route::get('measurement-device/{measurementDevice}/device-info', [DeviceInfoController::class, 'index'])->name('measurement-device-info.index');
     Route::get('measurement-device/{measurementDevice}/calibration-tasks', [CalibrationTaskController::class, 'index'])->name('measurement-device-calibrations.index');
     Route::get('measurement-device/{measurementDevice}/device-actions', [DeviceActionController::class, 'index'])->name('measurement-device-actions.index');
+
+    /* Measurement Device Workflow (decommission / reactivate) */
+    Route::post('measurement-device/{measurementDevice}/decommission', [MeasurementDeviceWorkflowController::class, 'decommission'])->name('measurement-device.decommission');
+    Route::post('measurement-device/{measurementDevice}/reactivate', [MeasurementDeviceWorkflowController::class, 'reactivate'])->name('measurement-device.reactivate');
+    Route::delete('calibration-technician/{calibrationTechnician}/media/{mediaId}', [CalibrationTechnicianController::class, 'deleteMedia'])->name('calibration-technician.delete-media');
+    Route::get('measurement-device-calibration/{measurementDeviceCalibration}/report', [MeasurementDeviceCalibrationTaskController::class, 'report'])->name('measurement-device-calibration.report');
     /* Vehicle Setting Pages */
     Route::resource('vehicle-type', VehicleTypeController::class);
     Route::resource('vehicle-status', VehicleStatusController::class);

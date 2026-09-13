@@ -15,6 +15,10 @@
     "updateCalibrationModal": {
       "title": "Kalibrasyon Emrini Güncelle",
       "subTitle": "Kalibrasyon emrinin durumunu ve bilgilerini güncelleyin"
+    },
+    "calibrationTasksIndexPage": {
+      "title": "Kalibrasyon Emirleri",
+      "subTitle": "Tüm cihazların kalibrasyon emirlerini tek yerden görüntüleyin"
     }
   },
   "term": {
@@ -42,16 +46,56 @@
     "calibrationFee": "Kalibrasyon Ücreti",
     "active": "Aktif",
     "accomplished": "Gerçekleşti",
-    "isAccomplished": "Gerçekleşti mi?"
+    "isAccomplished": "Gerçekleşti mi?",
+    "overdueCalibrations": "cihazın kalibrasyonu gecikti",
+    "upcomingCalibrations": "cihazın kalibrasyonu yaklaşıyor",
+    "statusValue": {
+      "active": "Aktif",
+      "decommissioned": "Kullanım Dışı"
+    },
+    "result": "Sonuç",
+    "reportNumber": "Rapor No",
+    "reportNotes": "Rapor Notları",
+    "nextCalibrationDate": "Sonraki Kalibrasyon Tarihi",
+    "certificate": "Kalibrasyon Sertifikası",
+    "resultValue": {
+      "passed": "Uygun",
+      "failed": "Uygunsuz"
+    },
+    "decommissionReason": "Kullanımdan Düşürme Sebebi",
+    "decommissionedAt": "Kullanımdan Düşürülme Tarihi",
+    "decommissionedBy": "Kullanımdan Düşüren",
+    "failedResultNudge": "Bu kalibrasyon sonucu Uygunsuz. Cihazı sayfanın üstündeki \"Kullanımdan Düşür\" butonuyla kullanım dışı bırakabilirsiniz.",
+    "calibrationType": "Kalibrasyon Türü",
+    "typeValue": {
+      "external": "Dış Kalibrasyon",
+      "internal": "İç Kalibrasyon"
+    },
+    "referenceDevice": "Referans Cihaz (Etalon)",
+    "performedBy": "Kalibrasyonu Yapan Personel",
+    "currentTraceabilityReference": "Şu An Bağlı Olduğu Referans",
+    "report": "Rapor",
+    "measurementPoints": "Ölçüm Noktaları",
+    "nominalValue": "Nominal Değer",
+    "measuredValue": "Ölçülen Değer",
+    "tolerance": "Tolerans (±)",
+    "unit": "Birim",
+    "deviation": "Sapma",
+    "isReferenceStandard": "Referans Standart (Etalon)",
+    "device": "Cihaz"
   },
   "message":{
     "feedback" : {
-      "emptyCalibrationTasksList": "Henüz hiç kalibrasyon emri oluşturulmamış"
+      "emptyCalibrationTasksList": "Henüz hiç kalibrasyon emri oluşturulmamış",
+      "emptyMeasurementPoints": "Henüz ölçüm noktası eklenmedi"
     }
   },
   "action": {
     "createCalibrationTask": "Kalibrasyon Emri Oluştur",
     "createTask": "Emri Oluştur",
-    "updateTask": "Emri Güncelle"
+    "updateTask": "Emri Güncelle",
+    "decommission": "Kullanımdan Düşür",
+    "reactivate": "Yeniden Aktifleştir",
+    "addMeasurementPoint": "Ölçüm Noktası Ekle"
   }
 }

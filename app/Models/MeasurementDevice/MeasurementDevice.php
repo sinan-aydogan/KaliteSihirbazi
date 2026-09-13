@@ -5,6 +5,8 @@ namespace App\Models\MeasurementDevice;
 use App\Models\Department;
 use App\Models\HumanResources\Employee\Employee;
 use App\Models\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTask;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -14,6 +16,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class MeasurementDevice extends Model
 {
     use HasFactory, SoftDeletes;
+
+    public const STATUS_ACTIVE = 'active';
+
+    public const STATUS_DECOMMISSIONED = 'decommissioned';
 
     /**
      * The attributes that are mass assignable.
@@ -33,6 +39,11 @@ class MeasurementDevice extends Model
         'calibration_supervisor_id',
         'department_id',
         'measurement_device_type_id',
+        'status',
+        'decommissioned_at',
+        'decommission_reason',
+        'decommissioned_by_id',
+        'is_reference_standard',
     ];
 
     /**
@@ -44,6 +55,8 @@ class MeasurementDevice extends Model
         'properties' => 'array',
         'purchase_date' => 'date',
         'purchase_price' => 'decimal:2',
+        'decommissioned_at' => 'datetime',
+        'is_reference_standard' => 'boolean',
     ];
 
     // The supervisor of the device
@@ -74,5 +87,44 @@ class MeasurementDevice extends Model
     public function calibrationTasks(): HasMany
     {
         return $this->hasMany(MeasurementDeviceCalibrationTask::class);
+    }
+
+    // Internal calibration tasks (of other devices) where this device was used as the reference standard
+    public function referencedInCalibrationTasks(): HasMany
+    {
+        return $this->hasMany(MeasurementDeviceCalibrationTask::class, 'reference_measurement_device_id');
+    }
+
+    // The user who decommissioned the device, if any
+    public function decommissionedBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'decommissioned_by_id');
+    }
+
+    public function isActive(): bool
+    {
+        return $this->status === self::STATUS_ACTIVE;
+    }
+
+    public function scopeActive(Builder $query): Builder
+    {
+        return $query->where('status', self::STATUS_ACTIVE);
+    }
+
+    public function scopeReferenceStandard(Builder $query): Builder
+    {
+        return $query->where('is_reference_standard', true);
+    }
+
+    // The reference standard this device is currently traced to, derived from its latest accomplished internal calibration
+    public function currentTraceabilityReference(): ?MeasurementDevice
+    {
+        $latestInternalTask = $this->calibrationTasks()
+            ->where('type', MeasurementDeviceCalibrationTask::TYPE_INTERNAL)
+            ->where('status', true)
+            ->latest('accomplished_date')
+            ->first();
+
+        return $latestInternalTask?->referenceDevice;
     }
 }

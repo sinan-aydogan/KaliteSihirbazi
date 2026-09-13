@@ -7,6 +7,7 @@ use App\Http\Requests\StoreCalibrationFirmRequest;
 use App\Http\Requests\UpdateCalibrationFirmRequest;
 use App\Models\MeasurementDevice\Calibration\CalibrationFirm;
 use Illuminate\Http\Response;
+use Inertia\Inertia;
 
 class CalibrationFirmController extends Controller
 {
@@ -17,7 +18,12 @@ class CalibrationFirmController extends Controller
      */
     public function index()
     {
-        return response()->json(CalibrationFirm::latest('id')->paginate(10));
+        return Inertia::render('Modules/MeasurementDevice/Setting/CalibrationFirm/IndexPage', [
+            'tableData' => $this->tableFilter(CalibrationFirm::withCount('tasks'))
+                ->latest('id')
+                ->paginate(10)
+                ->withQueryString(),
+        ]);
     }
 
     /**
@@ -88,7 +94,12 @@ class CalibrationFirmController extends Controller
 
     public function deleted()
     {
-        return response()->json(CalibrationFirm::onlyTrashed()->latest('deleted_at')->paginate(10));
+        return Inertia::render('Modules/MeasurementDevice/Setting/CalibrationFirm/DeletedPage', [
+            'tableData' => $this->tableFilter(CalibrationFirm::onlyTrashed())
+                ->latest('deleted_at')
+                ->paginate(10)
+                ->withQueryString(),
+        ]);
     }
 
     public function permanentDestroy(CalibrationFirm $calibrationFirm)

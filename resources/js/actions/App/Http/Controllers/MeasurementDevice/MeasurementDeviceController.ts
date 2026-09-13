@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::index
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:23
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:25
  * @route '/measurement-device/search'
  */
 const indexfca0a075b5924527536113e0f1dc72ee = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -16,7 +16,7 @@ indexfca0a075b5924527536113e0f1dc72ee.definition = {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::index
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:23
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:25
  * @route '/measurement-device/search'
  */
 indexfca0a075b5924527536113e0f1dc72ee.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ indexfca0a075b5924527536113e0f1dc72ee.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::index
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:23
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:25
  * @route '/measurement-device/search'
  */
 indexfca0a075b5924527536113e0f1dc72ee.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -35,7 +35,7 @@ indexfca0a075b5924527536113e0f1dc72ee.post = (options?: RouteQueryOptions): Rout
 
     /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::index
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:23
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:25
  * @route '/measurement-device/search'
  */
     const indexfca0a075b5924527536113e0f1dc72eeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -45,7 +45,7 @@ indexfca0a075b5924527536113e0f1dc72ee.post = (options?: RouteQueryOptions): Rout
 
             /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::index
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:23
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:25
  * @route '/measurement-device/search'
  */
         indexfca0a075b5924527536113e0f1dc72eeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -56,7 +56,7 @@ indexfca0a075b5924527536113e0f1dc72ee.post = (options?: RouteQueryOptions): Rout
     indexfca0a075b5924527536113e0f1dc72ee.form = indexfca0a075b5924527536113e0f1dc72eeForm
     /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::index
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:23
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:25
  * @route '/measurement-device'
  */
 const indexfe55c2958402fd23a47151dfaae5f957 = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -71,7 +71,7 @@ indexfe55c2958402fd23a47151dfaae5f957.definition = {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::index
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:23
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:25
  * @route '/measurement-device'
  */
 indexfe55c2958402fd23a47151dfaae5f957.url = (options?: RouteQueryOptions) => {
@@ -80,7 +80,7 @@ indexfe55c2958402fd23a47151dfaae5f957.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::index
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:23
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:25
  * @route '/measurement-device'
  */
 indexfe55c2958402fd23a47151dfaae5f957.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -89,7 +89,7 @@ indexfe55c2958402fd23a47151dfaae5f957.get = (options?: RouteQueryOptions): Route
 })
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::index
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:23
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:25
  * @route '/measurement-device'
  */
 indexfe55c2958402fd23a47151dfaae5f957.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -99,7 +99,7 @@ indexfe55c2958402fd23a47151dfaae5f957.head = (options?: RouteQueryOptions): Rout
 
     /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::index
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:23
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:25
  * @route '/measurement-device'
  */
     const indexfe55c2958402fd23a47151dfaae5f957Form = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -109,7 +109,7 @@ indexfe55c2958402fd23a47151dfaae5f957.head = (options?: RouteQueryOptions): Rout
 
             /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::index
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:23
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:25
  * @route '/measurement-device'
  */
         indexfe55c2958402fd23a47151dfaae5f957Form.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -118,7 +118,7 @@ indexfe55c2958402fd23a47151dfaae5f957.head = (options?: RouteQueryOptions): Rout
         })
             /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::index
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:23
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:25
  * @route '/measurement-device'
  */
         indexfe55c2958402fd23a47151dfaae5f957Form.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -145,7 +145,7 @@ export const index = {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::create
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:43
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:55
  * @route '/measurement-device/create'
  */
 export const create = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -160,7 +160,7 @@ create.definition = {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::create
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:43
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:55
  * @route '/measurement-device/create'
  */
 create.url = (options?: RouteQueryOptions) => {
@@ -169,7 +169,7 @@ create.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::create
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:43
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:55
  * @route '/measurement-device/create'
  */
 create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -178,7 +178,7 @@ create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::create
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:43
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:55
  * @route '/measurement-device/create'
  */
 create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -188,7 +188,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::create
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:43
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:55
  * @route '/measurement-device/create'
  */
     const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -198,7 +198,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::create
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:43
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:55
  * @route '/measurement-device/create'
  */
         createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -207,7 +207,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::create
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:43
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:55
  * @route '/measurement-device/create'
  */
         createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -223,7 +223,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     create.form = createForm
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::store
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:53
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:65
  * @route '/measurement-device'
  */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -238,7 +238,7 @@ store.definition = {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::store
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:53
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:65
  * @route '/measurement-device'
  */
 store.url = (options?: RouteQueryOptions) => {
@@ -247,7 +247,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::store
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:53
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:65
  * @route '/measurement-device'
  */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -257,7 +257,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
     /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::store
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:53
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:65
  * @route '/measurement-device'
  */
     const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -267,7 +267,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
             /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::store
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:53
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:65
  * @route '/measurement-device'
  */
         storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -278,7 +278,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     store.form = storeForm
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::show
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:67
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:79
  * @route '/measurement-device/{measurement_device}'
  */
 export const show = (args: { measurement_device: number | { id: number } } | [measurement_device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -293,7 +293,7 @@ show.definition = {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::show
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:67
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:79
  * @route '/measurement-device/{measurement_device}'
  */
 show.url = (args: { measurement_device: number | { id: number } } | [measurement_device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -326,7 +326,7 @@ show.url = (args: { measurement_device: number | { id: number } } | [measurement
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::show
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:67
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:79
  * @route '/measurement-device/{measurement_device}'
  */
 show.get = (args: { measurement_device: number | { id: number } } | [measurement_device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -335,7 +335,7 @@ show.get = (args: { measurement_device: number | { id: number } } | [measurement
 })
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::show
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:67
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:79
  * @route '/measurement-device/{measurement_device}'
  */
 show.head = (args: { measurement_device: number | { id: number } } | [measurement_device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -345,7 +345,7 @@ show.head = (args: { measurement_device: number | { id: number } } | [measuremen
 
     /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::show
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:67
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:79
  * @route '/measurement-device/{measurement_device}'
  */
     const showForm = (args: { measurement_device: number | { id: number } } | [measurement_device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -355,7 +355,7 @@ show.head = (args: { measurement_device: number | { id: number } } | [measuremen
 
             /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::show
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:67
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:79
  * @route '/measurement-device/{measurement_device}'
  */
         showForm.get = (args: { measurement_device: number | { id: number } } | [measurement_device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -364,7 +364,7 @@ show.head = (args: { measurement_device: number | { id: number } } | [measuremen
         })
             /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::show
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:67
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:79
  * @route '/measurement-device/{measurement_device}'
  */
         showForm.head = (args: { measurement_device: number | { id: number } } | [measurement_device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -380,7 +380,7 @@ show.head = (args: { measurement_device: number | { id: number } } | [measuremen
     show.form = showForm
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::edit
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:85
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:97
  * @route '/measurement-device/{measurement_device}/edit'
  */
 export const edit = (args: { measurement_device: number | { id: number } } | [measurement_device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -395,7 +395,7 @@ edit.definition = {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::edit
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:85
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:97
  * @route '/measurement-device/{measurement_device}/edit'
  */
 edit.url = (args: { measurement_device: number | { id: number } } | [measurement_device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -428,7 +428,7 @@ edit.url = (args: { measurement_device: number | { id: number } } | [measurement
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::edit
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:85
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:97
  * @route '/measurement-device/{measurement_device}/edit'
  */
 edit.get = (args: { measurement_device: number | { id: number } } | [measurement_device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -437,7 +437,7 @@ edit.get = (args: { measurement_device: number | { id: number } } | [measurement
 })
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::edit
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:85
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:97
  * @route '/measurement-device/{measurement_device}/edit'
  */
 edit.head = (args: { measurement_device: number | { id: number } } | [measurement_device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -447,7 +447,7 @@ edit.head = (args: { measurement_device: number | { id: number } } | [measuremen
 
     /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::edit
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:85
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:97
  * @route '/measurement-device/{measurement_device}/edit'
  */
     const editForm = (args: { measurement_device: number | { id: number } } | [measurement_device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -457,7 +457,7 @@ edit.head = (args: { measurement_device: number | { id: number } } | [measuremen
 
             /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::edit
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:85
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:97
  * @route '/measurement-device/{measurement_device}/edit'
  */
         editForm.get = (args: { measurement_device: number | { id: number } } | [measurement_device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -466,7 +466,7 @@ edit.head = (args: { measurement_device: number | { id: number } } | [measuremen
         })
             /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::edit
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:85
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:97
  * @route '/measurement-device/{measurement_device}/edit'
  */
         editForm.head = (args: { measurement_device: number | { id: number } } | [measurement_device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -482,7 +482,7 @@ edit.head = (args: { measurement_device: number | { id: number } } | [measuremen
     edit.form = editForm
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::update
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:95
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:107
  * @route '/measurement-device/{measurement_device}'
  */
 export const update = (args: { measurement_device: number | { id: number } } | [measurement_device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -497,7 +497,7 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::update
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:95
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:107
  * @route '/measurement-device/{measurement_device}'
  */
 update.url = (args: { measurement_device: number | { id: number } } | [measurement_device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -530,7 +530,7 @@ update.url = (args: { measurement_device: number | { id: number } } | [measureme
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::update
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:95
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:107
  * @route '/measurement-device/{measurement_device}'
  */
 update.put = (args: { measurement_device: number | { id: number } } | [measurement_device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -539,7 +539,7 @@ update.put = (args: { measurement_device: number | { id: number } } | [measureme
 })
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::update
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:95
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:107
  * @route '/measurement-device/{measurement_device}'
  */
 update.patch = (args: { measurement_device: number | { id: number } } | [measurement_device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -549,7 +549,7 @@ update.patch = (args: { measurement_device: number | { id: number } } | [measure
 
     /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::update
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:95
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:107
  * @route '/measurement-device/{measurement_device}'
  */
     const updateForm = (args: { measurement_device: number | { id: number } } | [measurement_device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -564,7 +564,7 @@ update.patch = (args: { measurement_device: number | { id: number } } | [measure
 
             /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::update
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:95
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:107
  * @route '/measurement-device/{measurement_device}'
  */
         updateForm.put = (args: { measurement_device: number | { id: number } } | [measurement_device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -578,7 +578,7 @@ update.patch = (args: { measurement_device: number | { id: number } } | [measure
         })
             /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::update
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:95
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:107
  * @route '/measurement-device/{measurement_device}'
  */
         updateForm.patch = (args: { measurement_device: number | { id: number } } | [measurement_device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -594,7 +594,7 @@ update.patch = (args: { measurement_device: number | { id: number } } | [measure
     update.form = updateForm
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::destroy
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:109
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:121
  * @route '/measurement-device/{measurement_device}'
  */
 export const destroy = (args: { measurement_device: number | { id: number } } | [measurement_device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -609,7 +609,7 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::destroy
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:109
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:121
  * @route '/measurement-device/{measurement_device}'
  */
 destroy.url = (args: { measurement_device: number | { id: number } } | [measurement_device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -642,7 +642,7 @@ destroy.url = (args: { measurement_device: number | { id: number } } | [measurem
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::destroy
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:109
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:121
  * @route '/measurement-device/{measurement_device}'
  */
 destroy.delete = (args: { measurement_device: number | { id: number } } | [measurement_device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -652,7 +652,7 @@ destroy.delete = (args: { measurement_device: number | { id: number } } | [measu
 
     /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::destroy
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:109
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:121
  * @route '/measurement-device/{measurement_device}'
  */
     const destroyForm = (args: { measurement_device: number | { id: number } } | [measurement_device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -667,7 +667,7 @@ destroy.delete = (args: { measurement_device: number | { id: number } } | [measu
 
             /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::destroy
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:109
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:121
  * @route '/measurement-device/{measurement_device}'
  */
         destroyForm.delete = (args: { measurement_device: number | { id: number } } | [measurement_device: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -683,7 +683,7 @@ destroy.delete = (args: { measurement_device: number | { id: number } } | [measu
     destroy.form = destroyForm
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::deleted
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:116
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:128
  * @route '/measurement-device-deleted'
  */
 export const deleted = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -698,7 +698,7 @@ deleted.definition = {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::deleted
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:116
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:128
  * @route '/measurement-device-deleted'
  */
 deleted.url = (options?: RouteQueryOptions) => {
@@ -707,7 +707,7 @@ deleted.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::deleted
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:116
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:128
  * @route '/measurement-device-deleted'
  */
 deleted.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -716,7 +716,7 @@ deleted.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::deleted
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:116
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:128
  * @route '/measurement-device-deleted'
  */
 deleted.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -726,7 +726,7 @@ deleted.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::deleted
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:116
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:128
  * @route '/measurement-device-deleted'
  */
     const deletedForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -736,7 +736,7 @@ deleted.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::deleted
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:116
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:128
  * @route '/measurement-device-deleted'
  */
         deletedForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -745,7 +745,7 @@ deleted.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::deleted
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:116
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:128
  * @route '/measurement-device-deleted'
  */
         deletedForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -761,7 +761,7 @@ deleted.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     deleted.form = deletedForm
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::permanentDestroy
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:123
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:135
  * @route '/measurement-device-permanent-delete/{measurementDevice}'
  */
 export const permanentDestroy = (args: { measurementDevice: number | { id: number } } | [measurementDevice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -776,7 +776,7 @@ permanentDestroy.definition = {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::permanentDestroy
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:123
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:135
  * @route '/measurement-device-permanent-delete/{measurementDevice}'
  */
 permanentDestroy.url = (args: { measurementDevice: number | { id: number } } | [measurementDevice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -809,7 +809,7 @@ permanentDestroy.url = (args: { measurementDevice: number | { id: number } } | [
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::permanentDestroy
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:123
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:135
  * @route '/measurement-device-permanent-delete/{measurementDevice}'
  */
 permanentDestroy.delete = (args: { measurementDevice: number | { id: number } } | [measurementDevice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -819,7 +819,7 @@ permanentDestroy.delete = (args: { measurementDevice: number | { id: number } } 
 
     /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::permanentDestroy
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:123
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:135
  * @route '/measurement-device-permanent-delete/{measurementDevice}'
  */
     const permanentDestroyForm = (args: { measurementDevice: number | { id: number } } | [measurementDevice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -834,7 +834,7 @@ permanentDestroy.delete = (args: { measurementDevice: number | { id: number } } 
 
             /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::permanentDestroy
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:123
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:135
  * @route '/measurement-device-permanent-delete/{measurementDevice}'
  */
         permanentDestroyForm.delete = (args: { measurementDevice: number | { id: number } } | [measurementDevice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -850,7 +850,7 @@ permanentDestroy.delete = (args: { measurementDevice: number | { id: number } } 
     permanentDestroy.form = permanentDestroyForm
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::restore
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:131
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:143
  * @route '/measurement-device-restore/{measurementDevice}'
  */
 export const restore = (args: { measurementDevice: number | { id: number } } | [measurementDevice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -865,7 +865,7 @@ restore.definition = {
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::restore
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:131
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:143
  * @route '/measurement-device-restore/{measurementDevice}'
  */
 restore.url = (args: { measurementDevice: number | { id: number } } | [measurementDevice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -898,7 +898,7 @@ restore.url = (args: { measurementDevice: number | { id: number } } | [measureme
 
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::restore
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:131
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:143
  * @route '/measurement-device-restore/{measurementDevice}'
  */
 restore.get = (args: { measurementDevice: number | { id: number } } | [measurementDevice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -907,7 +907,7 @@ restore.get = (args: { measurementDevice: number | { id: number } } | [measureme
 })
 /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::restore
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:131
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:143
  * @route '/measurement-device-restore/{measurementDevice}'
  */
 restore.head = (args: { measurementDevice: number | { id: number } } | [measurementDevice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -917,7 +917,7 @@ restore.head = (args: { measurementDevice: number | { id: number } } | [measurem
 
     /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::restore
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:131
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:143
  * @route '/measurement-device-restore/{measurementDevice}'
  */
     const restoreForm = (args: { measurementDevice: number | { id: number } } | [measurementDevice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -927,7 +927,7 @@ restore.head = (args: { measurementDevice: number | { id: number } } | [measurem
 
             /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::restore
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:131
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:143
  * @route '/measurement-device-restore/{measurementDevice}'
  */
         restoreForm.get = (args: { measurementDevice: number | { id: number } } | [measurementDevice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -936,7 +936,7 @@ restore.head = (args: { measurementDevice: number | { id: number } } | [measurem
         })
             /**
 * @see \App\Http\Controllers\MeasurementDevice\MeasurementDeviceController::restore
- * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:131
+ * @see app/Http/Controllers/MeasurementDevice/MeasurementDeviceController.php:143
  * @route '/measurement-device-restore/{measurementDevice}'
  */
         restoreForm.head = (args: { measurementDevice: number | { id: number } } | [measurementDevice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({

@@ -1,0 +1,49 @@
+# Git & VCS
+.git/
+.gitignore
+.gitattributes
+.github/
+
+# Secrets & Environment
+.env
+.env.*
+!.env.example
+
+# OS / Editor
+.DS_Store
+._*
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# PHP / Node dependencies (installed fresh inside the image)
+vendor/
+node_modules/
+.phpunit.result.cache
+
+# Docker build artifacts
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# Runtime data & storage (mounted via volumes / regenerated on boot)
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+storage/logs/*
+storage/app/public/*
+public/storage
+public/build/*
+
+# Tests
+tests/
+.phpunit.cache/
+
+# Documentation & temporary files
+*.md
+!README.md
+.tmp/
+*.log

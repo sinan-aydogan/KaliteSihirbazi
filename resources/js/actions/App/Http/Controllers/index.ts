@@ -10,7 +10,9 @@ import VehicleController from './VehicleController'
 import SupplierController from './SupplierController'
 import HumanResources from './HumanResources'
 import Document from './Document'
+import MeasurementDeviceSettingController from './MeasurementDeviceSettingController'
 import MeasurementDevice from './MeasurementDevice'
+import CalibrationTechnicianController from './CalibrationTechnicianController'
 import StandardController from './StandardController'
 import CapaController from './CapaController'
 import ProblemController from './ProblemController'
@@ -60,7 +62,9 @@ VehicleController: Object.assign(VehicleController, VehicleController),
 SupplierController: Object.assign(SupplierController, SupplierController),
 HumanResources: Object.assign(HumanResources, HumanResources),
 Document: Object.assign(Document, Document),
+MeasurementDeviceSettingController: Object.assign(MeasurementDeviceSettingController, MeasurementDeviceSettingController),
 MeasurementDevice: Object.assign(MeasurementDevice, MeasurementDevice),
+CalibrationTechnicianController: Object.assign(CalibrationTechnicianController, CalibrationTechnicianController),
 StandardController: Object.assign(StandardController, StandardController),
 CapaController: Object.assign(CapaController, CapaController),
 ProblemController: Object.assign(ProblemController, ProblemController),

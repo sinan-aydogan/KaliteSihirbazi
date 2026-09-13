@@ -1,0 +1,23 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Calibration Firms",
+            "subTitle": "Manage the firms that calibrate your devices"
+        },
+        "createPage": {
+            "title": "Create a Calibration Firm",
+            "subTitle": "Add a new calibration firm"
+        },
+        "deletedPage": {
+            "title": "Deleted Calibration Firms",
+            "subTitle": "You can restore or permanently delete removed firms here"
+        }
+    },
+    "term": {
+        "name": "Firm Name",
+        "email": "Email",
+        "phone": "Phone",
+        "address": "Address",
+        "taskCount": "Calibration Count"
+    }
+}

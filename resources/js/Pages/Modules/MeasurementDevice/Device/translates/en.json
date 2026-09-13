@@ -15,6 +15,10 @@
     "updateCalibrationModal": {
       "title": "Update Calibration Task",
       "subTitle": "Update the calibration task's status and details"
+    },
+    "calibrationTasksIndexPage": {
+      "title": "Calibration Orders",
+      "subTitle": "View every device's calibration orders in one place"
     }
   },
   "term": {
@@ -42,16 +46,56 @@
     "calibrationFee": "Calibration Fee",
     "active": "Active",
     "accomplished": "Accomplished",
-    "isAccomplished": "Accomplished?"
+    "isAccomplished": "Accomplished?",
+    "overdueCalibrations": "device(s) have overdue calibration",
+    "upcomingCalibrations": "device(s) have calibration coming up",
+    "statusValue": {
+      "active": "Active",
+      "decommissioned": "Decommissioned"
+    },
+    "result": "Result",
+    "reportNumber": "Report No",
+    "reportNotes": "Report Notes",
+    "nextCalibrationDate": "Next Calibration Date",
+    "certificate": "Calibration Certificate",
+    "resultValue": {
+      "passed": "Passed",
+      "failed": "Failed"
+    },
+    "decommissionReason": "Decommission Reason",
+    "decommissionedAt": "Decommissioned At",
+    "decommissionedBy": "Decommissioned By",
+    "failedResultNudge": "This calibration result is Failed. You can decommission the device using the \"Decommission\" button at the top of the page.",
+    "calibrationType": "Calibration Type",
+    "typeValue": {
+      "external": "External Calibration",
+      "internal": "Internal Calibration"
+    },
+    "referenceDevice": "Reference Device (Standard)",
+    "performedBy": "Performed By",
+    "currentTraceabilityReference": "Currently Traced To",
+    "report": "Report",
+    "measurementPoints": "Measurement Points",
+    "nominalValue": "Nominal Value",
+    "measuredValue": "Measured Value",
+    "tolerance": "Tolerance (±)",
+    "unit": "Unit",
+    "deviation": "Deviation",
+    "isReferenceStandard": "Reference Standard",
+    "device": "Device"
   },
   "message": {
     "feedback": {
-      "emptyCalibrationTasksList": "No calibration task have been created yet"
+      "emptyCalibrationTasksList": "No calibration task have been created yet",
+      "emptyMeasurementPoints": "No measurement points added yet"
     }
   },
   "action": {
     "createCalibrationTask": "Create a Calibration Task",
     "createTask": "Create Task",
-    "updateTask": "Update Task"
+    "updateTask": "Update Task",
+    "decommission": "Decommission",
+    "reactivate": "Reactivate",
+    "addMeasurementPoint": "Add Measurement Point"
   }
 }

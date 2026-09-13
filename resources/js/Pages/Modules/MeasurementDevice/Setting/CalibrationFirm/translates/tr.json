@@ -1,0 +1,23 @@
+{
+    "title": {
+        "indexPage": {
+            "title": "Kalibrasyon Firmaları",
+            "subTitle": "Cihazlarınızın kalibrasyonunu yapan firmaları buradan yönetebilirsiniz"
+        },
+        "createPage": {
+            "title": "Kalibrasyon Firması Oluştur",
+            "subTitle": "Yeni bir kalibrasyon firması ekleyin"
+        },
+        "deletedPage": {
+            "title": "Silinen Kalibrasyon Firmaları",
+            "subTitle": "Silinen firmaları geri getirebilir veya kalıcı olarak silebilirsiniz"
+        }
+    },
+    "term": {
+        "name": "Firma Adı",
+        "email": "E-posta",
+        "phone": "Telefon",
+        "address": "Adres",
+        "taskCount": "Kalibrasyon Sayısı"
+    }
+}

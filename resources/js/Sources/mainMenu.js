@@ -318,6 +318,30 @@ export default function ({roles, permissions}) {
                         icon: 'ruler-combined',
                         type: "route",
                         link: 'measurement-device.index'
+                    },
+                    /*Calibration Orders*/
+                    {
+                        id: 'md-ct',
+                        label: t('mainMenu.calibrationTasks'),
+                        icon: 'clipboard-check',
+                        type: "route",
+                        link: 'measurement-device-calibration.index'
+                    },
+                    /*Calibration Firms*/
+                    {
+                        id: 'md-cf',
+                        label: t('mainMenu.calibrationFirms'),
+                        icon: 'building',
+                        type: "route",
+                        link: 'calibration-firm.index'
+                    },
+                    /*Calibration Technicians*/
+                    {
+                        id: 'md-cp',
+                        label: t('mainMenu.calibrationTechnicians'),
+                        icon: 'user-gear',
+                        type: "route",
+                        link: 'calibration-technician.index'
                     }
                 ]
             },

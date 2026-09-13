@@ -7,8 +7,10 @@ use App\Http\Requests\StoreMeasurementDeviceRequest;
 use App\Http\Requests\UpdateMeasurementDeviceRequest;
 use App\Models\Department;
 use App\Models\HumanResources\Employee\Employee;
+use App\Models\MeasurementDevice\Calibration\MeasurementDeviceCalibrationTask;
 use App\Models\MeasurementDevice\MeasurementDevice;
 use App\Models\MeasurementDevice\MeasurementDeviceType;
+use App\Models\Setting;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -22,6 +24,10 @@ class MeasurementDeviceController extends Controller
      */
     public function index()
     {
+        $reminderDays = (int) (json_decode(
+            Setting::where('code', 'calibration_reminder_days')->value('value') ?? '30'
+        ) ?: 30);
+
         return Inertia::render('Modules/MeasurementDevice/Device/IndexPage', [
             'tableData' => $this->tableFilter(MeasurementDevice::with('department:id,name', 'type:id,name', 'calibrationSupervisor:id,name', 'deviceSupervisor:id,name', 'calibrationSupervisor.account:accountable_id,name', 'deviceSupervisor.account:accountable_id,name'), [
                 'measurement_type_id' => ['relation' => 'type', 'column' => 'name'],
@@ -32,6 +38,12 @@ class MeasurementDeviceController extends Controller
             'measurementDeviceTypes' => MeasurementDeviceType::all(['id', 'name']),
             'departments' => Department::all(['id', 'name']),
             'employees' => Employee::all(['id']),
+            'overdueCalibrationCount' => MeasurementDeviceCalibrationTask::overdue()
+                ->whereHas('device', fn ($query) => $query->active())
+                ->count(),
+            'upcomingCalibrationCount' => MeasurementDeviceCalibrationTask::upcoming($reminderDays)
+                ->whereHas('device', fn ($query) => $query->active())
+                ->count(),
         ]);
     }
 
