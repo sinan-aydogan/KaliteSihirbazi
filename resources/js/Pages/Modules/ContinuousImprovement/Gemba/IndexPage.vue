@@ -53,7 +53,7 @@ const headers = [
 /* ---------- Create Form ---------- */
 const showModal = ref(false);
 const form = useForm({
-    continuous_improvement_area_id: null,
+    area_id: null,
     conducted_by_id: null,
     walk_date: new Date().toISOString().substring(0, 10),
     participants: "",
@@ -62,7 +62,7 @@ const form = useForm({
 })
 
 const rules = ref({
-    continuous_improvement_area_id: {required: helpers.withMessage(t('message.validation.required'), required)},
+    area_id: {required: helpers.withMessage(t('message.validation.required'), required)},
     conducted_by_id: {},
     walk_date: {required: helpers.withMessage(t('message.validation.required'), required)},
     participants: {},
@@ -97,9 +97,9 @@ const handleSubmit = async () => {
             <help-button title="Gemba Turları — Nasıl Çalışır?" subtitle="Sahada yapılan gözlem turları">
                 <p>"Gemba", işin gerçekten yapıldığı yer demektir — bu turlarda sahaya gidip gözlem yapılır, İş Güvenliği/Kalite/Teslimat/Maliyet/Motivasyon başlıklarında bulgular kaydedilir.</p>
             </help-button>
-            <simple-button type="route" :link="route('improvement-area.index')" color="blue">
+            <simple-button type="route" :link="route('area.index')" color="blue">
                 <font-awesome-icon icon="map-location-dot" class="mr-2"/>
-                <span v-text="t('mainMenu.improvementAreas')"/>
+                <span v-text="t('mainMenu.areas')"/>
             </simple-button>
             <simple-button type="route" :link="route('continuous-improvement.index')">
                 <font-awesome-icon icon="fa-solid fa-left-long" class="mr-2"/>
@@ -135,8 +135,8 @@ const handleSubmit = async () => {
             >
                 <Form full-size>
                     <FormSection bg-less>
-                        <input-group class="col-span-6" labelFor="continuous_improvement_area_id" :label="tm('term.area')" :errors="v$.continuous_improvement_area_id.$errors">
-                            <select-input v-model="form.continuous_improvement_area_id" :options="areaOptions"/>
+                        <input-group class="col-span-6" labelFor="area_id" :label="tm('term.area')" :errors="v$.area_id.$errors">
+                            <select-input v-model="form.area_id" :options="areaOptions"/>
                         </input-group>
 
                         <input-group class="col-span-3" labelFor="conducted_by_id" :label="tm('term.conductedBy')">

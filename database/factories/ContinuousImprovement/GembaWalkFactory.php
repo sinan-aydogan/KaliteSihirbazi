@@ -2,7 +2,7 @@
 
 namespace Database\Factories\ContinuousImprovement;
 
-use App\Models\ContinuousImprovement\ImprovementArea;
+use App\Models\Area;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -14,7 +14,7 @@ class GembaWalkFactory extends Factory
     public function definition()
     {
         return [
-            'continuous_improvement_area_id' => ImprovementArea::factory(),
+            'area_id' => Area::factory(),
             'conducted_by_id' => User::factory(),
             'walk_date' => $this->faker->date(),
             'participants' => $this->faker->name(),

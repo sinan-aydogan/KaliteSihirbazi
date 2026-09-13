@@ -1,6 +1,5 @@
 import KaizenCategoryController from './KaizenCategoryController'
 import KaizenSuggestionController from './KaizenSuggestionController'
-import ImprovementAreaController from './ImprovementAreaController'
 import FiveSAuditController from './FiveSAuditController'
 import GembaWalkController from './GembaWalkController'
 import ContinuousImprovementController from './ContinuousImprovementController'
@@ -10,7 +9,6 @@ import GembaWalkFindingController from './GembaWalkFindingController'
 const ContinuousImprovement = {
     KaizenCategoryController: Object.assign(KaizenCategoryController, KaizenCategoryController),
 KaizenSuggestionController: Object.assign(KaizenSuggestionController, KaizenSuggestionController),
-ImprovementAreaController: Object.assign(ImprovementAreaController, ImprovementAreaController),
 FiveSAuditController: Object.assign(FiveSAuditController, FiveSAuditController),
 GembaWalkController: Object.assign(GembaWalkController, GembaWalkController),
 ContinuousImprovementController: Object.assign(ContinuousImprovementController, ContinuousImprovementController),

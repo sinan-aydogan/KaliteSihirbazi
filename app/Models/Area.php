@@ -1,19 +1,17 @@
 <?php
 
-namespace App\Models\ContinuousImprovement;
+namespace App\Models;
 
-use App\Models\Department;
-use App\Models\User;
+use App\Models\ContinuousImprovement\FiveSAudit;
+use App\Models\ContinuousImprovement\GembaWalk;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class ImprovementArea extends Model
+class Area extends Model
 {
     use HasFactory;
-
-    protected $table = 'continuous_improvement_areas';
 
     protected $fillable = [
         'name',
@@ -38,11 +36,11 @@ class ImprovementArea extends Model
 
     public function fiveSAudits(): HasMany
     {
-        return $this->hasMany(FiveSAudit::class, 'continuous_improvement_area_id');
+        return $this->hasMany(FiveSAudit::class);
     }
 
     public function gembaWalks(): HasMany
     {
-        return $this->hasMany(GembaWalk::class, 'continuous_improvement_area_id');
+        return $this->hasMany(GembaWalk::class);
     }
 }

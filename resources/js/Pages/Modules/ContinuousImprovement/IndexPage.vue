@@ -60,7 +60,7 @@ const scoreColorClass = (score) => {
                 <p><strong>5S Denetimleri:</strong> Bir alanın Sınıflandır/Düzenle/Temizlik/Standartlaştır/Disiplin kriterlerine göre puanlandığı düzenli denetimler; puanı düşük kriterler için bulgu/aksiyon açılır.</p>
                 <p><strong>Gemba Turları:</strong> Sahaya gidip gözlem yapılan, güvenlik/kalite/akış/maliyet/motivasyon başlıklarında bulgu kaydedilen saha turları.</p>
             </help-button>
-            <simple-button type="route" :link="route('improvement-area.index')" color="blue">
+            <simple-button type="route" :link="route('area.index')" color="blue">
                 <font-awesome-icon icon="map-location-dot" class="mr-2"/>
                 <span v-text="t('action.manageAreas')"/>
             </simple-button>

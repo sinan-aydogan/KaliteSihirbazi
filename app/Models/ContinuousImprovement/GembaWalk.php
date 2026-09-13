@@ -2,6 +2,7 @@
 
 namespace App\Models\ContinuousImprovement;
 
+use App\Models\Area;
 use App\Models\User;
 use App\Traits\HasSequentialCode;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,7 +16,7 @@ class GembaWalk extends Model
     use HasFactory, HasSequentialCode, SoftDeletes;
 
     protected $fillable = [
-        'continuous_improvement_area_id',
+        'area_id',
         'conducted_by_id',
         'walk_date',
         'participants',
@@ -43,7 +44,7 @@ class GembaWalk extends Model
 
     public function area(): BelongsTo
     {
-        return $this->belongsTo(ImprovementArea::class, 'continuous_improvement_area_id');
+        return $this->belongsTo(Area::class);
     }
 
     public function conductedBy(): BelongsTo

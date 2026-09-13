@@ -5,6 +5,7 @@ import Tag from './Tag'
 import User from './User'
 import CustomerComplaintAnalyticsController from './CustomerComplaintAnalyticsController'
 import DepartmentController from './DepartmentController'
+import AreaController from './AreaController'
 import Warehouse from './Warehouse'
 import BusinessManagement from './BusinessManagement'
 import VehicleController from './VehicleController'
@@ -59,6 +60,7 @@ Tag: Object.assign(Tag, Tag),
 User: Object.assign(User, User),
 CustomerComplaintAnalyticsController: Object.assign(CustomerComplaintAnalyticsController, CustomerComplaintAnalyticsController),
 DepartmentController: Object.assign(DepartmentController, DepartmentController),
+AreaController: Object.assign(AreaController, AreaController),
 Warehouse: Object.assign(Warehouse, Warehouse),
 BusinessManagement: Object.assign(BusinessManagement, BusinessManagement),
 VehicleController: Object.assign(VehicleController, VehicleController),

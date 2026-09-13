@@ -5,8 +5,8 @@ namespace App\Http\Controllers\ContinuousImprovement;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreGembaWalkRequest;
 use App\Http\Requests\UpdateGembaWalkRequest;
+use App\Models\Area;
 use App\Models\ContinuousImprovement\GembaWalk;
-use App\Models\ContinuousImprovement\ImprovementArea;
 use App\Models\User;
 use App\Services\ContinuousImprovement\GembaWalkService;
 use Inertia\Inertia;
@@ -26,7 +26,7 @@ class GembaWalkController extends Controller
 
         return Inertia::render('Modules/ContinuousImprovement/Gemba/IndexPage', [
             'tableData' => $walks,
-            'areas' => ImprovementArea::where('is_active', true)->get(['id', 'name']),
+            'areas' => Area::where('is_active', true)->get(['id', 'name']),
             'users' => User::all(['id', 'name']),
         ]);
     }

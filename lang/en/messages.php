@@ -420,7 +420,7 @@ return [
         'deletedError' => 'This category cannot be deleted because it has suggestions assigned to it.',
         'deletedErrorProtected' => 'This system-default category cannot be deleted.'
     ],
-    'improvementArea' => [
+    'area' => [
         'created' => 'Area :area created.',
         'updated' => 'Area :area updated.',
         'deleted' => 'Area :area deleted.',

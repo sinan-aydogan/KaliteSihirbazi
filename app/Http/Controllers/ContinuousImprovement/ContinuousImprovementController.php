@@ -41,7 +41,7 @@ class ContinuousImprovementController extends Controller
         $recentAudits = FiveSAudit::with(['area:id,name'])
             ->latest('audit_date')
             ->limit(5)
-            ->get(['id', 'code', 'continuous_improvement_area_id', 'audit_date', 'total_score']);
+            ->get(['id', 'code', 'area_id', 'audit_date', 'total_score']);
 
         return Inertia::render('Modules/ContinuousImprovement/IndexPage', [
             'summary' => $summary,

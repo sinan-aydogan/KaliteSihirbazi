@@ -1,8 +1,8 @@
 <?php
 
+use App\Models\Area;
 use App\Models\ContinuousImprovement\GembaWalk;
 use App\Models\ContinuousImprovement\GembaWalkFinding;
-use App\Models\ContinuousImprovement\ImprovementArea;
 use App\Models\User;
 use Inertia\Testing\AssertableInertia as Assert;
 
@@ -18,11 +18,11 @@ test('gemba walks index renders with table data', function () {
 });
 
 test('a user can record a gemba walk', function () {
-    $area = ImprovementArea::factory()->create();
+    $area = Area::factory()->create();
 
     $this->actingAs(User::factory()->create())
         ->post(route('gemba-walk.store'), [
-            'continuous_improvement_area_id' => $area->id,
+            'area_id' => $area->id,
             'walk_date' => now()->toDateString(),
             'observations' => 'Hat üzerinde WIP birikmiş',
         ])
@@ -35,11 +35,11 @@ test('a user can record a gemba walk', function () {
 });
 
 test('observations are required', function () {
-    $area = ImprovementArea::factory()->create();
+    $area = Area::factory()->create();
 
     $this->actingAs(User::factory()->create())
         ->post(route('gemba-walk.store'), [
-            'continuous_improvement_area_id' => $area->id,
+            'area_id' => $area->id,
             'walk_date' => now()->toDateString(),
         ])
         ->assertSessionHasErrors('observations');
