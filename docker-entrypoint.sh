@@ -24,6 +24,12 @@ fi
 echo "Veritabanı migration'ları çalıştırılıyor..."
 php artisan migrate --force
 
+# Run seeders if requested via environment variable
+if [ "$SEED_DATABASE" = "true" ] || [ "$DEMO_MODE" = "true" ]; then
+    echo "🌱 Veritabanı seeder'ları çalıştırılıyor..."
+    php artisan db:seed --force
+fi
+
 # Ensure the public/storage symlink exists (Spatie MediaLibrary uploads)
 php artisan storage:link --force 2>/dev/null || true
 
